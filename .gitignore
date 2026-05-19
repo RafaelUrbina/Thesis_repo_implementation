@@ -1,0 +1,23 @@
+#General temp ignores
+
+
+#Personal documents
+0_Bureaucratic/1_Borsa/Personal
+0_Bureaucratic/1_Borsa/Compile_payment_salute
+crede.txt
+
+#Automatic temp files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+#Big files
+
+
+#VScode
+.vscode*
+
+#pycache
+__pycache__/

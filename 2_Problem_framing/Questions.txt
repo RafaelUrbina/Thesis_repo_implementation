@@ -1,0 +1,14 @@
+Research question:
+
+    How can multimodal open data and patent data be used to reduce inefficiencies in water transportation systems through pipelines?
+
+Secondary objectives:
+
+    * To identify and systematically catalog diverse repositories of multimodal open data and global patent databases relevant to the Italian water transport system.
+
+    *To establish a comprehensive methodology for the integration and harmonization of heterogeneous datasets, ensuring interoperability between various knowledge fields and from structured to unstructured data.
+
+    *To design a data-driven framework that utilizes integrated insights to support the prioritization of infrastructure interventions and the optimization of resource allocation.
+
+
+    
