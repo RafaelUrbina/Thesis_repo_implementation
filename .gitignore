@@ -14,7 +14,8 @@ crede.txt
 .Trashes
 
 #Big files
-3_Implementation/1_Data/Master
+3_Implementation/1_Data/1_Master
+3_Implementation/1_Data/2_Integration
 
 #VScode
 .vscode*
