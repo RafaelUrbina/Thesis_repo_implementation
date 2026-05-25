@@ -1,0 +1,7 @@
+Filtering all OSM data to prov FI
+Finish checking the validity
+Fix the broken geometries by adding the validated ones only
+Apply the suggestions for the query
+Save the rasters as TIFF
+Learn how to load the geopackages on python
+Create the python NB documentation file
