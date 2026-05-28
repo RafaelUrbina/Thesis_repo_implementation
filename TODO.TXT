@@ -1,10 +1,14 @@
 (DONE) Filtering all OSM data to prov FI
 (DONE) Finish checking the validity
-(Partially DONE) Fix the broken geometries by adding the validated ones only
-    - Forest, Building, Natural togo
+(DONE) Fix the broken geometries by adding the validated ones only
 (DONE) Apply the suggestions for the query 
 
 NEXT THINGS
-Save the rasters as TIFF
-Learn how to load the geopackages on python
-Create the python NB documentation file
+(DONE) Save the rasters as TIFF
+(DONE) Learn how to load the geopackages on python
+(DONE) Create the python NB documentation file
+
+NEXT THINGS
+(ON IT) Keep the unique ID, the geometry column, and the specific risk variables
+(ON IT) Drop administrative clutter, internal GIS creation timestamps, and redundant names
+Set or create the H3-10 for (Separately) 
