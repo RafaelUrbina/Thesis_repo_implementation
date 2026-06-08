@@ -52,3 +52,27 @@ S. Radini, J. González-Camejo *, C. Andreola, A.L. Eusebi, F. Fatone
         current knowledge, risk is above the acceptable levels, hence reduction
         measures should be implemented. However, an RQ < 0.1 is often
         defined as areas of negligible risk [28]. 
+
+Causes
+
+- Seismic/site intensity
+- Rain
+- (Not obtained yet) Temperature anomalies
+-  (Not obtained yet) Wind gust anomalies
+- (Not obtained yet) Wildfires (EFFIS)
+- (Not obtained yet)Pendolarismo daily commuters dataset(ISTAT)(limited)
+
+Conditions
+- DTM’s 
+- Soil data, pedologia
+- Idrografia
+- Streets and water ways
+- Infrastructure
+- (Not obtained yet)Autorità di Bacino distrettuale dell'Appennino settentrionale Sentinel1 soil displacement points
+
+Effects
+
+- Interventions
+- Economical data
+- Population census
+- Landslides/Floods history
