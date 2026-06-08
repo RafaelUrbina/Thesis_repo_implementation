@@ -1,0 +1,16 @@
+bosqui buschatti, incendi
+
+causes(events) conditions(fixed topic) and effects(results to verify)
+
+research questions, data that have been obtained, integration with the patents
+
+slides:
+ - Introduction - title of thesis, name, background very 	small
+ - describere il problema scope, problem scontrati, framing, 	environmental conditions can affect, how can we use 	them
+ - describere domande di ricercar e objectives
+ - approach proposto (the things I showed irene for the 	aggregation) molto generale
+ - data that we have collected, with emphasis in how they are 	open access and readily available for download (cite) 	also patents, multimodal characteristics with the  	variety we already have (also speak about the 	patents) (open access, reliability, multimodality)
+ - data types of data shown in patents (physical, 	environmental, technologies)
+ - metodo more in the structural side of what I showed irene 	of the integration (categories of data, and organized 	as causes, conditions and effects)
+ - what specific models could be used for this task (still 	researching)
+ - conclusions, value of the proposal, punti devole e 	rischioso, how can they contribute 	methodologically(animar a contribuir)
