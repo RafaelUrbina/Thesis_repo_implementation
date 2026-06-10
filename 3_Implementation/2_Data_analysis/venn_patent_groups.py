@@ -49,7 +49,7 @@ for text in v.set_labels:
         text.set_color('#1d3557')
 
 # FIX 1: Attach the title directly to the main Venn diagram axes 'ax' so it centers perfectly over the circles
-ax.set_title("Sub-topic Distribution & Overlap Analysis", fontsize=16, fontweight='bold', pad=25, color='#1d3557')
+ax.set_title("Sub-topic(Dimensions) Distribution & Overlap Analysis", fontsize=16, fontweight='bold', pad=25, color='#1d3557')
 
 # ------------------------------------
 # UPPER RIGHT CORNER: Mini Proportional Bar Chart
