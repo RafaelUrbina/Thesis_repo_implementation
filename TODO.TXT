@@ -13,13 +13,14 @@ NEXT THINGS
 - (DONE) Separate fetched data in cause and effects
 - (DONE) Separate sub-queries: TECHNOLOGIES -> iot,satellite,droni,traccianti suolo,monitoring device, leak detection. -- IMPIANTI -> ambiental, temperature, climate, meteo, terremoti, rain, storm, ice, flooding, see the precisions
 - (DONE) Check literature and subquery on day cicle leaks and preassure change and evaporation fluctuactions (They exist but they use sensors)
-- Check water intensive industries in zones, maybe open data or OSM
-- Check wild fires dataset from fantoni (EFFI)
-- Check temperature dataset SIR toscana
-- Check wind gust dataset SIR toscana
+- (NEXT)Check water intensive industries in zones, maybe open data or OSM
+- (DONE)Check wild fires dataset from fantoni (EFFI)
+- (Extract the data Next)Check temperature dataset SIR toscana
+- (Extract the data Next)Check wind gust dataset SIR toscana
+- (Extract the data Next)Check water levels dataset SIR toscana
 - Check  pendolarismo 2021 ISTAT
 - Check Autorità di Bacino distrettuale dell'Appennino settentrionale Sentinel1 soil displacement points
-- Check ARERA for data regarding toscana and firenze
+- (It exists but not open)Check ARERA for data regarding toscana and firenze
 - Spatial statistics in Qgis (correlation y clustering)
 - (ON IT) Keep the unique ID, the geometry column, and the specific risk variables
 - (ON IT) Drop administrative clutter, internal GIS creation timestamps, and redundant names
