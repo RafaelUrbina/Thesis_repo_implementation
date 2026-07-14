@@ -53,43 +53,45 @@ def main() -> None:
     # implemented here. This script focuses on direct `sjoin` aggregations.
     point_layers_config = {
         "info_lotti_multipmpoint": {
+            "use_1ring": True,
             "agg": {"importo_lo": "sum", "tipo_disse": "first"},
             "rename": {"importo_lo": "total_intervention_cost", "tipo_disse": "class_intervention"}
         },
         "pubacq_acq_fontanello_aq_attivipoint": {
+            "use_1ring": True,
             "agg_method": "size",
             "rename": "active_fountains_count"
         },
         "fontanellipoint": {
+            "use_1ring": True,
             "agg_method": "size",
             "rename": "total_fountains_count"
         },
         "frane_piff_toscana_opendata": {
+            "use_1ring": True,
             "agg": {"tipo_movimento": ["count", lambda x: x.mode()[0] if not x.empty else None]},
             "multi_index_rename": {"tipo_movimento_count": "landslide_point_count", "tipo_movimento_<lambda>": "dominant_landslide_type"}
         },
         "_peaks": {
+            "use_1ring": True,
             "preprocess": lambda gdf: gdf.assign(ele=pd.to_numeric(gdf["ele"], errors="coerce")),
             "agg": {"ele": "max"},
             "rename": {"ele": "max_peak_elevation"}
         },
         "_places": {
+            "use_1ring": False,  # This layer should only have direct aggregation
             "preprocess": lambda gdf: gdf.assign(is_locality=1),
             "agg": {"is_locality": "first", "name": "first"},
             "rename": {"is_locality": "is_locality", "name": "locality_name"}
         },
         "seismic_points_utm32n": {
+            "use_1ring": True,
             "agg": {"MwDef": ["count", "max", "mean"]},
             "multi_index_rename": {"MwDef_count": "seismic_event_count", "MwDef_max": "max_seismic_magnitude", "MwDef_mean": "avg_seismic_magnitude"}
-        },
-        "celle_soli_PS_discendenti": {
-            "agg": {"ave_vdesc": "mean"},
-            "rename": {"ave_vdesc": "avg_descending_soil_speed"}
-        },
-        "celle_soli_PS_ascendenti": {
-            "agg": {"ave_vasc": "mean"},
-            "rename": {"ave_vasc": "avg_ascending_soil_speed"}
         }
+        # NOTE: 'celle_soli_PS_discendenti' and 'celle_soli_PS_ascendenti' have been removed
+        # as they are polygon layers and should be processed in a polygon integration script
+        # to ensure correct area-based analysis, not point-based joins.
     }
 
     # 4. Process each point layer
@@ -108,48 +110,58 @@ def main() -> None:
         if "preprocess" in config:
             points_gdf = config["preprocess"](points_gdf)
 
-        # --- 1-Ring Neighbor Logic ---
-        # 1. Find which hexagon each point falls directly into.
+        # --- Direct Aggregation (Inside each hexagon) ---
         points_in_hex = gpd.sjoin(points_gdf, master_grid[['index', 'geometry']], how="inner", predicate="within")
 
-        # 2. For each point's hexagon, find its 1-ring neighbors.
-        # This requires the h3 index to be the DataFrame index.
-        # The result of k_ring is a Series containing sets of neighbor IDs.
-        neighbor_sets = points_in_hex.set_index('index').h3.k_ring(1)
- 
-        # 3. "Explode" this relationship so each point is duplicated for each neighboring hex.
-        # The result of k_ring is a GeoDataFrame. The new column is named 'h3_k_ring'.
-        # We rename it to 'neighbors', explode it, and select only the necessary columns.
-        exploded_neighbors = neighbor_sets.rename(columns={"h3_k_ring": "neighbors"}).explode("neighbors")[['neighbors']].reset_index()
- 
-        # 4. Join the exploded neighbor map back to the original points data to carry attributes forward.
-        # The result, `final_join_gdf`, now has one row per point per neighboring hexagon,
-        # and it includes all original attributes.
-        final_join_gdf = points_in_hex.merge(exploded_neighbors, on="index", how="left")
-
-        # --- Aggregate Data ---
         if config.get("agg_method") == "size":
-            aggregated_data = final_join_gdf.groupby("neighbors").size()
-            aggregated_data.name = config["rename"]
+            direct_agg = points_in_hex.groupby("index").size()
+            direct_agg.name = config["rename"]
+            direct_agg = direct_agg.to_frame()
         else:
-            aggregated_data = final_join_gdf.groupby("neighbors").agg(config["agg"])
+            direct_agg = points_in_hex.groupby("index").agg(config["agg"])
             if "multi_index_rename" in config:
-                aggregated_data.columns = ["_".join(col).strip() for col in aggregated_data.columns.values]
-                aggregated_data = aggregated_data.rename(columns=config["multi_index_rename"])
+                direct_agg.columns = ["_".join(col).strip() for col in direct_agg.columns.values]
+                direct_agg = direct_agg.rename(columns=config["multi_index_rename"])
             else:
-                aggregated_data = aggregated_data.rename(columns=config["rename"])
+                direct_agg = direct_agg.rename(columns=config["rename"])
 
-        # Merge aggregated data back into the master grid
-        # We merge on the 'neighbors' group key, which corresponds to the master_grid 'index'.
-        master_grid = master_grid.merge(aggregated_data, left_on="index", right_index=True, how="left")
+        # --- Conditional 1-Ring Neighbor Aggregation ---
+        if config.get("use_1ring"):
+            print("  - Performing 1-ring neighbor aggregation...")
+            
+            # Start with the non-zero direct aggregations
+            initial_agg = direct_agg.copy().dropna(how='all')
+            if initial_agg.empty:
+                print("  - No data for neighbor aggregation. Skipping.")
+                continue
 
-        if isinstance(aggregated_data, pd.DataFrame):
-            print(f"  - Merged {list(aggregated_data.columns)} into master grid.")
-        else:  # It's a Series
-            print(f"  - Merged ['{aggregated_data.name}'] into master grid.")
+            # Find 1-ring neighbors for each hexagon that has a value
+            neighbor_sets = initial_agg.h3.k_ring(1)
+
+            # Create a mapping from each active hexagon to all its neighbors
+            exploded_neighbors = neighbor_sets.rename(columns={"h3_k_ring": "neighbors"}).explode("neighbors").reset_index()
+
+            # Perform the final aggregation: for each hexagon, sum up the contributions from all its neighbors
+            # The exploded_neighbors DataFrame already contains all necessary data.
+            neighbor_agg = exploded_neighbors.groupby("neighbors").sum().drop(columns='index', errors='ignore')
+
+            # Rename neighbor aggregation columns and merge them
+            final_agg = neighbor_agg.add_suffix('_1ring')
+            master_grid = master_grid.merge(final_agg, left_on="index", right_index=True, how="left")
+            print(f"  - Merged 1-ring features: {list(final_agg.columns)}")
+
+        else: # If use_1ring is False or not specified
+            print("  - Performing direct aggregation only...")
+            master_grid = master_grid.merge(direct_agg, left_on="index", right_index=True, how="left")
+            print(f"  - Merged direct features: {list(direct_agg.columns)}")
+
     # Fill NaNs created by non-joining hexagons with appropriate values (0 for counts/sums)
     for col in master_grid.columns:
-        if "count" in col or "cost" in col or col == "is_locality":
+        # Check for both direct and 1ring columns, and also simple columns without suffixes
+        is_count_cost = "count" in col or "cost" in col
+        is_locality = col in ["is_locality", "is_locality_1ring"]
+
+        if is_count_cost or is_locality:
             master_grid[col] = master_grid[col].fillna(0)
 
     # 5. Save the enriched grid

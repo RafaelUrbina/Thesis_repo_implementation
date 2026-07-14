@@ -58,6 +58,23 @@ def apply_max_priority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFra
     
     return max_values
 
+def apply_area_weighted_mean_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, attribute_col: str) -> pd.Series:
+    """Calculates the area-weighted mean for a continuous attribute."""
+    print(f"  - Applying Area-Weighted Mean Rule for '{attribute_col}'...")
+    
+    # Intersect the data layer with the grid
+    intersected = gpd.overlay(grid_gdf[['index', 'geometry']], data_gdf, how='intersection')
+    
+    # Calculate the area of each fragment
+    intersected['area'] = intersected.geometry.area
+    
+    # Calculate the area-weighted value for the attribute
+    intersected['weighted_value'] = intersected[attribute_col] * intersected['area']
+    
+    # Sum the weighted values and areas for each hexagon
+    grouped = intersected.groupby('index').agg(weighted_value_sum=('weighted_value', 'sum'), area_sum=('area', 'sum'))
+    
+    return grouped['weighted_value_sum'] / grouped['area_sum']
 
 def main() -> None:
     """
@@ -87,6 +104,13 @@ def main() -> None:
         ("franosita__di_superficie_interessata_da_frane", "franosita", apply_majority_rule, "landslide_surface_class"),
         ("mosaicatura_ispra_2024_pericolosita_frana_pai", "per_fr_ita", apply_max_priority_rule, "pai_landslide_hazard_level"),
         ("building_", "building", apply_majority_rule, "dominant_building_type"),
+        # Added configurations for the 'celle_soli_PS' layers
+        ("celle_soli_PS_descendenti", "ave_vdesc", apply_area_weighted_mean_rule, "avg_descending_soil_speed"),
+        ("celle_soli_PS_ascendenti", "ave_vasc", apply_area_weighted_mean_rule, "avg_ascending_soil_speed"),
+        # Assuming a 'binary_flag' column exists for the max rule, as per the pipeline document.
+        # If the column name is different, it should be updated here.
+        ("celle_soli_PS_descendenti", "binary_flag", apply_max_priority_rule, "descending_soil_flag_max"),
+        ("celle_soli_PS_ascendenti", "binary_flag", apply_max_priority_rule, "ascending_soil_flag_max"),
     ]
 
     # 4. Process each polygon layer
