@@ -143,7 +143,22 @@ def main() -> None:
 
             # Perform the final aggregation: for each hexagon, sum up the contributions from all its neighbors
             # The exploded_neighbors DataFrame already contains all necessary data.
-            neighbor_agg = exploded_neighbors.groupby("neighbors").sum().drop(columns='index', errors='ignore')
+            
+            # --- Intelligent Neighbor Aggregation ---
+            # Define which columns should be summed vs. which should take the max value.
+            # Columns with 'count' or 'cost' in their name are summed. All others take the max.
+            # Categorical columns (dtype='object') will use the mode.
+            agg_rules = {}
+            for col in initial_agg.columns:
+                if 'count' in col or 'cost' in col:
+                    agg_rules[col] = 'sum'
+                elif initial_agg[col].dtype == 'object':
+                    # For categorical data, find the most frequent value (mode)
+                    agg_rules[col] = lambda x: x.mode()[0] if not x.empty else None
+                else:
+                    agg_rules[col] = 'max'
+            
+            neighbor_agg = exploded_neighbors.groupby("neighbors").agg(agg_rules)
 
             # Rename neighbor aggregation columns and merge them
             final_agg = neighbor_agg.add_suffix('_1ring')
