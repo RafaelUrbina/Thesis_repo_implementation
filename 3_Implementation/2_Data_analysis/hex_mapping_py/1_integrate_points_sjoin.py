@@ -18,6 +18,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
+import h3pandas  # Required for k-ring neighbor analysis
 
 # Add the repository root to the Python path for module imports
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -107,18 +108,31 @@ def main() -> None:
         if "preprocess" in config:
             points_gdf = config["preprocess"](points_gdf)
 
-        # Perform spatial join
-        joined_gdf = gpd.sjoin(points_gdf, master_grid, how="inner", predicate="within")
+        # --- 1-Ring Neighbor Logic ---
+        # 1. Find which hexagon each point falls directly into.
+        points_in_hex = gpd.sjoin(points_gdf, master_grid[['index', 'geometry']], how="inner", predicate="within")
+
+        # 2. For each point's hexagon, find its 1-ring neighbors.
+        # This requires the h3 index to be the DataFrame index.
+        # The result of k_ring is a Series containing sets of neighbor IDs.
+        neighbor_sets = points_in_hex.set_index('index').h3.k_ring(1)
+ 
+        # 3. "Explode" this relationship so each point is duplicated for each neighboring hex.
+        # The result of k_ring is a GeoDataFrame. The new column is named 'h3_k_ring'.
+        # We rename it to 'neighbors', explode it, and select only the necessary columns.
+        exploded_neighbors = neighbor_sets.rename(columns={"h3_k_ring": "neighbors"}).explode("neighbors")[['neighbors']].reset_index()
+ 
+        # 4. Join the exploded neighbor map back to the original points data to carry attributes forward.
+        # The result, `final_join_gdf`, now has one row per point per neighboring hexagon,
+        # and it includes all original attributes.
+        final_join_gdf = points_in_hex.merge(exploded_neighbors, on="index", how="left")
 
         # --- Aggregate Data ---
-        # Use the robust .size() method for simple counts.
         if config.get("agg_method") == "size":
-            aggregated_data = joined_gdf.groupby("index").size()
+            aggregated_data = final_join_gdf.groupby("neighbors").size()
             aggregated_data.name = config["rename"]
-        # Use the flexible .agg() method for complex aggregations.
         else:
-            aggregated_data = joined_gdf.groupby("index").agg(config["agg"])
-            # Handle multi-index columns from aggregations like ['mean', 'max']
+            aggregated_data = final_join_gdf.groupby("neighbors").agg(config["agg"])
             if "multi_index_rename" in config:
                 aggregated_data.columns = ["_".join(col).strip() for col in aggregated_data.columns.values]
                 aggregated_data = aggregated_data.rename(columns=config["multi_index_rename"])
@@ -126,7 +140,8 @@ def main() -> None:
                 aggregated_data = aggregated_data.rename(columns=config["rename"])
 
         # Merge aggregated data back into the master grid
-        master_grid = master_grid.merge(aggregated_data, on="index", how="left")
+        # We merge on the 'neighbors' group key, which corresponds to the master_grid 'index'.
+        master_grid = master_grid.merge(aggregated_data, left_on="index", right_index=True, how="left")
 
         if isinstance(aggregated_data, pd.DataFrame):
             print(f"  - Merged {list(aggregated_data.columns)} into master grid.")
