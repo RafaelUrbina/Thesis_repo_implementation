@@ -1,0 +1,47 @@
+"Stazione";"Tavarnelle"
+"Codice";"TOS11000021"
+"Comune";"Barberino Tavarnelle"
+"Provincia";"FI"
+"GB [m]";"E";1674651;"N";4826615
+"WGS84 [°]";"Lat";43.572;"Lon";11.163
+"Quota [m]";374,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;2.070968;O;7.625806
+01/06/2024;1.71;SO;7.07
+01/07/2024;1.629032;O;6.76129
+01/08/2024;1.635484;O;7.351613
+01/09/2024;2.156667;S;7.56
+01/10/2024;1.635484;S;5.835484
+01/11/2024;2.23;S;6.85
+01/12/2024;2.66129;N;7.625806
+01/01/2025;3.432258;S;9.574194
+01/02/2025;2.217857;N;6.596429
+01/03/2025;2.883871;S;9.087097
+01/04/2025;2.16;NE;7.583333
+01/05/2025;1.906452;O;7.519355
+01/06/2025;1.896667;O;7.236667
+01/07/2025;1.96129;SO;8.56129
+01/08/2025;1.841935;N;7.854839
+01/09/2025;1.603333;S;6.18
+01/10/2025;2.303226;S;7.322581
+01/11/2025;2.453333;S;7.2
+01/12/2025;1.632258;NE;4.919355
+01/01/2026;2.522581;S;7.712903
+01/02/2026;2.185714;S;7.396429
+01/03/2026;2.606452;N;8.858065
+01/04/2026;2.583333;O;8.47
+01/05/2026;2.303226;SO;8.454839
+01/06/2026;1.863636;S;7.136364

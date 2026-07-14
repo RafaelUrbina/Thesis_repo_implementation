@@ -1,0 +1,38 @@
+TECHNOLOGIES - 1,577 (700 patents in common)
+------------
+
+AND (title:(monitor* OR sensor* OR sensing OR predict* OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR tracer* OR imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR remot* OR classif* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5 OR detect* OR "decision making"~5) OR abstract:(monitor* OR sensor* OR sensing OR predict* OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR tracer* OR imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR remot* OR classif* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5 OR detect* OR "decision making"~5))
+
+PHYSICAL & ENVIRONMENT - 3,950 (700 patents in common)
+------------
+
+AND (title:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR liquefaction OR "hydraulic gradient" OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR evapotranspiration OR turbidity) 
+OR abstract:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR liquefaction OR "hydraulic gradient" OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR evapotranspiration OR turbidity))
+
+TECHNOLOGIES & PHYSICAL - 3,598
+TECHNOLOGIES & ENVIRONMENT - 3,126
+
+TECHNOLOGIES - Broad actions - 1,412 (110 patents in common)
+------------
+
+AND (title:(sensor* OR sensing OR predict* OR monitor* OR "structural health"~5 OR tracer* OR remot* OR classif* OR detect* OR "decision making"~5) OR abstract:(sensor* OR sensing OR predict* OR monitor* OR "structural health"~5 OR tracer* OR remot* OR classif* OR detect* OR "decision making"~5))
+
+
+TECHNOLOGIES - tools and terms - 275 (110 patents in common)
+------------
+
+AND (title:(imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5) OR abstract:(imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5))
+
+
+PHYSICAL ENVIRONMENT - physical - 2,553 (406 patents in common)
+------------
+
+AND (title:(pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR turbidity) OR abstract:(pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR turbidity))
+
+
+PHYSICAL ENVIRONMENT - environmental - 1,803 (406 patents in common)
+------------
+
+AND (title:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR liquefaction OR "hydraulic gradient" OR evapotranspiration) OR abstract:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR liquefaction OR "hydraulic gradient" OR evapotranspiration))
+
+

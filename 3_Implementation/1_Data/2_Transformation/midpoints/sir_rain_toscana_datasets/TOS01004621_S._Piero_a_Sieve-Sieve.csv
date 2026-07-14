@@ -1,0 +1,56 @@
+"Stazione";"S. Piero a Sieve-Sieve"
+"Codice";"TOS01004621"
+"Comune";"Scarperia e San Piero"
+"Provincia";"FI"
+"GB [m]";"E";1686788;"N";4870648
+"WGS84 [°]";"Lat";43.965;"Lon";11.328
+"Quota [m]";222,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.122581;P
+01/08/2022;1.741935;P
+01/09/2022;3.113333;P
+01/10/2022;0.787097;P
+01/11/2022;3.893333;P
+01/12/2022;7.587097;P
+01/01/2023;4.43871;P
+01/02/2023;0.842857;P
+01/03/2023;2.0;P
+01/04/2023;2.34;P
+01/05/2023;3.206452;P
+01/06/2023;3.34;P
+01/07/2023;0.516129;P
+01/08/2023;0.587097;P
+01/09/2023;0.833333;P
+01/10/2023;5.464516;P
+01/11/2023;8.513333;P
+01/12/2023;4.083871;P
+01/01/2024;2.283871;P
+01/02/2024;4.351724;P
+01/03/2024;3.393548;P
+01/04/2024;2.466667;P
+01/05/2024;3.141935;P
+01/06/2024;3.233333;P
+01/07/2024;0.006452;P
+01/08/2024;0.070968;P
+01/09/2024;4.773333;P
+01/10/2024;7.851613;P
+01/11/2024;3.86;P
+01/12/2024;2.219355;P
+01/01/2026;4.909677;P
+01/02/2026;4.028571;P
+01/03/2026;2.354839;P
+01/04/2026;0.646667;P
+01/05/2026;6.98;P

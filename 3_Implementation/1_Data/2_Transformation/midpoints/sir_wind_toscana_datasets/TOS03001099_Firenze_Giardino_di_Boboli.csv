@@ -1,0 +1,47 @@
+"Stazione";"Firenze Giardino di Boboli"
+"Codice";"TOS03001099"
+"Comune";"Firenze"
+"Provincia";"FI"
+"GB [m]";"E";1681255;"N";4847912
+"WGS84 [°]";"Lat";43.762;"Lon";11.251
+"Quota [m]";112,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;1.241935;SO;6.525806
+01/06/2024;1.11;SO;6.36
+01/07/2024;1.132258;O;6.506452
+01/08/2024;1.141935;E;6.906452
+01/09/2024;1.273333;E;6.533333
+01/10/2024;0.958065;NE;4.854839
+01/11/2024;1.34;E;6.02
+01/12/2024;1.409677;E;6.712903
+01/01/2025;1.76129;SO;7.658065
+01/02/2025;1.460714;NE;6.317857
+01/03/2025;1.596774;NE;7.025806
+01/04/2025;1.316667;NE;6.393333
+01/05/2025;1.180645;SO;6.6
+01/06/2025;1.213333;SO;6.653333
+01/07/2025;1.241935;E;7.274194
+01/08/2025;1.219355;E;6.993548
+01/09/2025;0.97;E;5.203333
+01/10/2025;1.290323;E;6.274194
+01/11/2025;1.153333;E;5.693333
+01/12/2025;1.096774;E;5.103226
+01/01/2026;1.458065;E;6.832258
+01/02/2026;0.982143;E;5.121429
+01/03/2026;1.593548;NE;7.454839
+01/04/2026;1.58;NE;7.683333
+01/05/2026;1.290323;SO;6.983871
+01/06/2026;1.127273;O;6.681818

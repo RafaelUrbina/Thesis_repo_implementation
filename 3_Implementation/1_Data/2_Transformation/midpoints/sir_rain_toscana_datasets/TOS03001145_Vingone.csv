@@ -1,0 +1,56 @@
+"Stazione";"Vingone"
+"Codice";"TOS03001145"
+"Comune";"Scandicci"
+"Provincia";"FI"
+"GB [m]";"E";1675745;"N";4845670
+"WGS84 [°]";"Lat";43.743;"Lon";11.182
+"Quota [m]";54,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.051613;P
+01/08/2022;4.509677;P
+01/09/2022;5.12;P
+01/10/2022;0.509677;P
+01/11/2022;3.886667;P
+01/12/2022;4.716129;P
+01/01/2023;2.754839;P
+01/02/2023;0.792857;P
+01/03/2023;1.870968;P
+01/04/2023;1.66;P
+01/05/2023;2.774194;P
+01/06/2023;1.786667;P
+01/07/2023;0.916129;P
+01/08/2023;1.225806;P
+01/09/2023;0.026667;P
+01/10/2023;3.580645;P
+01/11/2023;4.886667;P
+01/12/2023;2.083871;P
+01/01/2024;1.535484;P
+01/02/2024;3.565517;P
+01/03/2024;3.296774;P
+01/04/2024;2.04;P
+01/05/2024;3.0;P
+01/06/2024;1.913333;P
+01/07/2024;0.387097;P
+01/08/2024;0.077419;P
+01/09/2024;3.606667;P
+01/10/2024;6.587097;P
+01/11/2024;1.266667;P
+01/12/2024;2.012903;P
+01/01/2026;3.432258;P
+01/02/2026;2.628571;P
+01/03/2026;1.948387;P
+01/04/2026;0.34;P
+01/05/2026;6.4;P

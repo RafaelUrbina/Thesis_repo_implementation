@@ -1,0 +1,58 @@
+"Stazione";"Ponte alle Mosse"
+"Codice";"TOS01004702"
+"Comune";"Firenze"
+"Provincia";"FI"
+"GB [m]";"E";1679195;"N";4850626
+"WGS84 [°]";"Lat";43.787;"Lon";11.227
+"Quota [m]";
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;;@
+01/07/2023;;@
+01/08/2023;;@
+01/09/2023;;@
+01/10/2023;;@
+01/11/2023;;@
+01/12/2023;;@
+01/01/2024;0.448065;V
+01/02/2024;0.476552;V
+01/03/2024;0.593226;V
+01/04/2024;0.436;V
+01/05/2024;0.395161;V
+01/06/2024;0.286;V
+01/07/2024;0.150323;V
+01/08/2024;-0.010323;V
+01/09/2024;-0.079;V
+01/10/2024;0.087742;V
+01/11/2024;0.008333;V
+01/12/2024;0.108387;V
+01/01/2025;0.142903;V
+01/02/2025;0.261429;V
+01/03/2025;0.265161;V
+01/04/2025;0.187;V
+01/05/2025;0.107419;V
+01/06/2025;-0.029333;V
+01/07/2025;-0.018387;V
+01/08/2025;-0.126452;V
+01/09/2025;0.093;V
+01/10/2025;0.219355;V
+01/11/2025;0.364667;V
+01/12/2025;0.386129;V
+01/01/2026;0.506129;P
+01/02/2026;0.547143;P
+01/03/2026;0.415484;P
+01/04/2026;0.363333;P
+01/05/2026;0.433226;P
+01/06/2026;0.334545;P

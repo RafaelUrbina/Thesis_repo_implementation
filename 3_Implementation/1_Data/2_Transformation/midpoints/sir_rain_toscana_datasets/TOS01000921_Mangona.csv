@@ -1,0 +1,56 @@
+"Stazione";"Mangona"
+"Codice";"TOS01000921"
+"Comune";"Barberino di Mugello"
+"Provincia";"FI"
+"GB [m]";"E";1675916;"N";4879793
+"WGS84 [°]";"Lat";44.050;"Lon";11.196
+"Quota [m]";540,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.045161;P
+01/08/2022;2.322581;P
+01/09/2022;3.153333;P
+01/10/2022;0.554839;P
+01/11/2022;5.966667;P
+01/12/2022;7.503226;P
+01/01/2023;4.722581;P
+01/02/2023;1.442857;P
+01/03/2023;3.303226;P
+01/04/2023;1.206667;P
+01/05/2023;4.793548;P
+01/06/2023;4.026667;P
+01/07/2023;0.774194;P
+01/08/2023;0.883871;P
+01/09/2023;2.453333;P
+01/10/2023;8.76129;P
+01/11/2023;9.953333;P
+01/12/2023;5.935484;P
+01/01/2024;4.374194;P
+01/02/2024;7.393103;P
+01/03/2024;5.167742;P
+01/04/2024;2.353333;P
+01/05/2024;3.251613;P
+01/06/2024;3.66;P
+01/07/2024;0.077419;P
+01/08/2024;0.587097;P
+01/09/2024;9.753333;P
+01/10/2024;10.722581;P
+01/11/2024;3.686667;P
+01/12/2024;3.303226;P
+01/01/2026;6.529032;P
+01/02/2026;6.946429;P
+01/03/2026;2.783871;P
+01/04/2026;0.366667;P
+01/05/2026;7.065;P

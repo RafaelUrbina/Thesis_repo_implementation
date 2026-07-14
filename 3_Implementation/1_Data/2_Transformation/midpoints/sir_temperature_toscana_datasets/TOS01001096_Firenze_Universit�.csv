@@ -1,0 +1,27 @@
+"Stazione";"Firenze Università"
+"Codice";"TOS01001096"
+"Comune";"Firenze"
+"Provincia";"FI"
+"GB [m]";"E";1681124;"N";4852004
+"WGS84 [°]";"Lat";43.799;"Lon";11.251
+"Quota [m]";84,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;10.316129;3.258065
+01/02/2026;14.028571;6.617857
+01/03/2026;16.56129;6.754839
+01/04/2026;22.133333;9.51
+01/05/2026;24.33871;12.809677
+01/06/2026;27.845455;16.1

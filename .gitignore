@@ -4,6 +4,8 @@
 #Personal documents
 0_Bureaucratic/1_Borsa/Personal
 0_Bureaucratic/1_Borsa/Compile_payment_salute
+0_Bureaucratic/1_Borsa_2/personal
+0_Bureaucratic/1_Borsa_2/titoli
 crede.txt
 
 #Automatic temp files
@@ -14,11 +16,38 @@ crede.txt
 .Trashes
 
 #Big files
-3_Implementation/1_Data/1_Master
-3_Implementation/1_Data/2_Transformation
+#3_Implementation/1_Data/1_Master
+#3_Implementation/1_Data/2_Transformation
 
 #VScode
 .vscode*
 
 #pycache
 __pycache__/
+
+#limit size IN GITBASH
+# Source - https://stackoverflow.com/a/62857813
+# Posted by stevec
+# Retrieved 2026-07-10, License - CC BY-SA 4.0
+find . -size +100M | cat >> .gitignore
+
+#Files above 100mb
+3_Implementation/1_Data/1_Master/landslide_floods/frane_poly_toscana_opendata.json.zip
+3_Implementation/1_Data/1_Master/landslide_floods/Mosaicatura_ISPRA_2020_aree_pericolosita_idraulica.zip
+3_Implementation/1_Data/1_Master/landslide_floods/Mosaicatura_ISPRA_2024_pericolosita_frana_PAI.zip
+3_Implementation/1_Data/1_Master/soil_pedologgia/DBPedologico_Regione_Toscana.7z
+3_Implementation/1_Data/1_Master/terrain_surface_models/Aspect_DTM_Idrologico.7z
+3_Implementation/1_Data/1_Master/terrain_surface_models/DTM_Idrologico.7z
+3_Implementation/1_Data/1_Master/terrain_surface_models/DTM_Orografico.7z
+3_Implementation/1_Data/1_Master/terrain_surface_models/Slope_DTM_Idrologico.7z
+3_Implementation/1_Data/2_Transformation/rasters/dtm_aspect_idro_10k.tif
+3_Implementation/1_Data/2_Transformation/rasters/dtm_idro_10k.tif
+3_Implementation/1_Data/2_Transformation/rasters/dtm_slope_idro_10k.tif
+3_Implementation/1_Data/2_Transformation/static_geospatial/merged_pedologgia_static.gpkg
+3_Implementation/1_Data/2_Transformation/static_geospatial/merged_pedologgia_static_cleaned.gpkg
+3_Implementation/1_Data/2_Transformation/static_geospatial/resources/pedologgia.gpkg
+3_Implementation/1_Data/2_Transformation/static_geospatial/resources/pedologgia_cleaned.gpkg
+3_Implementation/1_Data/2_Transformation/static_geospatial/resources/static_spatial_dimensions.gpkg
+3_Implementation/1_Data/2_Transformation/static_geospatial/resources/static_spatial_dimensions_cleaned.gpkg
+
+

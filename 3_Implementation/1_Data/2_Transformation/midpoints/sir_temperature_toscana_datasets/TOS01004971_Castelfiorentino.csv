@@ -1,0 +1,27 @@
+"Stazione";"Castelfiorentino"
+"Codice";"TOS01004971"
+"Comune";"Castelfiorentino"
+"Provincia";"FI"
+"GB [m]";"E";1658891;"N";4829844
+"WGS84 [°]";"Lat";43.604;"Lon";10.968
+"Quota [m]";50,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;11.654839;2.187097
+01/02/2026;15.175;5.482143
+01/03/2026;17.419355;5.290323
+01/04/2026;23.04;7.773333
+01/05/2026;25.245161;11.570968
+01/06/2026;28.681818;15.336364

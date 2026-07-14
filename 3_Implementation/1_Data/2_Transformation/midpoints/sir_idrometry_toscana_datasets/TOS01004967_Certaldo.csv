@@ -1,0 +1,58 @@
+"Stazione";"Certaldo"
+"Codice";"TOS01004967"
+"Comune";"Certaldo"
+"Provincia";"FI"
+"GB [m]";"E";1664410;"N";4823332
+"WGS84 [°]";"Lat";43.545;"Lon";11.035
+"Quota [m]";65,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;-1.262;V
+01/07/2023;-1.510968;V
+01/08/2023;-1.541935;V
+01/09/2023;-1.553667;V
+01/10/2023;-1.533448;V
+01/11/2023;-1.460333;V
+01/12/2023;-1.486774;V
+01/01/2024;-1.479032;V
+01/02/2024;-1.358966;V
+01/03/2024;-1.073871;V
+01/04/2024;-1.239333;V
+01/05/2024;-1.281935;V
+01/06/2024;-1.421333;V
+01/07/2024;-1.429355;V
+01/08/2024;-1.39;V
+01/09/2024;-1.294;V
+01/10/2024;-0.810323;V
+01/11/2024;-1.262333;V
+01/12/2024;-1.128387;V
+01/01/2025;-1.224194;V
+01/02/2025;-1.007857;V
+01/03/2025;-0.875484;V
+01/04/2025;-1.088;V
+01/05/2025;-1.100323;V
+01/06/2025;-1.252333;V
+01/07/2025;-1.209032;V
+01/08/2025;-0.928387;V
+01/09/2025;-0.714667;V
+01/10/2025;-0.145806;V
+01/11/2025;0.078333;V
+01/12/2025;0.234839;V
+01/01/2026;0.129032;P
+01/02/2026;0.012143;P
+01/03/2026;0.089677;P
+01/04/2026;0.102333;P
+01/05/2026;0.417742;P
+01/06/2026;0.757273;P

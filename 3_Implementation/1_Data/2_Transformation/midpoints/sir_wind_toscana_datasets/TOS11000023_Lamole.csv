@@ -1,0 +1,47 @@
+"Stazione";"Lamole"
+"Codice";"TOS11000023"
+"Comune";"Greve in Chianti"
+"Provincia";"FI"
+"GB [m]";"E";1690328;"N";4823727
+"WGS84 [°]";"Lat";43.542;"Lon";11.355
+"Quota [m]";536,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;1.883871;NO;7.587097
+01/06/2024;1.746667;NO;7.093333
+01/07/2024;1.570968;NO;6.996774
+01/08/2024;1.496774;E;7.667742
+01/09/2024;1.693333;SE;7.53
+01/10/2024;1.783871;SE;6.670968
+01/11/2024;1.773333;SE;6.95
+01/12/2024;1.787097;E;7.16129
+01/01/2025;2.677419;SE;9.387097
+01/02/2025;1.878571;E;6.942857
+01/03/2025;2.325806;SE;8.96129
+01/04/2025;2.056667;SE;8.51
+01/05/2025;1.835484;NO;7.4
+01/06/2025;1.716667;NO;7.393333
+01/07/2025;1.848387;NO;8.306452
+01/08/2025;1.664516;E;7.806452
+01/09/2025;1.456667;SE;6.0
+01/10/2025;1.745161;E;7.225806
+01/11/2025;1.873333;SE;7.09
+01/12/2025;1.651613;E;6.290323
+01/01/2026;2.203226;SE;8.148387
+01/02/2026;1.95;SE;7.807143
+01/03/2026;2.106452;E;8.396774
+01/04/2026;1.906667;E;7.836667
+01/05/2026;1.829032;NO;8.022581
+01/06/2026;1.790909;NO;7.281818

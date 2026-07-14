@@ -1,0 +1,27 @@
+"Stazione";"Barco"
+"Codice";"TOS30287500"
+"Comune";"Firenzuola"
+"Provincia";"FI"
+"GB [m]";"E";1691634;"N";4880687
+"WGS84 [°]";"Lat";44.054;"Lon";11.392
+"Quota [m]";780,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;5.019355;0.570968
+01/02/2026;9.078571;3.982143
+01/03/2026;11.367742;3.641935
+01/04/2026;16.943333;8.2
+01/05/2026;19.645161;10.787097
+01/06/2026;22.6;14.06

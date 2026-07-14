@@ -1,0 +1,27 @@
+"Stazione";"Mangona"
+"Codice";"TOS01000921"
+"Comune";"Barberino di Mugello"
+"Provincia";"FI"
+"GB [m]";"E";1675916;"N";4879793
+"WGS84 [°]";"Lat";44.050;"Lon";11.196
+"Quota [m]";540,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;7.158065;1.809677
+01/02/2026;10.982143;4.610714
+01/03/2026;13.319355;5.083871
+01/04/2026;19.423333;8.146667
+01/05/2026;21.464516;10.864516
+01/06/2026;24.636364;13.027273

@@ -1,0 +1,56 @@
+"Stazione";"Cercina"
+"Codice";"TOS01001102"
+"Comune";"Sesto Fiorentino"
+"Provincia";"FI"
+"GB [m]";"E";1681819;"N";4857077
+"WGS84 [°]";"Lat";43.844;"Lon";11.261
+"Quota [m]";305,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.051613;P
+01/08/2022;2.845161;P
+01/09/2022;5.466667;P
+01/10/2022;0.593548;P
+01/11/2022;3.993333;P
+01/12/2022;5.613333;P
+01/01/2023;3.451613;P
+01/02/2023;1.4;P
+01/03/2023;2.529032;P
+01/04/2023;2.76;P
+01/05/2023;3.135484;P
+01/06/2023;1.673333;P
+01/07/2023;0.941935;P
+01/08/2023;1.2;P
+01/09/2023;0.12;P
+01/10/2023;3.696774;P
+01/11/2023;7.033333;P
+01/12/2023;3.219355;P
+01/01/2024;2.225806;P
+01/02/2024;4.193103;P
+01/03/2024;4.729032;P
+01/04/2024;2.58;P
+01/05/2024;4.283871;P
+01/06/2024;1.833333;P
+01/07/2024;0.090323;P
+01/08/2024;0.580645;P
+01/09/2024;3.953333;P
+01/10/2024;7.567742;P
+01/11/2024;1.933333;P
+01/12/2024;3.148387;P
+01/01/2026;3.580645;P
+01/02/2026;4.185714;P
+01/03/2026;2.470968;P
+01/04/2026;0.44;P
+01/05/2026;8.47;P

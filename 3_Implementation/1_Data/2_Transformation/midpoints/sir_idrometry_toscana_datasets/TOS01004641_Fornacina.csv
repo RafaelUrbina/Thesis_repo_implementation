@@ -1,0 +1,58 @@
+"Stazione";"Fornacina"
+"Codice";"TOS01004641"
+"Comune";"Rufina"
+"Provincia";"FI"
+"GB [m]";"E";1698415;"N";4852719
+"WGS84 [°]";"Lat";43.801;"Lon";11.466
+"Quota [m]";102,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;0.529667;V
+01/07/2023;0.328667;V
+01/08/2023;0.333226;V
+01/09/2023;0.350667;V
+01/10/2023;0.354839;V
+01/11/2023;0.979333;V
+01/12/2023;1.090645;V
+01/01/2024;0.884516;P
+01/02/2024;0.803448;P
+01/03/2024;1.18;P
+01/04/2024;0.723667;P
+01/05/2024;0.610645;P
+01/06/2024;0.377;P
+01/07/2024;0.316774;P
+01/08/2024;0.329032;P
+01/09/2024;0.249;P
+01/10/2024;0.740323;P
+01/11/2024;0.622;P
+01/12/2024;0.799032;P
+01/01/2025;0.973226;P
+01/02/2025;1.333929;P
+01/03/2025;1.487742;P
+01/04/2025;1.111667;P
+01/05/2025;0.786452;P
+01/06/2025;0.447;P
+01/07/2025;0.408387;P
+01/08/2025;0.395806;P
+01/09/2025;0.374667;P
+01/10/2025;0.450323;P
+01/11/2025;0.746333;P
+01/12/2025;0.710645;P
+01/01/2026;1.093226;P
+01/02/2026;1.361429;P
+01/03/2026;0.813871;P
+01/04/2026;0.611333;P
+01/05/2026;0.738387;P
+01/06/2026;0.519091;P

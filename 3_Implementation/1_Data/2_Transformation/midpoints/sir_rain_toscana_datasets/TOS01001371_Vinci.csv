@@ -1,0 +1,56 @@
+"Stazione";"Vinci"
+"Codice";"TOS01001371"
+"Comune";"Vinci"
+"Provincia";"FI"
+"GB [m]";"E";1657698;"N";4849964
+"WGS84 [°]";"Lat";43.786;"Lon";10.960
+"Quota [m]";250,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.045161;P
+01/08/2022;4.264516;P
+01/09/2022;3.113333;P
+01/10/2022;0.4;P
+01/11/2022;4.466667;P
+01/12/2022;7.187097;P
+01/01/2023;3.412903;P
+01/02/2023;1.585714;P
+01/03/2023;2.741935;P
+01/04/2023;2.813333;P
+01/05/2023;3.096774;P
+01/06/2023;1.353333;P
+01/07/2023;0.870968;P
+01/08/2023;0.903226;P
+01/09/2023;0.94;P
+01/10/2023;4.180645;P
+01/11/2023;7.513333;P
+01/12/2023;1.63871;P
+01/01/2024;2.16129;P
+01/02/2024;4.551724;P
+01/03/2024;4.245161;P
+01/04/2024;1.88;P
+01/05/2024;2.709677;P
+01/06/2024;2.9;P
+01/07/2024;0.432258;P
+01/08/2024;0.483871;P
+01/09/2024;5.373333;P
+01/10/2024;6.664516;P
+01/11/2024;1.92;P
+01/12/2024;2.064286;P
+01/01/2026;6.025806;P
+01/02/2026;4.528571;P
+01/03/2026;1.506452;P
+01/04/2026;0.803333;P
+01/05/2026;5.81;P

@@ -1,0 +1,56 @@
+"Stazione";"Nave di Rosano"
+"Codice";"TOS01004659"
+"Comune";"Rignano sull'Arno"
+"Provincia";"FI"
+"GB [m]";"E";1695024;"N";4849330
+"WGS84 [°]";"Lat";43.771;"Lon";11.423
+"Quota [m]";78,84
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.270968;P
+01/08/2022;3.432258;P
+01/09/2022;5.753333;P
+01/10/2022;0.464516;P
+01/11/2022;3.486667;P
+01/12/2022;4.309677;P
+01/01/2023;2.890323;P
+01/02/2023;1.214286;P
+01/03/2023;2.16129;P
+01/04/2023;2.62;P
+01/05/2023;2.393548;P
+01/06/2023;1.653333;P
+01/07/2023;1.2;P
+01/08/2023;1.135484;P
+01/09/2023;0.24;P
+01/10/2023;3.741935;P
+01/11/2023;4.906667;P
+01/12/2023;3.283871;P
+01/01/2024;1.509677;P
+01/02/2024;2.793103;P
+01/03/2024;3.167742;P
+01/04/2024;2.346667;P
+01/05/2024;2.954839;P
+01/06/2024;2.76;P
+01/07/2024;0.077419;P
+01/08/2024;0.903226;P
+01/09/2024;3.36;P
+01/10/2024;5.277419;P
+01/11/2024;1.2;P
+01/12/2024;2.780645;P
+01/01/2026;3.903226;P
+01/02/2026;3.657143;P
+01/03/2026;2.083871;P
+01/04/2026;0.4;P
+01/05/2026;4.67;P

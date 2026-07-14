@@ -1,0 +1,47 @@
+"Stazione";"Greve in Chianti"
+"Codice";"TOS11000073"
+"Comune";"Greve in Chianti"
+"Provincia";"FI"
+"GB [m]";"E";1685971;"N";4831357
+"WGS84 [°]";"Lat";43.612;"Lon";11.304
+"Quota [m]";254,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;1.248387;SE;6.712903
+01/06/2024;1.206667;SE;6.59
+01/07/2024;1.229032;SE;6.796774
+01/08/2024;1.225806;SE;7.193548
+01/09/2024;1.326667;SE;6.613333
+01/10/2024;1.241935;SE;5.322581
+01/11/2024;1.116667;SE;5.336667
+01/12/2024;1.216129;SE;5.683871
+01/01/2025;1.858065;SE;7.251613
+01/02/2025;1.303571;SE;5.7
+01/03/2025;1.564516;SE;7.151613
+01/04/2025;1.326667;SE;6.843333
+01/05/2025;1.209677;SE;6.529032
+01/06/2025;1.22;SE;6.48
+01/07/2025;1.341935;SE;7.53871
+01/08/2025;1.329032;SE;7.219355
+01/09/2025;1.15;SE;5.626667
+01/10/2025;1.377419;SE;6.370968
+01/11/2025;1.416667;SE;6.406667
+01/12/2025;0.893548;SE;4.532258
+01/01/2026;1.916129;SE;9.829032
+01/02/2026;1.396429;SE;7.539286
+01/03/2026;1.464516;SE;7.3
+01/04/2026;1.4;NO;7.09
+01/05/2026;1.448387;SE;7.006452
+01/06/2026;1.509091;SE;7.027273

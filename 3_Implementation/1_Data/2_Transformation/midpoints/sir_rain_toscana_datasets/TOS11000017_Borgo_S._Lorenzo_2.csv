@@ -1,0 +1,56 @@
+"Stazione";"Borgo S. Lorenzo 2"
+"Codice";"TOS11000017"
+"Comune";"Borgo San Lorenzo"
+"Provincia";"FI"
+"GB [m]";"E";1691669;"N";4873134
+"WGS84 [°]";"Lat";43.986;"Lon";11.390
+"Quota [m]";280,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.825806;P
+01/08/2022;2.412903;P
+01/09/2022;3.886667;P
+01/10/2022;1.019355;P
+01/11/2022;3.633333;P
+01/12/2022;6.729032;P
+01/01/2023;4.580645;P
+01/02/2023;1.092857;P
+01/03/2023;1.954839;P
+01/04/2023;1.88;P
+01/05/2023;4.980645;P
+01/06/2023;3.646667;P
+01/07/2023;0.354839;P
+01/08/2023;0.832258;P
+01/09/2023;0.54;P
+01/10/2023;4.56129;P
+01/11/2023;8.36;P
+01/12/2023;3.541935;P
+01/01/2024;2.064516;P
+01/02/2024;3.744828;P
+01/03/2024;2.793548;P
+01/04/2024;2.726667;P
+01/05/2024;4.0;P
+01/06/2024;2.893333;P
+01/07/2024;0.16129;P
+01/08/2024;0.16129;P
+01/09/2024;4.573333;P
+01/10/2024;6.935484;P
+01/11/2024;3.033333;P
+01/12/2024;1.6;P
+01/01/2026;3.896774;P
+01/02/2026;4.428571;P
+01/03/2026;3.070968;P
+01/04/2026;0.58;P
+01/05/2026;5.74;P

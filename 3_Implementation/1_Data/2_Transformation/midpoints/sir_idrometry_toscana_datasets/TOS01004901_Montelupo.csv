@@ -1,0 +1,58 @@
+"Stazione";"Montelupo"
+"Codice";"TOS01004901"
+"Comune";"Lastra a Signa"
+"Provincia";"FI"
+"GB [m]";"E";1664990;"N";4847260
+"WGS84 [°]";"Lat";43.760;"Lon";11.049
+"Quota [m]";
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;1.727667;V
+01/07/2023;1.651935;V
+01/08/2023;1.65069;V
+01/09/2023;1.657;@
+01/10/2023;1.714516;V
+01/11/2023;2.082414;V
+01/12/2023;1.974194;V
+01/01/2024;1.83931;V
+01/02/2024;2.037586;V
+01/03/2024;2.297097;V
+01/04/2024;1.83069;V
+01/05/2024;1.764839;V
+01/06/2024;1.672;V
+01/07/2024;1.639565;V
+01/08/2024;1.639355;V
+01/09/2024;1.675455;V
+01/10/2024;2.094828;V
+01/11/2024;1.805333;V
+01/12/2024;1.911935;V
+01/01/2025;2.086552;V
+01/02/2025;2.383929;V
+01/03/2025;2.684194;V
+01/04/2025;2.090333;V
+01/05/2025;2.014516;V
+01/06/2025;1.633214;V
+01/07/2025;1.628333;V
+01/08/2025;1.626667;V
+01/09/2025;1.652143;@
+01/10/2025;1.754;V
+01/11/2025;1.939;V
+01/12/2025;1.835417;V
+01/01/2026;2.181481;P
+01/02/2026;2.52;P
+01/03/2026;1.807097;P
+01/04/2026;1.721;P
+01/05/2026;1.792258;P
+01/06/2026;1.645455;P

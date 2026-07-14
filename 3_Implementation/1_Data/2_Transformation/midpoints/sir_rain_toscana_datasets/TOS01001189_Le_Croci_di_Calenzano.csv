@@ -1,0 +1,56 @@
+"Stazione";"Le Croci di Calenzano"
+"Codice";"TOS01001189"
+"Comune";"Calenzano"
+"Provincia";"FI"
+"GB [m]";"E";1677681;"N";4868135
+"WGS84 [°]";"Lat";43.945;"Lon";11.214
+"Quota [m]";421,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.290323;P
+01/08/2022;1.948387;P
+01/09/2022;3.246667;P
+01/10/2022;0.606452;P
+01/11/2022;5.373333;P
+01/12/2022;6.626667;P
+01/01/2023;4.877419;P
+01/02/2023;1.2;P
+01/03/2023;2.509677;P
+01/04/2023;1.62;P
+01/05/2023;3.341935;P
+01/06/2023;1.966667;P
+01/07/2023;0.432258;P
+01/08/2023;1.077419;P
+01/09/2023;0.633333;P
+01/10/2023;5.883871;P
+01/11/2023;8.848276;P
+01/12/2023;4.387097;P
+01/01/2024;2.541935;P
+01/02/2024;5.834483;P
+01/03/2024;4.509677;P
+01/04/2024;2.74;P
+01/05/2024;3.219355;P
+01/06/2024;2.033333;P
+01/07/2024;0.470968;P
+01/08/2024;0.122581;P
+01/09/2024;4.813333;P
+01/10/2024;8.729032;P
+01/11/2024;3.466667;P
+01/12/2024;2.303226;P
+01/01/2026;6.264516;P
+01/02/2026;5.957143;P
+01/03/2026;2.158065;P
+01/04/2026;0.59;P
+01/05/2026;9.205;P

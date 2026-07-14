@@ -1,0 +1,47 @@
+"Stazione";"Le Croci (Barberino)"
+"Codice";"TOS01000926"
+"Comune";"Barberino di Mugello"
+"Provincia";"FI"
+"GB [m]";"E";1682106;"N";4875177
+"WGS84 [°]";"Lat";44.007;"Lon";11.271
+"Quota [m]";388,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;1.419355;SO;7.093548
+01/06/2024;1.28;SO;6.756667
+01/07/2024;1.229032;N;6.33871
+01/08/2024;1.267742;N;7.412903
+01/09/2024;1.563333;N;8.276667
+01/10/2024;1.232258;NO;6.529032
+01/11/2024;1.523333;N;7.453333
+01/12/2024;1.922581;NO;8.316129
+01/01/2025;2.035484;S;9.390323
+01/02/2025;1.4;N;6.253571
+01/03/2025;1.777419;N;8.23871
+01/04/2025;1.446667;N;7.283333
+01/05/2025;1.341935;SO;7.380645
+01/06/2025;1.393333;S;7.256667
+01/07/2025;1.503226;N;8.993548
+01/08/2025;1.306452;N;7.506452
+01/09/2025;1.026667;E;6.506667
+01/10/2025;1.316129;N;6.641935
+01/11/2025;1.286667;N;6.81
+01/12/2025;0.970968;N;5.377419
+01/01/2026;1.567742;E;7.512903
+01/02/2026;1.239286;E;7.217857
+01/03/2026;1.790323;N;7.977419
+01/04/2026;1.603333;O;7.803333
+01/05/2026;1.56129;SO;7.725806
+01/06/2026;1.536364;E;7.863636

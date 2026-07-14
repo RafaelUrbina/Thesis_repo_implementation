@@ -1,0 +1,58 @@
+"Stazione";"Empoli-Pontorme"
+"Codice";"TOS03004935"
+"Comune";"Empoli"
+"Provincia";"FI"
+"GB [m]";"E";1657931;"N";4842790
+"WGS84 [°]";"Lat";43.721;"Lon";10.960
+"Quota [m]";0,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;;@
+01/07/2023;;@
+01/08/2023;;@
+01/09/2023;;@
+01/10/2023;-0.35;@
+01/11/2023;-0.26;V
+01/12/2023;-0.295806;V
+01/01/2024;-0.261429;V
+01/02/2024;-0.163103;V
+01/03/2024;-0.103226;V
+01/04/2024;-0.255333;V
+01/05/2024;-0.286129;V
+01/06/2024;-0.379;V
+01/07/2024;-0.407419;V
+01/08/2024;-0.38871;V
+01/09/2024;-0.368667;V
+01/10/2024;-0.234333;V
+01/11/2024;-0.247692;V
+01/12/2024;-0.148387;V
+01/01/2025;-0.136129;V
+01/02/2025;0.021071;V
+01/03/2025;-0.017097;V
+01/04/2025;-0.179333;V
+01/05/2025;-0.268387;V
+01/06/2025;-0.47125;@
+01/07/2025;-0.58;@
+01/08/2025;-0.53381;V
+01/09/2025;-0.502333;V
+01/10/2025;-0.452258;V
+01/11/2025;-0.352667;V
+01/12/2025;-0.282258;V
+01/01/2026;-0.095161;P
+01/02/2026;-0.017857;P
+01/03/2026;-0.215806;P
+01/04/2026;-0.29;P
+01/05/2026;-0.275806;P
+01/06/2026;-0.427273;P
