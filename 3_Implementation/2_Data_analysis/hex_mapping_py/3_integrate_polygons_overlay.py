@@ -48,6 +48,36 @@ def apply_majority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, 
     
     return majority_values[attribute_col]
 
+def apply_top_n_majority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, attribute_col: str, n: int = 3) -> pd.DataFrame:
+    """
+    Applies the majority area rule and returns the top N dominant attributes as separate columns.
+    
+    Args:
+        grid_gdf: The master hexagonal grid.
+        data_gdf: The polygon data layer to process.
+        attribute_col: The column containing the categorical attribute.
+        n: The number of top categories to return.
+
+    Returns:
+        A pandas DataFrame with the top N dominant attributes for each hexagon index.
+    """
+    print(f"  - Applying Top-{n} Majority Area Rule for '{attribute_col}'...")
+    
+    intersected = gpd.overlay(grid_gdf[['index', 'geometry']], data_gdf, how='intersection')
+    intersected['area'] = intersected.geometry.area
+    
+    area_by_cat = intersected.groupby(['index', attribute_col])['area'].sum().reset_index()
+    
+    # Rank categories by area within each hexagon
+    area_by_cat['rank'] = area_by_cat.groupby('index')['area'].rank(method='first', ascending=False)
+    top_n = area_by_cat[area_by_cat['rank'] <= n]
+    
+    # Pivot to create columns for each rank
+    pivot_df = top_n.pivot(index='index', columns='rank', values=attribute_col)
+    pivot_df.columns = [f"dominant_{attribute_col}_{int(c)}" for c in pivot_df.columns]
+    
+    return pivot_df
+
 def apply_max_priority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, attribute_col: str) -> pd.Series:
     """Applies the max priority rule for a given attribute using an efficient spatial join."""
     print(f"  - Applying Ordinal Max Priority Rule for '{attribute_col}'...")
@@ -115,20 +145,18 @@ def main() -> None:
     polygon_layers_config = [
         ("profondita_utile_per_le_radici_cm", "profond", apply_majority_rule, "rooting_depth_class"),
         ("pietrosita_superficiale_", "ciottoli", apply_majority_rule, "surface_stoniness_class"),
-        ("aggr_mosaicatura_ispra_2020_pericolosita_idraulica_firenze", "pericolo", apply_max_priority_rule, "hydraulic_hazard_level"),
         ("gruppo_idrologico_usda", "gi", apply_majority_rule, "usda_hydrologic_group"),
         ("franosita__di_superficie_interessata_da_frane", "franosita", apply_majority_rule, "landslide_surface_class"),
         ("mosaicatura_ispra_2024_pericolosita_frana_pai", "per_fr_ita", apply_max_priority_rule, "pai_landslide_hazard_level"),
-        ("building_", "building", apply_majority_rule, "dominant_building_type"),
-        # Added configurations for the 'celle_soli_PS' layers
         ("celle_soli_PS_discendenti", "ave_vdesc", apply_area_weighted_mean_rule, "avg_descending_soil_speed"),
         ("celle_soli_PS_discendenti", "descending_soil_presence", apply_binary_presence_rule, "descending_soil_presence"),
         ("celle_soli_PS_ascendenti", "ave_vasc", apply_area_weighted_mean_rule, "avg_ascending_soil_speed"),
         ("celle_soli_PS_ascendenti", "ascending_soil_presence", apply_binary_presence_rule, "ascending_soil_presence"),
+        ("aggr_mosaicatura_ispra_2020_pericolosita_idraulica_firenze", "pericolo", apply_max_priority_rule, "hydraulic_hazard_level"),
     ]
 
-    # 4. Process each polygon layer
-    for layer_name, attr_col, rule_func, new_col in polygon_layers_config:
+    # 4. Process each polygon layer based on the standard configuration
+    for layer_name, attr_col, rule_func, new_col_name in polygon_layers_config:
         print(f"\n--- Processing layer: {layer_name} ---")
         try:
             data_gdf = gpd.read_file(source_gpkg, layer=layer_name)
@@ -136,14 +164,21 @@ def main() -> None:
         except Exception as e:
             print(f"Warning: Could not read layer '{layer_name}'. Skipping. Error: {e}")
             continue
-
-        # Apply the specified rule function
+        
         new_values = rule_func(master_grid, data_gdf, attr_col)
-        new_values.name = new_col
-
-        # Merge the new feature back into the master grid
+        new_values.name = new_col_name
         master_grid = master_grid.merge(new_values, on="index", how="left")
-        print(f"  - Merged '{new_col}' into master grid.")
+        print(f"  - Merged '{new_col_name}' into master grid.")
+
+    # --- Special handling for building layer to get top 3 dominant types ---
+    print("\n--- Processing layer: building_ (for top 3 dominant types) ---")
+    try:
+        building_gdf = gpd.read_file(source_gpkg, layer="building_").to_crs(master_grid.crs)
+        top_3_buildings = apply_top_n_majority_rule(master_grid, building_gdf, "building", n=3)
+        master_grid = master_grid.merge(top_3_buildings, on="index", how="left")
+        print(f"  - Merged {list(top_3_buildings.columns)} into master grid.")
+    except Exception as e:
+        print(f"Warning: Could not process layer 'building_'. Skipping. Error: {e}")
 
     # Final cleanup: Fill NaN values based on data type
     print("\nPerforming final cleanup of NaN values...")
