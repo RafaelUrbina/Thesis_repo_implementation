@@ -70,17 +70,41 @@ def main() -> None:
         # Aggregate total length per hexagon
         road_length_per_hex = intersected_roads.groupby('index')['road_length_m'].sum()
 
-        # Calculate hexagon area (assuming regular hexagons, area is constant)
-        hex_area = master_grid.geometry.iloc[0].area
+        # --- Calculate Road Density in multiple units for flexibility ---
+        # Unit 1: m/m² (raw density)
+        hex_area_m2 = master_grid.geometry.iloc[0].area
+        density_m_per_m2 = (road_length_per_hex / hex_area_m2).rename("road_density_m_per_m2")
 
-        # Calculate road density and merge back to grid
-        road_density = (road_length_per_hex / hex_area).rename("road_density_m_per_m2")
-        master_grid = master_grid.merge(road_density, on="index", how="left")
-        print("  - Merged 'road_density_m_per_m2' into master grid.")
+        # Unit 2: m_per_hex (total meters of road per hexagon)
+        m_per_hex = road_length_per_hex.rename("m_per_hex")
+
+        # Merge both density metrics into the master grid
+        master_grid = master_grid.merge(density_m_per_m2, on="index", how="left")
+        master_grid = master_grid.merge(m_per_hex, on="index", how="left")
+        print("  - Merged 'road_density_m_per_m2' and 'm_per_hex' into master grid.")
+
+        # --- Calculate Dominant Road Category by Length ---
+        print("  - Calculating dominant road categories by length...")
+        categorical_cols = ['highway', 'surface', 'tunnel', 'bridge']
+        for col in categorical_cols:
+            if col not in intersected_roads.columns:
+                print(f"    - Warning: Categorical column '{col}' not found in road layer. Skipping.")
+                continue
+
+            # Sum the length for each category within each hexagon
+            length_by_cat = intersected_roads.groupby(['index', col])['road_length_m'].sum().reset_index()
+
+            # Find the category with the maximum length for each hexagon
+            idx = length_by_cat.loc[length_by_cat.groupby('index')['road_length_m'].idxmax()]
+            dominant_category = idx.set_index('index')[col]
+
+            # Merge the new dominant category column into the master grid
+            new_col_name = f"dominant_{col}"
+            master_grid = master_grid.merge(dominant_category.rename(new_col_name), on="index", how="left")
+            print(f"    - Merged '{new_col_name}' into master grid.")
 
     except Exception as e:
         print(f"Warning: Could not process layer '{layer_name}'. Skipping. Error: {e}")
-
     # --- Process Distance to Waterways ---
     layer_name = "_waterwaysL"
     print(f"\n--- Processing Distance to Waterways for layer: {layer_name} ---")
