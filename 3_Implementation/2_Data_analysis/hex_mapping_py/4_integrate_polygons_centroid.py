@@ -17,13 +17,14 @@ import sys
 from pathlib import Path
 
 import geopandas as gpd
+import pandas as pd
 
 # Add the repository root to the Python path for module imports
-REPO_ROOT = Path(__file__).resolve().parents[5]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Utils.paths import GPKG_PATH, MIDPOINTS_PATH, GRID_PATH
+from Utils.paths import GPKG_PATH, GRID_PATH
 
 
 def main() -> None:
@@ -32,7 +33,6 @@ def main() -> None:
     """
     # 1. Define file paths
     source_gpkg = GPKG_PATH / "merged_pedologgia_static_cleaned.gpkg"
-    pendolarismo_gpkg = MIDPOINTS_PATH / "pendolarismo" / "pendolarismo_inflow_comunal.gpkg"
     grid_input_gpkg = GRID_PATH / "master_grid_with_polygons.gpkg"
 
     GRID_PATH.mkdir(parents=True, exist_ok=True)
@@ -49,25 +49,48 @@ def main() -> None:
     grid_centroids['geometry'] = grid_centroids.geometry.centroid
 
     # 3. Define layers to process
-    # Using pre-processed commuter data as an example
+    # This configuration defines all communal-level data to be joined via centroid assignment.
+    # Format: (gpkg_path, layer_name, [list_of_columns_to_keep])
     communal_layers_config = [
-        (pendolarismo_gpkg, "pendolarismo_inflow_comunal", ["inflow_total"]),
-        # Add other tabular_comunal layers here in the same format
-        # (gpkg_path, layer_name, [list_of_columns_to_keep])
+        (source_gpkg, "tabular_comunal_census", ['census_pop']),
+        (source_gpkg, "tabular_comunal_economical_princ", [
+            'epr_NTAXP', 'epr_TAXABINC', 'epr_CADINCR', 'epr_CADINCF', 'epr_SUBEMPTR',
+            'epr_PENSINCR', 'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01'
+        ]),
+        (source_gpkg, "tabular_comunal_economical_reddito", [
+            'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7', 
+            'erd_E75000_1', 'erd_E_GE1200'
+        ]),
+        (source_gpkg, "tabular_comunal_economical_distrib", ['edst_acq_imm', 'edst_acq_erog']),
+        (source_gpkg, "tabular_comunal_economical_indice_comp", [
+            'eidx_COMP_FRA', 'eidx_LAND_CON', 'eidx_EMPL_RAT', 
+            'eidx_POP_25_6', 'eidx_POP_DEPE', 
+            'eidx_INDEX_AC', 'eidx_PERSEMP'
+        ]),
+        (source_gpkg, "pendolarismo_inflow_comunal", ['inflow_total']),
     ]
 
     # 4. Process each communal layer
     for path, layer_name, columns_to_keep in communal_layers_config:
         print(f"\n--- Processing layer: {layer_name} ---")
         try:
-            data_gdf = gpd.read_file(path, layer=layer_name)
+            # All layers are read from the single cleaned source GPKG
+            data_gdf = gpd.read_file(source_gpkg, layer=layer_name)
             data_gdf = data_gdf.to_crs(master_grid.crs)
 
             # Perform the spatial join
-            joined_gdf = gpd.sjoin(grid_centroids, data_gdf[columns_to_keep + ['geometry']], how="left", predicate="within")
+            joined_gdf = gpd.sjoin(grid_centroids[['index', 'geometry']], data_gdf[columns_to_keep + ['geometry']], how="left", predicate="within")
 
-            # Merge the new columns back to the main grid using the index
-            master_grid = master_grid.join(joined_gdf[columns_to_keep])
+            # The sjoin can create duplicate rows if a hexagon is on a boundary.
+            # We drop duplicates, keeping only the first match for each hexagon.
+            # We also handle the 'index_right' column created by the join.
+            joined_gdf.drop(columns=['index_right'], inplace=True, errors='ignore')
+            joined_gdf.drop_duplicates(subset='index', keep='first', inplace=True)
+
+            # Merge the new columns back to the main grid using a robust merge on the index
+            master_grid = master_grid.merge(
+                joined_gdf[['index'] + columns_to_keep], on='index', how='left'
+            )
             print(f"  - Merged {columns_to_keep} into master grid.")
 
         except Exception as e:

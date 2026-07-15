@@ -79,10 +79,12 @@ def main() -> None:
             "rename": {"ele": "max_peak_elevation"}
         },
         "_places": {
-            "use_1ring": False,  # This layer should only have direct aggregation
+            "use_1ring": True,
+            "k_ring_size": 1,  # Use a larger k-ring for places
             "preprocess": lambda gdf: gdf.assign(is_locality=1),
             "agg": {"is_locality": "first", "name": "first"},
-            "rename": {"is_locality": "is_locality", "name": "locality_name"}
+            "rename": {"is_locality": "is_locality", "name": "locality_name"},
+            "neighbor_agg_override": "first" # Use 'first' neighbor value instead of summing/max
         },
         "seismic_points_utm32n": {
             "use_1ring": True,
@@ -127,7 +129,7 @@ def main() -> None:
 
         # --- Conditional 1-Ring Neighbor Aggregation ---
         if config.get("use_1ring"):
-            print("  - Performing 1-ring neighbor aggregation...")
+            print("  - Performing k-ring neighbor aggregation...")
             
             # Start with the non-zero direct aggregations
             initial_agg = direct_agg.copy().dropna(how='all')
@@ -135,8 +137,10 @@ def main() -> None:
                 print("  - No data for neighbor aggregation. Skipping.")
                 continue
 
-            # Find 1-ring neighbors for each hexagon that has a value
-            neighbor_sets = initial_agg.h3.k_ring(1)
+            # Determine k-ring size, defaulting to 1 if not specified
+            k = config.get("k_ring_size", 1)
+            print(f"  - Using k-ring size of {k}...", flush=True)
+            neighbor_sets = initial_agg.h3.k_ring(k)
 
             # Create a mapping from each active hexagon to all its neighbors
             exploded_neighbors = neighbor_sets.rename(columns={"h3_k_ring": "neighbors"}).explode("neighbors").reset_index()
@@ -144,21 +148,24 @@ def main() -> None:
             # Perform the final aggregation: for each hexagon, sum up the contributions from all its neighbors
             # The exploded_neighbors DataFrame already contains all necessary data.
             
-            # --- Intelligent Neighbor Aggregation ---
-            # Define which columns should be summed vs. which should take the max value.
-            # Columns with 'count' or 'cost' in their name are summed. All others take the max.
-            # Categorical columns (dtype='object') will use the mode.
-            agg_rules = {}
-            for col in initial_agg.columns:
-                if 'count' in col or 'cost' in col:
-                    agg_rules[col] = 'sum'
-                elif initial_agg[col].dtype == 'object':
-                    # For categorical data, find the most frequent value (mode)
-                    agg_rules[col] = lambda x: x.mode()[0] if not x.empty else None
-                else:
-                    agg_rules[col] = 'max'
-            
-            neighbor_agg = exploded_neighbors.groupby("neighbors").agg(agg_rules)
+            # Check for a specific neighbor aggregation override
+            if config.get("neighbor_agg_override") == "first":
+                print("  - Using 'first' neighbor aggregation rule.")
+                neighbor_agg = exploded_neighbors.groupby("neighbors").first().drop(columns='index', errors='ignore')
+            else:
+                # --- Intelligent Neighbor Aggregation ---
+                # Define which columns should be summed vs. which should take the max value.
+                agg_rules = {}
+                for col in initial_agg.columns:
+                    if 'count' in col or 'cost' in col:
+                        agg_rules[col] = 'sum'
+                    elif initial_agg[col].dtype == 'object':
+                        # For categorical data, find the most frequent value (mode)
+                        agg_rules[col] = lambda x: x.mode()[0] if not x.empty else None
+                    else:
+                        agg_rules[col] = 'max'
+                
+                neighbor_agg = exploded_neighbors.groupby("neighbors").agg(agg_rules)
 
             # Rename neighbor aggregation columns and merge them
             final_agg = neighbor_agg.add_suffix('_1ring')
