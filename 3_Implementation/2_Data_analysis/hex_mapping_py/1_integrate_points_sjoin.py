@@ -170,14 +170,15 @@ def main() -> None:
             master_grid = master_grid.merge(direct_agg, left_on="index", right_index=True, how="left")
             print(f"  - Merged direct features: {list(direct_agg.columns)}")
 
-    # Fill NaNs created by non-joining hexagons with appropriate values (0 for counts/sums)
+    # Final cleanup: Fill NaN values based on data type
+    print("\nPerforming final cleanup of NaN values...")
     for col in master_grid.columns:
-        # Check for both direct and 1ring columns, and also simple columns without suffixes
-        is_count_cost = "count" in col or "cost" in col
-        is_locality = col in ["is_locality", "is_locality_1ring"]
-
-        if is_count_cost or is_locality:
+        # Check if the column is numeric (integer, float)
+        if pd.api.types.is_numeric_dtype(master_grid[col]):
             master_grid[col] = master_grid[col].fillna(0)
+        # Check if the column is categorical (object/string)
+        elif pd.api.types.is_object_dtype(master_grid[col]):
+            master_grid[col] = master_grid[col].fillna(None)
 
     # 5. Save the enriched grid
     print(f"\nSaving enriched grid to: {output_gpkg}")

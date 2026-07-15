@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 
 import geopandas as gpd
+import pandas as pd
 
 # Add the repository root to the Python path for module imports
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -52,8 +53,16 @@ def main() -> None:
     print(f"  - Merging DTM columns: {dtm_cols}")
     final_grid = final_grid.merge(dtm_stats_grid[['index'] + dtm_cols], on="index", how="left")
 
-    # 4. Final cleanup (optional)
-    # Example: print(final_grid.info())
+    # 4. Final cleanup: Fill NaN values based on data type
+    print("\nPerforming final cleanup of NaN values...")
+    for col in final_grid.columns:
+        # Check if the column is numeric (integer, float)
+        if pd.api.types.is_numeric_dtype(final_grid[col]):
+            final_grid[col] = final_grid[col].fillna(0)
+        # Check if the column is categorical (object/string)
+        elif pd.api.types.is_object_dtype(final_grid[col]):
+            # Using fillna with None on object columns is effective
+            final_grid[col] = final_grid[col].fillna(None)
 
     # 5. Save the final data cube
     print(f"\nSaving FINAL DATA CUBE to: {output_gpkg}")

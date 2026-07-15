@@ -131,6 +131,17 @@ def main() -> None:
         master_grid = master_grid.merge(new_values, on="index", how="left")
         print(f"  - Merged '{new_col}' into master grid.")
 
+    # Final cleanup: Fill NaN values based on data type
+    print("\nPerforming final cleanup of NaN values...")
+    for col in master_grid.columns:
+        # Check if the column is numeric (integer, float)
+        if pd.api.types.is_numeric_dtype(master_grid[col]):
+            master_grid[col] = master_grid[col].fillna(0)
+        # Check if the column is categorical (object/string)
+        elif pd.api.types.is_object_dtype(master_grid[col]):
+            # Using fillna with None on object columns is effective
+            master_grid[col] = master_grid[col].fillna(None)
+
     # 5. Save the enriched grid
     print(f"\nSaving enriched grid to: {output_gpkg}")
     master_grid.to_file(output_gpkg, layer="master_grid_with_polygons", driver="GPKG")
