@@ -30,7 +30,7 @@ PHYSICAL ENVIRONMENT - physical - 2,553 (406 patents in common)
 AND (title:(pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR turbidity) OR abstract:(pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR turbidity))
 
 
-PHYSICAL ENVIRONMENT - environmental - 1,803 (406 patents in common)
+PHYSICAL ENVIRONMENT - environmental - 1,767 (406 patents in common)
 ------------
 
 AND (title:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR liquefaction OR "hydraulic gradient" OR evapotranspiration) OR abstract:(soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR liquefaction OR "hydraulic gradient" OR evapotranspiration))

@@ -23,7 +23,7 @@ import geopandas as gpd
 import pandas as pd
 
 # Add the repository root to the Python path for module imports
-REPO_ROOT = Path(__file__).resolve().parents[5]
+REPO_ROOT = Path(__file__).resolve().parents[3]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
@@ -49,12 +49,15 @@ def apply_majority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, 
     return majority_values[attribute_col]
 
 def apply_max_priority_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, attribute_col: str) -> pd.Series:
-    """Applies the max priority rule for a given attribute."""
+    """Applies the max priority rule for a given attribute using an efficient spatial join."""
     print(f"  - Applying Ordinal Max Priority Rule for '{attribute_col}'...")
     
-    # Intersect and find the max value
-    intersected = gpd.overlay(grid_gdf[['index', 'geometry']], data_gdf, how='intersection')
-    max_values = intersected.groupby('index')[attribute_col].max()
+    # Use sjoin to find which data polygons intersect with which grid hexagons.
+    # This is much more efficient than overlay for this rule and avoids geometry-type warnings.
+    joined = gpd.sjoin(grid_gdf[['index', 'geometry']], data_gdf, how='inner', predicate='intersects')
+    
+    # Group by the grid index and find the max value of the attribute.
+    max_values = joined.groupby('index')[attribute_col].max()
     
     return max_values
 
@@ -75,6 +78,19 @@ def apply_area_weighted_mean_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoD
     grouped = intersected.groupby('index').agg(weighted_value_sum=('weighted_value', 'sum'), area_sum=('area', 'sum'))
     
     return grouped['weighted_value_sum'] / grouped['area_sum']
+
+def apply_binary_presence_rule(grid_gdf: gpd.GeoDataFrame, data_gdf: gpd.GeoDataFrame, new_col_name: str) -> pd.Series:
+    """Assigns 1 if a grid cell intersects with any polygon in the data layer, 0 otherwise."""
+    print(f"  - Applying Binary Presence Rule for '{new_col_name}'...")
+
+    # Find the unique indices of grid cells that intersect with the data layer
+    intersecting_hex_indices = gpd.sjoin(grid_gdf[['index', 'geometry']], data_gdf, how='inner', predicate='intersects')['index'].unique()
+
+    # Create a series with 1 for intersecting hexagons, 0 for all others
+    binary_presence = pd.Series(0, index=grid_gdf['index'], name=new_col_name)
+    binary_presence.loc[intersecting_hex_indices] = 1
+
+    return binary_presence
 
 def main() -> None:
     """
@@ -105,12 +121,10 @@ def main() -> None:
         ("mosaicatura_ispra_2024_pericolosita_frana_pai", "per_fr_ita", apply_max_priority_rule, "pai_landslide_hazard_level"),
         ("building_", "building", apply_majority_rule, "dominant_building_type"),
         # Added configurations for the 'celle_soli_PS' layers
-        ("celle_soli_PS_descendenti", "ave_vdesc", apply_area_weighted_mean_rule, "avg_descending_soil_speed"),
+        ("celle_soli_PS_discendenti", "ave_vdesc", apply_area_weighted_mean_rule, "avg_descending_soil_speed"),
+        ("celle_soli_PS_discendenti", "descending_soil_presence", apply_binary_presence_rule, "descending_soil_presence"),
         ("celle_soli_PS_ascendenti", "ave_vasc", apply_area_weighted_mean_rule, "avg_ascending_soil_speed"),
-        # Assuming a 'binary_flag' column exists for the max rule, as per the pipeline document.
-        # If the column name is different, it should be updated here.
-        ("celle_soli_PS_descendenti", "binary_flag", apply_max_priority_rule, "descending_soil_flag_max"),
-        ("celle_soli_PS_ascendenti", "binary_flag", apply_max_priority_rule, "ascending_soil_flag_max"),
+        ("celle_soli_PS_ascendenti", "ascending_soil_presence", apply_binary_presence_rule, "ascending_soil_presence"),
     ]
 
     # 4. Process each polygon layer

@@ -29,8 +29,6 @@ This document outlines the step-by-step process for integrating all source data 
 | `_peaks`                               | `gpd.sjoin()`     | `max` (ele)                         ,(from the current hexagon or the 1-ring scale, 1-level neighbors)   |
 | `_places`                              | `gpd.sjoin()`     | `first` (name)                         |
 | `seismic_points_utm32n`                | `gpd.sjoin()`     | `count`, `max` (MwDef), `mean` (MwDef) , (from the current hexagon or the 1-ring scale, 1-level neighbors) |
-| `celle_soli_PS_descendenti`            | `gpd.sjoin()`     | `max` (binary flag), `mean` (ave_vdesc)  |
-| `celle_soli_PS_ascendenti`             | `gpd.sjoin()`     | `max` (binary flag), `mean` (ave_vasc)   |
 
 ---
 
@@ -83,6 +81,8 @@ This document outlines the step-by-step process for integrating all source data 
 | `rischio_di_inondazione_con_tempo_di_ritorno_inferiore_a_30_anni` | Majority Area Rule on `inondaz` class.                           |
 | `awc__available_water_capacity`                       | Majority Area Rule on `awc` class.                               |
 | `mosaicatura_ispra_2024_pericolosita_frana_pai`       | Ordinal Max Priority Rule on `per_fr_ita` value.                 |
+| `celle_soli_PS_descendenti`            | `max` (binary flag), `mean` (ave_vdesc)  |
+| `celle_soli_PS_ascendenti`             | `max` (binary flag), `mean` (ave_vasc)   |
 
 ---
 
