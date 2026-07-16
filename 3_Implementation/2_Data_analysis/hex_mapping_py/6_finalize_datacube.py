@@ -31,7 +31,7 @@ def main() -> None:
     Main function to execute the final data cube assembly.
     """
     # 1. Define file paths
-    dtm_stats_gpkg = MIDPOINTS_PATH / "dtm" / "h3_grid_with_dtm_stats.gpkg"
+    dtm_stats_gpkg = GPKG_PATH / "merged_pedologgia_static_cleaned.gpkg"
     grid_input_gpkg = GRID_PATH / "master_grid_with_stations.gpkg"
 
     # Define the final output directory as requested
