@@ -31,3 +31,5 @@ SIR_WEATHER_TASKS = (
 )
 
 PENDOLARISMO_PATH = MASTER_DATA_PATH / "pendolarismo"
+
+CAUSAL_LINKS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/causal_links"

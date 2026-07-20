@@ -1,0 +1,2124 @@
+a2) United States Patent
+Russell
+
+(54)
+
+(71)
+
+(72)
+
+C*)
+
+(21)
+(22)
+
+(S1)
+
+(52)
+
+(58)
+
+(56)
+
+DISTRIBUTED INTEGRATED WATER
+MANAGEMENT SYSTEM
+
+Applicant: Matthew F. Russell, Spokane, WA
+
+(US)
+
+Inventor: Matthew F. Russell, Spokane, WA
+(US)
+
+Notice: Subject to any disclaimer, the term of this
+
+patent is extended or adjusted under 35
+U.S.C. 154(b) by 20 days.
+
+Appl. No.: 16/501,690
+
+Filed: May 22, 2019
+
+Int. Cl.
+
+EOSB 7/02 (2006.01 }
+
+EO3F 3/02 (2006.01)
+
+EO3B 7/07 (2006.01 }
+
+EOSB 11/14 (2006.01 }
+
+EO3SF 1/00 (2006.01)
+
+USS. Cl.
+
+CPC wees. EO3B 7/074 (2013.01); BO3B 7/02
+
+(2013.01); LO3B 11/14 (2013.01); BASF 1/00
+(2013.01); BO3F 3/02 (2013.01); YI0T
+137/402 (2015.04)
+Field of Classification Search
+
+CPC ... E03B 7/02; E03B 7/07; EO3B 7/074; EO3B
+11/10; E03B 11/14; EO3F 1/00; EO3F
+3/02; Y1OT 137/402
+USPC... 210/170.03, 747.2, 747.3; 137/236.1;
+405/52
+
+See application file for complete search history.
+
+References Cited
+
+U.s. PATENT DOCUMENTS
+
+3,211,167 A * 10/1965) Clift wee EO3F 1/007
+137/236.1
+5,487,621 A * 1/1996 Takada wee EO3F 1/00
+405/36
+
+108
+
+TREATED WASTE HoO
+
+RAIN/ FLOOD H20
+
+102 RIVER/ LAKE/ AQUIFER HoO
+AQUIFER STORAGE/ RECOVERY H20
+
+OTHER H20 SOURCE
+
+110
+
+106
+
+US0108065547B1
+
+(0) Patent No.: US 10,865,547 Bl
+
+(45) Date of Patent: Dec. 15, 2020
+6,616,375 BL* 9/2003 Eriksson ......0..00000.. EQ3F 3/02
+137/236.1
+
+8,591,147 B2* 11/2013 Quigley oe. EOQ3F 1/00
+137/236.1
+
+2004/0025938 AL™* 2/2004 Berry, Jr oo. EQ3F 3/02
+137/236.1
+
+2010/0300544 Al* 12/2010 Baldwin ......0.000.. E03B 7/074
+137/1
+
+2014/0144850 Al*™ 5/2014 Chat wo. EO3F 1/002
+210/170.03
+
+2016/0107900 Al* 4/2016 Hawks oo... EO3F 1/00
+2 10/170.03
+
+* cited by examiner
+
+Primary Examiner — Christopher Upton
+(74) Attorney, Agent, or Firm — Reidlaw, LLC; John S.
+Reid
+
+(57) ABSTRACT
+
+A distributed integrated water management system includes
+water source supply lines capable of being placed in fluid
+communication with a separate water source, water dis-
+charge lines capable of being placed in fluid communication
+with a separate water discharge destination, a water source
+and destination control manifold to allow selected water
+source supply lines to be placed in fluid communication with
+selected water discharge lines, and a storm water collection
+and distribution system which includes a storm water col-
+lection conduit to collect storm water runoff, and a plurality
+of sumps to receive storm water runoff from the storm water
+collection conduit. The storm water collection and distribu-
+tion system further includes a collected storm water dis-
+charge line in fluid communication with the sumps, and the
+collected storm water discharge line can be placed in fluid
+communication with the plurality of water discharge lines
+via the water source and destination control manifold.
+
+22 Claims, 8 Drawing Sheets
+
+4-100
+
+TO AQUIFER |
+TO RIVER/ LAKE/ OCEAN
+
+TO IRRIGATION 104
+TO TREATMENT FACILITY
+
+TO OTHER
+
+CONTROL _
+
+LARGE AREA
+FILTRATION
+
+| DRAINFIELD
+
+---
+
+US 10,865,547 Bl
+
+Sheet 1 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+| S|
+
+C1aI4NIVHG
+
+NOLLVHLTI4
+
+WaHv S9YYT
+
+0
+~ JOYINOD
+HSHLO OL | |
+
+ALMOW4 LNSWLVSYL OL
+POL NOLLVOIYHI OL
+NV300 /AMV1/HSAIY OL
+HASINOV OL
+
+001—” 80!
+
+Lb
+
+JOYNOS O¢H HAHLO
+
+O°H AYSAO04H /ADVHOLS H3asdINOV
+O°H Y3SINOV /ANVT /YSAIY
+
+O°H GOO74 /NIVY
+
+O°H SLSVM GSLVaYL
+
+oOl
+
+---
+
+US 10,865,547 Bl
+
+Sheet 2 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+NS ON LB ss LL Le AL A LLL LAE DALE A ALLA LALA L a
+
+G
+
+KS
+\
+DY
+
+Ow
+
+X
+
+<
+YY
+
+S
+LX
+LR
+
+x
+”,
+
+\/
+
+\
+
+<
+xX
+\
+GZ]
+y
+~
+
+Ze
+
+yy
+\
+x
+yx
+YA
+~ ,
+
+WG
+
+We
+
+1
+N
+a
+
+---
+
+US 10,865,547 Bl
+
+Sheet 3 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+ee]
+
+SAK
+901 O°H
+Zk2
+
+---
+
+U.S. Patent Dec. 15, 2020 Sheet 4 of 8 US 10,865,547 BI
+
+o [ }® >
+a 5
+se | |e
+=< rw
+
+154
+
+FIG. 6
+
+---
+
+US 10,865,547 Bl
+
+Sheet 5 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+8 ©)|4
+89
+LNSWLV3YL >< (
+89
+—_@
+vhL
+ee,
+991 an
+p9t Y\
+\/ Ocl
+‘O14 YAAIY CO
+
+‘Y3sINOV
+
+<—§$—QO°H
+
+<—$—Q°H
+
+~<— OCH
+
+«——0O°H
+
+cOl
+
+---
+
+US 10,865,547 Bl
+
+Sheet 6 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+v0e
+
+Vt
+
+8h
+
+VLE
+
+u80 |}
+
+OO
+
+OO
+
+OO
+
+LO&
+
+vot
+
+Oct
+
+VS
+YY “oe
+
+\7\*
+
+VY
+NZ
+ar,
+
+SAS
+ar,
+
+NN
+Vay,
+
+oGe
+
+---
+
+US 10,865,547 Bl
+
+Sheet 7 of 8
+
+Dec. 15, 2020
+
+U.S. Patent
+
+HE UIs © © (e)p Ly
+(P)ZLL
+SO @ ANS © Vell
+WL acl
+ose—”” @ vay © (Q)Zbt
+(D)SLL poe
+— ace S (2241
+9ce
+OL Sls
+y y LR OVCANCANOCANOY, WS SS WY NY Wy \
+UK KE OBRKKKK YOK K
+mar 621 Pa ee ey ane
+eer get O0¢l aztt ga) | oz —-
+ose—* qozl
+
+---
+
+U.S. Patent Dec. 15, 2020 Sheet 8 of 8 US 10,865,547 BI
+
+104
+304
+
+303
+
+yo 0
+
+144
+FIG. 12
+
+116
+
+hank huh kt tL LL ff ff LZ
+
+405
+
+108’
+406
+><
+404
+
+302
+
+---
+
+US 10,865,547 Bl
+
+1
+
+DISTRIBUTED INTEGRATED WATER
+MANAGEMENT SYSTEM
+
+BACKGROUND
+
+Cities and towns (which include water-impermeable hard-
+scapes such as streets, roofs, parking lots, etc.) typically
+have different and various ways to handle the collection,
+treatment and release of sewage, storm water and other
+urban runoff G1.e., runoff water from driveways, parking lots,
+etc.). In some districts sewage and storm water are treated in
+a common facility. However, more modern systems provide
+for the separate collection and treatment of sewage and
+storm water Gncluding other urban runoff water). Following
+treatment to an acceptable environmental level, water from
+sanitary sewers and urban runoff Gncluding storm water) are
+typically released to the environment, and this is where there
+can be considerable variation from one district to another.
+For cities and towns located near bodies of water (such as
+rivers, oceans, bays, large lakes, etc.) it 1s common to
+discharge treated effluent and storm water to the body of
+water. In locations where this is not feasible (or not allowed
+for environmental reasons) the treated water can be dis-
+charged to an evaporation pond, used for crop irrigation, or
+pumped into an aquifer or underground storage reservoir.
+
+A common trait of most sewage and storm water man-
+agement systems is that they only provide one configuration
+for managing the collection, treatment and discharge of the
+water. This kind of one-system-for-all-conditions arrange-
+ment does not result in the best use of the discharged water
+at all times, as conditions can change depending on the
+weather, the season, and other factors.
+
+Additionally, most storm water collection systems neces-
+sitate that the collected storm water be separately treated to
+remove contaminates (such as suspended solids, phosphates,
+ice-melters, and oil) prior to being discharged.
+
+BRIEF DESCRIPTION OF THE DRAWINGS
+
+FIG. 1 is a schematic diagram depicting the general
+elements of a distributed integrated water management
+system according to the present disclosure.
+
+FIG. 2 1s a partial plan view depicting a localized storm
+water filtration system.
+
+FIG. 3 1s a side sectional view of the localized storm water
+filtration system depicted in FIG. 2.
+
+FIG. 4 is a side sectional view of a dynamic sump system
+that can be used in conjunction with the localized storm
+water filtration system of FIG. 2.
+
+FIG. 5 is a side sectional view of a large area filtration
+drain system that can be used in the distributed water
+management system of the present disclosure.
+
+FIG. 6 1s an end sectional view of a system that can utilize
+a large diameter pipe to house a smaller diameter pipe to
+simplify installation of the smaller diameter pipe.
+
+FIG. 7 is a schematic diagram depicting a treated-water
+selective-flow control manifold.
+
+FIG. 8 1s a schematic diagram depicting the integration of
+a localized storm water filtration system with a distributed
+water management system.
+
+FIG. 9 is a plan view diagram depicting how the distrib-
+uted integrated water management system according to the
+present disclosure can be applied over a large geographic
+area.
+
+FIG. 10 is a sectional side view diagram depicting how
+static sumps of the present disclosure can be arranged in a
+cascading arrangement.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+2
+
+FIG. 11 is a plan view diagram depicting how the cas-
+cading arrangement of sumps depicted in FIG. 10 can be
+applied over a two dimensional surface area.
+
+FIG, 12 1s a schematic diagram depicting how collected
+storm water can be transferred from an urban core area to a
+suburban region to allow the water to be returned to an
+aquifer.
+
+DETAILED DESCRIPTION
+
+The present disclosure provides for a distributed inte-
+orated water management system for the collection, treat-
+ment and discharge of sewage and storm water, as well as
+other urban runoff. The water management system provided
+for herein allows for flexibility in selecting the current-best-
+use for the discharged water, managing water distribution
+over a large area, and managing urban storm water during
+storms. The present disclosure also provides for localized
+water filtration systems for storm water, thus reducing (or
+even eliminating) the need to separately collect and treat
+storm water prior to discharge to the environment. (As used
+herein, “storm water” may also be referred to as “stormwa-
+ter’’.)
+
+As indicated above, current systems for handling the
+discharge of treated waste water and storm water Gncluding
+ancillary urban runoff) are limited in that they typically only
+provide for a single destination for the treated water. This
+does not always result in the best use of the discharged
+water. For example, if treated water is discharged to a river,
+then discharging the treated water during low-water level
+conditions to the river can be beneficial (or example, by
+providing water for subsequent downstream use, or facili-
+tating fish breeding). However, if the water is discharged to
+a river during high (river) water level conditions, then the
+discharged water is essentially wasted (.e., 1t ends up in the
+ocean without providing any benefit). In fact, discharging
+treated water to a river during high level river conditions can
+actually be detrimental by contributing to potential down-
+stream flooding and erosion of river banks. Moreover, by
+discharging treated water to a waterway where it offers no
+benefit, the water 1s deprived of being used for other
+beneficial purposes. For example, where municipal water 1s
+drawn from an aquifer, 1t would be desirable to return treated
+water to the aquifer in order to replenish the aquifer, and in
+particular if discharging the water to a waterway adds no
+benefit to the waterway. It is already known to discharge
+treated water to an aquifer, but if this is the only option
+provided for discharging treated water, then the water cannot
+be used for purposes such as crop irrigation (without having
+to pump the water back out of the aquifer). A fully integrated
+water management system (as provided for herein) allows
+for the best-use of collected water Gncluding wastewater and
+stormwater), and a large degree of flexibility in disposing of
+collected water. This can include managing stormwater to
+reduce flooding during exceptional rainfall events.
+
+A disadvantage of current water handling systems that
+provide for separate sewage water treatment and storm water
+treatment is that such systems require large holding tanks or
+ponds for the collected storm water. In an urban environment
+underground storm water collection tanks are preferable to
+surface ponds and swales, since the tanks are not using
+valuable surface area which can otherwise be used for
+residential and commercial purposes. Additionally, surface
+ponds and swales can be essentially useless in freezing
+weather, and can be a breeding ground for insects in warm
+weather. However, underground storm water collection
+tanks are expensive to install, and are limited in how much
+
+---
+
+US 10,865,547 Bl
+
+3
+
+water they can hold—the limit typically being imposed
+economically (1.e., the cost to install holding tanks to address
+extraordinary storm events can easily exceed the estimated
+costs of damage due to the storm events). In the event of a
+truly significant rain (storm) event, these storage tanks can
+be overwhelmed, thus resulting in flooding or discharge of
+excess storm water to the sewage treatment system, a body
+of water, or a river. Further, in existing systems which do not
+provide for the separate handling of sewage water treatment
+and storm water treatment, the water treatment facility
+(which process both sources of water) typically includes
+large surge tanks in order to accommodate storm water
+surges. In extraordinary storm events, these surge tanks can
+easily become overwhelmed, thus requiring the release of
+untreated water (sewage and stromwater) to a river, bay, etc..,
+or even bypassing the stormwater collection tank(s) alto-
+gether. These situations are where the localized storm water
+filtration system provided for herein can become useful—
+1.e., in eliminating (or reducing) the need for large under-
+eround storm water collection tanks and/or surge tanks, or at
+the very least allowing for the reduction in size of such
+tanks. That is, the present disclosure provides for a water
+management system which allows for excess storm water to
+be moved away from a region where it would otherwise need
+to be collected by storm and surge tanks to a region where
+the excess storm water can be discharged to a natural
+formation (such as an aquifer). The present disclosure fur-
+ther provides for a filtration system to filter such excess
+storm water prior to being discharged to the natural forma-
+tion.
+
+In a typical urban region there exists an urban core and an
+outlying suburban region, and beyond the outlying suburban
+region a rural region. The urban core of an urban region 1s
+typically covered by streets, buildings, parking lots, and
+other features which preclude the natural migration of storm
+water into subsurface features (such as migration into a
+subsurlace aquifer). The outlying suburban region of an
+urban region typically offers more opportunities (e.g., lawns,
+parks, etc.) for the migration of storm water into subsurface
+features (such as an aquifer), and outlying rural areas (such
+as farmland and undeveloped land) offer even greater oppor-
+tunities for the migration of storm water into subsurface
+features. The present disclosure provides for a system to
+move storm water from an urban core to a suburban region
+where the storm water can be discharged to a natural
+formation, and (Gf necessary) from the suburban region to a
+rural area (or even beyond) where the storm water can
+discharged. It will be appreciated that the storm water
+management system provided for herein accomplishes two
+beneficial objectives: G1) excess storm water can be moved
+away from an urban core to thus reduce the need for storm
+water collection tanks within the urban core; and (11) storm
+water moved away from an urban core can be discharged to
+a natural formation (such as an aquifer). It will be appreci-
+ated that a preferable destination for the discharge of water
+from an urban core (and a surrounding suburban region) is
+to replenish a regional aquifer. It will also be appreciated
+that, prior to discharging any such water to an aquifer, the
+water should preferably first be filtered to remove contami-
+nates. To this end, the present disclosure provides for
+filtration beds disposed between the urban-core storm water
+collection sumps and the final discharge location of the
+storm water (or indeed, any urban runoff water) in order to
+reduce contaminants from the urban runoff areas from being
+introduced into the final discharge location (such as an
+aquifer).
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+4
+
+Further, urban cores and suburban regions of urban areas
+are typically connected by sewage lines which allow sewage
+from the suburban regions to be moved to, and processed by,
+a sewage treatment facility which also processes sewage
+from the urban core. The present disclosure provides for
+using such sewage lines as a conduit for movement of storm
+water from an urban core to an associated suburban region,
+by placing storm water distribution lines within existing
+sewage lines. Such an arrangement allows for the economic
+use of existing sewage lines to move storm water outward
+from an urban core. That is, a sewage line can be used to
+move sewage inward from a suburban area to a sewage
+treatment facility near an urban core, and can also host a
+separate storm water discharge line to move storm water
+outward from the urban core to a discharge location away
+from the urban core. More generally, the present disclosure
+provides for installing a small diameter pipe within a large
+diameter pipe to simplify installation of the small diameter
+pipe. One example is installing a nominal 6 inch diameter
+pipe within a 30 inch diameter pipe. The respective cross-
+sectional areas of the two pipes are 707 in-sq (large pipe) and
+28 in-sq (small pipe), such that introducing the small pipe
+into the large pipe Gn this example) reduces the cross-
+sectional area of the large pipe by only 4%. Examples of
+large diameter pipes can include sewage collection and
+disposal lines, water supply lines, storm water distribution
+lines, etc. Examples of the small diameter pipes can include
+local runoff water collection and distribution lines, potable
+water distribution lines, etc. Further, the small diameter pipe
+can be provided with nozzles such that water from the small
+pipe can be used to flush accumulated debris and the like
+from the large pipe. This arrangement will be described
+more fully below.
+
+With reference to the accompanying drawings, FIG. 1 1s
+a schematic diagram of a distributed integrated water man-
+agement system 100. The system 100 includes a plurality of
+water sources (102) (which are ultimately to be discharged),
+a plurality of discharge destinations (104), a large area
+filtration drain field (106), a municipal storm water collec-
+tion and distribution system (108), and a control system
+(110). Each of the components of the distributed integrated
+water management system 100 will now be described.
+
+As indicated in FIG. 1, the plurality of water sources (102)
+to be discharged can include treated waste water (e.g.,
+treated sanitary sewer effluent), storm water (such as from
+rain and/or flooding), water from a natural body of water
+such as a lake, a river or an aquifer, water from an aquifer
+storage and recovery system, and other sources of water
+(such as from a surge tank and/or a storm water collection
+tank). The other sources of water can include non-storm
+urban runoff such as snow melt, street washing, and land-
+scape irrigation runoff. It will be appreciated that the water
+sources 102 indicated in FIG. 1 are exemplary only, and that
+any system 100 can include some or all of the indicated
+water sources. It will also be appreciated that the water
+sources 102 are not necessarily treated waste water. For
+example, as indicated, the source water can be water from an
+aquifer or from surface waters (e.g., during floods). This
+allows flexibility in the system 100—1.e., to route water
+from any desired source (102) to any desired destination
+(104).
+
+The possible water destinations (104) depicted in FIG. 1
+exemplarily include an aquifer, a body of water (e.g., river,
+lake, ocean, etc.), irrigation (e.g., crops or parks), treatment
+facilities, and other desired possible destinations. Examples
+of treatment facilities can include facilities for the removal
+of solids and chemicals Gncluding oil, phosphates and ice
+
+---
+
+US 10,865,547 Bl
+
+5
+
+melters), and treating to remove pathogenic organisms. As
+with the water sources 102, the water destinations 104
+depicted in FIG. 1 are exemplary only, and the system 100
+can include only some of the destinations indicated, as well
+as other destinations not specifically indicated.
+
+The large area filtration drain field (106) of the system 100
+of FIG. 1 is an optional component which can be used to
+introduce storm water (and other water) to an aquifer, as will
+be described in more detail below with respect to FIG. 5.
+
+The municipal storm water collection and distribution
+system (108) of the distributed integrated water management
+system (100) of FIG. 1 1s primarily used to collect, filter and
+distribute urban surface runoff water, such as storm water,
+flooding, and other urban water (such as from street wash-
+ing, and lawn irrigation, for example). The term “storm
+water’ will be used herein to refer to all forms of surface
+water which flows from hardscapes (such as streets, side-
+walks, parking lots, houses, buildings, etc.), including rain,
+snow melt, and excess irrigation. The municipal storm water
+collection and distribution system (108) includes a plurality
+of static sumps (112) that can be used to capture urban
+runoff, and a plurality of dynamic sumps (114) that can
+capture and discharge urban runoff. The dynamic sumps
+(114) are provided with a pump (115, only one of which is
+depicted in FIG. 1), thus allowing the dynamic sumps to be
+pumped out to a water discharge conduit (116). The static
+sumps (112) are preferably fluidically connected to one
+another to allow flow from one static sump to another, thus
+distributing collected urban runoff and maximizing the water
+storage capabilities of the collection of static sumps. Like-
+wise, the dynamic sumps (114) can be fluidically connected
+to one another. Further, the static sumps (112) can be placed
+in fluid communication with the dynamic sumps (114) either
+by direct connection (as shown by the dashed line), or
+selectively such as by a valve (113) (or gate) placed in a fluid
+line (e.g., a canal) connecting the two types of sumps. The
+municipal storm water collection and distribution system
+(108) further includes a localized runoff water filtration
+system 118, through which the urban runoff can flow prior
+to entering the sumps (112 and/or 114). Additional details of
+the sumps (112, 114) will be provided below with respect to
+FIGS. 4, 10 and 11, and further details of the localized runoff
+water filtration system (118) will be provided below with
+respect to FIGS. 2, 3 and 10.
+
+The control system (110) of the distributed integrated
+water management system (100) of FIG. 1 allows selected
+sources of water (102) to be selectively directed to one or
+more water destinations (104), as well as management of the
+municipal storm water collection and distribution system
+(108) by selectively opening and closing of valves, and
+actuation of pumps (e.g., 115). The control system 110 can
+include manual controls (e.g., manually operated valves) as
+well as automatic controls (e.g., actuation of sump pumps
+(115) by a high level switch). The control system 119) will
+be described in more detail below with respect to FIGS. 7
+and 8.
+
+It will be appreciated from FIG. 1, and the above descrip-
+tion of the components thereof, that the system 100 1s a
+distributed system, in that the water sources (102), as well as
+the water destinations (104), can cover a large area—tfor
+example, local waterways adjacent to a city, outlying crop
+lands (for irrigation), and distant aquifers and the like. An
+example of a regional area where such a system (100) can be
+employed is the San Francisco Bay area, where there are a
+collection of cities in close proximity to one another, a
+nearby ocean, a bay, an estuary, the more distant Sacramento
+River, the even more distant California Aqueduct system,
+
+20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+6
+
+and a somewhat distant underground aquifer, all of which
+can variously be used in the system 100. For example,
+treated urban runoff water from the San Francisco area cities
+(which can be initially collected and processed by the
+municipal storm water collection and distribution system
+108) can be routed to the California Aqueduct, and likewise
+water from the California Aqueduct can be routed to a large
+area drain field (106) to replenish the underground aquifer.
+It will further be appreciated that the system 100 of FIG. 1
+is an integral system in that the various water sources (102,
+including the urban runoff system 108) and water destina-
+tions (104, including drain field 106) are capable of being
+placed into selective communication with one another, ver-
+sus being separate systems (.e., the traditional prior-art
+separate and isolated storm water and treated effluent sys-
+tems).
+
+Turning now to FIG. 2, a localized (typically, urban) water
+runoff collection and filtration system 120 is depicted in a
+plan view. FIG. 2 will be discussed in conjunction with FIG.
+3, which is a partial side sectional view of the urban water
+runoff collection and filtration system 120. The urban water
+runoff collection and filtration system 120 is preferably
+placed adjacent to an essentially water impermeable surface
+covering 122, such as an asphalt street or parking lot, or a
+concrete sidewalk or driveway. The urban water runoff
+collection and filtration system 120 includes a hard water-
+permeable surface covering 124, and beneath that a water
+permeable filtration bed 129 (FIG. 3). The water permeable
+filtration bed 129 can be placed within a water impermeable
+conduit or swale 128, with the water permeable surface
+covering 124 placed (at least partially) on top. The storm
+water collection swale (or storm water collection conduit)
+128 can also be partially covered by a water-impermeable
+covering 126, such as cement, tiles, or asphalt. Urban runoff
+(including storm water) from the impermeable surface cov-
+ering 122 flows by gravity to the water permeable surface
+covering 124, and from there into the filtration bed 129.
+From the filtration bed (129), the filtered urban runoff water
+can be directed to the static sumps (112) and/or the dynamic
+sumps (114) of the urban runoff water collection system
+(108, FIG. 1). The water permeable covering (124) placed
+over the swale (128) can be, for example, water permeable
+tiles. Examples of water permeable tiles that can be used for
+the water permeable covering (124) are provided for in U.S.
+Pat. No. 9,943,791. The water permeable filtration bed (129)
+is preferably a bed of mineral particles than can filter out
+particulate from the urban runoff water. The water perme-
+able filtration bed (129) can be configured as a traditional
+layered filter, having a course sand or gravel upper layer, and
+one or more lower layers of finer grained sand, including
+porous sand. An example of porous sand that can be used as
+at least part of the water permeable filtration bed (129) is
+provided for in U.S. Pat. No. 10,106,463. The water per-
+meable filtration bed (129) can also include additional
+components such as activated charcoal, carbonate rock and/
+or mineral oxides (for the removal of phosphates, for
+example), and oil absorbing particles (not shown in FIG. 3).
+The urban water runoff collection and filtration system (120)
+can be easily maintained (e.g., to account for eventual
+clogging of the filtration bed 129) by removing the swale
+covering components (permeable surface covering 124, and
+impermeable surface covering 126) and replacing the filtra-
+tion bed (129). The filtration bed 129 can be provided in a
+modular fashion, such as compartmentalized contained units
+of filtration material which can be removed (once spent) and
+replaced with fresh compartmentalized contained units (e.g.,
+
+---
+
+US 10,865,547 Bl
+
+7
+
+1000 Ib contained sacks of filtration material, each encased
+within a fluid permeable covering).
+
+With respect to FIGS. 2 and 3, it will appreciated that the
+placement of the urban water runoff collection and filtration
+system 120 is such that the filtration bed (129) 1s preferably
+disposed away from areas of heavy road trafhlic which can
+impose compactive forces on the filtration bed, thus poten-
+tially compromising the effectiveness of the filtration bed.
+For example, in an urban core the urban water runoff
+collection and filtration system 120 can be placed beneath a
+parking strip at an outermost edge of a street, as opposed to
+being placed beneath a sidewalk, since existing infrastruc-
+ture beneath a sidewalk can require substantial modification
+in order to accommodate the urban water runoff collection
+and filtration system 120. In a suburban environment, more
+latitude can be provided for placement of the urban water
+runoff collection and filtration system 120.
+
+It will be appreciated that storm water (or urban runoff
+water) may need to be further treated by an urban runoff
+water treatment facility (see fourth-down item in water
+destinations 104, FIG. 1, as well as item 162, FIG. 8,
+discussed below) prior to being discharged to an aquifer or
+a natural body of water (e.g., lake, river, estuary, bay, etc.).
+Urban runoff water can include suspended solids (such as
+dust and other solids), oil and grease (from streets and the
+like), as well as chemicals (such as ice melters and phos-
+phates). Such water treatment facilities for the treatment of
+collected urban runoff (prior to discharge) can thus include:
+G) a particulate filtering system; (41) a flocculator to remove
+suspended solids which are smaller than the permeable pores
+of the filtration medium; G11) an oil and grease removal
+system; (iv) a salt precipitator (or desalination system), and
+(v) active minerals (such as mineral oxides, mineral carbon-
+ates, and charcoal, for example) to remove chemicals (such
+as phosphates). ‘Typically urban runoff does not need to be
+treated for the removal of biological agents, but a treatment
+facility to address this issue can also be provided for.
+Further, since the urban area (not numbered) covered by
+FIG. 1 can include industrial areas (e.g., manufacturing
+sites, bulk material handling and storage sites, and rail
+yards) such sites (which are typically located in specifically
+Zoned industrial areas, such as harbors, piers, industrial
+parks, etc.) can include specifically selected water treatment
+facilities to address potential surface contamination of runoff
+water resulting from the activities at a given industrial site.
+That is, the runoff water from industrial sites can be pre-
+treated in a separate facility prior to being introduced to the
+water collection and distribution system (108, FIG. 1).
+
+Turning now to FIG. 4, an example of a dynamic sump
+114 (per FIG. 1) is depicted in a side sectional view. The
+sump (114) can also be described as a cistern. The sump
+(114) can be formed as a cement cylinder (with the cylin-
+drical axis being oriented essentially vertically), and is
+preferably placed below grade. ‘The sump 114 can be also be
+formed in other forms (such as polygon), and from other
+materials (such as fiberglass). The sump 114 can be provided
+with a perforated crown 1390 (also preferably located at least
+partially below grade) which allows urban runoff water from
+the swale 128 (see also FIG. 3, described above) to flow into
+the sump (114). The perforated crown (130) can be covered
+by a removable manhole cover 132 to allow servicing of the
+sump (114) and components placed therein. In the example
+depicted in FIG. 4 the sump (114) has an open lower end,
+thus allowing collected urban runoff water to percolate into
+the ground. However, the sump (114) can also be provided
+with a water impermeable bottom if it is not desirable to
+have water from the sump percolate into the ground. Simi20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+8
+
+larly, the wall material of the sump 114 (..e., the material
+defining the vertical height of the sump) can be a water-
+permeable material or a water-impermeable material,
+depending on whether or not it 1s desirable to have water
+from the sump (114) percolate into the surrounding area (in
+the case of a water-permeable sidewall material), or be
+restrained within the sump (in the case of a water-imper-
+meable sidewall material).
+
+The dynamic sump (114) of FIG. 4 1s provided with a
+sump pump 115 which can be automatically actuated by a
+level switch (such as a float switch 134). The sump pump
+115 can be configured to discharge water which 1s collected
+within the sump (114) via the discharge line 117, which can
+be routed to one or more discharge destinations (e.g., any of
+104 and 106, FIG. 1). It will be appreciated that the static
+sumps (112) of FIG. 1 can be generally the same as
+described above for the dynamic sump 114, with the excep-
+tion that the static sumps (112) do not include a pump for
+pumping the sump. Thus, the static sumps (112) can drain by
+having an open bottom in fluid communication with the
+eround to allow water from the sump to percolate into the
+eround, as well as by overflowing into a dynamic sump
+(114) from which the water can be pumped-out by virtue of
+a sump pump (115). As indicated in FIG. 1, static sumps
+(112) can be in fluid communication with one another (e.g.,
+a cascading gravity overflow arrangement, as described
+below with respect to FIG. 10), and can also be in fluid
+communication with one of more dynamic sumps (114).
+
+The perforated crown 130 of FIG. 4 (also referred to as the
+perforated ring in FIG. 10, below), is but one example of an
+apparatus which can be used to allow collected runoff water
+to enter the sumps (112, 114, FIG. 1). Perforated cast cement
+rings are common known components used in storm water
+collection systems. However, since in the embodiments
+described herein the collected runoff water is generally
+intended to be passed through a water permeable filtration
+bed (e.g., 129, FIG. 3) prior to entering the sumps, other
+types of perforated crowns may be desirable. For example,
+the perforated crown 130 can be provided with openings that
+are covered by a metal mesh screen in order to reduce the
+migration of particles from the filtration bed (129, FIG. 3)
+from entering the sumps (112, 114, FIG. 1) through the
+perforated crown. Further, during installation the perforated
+crown (130) can be surrounded by fine gravel and/or sand in
+order to reduce the migration of finer particles into the
+associated sumps.
+
+FIG. 10 is a side view sectional diagram depicting how
+the sumps 112, 114 of FIG. 1 can be placed in a cascading
+arrangement 350. The cascading arrangement 350 of sumps
+depicted in FIG. 10 includes two static sumps (112A, 112B)
+and a dynamic sump (114A). The broken line between
+sumps 112B and 114A indicate that additional static sumps
+(112) can be placed before the dynamic sump 114A. Each
+sump (112A, 112B, 114A) is topped by a perforated crown
+130 which allows water to enter the respective sump. In the
+case of the static sumps (112A, 112B), the perforated crowns
+130 also allow water to exit the sumps by overflowing from
+the perforated crowns. As depicted in FIG. 10, the sumps
+(112A, 112B, 114A) are placed in a cascading arrangement,
+with sump 112A being oriented elevationally higher than
+sump 112B, and sump 112B being oriented elevationally
+higher than sump 114A. (The grade, or slope, between the
+sumps depicted in FIG. 10 is exaggerated in order to
+facilitate visualization of the arrangement.) In FIG. 10 sump
+112A can be considered the highest most sump, while sump
+114A can be considered the lowest most sump. Sump 112A
+is provided runoff water (such as storm water and the like)
+
+---
+
+US 10,865,547 Bl
+
+9
+
+from a first urban water runoff collection and filtration
+system 120A (similar to the collection and filtration system
+120 depicted in FIG. 3, and described above). The urban
+water runoff collection and filtration system 120A includes
+a surface covering 126 which covers the water permeable
+filtration bed 129. The surface covering can be water-
+impermeable (such as concrete or asphalt) or water-perme-
+able (such as water permeable bricks which do not allow
+solids to migrate into the filtration bed 129). Similarly, a
+second urban water runoff collection and filtration system
+120B is disposed between the first static sump 112A and the
+second static sump 112B. Once the first static sump 112A
+fills with water from the first water collection and filtration
+system 120A, the sump overflows (via the perforated crown
+130) into the second water collection and filtration system
+120B (due to gravity flow). Similarly, overflow of water
+from the second static sump 112B overflows into a third
+urban water runoff collection and filtration system 120C.
+Eventually, the last-in-line of the urban water runoff collec-
+tion and filtration systems (here, depicted as 120N) flows
+into the dynamic sump 114A. Dynamic sump 114A can be
+arranged similarly to the dynamic sump 114 depicted in FIG.
+4 and described above. Particularly, dynamic sump 114A is
+provided with a sump pump 115 which can pump collected
+water from the sump 114A to a water discharge line 117.
+While the sumps (112A, 112B, 114A) in FIG. 10 are
+depicted as all being of similar size G.e., depth and width),
+the size of the sumps can vary—tfor example, the dynamic
+sump 114A can be larger than the static sumps (112A, 112B)
+since the dynamic sump can receive a large quantity of
+runoff water from the static sumps, as described below with
+respect to FIG. 11. In general, the volumetric capacity of the
+sumps in the cascading arrangement 350 can increase as the
+sumps decrease in elevation from sump 112A to sump 114A
+to account for the accumulated volume of water collected by
+the respective sumps.
+
+FIG. 11 1s a plan view depicting how the cascading sump
+arrangement 350 of FIG. 10 can be expanded across a
+two-dimensional surface area (1.e., beyond the single inline
+arrangement of sumps depicted in FIG. 10). FIG. 11 depicts
+the two static sumps (112A, 112B) of FIG. 10, as well as the
+dynamic sump 114A. As depicted in FIG. 11, static sump
+112A can receive overflow water from collateral static
+sumps 112(@) and 112(6), and collateral dynamic sump
+114(a). Similarly, static sump 112B can receive overtlow
+water from collateral (or secondary) static sumps 112(c) and
+112(d). The arrangement for communication of the collateral
+static sumps (e.g., 112(c) and 112(d)) with the associated
+main static sumps (112A, 112B) can be similar to the
+arrangement depicted in FIG. 10—.e., a cascading gravity
+flow arrangement, with overflow water from the collateral
+sumps passing through a water filtration bed (see 129, FIGS.
+3 and 10). As can be appreciated from the simplified
+example provided in FIG. 11, static sump 112A can receive
+overflow water from three collateral sumps (112(a@), 112(5)
+and 114(@)), and dynamic sump 114A can ultimately recetve
+overflow water from 6 other sumps. As indicated above, the
+size G.e., depth and diameter) of each sump depicted in FIG.
+11 can be adjusted in order to allow the sump to receive a
+total potential inflow volume of runoff water. That is, sumps
+which are located elevationally lower in the cascading
+arrangement 350 of FIG. 10 will typically be sized larger
+than elevationally higher sumps in order to accommodate
+the accumulated flow from the plurality of elevationally
+higher sumps in the cascading arrangement 350. During
+periods of high runoff (e.g., high flows of stormwater) the
+lowermost sump (114A) can potentially become over20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+10
+
+whelmed with accumulated water from the other sumps in
+FIG. 11. In order to address this issue the sump system 350
+can be augmented with water collecting and holding devices
+such as stormwater collection tanks, ponds, basins and drain
+fields. For example, in FIG. 11 sump 112B can be provided
+with the overflow line 352 which enters the sump below the
+crown 130 (FIG. 10), but near the upper end of the sump.
+The overflow line 352 can direct overflow water from the
+sump 112B to an overflow water receiving feature 356,
+which can be a pond, basin, drain field, tank, bayou, lake or
+other natural or manmade feature which can receive the
+overflow water from the sump 112B. Further, the overflow
+line 352 can include a control valve 354 which can be
+selectively opened when an overflow condition 1s present 1n
+the sump 112B. The control valve 354 can be operated
+manually, remotely, or via a high-level switch located within
+the sump 112B (such that when water in the sump 112B rises
+above a predetermined high level, the control valve 3454 is
+opened, allowing overflow from the sump 112B to be
+directed to the water collection location 356). When the
+supplemental water collection location (356) is a storm
+water collection tank, for example, the tank can be provided
+with a pump (not shown) to allow the collected water to be
+directed back to the sump 112B once the high-flow condition
+has passed. By augmenting the sump system 350 with
+overflow water collection facilities (356), the end sump
+114A can be sized to accommodate normal runoff water flow
+conditions, without having to be oversized to allow for
+abnormal flow conditions. Further, providing overflow water
+collection facilities can reduce the velocity of water flowing
+through the sump system 350 during high flow periods,
+which could otherwise potentially damage the system.
+
+A particular advantage of the cascading sump arrange-
+ment 350 depicted in FIGS. 10 and 11 is that as water flows
+from one sump to the next in the cascading series, the water
+is filtered by a runoff water filtration bed (see 129, FIGS. 3
+and 10). Depending on the number of sumps in the cascad-
+ing arrangement, collected runoff water can be filtered
+multiple times before being discharged by the sump pump
+(115) in the dynamic sump (114A). For example, runoff
+water collected directly into collateral static sump 112(q@)
+(FIG. 11) will ultimately be filtered at least 4 times before
+entering the dynamic sump 114A. As depicted in FIG. 11
+(and not allowing for any additional sumps and filtration
+beds between static sump 112B and dynamic sump 114A),
+the collected runoff water ultimately entering the dynamic
+sump 114A will have been filtered on average 15/7 times
+(i.e., about 2.14 times—excluding water from the dynamic
+collateral sump 114(a@), and assuming direct runoff water
+flows into the dynamic sump 114A from a water filtration
+bed). As can be appreciated, the more static sumps that are
+connected together in a cascading arrangement (as per 350,
+FIGS. 10 and 11), the greater will be the number of times
+that the water is filtered by a filtration bed prior to being
+discharged by a sump pump (115, FIG. 10). If two additional
+static sumps are inserted between static sump 112B and
+dynamic sump 114A in FIG. 11, then the number of filtra-
+tions from collateral sump 112(a) to dynamic sump
+increases to 6 filtrations. It will thus be appreciated that a
+cascading gravitational water flow arrangement of static
+sumps, separated by filtration beds between the sumps, can
+provide for an arithmetic increase in filtration of runoff water
+prior to discharge to a designated destination.
+
+It will be appreciated that a further advantage of the sump
+arrangement 350 depicted in FIGS. 10 and 11 1s that the
+system of sumps (112A. 112B, 114A, etc.) and connecting
+filtration systems (420A, 120B, etc.) form an essentially
+
+---
+
+US 10,865,547 Bl
+
+1]
+
+closed system to objects larger than fine particles. This is a
+distinction over other storm water collection and manage-
+ment systems which are essentially open and can thus collect
+trash, as well as become a habitat for pests (such as rats and
+the like).
+
+FIG. 5 1s a cross sectional schematic diagram depicting at
+least one configuration whereby storm water or treated water
+can be transferred to an aquifer. The aquifer replenishment
+system 200 of FIG. 5 includes a large area filtration drain
+field 106 (see also FIG. 1) which 1s placed within an upper
+eround layer 12. The drain field 106 can include a water-
+permeable surface covering 202 which is placed over a
+water-permeable filtration medium 204. The water-perme-
+able surface covering 202 can be, for example, water-
+permeable tiles, such as the tiles 124 of the storm water
+collection system 120 described above with respect to FIGS.
+2 and 3. Similarly, the water-permeable filtration medium
+204 of the drain fleld 106 (FIG. 3) can be sand, gravel and
+other granular material similar to the filter material 129
+described above with respect to the storm water collection
+system 120 (FIG. 3). The large area drain field 106 (FIG. 5)
+can be provided with water (such as collected storm water,
+or treated effluent) via a supply pipe 206 (or water discharge
+line 117 of FIGS. 4 & 10) which can discharge water onto
+an upper surface of the water-permeable surface covering
+202. Prior to being discharged to the large area drain field
+(106) water from the supply line 206 can be treated in a
+water treatment facility 210. The water treatment facility
+(210) 1s depicted in FIG. 5 as a simple block, but can include
+one of more of: (1) a filtration system (including a flocula-
+tor); (2) a biological treatment system (to remove potentially
+harmful bacteria and the like); and (3) a chemical treatment
+system (e.g., for pH balance adjustment, metals removal,
+etc.). As depicted in FIG. 5, the aquifer regeneration system
+200 can include a shallow aquifer 14, which can be replen-
+ished via natural percolation through the upper ground 12,
+and a deep aquifer 18. The deep aquifer (18) 1s separated
+from the shallow aquifer (14) via an intermediate ground
+layer 16, which can be permeable or impermeable. While in
+FIG. 5 the lower aquifer (18) is depicted as being located
+directly below the shallow aquifer (14), the lower aquifer
+(18) can in fact be at a different geographic location—.e.,
+remote from the shallow aquifer (14).
+
+As further depicted in FIG. 5, the aquifer replenishment
+system 200 can further include a transfer pump 212. As
+depicted in FIG. 5, the transfer pump (212) is configured to
+draw water from the lower region of the large area drain field
+(106) and discharge the filtered water into the lower aquifer
+(18). Although not depicted in FIG. 5, the transfer pump 212
+can also be configured to draw water from the shallow
+aquifer (14) and inject it into the lower aquifer (18). In
+another variation, the transfer pump (212) can be configured
+to draw water from the shallow aquifer (14) and inject it into
+the deep aquifer (18). Further, a plurality of these various
+pumping arrangements of the transfer pump 212 can be
+provided for by a piping and valve manifold (not shown in
+FIG. 3) which allows selection of the origin of the water
+which is to be pumped, and/or selection of the destination to
+which the water is to be pumped. An exemplary water
+manifold system 150 is depicted in the schematic diagram of
+FIG. 7, which will now be described.
+
+FIG. 7 1s a schematic diagram of a water control manifold
+150 which can be used in the integrated water management
+system (100, FIG. 1) of the present disclosure. The water
+source and destination control manifold 150 depicted in
+FIG. 7 @which is but one example of the control system 110
+of FIG. 1) includes two water-source pipelines (152, 154),
+
+20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+12
+
+which can each be provided with water via one or more
+pumps (not shown in FIG. 7, but e.g., sump pump 115, FIG.
+3). The water sources for the two water-source pipelines
+(152, 154) can be any of the water sources 102 of FIG. 1.
+The water-source pipelines (152, 154) are each connected to
+a plurality of three-way valves 156, which allow water from
+either source line 152 or 154 to be selectively directed to
+alternative outlets “A”, “B” or “C”, which can be any of the
+water destination outlets 104 of FIG. 1. The three-way
+valves 156 (FIG. 7) can be controlled by controllers 158,
+which enable the selective connection of water supply lines
+152, 154 to the alternative outlets “A’’, “B” and/or “C’’. It
+will be understood that the three-way valves 156 can also be
+placed in a closed position by the controllers 158 such that
+no water is directed to the alternative outlets. While the
+control manifold 150 of FIG. 7 depicts only two water
+supply lines (152, 154) and three outlets (“A’’, “B” and “C’”’),
+it will be understood that additional water supply lines, and
+additional outlets, can be provided. When more than two
+water supply lines are provided, they can be selectively
+isolated from one another by separate valving (not shown)
+such that three-way valves (156) are suthcient to handle any
+number of water supply lines. The control manifold 150 of
+FIG. 7 allows an operator to select from a number of water
+source origins (e.g., 152, 154), and to direct water from any
+of those origins to any desired output destination (e.g., “A’’,
+“B’, “C”). This allows efhcient distribution of source water
+to a destination depending on then-existing conditions (e.g.,
+discharge to a river during low water conditions, or to an
+aquifer when river water levels are high). The water control
+manifold 150 also allows for excess supply water (e.g.,
+storm water) to be sent directly to a destination (e.g., an
+estuary or bay) with capacity to accommodate the excess
+water.
+
+As can be appreciated from the above description of the
+water source and destination control manifold 150 depicted
+in FIG. 7, the water management control system 110 of FIG.
+1 allows for the selective managed distribution of water
+from various water sources (102, FIG. 1) to various desti-
+nations (104), all dependent upon current circumstances.
+The water management control system 110 (FIG. 1) can
+include both automated managed (1.e., preprogrammed)
+distribution of water from water sources (102) to water
+destinations (104) based on pre-programmed algorithms, as
+well as human-determined distributions of source-water
+(102) to source-water destinations (104). While the software
+programming, and accompanying hardware for implemen-
+tation for the same regarding automated distribution of water
+from a source (102) to a destination (104) are well within the
+scope of those skilled in the art (and thus not depicted in the
+accompanying drawings), it will be appreciated that (at this
+time) in certain circumstances only human intervention in
+determining the operation of the water management control
+system 110 is appropriate in order to achieve the desired
+result of the distribution of source water to a desired
+destination. The “valves” 156 of FIG. 7 can also be gates in
+a water system (e.g., gates in a dam, or gates allowing
+overflow into a bayou), thus allowing release of accumu-
+lated or directed water flow from one water source (or
+water-receiving source) to another water receiving destina-
+tion, or to a water discharge location. This is a particularly
+useful advantage of the water management system of the
+current disclosure, in that it allows human intervention in
+order to direct influx water flow into the overall water
+receiving system to be directed to one or more discharge
+locations during an emergency situation. As one example, in
+the event of an oil spill outside of an estuary, water can be
+
+---
+
+US 10,865,547 Bl
+
+13
+
+directed from the water sources (102, FIG. 1) directly to the
+estuary in order to reduce the incursion of oi! from the spill
+from entering the estuary.
+
+FIG. 8 is a plan view schematic diagram depicting a storm
+water collection and distribution system 160, with similar
+components as depicted in FIGS. 2-4 and described above.
+The storm water system 160 includes a water-permeable
+storm water collection and filtration system 120 (as
+described above with respect to FIGS. 2 and 3) which
+receives storm (and other) runoff water Cleft side of FIG. 8)
+from a water-impermeable surface covering (such as a street,
+parking lot, etc.). Collected and filtered storm water (and
+other runoff water) from the storm water collection and
+filtration system 120 flows by gravity into one or more of the
+dynamic sumps (114), and water from sumps 114 can be
+pumped (e.g., via sump pump 115, FIG. 4) to various
+destinations (e.g., aquifer/river 164, storm water transfer line
+166, or to a water treatment facility 162). While FIG. 8
+depicts the three dynamic sumps 114 as being separately
+connectable to the destinations 162, 164, 166 by valves 168,
+typically all of the sumps 114 will be attached to a common
+line (e.g., line 152, FIG. 7) which can be connected to a
+water destination control manifold (150, FIG. 7). Further, it
+will be appreciated that static sumps (112, FIGS. 1, 10 and
+11) can be disposed between the filtration system 120 and
+the dynamic sumps 114 of FIG. 8. The various destinations
+(162, 164, 166) in FIG. 8 are basically depicted for the
+purpose of demonstrating that collected storm water (and
+other urban runoff water) can be directed to a plurality of
+different destinations, depending on existing conditions.
+Further, it will be appreciated that the sumps 114 in FIG. 8
+can be in fluid communication with one another, as depicted
+in FIG. 1. A benefit of the storm water collection and
+distribution system 160 is that it can easily be expanded. For
+example, a city may elect to first install the system 160 in a
+city center area (urban core) where there is little water-
+permeable ground which can absorb storm water. The sys-
+tem 160 can then be extended outward to residential areas to
+collect storm water runoff from impermeable rooftops,
+driveways, streets and roads. Further, since the storm water
+collection and distribution system 160 includes the storm
+water collection and filtration system 120, there is less need
+for the collected storm water to be treated prior to be
+discharged to a destination (162, 164, 166). In particular, a
+storm water collection and distribution system which is
+applied to residential areas outside of a urban core can
+require less treatment of the collected storm water than for
+the same collected storm water in an urban core due to less
+intrusion of oil and other contaminants which are expected
+from the collection of storm water in the urban core. An
+additional benefit of the storm water system 160 is that 1t can
+make use of existing infrastructure to handle the discharge
+of collected storm water. One example of using existing
+infrastructure will now be described with respect to FIG. 6.
+
+Turning now to FIG. 6, a sewage collection flush system.
+140 is depicted in side sectional view. The sewage collection
+flush system 140 includes a sewage collection line 116,
+which can be connected to residential homes or the like for
+collection of sewage. The sewage collection line 116 is
+provided with a stub 142 which can receive a storm water
+discharge line 117 from a dynamic sump 114 (as depicted in
+FIG. 4 and described above). The storm water discharge line
+117 (FIG. 6) enters the sewage collection line 116 via the
+stub 142, and is attached to a sewage flush line 144, which
+is placed within the sewage collection line 116. The sewage
+flush line 144 is provided with spray nozzles (146) such that
+the collected storm water is sprayed into the sewage collec20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+14
+
+tion line 116, thus facilitating flushing collected solids from
+the sewage collection line. In one variation, the sewage flush
+line 144 is replaced within a storm water distribution line
+(e.g., 166, FIG. 8), and in this way collected storm water can
+be directed (at least partially) to its ultimate destination
+without the need to excavate for the installation of the storm
+water distribution line. This concept (.e., of placing a small
+diameter pipe within a large diameter pipe) can be extended
+to any large diameter pipe (e.g., a water supply line, or a
+pre-existing storm water collection line) to allow inexpen-
+sive installation of small diameter lines. For example, and as
+will be described further below with respect to FIG. 12,
+since these large diameter pipes connect urban areas with
+suburban areas, they can be used to house a collected storm
+water discharge line 144, FIG. 12) to move the collected
+storm water out from an urban core (302) to a suburban
+region (303) where the water can then be discharged to an
+aquifer reinfiltration system (such as depicted in FIG. 5 and
+described above).
+
+As indicated above, the arrangement depicted in FIG. 6
+can be generalized to include locating a first pipe (or fluid
+line) of a first diameter within a second larger pipe of a
+second (and larger diameter). Preferably the first (smaller)
+pipe has a cross sectional area which 1s about 15% or less of
+the cross sectional area of the larger diameter pipe. Further,
+the services of the two pipes, and the respective operating
+pressures, are preferably selected such that fluid from one
+line will not contaminate fluid in the second line. For
+example, if the larger diameter pipe is a sewage collection
+pipe, and the smaller diameter pipe disposed therein is a
+collected stormwater distribution line, it is desirable that
+sewage within the larger pipe be prevented from entering the
+smaller diameter stormwater line. This can be accomplished
+primarily by maintaining the pressure in the stormwater line
+(smaller diameter pipe) above that of the pressure in the
+sewage collection line (which normally operates at atmo-
+spheric pressure). It will be appreciated that the large
+diameter pipe can be any line which 1s part of an urban water
+and wastewater collection and distribution system. The
+arrangement depicted in FIG. 6, and described more gener-
+ally herein, can greatly reduce the time and expense for the
+installation of the smaller diameter pipe when the larger
+diameter pipe is an existing (.e., already-installed) pipe.
+Even when both pipes G.e., the larger pipe and the smaller
+pipe) are part of a new installation, the arrangement of FIG.
+6 can reduce the time and expense of installation since a
+smaller trench can be used to install only the larger diameter
+pipe (with the smaller pipe disposed therein), versus a larger
+trench needed to accommodate both lines separately.
+
+In one variation of the configuration depicted in FIG. 6,
+the larger diameter pipe 116 can instead be a sump (e.g.,
+sump 114 of FIG. 4, and thus considered as being viewed in
+horizontal cross section in FIG. 6), and the smaller diameter
+pipe 144 can be rotated 90 degrees (1.e., to at least partially
+transverse the cross-section of the sump). In this modified
+arrangement the nozzle 146 can be positioned to point
+towards the bottom of the sump, and can thus be used to
+flush accumulated solids from the bottom of the sump, thus
+allowing the solids to be pumped out of the sump (via pump
+115, FIG. 4).
+
+An exemplary model of a distributed integrated water
+management system 300 according to the present disclosure
+is depicted in FIG. 9, which is a plan view diagram depicting
+how the system can be applied over a large geographic area.
+It will be appreciated that the distributed integrated water
+management system 300 depicted in FIG. 9 represents but
+one example of a distributed integrated water management
+
+---
+
+US 10,865,547 Bl
+
+15
+
+system within the scope of the present disclosure, and that
+other configurations of a distributed integrated water man-
+agement system can also be provided for within the scope of
+the present disclosure. In the example depicted in FIG. 9, the
+large geographic area to which the water management
+system 300 applies includes an urban area 301, and an
+outlying non-urban area 304. The urban area 301 includes an
+urban core (302) and a suburban area (303). The urban core
+302 can be defined by high-density buildings, road surfaces,
+and other structures which provide minimal surface area for
+natural drainage of water (including storm water) into sub-
+surface water-receiving features. The suburban area 303 can
+be defined by housing, streets, sidewalks, parks, and other
+surface features which provide for some surface area for
+receiving natural drainage of water Gncluding storm water)
+into subsurface water-receiving features, but may not be
+capable of absorbing all runoff from exceptional rain-water
+events into the subsurface water-receiving features. The
+outlying non-urban area 304, which extends beyond the
+urban area 301, can include such features as: (4) a bay or
+estuary (322); (11) a river (320); G11) a lake (324); a large area
+drain-field (106); (iv) a shallow aquifer 14 (see FIG. 5); (v)
+a deep aquifer 18 (see FIG. 5); and (v1) irrigated cropland
+326. Central to the distributed integrated water management
+system 300 of FIG. 9 is the water management control
+system 110 which, as described above with respect to FIG.
+1, allows for the selectively managed distribution of water
+from various water sources (e.g., 102 of FIG. 1, and e.g. 14,
+18, 106, 320, 322, 324, 108', 108" of FIG. 9) to various water
+destinations (e.g., 104 of FIG. 1 and e.g. 14, 18, 106, 320,
+322 and 324 of FIG. 9), all dependent upon current circum-
+stances. It will be appreciated that, depending on circum-
+stances, a “water source” (102, FIG. 1) and a “water
+destination” (104, FIG. 1) can be interchanged. For example,
+during a period of drought an aquifer (e.g., 14 or 18, FIG. 5)
+can be a water source, but during a period of excess raintall
+the same aquifer can be a water destination. Accordingly, the
+water management control system 110 of FIGS. 1 and 9
+allows for the selective direction of water from “water
+sources” (102, FIG. 1) to various “water destinations” (104,
+FIG. 1) according to current circumstances. As described
+above with respect to FIG. 7, the water management control
+system 110 of FIG. 9 can include an arrangement of multi-
+directional valves (156, FIG. 7) which allow for the selective
+direction of water from sources (102, FIG. 1) to destinations
+(104, FIG. 1).
+
+With further reference to FIG. 9, the urban core 302 of the
+urban area 301 can include a central urban storm water
+collection and distribution sump system 108', which can be
+as described with respect to the municipal storm water
+collection and distribution sump system (108) of FIG. 1.
+Similarly, the suburban area 303 of the urban area 301 can
+include a suburban storm water collection and distribution
+sump system 108", which can also be as described with
+respect to the municipal storm water collection and distri-
+bution sump system (108) of FIG. 1. The distinction between
+the central urban storm water collection and distribution
+sump system 108', and the suburban storm water collection
+and distribution sump system 108", is that the storm water
+received by the central urban storm water collection and
+distribution sump system 108' may require additional treat-
+ment to remove contaminants (such as oil, phosphates and
+ice melters) beyond that required to treat storm water
+received by the suburban storm water collection and distri-
+bution sump system 108". Accordingly, it 1s appropriate that
+the water management control system 110 allow for selec-
+tive direction of storm water from the urban storm water
+
+20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+16
+
+collection system 108', and the suburban storm water col-
+lection system 108", to a storm water treatment facility (e.g.,
+210, 330, FIG. 9).
+
+As further illustrated in FIG. 9, collected waters can be
+treated by water treatment facilities (e.g., 210, 330) prior to
+being discharged to water destinations (104, FIG. 1). In the
+example provided in FIG. 9, water treatment facility 210 can
+treat collected storm water prior to being discharged to a
+regulated body of water (e.g., a river, aquifer, etc.), whereas
+water treatment facility 330 can treat collected municipal
+waste-water (including sewage) prior to discharge to a
+regulated body of water. Water treatment facilities 210 and
+330 are provided in FIG. 9 in order to illustrate that different
+levels of water treatment are potentially appropriate,
+depending upon the source of the water to be treated. It will
+be appreciated that discharge lines from water treatment
+facilities 210 and 330 can be provided to allow for discharge
+to different destinations, but are not included in FIG. 9 for
+the sake of simplicity of the diagram. For example, water
+treatment facility 210 can discharge to river 320. It will also
+be appreciated that a water flow manifold (e.g., 150, FIG. 7)
+can be provided to allow for selective discharge of water
+from treatment facilities 210, 330 to various discharge
+destinations (e.g., any of 104, FIG. 1).
+
+Further depicted in FIG. 9 are auxiliary distribution
+valves 312, 314 and 316, all of which can be under the
+control of the central water management control system 119.
+The auxiliary distribution valves 312, 314 and 316 are
+exemplary only, and serve to demonstrate how the central
+water management control system 110 can perform remote
+selective routing (and distribution) of water from sources to
+water destinations. More specifically: G) auxiliary distribu-
+tion valve 312 allows for selective sourcing and/or distri-
+bution between river 320 and lake 324; (1) auxiliary distri-
+bution valve 314 allows for selective sourcing and/or
+distribution between shallow aquifer 14 and deep aquifer 18;
+and (11) auxiliary distribution valve 316 allows for selective
+distribution between cropland irrigation 326, and diversion
+to aquifers 14 or 18. It will be appreciated that in addition
+to being remotely controlled from the central water system.
+110, the auxiliary distribution valves 312, 314 and 316 can
+also be operated manually at their specific locations. As can
+be appreciated from a review of FIG. 9, the water manage-
+ment system 300 can be expanded by adding additional
+water sources (including additional storm water collection
+systems such as 108'), as well as additional water destina-
+tions.
+
+FIG. 12 1s a schematic diagram of an urban regional
+runoff water management system 400, depicting how urban
+runoff water (and in particular, storm runoff water) can be
+collected, managed and distributed from the urban core
+(302, see FIG. 9) of an urban region (not numbered, but see
+301, FIG. 9) to an associated suburban region (303, also
+FIG. 9) and outlying non-urban area 304 (per FIG. 9). The
+essential objective of the urban regional runoff water man-
+agement system 400 is to collect water runoff from an urban
+core (302) which cannot be absorbed by the local terrain,
+and direct that water to the suburban region (303), and/or an
+outlying non-urban area 304, where the water can then be
+discharged in a useful manner (e.g., for aquifer replenish-
+ment). In FIG. 12, urban-core runoff water 1s collected from
+hardscapes 402 (such as streets, sidewalks, parking lots, etc.)
+and is directed to the runoff water collection and filtration
+system 108' (which can be as described above for the runoff
+water collection and filtration system 108 of FIGS. 10 and
+11). During normal water runoff flow circumstances, runoff
+water from urban core hardscapes 402 is passed through the
+
+---
+
+US 10,865,547 Bl
+
+17
+
+runoff water collection and filtration system 108', and then
+can be passed along to any of the water discharge destina-
+tions 104 (as described above with respect to FIG. 1).
+However, when a storm water collection tank (406) is
+provided in the urban core (302), then water from the runoff
+water collection and filtration system (108') can first be
+passed through the storm water collection tank 406 prior to
+be being passed to the water discharge destination 104. In
+this way the storm water collection tank (406) can provide
+capacitance within the system 400 in order to account for
+variations in water discharge from the runoff water collec-
+tion and filtration system 108', and the capacity of the water
+discharge destination 104 to accommodate water from the
+runoff water collection and filtration system 108’. In addition
+to the possibility that the water discharge destination 104
+may be incapable of accommodating the contemporaneous
+flow of water from the runoff water collection and filtration
+system 108’, there 1s also the possibility that the runoff water
+collection and filtration system 108' is incapable of process-
+ing all of the runoff water from hardscapes 402, which can
+occur in the event of unusual rain events (such as a hurri-
+cane). Accordingly, in order to prevent overloading of the
+runoff water collection and filtration system 108’, a relief
+valve 404 can be provided in order to allow excess runoff
+water to flow directly to the storm water collection tank 406.
+The relief valve 406 can be opened Gnanually or automati-
+cally) in response to a high-level indicator 405, which can
+indicate that the water collection and filtration system 108'
+is at maximum capacity. When the relief valve 404 is
+opened, then water from hardscapes 402 can flow directly to
+the storm water surge tank 406, without first passing through
+the runoff water collection and filtration system 108’. The
+relief valve 404 also serves to isolate the storm water surge
+tank 406 from the external environment, so that during
+periods when the relief valve 404 is closed, the storm water
+surge tank 406 is essentially sealed. When the storm water
+surge tank 406 1s essentially sealed (by relief valve 404),
+foreign matter and pests (such as insects and vermin) cannot
+enter and foul the storm water surge tank 406.
+
+Still referring to FIG. 12, collected runoff water from the
+urban core 302 can be directed to any of the discharge water
+destinations 104 (FIG. 1). As exemplarily depicted in FIG.
+12, urban core (302) runoff water can be directed through a
+storm water accumulation tank 406 to any of the water
+destinations 104 via a collected storm water discharge line
+(144) which can be disposed within a larger primary pipeline
+116. The larger primary pipeline 116 can be, for example, a
+sewage line or a water main. (See FIG. 6.) In this way the
+collected urban core runoff water from the urban core water
+collection and filtration system 108' can be directed out-
+wards to a suburban region (303) where the water can be
+distributed to a number of different facilities (e.g., a water
+collection system 412, which can include tanks, canals,
+swales, bayous, etc.), additional water collection and filtra-
+tion systems (108"), and water treatment facilities (414),
+prior to be ultimately discharged to a final water discharge
+destination 104.
+
+The runoff water management system 400 of FIG. 12 can
+be integrated with pre-existing water management systems
+(and in particular, pre-existing storm water collection sys-
+tems and tanks, and pre-existing sewage and water distri-
+bution systems), in order to reduce the cost of implementing
+the installation cost of the system 400, and to provide
+flexibility in directing the collection of urban runoff water to
+one or more destinations (104) depending on then-current
+conditions. The runoff water management system 400 can
+
+5
+
+10
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+18
+
+thus maximize the removal, treatment, and disposal of runoff
+water from urban areas, with the potential benefit of replen-
+ishing regional aquifers.
+
+The preceding description has been presented only to
+illustrate and describe exemplary methods and apparatus of
+the present invention. It is not intended to be exhaustive or
+to limit the disclosure to any precise form disclosed. Many
+modifications and variations are possible in light of the
+above teaching. It is intended that the scope of the invention
+be defined by the following claims.
+
+I claim:
+
+1. A distributed integrated water management system,
+comprising:
+
+a plurality of water source supply lines, each water source
+supply line capable of being placed in respective fluid
+communication with one or more associated water
+sources;
+
+a plurality of water discharge lines, each water discharge
+line capable of being placed in respective fluid com-
+munication with one or more associated water dis-
+charge destinations;
+
+a water source and destination control manifold config-
+ured to allow selected ones of the water source supply
+lines to be placed in fluid communication with selected
+ones of the water discharge lines; and
+
+a storm water collection and distribution system, com-
+prising:
+
+a storm water collection conduit configured to collect
+storm water runoff;
+
+a plurality of sumps configured to receive storm water
+runoff from the storm water collection conduit; and
+
+a collected storm water discharge line in fluid commu-
+nication with the plurality of sumps, the collected
+storm water discharge line capable of being placed in
+further selective fluid communication with the plu-
+rality of water discharge lines by way of the water
+source and destination control manifold.
+
+2. The distributed integrated water management system of
+claim 1, and wherein the one or more associated water
+sources capable of being placed in respective fluid commu-
+nication with the plurality of water source supply lines
+includes one or more of treated effluent water, an aquifer, a
+natural body of water, and collected storm water.
+
+3. The distributed integrated water management system of
+claim 1, and wherein the one or more associated water
+discharge destinations capable of being placed in respective
+fluid communication with the plurality of water discharge
+lines includes one or more of an aquifer, a natural body of
+water, a water treatment facility, and an irrigation system.
+
+4. The distributed integrated water management system of
+claim 1, and wherein the storm water collection and distri-
+bution system further comprises:
+
+a water-permeable surface covering placed over the storm
+
+water collection conduit; and
+
+a water permeable filtration bed disposed within the storm
+water collection conduit.
+
+5. The distributed integrated water management system of
+claim 1, and wherein one or more of the sumps include a
+sump pump configured to pump received storm water runoff
+from the one or more sumps to the collected storm water
+discharge line.
+
+6. The distributed integrated water management system of
+claim 1, and further comprising an urban runoff water
+treatment facility in fluid communication with the collected
+storm water discharge line.
+
+7. The distributed integrated water management system of
+claim 6, and wherein the urban runoff water treatment
+
+---
+
+US 10,865,547 Bl
+
+19
+
+facility comprises one or more of a solids filtration system,
+a flocculator, an oil removal system and a salt removal
+system.
+
+8. The distributed integrated water management system of
+claim 1, and wherein one of the water discharge destinations
+is an aquifer replenishment system.
+
+9, The distributed integrated water management system of
+claim 8, and wherein the aquifer replenishment system
+comprises:
+
+a large area filtration drain field configured to receive
+storm water runoff from the collected storm water
+discharge line; and
+
+a transfer pump configured to extract water from the large
+area filtration drain field and transfer the extracted
+water to one or more of the water discharge destina-
+tions.
+
+10. The distributed integrated water management system
+of claim 9, and wherein the large area filtration drain fleld
+comprises:
+
+a water permeable surface covering;
+
+a water-permeable filtration medium placed beneath the
+
+water permeable surface covering;
+
+and a water supply pipe configured to discharge water
+onto an upper surface of the water permeable surface
+covering.
+
+11. The distributed integrated water management system
+of claim 1, and wherein selected ones of the sumps are in
+fluid communication with one another.
+
+12. The distributed integrated water management system
+of claim 1, and wherein:
+
+the plurality of sumps include a plurality of static sumps
+and at least one dynamic sump;
+
+each sump 1s topped by a perforated crown to allow a flow
+of water into and out of the sumps;
+
+the dynamic sump 1s provided with a sump pump 1n fluid
+communication with the collected storm water dis-
+charge line;
+
+the plurality of sumps are placed in a cascading arrange-
+ment by elevation, with the dynamic sump being at a
+lowest elevation, to allow gravity flow of collected
+water from the plurality of static sumps into the
+dynamic sump; and
+
+the water management system further comprising a plu-
+rality of water permeable filtration beds placing the
+perforated crowns of adjacent sumps in the cascading
+arrangement in fluidic communication with one
+another.
+
+13. The distributed integrated water management system
+
+of claim 12, and wherein:
+
+the plurality of static sumps include main static sumps and
+collateral static sumps; and
+
+the collateral static sumps are placed in a cascading
+oravity water flow arrangement with associated ones of
+the main static sumps via the plurality of water perme-
+able filtration beds.
+
+14. The distributed integrated water management system
+
+of claim 12, and wherein:
+
+the perforated crowns include water flow openings that
+are covered by a screen material; and
+
+the water management system further comprising coarse
+gravel disposed around the perforated crowns outside
+of the sumps.
+
+15. The distributed integrated water management system
+
+of claim 12, and wherein the sumps in the cascading
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+20
+
+arrangement include an upper-most sump, a lowermost
+sump, and an intermediate sump, the system further com-
+prising:
+
+an overflow line disposed proximate the crown of the
+intermediate sump and configured to recetve overflow
+water from the sump and direct the overflow water to
+one of a drain field, a pond, a basin, or a tank.
+
+16. The distributed integrated water management system
+of claim 1, and wherein the collected storm water discharge
+line is at least partially disposed within one or more of the
+water source supply lines and the water discharge lines.
+
+17. An urban water runoff collection and distribution
+apparatus, comprising:
+
+a plurality of sumps, each sump having a perforated
+crown disposed on an upper end of the sump, and
+wherein:
+each sump is configured to collect surface runoff water
+
+via the respective perforated crown; and
+the plurality of sumps are spaced apart from one
+another in a cascading arrangement by elevation
+from a highest-most sump to a lowest-most sump;
+the apparatus further comprising:
+
+a plurality of water permeable filtration beds placing the
+perforated crowns of adjacent sumps in the cascading
+arrangement in fluidic communication with one
+another; and
+
+a sump pump disposed in the lowest-most sump and
+connected to a fluid discharge line.
+
+18. The water runoff collection and distribution apparatus
+of claim 17 and wherein each water permeable filtration bed
+is covered by a water impermeable covering.
+
+19. The water runoff collection and distribution apparatus
+of claim 17 and wherein each water permeable filtration bed
+comprises a water-impermeable conduit and a bed of min-
+eral particles disposed within the condurtt.
+
+20. The water runoff collection and distribution apparatus
+of claim 17 and further comprising a runoff water collection
+system to collect runoff water from a hardscape, the runoff
+water collection system comprising:
+
+a swale to receive runoff water from the hardscape;
+
+a filtration bed disposed within the swale;
+
+a water-impermeable covering over the swale; and
+
+wherein the swale is in fluid communication with one of
+more of the plurality of sumps.
+
+21. The water runoff collection and distribution apparatus
+of claim 20 and wherein the filtration bed comprises a bed
+of mineral particles.
+
+22. The water runoff collection and distribution apparatus
+of claim 17 and further comprising:
+
+a plurality of secondary sumps, each secondary sump
+having a perforated crown disposed on an upper end of
+the secondary sump; and
+
+a plurality of secondary water permeable filtration beds
+placing the perforated crowns of the secondary sumps
+in fluid communication with a perforated crown of a
+selected one of the plurality of sumps;
+
+and wherein:
+
+the secondary sumps are laterally disposed from one
+another; and
+
+the secondary sumps are elevationally higher than the
+selected one of the plurality of sumps.
+
+* K * K *

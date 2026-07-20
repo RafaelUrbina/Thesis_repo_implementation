@@ -1,0 +1,8141 @@
+a2) United States Patent
+
+Sajwayj et al.
+
+(54)
+(71)
+
+(72)
+
+(73)
+
+(21)
+
+(22)
+
+(65)
+
+(S1)
+
+(52)
+
+(58)
+
+US010802136B2
+
+US 10,802,136 B2
+Oct. 13, 2020
+
+(10) Patent No.:
+(45) Date of Patent:
+
+WATER NETWORK MONTTORING SYSTEM (56) References Cited
+
+Applicant: Rezatec Limited, Reading (GB) U.S. PATENT DOCUMENTS
+2016/0282463 Al
+
+2017/0067233 Al*
+2018/0224550 Al”*™
+
+9/2016 Guy et al.
+3/2017 Farahat ........ E03B 7/074
+8/2018 Guy GO1M 3/40
+
+Inventors: Todd Sajwaj, Reading (GB); Louise
+Bermingham, Reading (GB); Andrew
+Carrel, Reading (GB)
+
+Ce
+
+FOREIGN PATENT DOCUMENTS
+
+Assignee: Rezatec Limited, Reading (GB) EP 0942974 9/1999
+FR 3039646 2/2017
+Notice: Subject to any disclaimer, the term of this
+patent 1s extended or adjusted under 35 OTHER PUBLICATIONS
+U.S.C. 154(b) by 347 days. a . |
+Hadjimitsis et al., “Chapter 6: Detection of Water Pipes and
+Leakages in Rural Water Supply Networks Using Remote Sensing
+Appl. No.: 15/654,636 Techniques,” in Remote Sensing of Environment: integrated Approaches,
+
+2013, pp. 155-180.
+International Search Report for International (PCT) Patent Appli-
+cation No. PCT/GB2018/052030, dated Oct. 5, 2018, Ll pages.
+
+Filed: Jul. 19, 2017
+
+Prior Publication Data * cited by examiner
+
+US 2019/0025423 Al Jan. 24, 2019 Primary Examiner — Whitney Moore
+(74) Attorney, Agent, or Firm — Sheridan Ross P.C.
+Int. Cl.
+GOLIS 13/490 (2006.01) C7) . . ABS ERACE oe
+E03B 7/00 (2006.01) Embodiments are directed to a water network monitoring
+GOIM 338 (2006.01) system for determining leakage from a network. The water
+network may comprise any of pipelines, aqueducts, reservoir
+GULM 3/40 (2006.01) dams, reservoir embankments and sewers. The present water
+GOLS 13/86 (2006.01) network monitoring system employs Earth observation data,
+USS. CL. such as synthetic aperture radar (SAR) data and optical data,
+CPC oo. GOLS 13/9023 (2013.01); BO3B 7/003 collected from a geographical region that includes the water
+(2013.01); GOIM 3/38 (2013.01); GOIM 3/40 network system of interest. This data is collected over
+(2013.01); GOIS 13/867 (2013.01) successive time periods and analysed to detect any abnormal
+Field of Classification Search changes in the indicators within the area in the vicinity of the
+
+None
+See application file for complete search history.
+
+water network.
+
+29 Claims, 22 Drawing Sheets
+
+} Aperture Radar (SAR) dats for a geographic region containing at feast 2 portion of the |
+
+water nelwark (3043
+
+for the gaagraphic region
+(393)
+
+it SAR data and the obtained set of ontical data for spatial or temnora! anomalies related |
+ia. a pluratity of indirect mcicators af leaks in the walar nelwerk :
+(308)
+
+Detecting, by ihe water network monitoring systern and based an the
+} analyzing af the obtained eet of SAR data and the obtained set of optical cata, one or
+more spatial oc femperal anomalies related to al feast one of the plurality of indirert
+inicators af leaks. in the water network and oot airibulable to environmental factors
+Within the geonrapnic recor
+
+{3073
+
+Generating, vy ihe water network morntoring system, a set of graded
+
+Hocations within the geographic region having symptume assuciated with leaks inthe |
+| water network based on the detucted one or mare spatial or temporal anomaties
+{309}
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 1 of 22 US 10,802,136 B2
+
+‘€
+
+. “ ; . “ly . .
+‘on . tat etetttichete te il te eee ee
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 2 of 22 US 10,802,136 B2
+
+|
+|
+|
+
+fPUEELAY
+MODULE
+
+‘ie he ee
+
+\4 ANALYSIS
+| SACCAILE
+
+a a a a a eg Tg ee og Sg a ee ed
+
+ea,
+
+rere cae f. fi
+PS EEEYO EAE. T.
+
+a eg gn ee kek ah ole a ade
+
+peaiepeeeeeeneeesenemmaains eee a
+
+. a
+ein 4 a a
+lS = = et hoes “_ ety We Sa ee ee et
+. r
+wv
+
+Gone
+PATABALE few
+
+}
+‘ay
+“4
+a
+a Ey
+
+;
+
+Te | - :
+easy FER! ObrE OTS _ | Prec |
+
+Aelia)
+2 .
+, aie fe a
+- - ee
+we “e
+gg ge eg ae Fa ee gg al ah De ae =e, A SR a a eee le ree ee ae EE ie i ——— ie ee aa arr ee ee an
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 3 of 22 US 10,802,136 B2
+
+Obtaining, by @ water network mon nitoring syste, a set ot Synthetic
+| Aperture Radar (SAR) data for a geographic region containing at least a portion of the |
+water nebvork (3073
+
+Obtaining, by ihe water nehvork monitoring systam, @ set of optical data :
+for the geographic region |
+(303}
+
+mma ma a a a aa aa aaa aa a dd a De ee ee a OP PP PPT TT ek
+kk oo oe 8 ss ss ss sg
+
+: Analyzing g, by the water network monitoring system, the obtained set of
+SAR data and the obtained set of optical data for spatial or temmonal anomalies related |
+: io a Durality of indirect indicators of leaks in the water network 3
+
+eee eee TN Naess eee eee eee eee eee eee eee eee
+FA, A A A A A ee ee ee, i i i i i i i i i i i i i i i i i i i i i i i i i i i i ee ee ee ee ee ee ee ee ee hel
+
+-Detesting, by the water network monitoring system and hased 6 on a the
+analyzing of the obtained set of SAR data ard the obtained set of optical data, ane or
+more spatial or temporal anomalies related to at least one of the plurality of indirect
+indicators of feaks in the water network and not attributable to environmental factors
+
+within the geographic region
+
+ee a PO a i i i i i i i i i i i i i i i i i ee ee
+
+2 Generati 1d, by the: water network moanioring system, a 1 set of graded
+Hocations within the geagraphic region having symptorns associated with leaks in the
+water nelwork based an the detected ane or rnore spatial or teniporal anomalies
+
+ao te a a ee KAA AAA ss A eee ee ee ee ee
+7 a a a a a a a aa aa
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 4 of 22 US 10,802,136 B2
+
+Cc ae a a i ee ee i i ee ee i i tee le la lr le mee ee ee mee ree ee tee ee ee ee ee ee ee ce ee ee ee ee ee ne ee ee ee ee ee el ee eT
+
+ritering noise fram the obtained set of SAR dats using a multitemporal
+filter
+(4043
+
+me ee aa ee dE dd aa a a ae a OOO OD OO OP eee eee aS Se Ss
+
+‘Identifying 0 ane ar rnore focetians within the geographic reqion and
+[corresponding fo locations of the water network where the filtered SAR data indicates a
+
+drop in backscatterad energy relative to at least one previous monitoring periad
+
+Rioftting the identified one or more locations spatially in a graphical
+representation of the geographic region
+
+mm BP mm mt mm em ee Re he ee A ke ee Pe me me ERE TP ee ee PP Pe RP me
+
+: Over! aying the graphical representation of the: geographic. region with the
+plotted one or mare locations onto one ar mare images of the obfained optical date (407)
+
+Cr i i i i a a a a a a a ele el ale ele il al ele a ee ee a ee ee ee ee i i i i i i i i i i i i i
+Ce a, A A a A A AO A A ee a |
+
+Filtering the plotted ane or more forations based on the one or more
+MAaGaS
+{409}
+
+Ce i a i i i i i i i i i i i i i ee ee i ere ee We eee ee ial ea il De i Dale aia ale Dal ae le Dae a ane a me a ne me ne et et mY ee DD i i a i "A i An A i An I A i ll ll
+me a a eo a
+
+---
+
+U.S. Patent
+
+1 sonora
+ee eee ee ee ee |
+
+TT ee ee eee eee eee eee ea eee
+
+Co
+
+Cr |
+rewereer
+
+Se ee |
+
+"+
+
+nde
+
+Bek eee ee
+
+x.
+i,
+
++r
+Li]
+
+Co
+4
+-
+
+r
+ala at
+
+r
+
+oa
+
+o-re
+
+4
+Ld
+
+-
+
+=
+
+Pa
+
+or
+
+=o
+|
+
+x a)
+
+-
++
+is
+
+a,
+Ba
+a
+
+a
+
+sh
+
+ae he
+
+1
+a
+aad ef,
+
+gi
+
+La en
+
+ire
+*
+=
+©
+a.
+
+eee
++e ne
+
+Ya |
+-
+r
+r |
+is
+
+|
+
++
+lig ia ee ee an A. nn ae ee in ri
+EI ee ee ee *
+ae eee ee ee
+
+an AAA A A
+nie de ide de ie ie ra + or
+
+Lee r
+AAA A EE
+SEER ee
+
+rs
+
+* ma
+ry
+
+- +
+7
+
+.
+
++
+ke - ||
+
+er
+
+ert te
+
+i
+Pe ee ae
+
+Oct. 13, 2020
+
+Lo |
+
+oe ee
+
+r! -
++r
+# 7
+
+be ee ee |
+
+r
+ao ok
+“sae
+. 1
+LT
+in ane
++
+
+- rt
+© Le +
+far an ane
+4
+
+‘4
+
+ee ee ee
+
+bokeh
+gl
+
+'
+ae
+kk r
+SAA ee
+tetas
+a a
+‘ee
+eae
+a ea
+ee
+a a ee
+= ie i ie
+aie ei
+ee
+ie ie
+i
+ay ao
+matte
+{i
+aay
+i i
+Oi i ia
+ie ie
+al 2d oe
+ee ie
+ei ie ie ie
+ie ei
+le ada
+Se a ee
+a
+Sea aoe
+le sd
+i ie
+ele ia
+ee ie ie
+ee
+oe ie
+a
+1
+‘me
+‘yl
+
++ me
+
+me
+
+et
+hain
+| eit. nana
+a aoe i AA ee eo
+tr
+
+‘yatta ta aaNet
+Wy r
+‘haa
+
+"ir
+
+“
+
+“ty
+
+.
+
+ig
+
+Ce
+Tee ee ee eee
+
+LT
+. Pall a
+St a et
+ae an ee a
++ NN
+a att
+aad
+
+or
+ad
+
+Ed
+
+a a en
+
+45
+'
+
++ aie dei ieee ie dee ie
+
+nA a
+‘4 ae ie i
+vf ri ee
+* Pa ern erie ie ie a eee
+et a ee ee ie |
+oy wr ai Aa AA
+et gg Miata rae nanny
+™ ata ae, a iain
+" ie ie ie is |
+ie rie ie ie |
+an i re i nA
+ir ahah” ata
+i" pinta tat
+ran ite ie ie ie eee iia
+it ie ie ie ie ie rir.
+i. ” iri it
+ai mae aa
+nA AA
+nana
+arate a
+naan tat) a
+7A A A aa A
+ie ne ie i ie i i i |
+i ee i
+a a a a
+ei ie ie ie ie ie ie i
+ei ie ie ie ie ie ie ie ie i
+cir in ie ie ie i
+ie ie ie ie ee i i i
+ie ee i i
+ie ie ie ie ie ie iii |
+ie ia ie ie ie i
+ie ie ie ie ie ie ie i i |
+CPA A A ey ata!
+ok Fekke FF ee
+
+ae A A A n+ © Ld
+Lo | oe LJ ee a
+x * ma + ma al aa a
+an aoa + r
++e 5 8 Ld
+_A_A_w_fl eee fe
+a4 FI ae a ie
+A_a_#_f#_A_ fo A a +k 7“
+aA A a aff ee arate ae
+| oe | =: ee - Fm '
+FI BAAS Sn ete Ly Pa anh .
+ee
+AAA 4 A
+il i ini Li]
+A_A_A_ AAA
+ee ee |
+AAA ALA
+aA A
+A_x_4_4 a 4
+oe '
+aes Lt ig tia a, .
+
+mata
+
+Srscs
+
+Palas
+
+a
+
+ian +2 |
+
+n_y Lt
+'
+rE ERE ERE EEE mat wy aaah tat ttt tate
+ar FT ne
+
+Sheet 5 of 22
+
+a ee
+ce
+
+7 Cn ee ee ke | + i i ie Oe ee ee i ee ee
+. = ass eee - a r a “a ee he ee a * er i i ie ei i i ee i i i ie i in i i i i iia
+
+a5
+oe.
+=
+2.
+oe.
+=a . a . ee
+at + eee aeoae
+a ri ir : -7a7-75
+a5 c = a TTT
+a - + _ 7% -Tao-75
+"9 - a etree ne setts
+a a nS ie i oe fr Tata eT a”
+aa -"- * x at » aeTeT
+* 7-7 rales Mitt atte al at a —_ ane:
+. CC is a 7m aon en aA aM - -7-"-
+. -7-7-7-7-"- ate a aaa aaa ae re
+a The ae ie ie ie ie ie ie ie ie ie ee hee hei eae aa ee
+. CC ba a ii ie a an
+a. ne i ae oe aie ie ie ie ie ieee re eee ac
+ae ix AA fe i ie iii iii wet nT
+a ae ae | aa a aa aaa ee a -
+Cee A ie ie ii ie a7 7272772727. T :
+a a a3! aa Aa a a a a - ie ice ic -
+oo eg lee iW peas ac
+a. ie a a! aa i ee ee : i ee ee ice! --
+Cees sa a maa a _ ei iii - woot AT -
+a won 8 i a a i i ee ee ae : i
+-1-7-7-7.7- Nea a " i ia - woe 727-7727 Ae
+a cc M A oA AA aa foe i ia en ees i ie nce ae
+a. a We ala a a ae a i ie : 7-7-0 -747-7-7-7-
+RC a a a 7727-727 eTe a a -
+. ir io a Aa aaa we ea ee
+a - 7-7-7. toi ie ei woe nT e728 . : a7. 7-7-7272 7-727.
+a eo aan pe ii iii iin i nc rc a i
+-7-7-7-7.7- iii lemme ia iia in ie ieee eon TT . : -"-7-7-7-"-
+a. oT ale 7 a0 -7s aan ieee ie ie eee ee ee soa 0-74 7-7-7 27-1 -7- ee A ee ace ac
+7-7-7277. ie i Ala a a 7-722 a TT
+a ere i" ae a aa aaa 2c yo-7 27-720 - Tee ot
+a etal etal aA AAAS A AAA AA AAA ANASAASA ALAA wera eee eT ot
+= 27-7 -7-7-78- aaa aa aaa Aaa aa aad 2c a : 7-1-7. oe i
+7-7 -7-7.7- 2 a aan a 7. -
+= -o-T aoa les aaa ama ce oe ec re
+-_-7-7-7.7- i ee ee a : ay
+-7-7-7-7.7- ei ee i a = eT ce ce
+a. oT ale 7 a0 -7s a a cs cr
+7-7-7277. ein isin iii iii a ne re See
+a 7-7 -7-7-7 8 aaa a
+-1-7-7-7.7- stg Mig aM MMi ithe sole Me
+a eT aT Tal eTs a A a ma -i-)- a A
+-7-7-7-7.7- i wei ie idee i ii ie i ie -"-7- : oe
+a. 27-7 -7-7-787- ve ie ie ie ie ieee ie aa aa aaa ve 7-7-)- i An
+Re aa a An a A A OA -"- a a
+a wa aa a i ri ar 7-1-7.) -)- a i oo
+Ri a a ea a a -"-7-7-7-7- a
+a i CRC a x a a a A a i eT eo Tae a
+wa aia il i i iin i nai 72727-72772". 7-7-7. TL. *
+a. i innit ' i ie +
+Cr ae aa aa a A ea ee ee a "s
+a i rk aes! ca aa a a aaa ee re ae -*s
+i a a a A wou a = Te. -_+7- -"-"- rs
+2747 - - wate :
+“" TAT e7e" ete. “tee Na ei heehee 7-7-7. 7-7. 727-727. *"
+. 7-7. ce a iii ek we -"-7-
+. -"-747- -7-7- Aaa aaa aaa on) 20-20-78 :
+* Tall! LR eo! ALA mn al - ce
+. -7-"- vee ee 1+ -7- 7s
+aa - eae --- wo a eae -- -
+7 a
+7 :
+aa ry
+=a Se - at meee ee ee
+eee ee ee a a . ir irr)
+2. - Se ee i ee a ee ae
+- se - i re oN cr
+ee er . -* a ete a ae ae a
+oe n7 eT AT. : : a 2
+-1 1-72) 2727-0. -o-1- 0-7 v4 i MMR be sn te,
+ee +, wee be Re
+woe TT ee ee ee es - -
+ie arc AO a
+ea ccs FS aan gal, Me
+woe eee eee! lt i i stigma tee
+won nA Pe ees
+- TTT ite a a
+-"- i ie i ac a atte MRM NNN MN Ie, XA,
+--. 7. ee ee a - 14404 4 2 ee
+-_-7- wo Te iii mie ie Oa . .
+wale . a a eke eee ie rere ss xtnrere,
+waa ela ee ae - a ae Teg fe iii ne
+a crs i i ee yee a een aaa mt.
+a a a a _ . . , -_ = 7 ell i a *,* as
+i i ce i -- a a RRM le a aa aa
+Te Tee aaa Tee ee Tea ate ea aa eee tee, les oa eat ti tal e
+- Fn ea re) es ee ee ee ee ie
+Cee TOT ey ht
+a ToT 1” rem a
+ee ye a |
+we ee ee ee a ee ge ge a ee ee ee . rel i ein
+
+ch a . a a ae ne mae nae haa hee
+mee an — ' in ie ai +, nA vate #
+igi ge = + Fig nie ie + ein ie a fai
+
+aa 4
+Pal aaa aaa is ©
+oe + 8 i ie eae
+* aA | ‘.
+
+mz -
+i ad ". non * nN rena
+aa A’ Fld -
+a a2 tia a et ana rete
+
+oo
+- +
+
+a a a
+sora |
+
+tt tt tt tt tt tt tt td od tt tt td dt tt dt dd
+
+pi
+taht ileal i ie oe
+7 A,
+F a
+Be aa
+ee a A AAS
++ Pe A .
+ae aie i de i i ii i waa
+ee A A a a Te Te
+4 - -.'.°-'-
+MAAR OR ARAN eee
+etna iil ie a ae "m te nana . DT
+eal Tn .
+. . . 7 -
+i. ~e 7 hi * "e i tae Tae ots a an aaa an oe
+: Fy .
+es * os eo i . statate ata aie, aan . tee? erate? iin We arnitets an ee. °
+rar al ee ee a Pa = ow) es ee se ee 7 a a ee -
+. ee . a ee ad ae a es aor tes ane fies - ee i
+seater? at bd ae ve ee ee ql eee " A ae] i ee ee ek - -
++ Sa ed ‘+ ee eee ee ee ee ee a
+wee ea a * mm i Se ee ed ee oe ee a ie ie ie ie ie ie ie ie ie ie i
+er aa ed , Ne ee eo eo ie A ee ee A a
+ee ae i i i ee ee A A ee ee ee ee ie i i i pie ie ie ie ie ee ie i i ies
+a ieee St ie Tn ee ee: ae a rt Mila Ma aie ii iii .
+‘ Pe ata i _ pi ie ie ie ieee iii ise
+ee Male ei ie ia | ie in ie ie i i ir iri i i
++ ae ii i ie ie ie ie ee ie ee ee ie ie in
++ MA ALAA AAA Aa eel oi i i i i
+Se ne aaa AA aaa aA
++7 hehe, al Min tri iit i
+ni pm ie i p  i r iri ii'
+Ae al Mi hii
+initia ia ie a
+lie ee ee
+4 ata tete® . ate ty Nah is va ee
+aad oe ee . a rat fir ie ie ie ie ie ie
+A ee Pa +k ee ee ee
+ee a ee moe Meet Ny ahaa Malt
+Pe ee ee he i ee ee ie ie ie i i i in |
+"eH es ee eee ee aa ee eee ie ie ie
+. . ie 7a ee eek ee a
+. ' * pie ie Salat ay kis See A ae
+Sat et ad 7 ie ei nk Be a ee a ee
+ij -
+fal ian Fa a a eae ee ie ini iri ‘ AG .
+7 ananaaaA atete Me ‘
+ae aa Ae nM .
+4 ana 7 as ™ ‘
+ee orate
+a 4 .
+
+rere
+
+Fs
+
+ao
+ae
+7
+
+nA a)
+aa sete
+AAA A
+mati
+in id
+nna
+aa
+O - in
+ie ie ie ie ie ie ‘ rir
+ae a.
+setetutitaceeuratacieate” sare at ata mates ahaa ; i nae
+r
+ei ii i i get Nasal Ty " ae
+rir ee alte
+ii vee ini oe am i nie
+was ate” Agra
+ar | Dia a
+eee i
+
+44 tt tt tt tt
+
+44 ot
+
+lal ne ee . a i
+ye eatgt ahg hal ae oat ee am:
+- . !
+a ere r
+ie iam ee ” -¥
+aM Me ee * ee amt TH
+SAAN ana oe NM . i ;
+i, ete ene ae
+ke "
+. ste = watt :
+Por vie ie ee ee a ee ie . ;
+WMA AAA +a ee * a
+ee ei ie ea ei ein ie in ™
+xa OR a ee A case
+- ie.
+Tye” GALAN * ar 1 aa i. ann i
+a Motataneniae ™
+Petits ee i
+ipa. i
+ly AAA AAA ' TZ
+atattatetatete ae
+7" ri iis ie in|
+| ie ie ie ie ™
+nd i i ie ie
+nian ON ASR a i ;
+AA ai ee ee Pada j
+pie ie is ie ei ir A ee ™
+wpacessiatss AN ate atti nh Mate Md
+aie ie ie | ri ie _ a a a a ee TT
+ie ie ie iN ie iia ie nis ie ie ia ia ie pine ia
+Aa ie, ie sie ie ie ie in ie in| rie ie ie ie ie eit ie, it ie ie ie ie ie in ie in !
+Maa ke tae ea nee ie Piette ieee ie dei eee eee a ee ee ie a
+ei ee ie ie A eee ie i ie | aie aA ARR A -" 7}
+_ A A a a ir ie ie | ae a A ie ie ie ie ie ie ie iii i ie | = . va
+in peed ine in iii in 2 ei nd mM AA | pie ie iN ie ie ie ie i ie i | -".
+a ann et i sceteniatanabstbebytche ek howe ora
+: u .
+ae i iii i i ie af aan sites ety i it i a 1 "¢
+_ rie ie ie ie ee A a hoan ora
+atta ata” tat aMy ei i nia in ain i i in ie a -
+re A ie i ee ee a aca aa a aa aa Mal i Sheek : ae
+ie ie ip ie ie ie iii i i ea | iii :
+a a i eee oe en, wo
+ie ie in ia iets eid i ii ie ie ie . ;
+a ee a T7
+A a
+Ae ™
+ete ee ee ee ee ee .
+(ie ie ie eee ie i ie r
+ii nia i i i aie .
+ier ip ie ie es io ie ie ie ie ii ee ie | ay 7
+in wie ie ie in
+
+TZ
+
+TA
+
+TA
+
+" T
+
+| F
+
+ie va
+
+a TA
+A_Al
+
+aa T,
+A_al
+
+aa T,
+A_Al
+
+mal TA
+|
+
+aA 7
+A_fl
+
+TA
+Ai.
+
+Tal
+
+Le
+
+TA
+
+TO
+
+44 a od od
+
+bt
+
+Sacha i aa aM ath
+einen ia aan i. in wana eee oT
++t " rie recs 7
+
+ee ee ie ie ie i .
+
+A eee *
+te ee aie ie ie .
+a ' .
+ae | a, +
+
+a tal
+.
+Fl _ +":
+FI fa tetas i .
+FI | /
+. vii a “*.
+r :
+i ee = .
+we pie ie ep i i i | in eter ae
+on ee ee ee ee ee a aa as
+nd ie dn ia i i i iri in in r AN 7s
+pie ie ie ee ie a ie i i i ip ie ei ei i in| + 1 a a
+ee ie eee ee | i ee A -
+a ii ie ie ie ie ie ie ie ie ie ie ie ie ieee eee ie Mat. 4. a
+ot nA A A A A A A ie i ie ie ie ie ie a .
+a AA A a ans A a a " Mats 3" a
+ie iia ie i ie i i i ne ie i ie ee ee ie ‘i -".
+nd vie iy ie ie ie ie ie i i i ie ee ns | ' pie ie ie ie ie ee ie ie in| it. ii boas ae
+
+Hatter ay
+
+4
+
+4
+
+"ana
+
+sierra
+
+=
+
+4 tt ot ot tt tt tt dt dt td
+
+4
+
+ea a #. fanata a i a7 ee
+
+4
+
+A
+nn A_ ad | A_fl
+a | BAA A Ee
+| ee ie ee ee ae ml erste * ele a *t, ml
+a
+r
+Fy
+
+LI
++ 5 4 a_i _al
+- 8 | Sa eT ei ee =
+
+ae nei ie
+
+atest atte ee aA
+ee ee
+
++ +
+
+44 tt tt tt tt dd
+
+1
+1
+1
+1
+
+Fy
+
+4
+
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
+Fy
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+
+4
+
+US 10,802,136 B2
+
+Fig. 5A
+
+---
+
+US 10,802,136 B2
+
+Sheet 6 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+"ede de de ded dee i et eet i tit i ti i ti ei i” i ie” ee i ee” et” ti et” i te i ti i” i i” i a” ti ei i ee” i ie” i ie” i tt i” i te i ti i” i a” i te” i ie” i i ee” i ie” i i ei et i ti a” i te i ti a” i i” i te” i te i ee” ie” i et it” it i ti i” ti i” te” i ie” i ie” i i ei ti eit ii i i ti i te i ei i” i i ee i ei ti ti” ii i” i ti tie i i” ie” i i ee ee i ie i i ei” i” i ti i te i i ee” i” i” ie” i i” i ei ee ti” i” ti te” i ti i ti i i i” i” es ie” i te i”
+
+Se ee Re RR ee iSresionieranraae arnt
+
+=
+Pal
+Be ia eats RS SS RE aR a a SE Sate Dat SE ES EI i ERS
+
+pe ce ec ce ae
+
+-
+ae
+at
+
+i OF,
+ae
+¥
+
+x a
+
+ae ee,
+ee r
+«ws .
+
+z E E
+Fr. A.
+
+ee
+q_w
+
+7
+.
+r T.
+7
+7 ,
+w
+
+a ae
+ae
+wo
+
+] =
+.
+
+“a =
+.
+
+a i
+* F
+A x
+
+=
+
+ae
+
+Ls
+LE
+aoe
+x
+Ls
+
+a a ot. *
+i. sm 4 _ “ ae Li] aa oa al 4,
+a 7, _ a ALE a,
+- rt, a, * = a re! me ‘, xa ate me x *
+_ 7. | i a, Fr. 7 = te =.
+a me, (| i. i. * * 7 a me, Fr.
+*
+ae _t. if a | . a mim me nah ria * Pal i" int a 3 i *
+. 4 x = 4 J J a a, a
+am - ‘ a. " em a gel
+mt i 7 = 3 4 es atk
+F - = a a, ia at, Fr.
+7, m. = a Lt 7, 7 * Le cet *
+. Fr = _ me, ae a
+= _ = q
+=. a = 7 x) a
+a [a
+=
+
+a. "
+* ,
+Co a:
+“4.
+er
+A.
+A
+.
+AL.
+
+e
+x
+m
+
+‘a
+*
+ni
+
+<M
+
+a,
+F
+“a
+:
+
+at,
+a
+2!
+- . A
+= .
+. =
+=
+
+Pa ou Num ate a i a i
+ee ie Pad Pee “a a ca ee an
+PF ge am a “7 vo mat A
+a “ Ae 4 imate a *, seer * r.
+2 am ie Ce aie eS “e
+Pe a fe: + ee
+2 “yi ' % is! = ri!
+7 x hm a at a no
+ae ; “2 ail a7 “at
+a ae Kx Oe allel ©
+a ’ AYE ee ee a ene
+“x F Se a a, ee ee ide a a ie ae
+a i, A Yom er, i ee a .
+*, Ca x = a
+7 a
+
+_.
+
+een a
+
+a ou 2
+mt J
+i 7!
+* ae
+w
+
+i 4 a Pe
+. ‘a * a
+
+™ .
+a ‘ ae * J gt
+‘a * x ¥ i ¥ *. . *, K ;
+ai F + a nt _ # + + * ey
+x F. 5 ea Lf = * ra a nT J Pa = a, a x late
+BEY CAN AN NO OO NN OO A A ON OO A OO OO A OA A NO OA A OO OA A ON AO A OA A Oh OO A A A A OA OA OO ee ek kk Ck i : a x; iene nena ee en ae a
+2 teerecrceceorariter BE 8 Le ee 2 2
+
+ —ersrs—e
+
+BAC . Lis
+
+---
+
+US 10,802,136 B2
+
+Sheet 7 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+oe ‘if
+4 7
+1 ee ere ht Pe + +
+at a a al oe rons va . . ad “7, cra ae - _ say +,*,
++o + Pe a an i a Ce ot
+. + enon eee ale erate a ae a
+[a -
+arn # . a Tay meets a
+oo ak : att al!
+= . eae +
+oA a agg A, gin ie ie gant i graty ae eh He we ‘ 4
+F : Partagas tg Msg Ag Mg Ay Ag My A A a ae foes
+- Oe A A A a a el a aaa
+OM A a a ae eo ee .
+* a ee a a i
+a ea a a : a ee a a a sey
+AM OA A A A OA 7X ee a rot
+i i i ie : : : : : : i seratane r
+2A A A A A A a eae xx A a a x x x * er: :
+OA MO A a A A a ox : a xx + F
+oa A AO AO Aa a a ’ a ee mx
+Cee a A a a a
+CAN AA eA A ON A A OO A ee 2M ex
+aa a a a a a ie
+CA A A A a a ox Oe
+OR eA A a A ae ir
+2 A ON A A a aa a
+ae ie ae A a ae i
+“OAL A A A A OOO A ae ae
+aoe a a a a ae ow aad
+A AA A aie
+A ON A eo oe aoa Fs
+FP PP PP PP
+a
+
+F
+
+ip
+
+ts
+bala
+
+tal
++
+
+aie
+
+RA A RNS aca AN
+
+Pa
+a
+mi
+bo
+ae
+mi
+ho
+
+ard
+be
+=
+
+a
+
+,
+
+A
+i.
+a
+
+a
+me
+md
+
+a 1
+7a
+|
+|
+
+7
+*
+ie ai
+K
+7
+x
+
+A,
+me,
+me,
+x,
+. X,
+mt, ry,
+rt. mX,
+
+mt,
+
+FJ
+ie
+2
+rt,
+“a
+ro
+‘ae
+a,
+a.
+‘ae
+hs
+
+a ee we
+ROM A A ON A A NO A
+Fa Rea MGM
+
+yi
+a
+Fy
+| a a_mi,
+mt,
+“a
+mi,
+mt,
+me,
+mi,
+‘ae
+
+E.
+x
+i.
+a.
+x,
+x.
+me,
+
+rd
+
+*
+
+r
+ll a a
+ae
+
+ana ae a
+ea a
+ne ee rai
+aa an eat atate " es
+.
+Cae So ee oe ee ae ae al rat
+
+- ‘ ty
+. : aera a at ee at ee .,
+. : : : a re / a+
+; Oat at at ae oe +
+LJ atta ta a! weer ra, a a * LJ Fay van *.
+. a ane at - eee ot ee
+. a a * + ++ -
+© aha a Pay i * Ea La Ta +
+. AO A ae
+ON A a ee a1 OF
+ie a ee bor ak ka +r
+ac gag ln la A Ply eet eae
+vA AX a eee 7” anata ane 7 ON
+nn Ba atatetate natant sna", at 7 *
+ag ie atte mal ee ee a ee etal
+pe a aa ae at 1 +t
+Cae ae aie aoe |
+A ow
+: haa in ie ha
+fa ae
+
+“3
+set
+
+ate” . ' “n
+. - mae ae TP are Nae
+. a r x
+A ee pan anette, Pa a a ae ae al
+
+ee ee oe *
+
+ee ee ee ee
+ee
+
+rhage gi kk
+
+- ak
+a al al aaa + wa a ee *ateteme
+Ra ee i
+
+a a a ea ae eo ee Oe a
+* at, ates
+et ean
+ew
+an a a ae,
+es Pa
+es ae irr
+a ea
+
+ee ae
+Pa
+ett
+.
+
+a
+
+Ll ‘, 1. - m .
+* *r ee ee
+al Pat at ae eee a
+
+*
+ae tk sat
+'
+'
+oF
+a
+
+a
+ee ae at at a
+ee ie a i Ue a a ta ly tan
+CaM A he
+.
+
+4° Bt ain”
+wale
+ata
+els
+
+a ae ae
+,
+
+Ce ee ae
+Fag tat
+oe ee
++
+
+wee es
+
+age
+"a NT a
+
+Sui cn A RRND a
+Para a aay
+
+a tate tats atatata ta ate
+
+ae ee
+
+‘
+
+a ae
+
+sates tetet
+*
+
+ek
+ens eo be =
+a all
+
+Ce a
+oe a
+
+ee hk +e ks
+. Ce
+ee ee ee ee a rot row | La at ae oho or
+a ey are Ta . . F A ae ae ih . : weather
+
+m* Par a al
+ae seh oararpmamenenare
+ae
+
+sean k kb Oe
+a
+1 ats t,t,
+
+Pe a a
+
+of a he oe
+a oo a dal
+ee ey
+
+NA eRe one +7
+.
+ee
+
+a
+atetetetats tat .
+
+on any va
+Pee at
+
+hee be
+a
+ana aa ae at ee
+eee ee
+ee
+
+sateen
+
+a
+
+it
+
+ae
+
+ee
+i a
+Pama eet Ne Bel
+
+a ee
+ae ae ae
+
+re Oa a a |
+a alata
+
+* oa 2 +, ata
+
+et doe hd i Pa 7. re.
+Ce Oe ee eee 1 op op cao 1 tbs
+ee El + ee ie
+ee A te Me
+Pe ee ea ee nage
+
+seats catatatatatrtat tatetateta
+oe ee
+a ao - -
+Fn a ae oe sat ae orate ite
+iat ae
+
+- t+ a ry
+
+a a i
+a
+
+*
++ aes
+mea
+eat
+
+book ho oy
+
+eee NOR a
+ee ea a ae a ea aa gaged eo
+a ir Pe Ca et ae a a a Pe ey
+"" a at ae anata ta atetatat st C A A Me ee Oe A mete ta atte
+Pt a ae Oi
+
+Ce ee ee ee ee eee ee Oe
+ara wea net te tet gta atte +27,
+ee -
+ats ater tata tan ata yt ah atatete * tate
+
+Sala
+a
+
+a ee . ratatate
+
+a ee tae ane,
+
++
+ee sr t
+PM Mn -
+
+4.4
+tat
+
+pele ea at ae!
+
+ee ie ieee
+™
+
+Le a a a
+
+iat a
+axe
+
+oF
+wii
+
+aoe
+
+Te,
+
+et
+Le |
+
+1
+
++
++
+
++
+
+r
+
+retreat ae a 7
+Rt RR
+oe
+a
+ee a a
+
+a
+ee a oe
+
+a
+ee a
+te
+ee oe
+Ce
+ee Oe
+2 oe
+
+eet,
+
+ania
+
+eo
+ae
+$33
+oat
+ee i
+
+Ly
+
+nee ee ke a
+
+---
+
+US 10,802,136 B2
+
+Sheet 8 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+9 “B14 ———
+
+SPEAK HIG
+
+PyeT OIG
+EUROS
+
+PUBS Pas 2110}
+ut SORURYS POOR
+
+Swe} FRING WaL
+~HITHAL BYS
+RURG X MER
+
+gehpuy saues | beg)
+BUY} ROP?
+
+Sishieuy
+PAIIIKE! UO
+
+er ee, ke
+ee ee ee ee ee eee ee ana a |
+
+SBAIUSGG
+
+OS}0y 1aHts
+
+ABLALY
+
+: Sansay
+POSHeUls
+PIGS
+
+i
+r
+t
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 9 of 22 US 10,802,136 B2
+
+mm mt ma a am mmm a a a a a a OO a OP ee ee ee OO OOO OOOO OOP eee ee Oe eee eee eee eee eee eee eee eee eee ee
+ee ee i i ee
+
+Applying the statistical relationships using interferometric coherence variables and
+polarimetric decomposition variables obtained from SAR data related to portions af the
+
+soil moisture content for a plurality of locations in the geographic region (703)
+
+mmm mm mm ma mmm
+a ee ee i le il le Del De ee ee Deer Nee ee ee Dee ee ee ee ee en nl el
+
+identifying one or more locations of the plurality of locations in the geographic region
+having a determined soil moisture content exceeding ons or more threshold values
+
+---
+
+US 10,802,136 B2
+
+Sheet 10 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+We “bie
+
+HOOo IC
+
+ot Of SG Od Ge Ob S G
+
+iep- + {peudien t = sdo CP RF |
+
+COO 4OO SUBLUBSdS Lf
+Gets L300 Siesuesd
+£o-CSiN¢ o}
+
+a s.
+
+OL
+
+wt
+
+$39
+
+Assaa
+
+---
+
+g biowe
+4
+. iia iat ae 1 ‘
+
+a
+A a
+ee ae ee |
+Cr re i oe |
+
+4 r
+r 1
+eon ee hk ke a
+
+US 10,802,136 B2
+
+aot
+
+. '
+F
+7
+Lo ated a
+1
+
+Lo
+
+ee ee dyoa
+
+r
+
+.
+PA On oe
+
+Sheet 11 of 22
+
+kr
+Lr
+
+im
+
+r
+
+on a aM
+
+F
+=
+
+robe
+ok 4
+
+- oe
+
+ee ae tay
+rerde
+ber ae wy toaon oe de
+Poon ee ee ea a
+
+Ee x.
+ne r_F. Fr.
+sata hat ahaa aata®
+ee
+
+Oct. 13, 2020
+
+1 Ce [i ie ie a as
+
+J a hb ow io ke hoe a etl " NN NN RN Nt a " eh -
+
+7 ' ahaa Ff oe = a
+ok ee ee
+
+ar
+r
+
+mot tt a nel tel tele oe rFrekekerkrtkerkkrekrkekerekrererekee keris
+Pale . al *, Pig aa et a, etal aera ' 1
+a a ee ee ee
+
+ta el ell tll ae re ke ke ke ee ek
+ee a Ce
+
+ao ti atatat A Pe atatatel
+
+Ce.
+- ett tata Ma Matatate i
+i ee ee F
+
++
+
+at ae a a -
+mobo a A
+' i ee
+
+oo.
+= ey rate = oro
+
+x a ee a a ’A baba
+Pa ell al el i ie a Pg a Eta ie a a a a a ln al
+
++
+
+a
+‘
+1
+'
+DI
+Ps
+
+OR ee ee
+1
+
+kerk ke k§ Fk FF .
+
+r
+a
+
+ee rol !
+
+ao hbk ker
+
+ee
+
+ror
+
+ee
+i
+
+ke
+a
+
+"dp de de dp dp dp dea
+
+Pek hb ee aba kr
+
+a
+
+Oe ee ee a
+aaa CNN NORE A +g *
+'
+
+a
+
+omen
+wae ae op . aF Frou
+7 cai Pain a ia em,
+
+| “as "
+eee ei
+a
+
+eat
+
+a a eh
+
+rs a reure
+
+Bede dee a
+
+oe +
+
+kb keke keke kkk ke k .
+
+1.
+. m4 er ia aia a reir
+
+Ce ee r
+
+FoR go we ho. we a a oe Wet ae ine ar
+
+rae eho ke ee es ee teak
+
+aoe eee ee ke a a a a a a i i i
+
+ar
+.
+‘
+
+order
+ap
+
+t
+
+.
+
+=
+
+ar
+
+t
+
+Ce
+
++
+ry
+oe
+ar
+
+Fr era
+
+aor
+ar
+
+or
+a
+
+ei
+
+oredr or
+ek
+= -F
+
+:
+:
+t
+:
+:
+t
+:
+:
+t
+:
+r
+
+oF
+
+eee ke ee eae ae ee kk kk i
+bo
+
+a a a a ag Eo
+
+Pr ir Oe Om Oe ee Oe Oe Oe OO OO Se  Y Pe ee
+
+ee ee a
+
+pe A ee
+
+Pe ee ee ee
+
+mot
+Ce ee ae ee
+
+ee ee ee ee ee ee ee ee ee
+oe ee ee dO OO OO OS OO UU OO OO OO OO de a ee ee ee ee ee F
+Pe ee ee er eee eal eS OO OO OS OOO OOO OS SS a tii i
+ee ee ee eee ee ee ee eee ee eee eee ee eee ee eee ee eee ee eee ee eee ee ee ee eee ee ee ee ee eee eee ee a ee ee ee ee ee ee
+a a ee ae ee ae OO nm OO eee OO Oke ee Oe Om Ok Oe Sea
+Pe ee a ee a ee a hel OO OS a i i Y
+ee eee ee eee eee eee ee eee eee eee eee ee ee eee ee ee ee eee ee ee ee ee eee ee ee ee eee ee eee eee eee ee ee eee ee ee oe ee ee ee ee ee raat
+PO Cm ee On On a OO OO SOS SO SO OO OS OO SO ee a a ee en eee See CN kh el Ok Os Oe a Se kee ee ke Oe a OO OO Oe ee
+
+1 reek ke ee
+
+heb bb bk hhh ak we. Poo a a i a ee RE a i a a ear
+we a a a a a a ra on dd md a a a a a Door ee ke ke 1 er
+ee ee ey hor ere ke ee ep ee ee eee rl + wo roo dp F tone.
+i me s Pigg ta atta, ated ata ates ene - ciate tate! mt ' a, tata ota nn a at a
+. Se eee Ce a i a eC a De To Po er] a aoe ate A ae . r eee cat a
+eee Sa ee a a a a i a ae er ala a te ag eee ag aa he rn a er ae ee ale - i aa ia aie a a a
+a ee a | * ebb hk ke ke ke kk Pe ee ee ee ee ee ak kk kt ke kk F ook kt kd ke dk 1
+too de a ke hk he ial ata etal Natal line cake ea eek ake a ee ke ke ke
+ee a | ee ee oe Bk hee ke ke kk kb boat Freeh ktkek k r rer
+Ror
+
+Ly
+Ly
+4
+-
+Ly
+al
+a
+Ly
+As
+al
+a
+Ly
+As
+al
+a
+‘.
+Ly
+Ly
+.
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+Ly
++
++
+La
++
++
+Pid
+Pla
+Pid
++
+*
+1
+
+k
+r
+r
+hk
+/
+r
+k
+r
+r
+k
+r
+r
+k
+r
+'
+
+7
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+Lg
+r
+r
+
+r
+.
+kr
+t
+i
+t
+k
+.
+kr
+t
+eee ke ke re
+i
+t
+4
+*
++
+kr
+r
+i
+r
+i
+r
+kr
+r
+i
+r
+i
+r
+kr
+r
+i
+r
+i
+r
+kr
+r
+i
+r
+i
+r
+kr
+r
+i
+r
+r
++r
+kr
+r
+i
+r
+i
+r
+kr
+r
+i
+r
+i
+r
+kr
+r
++
+Ly
+a
++
+ir
+F
+F
+
+t
+bt
+bt
+t
+bt
+bt
+tok
+i
+tok
+bok
+te
+i
+bok
+bok
+tok
+i
+tok
+bok
+te
+i
+bok
+tok
+tok
+i
+tok
+bok
+te
+ao4
+eo
++
+re
+rr
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+"r
+ir
+rr
+"r
+rr
+re
+r,t
+7
+rf
+1
+ay
+ar
+O
+‘rr
+et
+ry
+‘rr
+re
+bok
+ns
+fr
+t
+fr
+fr
+'
+fr
+fr
+ar
++
+'
+'
+t
+bt
+
+---
+
+US 10,802,136 B2
+
+Sheet 12 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+j
+‘
+:
+f
+:
+;
+i
+#
+
+, ar
+iF} Sap i
+£3 : j
+| J
+; :
+fe ye ae me were we me ow om 2
+Sed , JOAN | : RELI
+saat hipsmeveen } JOSUAS Suni: ae
+dil OM ON : > dun “ , feo UPA
+saBAR dul _ BOS an _
+oon | parmrntaruninaninanananenanyne wnanat Ane
+aIUBIBYQD | L 0 :
+LICH IA :
+
+£3P C3 ;
+UdiNsSOIWOIG : seuac aut, ft
+BSPlid QLIDLIDY SEQISB LOY ;
+
+pe
+t
+t
+LI
+ae +
+ee al °
+
+bly
+
+AuAOOy BANSIGIY HOS
+PEC RUS BIOL IGes 3
+
+:
+:
+
+me le eee le ee i
+
+|
+
+a
+
+pi ia eal iE f OL ed Bo
+
+= = em ee ee eg ee ee
+
+ee
+
+HIOAATON, JIB AY LIM
+
+ats
+pasHeULY
+
+SS ? b nee “7 nein 6 ai :
+
+a ee ee ee ee
+
+’
+ee ee ee ee ie ee ea ed
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 13 of 22 US 10,802,136 B2
+
+nrocesses thai quantify vertical lerrain movernent at one or more locations within the
+geographic region carresponding to locations of the water network
+
+Creating a time series history using the vertical terrain movement at the ane ar more
+locations within the geographic ragion
+
+i i i i eal ie let i et lel lel let la let hal Dalat telat lel ile alt Oe lal eel al eee el ee ee tee eee ee eee ee ee ee ee
+oo. oe le
+
+identifying, based an the time series history, locations of the one or more locations within [
+the geographic ragian having vertical terrain movement! exceeding one or mare 2
+threshaid values
+sues (i003)
+
+---
+
+WEL “6
+
+La
+i
+L
+a
+Ly
+4
+La
+a
+a
+a
+Ly
++
+4
+a
+a
+a
+L
++
+4
+4
+La
+L
+a
+4
+a
+La
+a
+a
++
+4
++
+4
++
+
+aye rr “ Teo
+ey tt +
+Fe Pt
+
+ee ee -
+naa ll
+
+7
++
++
++
+*s
+*
++
++
+7
++
+Ld
+7
++
++
+L,I
+re,
+Pa
+. a
+Ci i
+
+Le
+
+et
+a
+
+a”
+a
++
+a
+Fi.
+mt,
+a
+mi,
+ma
+
+Pa ee
+ya ae
+i oko “ut
+ae aaa a a
+.
+a ok bt
+te, z =
+
+a,
+x,
+
+rt.
+a,
+
+ar
+Pe ae te
+aoe
+Oe a ne a Pia a ta al aad al tal te
+ee ee + + tor s
+* +79
+ee
+
+a.
+*
+
+i
+_
+
+a
+
+pe ie ei
+ribet
+
+ay
+
+*
++
+
+Coat |
+ee
+Pl wean st ae aats a a ae ae ay
+Bk oe ee ere ae hk re i
+ee ed i ke ee
+Pe ee ee ee
+etait MaMa Nata atta Me Ne Nelle
+ee a
+ee ae at ea
+dy are
+a a ee ee nx
+ee ee ee Oe A ee
+od ; aaa
+
+4
+| ee a_i. a +
+4 Te ee Fe am,
+a oo a i _t BEE A
+cee ae ee - ys FERRE * * £2 ee
+a de de de TERBERERP ER EME El iE oe
+
+Lm
+rok od od a oe . Ree ee Lf: FF * I 4
+eee ta tetate ee eatatetenatere!
+a
+
+‘
+r
+i
+
+a
+A
+
+a
+
++
+
+n +4 or
+Piatt al etal alata eota Part ae
+t+ hi & +
+
+Fr
+
+4
+
+bs
+
+7_f
+*
+++ 4 ee
++4 %
+¥ om
+
+eerur ws or ‘
+a aa he . Poe x KY 7 * at)
+eat a . . ee
+. . Re aa ee
+r ne eae
+r
+
+_*
+
++
+aN RN an Nee
+a
+
+a
+
++ Ce
+
+Fr
+r
+
+aa
+hheitih hk
+
+7
+*
+z,,
++t
+
+ar
+
+Ed
+a
+
++o
+rat
+
+t
+rae
+
+US 10,802,136 B2
+
+i
+re
++
+ar
+
+Le oe
++
+
+a eM,
+or
+ie
+
+oe ee
+Pia ata a a aad” a al ais
+i ee a a aa tet el at Si
+i
+Perr a Me a 2
+a ae ae a ee ot
+ar ee aa i i et et
+* a ee a ee a a
+A a a Par a ae erie ar ela
+ie CAN +
+“_ at ee Lata
+a Fe eae a
+ae.
+te, natalie
+
++
+*
+*
++
+b
+La
++
+*
+*
+
+Cee tae a ela
+
+ea
+wat Fe eee
++
+
+=
++
+
+* x
+ane fe iin oe
+Petry asa ata
+Ce ee
+Ce ee ee |
+ee ee eek kk
+wort a aiid Mal + soe
+ee ee ee
+
+es
+tt
+aod
+
+ea a at a
+
+ra a
+
+tera tat sata +
+
+a
+bee ee
+
+$4 het ee
+ee
+
+4 oso ee
+
+- ro
+a aa ag ay
+
+.
+Mad eae a
+Ider
+
+ar
+1
+
+tt
+
++ roe
+
++
+a
++
+FS
+
+AeA
+L
+ew
+
+ay
+a i
+
+Pe Pe
+
+a
+
+*
+
+ar
+
+*
+
+a
+
+it
+
+.
+
+ar
+eo te
+
++ 5
+
+a nig in ie
+*
+
+a ee
+a
+
+.
+1
+
+md
++
+tO |
+™
+me
+,
++
+++
+
+ad ad aa a
+
+-
+4
+*
+LJ
+
+a
+™
++k
+r
+
+/
++
+na
+7”
+ae
+
+r
+ir
+*
+
+Ld
+cl
+ae
+
+*
++
++a oe ee ee Ee
+
+*
+=
+a
+a
+Fy
+eee ee
+
+ee ee ee a a ae
+ee a ae ae |
+r a a
+
+ho
+at a an ad
+
+.
+"*
+rm
+
+MaMa ie ae
+
+7
+"*
+*
+"
+
+L|
++
+eb oky
+
+Pe a Pa ee ie ec eae ae ee Be
+
+Se iy oe de i dei i de ir Pra a ae ae ae ae ee a tare tat
+
+* Pa ee ee a ae ee a a a ee ae era a a
+*
+
++
+Oa he a ee eet oh PE ae ee a ee a
+‘nelecahetaestocras rtecstagrntes
+
+*
+Ce oe
+|
+
+Pa attain fe et
+. at
+a ce
+atta at ata ae
+rr
+*
+
+is
++
+
+“ee
+et *
+trie
+
+FI
+md
+*
+*
+LJ
+
+r
+a
+*
+
+wie
+Pea a Rae
+Pa
+
+mat
+i.
+
+et a a ee ee ee
+a a a ae ae SB ar Oe ee et
+i Ae UT eine a
+a att? Mm a ar ie aa Cae a aa
+CMM an nae! Pe a a a ae ee ae
+
+ey ob
+. ek
+* att, mt
+ip +e
+ee a
+Ce ed
+Batt agate
+
+|
+
+ry
+* ee a +
+ir
+
++
+Pat
+r
+
+x_#l
+
+*.
+Lt
+*
+*
++
+
+Tr
+bs
+
+eM oe ie
+
+'
++
+r
+oe
+
+Soo 4 3 be
+ie
+
++
+Me
+*
++
+r ro
+*
+
+Pe
++
+
+ee a rf
+
+at
++
+
+wore 7
+
+one
+ae
++
++e
+
+T
+*
+i
+ir
+
+wee ee a Ee a dk a oe
+eo ee ed
+CO ek a a a ak a
+
+eat be
+
+.
+*
+
+La
++
+
+a
+r
++
+
+Le Ae
+
+Ct ata es
+i
+
+x - a
+yar ta walaae Sea eae ‘
+os
+ee ee
+A
+—m
+
+ee ke
+
+pe
++
+ar
++
+
+ir
+
+ae ee
+aon. aay
+
+ty ma
+
+te ee eae
+
++a
+
+i
+r
+
+i in ek
+a
+
++
++
+*
+
+x
+r
++
+
+r
+Ps
+*
+
+af
+
+eo
+* SN eae ey
+a ane ena ne
+oe A am, 2
+at weaned Pa we
+ee x ex ee
+ee See ee ee
+Oe ee a :
+ee ee ee a + de dae ia
+CO eo ee oe ee
+A ee A a ae ae
+
+ee a a a
+
+ran
+yt
++
+Br
+ip
+r#
+
+'
+La
+
+id
+1
+ok
+co
+a
+eo ek
+ws
++
+*
+
+h
+r
++
+nate
+i
++
++m
+
+Ld
++
+
+ee
+i’
+
+rr
+ree
+
+*
+Fs
+Fs
+Fy
+
+i
++
++
+
+a * -
+i ta
+
+Ca a
+ar
+a
+
+ /
+
+eI
+--
+ae
++ +
+
++
+*
+r
+
++
+ee
++
+
++t Pe Ce ee ee
+7 eo et
+
+FE Ag Ne
+i ee ie tet ee
+
+f +t Pag a at hat Bae tel Ae oad ae
+
+PE ae hil etme MRE Sol Sa ad a
++
+a
+
++
+r
+r
+ae
+r
++
+*
++
+*
+i
+*
+r
++
+Fa
+*
+*
++
+*
+La
+ir
+
+ar
++s
+
++
+reas +
+bore
++
+
++
+
+Lt Eee
+
+saat
+aw
+
+ae
+
+F
+Ce
+Ce ee ae
+Ce ee ee ee
+SOON AN ae A et Cx, ayaa eee Peele tata,
+et es pe a et ee ee
+ry ny " a
+ana aa ae i a yx a a le ae ae
+
+a
+a.
+a ne
+aa
+aA
+AAA AN
+a,
++.
+a+
+ttt
+ae
+* +t
+tor
+
+aan
+is AAA
+a
+ie
+Been ee ae
+
+ad
+7
+‘+
+
+= EE
+
+*. a
+tata :
+=,
+
+a
+7a
+
+1s 1
+* ale eee ata
+
+une i ie
+ee a all a a al ke
+
+. 1 a
+
+Sheet 14 of 22
+
+ae
+
+-
+St
+at Ma NNN Ni iH He ate Ae
+Sr Maia ee
+AP iI eee ee
+a eo
+Oe ee ae
+4
+
++
+©
+
+*
+a
+rh oe
+
+Se ee a ee ee
+
++
+
+a
+
+a ete .
+rt
+*
+
++ *
++7
+
++
+*
+
++t
+*
++
+*
+*
+
++ Ce ee +
+
++s
+ote od
+* wae a
+
+ee
+
+red ee
+ry
++
++
+
++
+*
++
+
+r
+
++ *
+
++r
+
++
+
++
+
++
++
+Pi
++
++
+Pi
+Pi
+
++
+©
+
+a4
+-
+
+*
++
+Pala aad a
+
+ot
++
++
+
+a
+cate ak
+Se ee
+ee
+or a ae
+Pe
+
+ar
+at
+ee
+eee
+ahaa
+ae
+7
++ *
++
++ *
+ror
+*
++
+*
+an
+*
+
+ae
+oe
++t a a ae
+ot ae
+Pag alta at ae ae
+
++
+
+a
+rk Oa
+
+a a Oe
+
++
+ar
+oy
+|
+aoe
+
+*
+noe
+att
+
+iy
+i
+Ld
+is
+
+*
+
+'
+
+* +
+
++
+a
+*
+/
+*
+'
+ar
++
++e
+
+*
+
+r
+te
+ee a |
+
++ o#
+egy ta ty tatty tt
+
+Li
+at
+
+ag Cl
+anana te?"
+
+r
+.
++
+*
++
+*
+*
+©
+
+a a eee
+*
++ ed ea EE
+
++ ee ee
+
+*
+my
+.
+r
+
+5
+
++
+
+oem
+*
++a 4 3
+
+-
+
++ oe
++
+
+*
+
++
+
+oe
+eo ee ee
+
+1:
+7 oa
+-
+el
+
++
+*
++
+a
+rt
+al et a ae
+*
+*
++
+
+Pe al tal at aoa
+
+i
+=
++
++t tt
+i
+
++
+s
+'
+
+tote tatatatetatats
+et
+
+Dalat tas
+
++
+i
+
+| a
+
+So a ee
+
+ar
+++
+
+rrehet ee a
+ee a
+
+r
+
+a
+*
+x
+Pal a al a ala ae aa a a oad
++e
+
+'
+
++
+
+a
+
+FJ
+
+*
+La
+r
+
+i i ie
+
+x,
+areata at
+
++
+ar
++
+ar
+Ld
+-
+
+4° sae aes aee ea *
+eke
+eh
+Ce ee ee ee
+oo i bir +o et ele
+
++
+iy
+te
+
+*
++
+*
+
+aad a ey
+
+atgtgt
+os
+;
++
+:
+
++
+oe
+
+ri
+*
+*
+
+fa
+*,
+ar
+vet ety
+t
+a ie
+
+*
++
+See A eB ee
+
+Ce
+
++e
+a a ee a ae
+ee ee
+wae ne atae
+toe +s
+eet
+
++
+*
+*
+*
+LJ
+-
+
+L
++
+*
+ree eae ee
+
+ee ee ee ee
+
+*
+*
+*
+re
+ate
+
+Ld
++
+a4
+
++
+Se ee EE a
+
++t
+
+'
+S
+ae
++
+‘ey
+fo
+
+Sor rr eo
+r
+
+1
+.
++t
+Sa
+"+
+
+ray
+it
+
+ee se ee eo
+ee
+*
+a
+
+as
+r
+
++
+1h
+
+a a a et et ea a a
+*
+=
+
+See
+
+Ca et Ea aE at al dal
+r
+oe
+**
+r
+fr
+.
+
+2
+i
+i
+ay
+a
+aaa
+
++
+eee ee ke ee
+
+ar
+r |
+
+rad
+i
+e a ets 4
+'
+a ie
+
+de de op
+
+Ca
+oe ae ie a ee a
+
+=
+
+a a
+rom
+ashes
+. a
+
+ad
+Pad
+ete
+*
+mal
+=
+
+/
++
+pers
++
+ir
+a
+|
+
++
+
+1
+*.
+
+Ld
+nang
+
++
+o_o
+a
+
+a 8
+a
+as
+
+4
+I
+a,
+_t
+
+ae
+
+7
++ &
+|
+
+Fo.
+|
+a
+|
+mai
+
+EE =.
+
+i
+Patel ZEEE Re =.
+
+2 ft 7 ee |
+
+os Fo
+
+pel ge ae ag ee
+RAE SEE EES
+
++E
+|
+
+Fi
+
+aaa
+
+‘a
+
+ie
+
+|
+rete ee |
+mana
+
+Oct. 13, 2020
+
+sate
+"att al
+
+at al tsa
+a in le
+“a
+
+=
+Ad
++r
+.
+wy
+Ld
+awl
+ee |
+ALAA a
+|
+a
+a
+ag tag a
+nn a
+ii a
+Lt
+al
+a
+ma
+a
+Lt A eT
+ais
+nal
+a
+|_|
+A”
+a
+|
+
+4
+ie eee oe
+
+T
+an
+7
+7a
+‘ml
+Ca Fa
+mata
+|
+ate hie
+|
+ad
+le ee ie ie de ee
+A.
+a
+aie
+oe
+a4
+a
+Lt
+a
+A_Al
+|
+
+7
+
+ALA AA A eA A
+|
+
+nara
+
+a a
+mo
+ain
+Fa
+n
+oA
+a
+2
+a
+
+eee
+
+Ce
+a
+
+Le
+a a ae
+
+_ Fl
+
+a_i
+
+A_n
+
+afl.
+
+i
+
+ieee ie
+
+a
+
+Lt
+
+"
+Ke
+aaa
+
+- + - r - a - eo a a -
+Sa RNa Mae Nate Ne Mie Non Ne Beta A MeN NA Nee An
+eae aga, . nae AAA Aaa ea aaa a aa
+cee et . “a “ . Sa ee a a a ee ga ae a
+i MN Ne NN en,
+
+He tet Fo : ; : ee ok a ake ae eae ee
+Pa ala ar ar hae : im Sd aa a a Nd tag ea Ra
+Aaa a ae ee a . ie de ee pe dee i ie i i de ally Ue
+Pa arr ae te . ian Se a a a iy a a dea ay ea
+ep ip ee a ae ane: Pe aa. laa rr a er rae as Aa a he a Sr a ae |
+oi ie he ; Pa ar a ee as ae ete ae eet
+Pan a aa ae a” TAN MO ie ORO Mw Oe
+te eae dead ea ae ap de ap ley
+a ag a a ag a ae aga ag ay ap ae
+oa a a ae Naa a i ae pd ee ha dee
+Pea a a ie ae a a ae Re ae Rad ie
+ST ena a aa ay aa de a gaa
+Fe ne eA a a a a a aa ap Se
+cee ta MN a oe ee
+Talat sata te tata ca atae ata at Tatar ye tata hat a ata as
+
++
+
++
+ee,
+*_™.
+x.
+|
+|
+le ie ia ine
+a
+Fi.
+a
+a
+a
+
+Lm .
+ae ae A, a My ms,
+Nae ae ap ae
+na ig
+aa a Xn .
+a
+= mae Se RC RR Re
+anna
+
+an te tee ae i
+
+ir
+i
+nA
+|
+i
+"
+
+va
+r
+it
+
+'
+
+. sche hcetatas ne kth atinhnes at aera ee i
+
+. anatase tetas
+
+T
++t
+
+eh oF
+a ,
++ +
+
+r
+
+at
+
+*
+ake
++
+r
+ata eas
+winter
+7
+
+a+
+
+*
+*,.
+ek
+
+a MA nant
+
+ree eRe Seer stale i
+it
+
+LJ
+
+Fy
+A
+4
+
+oe i Ce ee
+Sitetetes teteretesetanetarete Ce Oe a a eee
+
+I
+Ld
+or
+
+ik
+
+i
+or
+i
+
+* Fe ti teal a iad Nae Oe ee a
+
+PO a ee ead
++ epi ei ae ie
+* Pe ea
+Pa ad at ae ad a a oh a nena oad oad
+ee ee a ee oe ey as eae
+
+ei a ap a
+ee ea ea
+
+2 aa a de dp ip de op ae
+
+a ae ea ae ay ape
+Pe ar aa at as eae cae
+aris sae aa ae ae a a
+ee ie a eta +
+Pe ata ada a ia ea aia eal ana s eaaea ral
+
+hae
+
+ar
+i’
+oor
+
+ie Naat Me Na Mat M|
+ee ee eee at)
+FO a eta Patan
+Pe ee
+
+aon
+a
+,
+
+"
+i |
+hoe
+
+'
+
+i i
+1
+a4 8
+bt ik
+Ce
+Cr ae
+
+vox
++
++
+ses
+ar
+
+I
++
+aoe be
+
+bee
+ee
+
+ie
+
+ono
+
+a
+
+mt,
+*
+a
+
++
+r
+Fy
+
+Neal Ne Na iN ie Noll
+
+Pe a ed ee
+Pe a ee ae
+Pe ee
+od ed oe ke ey
+re a a te
+OR a wy
+ae ae ar ae aaa
+ee de iE ee
+od ee ded Be ke de ek
+Pada ad to ee ae ee a aa ae
+
+Pa ee
+
+ma a ara a ara ae ae
+a aa a ae a ee ie a a
+
+a dd de ee a a a a
+Pa ee a a a a a
+oa RO OO
+a a a a a ee a)
+
+Pa a ie ae a ae he
+
+ot
+
+Pad at aad ke ar ee ae ae a a aa oad ae a
+ae Rs NA a
+
+r an
+von
+re
+ater aye
+et ae
+rhaaer or
+as
+*
+
+ata ear heal
+
+sete
+ok
+ee
+ot,
+ar
+
+oa a
+'
+
+7 he
+a.
+
+hl
+
+a
+
+a
+
+i
+ry
+et
+hy
+4
+via
+ie
+
+ee ee ET
+A ee a
+ROX nee eee ee = ‘i ‘i a
+
+aha
+
+a ee Te
+|e ee ee eee
+= 7 aa “es ee EEE
+Fe
+
+=" Po . ea ee
+
+[4 r ; i ion
+7 : : a
+_ BERERERESFeir er
+
+U.S. Patent
+
+---
+
+US 10,802,136 B2
+
+Sheet 15 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+ii bie
+
+= ss ee La | a4 4 a
+
+se : * = x — te eo a ee a
+rata Fg eg ee ge aie ee a 4 ee eee
+er Roe et ex = co eee x x x eat et at Fi i Ca My ex x
+
+crrtorascetes _ Ml ox et {xe : : : +t ox a OX
+iz Eee te te * x + to i ei " AA AN A rt a
+a eo A * e+ oe . oa ee ee
+ae rat atahatat se * XM a mea a Oe
+Fe ee Oe :
+
+Es |
+
+. EEX E =.
+Pal 2. & aa | aa
+oot 8 ee eee
+
+Fa
+“ie tee = i. eee
+' Ce ee
+
+sstesineaniny a_i
+Meee Eh Eehay
+
+ae an
+ee a a
+ay “*,
+ae gaeiatate”
+Oe a
+ROR Ce |
+eee es
+“lll ee ee ex ae
+af 2 a)
+Cree mt er, gate?
++ + a ee
+‘+a raeaee ae is ee *
+i. mal rr RP Rel af i
+wee oe mkt ee a | Paral Fie
+aa ae at at oe ee te ie a a ae
+: a x ear +t ee ae : : eee ny
+a Fa i PE a ea eee eee ee
+coat gg tte nee A ee il ie gi A a
+Ce MM NR, ae ae Oe “ag ta AE
+ee ee a’ ; nk oF
+ee + 4 ee ae a ae
+cx ene ea
+* eer rr
+Foe Re x x
+: east a at ata nan.
+- 72 Re RR
+Ka ee Re ee
+re a ae a
+oa! *
+‘ot “a ae eee
+nal ital ag ee
+x mr a ee
+“lly ante me +a
+aa ee oe oor ee *
+a, re SO a
+ie ae e288
+ae a ar:
+ede x
+x 2 _
+iii Fe
+af r
+: co oe ; ie eae =F
+oo * ee tla na i. a «a r xn m an wee ee
+rar ee i ee ee ir i J aie
++ ee ie i ee ee ae RR em
+* r ee ae + cee nx A a i 4
+ee ee ee * + a xe ze
+fei MN re +e at ella! ae
+: a ee i : “a Pe x" x se ate
+- Ci a i i ie a ee ey ens .
+a rie al * Pot a a el aa ee ee x
++ ee ee eX Xe a eS aoe OO eee =e
+9 ee A a ea a a ee nl
+a a ee ae Oe ee
+x +e ee ee ee
+ie A ee a a ae + a ‘
+ae te ee eee ex xx 4 ane nl,
+: a A a a a a ee “ae act a a
+a oe ae ex ee ex
+. aa Pe ee a ea ae Rx Ro ea x
+Ka em ac ee a ae Qe A ee a a
+r a ee Ae oe ee ea
+Par ee 3 3 ee Re oe a eae “a 2 a ea a
+oo ei ’ : ++
+: Mats Tatenaihtatate” :atahatatatet a's Saag ta a ahglate senha
+x eee ee x i oe ie
+ee Pa cet wee EN aii Ro ea
+eo ee a ae aad me ex x aa ac x
++ oe +o ee OR x ee ape ex oir
+ex + ea A ee i aa ae i »
+OM a ee ae Pe mK eee) ie i ie :
+: ae eee a ee oe Pe ay or 7 xe
+A ee Pl ow a 3 a tn ae ae i Kx
+: Par aCe ee ae + + = + ’
+Pe a ee oe ae ie a ae er a7
+Pa ee ee ee +e 2 ee = :
+Pe ee ++ es a ee hm
+. + op +e ee ee + +
+Pee ee ae x: ee 2 ae er
+: er a ee a a ee ee ae ae oe tx
+Oe eA Pes x te ae
+i Pa nn aay +e
+Oe ae +e + + +a
+: a ae : + * r+
+a de a ie : + + am x se
+a ee ex + ee i ee
+ee ee el ea x + + ea a x
+i i Y ee ee
+30a ea pe a ae Oe a ey
+- Cae + ae i eee me
+eM pe ac 3 3a ee AO
+r ae eA : x ee ea
+i ees : ee a a
++ + + ae : i eee
++e ae +) ee ee
+rl * aC + ee
+; Pa x ee Pe ee eae
+—e Xa Maan OX ae oat
+>» tae a% x aS, arate aa ae ee ie : nae aeate age
+fe ee a ee ee a i ae ee ’ woe ee
+ea a ee a a a ae a na et 7a
+ee ee ee ie rx + a : : : Oe ee xk ee
++ ee | + ee | a et ae ea ¢ a ’ ie
+eA ee ee Oe ee ea ee a a : x a _
+oe ee ee a ee : * = *
+a x ee Ro ee a ee ee ee "a " Rx : a nae
+ere A a aaa xu ae a Xa ae tees Fr ies * A rae a aa an i a ‘i wren z el
+r 2 ee ee RM A OM ee ee a cH = : ie ere A
++ ie ee i ee ee ie ee I : : : : ORR ee
+al x ee ee ee ee ee i i ar ee se ee ae a : ’ : i x ee ee ee x
+a ee ee a ee ea ee co ee a ee panera
+el xe e+ ee wx ae ie ie ee ee ae ee ee ae x
+ie a oo ee ee ee ee aa el + ie r wo exe
+ee ee ee ee ee PO A ee ee ee re
++e Rx ee oa ee ea 2 ae Pate ee 3 ee oe a eee ge ae ae me
+ee ee ee ee a Pe ee ee a x aw ER a x x
++ ee ee a A Md ee ac a i ee a a ie ieee
+ee ie +e eee ee ee ee ae! ee el re ae ee el 3 el ae
+* a ie ee ee a | a oe eo et ea ee ae ee ae
+- OO a el a a ae ae ee a a ae ee + + ee ae : * et]
+ge ee a eae a eee ea ae ea et ea ae ir oa : : : : : : . ats
+ot ee ee a Roe ee ee ee ee ee x ¢ ox ar ir ae ’ ’ c Pee .
+a eo ee ee ee ee ae ee oR : : ¢ "pe a mat matee
+- . a a ee ie x ee +e at i ee Oe ae ee : r :
++ + my fa ie ee * ee ’ : rex ‘
+ohh a ies + + ee ee ee ee eee sepreieees
+Pe ae a +e ee ee roe x oe ee ee rR
+: cae oe eR A a ee Pe ee ee ee rR en x
+rie oe eK Pew x x * Roe ee Me ee ae
+aie * ee a ee ee a ee ee + oe ee + *
+nO ee Ro ee ee ee %
+= ee ee ee ee ee i a = x
+Rae eae ae eae ee tae ea ae ee et ee
+oo ee ae * ae a a a
+ae ae ee
+ae ee ee ee
+rie Ye ee oe Fy rr oe
+late aw : ees ee ee a ee ee x A ee oe KF!
+Jae He ; 7 : te OC SN RNR Ot eH + aaa
+ne hte" oat in da : en ae ne ee
+Soratatanate ratatataty sate a
+‘ata Aa!
+:
++
++e
++e
+el ex
+fr Pata
+ae
+* ae oe eH
++
+ie
+"wl
++ r
+res
+ae
+ae ee
+o*
+.
+aa
+al r
+: ie
+
+a ae
+eae
+ee
+at
+"eta
+
+* ae J a ae
+4 ee ae nad ac aa ste = a, *
+*
+natant, 9. tanatat ae ia niatatatetatateeta ae Biateteuneosnaaseieanss *,
+hot Ett AA A ee 2 2 x .
+a a die Cet at tet Rot ex x : Oe ex *
+ee ee eA YN _h EEAX XN x x 2 ER EE A z
+* Ete x x c itr rare oar Oe ee et Le es
+ae ee ea a ae ex et =e te x = 2
+oe Cee x x oo et tx en Na ee nota
+Me Pa +a sata’ ate 4 nae Pane ences a eae Era # re a a : Aer ar eae 7a "
+ae A A A YY rer _ om x Se x La 2 nz a
+. Ae a ae _ ee ee ee ar = =o ae a
+ex : ae am a 2 a ee ee a Ex aa *
+mates totaeatan mae , nate" ae Pea aa aretate a z mah f mane mania e ; Hr nathan ae ae =
+* 7X OX XA ee ate ee + ‘ A AY a ane |
+Pk A ae Coat at tt Pere cee hee Foe oe ex x " zor @ cx
+KAA ot ee EM 2 RN OA AT ee PAX EX = Baaret eee ee *
+eo xe ee ee AA A XY Pe ee ek oa Ae a Zax
+eae oe a a a ie ie 7 ok Aoeot te oe Sea te eo ik
+r Cx Mt mex ee ke a a " Sere tx 2 =eere
+et oat at dat Rtex e * Cio oY YY x x + = x Ko ne
+at ae a) Oe Ae XA ‘sot oo etx 2 oe cor 2 x x =o eet es ©
+ee ee A ee A Oe Co on oe Ex AY Se A ex ear ee Sree
+to ae e AA A Reta eA me pieces
+ee A A ee ed i ip Ex ee oe ke i :
+ELA Ee texan y F _* Ox FREES tee
+= A + Eee. ee A AY te ret at ee ee
+ata : Ae ee i i et ee ose <a.
+‘xe * Be oe 1m ZEEE ae
+<A AY +s E - Ret eee t “yz
+Cee a A Ct cre aie i i : * Ee oe ee ee
+* EXAM At ee = = CaM A aa Ex. : a ee ie
+7A A oY ote x x | : : Bea x yt OX AN eo
+moe ne Xm ata tate BENT ORNL on na nat ae aa +4, a5 PK MaRS i. mi 2
+Oe A x x _* Reo a a ae ee | oe ee ee A ee x ee * eee a ae *
+ee ee es ee *. ee gE I eA MeN See ee ee ae a ee ee ee ee
+
+---
+
+US 10,802,136 B2
+
+Sheet 16 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+dear ede ded
+
+J
+see :
+tatty,
+
+ee eo
+
+a
+ror
+
+r
+r
+
+Bera”
+* tre a he -
+
+ca
+r
+
+4h
+'
+
+1
+9 ke
+1
+
+rw
+
+, tk
+.
+
+LJ
+4
+
+vo
+r
+
+- +
+
+Breoer-ebktk ke kk
+rFreb re b eb eh
+
+bree hk ek &
+rok kore
+
+oF
+FeReerwe. bie
+
+rh
+.
+FFF
+
+---
+
+US 10,802,136 B2
+
+Sheet 17 of 22
+
+13, 2020
+
+Oct.
+
+U.S. Patent
+
+COLL
+
+"7 o6o8 iW
+Bom,
+Pa
+x
+
+et te eee 2
+EEE ee ee ee eee ee ee
+ee rata mt me, ZRF eee PREECE
+
+#7, Fett
+4
+i
+
+pee
+
+iam
+17
+Ke
+Ke 7
+4558 w
+a -
+ates
+Ko
+Aa r a
+eat | ie 4 me
+Ex x ai “ae a "
+oe ee +20 ae rai
+aan mate os re ee
+=
+
+. x
+BEX eK we Ke KM eM KM Le a ee
+
+4
+nee
+a, |
+as ee
+mal
+KM,
+
+ee a
+ek oe
+ee Se ee Oe ee ee ee
+
+paar SR RIN SS sous SoU UU a e ee iBearaia
+Sa ee EES ee ities enn
+SEE PEenenreremrerem rere ererererePUrEPePUTePOPTTOPOPTTOPOPTEPOPTTEPOTTTRPOTPEPOTEPOPOTEPDPETEPOPTT EPO TPEPOPPRPOTPRPSTPREDT ee EEE NO eT ec re wean aanan tana tana esa asta often aa inate tesa taste tas ia ian nn san Masa ea aa as fin in ns asa eae as oa a neste asi ota ia inn eas esa Masao a
+
+™
+
+ERR a EU I  eerceccrnree I a a
+ee ee
+Sa ae ce Paina ania ania ata ata cata en era a en eM en a a en
+Pa
+
+SE
+
+LOLL
+
+---
+
+US 10,802,136 B2
+
+Sheet 18 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+CIAL HAGMAIS KY
+SIRAR aU}
+
+Gio?! Yio? |
+
+B4eC 3Seu¢ WodUis, —
+“CHAE HS PUR D UIERGG
+
+RIEG S8eUd jQuodual
+TRATYAG bby DUET X ULE I
+
+| SHE YS WiOd}
+~~ CN? fm" | SURIEOIe LeU DOLKS
+
+a a a a ee ee
+
+Suruayiera
+lupIdOjs ay Apddy
+
+PIEC] SBWBS
+CHL] JOGA E-O"}
+
+pO SIOWSYSY UYSIUSISYOH Pua
+a r
+3) ? : rt JUGIUSIBIASIC 20) UOISUBAULISDOI WuOMe?
+
+a ee oe 2 6 8 oe 2. ee 26. ee 22. 28. 2 2 ee 2 2 2
+
+ee, ee, ee ee,
+
+| FUBWUISULSY JUBWBIBIOSIC DUB
+} IZ sree" (ACLUSHY ASBUd BUOUGSOUIY UWUGLIGY
+
+pd esto
+
+| SIsApeuy sBuas
+Fy Pm] awip wuss,
+
+ee ee a niet duiiieedninis 2
+
+i
+
+© 7 eee eee ee ee ee ee ee
+
+HIG BIEN LULL
+SISAIRUY ABLIGAQ LUI0LIB
+
+ae, le, ile ir, a ae ae, le, i allele,
+
+GUITSe i
+Presse Ut
+INI
+
+\
+
+~~
+(3
+
+ee ee |
+
+220
+FESO UIEIGC
+
+| = «688 waren wee 2 oe
+
+ee Oe ee ee ee oe a - e .
+
+-
+
+ZT ‘si
+
+Co
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 19 of 22 US 10,802,136 B2
+
+Ontaining, by a water netwark montoring system, a set of synthetic Aperture Radar
+{SAR} data for a geographic region
+
+Obtaining, by the water network mon toring system, a set of optical data for the
+geographic region containing al least a portion of the water network;
+{47303}
+
+into the water network based at least in part on the obtained set of ontical data 3
+
+(1305}
+
+| Monitoring, by the water network monitoring’ System, an amount of terrain motion around | :
+| the water network based at least in part on one or both af the obtained set of SAR data
+: and the anlained set of optical dafa
+
+(4307)
+
+| in part on the estimate of vegetation intrusion into the water network and the monitoring |
+of the amount of ferrsin motion around the water nefwork :
+
+{4309}
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 20 of 22 US 10,802,136 B2
+
+Reading 2 @ set af data dafiring one or more physical attributes for soll at one or more
+depths and at the one or mare locations along the water network
+
+(1407)
+
+a i i i i erie ce ir oe ee en ee ee ce i ee i i ce ri eri oi et it Or ir ae mt ee ee ee Rn i ei
+
+| Reading 3 set of data defining one or mare > physical atiribuies for one or more types of
+vegetation
+
+(1403)
+
+Ce ee i ie i ee re ee re i ee ee
+
+Classifying vegetation a at the one ar more locations along tt the water network based on al |
+least ane of tne obtained set of SAR data ar the obtained set of optical deta 3
+
+(1408)
+
+Generating an estimated ammount of vegetation intrusion at each of the one or mare
+| tgcations along the water natwark based an the one or more physical atinibutes of the
+sol, and the one or more physical attributes for a type of the classified vegetation at
+each location
+
+(1407),
+
+---
+
+U.S. Patent Oct. 13, 2020 Sheet 21 of 22 US 10,802,136 B2
+
+integrating data of the obtained set of SAR data using one or more interferometric
+processes that Aventy vertical terrain movement at one or more locations within the
+
+Creating a time series nistory using the vertical terrain movement at the one or more
+locations within the geographic region
+
+(4503)
+
+the geographic region having vertical terrain movement exceedin ing: one or more
+threshold values
+
+---
+
+US 10,802,136 B2
+
+Sheet 22 of 22
+
+Oct. 13, 2020
+
+U.S. Patent
+
+AviA wORUaN
+S38 AA indi:
+
+A sa a ay ye
+
+eo
+
+|
+i
++
+|
+‘
+¥
+¥
+¥
+¥
+J
+¥
+4
+4
+
+wad fF f ceaaeell SUR OISLOUH RIN |
+A19} 4
+
+SIDaUOY YYS RAOYND PLE
+
+a tke lk a lhe lee elie elie lhe lle elle ele er er ker ker her er ler ler kr le eee ee ee ane ee a Cn
+
+{ BIBG eset puodival
+TIBIA eS PER Uy GHG
+
+SUM
+Wunidcuaany Apdihy
+
+SI} WHMBSL-073
+
+— set = CUTE UD
+SZ Op" LE
+
+YG RADA SERA
+DIOYSOH)) GAVSG
+
+ee a
+
+YAWN SOAR
+ISA
+
+DaSeUL WHA
+
+eC}
+PAIBUSTT A
+
+SBigR, yided Buapay
+BMIadS Sauh UBIO
+
+ee ee
+
+BGA} Banas,
+JO VORERUSSEL UO
+
+ow
+
+yusNe Ider
+nreerccenensnsnanemanencnnannnnnte AB TOOME EO SERIO}
+
+SHEEY SULLIBIET}
+
+A
+
+t
+
+pete ABLFAC'S
+
+SHSeH
+
+1
+; ." ap om, cl nd er lr dl rhe oe ee ee eee
+
+Le rp} i one a cm enn ni, | ees
+
+OT “sls
+
+SERISARD
+L5}9aA SetLisddsd
+| HOY MEH
+
+eee 2
+
+---
+
+US 10,802,136 B2
+
+1
+WATER NETWORK MONTTORING SYSTEM
+
+FIELD OF THE INVENTION
+
+The present disclosure relates to a water network moni-
+toring system for determining the presence of leaks from a
+water network and for estimating the likelihood of a leak
+occurring. This is achieved through the use of earth obser-
+vations and knowledge of the network.
+
+BACKGROUND OF THE INVENTION
+
+81x billion litres of drinking water are lost globally every
+day. In the UK, for instance, water utilities estimate this
+daily loss to total more than 3000 megalitres.
+
+Most of this water loss is due to leakage from pipelines.
+At present, three methods are used to identify leaks in the
+pipeline infrastructure of utilities companies: 1) flow/pres-
+sure meters located throughout the network, 2) walking
+surveys that employ manual and/or analogue listening tools,
+and 3) reports from water users (based on saturated soil or
+unusually high water bills). Most of this information comes
+from urban areas where flow meters and water users are
+concentrated. Reported leaks in urban areas are thus typi-
+cally reported and repaired within two weeks.
+
+Leaking pipelines are more problematic in rural locations
+where fewer people and flow meters are located. Leaks in
+rural locations can go unreported and unrepaired for signifi-
+cant periods of time. In some cases this can be as long as s1x
+months, which can lead to significant losses of revenue for
+utilities companies. These pipeline infrastructure networks
+are widely distributed across landscapes, often traversing
+difficult terrain that is infrequently visited.
+
+Therefore, a system which monitors water networks for
+indications of active leaks and landscape changes that could
+cause a water network failure (e.g. soil expansion/contrac-
+tion) is highly desirable.
+
+SUMMARY OF THE INVENTION
+
+According to a first aspect there is provided a method for
+monitoring a water network, the method comprising: obtain-
+ing, by a water network monitoring system, a set of Syn-
+thetic Aperture Radar (SAR) data for a geographic region
+containing at least a portion of the water network; obtaining,
+by the water network monitoring system, a set of optical data
+of the geographic region; analyzing, by the water network
+monitoring system, the obtained set of SAR data and the
+obtained set of optical data for spatial or temporal anomalies
+related to a plurality of indirect indicators of leaks in the
+water network; detecting, by the water network monitoring
+system and based on the analyzing of the obtained set of
+SAR data and the obtained set of optical images, one or more
+spatial or temporal anomalies related to at least one of the
+plurality of indirect indicators of leaks in the water network
+and not attributable to environmental factors within the
+geographic region; and generating, by the water network
+monitoring system, a set of graded locations within the
+geographic region having symptoms associated with leaks in
+the water network based on the detected one or more spatial
+or temporal anomalies.
+
+The plurality of indirect indicators of leaks in the water
+network can comprise an indicator of soil moisture or
+ponding water derived based on the obtained set of SAR
+data.
+
+5
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+2
+
+The plurality of indirect indicators of leaks in the water
+network can comprise an indicator of vegetation growth
+derived based on the obtained set of optical data.
+
+The plurality of indirect indicators of leaks in the water
+network can comprise an indicator of surface motion or
+texture change derived based on the obtained set of SAR
+data.
+
+The method can further comprise detecting, by the water
+network monitoring system and based on the one or more
+spatial or temporal anomalies, one or more surface leaks in
+the water network, the surface leaks comprising a leak of the
+water network causing ponding of water on a ground sur-
+face.
+
+The detecting the one or more surface leaks in the water
+network can further comprise: filtering noise from the
+obtained set of SAR data using a multi-temporal filter;
+identifying one or more locations within the geographic
+region and corresponding to locations of the water network
+where the filtered SAR data indicates a drop in backscattered
+energy relative to at least one previous monitoring period;
+plotting the identified one or more locations spatially in a
+oraphical representation of the geographic region; overlay-
+ing the graphical representation of the geographic region
+with the plotted one or more locations onto one or more
+images of the obtained optical data; and filtering the plotted
+one or more locations based on the one or more images to
+filter out false positives.
+
+The method can further comprise detecting, by the water
+network monitoring system and based on the one or more
+spatial or temporal anomalies, one or more near-surlace
+leaks in the water network, the near-surface leaks compris-
+ing a leak of the water network causing water to spread
+below a ground surface and at or above a level of the water
+network.
+
+The detecting the one or more near-surface leaks in the
+water network can further comprise: reading a set of data
+defining statistical relationships between soil moisture con-
+tent, SAR interferometric coherence variables and polari-
+metric decomposition variables obtained from a calibration
+area of the geographic region; applying the statistical rela-
+tionships using interferometric coherence variables and
+polarimetric decomposition variables obtained from SAR
+data related to portions of the geographic region overlaying
+the water network using spatial extrapolation to determine a
+soil moisture content for a plurality of locations in the
+geeographic region; and identifying one or more locations of
+the plurality of locations in the geographic region having a
+determined soil moisture content exceeding one or more
+threshold values.
+
+The method can further comprise creating a set of data
+defining statistical relationships between soil moisture con-
+tent SAR interferometric coherence variables and polarimet-
+ric decomposition variables obtained from a calibration area
+of the geographic region.
+
+The method can further comprise detecting, by the water
+network monitoring system and based on the one or more
+spatial or temporal anomalies, one or more sub-surface leaks
+in the water network, the sub-surface leaks comprising a
+leak of the water network causing water to spread below a
+eround surface and below a level of the water network.
+
+The detecting the one or more sub-surface leaks in the
+water network can further comprise: integrating data of the
+obtained set of SAR data using one or more interferometric
+processes that quantify vertical terrain movement at one or
+more locations within the geographic region corresponding
+to locations of the water network; creating a time series
+history using the vertical terrain movement at the one or
+
+---
+
+US 10,802,136 B2
+
+3
+
+more locations within the geographic region; and identify-
+ing, based on the time series history, locations of the one or
+more locations within the geographic region having vertical
+terrain movement exceeding one or more threshold values.
+
+According to a second aspect there is provided a method
+for monitoring a water network, the method comprising:
+obtaining, by a water network monitoring system, a set of
+Synthetic Aperture Radar (SAR) data for a geographic
+region; obtaining, by the water network monitoring system,
+a set of optical data of the geographic region containing at
+least a portion of the water network; generating, by the water
+network monitoring system, an estimate of vegetation intru-
+sion into the water network based at least in part on the
+obtained set of optical data; monitoring, by the water net-
+work monitoring system, an amount of terrain motion
+around the water network based at least in part on one or
+both of the obtained set of SAR data and the obtained set of
+optical data; and generating, by the water network monitor-
+ing system, a leakage risk index based at least in part on the
+estimate of vegetation intrusion into the water network and
+the monitoring of the amount of terrain motion around the
+water network.
+
+The generating the estimate of vegetation intrusion into
+the water network can comprise: reading a set of data
+defining one or more physical attributes for soil at one or
+more depths and at the one or more locations along the water
+network; reading a set of data defining one or more physical
+attributes for one or more types of vegetation; classifying
+vegetation at the one or more locations along the water
+network based on the obtained set of optical data; and
+generating an estimated amount of vegetation intrusion at
+each of the one or more locations along the water network
+based on the one or more physical attributes of the soil, and
+the one or more physical attributes for a type of the classified
+vegetation at each location.
+
+The generating the leakage risk index can be based at least
+in part on data defining one or more physical attributes of the
+water network at one or more locations in the geographic
+region.
+
+The monitoring the amount of terrain motion around the
+water network can comprise: integrating data of the obtained
+set of SAR data using one or more interferometric processes
+that quantify vertical terrain movement at one or more
+locations within the geographic region corresponding to
+locations of the water network; creating a time series history
+using the vertical terrain movement at the one or more
+locations within the geographic region; and identifying,
+based on the time series history, locations of the one or more
+locations within the geographic region having vertical ter-
+rain movement exceeding one or more threshold values.
+
+The generating the leakage risk index can further com-
+prise: reading a set of data defining one or more threshold
+values for each of the generated estimate of vegetation
+intrusion into the water network and the amount of terrain
+motion around the water network; and assigning a risk
+category to one or more locations along the water network
+based on a value for the generated estimate of vegetation
+intrusion into the water network or a value for the amount of
+terrain motion around the water network exceeding one or
+more of the threshold values.
+
+According to a third aspect there is provided a system
+comprising: a processor; and a memory coupled with and
+readable by the processor and storing therein a set of
+instructions which, when executed by the processor, causes
+the processor to monitor a water network by: obtaining a set
+of Synthetic Aperture Radar (SAR) data for a geographic
+region containing at least a portion of the water network;
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+4
+
+obtaining a set of optical data of the geographic region;
+analyzing the obtained set of SAR data and the obtained set
+of optical data for spatial or temporal anomalies related to a
+plurality of indirect indicators of leaks in the water network;
+detecting, based on the analyzing of the obtained set of SAR
+data and the obtained set of optical data, one or more spatial
+or temporal anomalies related to at least one of the plurality
+of indirect indicators of leaks in the water network and not
+attributable to environmental factors within the geographic
+region; and generating a set of graded locations within the
+geographic region having symptoms associated with leaks in
+the water network based on the detected one or more spatial
+or temporal anomalies.
+
+The plurality of indirect indicators of leaks in the water
+network can comprise two or more of an indicator of soil
+moisture or ponding water derived based on the obtained set
+of SAR data, an indicator of vegetation growth derived
+based on the obtained set of optical data, or an indicator of
+surface motion or texture change derived based on the
+obtained set of SAR data.
+
+The system can further comprise detecting, by the water
+network monitoring system and based on the one or more
+spatial or temporal anomalies, one or more surface leaks in
+the water network, the surface leaks comprising a leak of the
+water network causing ponding of water on a ground surface
+and wherein detecting the one or more surface leaks in the
+water network further comprises: filtering noise from the
+obtained set of SAR data using a multi-temporal filter;
+identifying one or more locations within the geographic
+region and corresponding to locations of the water network
+where the filtered SAR data indicates a drop in backscattered
+energy relative to at least one previous monitoring period;
+plotting the identified one or more locations spatially in a
+oraphical representation of the geographic region; overlay-
+ing the graphical representation of the geographic region
+with the plotted one or more locations onto one or more
+images of the obtained optical data; and filtering the plotted
+one or more locations based on the one or more images to
+filter out false positives.
+
+The system can further comprise detecting, by the water
+network monitoring system and based on the one or more
+spatial or temporal anomalies, one or more near-surlace
+leaks in the water network, the near-surface leaks compris-
+ing a leak of the water network causing water to spread
+below a ground surface and at or above a level of the water
+network and wherein detecting the one or more near-surface
+leaks in the water network further comprises: reading a set
+of data defining statistical relationships between soil mois-
+ture content, SAR interferometric coherence variables and
+polarimetric decomposition variables obtained from a cali-
+bration area of the geographical region; applying the statis-
+tical relationships using interferometric coherence variables
+and polarimetric decomposition variables obtained from
+SAR data related to portions of the geographic region
+overlaying the water network using spatial extrapolation to
+determine a soil moisture content for a plurality of locations
+in the geographic region; and identifying one or more
+locations of the plurality of locations in the geographic
+region having a determined soil moisture content exceeding
+one or more threshold values.
+
+The system can further comprise creating a set of data
+defining statistical relationships between soil moisture con-
+tent SAR interferometric coherence variables and polarimet-
+ric decomposition variables obtained from a calibration area
+of the geographic region.
+
+The system can further comprise detecting, by the water
+network monitoring system and based on the one or more
+
+---
+
+US 10,802,136 B2
+
+5
+
+spatial or temporal anomalies, one or more sub-surface leaks
+in the water network, the sub-surface leaks comprising a
+leak of the water network causing water to spread below a
+eround surface and below a level of the water network and
+wherein detecting the one or more sub-surface leaks in the
+water network further comprises: integrating data of the
+obtained set of SAR data using one or more interferometric
+processes that quantify vertical terrain movement at one or
+more locations within the geographic region corresponding,
+to locations of the water network; creating a time series
+history using the vertical terrain movement at the one or
+more locations within the geographic region; and identify-
+ing, based on the time series history, locations of the one or
+more locations within the geographic region having vertical
+terrain movement exceeding one or more threshold values.
+
+The instructions can further cause the processor to deter-
+mine a risk of leakage by: obtaining a set of Synthetic
+Aperture Radar (SAR) data for a geographic region; obtain-
+ing a set of optical data of the geographic region containing
+at least a portion of the water network; generating an
+estimate of vegetation intrusion into the water network
+based at least in part on the obtained set of optical data;
+monitoring an amount of terrain motion around the water
+network based at least in part on one or both of the obtained
+set of SAR data and the obtained set of optical data; and
+generating a leakage risk index based at least in part on the
+estimate of vegetation intrusion into the water network and
+the monitoring of the amount of terrain motion around the
+water network.
+
+The generating the estimate of vegetation intrusion into
+the water network can comprise: reading a set of data
+defining one or more physical attributes for soil at one or
+more depths and at the one or more locations along the water
+network; reading a set of data defining one or more physical
+attributes for one or more types of vegetation; classifying
+vegetation at the one or more locations along the water
+network based on the obtained set of optical data; and
+generating an estimated amount of vegetation intrusion at
+each of the one or more locations along the water network
+based on the one or more physical attributes of the soil, and
+the one or more physical attributes for a type of the classified
+vegetation at each location.
+
+The generating the leakage risk index can be based at least
+in part on data defining one or more physical attributes of the
+water network at one or more locations in the geographic
+region.
+
+The monitoring the amount of terrain motion around the
+water network can comprise: integrating data of the obtained
+set of SAR data using one or more interferometric processes
+that quantify vertical terrain movement at one or more
+locations within the geographic region corresponding to
+locations of the water network; creating a time series history
+using the vertical terrain movement at the one or more
+locations within the geographic region; and identifying,
+based on the time series history, locations of the one or more
+locations within the geographic region having vertical ter-
+rain movement exceeding one or more threshold values.
+
+The generating the leakage risk index further can com-
+prise: reading a set of data defining one or more threshold
+values for each of the generated estimate of vegetation
+intrusion into the water network and the amount of terrain
+motion around the water network; and assigning a risk
+category to one or more locations along the water network
+based on a value for the generated estimate of vegetation
+intrusion into the water network or a value for the amount of
+terrain motion around the water network exceeding one or
+more of the threshold values.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+6
+
+According to a fourth aspect there is provided a non-
+transitory computer-readable medium comprising a set of
+instructions stored therein which, when executed by a pro-
+cessor, causes the processor to monitor a water network by:
+obtaining a set of Synthetic Aperture Radar (SAR) data for
+a geographic region containing at least a portion of the water
+network; obtaining a set of optical data of the geographic
+region; analyzing the obtained set of SAR data and the
+obtained set of optical data for spatial or temporal anomalies
+related to a plurality of indirect indicators of leaks in the
+water network, wherein the plurality of indirect indicators of
+leaks in the water network comprises two or more of an
+indicator of soil moisture or ponding water derived based on
+the obtained set of SAR data, an indicator of vegetation
+orowth derived based on the obtained set of optical data, or
+an indicator of surface motion or texture change derived
+based on the obtained set of SAR data; detecting, based on
+the analyzing of the obtained set of SAR data and the
+obtained set of optical data, one or more spatial or temporal
+anomalies related to at least one of the plurality of indirect
+indicators of leaks in the water network and not attributable
+to environmental factors within the geographic region; gen-
+erating a set of graded locations within the geographic
+region having symptoms associated with leaks in the water
+network based on the detected one or more spatial or
+temporal anomalies; generating an estimate of vegetation
+intrusion into the water network based at least in part on the
+obtained set of optical data; monitoring an amount of terrain
+motion around the water network based at least in part on
+one or both of the obtained set of SAR data and the obtained
+set of optical data; and generating a leakage risk index based
+at least in part on the estimate of vegetation intrusion into the
+water network and the monitoring of the amount of terrain
+motion around the water network.
+
+The computer-readable medium can further comprise
+detecting, by the water network monitoring system and
+based on the one or more spatial or temporal anomalies, one
+or more surface leaks in the water network, the surface leaks
+comprising a leak of the water network causing ponding of
+water on a ground surface and wherein detecting the one or
+more surface leaks in the water network further comprises:
+filtering noise from the obtained set of SAR data using a
+multi-temporal filter; identifying one or more locations
+within the geographic region and corresponding to locations
+of the water network where the filtered SAR data indicates
+a drop in backscattered energy relative to at least one
+previous monitoring period; plotting the identified one or
+more locations spatially in a graphical representation of the
+geographic region; overlaying the graphical representation
+of the geographic region with the plotted one or more
+locations onto one or more images of the obtained optical
+data; and filtering the plotted one or more locations based on
+the one or more data to filter out false positives.
+
+The computer-readable medium can further comprise
+detecting, by the water network monitoring system and
+based on the one or more spatial or temporal anomalies, one
+or more near-surface leaks in the water network, the near-
+surface leaks comprising a leak of the water network causing
+water to spread below a ground surface and at or above a
+level of the water network and wherein detecting the one or
+more near-surface leaks in the water network further com-
+prises: reading a set of data defining statistical relationships
+between soil moisture content, SAR interferometric coher-
+ence variables and polarimetric decomposition variables
+obtained from a calibration area of the geographical region;
+applying the statistical relationships using interferometric
+coherence variables and polarimetric decomposition vari-
+
+---
+
+US 10,802,136 B2
+
+7
+
+ables obtained from SAR data related to portions of the
+geographic region overlaying the water network using spa-
+tial extrapolation to determine a soil moisture content for a
+plurality of locations in the geographic region; and identi-
+fying one or more locations of the plurality of locations in
+the geographic region having a determined soil moisture
+content exceeding one or more threshold values.
+
+The computer-readable medium can further comprise
+creating a set of data defining statistical relationships
+between soil moisture content SAR interferometric coher-
+ence variables and polarimetric decomposition variables
+obtained from a calibration area of the geographic region.
+
+The computer-readable medium can further comprise
+detecting, by the water network monitoring system and
+based on the one or more spatial or temporal anomalies, one
+or more sub-surface leaks in the water network, the sub-
+surface leaks comprising a leak of the water network causing
+water to spread below a ground surface and below a level of
+the water network and wherein detecting the one or more
+sub-surface leaks in the water network further comprises:
+integrating data of the obtained set of SAR data using one or
+more interferometric processes that quantify vertical terrain
+movement at one or more locations within the geographic
+region corresponding to locations of the water network;
+creating a time series history using the vertical terrain
+movement at the one or more locations within the geo-
+graphic region; and identifying, based on the time series
+history, locations of the one or more locations within the
+geographic region having vertical terrain movement exceed-
+ing one or more threshold values.
+
+The generating the estimate of vegetation intrusion into
+the water network can comprise: reading a set of data
+defining one or more physical attributes for soil at one or
+more depths and at the one or more locations along the water
+network; reading a set of data defining one or more physical
+attributes for one or more types of vegetation; classifying
+vegetation at the one or more locations along the water
+network based on the obtained set of optical data; and
+generating an estimated amount of vegetation intrusion at
+each of the one or more locations along the water network
+based on the one or more physical attributes of the water
+network, the one or more physical attributes of the soil, and
+the one or more physical attributes for a type of the classified
+vegetation at each location.
+
+The generating the leakage risk index can be based at least
+in part on data defining one or more physical attributes of the
+water network at one or more locations in the geographic
+region.
+
+The monitoring the amount of terrain motion around the
+water network can comprise: integrating data of the obtained
+set of SAR data using one or more interferometric processes
+that quantify vertical terrain movement at one or more
+locations within the geographic region corresponding to
+locations of the water network; creating a time series history
+using the vertical terrain movement at the one or more
+locations within the geographic region; and identifying,
+based on the time series history, locations of the one or more
+locations within the geographic region having vertical ter-
+rain movement exceeding one or more threshold values.
+
+The generating the leakage risk index can further com-
+prise: reading a set of data defining one or more threshold
+values for each of the generated estimate of vegetation
+intrusion into the water network and the amount of terrain
+motion around the water network; and assigning a risk
+category to one or more locations along the water network
+based on a value for the generated estimate of vegetation
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+8
+
+intrusion into the water network or a value for the amount of
+terrain motion around the water network exceeding one or
+more of the threshold values.
+
+BRIEF DESCRIPTION OF THE DRAWINGS
+
+FIG. 1 schematically illustrates an example water network
+detection system;
+
+FIG. 2 schematically illustrates an example water network
+detection system in communication with various devices,
+
+FIG. 3 1s a flow chart showing an example method for
+monitoring a water network using the water network moni-
+toring system,
+
+FIG. 4 1s a flow chart showing an example method for
+detecting a surface leak using the water network monitoring
+system;
+
+FIG. 5A shows a synthetic aperture radar (SAR) plot of a
+geographical area in the vicinity of a water network;
+
+FIG. 5B shows a plot of backscatter intensity against time
+for different identified area from the SAR plot shown in FIG.
+SA;
+
+FIG. 5C shows a plot of multi-spectral optical image of
+the geographical area being observed showing anomalous
+vegetation vigour;
+
+FIG. 6 1s a flow chart showing an example method for
+detecting surface leaks using the water network monitoring
+system;
+
+FIG. 7 1s a flow chart showing an example method for
+detecting near-surface leaks using the water network moni-
+toring system;
+
+FIG. 8A shows a graph of predicted against observed
+values of soil moisture level of the geographical area of
+interest obtained by the water network monitoring system;
+
+FIG. 8B shows a plot of the geographical area under
+observation illustrating soil moisture content determined by
+water network monitoring system;
+
+FIG. 9 1s a flow chart showing an example method for
+detecting near-surface leaks using the water network moni-
+toring system,
+
+FIG. 10 1s a flow chart showing an example method for
+detecting sub-surface leaks using the water network moni-
+toring system,
+
+FIG. 11A shows the raw SAR backscatter data for the
+geographical region that is being observed by the water
+network monitoring system;
+
+FIG. 11B shows the integrated SAR data showing the
+generated interferogram of the geographical region that is
+being observed by the water network monitoring system;
+
+FIG. 11C illustrates, based on the interferogram of FIG.
+11B, the geographical area showing preliminary persistent
+scatterers and their estimated coherence;
+
+FIG. 11D shows a plot of vertical height of terrain at a
+number of points in time, for a number of locations in the
+geographical area, as measured by the water network moni-
+toring system,
+
+FIG. 12 1s a flow chart showing an example method for
+detecting sub-surface leaks using the water network moni-
+toring system,
+
+FIG. 13 1s a flow chart showing an example method for
+monitoring a water network to determine a risk index using
+the water network monitoring system;
+
+FIG. 14 is a flow chart showing an example method for
+estimate of vegetation intrusion using the water network
+monitoring system;
+
+FIG. 15 is a flow chart showing an example method for
+determining terrain motion using the water network moni-
+toring system; and
+
+---
+
+US 10,802,136 B2
+
+9
+
+FIG. 16 1s a flow chart showing an example method for
+monitoring a water network to determine a risk index using
+the water network monitoring system.
+
+DETAILED DESCRIPTION OF THE PRESENT
+INVENTION
+
+Aspects of the present disclosure will now be described
+by way of example with reference to the accompanying
+figures.
+
+The following description is presented to enable any
+person skilled in the art to make and use the system, and 1s
+provided in the context of a particular application. Various
+modifications to the disclosed embodiments will be readily
+apparent to those skilled in the art.
+
+In the following description, for the purposes of expla-
+nation, numerous specific details are set forth in order to
+provide a thorough understanding of various embodiments
+disclosed herein. It will be apparent, however, to one skilled
+in the art that various embodiments of the present disclosure
+may be practiced without some of these specific details. The
+ensuing description provides exemplary embodiments only,
+and is not intended to limit the scope or applicability of the
+disclosure. Furthermore, to avoid unnecessarily obscuring
+the present disclosure, the preceding description omits a
+number of known structures and devices. This omission 1s
+not to be construed as a limitation of the scopes of the
+claims. Rather, the ensuing description of the exemplary
+embodiments will provide those skilled in the art with an
+enabling description for implementing an exemplary
+embodiment. It should however be appreciated that the
+present disclosure may be practiced in a variety of ways
+beyond the specific detail set forth herein.
+
+While the exemplary aspects, embodiments, and/or con-
+figurations illustrated herein show the various components
+of the system collocated, certain components of the system
+can be located remotely, at distant portions of a distributed
+network, such as a LAN and/or the Internet, or within a
+dedicated system. Thus, it should be appreciated, that the
+components of the system can be combined in to one or
+more devices or collocated on a particular node of a dis-
+tributed network, such as an analog and/or digital telecom-
+munications network, a packet-switch network, or a circuit-
+switched network. It will be appreciated from the following
+description, and for reasons of computational efficiency, that
+the components of the system can be arranged at any
+location within a distributed network of components without
+affecting the operation of the system.
+
+Furthermore, it should be appreciated that the various
+links connecting the elements can be wired or wireless links,
+or any combination thereof, or any other known or later
+developed element(s) that 1s capable of supplying and/or
+communicating data to and from the connected elements.
+These wired or wireless links can also be secure links and
+may be capable of communicating encrypted information.
+Transmission media used as links, for example, can be any
+suitable carrier for electrical signals, including coaxial
+cables, copper wire and fiber optics, and may take the form
+of acoustic or light waves, such as those generated during
+radio-wave and infra-red data communications.
+
+As used herein, the phrases “at least one,” “one or more,”
+“or,” and “and/or” are open-ended expressions that are both
+conjunctive and disjunctive in operation. For example, each
+of the expressions “at least one of A, B and C,” “at least one
+of A, B, or C,” “one or more of A, B, and C,” “one or more
+of A, B, or C,” “A, B, and/or C,” and “A, B, or C” means
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+10
+
+A alone, B alone, C alone, A and B together, A and C
+together, B and C together, or A, B and C together.
+
+The term “a” or “an” entity refers to one or more of that
+entity. As such, the terms “a” (or “an’’), “one or more” and
+‘fat least one” can be used interchangeably herein. It 1s also
+to be noted that the terms “comprising,” “including,” and
+“having” can be used interchangeably.
+
+The term “automatic” and variations thereof, as used
+herein, refers to any process or operation done without
+material human input when the process or operation 1s
+performed. However, a process or operation can be auto-
+matic, even though performance of the process or operation
+uses material or immaterial human input, if the input 1s
+received before performance of the process or operation.
+Human input is deemed to be material if such input influ-
+ences how the process or operation will be performed.
+Human input that consents to the performance of the process
+or operation is not deemed to be “material.”
+
+The term “computer-readable medium” as used herein
+refers to any tangible storage and/or transmission medium
+that participate in providing instructions to a processor for
+execution. Such a medium may take many forms, including
+but not limited to, non-volatile media, volatile media, and
+transmission media. Non-volatile media includes, for
+example, NVRAM, or magnetic or optical disks. Volatile
+media includes dynamic memory, such as main memory.
+Common forms of computer-readable media include, for
+example, a floppy disk, a flexible disk, hard disk, magnetic
+tape, or any other magnetic medium, magneto-optical
+medium, a CD-ROM, any other optical medium, punch
+cards, paper tape, any other physical medium with patterns
+of holes, a RAM, a PROM, and EPROM, a FLASH-
+EPROM, a solid state medium like a memory card, any other
+memory chip or cartridge, a carrier wave as described
+hereinafter, or any other medium from which a computer can
+read. A digital file attachment to e-mail or other self-
+contained information archive or set of archives 1s consid-
+ered a distribution medium equivalent to a tangible storage
+medium. When the computer-readable media is configured
+as a database, it is to be understood that the database may be
+any type of database, such as relational, hierarchical, object-
+oriented, and/or the like. Accordingly, the disclosure is
+considered to include a tangible storage medium or distri-
+bution medium and prior art-recognized equivalents and
+successor media, in which the software implementations of
+the present disclosure are stored.
+
+The terms “determine,” “calculate,” and “compute,” and
+variations thereof, as used herein, are used interchangeably
+and include any type of methodology, process, mathematical
+operation or technique.
+
+It shall be understood that the term “means” as used
+herein shall be given its broadest possible interpretation in
+accordance with 35 U.S.C., Section 112, Paragraph 6.
+Accordingly, a claim incorporating the term “means” shall
+cover all structures, materials, or acts set forth herein, and all
+of the equivalents thereof. Further, the structures, materials
+or acts and the equivalents thereof shall include all those
+described in the summary of the disclosure, brief description
+of the drawings, detailed description, abstract, and claims
+themselves.
+
+Aspects of the present disclosure may take the form of an
+entirely hardware embodiment, an entirely software embodi-
+ment (including firmware, resident software, micro-code,
+etc.) or an embodiment combining software and hardware
+aspects that may all generally be referred to herein as a
+“circuit,” “module” or “system.” Any combination of one or
+more computer readable medium(s) may be utilized. The
+
+---
+
+US 10,802,136 B2
+
+1]
+
+computer readable medium may be a computer readable
+signal medium or a computer readable storage medium.
+
+In yet another embodiment, the systems and methods of
+this disclosure can be implemented in conjunction with a
+special purpose computer, a programmed microprocessor or
+microcontroller and peripheral integrated circuit element(s),
+an ASIC or other integrated circuit, a digital signal proces-
+sor, a hard-wired electronic or logic circuit such as discrete
+element circuit, a programmable logic device or gate array
+such as PLD, PLA, FPGA, PAL, special purpose computer,
+any comparable means, or the like. In general, any device(s)
+or means capable of implementing the methodology illus-
+trated herein can be used to implement the various aspects
+of this disclosure. Exemplary hardware that can be used for
+the disclosed embodiments, configurations, and aspects
+includes computers, handheld devices, telephones (e.g., cel-
+lular, Internet enabled, digital, analog, hybrids, and others),
+and other hardware known in the art. Some of these devices
+include processors (e.g., a single or multiple microproces-
+sors), memory, nonvolatile storage, input devices, and out-
+put devices. Furthermore, alternative software implementa-
+tions including, but not limited to, distributed processing or
+component/object distributed processing, parallel process-
+ing, or virtual machine processing can also be constructed to
+implement the methods described herein.
+
+Fxamples of the processors as described herein may
+include, but are not limited to, at least one of Qualcomm®
+Snapdragon® 800 and 801, Qualcomm® Snapdragon® 610
+and 615 with 4G LIE Integration and 64-bit computing,
+Apple® A7 processor with 64-bit architecture, Apple® M7
+motion coprocessors, Samsung® Exynos® series, the Intel®
+Core™ family of processors, the Intel® Xeon® family of
+processors, the Intel® Atom™ family of processors, the
+Intel Itantum® family of processors, Intel® Core®
+15-4670K and 17-4770K 22 nm Haswell, Intel® Core®
+15-3570K 22 nm Ivy Bridge, the AMD® FX™ family of
+processors, AMD® FX-4300, FX-6300, and FX-8350 32 nm
+Vishera, AMD® Kaveri processors, Texas Instruments®
+Jacinto C6000™ automotive infotainment processors, Texas
+Instruments® OMAP™ automotive-grade mobile proces-
+sors, ARM® Cortex™-M processors, ARM® Cortex-A and
+ARM926EJ-S™ processors, other industry-equivalent pro-
+cessors, and may perform computational functions using any
+known or future-developed standard, instruction set, librar-
+ies, and/or architecture.
+
+In yet another embodiment, the disclosed methods may be
+readily implemented in conjunction with software using
+object or object-oriented software development environ-
+ments that provide portable source code that can be used on
+a variety of computer or workstation platforms. Alterna-
+tively, the disclosed system may be implemented partially or
+fully in hardware using standard logic circuits or VLSI
+design. Whether software or hardware is used to implement
+the systems in accordance with this disclosure is dependent
+on the speed and/or efhiciency requirements of the system,
+the particular function, and the particular software or hard-
+ware systems or microprocessor or microcomputer systems
+being utilized.
+
+In yet another embodiment, the disclosed methods may be
+partially implemented in software that can be stored on a
+storage medium, executed on programmed general-purpose
+computer with the cooperation of a controller and memory,
+a special purpose computer, a microprocessor, or the like. In
+these instances, the systems and methods of this disclosure
+can be implemented as program embedded on personal
+computer such as an applet, JAVA® or CGI script, as a
+resource residing on a server or computer workstation, as a
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+12
+
+routine embedded in a dedicated measurement system, sys-
+tem component, or the like. The system can also be imple-
+mented by physically incorporating the system and/or
+method into a software and/or hardware system.
+
+Although the present disclosure describes components
+and functions implemented in the aspects, embodiments,
+and/or configurations with reference to particular standards
+and protocols, the aspects, embodiments, and/or configura-
+tions are not limited to such standards and protocols. Other
+similar standards and protocols not mentioned herein are in
+existence and are considered to be included in the present
+disclosure. Moreover, the standards and protocols men-
+tioned herein and other similar standards and protocols not
+mentioned herein are periodically superseded by faster or
+more effective equivalents having essentially the same func-
+tions. Such replacement standards and protocols having the
+same functions are considered equivalents included in the
+present disclosure.
+
+A water network monitoring system is disclosed for
+determining leakage from a network. The water network
+may comprise any of pipelines, aqueducts, reservoir dams,
+reservoir embankments and sewers. Although water net-
+works are broadly described herein, 1t can be understood that
+the water network monitoring system may monitor any of
+pipelines, aqueducts, reservoir dams, reservoir embank-
+ments, and sewers.
+
+As water networks such as pipelines, are generally located
+out of sight, e.g. underground, their direct observation is not
+usually possible. The present water network monitoring
+system is designed to pin-point locations adjacent to existing
+water networks that exhibit abnormal indicators that imply
+water network leakage, and to identify areas of water
+network that are at high risk of failure.
+
+The indicators that imply water leakage from a water
+network may in some instances be an observation of water
+itself. For instance, ponding of surface water or detected
+elevated soil moisture. Alternatively, the presence of water
+may be inferred from the behaviour of the surrounding
+geographical area, such as through ground subsidence or
+increased vegetation growth. Where these indicators cannot
+be attributed to environmental factors, such as the weather,
+variations in soil type, and/or landscape, and would not
+usually be expected in such an area, they can be indicative
+of water network leakage events.
+
+The present water network monitoring system employs
+Earth observation data, such as synthetic aperture radar
+(SAR) data and optical data, collected from a geographical
+region that includes the water network system of interest.
+This data is collected over successive time periods and
+analysed to detect any abnormal changes in the indicators
+within the area in the vicinity of the water network.
+
+One advantage of the water network monitoring system 1s
+that it can be implemented with little, to no, need for direct
+eround based measurements and observations, which can be
+expensive to implement and maintain.
+
+In addition, the whole water network within the geo-
+oraphical area under investigation can be observed using the
+Earth observation data. This can enable large landscapes to
+be mapped. This is unlike using ground based observations,
+which only have a limited measurement area in which they
+can detect leaks.
+
+The water network monitoring system is suited for obser-
+vations of rural water network locations, where the detection
+of water network leaks can go unnoticed for long periods as
+few people are likely to come into contact with the leak.
+
+---
+
+US 10,802,136 B2
+
+13
+
+Furthermore, the use of earth observation data 1s specifically
+suited to the rural landscape, as it generally provides pre-
+dictable and uniform trends.
+
+The water network systems under investigation may be
+clean water networks, where the loss of water is undesirable
+due to the cost of clean water. The water network systems
+may also be waste water networks. Waste water network
+leakage may create a contamination risk. Therefore, it is
+important that they are detected and acted on quickly due to
+the potential for environmental damage and associated
+health and safety risks.
+
+FIG. 1 shows an example water network monitoring,
+system 100. The water network monitoring system 100
+comprises a processor 101 for processing instructions, a
+memory 103 for storing data obtained by the water network
+monitoring system 100, and a graphical user interface (GUI)
+105 for displaying the results obtained from the water
+network monitoring system 100.
+
+FIG. 2 illustrates the water network monitoring system
+100 in communication with SAR transmitter 201 and SAR
+detector 203. SAR transmitter 201 1s responsible for trans-
+mitting SAR radiation such that it 1s incident on the geo-
+eraphical area of interest 219. The SAR radiation backscat-
+tered from the geographical region 219 is subsequently
+detected by SAR detector 203. As would be understood the
+SAR transmitter and detector may be the same module, or
+may be separate modules.
+
+SAR actively transmits and receives long wavelengths
+G.e. 2.4-30 cm) of energy. This is advantageous as these
+wavelengths are minimally affected by atmospheric absorp-
+tion and scattering, meaning data acquisition can occur
+regularly despite cloud cover. The advantage of using SAR
+includes the ability to produce fine resolution images that are
+sensitive to the surface that is being observed.
+
+As mentioned above, SAR uses radiation that is transmit-
+ted and then is subsequently detected, after having been
+reflected from the target. This 1s in contrast to multispectral
+optical sensors that require solar illumination to generate
+useful data.
+
+SAR techniques involve the processing and analysis of
+two radar observables: the intensity (or amplitude) and
+phase components of the backscattered signal. Some SAR
+methods analyse temporal changes to the intensity of
+returned signal to detect phenomena on the ground while
+received SAR phase signals can be compared to estimate
+coherence, or the similarity of phase at different times, or to
+undertake interferometric processing. Interferometry analy-
+ses phase differences between two SAR images to create an
+interferogram that is used to infer details of the ground under
+observation.
+
+Water network monitoring system 100 is also in commu-
+nication with optical detector 205. Optical detector 205
+detects visible and/or infra-red energy reflected by the same
+area as probed using SAR.
+
+The SAR transmitter 201 and SAR detector 203 and the
+optical detector 205 can be located on satellites. These
+satellites may include Sentinel 1 (SAR data), Sentinel 2
+(optical data), and Landsat 8, or other types of Earth orbiting
+satellites.
+
+The water network monitoring system 100 may control
+any of the transmitters and/or detectors to perform the
+actions outlined above. This may involve any of controlling
+the transmission of SAR signal, controlling the geographical
+area of interest to be monitored, or any other parameter that
+needs to be controlled. Alternatively, the water network
+monitoring system 100 may request the SAR and optical
+data from the receivers, or from an external database 217
+
+20
+
+25
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+14
+
+that may store the data. For instance, this may be data from
+institutions such as NASA or the European Space Agency or
+instance using data obtained from any of Sentinel 1 (SAR
+data), Sentinel 2 (optical data), and Landsat 8. Further
+examples of databases that the data may be obtained from
+include any of: Landsat 1-8, Sentinels 1-2, Telespazio Vega,
+CosmoSkyMed, MDA or RapidEye Landsat 8 and Sentinel
+2 use pushbroom sensors which comprise a linear array of
+sensors. Pushbroom scanners use moving mirrors to focus
+reflected energy onto the different sensors. They continu-
+ously scan the Earth’s surface in long strips that are then cut
+into discrete ‘scenes’ for distribution.
+
+As described herein, ‘very high’ resolution is sub-5.0 m
+(meter) prxels, while ‘high’ resolution is 5-10 m pixels, and
+‘medium’ resolution is 10-40 m pixels. The system may be
+used with SAR imagery having 3 m pixels (.e. very high
+resolution SAR data). The system may also be used with
+data from any of; Sentinel 1, which has a resolution of 15-20
+m pixels G.e. medium resolution SAR data), data from
+Sentinel 2 having a resolution of 10 m pixels G.e. high or
+medium resolution optical data), and data from Landsat 8
+having a resolution of 15-30 m pixels i.e. medium resolu-
+tion optical data).
+
+The optical data acquired as outlined above may be
+multi-spectral imagery. Specifically, each element of the
+linear sensor array of the optical detector 205 may have a
+filter such that it can record specific regions of the electro-
+magnetic spectrum. For instance, the satellite Landsat 8 has
+11 spectral bands that are recorded. Specifically, 1 to 5 of
+these bands are in the visible to near IR domain, 3 bands are
+in the shortwave infrared, and 2 bands are in the thermal IR.
+There is also a broad panchromatic band collected at a
+higher spatial resolution (15 m) that can be used to ‘sharpen’
+the other bands.
+
+As can be seen from FIG. 2 water network monitoring
+system 100 also comprises detector module 207, analysis
+module 209, mapping module 211, overlay module 213 and
+display module 215. These modules enable the water net-
+work monitoring system 100 to detect water network leak-
+age events as will be described in the methods set out below.
+
+The flow chart of FIG. 3 shows a method for monitoring,
+a water network, as performed by the water network moni-
+toring system 100 of FIGS. 1 and 2.
+
+Step 301 involves obtaining, by the water network moni-
+toring system 100, a set of SAR data for a geographic region
+containing at least a portion of the water network.
+
+Step 303 involves obtaining, by the water network moni-
+toring system, a set of optical data of the geographic region.
+
+Both steps 301 and 303 may be performed by the detector
+module 207 requesting the SAR and optical data from the
+SAR detector 203 and optical detector 205, respectively.
+Alternatively, the detector module 207 may automatically be
+provided with said data from SAR detector 203 and optical
+detector 205, without having to request the data. Alterna-
+tively, the detector module 207 may request the SAR and
+optical data from the external database 217, where the
+external database has been provided with the SAR and
+optical data from the SAR detector 203 and optical detector
+205, respectively.
+
+SAR data can take the form of data points, in a list or
+table, or may take the form of SAR images. Similarly,
+optical data can take the form of data points, in a list or table,
+or may take the form of optical images. SAR data 1s typically
+acquired in a ground range format (amplitude or intensity
+data) or in a side look complex (containing both intensity
+and phase information). Both formats will separate cross-
+and co-polarised data into distinct ‘bands’ or layers. Simi-
+
+---
+
+US 10,802,136 B2
+
+15
+
+larly, imagery from optical sensors are usually organised
+into bands that correspond to distinct wavelengths (e.g. red,
+ereen, near infra-red, etc.). Imagery is provided in a range of
+digital formats (e.g. geotill, ;peg2000, band sequential,
+various binary formats, etc. )
+
+Step 305 involves analyzing, by the water network moni-
+toring system, the obtained set of SAR data and the obtained
+set of optical data for spatial or temporal anomalies related
+to a plurality of indirect indicators of leaks in the water
+network. Analysing step 305 is performed by the analysis
+module 209 which receives the obtained SAR and optical
+data from the detector module 207.
+
+The indirect indicators may comprise an indicator of soil
+moisture or ponding water based on the SAR data. Water has
+a specific SAR radiation profile, thus its presence can be
+inferred from the SAR data. In addition, SAR radiation
+detected from dry soil provides a different profile to SAR
+radiation detected from wet soil. Thus, the presence of water
+in the geographical area can be determined, with any anoma-
+lies indirectly indicating the presence of leaks in the water
+network. High resolution SAR data 1s preferably for detect-
+ing surface water.
+
+Increase in water content in the vicinity of a water
+network leak may lead to an increase in vegetation growth
+in that area compared to other nearby areas. This can be
+observed from optical data. Therefore, in some instances the
+plurality of indirect indicators may comprise an indicator of
+vegetation growth, indicated based on the obtained optical
+data. Optical data of medium to high resolution are preferred
+for detecting this vegetation growth.
+
+The plurality of indirect indicators may comprise an
+indicator of surface motion or texture change derived from
+the SAR data. A change in the surface of the geographical
+area may occur based on water leakage causing soil subsid-
+ence or uplift. Therefore, surface motion can be an indicator
+of a water network leak. Medium to high resolution SAR
+data is preferred for determining surface motion.
+
+The analyzing is performed using a number of techniques
+depending on the type of leak that is being investigated, as
+will be described in more detail below.
+
+Step 307 involves detecting, by the water network moni-
+toring system 100 and based on the analyzing of the obtained
+set of SAR data and the obtained set of optical data, one or
+more spatial or temporal anomalies related to at least one of
+the plurality of indirect indicators of leaks in the water
+network and not attributable to environmental factors within
+the geographic region.
+
+Temporal anomalies may be identified by comparing SAR
+and/or optical data of the same geographical area at a
+number of points in time to determine usual behaviour. For
+instance, over a period of time an area may exhibit a water
+content which changes slowly, but which at a certain point
+in time may change in an uncharacteristically sudden way.
+Such a sudden change may be indicative of a water network
+leak.
+
+Similarly, spatial anomalies may show certain regions of
+the geographical area displaying an unusual behaviour com-
+pared to other regions. For instance, a geographical area may
+demonstrate a similar water profile across the entire area,
+except for a small isolated region demonstrating a higher
+water content. This small isolated region may be indicative
+of a water network leak if there is no other reason to explain
+its presence.
+
+In some instances, both spatial and temporal anomalies
+are analysed in combination. For instance, an unexplained
+increase in water content may be detected at a certain
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+16
+
+location not characteristic of 1ts surrounding area, which was
+not observable at a previous point in time.
+
+Any temporal or spatial anomalies that can be attributed
+to environmental factors can be ignored. For instance, recent
+precipitation or flooding events may be responsible for the
+changes, which do not indicate the presence of a water
+network leak. Therefore, only the unexplained anomalies are
+noted, as these may be indicative of a water network leak.
+
+Finally, step 309 involves generating, by the water net-
+work monitoring system, a set of graded locations within the
+geographic region having symptoms associated with leaks in
+the water network based on the detected one or more spatial
+or temporal anomalies.
+
+Both steps 307 and 309 are performed by a range of
+modules within the water network monitoring system 100
+including analysis module 209, mapping module 211, over-
+lay module 213, and display module 215, as will be outlined
+in more detail below.
+
+The method as shown in FIG. 3 will now be described in
+more specific detail outlining how the water network moni-
+toring system 100 can be used to detect three different types
+of water network leaks: surface leaks, near-surface leaks,
+and sub-surface leaks. These different water network leaks
+present different indicators of their presence depending on
+factors such as the soil, topography, and climatic conditions.
+
+Water networks, e.g. pipelines, are often at high pressure
+meaning that any burst can result in water accumulating in
+the local area rapidly. This pressure may mean that leaks that
+occur towards the top of pipes may cause surface ponding of
+water. These types of leaks are referred to here as surtace
+leaks.
+
+FIG. 4 is a flow chart showing a method for detecting a
+surface leak using the water network monitoring system 100
+of FIGS. 1 and 2, describing in more detail how certain steps
+of the method shown in FIG. 3 can be used to determine
+surface leaks.
+
+Step 401 involves filtering noise from the obtained set of
+SAR data from step 301 using a multi-temporal filter.
+Specifically, analysis module 209 receives from detector
+module 207 the SAR data, and performs the filtering step.
+The typical source of noise in SAR data is speckle, or the
+interference of returned energy from multiple scattering
+elements in the same pixel. This is an undesirable artefact
+and it is necessary for it to be removed from the SAR data.
+The step may involve obtaining multiple SAR data sets over
+different time periods. ‘The filtering 1s achieved by averaging
+out the speckle by comparing the SAR data obtained over
+the different time periods. The effects that are due to random
+noise are therefore minimised. Typically the more data sets
+that can be used the better the filtering. In some instances
+this may include using at least 15 datasets over a period of
+at least 6 months. Advantageously, this provides sufhcient
+indication of change over the year to provide useful filtering.
+
+Step 403 involves identifying one or more locations
+within the geographic region and corresponding these to
+locations of the water network where the filtered SAR data
+indicates a drop in backscattered energy relative to at least
+ohe previous monitoring period. Multiple SAR data sets are
+acquired at distinct points in time, in order to determine
+changes in the backscatter of the SAR data. As mentioned
+above, different types of surfaces backscatter SAR radiation
+differently to one another. For instance, moist soil backscat-
+ters much more strongly than dry soil. However, once water
+starts to pond on a ground surface, the backscatter intensity
+all but disappears. Therefore, this behaviour can provide
+
+---
+
+US 10,802,136 B2
+
+17
+
+details on the water content, and as outlined above, unusual
+changes over successive SAR scans can indicate the pres-
+ence of a surface leak.
+
+Step 405 involves plotting the identified one or more
+locations spatially in a graphical representation of the geo-
+eraphic region. This can be carried out by analysis module
+209 and mapping module 211 in combination. The plot may
+involve creating a view of the geographical area with
+regions exhibiting changes in backscattered radiation clearly
+indicated. For instance, this may consist of a colour or
+oreyscale index indicating backscatter intensity for regions
+showing unusual activity. This intensity may be the relative
+change in backscatter intensity. Alternatively, the plotting
+may be a graph of backscatter intensity verses time for each
+identified location.
+
+Overlay module 213 receives from analysis module 209
+and the mapping module 211 the graphical representation of
+the geographical area. It then carries out step 407 which
+involves overlaying the graphical representation of the geo-
+graphic region with the plotted one or more locations onto
+one or more images of the obtained optical data.
+
+At step 409 the overlay module 213 then sends the overlay
+of the graphical representation to the analysis module 209
+which then carries out filtering of the plotted one or more
+locations based on the one or more optical data to filter false
+positives. The filtering at step 409 using the optical data
+enables the number of false positives when identifying the
+anomalies to be reduced, as the optical data is used as a
+secondary test in addition to the SAR data. The false
+positives may be regions where the SAR data indicates
+anomalous behaviour where there is no indication in the
+optical band of any leaks. The optical data may be high or
+medium resolution data.
+
+The optical data may involve a series of near-infrared
+measurements acquired over a period of time. This data may
+be acquired at the same points in time, or at different points
+in time to the collected SAR data.
+
+Reflectance of infrared radiation declines in intensity
+when ponded water is in abundance on the ground surface.
+Therefore, the optical data can be used to detect anomalous
+surface water.
+
+In some instances, instead of, or in addition to, detecting,
+anomalous surface water, the optical data may be used to
+determine the presence of anomalous vegetation. This veg-
+etation may have unexpectedly appeared between succes-
+sive optical data being acquired. Alternatively, or in addi-
+tion, the vegetation may be uncharacteristic of the
+vegetation in the nearby geographical area.
+
+The use of optical data enables the number of false
+positives when identifying the anomalies to be reduced, as
+the optical data 1s used as a secondary test in addition to the
+SAR data. The optical data may be high resolution data.
+
+Alternatively, in other instances optical data may not be
+required and the SAR data may alone provide reliable results
+without the need to use optical data as an additional test.
+
+The method as described in relation to FIG. 4 can enable
+surface water leaks to be detected. FIG. 5A shows a SAR
+plot of the geographical area in the vicinity of a water
+network obtained from the steps 401 to 403. As can be seen
+from magnified area 501, location 503 indicates a drop in
+backscattered energy as can be seen as it has a different
+signal to the surrounding regions, indicating the presence of
+a water network leak.
+
+FIG. 5B shows a graph of backscatter intensity against
+time for different identified areas of the SAR plot shown in
+FIG. 5A. The diamond shaped data points 505 correspond to
+the backscatter behaviour of a typical pasture at ground
+
+20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+18
+
+level, showing an approximately constant intensity through-
+out. The star shaped data points 507 correspond to the
+backscatter behaviour of open water. As can be seen the
+intensity of the backscatter of the open water data points is
+significantly lower than that of the typical pasture. The
+triangle shaped data points 509 illustrate another example of
+a pasture which follows the behaviour of a typical pasture as
+shown in 505, except for point 511, where the backscatter
+intensity has significantly decreased. At point 511 the back-
+scatter intensity is closer to that of the open water, indicating
+the presence of surface water, 1.e. the pasture is flooded.
+
+As mentioned above, a similar analysis using optical data
+may also be carried out to determine any false positives.
+
+The detection of the presence of a flooded pasture may be
+displayed by display module 215 in the graphical form as
+shown in FIG. 5B. Alternatively, mapping module 211 may
+overlay the data onto a graphical representation that may
+indicate on a map the location of the surface leak. This is
+then sent to display module 215 such that a map can be
+displayed, indicating regions displaying abnormal surface
+water.
+
+FIG. 35C shows a plot obtained using multi-spectra optical
+data of the geographical area that has been observed over
+time. As can be seen, area 513 shows an area exhibiting
+anomalous vegetation growth. As described above, this can
+be used as a secondary test to determine the presence of a
+surface leak.
+
+An example method of detecting surface leaks, as carried
+out by the water network monitoring system 100, is shown
+in FIG. 6.
+
+At step 6014 and 6016 multi-temporal X and C band SAR
+amplitude data are obtained. These SAR data acquired at
+different points in time are then precisely co-registered 603
+to one another, such that they can be compared. Co-regis-
+tration is a highly precise process of overlaying the data,
+such that the same geographical area under observation can
+be examined over time through the collection of the multi-
+temporal data.
+
+The co-registered data are then processed by performing
+a multi-temporal filter 605 and clutter removal algorithms
+607, such as clutter minimisation. This may remove
+unwanted noise, for instance, by destructive interference.
+The processed data are then examined by performing sta-
+tistical time series filters 609 to identify locations where
+backscattered energy drops significantly between SAR data
+acquired at different points in time.
+
+The SAR data enables a resolution of a certain number of
+pixels within the geographical area. Thus, the locations can
+only be distinguished down to the pixel level. For instance,
+X band data may be acquired at 3 m resolution, and the C
+band data may be acquired at 15 m resolution. However, it
+should be understood that other resolutions may be used, as
+the skilled person would be aware of.
+
+The trend obtained from the statistical time series analysis
+can be put into a spatial context, by comparing locations
+where backscattered energy drops significantly to adjacent
+pixels, to determine if there is an overall change in the area
+611 (textual analysis), as shown in FIGS. 5A and 3B. This
+is useful as a change in only one pixel may be indicative of
+a false detection, rather than an event due to a water network
+leakage.
+
+As outlined for FIG. 4, the multi-spectral optical data (.e.
+spectra at multiple wavelengths) is obtained 613 in the
+near-infra-red wavelength. Temporal changes, by comparing
+a series of optical data acquired at different points in time,
+are determined by examining for changes in regions where
+near-infrared energy drops off sharply indicating the pres-
+
+---
+
+US 10,802,136 B2
+
+19
+
+ence of surface water at step 615. The SAR and optical data
+are compared to filter out any false positives at step 617.
+
+Details of the water network is then obtained at input 619
+by overlay module 213, and in step 621 overlay analysis
+performed where the identified locations are overlaid onto
+the existing water network to help identify the anomalous
+events that are in the vicinity of the water network. This
+overlaid data is then sent to the analysis module which
+determines events that are associated with water network
+leakage, from other types of unusual activity in areas that are
+too distant to the water network to be caused by a water
+network leak.
+
+Rather than being carried out after the steps 603 to 617
+have been completed, the overlay of the water network 621
+could be carried out intially after acquiring the SAR and/or
+optical data. This enables the work carried out by the
+analysis module 209 to be targeted to regions directly around
+the water network from the outset, rather than identifying
+anomalies that are not in close proximity to the water
+network. This increases the efficiency of the analysis.
+
+At step 623 the analysis performed by analysis module
+209, overlay module 213, and mapping module 211, is
+output as the finalised result. The finalised result is sent to
+display module 215 which displays to the user via GUI 105
+the locations of the water network where surface leaks have
+been detected. This may be in a graphical format, and 1s
+preferably as a geographical map as outlined above. Alter-
+natively, the finalised results may be saved as a file, in some
+cases a text file, the file indicating the locations of the
+suspected leaks.
+
+The second type of water network leak, near surface leak,
+occurs typically where water network is located within
+impervious clay soils, for instance where the leaks originate
+from the sides or bottom of pipe segments. The clay soils
+cause the water to spread largely laterally through the soil
+structure, whilst also increasing the moisture level in the
+surface soil horizon. Therefore, soil moisture level can be
+used to detect the presence of these types of leaks.
+
+FIG. 7 shows a method for detecting near-surface leaks
+using the water network monitoring system 100 of FIGS. 1
+and 2, describing in more detail how certain steps of the
+method shown in FIG. 3 can be used to determine near-
+surface leaks.
+
+Step 701 involves reading a set of data defining statistical
+relationships between soil moisture content, SAR interfero-
+metric coherence variables and polarimetric decomposition
+variables obtained from a calibration area of the geographi-
+cal region.
+
+The statistical relationships may have been determined
+using a series of SAR data of a calibration area, which 1s
+compared to locations within the calibration area with
+known soil moisture levels. For instance, the known soil
+moisture levels may have been measured using ground
+based soil moisture sensors. A statistical relationship is thus
+created from comparing the SAR data at these points to the
+soil moisture level detected by the sensor network at these
+points.
+
+The statistical relationships may be determined based on
+using any combination of interferometric coherence vari-
+ables, and polarimetric decomposition variables obtained
+from SAR data.
+
+Step 703 involves applying the statistical relationships
+using interferometric coherence variables and polarimetric
+decomposition variables obtained from SAR data related to
+portions of the geographic area overlaying the water net-
+work using spatial extrapolation to determine a soil moisture
+content for a plurality of locations in the geographic region.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+65
+
+20
+The SAR data may be the SAR data obtained in step 301 of
+FIG. 3. In some instances, SAR data may be acquired over
+time, and compared to one another to determine changes in
+the soil moisture content.
+
+Based on the statistical relationships the soil moisture
+content for a plurality of locations can be determined.
+Detection of the soil moisture content is not limited to
+regions of the water network that are near to the ground soil
+moisture sensors (1.e. the calibration area), as the results can
+be extrapolated to determine from the SAR data the soil
+moisture at each point of the geographical area.
+
+This has the advantage of reducing the number of physical
+eround sensors required, decreasing time spent on installa-
+tion, upkeep and maintenance, whilst enabling the surface
+moisture to be determined in regions that are not easily
+accessible on foot.
+
+Step 705 involves identifying one or more locations of the
+plurality of locations in the geographic region having a
+determined soil moisture content exceeding one or more
+threshold values. The threshold may be set depending on the
+typical or atypical behaviour expected in that location. The
+topography of the area may be taken into consideration in
+determining typical soil moisture content. For instance, the
+soil type may directly affect the soil moisture content, with
+clay soils typically having high moisture content and sandy
+soils typically having low surface moisture. In addition,
+factors such as recent precipitation events, or known flood-
+ing events, may be taken into account when determining the
+threshold.
+
+The method as described in relation to FIGS. 7 and 8 can
+enable near-surface water leaks to be detected. FIGS. 9A to
+9B illustrate graphically certain steps of the near-surface
+water estimation.
+
+FIG. 8A shows a graph of predicted against observed
+values of soil moisture level, based on the statistical rela-
+tionship between soil moisture content and SAR data. The
+oraph has been obtained from a series of SAR data obtained
+over time, having been compared to the actual soil moisture
+level obtained by ground sensors.
+
+FIG. 8B shows a plot of the geographical area under
+observation illustrating soil moisture content. FIG. 8B
+shows how, based on extrapolating the statistical model to
+regions of the water network, the moisture content can be
+determined, to identify regions with anomalous soil mois-
+ture content exceeding threshold values, as explained above.
+
+An example of the near-surface leak detection carried out
+by the water network monitoring system 100 is shown in
+FIG. 9.
+
+Dual polarisation multi-temporal C band SAR phase data
+is obtained 901 by detector module 207. This is then sent to
+analysis module 209 for co-registration of the time series
+data 903, and performing multi-temporal filtering 905. Clut-
+ter minimisation 907 is then performed to remove contri-
+butions from unwanted noise, as previously discussed. Pola-
+rimetric phase decomposition is then performed 909 to
+measure the polarisation of the SAR data.
+
+Meanwhile coherence estimation is performed 911 by
+analysis module 209, and this time series SAR data co-
+registered 913. The coherence estimation measures the simi-
+larity (and/or differences) of the phase aspect of the radar
+data acquired at multiple points in time. The interferometric
+coherence and polarimetric decomposition variables are
+combined with soil moisture data received at input 915 from
+eround based soil moisture sensor network, to develop a
+statistical relationship between surface soil moisture and the
+
+---
+
+US 10,802,136 B2
+
+21
+
+filtered calibrated dual polarisation C band SAR phase data
+in step 917, to create the empirical soil moisture model (.e.
+statistical relationship).
+
+At specifically defined time intervals further SAR data are
+acquired by detector module 207 with statistical time series
+analysis of the SAR data at each interval performed 919 by
+analysis module 209, wherein the SAR data acquired for the
+time series analysis 1s processed using the same steps as used
+to create the statistical model. The SAR data 1s compared to
+the statistical relationship to determine soil moisture content
+at regions of the water network, as shown in FIG. 8A. The
+SAR data may also in some instances be used to further
+refine the statistical model, with soil moisture sensors
+detecting soil moisture content at each of the time intervals.
+In other situations, once the statistical model has been
+created there may be no further need to have soil moisture
+sensors.
+
+In either case, the statistical relationship can be extrapo-
+lated by analysis module 209 to portions of the SAR image
+in the vicinity of the water network 921 to determine the soil
+moisture content. The water network received as input of the
+water network map 921 may be overlaid by overlay module
+213 onto the output of the time series analysis 923 to
+determine regions where the determined soil moisture con-
+tent exceeds a certain threshold. This can then be sent to
+display module 215 to display the abnormal soil moisture
+content to the user, thus indicating a suspected water net-
+work leak. This may be indicated to the user in any way that
+the skilled person would understand. For instance, a graphi-
+cal form is preferred as shown in FIG. 8B. However, it can
+be envisaged that any other way of indicating a location can
+be used, for instance, coordinates of the location could be
+used. Or any other method of presenting results as discussed
+herein.
+
+As shown in FIG. 9 the use of optical data at input 927,
+as implemented in the method shown in FIG. 3, may also be
+used. This may be in the same manner as described above for
+surface leak detection, to eliminate the detection of false
+positives. However, it should be understood that the use of
+optical data for near-surface leak detection is entirely
+optional.
+
+The third types of leak that may be detected are sub-
+surface leaks. Sub-surface leaks typically occur from leaks
+in the sides and bottoms of pipe segments. As a result of
+these leaks, the water percolates down into the deeper soil
+layers, which can result in localised surface soil subsidence
+or upheaval.
+
+FIG. 10 shows a method for detecting sub-surface leaks
+using the water network monitoring system 100 of FIGS. 1
+and 2, describing in more detail how certain steps of the
+method shown in FIG. 3 can be used to determine sub-
+surface leaks.
+
+Step 1001 involves integrating data of the obtained set of
+SAR data using one or more interferometric processes that
+quantify vertical terrain movement at one or more locations
+within the geographic region corresponding to locations of
+the water network (1001). Interferometric processes involve
+comparing a plurality of SAR measurements to estimate
+terrain movement. The interferometric processes may
+involve obtaining a pair of SAR datasets of same frequency
+band from the geographical area and comparing the phase
+difference between the pair of SAR datasets.
+
+Step 1003 involves creating a time series history using the
+vertical terrain movement at the one or more locations
+within the geographic region. By acquiring a series of SAR
+datasets at different times, changes in the vertical terrain
+motion can be monitored.
+
+20
+
+25
+
+40
+
+45
+
+60
+
+65
+
+22
+
+Step 1005 involves identifying, based on the time series
+history, locations of the one or more locations within the
+geographic region having vertical terrain movement exceed-
+ing one or more threshold values.
+
+The threshold values may be determined based on the
+threshold set according to typical or atypical terrain motion
+behaviour expected in that location. When determining a
+threshold value the topography of the area may be taken into
+consideration as this is likely to have an effect on the terrain
+motion. For instance, soil type may directly affect the terrain
+motion. In addition, man-made influences may need to be
+taken into account, such as nearby mining activity. By
+detecting abnormal vertical terrain motion exceeding a
+threshold, the presence of water network leakage can be
+inferred.
+
+The method as described in relation to FIGS. 10 and 11
+can enable sub-surface water leaks to be detected. FIGS.
+11A to 11D illustrate graphically certain steps of the sub-
+surface leak detection.
+
+FIG. 11A shows the raw SAR backscatter data for a
+geographical region that is being observed by the water
+network monitoring system 100. As can be seen in FIG. 1A
+the SAR plot shows intensities indicating areas exhibiting
+different backscatter behaviour.
+
+FIG. 11B shows an example interferogram generated
+from consecutive SAR images of the geographical region
+observed by the water network monitoring system.
+
+FIG. 11C shows based on the interferogram of FIG. 11B,
+the geographical area showing areas of consistent scattering,
+1.e. preliminary persistent scatterers. The water network is
+shown in shaded at reference 1110. The shade coded dots
+indicate the estimated coherence of the preliminary persis-
+tent scatterers. Areas that show high coherence, above a
+certain threshold, are shown as indicated by darker spots,
+such as 1112a@ and 1112. Areas that show medium coher-
+ence are indicated by slightly lighter spots are indicated by
+1114a@ and 111464, with the even lighter shaded spots indi-
+cating areas with low coherence 1116a and 11166. The areas
+of high coherence can be identified as reliable targets to
+estimate terrain motion, during the time series analysis.
+
+FIG. 11D shows a plot of vertical height Gn mm) for a
+number of locations in the geographical area, with each data
+point representing data obtained from the SAR measure-
+ments acquired at time intervals between 22 Aug. 2012 and
+30 Sep. 2016. The vertical height is normalised with respect
+to the initial measurement at 22 Aug. 2012. Thus any change
+in vertical height can be easily viewed from the graph. Data
+sets 1101 show negligible vertical motion over the time
+period. However, the data set 1103 shows a decrease in the
+vertical height over this time period of approximately 60
+mm. Any unusual trend in vertical terrain motion may be
+indicative of the presence of a sub-surface leak. The amount
+of vertical terrain motion may depend on many factors,
+including leak rate, the duration of the leak event, and soil
+type.
+
+An example of the sub-surface leak detection carried out
+by the water network monitoring system 100 1s shown in
+FIG. 12.
+
+C and X band SAR multi-temporal phase images 1201a
+12015 are obtained by detector module 207 and forwarded
+to analysis module 209. For instance, as shown in FIG. 114A.
+Each of the C and X band SAR measurements are compared
+to a C or X band SAR measurement acquired at a slightly
+later point in time 1203. This allows analysis module 209 to
+extract an interferogram (as shown in FIG. 11B), by com-
+paring the phase shift within each pair.
+
+---
+
+US 10,802,136 B2
+
+23
+
+The analysis module 209 then applies interferogram flat-
+tening to remove the unwanted phase change contribution
+due to the curvature of the earth. The time series data 1s then
+co-registered 1207. The interferogram is then inverted to
+locate robust natural coherent SAR reflectors, also known as
+persistent scatterers 1209. These persistent scatters may
+indicate vertical terrain motion for the particular location, as
+can be seen in FIG. 11C as discussed above.
+
+The analysis module 209 then corrects for the contribu-
+tions due to the Earth’s atmosphere which may have an
+effect by changing the phase of the SAR data, and any final
+refinement of the displacement observed can be carried out
+1211.
+
+Steps 1201 to 1211 are then repeated at various points in
+time to obtain details of the history of vertical terrain motion
+as shown in FIG. 11D. Statistical time series analysis 1213
+is then performed to identify locations that exhibit vertical
+terrain motion that unexpectedly changes over time. This
+can be determined by comparison to a threshold value which
+is used to indicate abnormal vertical terrain movement. This
+data is then sent by analysis module 209 to overlay module
+213, which performs overlay analysis by comparison with
+the input water network map data by overlaying the data
+indicating abnormal vertical terrain motion, onto the water
+network 215. This means that only locations in the vicinity
+of the water network are presented to the user.
+
+At step 1219 the finalised results can be output, with
+locations in the vicinity of the water network which exhibit
+vertical terrain movement exceeding the threshold value sent
+to display module 215, which through GUI 105 displays
+these results. This display may be in the form of a graph, or
+as a map indicating the locations where this abnormal terrain
+movement is present as has been discussed herein for the
+other detection methods. This can indicate to the user the
+areas where there may be potential sub-surface leakage.
+
+When determining terrain motion via interferometry, as
+described above, relative changes are measured and thus the
+actual elevation of the geographical area under observation
+is not required to measure the terrain motion. The interfero-
+gram indicates the amounts of interference generated
+between two SAR scenes. The interference patterns are then
+“unwrapped” to estimate the contributions of topography,
+atmosphere, etc. that contribute to the interference. Once
+these contributions are estimated, they can be removed until
+all that is left 1s the interference that comes from terrain
+motion.
+
+As shown in FIG. 12 the use of optical data 1221, as
+implemented in the method shown in FIG. 3, may also be
+used. This may be in the same manner as described above for
+surface leak detection, to eliminate the detection of false
+positives. However, it should be understood that the use of
+optical data for sub-surface leak detection is entirely
+optional.
+
+In addition to detecting water network leakage events, the
+water network monitoring system 100 using the Earth obser-
+vation data techniques disclosed herein, may also be used to
+detect the likelihood of a water network leakage occurring.
+
+One of the principal causes of water network leakage 1s
+vegetation intrusion, where roots from plants or trees physi-
+cally impact on the water network, causing damage and
+ultimately a leak.
+
+Movement of the terrain in which the water network 1s
+located can also be a cause of water network leakage. For
+instance, if the water network is a pipe network the pipe may
+be put under pressure and strain causing physical damage to
+the pipe.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+24
+
+As vegetation intrusion and the water network itself are
+below ground level, and since terrain movement is not easily
+observed by eye, the use of Earth observation data tech-
+niques by the water network monitoring system 100 can
+provide a wealth of information that can be used to assess
+the risk of a water network leak occurring.
+
+The present system determines these risks by analysing
+terrain motion and vegetation intrusion, with known attri-
+butes of the water network to develop a risk index. The
+attributes may comprise any of the age of the water network,
+the depth at which the water network is located, and/or the
+construction material of the water network. Thus, it is
+possible to calculate the risk index to identify water network
+infrastructure that might experience elevated frequency of
+leak events.
+
+This enables the water utilities companies to act before a
+water network leak occurs, allowing them to save resources
+as it 1s easier to repair a water network before a leak has fully
+developed. This also reduces the need to cut off the flow to
+the water network, which would be required when a full leak
+occurs to prevent water loss. Homes are therefore less likely
+to go without water for extended periods, which may be
+particularly problematic in rural locations.
+
+The flow chart of FIG. 13 illustrates a method for mon-
+toring a water network to determine a risk index as per-
+formed by the water network monitoring system 100 of
+FIGS. 1 and 2.
+
+Step 1301 involves obtaining, by the water network
+monitoring system 100, a set of synthetic aperture radar
+(SAR) data for a geographic region. Step 1303 involves
+obtaining, by the water network monitoring system 100, a
+set of optical data of the geographic region containing at
+least a portion of the water network. Both steps 1301 and
+1303 are analogous to steps 301 and 303 as discussed above
+in relation to FIG. 3.
+
+Step 1305 involves generating, by the water network
+monitoring system 100, an estimate of vegetation intrusion
+into the water network based at least in part on the obtained
+set of optical data. Step 1305, is carried out by the analysis
+module 209, upon receiving the optical data from the
+detector module 207. Details of step 1305 will be discussed
+in more detail below.
+
+Step 1307 involves monitoring, by the water network
+monitoring system, an amount of terrain motion around the
+water network based at least in part on one or both of the
+obtained set of SAR data and the obtained set of optical data.
+Details of step 1307 will be discussed in more detail below.
+
+Step 1309 involves generating, by the water network
+monitoring system, a leakage risk index based at least in part
+on the estimate of vegetation intrusion into the water net-
+work and the monitoring of the amount of terrain motion
+around the water network.
+
+As outlined above, vegetation intrusion and terrain
+motion are the main environmental causes of water network
+leakage. Therefore, steps 1305 and 1307 enable the water
+network monitoring system 100 to obtain these useful indi-
+cators, which in step 1309 are used to generate a leakage risk
+index indicating the likelihood of water network leakage.
+
+Generating, the leakage risk index may involve the analy-
+sis module 209 reading a set of data defining one or more
+threshold values for each of the generated estimate of
+vegetation intrusion into the water network and the amount
+of terrain motion around the water network. The analysis
+module 209 may then assign a risk category to one or more
+locations along the water network based on a value for the
+generated estimate of vegetation intrusion into the water
+
+---
+
+US 10,802,136 B2
+
+25
+
+network or a value for the amount of terrain motion around
+the water network exceeding one or more of the threshold
+values.
+
+The method of FIG. 13 may further comprise obtaining a
+set of data defining one or more physical attributes of the
+water network at one or more locations in the geographic
+region. Analysis module 209 may obtain these physical
+attributes from external database 217. The physical attri-
+butes may comprise any of any of age, depth, construction
+material, of the water network. In step 1309 the leakage risk
+index may be generated based on the physical attributes of
+the water network. This may be 1n addition to the vegetation
+intrusion and terrain motion.
+
+The estimate of vegetation intrusion obtained by the water
+network monitoring system in step 1305 is now discussed in
+more detail in relation to FIG. 14.
+
+FIG. 14 is a flow chart showing a method for estimate of
+vegetation intrusion using the water network monitoring
+system 100.
+
+Step 1401 involves reading a set of data defining one or
+more physical attributes for soil at one or more depths and
+at the one or more locations along the water network. The
+data defining the physical attributes for soil may be obtained
+by analysis module 209 from external database 217. The
+physical attributes may comprise details on the soil texture
+at various depths. In other instances the physical attributes
+may comprise details on the soil type at various depths. For
+instance, this may be whether the soil 1s sandy or clay based.
+Having details on the soil at various depths can provide
+details on the likelihood that the vegetation in the vicinity of
+the water network will intrude on the water network causing
+leakage. For instance, soil texture and the presence of
+restrictive soil layers (e.g. hardened pans) may limit rooting
+depth.
+
+Step 1403 involves reading a set of data defining one or
+more physical attributes for one or more types of vegetation.
+This data defining one or more physical attributes may be
+obtained by analysis module 209 from external database
+217. The physical attributes for the vegetation may involve
+typical rooting attributes for different vegetation. For
+instance, this may involve details on typically how far roots
+of a particular type of vegetation extend, or typical depths to
+which the roots may grow. These factors are important when
+determining the likelihood that vegetation is a risk for the
+water network.
+
+Step 1405 involves classifying vegetation at the one or
+more locations along the water network based on at least one
+of the obtained set of SAR data or the obtained set of optical
+data. Different types of vegetation can be readily identified
+by exhibiting different backscatter profiles within the SAR
+data. Vegetation types can also be readily seen from optical
+data. Therefore, by acquiring the SAR and optical data the
+type of vegetation in the vicinity of a water network can be
+determined.
+
+Thus, step 1407 involves generating an estimated amount
+of vegetation intrusion at each of the one or more locations
+along the water network based on the one or more physical
+attributes of the soil, and the one or more physical attributes
+for a type of the classified vegetation at each location.
+
+The combination of the physical attributes of the soil and
+the physical attributes for the type of the classified vegeta-
+tion at each location, are all factors that may contribute to
+vegetation intrusion that can cause a water network leak.
+Analysis module 209 after having received all of the physi-
+cal attributes can carry out step 1407 to estimate this
+vegetation intrusion.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+26
+
+For instance, an aging water network, which is in close
+proximity to lots of vegetation of a certain type that is known
+to have roots that extend to the depth of the water network,
+may indicate vegetation intrusion. Whereas, regions where
+there is vegetation with shallow roots that do not extend to
+the depth of the water network may indicate minimal, to no,
+vegetation intrusion.
+
+FIG. 15 describes step 1307 of FIG. 13 in more detail,
+setting out how the water network monitoring system 100
+monitors the terrain motion around the water network.
+
+Step 1501 involves integrating data of the obtained set of
+SAR data using one or more interferometric processes that
+quantify vertical terrain movement at one or more locations
+within the geographic region corresponding to locations of
+the water network. Interferometric processes involve com-
+paring a plurality of SAR measurements to estimate terrain
+movement. The interferometric processes may involve
+obtaining a pair of SAR datasets of the same frequency band
+from the geographical area and comparing the phase differ-
+ence between the pair of SAR datasets.
+
+Step 1503 involves creating a time series history using the
+vertical terrain movement at the one or more locations
+within the geographic region. By acquiring a series of SAR
+datasets at different times, changes in the vertical terrain
+motion can be monitored.
+
+Step 1505 involves identifying, based on the time series
+history, locations of the one or more locations within the
+geographic region having vertical terrain movement exceed-
+ing one or more threshold values.
+
+As discussed for sub-surface leak detection above, the
+threshold values may be determined based on the threshold
+set according to typical or atypical terrain motion behaviour
+expected in that location.
+
+The method of measuring terrain motion as shown in FIG.
+15 may involve using a dense statistical time series analysis
+of SAR data. This involves typically using about 18 months
+of data. Rather than using the persistent scatter method as
+used to determine sub-surface leak detection, in this case a
+short baseline assessment (SBAS) method is applied to
+determine the vertical terrain movement.
+
+SBAS may involve the following steps. Initially an inter-
+ferogram is generated, as in the persistent scattered methods
+described herein. Refinement and re-flattening is then car-
+ried out which involves the identification of ground control
+points, a digital elevation model and the precise orbital
+ephemeris data acquired (e.g. from ESA data) to refine the
+orbits (.e. correcting possible inaccuracies) and to calculate
+the phase offset to derive the absolute phase values. A first
+inversion is then performed, and the re-flattened interfero-
+orams, together with the phase-height pair-by-pair propor-
+tionality factors are used to estimate the residual height and
+the displacement related information. These components are
+removed from the re-flattened interferograms before the
+unwrapping process takes place. A second inversion 1s then
+performed. The second inversion is implemented to derive
+the date by date displacements, which are filtered to remove
+the atmospheric phase components and eventually fit the
+final displacement velocity model. Finally geocoding is then
+carried out, as in the persistent scatter methods already
+described.
+
+An example method used to detect the likelihood of a
+water network leakage occurring, by determining a risk
+index, as carried out by the water network monitoring
+system 100 is shown in FIG. 16.
+
+Steps 1601 to 1609 involve generating an estimate of
+vegetation intrusion as set out in step 1305 of FIG. 13.
+
+---
+
+US 10,802,136 B2
+
+27
+
+In the method shown in FIG. 16 at 1601 the physical
+attributes of the soil at one or more depths are obtained by
+analysis module from database 217. As shown this includes
+soil properties as a vector coverage, as is commonly known
+in geographic information systems (GIS). This may include
+how the texture of the soil 1s known to change at different
+depths. In some cases this may be data that is known from
+geographical surveys of the area that are maintained in an
+external database 217. In other cases the water network
+monitoring system 100 may contain this information. Water
+network monitoring system 100 1n some embodiments may
+measure this information.
+
+Multispectral data is then obtained by detector module at
+step 1603 to detect the vegetation that is present within the
+geographical region of interest. Preferably, this 1s multispec-
+tral optical data. Although it can be understood that any type
+of imagery that permits the determination of vegetation may
+be used. The multispectral data 1s sent by detector module to
+analysis module 209 in order to perform the classification of
+the vegetation type in the geographical area under investi-
+gation. For instance, this may involve classifying if the
+vegetation is woodland, grassland or shrubland. Areas with
+high levels of certain vegetation, such as woodland may
+have an increased risk of vegetation intrusion. The classifi-
+cation of vegetation may in some instances be more specific
+as to the exact type of vegetation. For instance, the identi-
+fication of tree species may be performed. For instance, if
+the woodland is predominantly oak, or ash, or any other type
+of tree species.
+
+At step 1609 the analysis module 209, based on the type
+of vegetation identified in the geographical area in step
+1607, can obtain from database 217 physical attributes of
+types of vegetation 1605. As shown this involves typical root
+depths for different tree species. This is then combined with
+the details of the soil properties at various depths to deter-
+mine the likelihood of vegetation intrusion.
+
+Steps 1613 to 1625 involve monitoring an amount of
+terrain motion around the water network as set out in step
+1307 of FIG. 13.
+
+As can be seen steps 1613 to 1625 correspond to steps
+1201 to 1213 of FIG. 12 used to determine terrain motion
+from sub-surface leaks. The description of these steps will
+not be described in detail here as the same discussion as
+provided above applies.
+
+Steps 1613 to 1625 may differ from steps 1201 to 1213,
+as rather than the Persistent Scattering method as commonly
+known in the art they involve Short Baseline Assessment
+(SBAS) method, which involves the initial determination by
+analysis module 209 of a baseline for terrain position from
+the SAR data. As the skilled person would understand,
+SBAS may also be used for detecting sub-surface leaks.
+
+Once the analysis module 209 has received the details of
+the vegetation intrusion and terrain motion at step 1611 it
+can derive a threshold water network risk index. Overlay
+analysis is then performed with the water network by
+overlay module 213 using the water network map data input.
+At the final stage the display module 215 then receives this
+information the finalised results are then output 1630 and
+with the risk index displayed to the user.
+
+The risk index may be categorized into a plurality of
+categories. This may include high, medium, and low risk
+categories, where high risk indicates regions where water
+network leakage is likely to occur. The risk index may be
+displayed to the user in a graphical display with colour or
+oreyscale indicating the risk category. This risk index may
+be displayed in any way as described above in relation to the
+water network leak detection methods.
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+23
+
+The risk index may require calibration and testing to
+determine its reliability. This may involve the analysis
+module 209 using water network leaks detected by water
+network monitoring system 100, using the methods
+described above. The presence of surface, near surface and
+sub-surface leaks detected by water network monitoring
+system 100 may be compared to the risk index to validate it,
+as these leaks would be expected in regions with high risk
+index.
+
+Although using details of the physical properties of the
+water network is not shown within FIG. 16, it can be
+understood that this information can be incorporated at any
+step when deriving the water network risk index. Thus,
+physical properties of the water network may be used at step
+1611 along with the terrain motion and vegetation intrusion
+to develop the risk index. Alternatively, the physical prop-
+erties of the water network may be used at step 1609 to
+estimate the vegetation intrusion. In other instances, physi-
+cal properties of the water network may be used at step 1625
+when performing the statistical time series analysis to deter-
+mine if terrain motion 1s likely to have an effect on the water
+network.
+
+The methods described herein may be encoded as execut-
+able instructions embodied in a computer readable medium,
+including, without limitation, non-transitory computer-read-
+able storage, a storage device, and/or a memory device. Such
+instructions, when executed by a processor (or one or more
+computers, processors, and/or other devices) cause the pro-
+cessor (the one or more computers, processors, and/or other
+devices) to perform at least a portion of the methods
+described herein. A non-transitory computer-readable stor-
+age medium includes, but is not limited to, volatile memory,
+non-volatile memory, magnetic and optical storage devices
+such as disk drives, magnetic tape, compact discs (CDs),
+digital versatile discs (DVDs), or other media that are
+capable of storing code and/or data.
+
+Where a processor is referred to herein, this is to be
+understood to refer to a single processor or multiple pro-
+cessors operably connected to one another. Similarly, where
+a memory is referred to herein, this is to be understood to
+refer to a single memory or multiple memories operably
+connected to one another.
+
+The methods and processes can also be partially or fully
+embodied in hardware modules or apparatuses or firmware,
+so that when the hardware modules or apparatuses are
+activated, they perform the associated methods and pro-
+cesses. [he methods and processes can be embodied using
+a combination of code, data, and hardware modules or
+apparatuses.
+
+Examples of processing systems, environments, and/or
+configurations that may be suitable for use with the embodi-
+ments described herein include, but are not limited to,
+embedded computer devices, personal computers, server
+computers (specific or cloud (virtual) servers), hand-held or
+laptop devices, multiprocessor systems, microprocessor-
+based systems, set top boxes, programmable consumer elec-
+tronics, mobile telephones, network personal computers
+(PCs), minicomputers, mainframe computers, distributed
+computing environments that include any of the above
+systems or devices, and the like. Hardware modules or
+apparatuses described in this disclosure include, but are not
+limited to, application-specific integrated circuits (ASICs);
+field-programmable gate arrays (FPGAs), dedicated or
+shared processors, and/or other hardware modules or appa-
+ratuses.
+
+Receivers and transmitters as described herein may be
+standalone or may be comprised in transceivers. A commu-
+
+---
+
+US 10,802,136 B2
+
+29
+
+nication link as described herein comprises at least one
+transmitter capable of transmitting data to at least one
+receiver over one or more wired or wireless communication
+channels. Such a communication link can optionally further
+comprise one or more relaying transceivers.
+
+User input devices can include, without limitation, micro-
+phones, buttons, keypads, touchscreens, touchpads, track-
+balls, joysticks and mice. User output devices can include,
+without limitation, speakers, graphical user interfaces, indi-
+cator lights and refreshable braille displays. User interface
+devices can comprise one or more user input devices, one or
+more user output devices, or both.
+
+Other embodiments will be apparent to those skilled in the
+art from consideration of the specification and practice of the
+embodiments disclosed herein. It is intended that the speci-
+fication and examples be considered as exemplary only.
+
+In addition, where this application has listed the steps of
+a method or procedure in a specific order, it could be
+possible, or even expedient in certain circumstances, to
+change the order in which some steps are performed, and it
+is intended that the particular steps of the method or proce-
+dure claims set forth herein not be construed as being
+order-specific unless such order specificity is expressly
+stated in the claim. That is, the operations/steps may be
+performed in any order, unless otherwise specified, and
+embodiments may include additional or fewer operations/
+steps than those disclosed herein. It 1s further contemplated
+that executing or performing a particular operation/step
+before, contemporaneously with, or after another operation
+is in accordance with the described embodiments.
+
+It should be understood that the steps for detecting each
+of these types of leaks should not be limited to only
+detecting the specific type of leak mentioned. The skilled
+person would understand that any type of water network
+leak may be detected by any combination of the above steps.
+
+Although it has been described that vertical terrain motion
+can be detected to indicate the presence of sub-surface leaks,
+in other situations the motion could be horizontal motion, or
+a combination of both horizontal and vertical motion.
+Although it has been described that persistent scatter method
+can be used to determine sub-surface leaks, it can be
+understood that SBAS or other techniques to determine
+terrain motion may also be used. Furthermore, as it was
+shown that SBAS can be used for determining the risk index,
+it can be understood that persistent scatters or other tech-
+niques to determine terrain motion may also be used.
+
+External database 217 has been discussed in association
+with the above methods. However, it should be understood
+that external database 217 may actually be a database
+located within the water network monitoring system 100,
+rather than external to it. Furthermore, external database 217
+may actually be a plurality of different databases. Each of the
+plurality of different databases may be maintained by dis-
+tinct entities.
+
+The SAR and optical data described herein may be
+acquired using any known method. In some embodiments
+they may be provided by an external organisation such as
+NASA or the European Space Agency. These images may be
+obtained from satellites such as Sentinel 1.
+
+The time series SAR and/or optical data may be acquired
+at various time periods. For instance, the measurements may
+be acquired over a matter of days, weeks, months, or even
+years. [hese measurements may be made periodically. Alter-
+natively, where satellite data is only available sporadically
+this data may be used.
+
+Optical data may be any of visible, UV, IR, data. Alter-
+natively, any other type of electromagnetic radiation may be
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+30
+
+used. For instance, radio waves may be used. The above
+methods are not limited where they recite SAR and optical
+data, and any type of observational data may be substituted
+as the skilled person would understand.
+
+It has been described above that amplitude SAR data is
+used to detect the presence of surface leaks, and phase data
+is used to determine soil moisture G.e. near-surface.) and
+terrain motion G.e. sub-surface and risk index). However,
+this is not necessarily limiting and any of phase or amplitude
+SAR data may be used to detect the different types of leaks
+and/or risk index.
+
+The use of Earth observational data with spatial resolution
+>] m and modest update frequency is best suited to larger
+leaks developing over time rather than small events or
+bursts. These are the types of leaks that are of most interest
+to the water utilities companies. However, using an obser-
+vation system with an increased resolution and acquiring
+data more frequently would enable the system to detect leaks
+of a small size if necessary.
+
+The data presented to the user, such as the identification
+of leaks, and the risk index, may be presented in any way
+that would be known to the skilled person. For instance, it
+may be presented to the user in the form of an overlay on a
+map of the graphical area, as described above. The presence
+of leaks from each of the different methods may in some
+embodiments be displayed to the user within one display.
+For instance, this may involve the indication of surface, near
+surface, and sub-surface leaks being presented to the user on
+the same map. This may involve having a toggle allowing
+the user to determine which of the types of leaks are
+displayed on the map. The risk index may also be added to
+the display. This may also have the ability to be toggled on
+and off.
+
+Although this system has been described in relation to
+detecting water network leaks, it should be understood not
+to be limited as such. The system may find use for identi-
+fying other types of leaks, for instance oil networks, or
+networks carrying other types of liquids, or for determining
+the likelihood of these networks leaking.
+
+What is claimed 1s:
+
+1. A method for monitoring a water network, the method
+comprising:
+
+obtaining, by a processor of a water network monitoring,
+
+system, using a Synthetic Aperture Radar (SAR) detec-
+tor, a set of SAR data for a geographic region over a
+period of time:
+obtaining, by the processor of the water network moni-
+toring system, from an optical detector, a set of optical
+data of the geographic region over the period of time,
+the set of optical data containing at least a portion of the
+water network;
+generating, by the processor of the water network moni-
+toring system, an estimate of vegetation intrusion into
+the water network over the period of time based at least
+in part on the obtained set of optical data;
+
+monitoring, by the processor of the water network moni-
+toring system, an amount of terrain motion around the
+water network over the period of time based at least in
+part on one or both of the obtained set of SAR data and
+the obtained set of optical data;
+
+generating, by the processor of the water network monitoring system, a leakage risk index based at least in part
+on the estimate of vegetation intrusion into the water
+network and the monitoring of the amount of terrain
+motion around the water network; and
+
+presenting, by the processor of the water network monitoring system, through a display, a graphical user
+
+---
+
+US 10,802,136 B2
+
+31
+
+interface (GUJ) identifying one or more locations in the
+water network having potential leaks based on the
+generated leakage risk index.
+
+2. The method of claim 1, wherein generating the estimate
+of vegetation intrusion into the water network comprises:
+
+reading a set of data defining one or more physical
+
+attributes for soil at one or more depths and at the one
+or more locations along the water network;
+reading a set of data defining one or more physical
+attributes for one or more types of vegetation;
+
+classifying vegetation at the one or more locations along,
+the water network based on the obtained set of optical
+data; and
+
+generating an estimated amount of vegetation intrusion at
+
+each of the one or more locations along the water
+network based on the one or more physical attributes of
+the soil, and the one or more physical attributes for a
+type of the classified vegetation at each location.
+
+3. The method of claim 1, wherein the generating the
+leakage risk index is based at least in part on data defining
+one or more physical attributes of the water network at one
+or more locations in the geographic region.
+
+4. The method of claim 1, wherein monitoring the amount
+of terrain motion around the water network comprises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+identifying, based on the time series history, locations of
+
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+5. The method of claim 1, wherein generating the leakage
+risk index further comprises:
+
+reading a set of data defining one or more threshold values
+
+for each of the generated estimate of vegetation intru-
+sion into the water network and the amount of terrain
+motion around the water network; and
+
+assigning a risk category to one or more locations along,
+
+the water network based on a value for the generated
+estimate of vegetation intrusion into the water network
+or a value for the amount of terrain motion around the
+water network exceeding one or more of the threshold
+values.
+
+6. A system comprising:
+
+a display;
+
+a processor coupled with the display; and
+
+a memory coupled with and readable by the processor and
+
+storing therein a set of instructions which, when
+executed by the processor, causes the processor to
+monitor a water network by:
+obtaining, using a Synthetic Aperture Radar (SAR) detec-
+tor, a set of SAR data for a geographic region over a
+period of time, the set of SAR data containing at least
+a portion of the water network;
+
+obtaining, from an optical detector, a set of optical data of
+the geographic region over the period of time;
+
+analyzing the obtained set of SAR data and the obtained
+set of optical data for spatial or temporal anomalies
+related to a plurality of indirect indicators of leaks in
+the water network;
+
+detecting, based on the analyzing of the obtained set of
+
+SAR data and the obtained set of optical data, one or
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+32
+
+more spatial or temporal anomalies related to at least
+one of the plurality of indirect indicators of leaks in the
+water network and not attributable to environmental
+factors within the geographic region;
+
+generating a set of graded locations within the geographic
+
+region having symptoms associated with leaks in the
+water network based on the detected one or more
+spatial or temporal anomalies;
+
+determining a risk of leakage by:
+
+generating an estimate of vegetation intrusion into the
+water network over the period of time based at least
+in part on the obtained set of optical data,
+
+monitoring an amount of terrain motion around the
+water network over the period of time based at least
+in part on one or both of the obtained set of SAR data
+and the obtained set of optical data, and
+
+generating a leakage risk index based at least in part on
+the estimate of vegetation intrusion into the water
+network and the monitoring of the amount of terrain
+motion around the water network; and
+
+presenting, through the display, a Graphical User Interface (GUI) identifying one or more locations in the
+water network having potential leaks based on the
+generated leakage risk index.
+
+7. The system of claim 6, wherein the plurality of indirect
+indicators of leaks in the water network comprises two or
+more of an indicator of soil moisture or ponding water
+derived based on the obtained set of SAR data, an indicator
+of vegetation growth derived based on the obtained set of
+optical data, or an indicator of surface motion or texture
+change derived based on the obtained set of SAR data.
+
+8. [he system of claim 6, further comprising detecting, by
+the water network monitoring system and based on the one
+or more spatial or temporal anomalies, one or more surface
+leaks in the water network, the surface leaks comprising a
+leak of the water network causing ponding of water on a
+eround surface and wherein detecting the one or more
+surface leaks in the water network further comprises:
+
+filtering noise from the obtained set of SAR data using a
+
+multi-temporal filter;
+
+identifying one or more locations within the geographic
+
+region and corresponding to locations of the water
+network where the filtered SAR data indicates a drop in
+backscattered energy relative to at least one previous
+monitoring period;
+
+plotting the identified one or more locations spatially in a
+
+oraphical representation of the geographic region;
+overlaying the graphical representation of the geographic
+region with the plotted one or more locations onto one
+or more images of the obtained optical data; and
+filtering the plotted one or more locations based on the
+one or more images to filter out false positives.
+
+9, The system of claim 6, further comprising detecting, by
+the water network monitoring system and based on the one
+or more spatial or temporal anomalies, one or more near-
+surface leaks in the water network, the near-surface leaks
+comprising a leak of the water network causing water to
+spread below a ground surface and at or above a level of the
+water network and wherein detecting the one or more
+near-surface leaks in the water network further comprises:
+
+reading a set of data defining statistical relationships
+
+between soil moisture content, SAR interferometric
+coherence variables and polarimetric decomposition
+variables obtained from a calibration area of the geo-
+oraphical region;
+
+applying the statistical relationships using interferometric
+
+coherence variables and polarimetric decomposition
+
+---
+
+US 10,802,136 B2
+
+33
+
+variables obtained from SAR data related to portions of
+the geographic region overlaying the water network
+using spatial extrapolation to determine a soil moisture
+content for a plurality of locations in the geographic
+region; and
+
+identifying one or more locations of the plurality of
+
+locations in the geographic region having a determined
+soil moisture content exceeding one or more threshold
+values.
+
+10. The system of claim 9, further comprising creating a
+set of data defining statistical relationships between soil
+moisture content SAR interferometric coherence variables
+and polarimetric decomposition variables obtained from a
+calibration area of the geographic region.
+
+11. The system of claim 6, further comprising detecting,
+by the water network monitoring system and based on the
+one or more spatial or temporal anomalies, one or more
+sub-surface leaks in the water network, the sub-surface leaks
+comprising a leak of the water network causing water to
+spread below a ground surface and below a level of the water
+network and wherein detecting the one or more sub-surface
+leaks in the water network further comprises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+identifying, based on the time series history, locations of
+
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+12. The system of claim 6, wherein generating the esti-
+mate of vegetation intrusion into the water network com-
+prises:
+
+reading a set of data defining one or more physical
+
+attributes for soil at one or more depths and at the one
+or more locations along the water network;
+reading a set of data defining one or more physical
+attributes for one or more types of vegetation;
+
+classifying vegetation at the one or more locations along,
+the water network based on the obtained set of optical
+data; and
+
+generating an estimated amount of vegetation intrusion at
+
+each of the one or more locations along the water
+network based on the one or more physical attributes of
+the soil, and the one or more physical attributes for a
+type of the classified vegetation at each location.
+
+13. The system of claim 6, wherein the generating the
+leakage risk index is based at least in part on data defining
+one or more physical attributes of the water network at one
+or more locations in the geographic region.
+
+14. The system of claim 6, wherein monitoring the
+amount of terrain motion around the water network com-
+prises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+5
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+34
+
+identifying, based on the time series history, locations of
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+15. The system of claim 6, wherein generating the leakage
+risk index further comprises:
+
+reading a set of data defining one or more threshold values
+
+for each of the generated estimate of vegetation intru-
+sion into the water network and the amount of terrain
+motion around the water network; and
+assigning a risk category to one or more locations along,
+the water network based on a value for the generated
+estimate of vegetation intrusion into the water network
+or a value for the amount of terrain motion around the
+water network exceeding one or more of the threshold
+values.
+16. A non-transitory computer-readable medium compris-
+ing a set of instructions stored therein which, when executed
+by a processor, causes the processor to monitor a water
+network by:
+obtaining, through a Synthetic Aperture Radar (SAR)
+detector, a set of SAR data for a geographic region over
+a period of time, the set of SAR data containing at least
+a portion of the water network;
+
+obtaining, through an optical detector, a set of optical data
+of the geographic region over the period of time;
+
+analyzing the obtained set of SAR data and the obtained
+set of optical data for spatial or temporal anomalies
+related to a plurality of indirect indicators of leaks in
+the water network, wherein the plurality of indirect
+indicators of leaks in the water network comprises two
+or more of an indicator of soil moisture or ponding
+water derived based on the obtained set of SAR data, an
+indicator of vegetation growth derived based on the
+obtained set of optical data, or an indicator of surface
+motion or texture change derived based on the obtained
+set of SAR data;
+
+detecting, based on the analyzing of the obtained set of
+
+SAR data and the obtained set of optical data, one or
+more spatial or temporal anomalies related to at least
+one of the plurality of indirect indicators of leaks in the
+water network and not attributable to environmental
+factors within the geographic region;
+
+generating a set of graded locations within the geographic
+
+region having symptoms associated with leaks in the
+water network based on the detected one or more
+spatial or temporal anomalies;
+
+generating an estimate of vegetation intrusion into the
+
+water network over the period of time based at least in
+part on the obtained set of optical data;
+
+monitoring an amount of terrain motion around the water
+
+network over the period of time based at least 1n part on
+one or both of the obtained set of SAR data and the
+obtained set of optical data;
+
+generating a leakage risk index based at least in part on
+
+the estimate of vegetation intrusion into the water
+network and the monitoring of the amount of terrain
+motion around the water network; and
+
+presenting, through a display, a Graphical User Interface
+
+(GUI) identifying one or more locations in the water
+network having potential leaks based on the generated
+leakage risk index.
+
+17. The non-transitory computer-readable medium of
+claim 16, further comprising detecting, by the water network
+monitoring system and based on the one or more spatial or
+temporal anomalies, one or more surlace leaks in the water
+network, the surface leaks comprising a leak of the water
+
+---
+
+US 10,802,136 B2
+
+35
+
+network causing ponding of water on a ground surface and
+wherein detecting the one or more surface leaks in the water
+network further comprises:
+
+filtering noise from the obtained set of SAR data using a
+
+multi-temporal filter;
+
+identifying one or more locations within the geographic
+
+region and corresponding to locations of the water
+network where the filtered SAR data indicates a drop in
+backscattered energy relative to at least one previous
+monitoring period;
+
+plotting the identified one or more locations spatially in a
+
+graphical representation of the geographic region;
+overlaying the graphical representation of the geographic
+region with the plotted one or more locations onto one
+or more images of the obtained optical data; and
+filtering the plotted one or more locations based on the
+one or more data to filter out false positives.
+
+18. The non-transitory computer-readable medium of
+claim 16, further comprising detecting, by the water network
+monitoring system and based on the one or more spatial or
+temporal anomalies, one or more near-surface leaks in the
+water network, the near-surface leaks comprising a leak of
+the water network causing water to spread below a ground
+surface and at or above a level of the water network and
+wherein detecting the one or more near-surface leaks in the
+water network further comprises:
+
+reading a set of data defining statistical relationships
+
+between soil moisture content, SAR interferometric
+coherence variables and polarimetric decomposition
+variables obtained from a calibration area of the geo-
+oraphical region;
+
+applying the statistical relationships using interferometric
+
+coherence variables and polarimetric decomposition
+variables obtained from SAR data related to portions of
+the geographic region overlaying the water network
+using spatial extrapolation to determine a soil moisture
+content for a plurality of locations in the geographic
+region; and
+
+identifying one or more locations of the plurality of
+
+locations in the geographic region having a determined
+soil moisture content exceeding one or more threshold
+values.
+
+19. The non-transitory computer-readable medium of
+claim 18, further comprising creating a set of data defining
+statistical relationships between soil moisture content SAR
+interferometric coherence variables and polarimetric decom-
+position variables obtained from a calibration area of the
+geographic region.
+
+20. The non-transitory computer-readable medium of
+claim 16, further comprising detecting, by the water network
+monitoring system and based on the one or more spatial or
+temporal anomalies, one or more sub-surface leaks in the
+water network, the sub-surface leaks comprising a leak of
+the water network causing water to spread below a ground
+surface and below a level of the water network and wherein
+detecting the one or more sub-surface leaks in the water
+network further comprises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+5
+
+10
+
+LS
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+55
+
+60
+
+65
+
+36
+
+identifying, based on the time series history, locations of
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+21. The non-transitory computer-readable medium of
+claim 16, wherein generating the estimate of vegetation
+intrusion into the water network comprises:
+
+reading a set of data defining one or more physical
+
+attributes for soil at one or more depths and at the one
+or more locations along the water network;
+reading a set of data defining one or more physical
+attributes for one or more types of vegetation;
+
+classifying vegetation at the one or more locations along,
+the water network based on the obtained set of optical
+data; and
+
+generating an estimated amount of vegetation intrusion at
+
+each of the one or more locations along the water
+network based on the one or more physical attributes of
+the water network, the one or more physical attributes
+of the soil, and the one or more physical attributes for
+a type of the classified vegetation at each location.
+
+22. The non-transitory computer-readable medium of
+claim 16, wherein the generating the leakage risk index is
+based at least in part on data defining one or more physical
+attributes of the water network at one or more locations in
+the geographic region.
+
+23. The non-transitory computer-readable medium of
+claim 16, wherein monitoring the amount of terrain motion
+around the water network comprises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+identifying, based on the time series history, locations of
+
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+24. The non-transitory computer-readable medium of
+claim 16, wherein generating the leakage risk index further
+comprises:
+
+reading a set of data defining one or more threshold values
+
+for each of the generated estimate of vegetation intru-
+sion into the water network and the amount of terrain
+motion around the water network; and
+
+assigning a risk category to one or more locations along
+
+the water network based on a value for the generated
+estimate of vegetation intrusion into the water network
+or a value for the amount of terrain motion around the
+water network exceeding one or more of the threshold
+values.
+
+25. A water network monitoring system comprising:
+
+a display;
+
+a processor coupled with the display; and
+
+a memory coupled with and readable by the processor and
+
+storing therein a set of instructions which, when
+
+executed by the processor, causes the processor to
+
+monitor a water network by:
+
+obtaining, using a Synthetic Aperture Radar (SAR)
+detector, a set of SAR data for a geographic region
+over a period of time;
+
+---
+
+US 10,802,136 B2
+
+37
+
+obtaining, from an optical detector, a set of optical data
+of the geographic region over the period of time, the
+set of optical data containing at least a portion of the
+water network;
+
+generating an estimate of vegetation intrusion into the
+water network over the period of time based at least
+in part on the obtained set of optical data;
+
+monitoring an amount of terrain motion around the
+water network over the period of time based at least
+
+in part on one or both of the obtained set of SAR data 10
+
+and the obtained set of optical data;
+
+generating a leakage risk index based at least in part on
+the estimate of vegetation intrusion into the water
+network and the monitoring of the amount of terrain
+motion around the water network; and
+
+presenting, through the display, a Graphical User Inter-
+face (GUI) identifying one or more locations in the
+water network having potential leaks based on the
+generated leakage risk index.
+
+26. The water network monitoring system of claim 25,
+wherein generating the estimate of vegetation intrusion into
+the water network comprises:
+
+reading a set of data defining one or more physical
+
+attributes for soil at one or more depths and at the one
+or more locations along the water network;
+reading a set of data defining one or more physical
+attributes for one or more types of vegetation;
+
+classifying vegetation at the one or more locations along,
+the water network based on the obtained set of optical
+data; and
+
+generating an estimated amount of vegetation intrusion at
+
+each of the one or more locations along the water
+network based on the one or more physical attributes of
+the soil, and the one or more physical attributes for a
+type of the classified vegetation at each location.
+
+20
+
+25
+
+30
+
+38
+
+27. The water network monitoring system of claim 25,
+wherein the generating the leakage risk index is based at
+least in part on data defining one or more physical attributes
+of the water network at one or more locations in the
+geographic region.
+
+28. The water network monitoring system of claim 25,
+wherein monitoring the amount of terrain motion around the
+water network comprises:
+
+integrating data of the obtained set of SAR data using one
+
+or more interferometric processes that quantify vertical
+terrain movement at one or more locations within the
+geographic region corresponding to locations of the
+water network;
+
+creating a time series history using the vertical terrain
+
+movement at the one or more locations within the
+geographic region; and
+
+identifying, based on the time series history, locations of
+
+the one or more locations within the geographic region
+having vertical terrain movement exceeding one or
+more threshold values.
+
+29. The water network monitoring system of claim 25,
+wherein generating the leakage risk index further comprises:
+
+reading a set of data defining one or more threshold values
+
+for each of the generated estimate of vegetation intru-
+sion into the water network and the amount of terrain
+motion around the water network; and
+
+assigning a risk category to one or more locations along,
+
+the water network based on a value for the generated
+estimate of vegetation intrusion into the water network
+or a value for the amount of terrain motion around the
+water network exceeding one or more of the threshold
+values.
