@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from Utils.paths import REPO_ROOT
 
 def calculate_and_print_precision(csv_path: str):
     """
@@ -53,7 +54,7 @@ def calculate_and_print_precision(csv_path: str):
 if __name__ == '__main__':
     # --- Configuration ---
     # Define the path to your input CSV file
-    FILE_PATH = r'C:\Users\urbi1\Downloads\Thesis_repo_implementation\processed_random_precision_sample.csv'
+    FILE_PATH = REPO_ROOT / "processed_random_precision_sample.csv"
 
     # --- Run the analysis function ---
     calculate_and_print_precision(FILE_PATH)
