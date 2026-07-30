@@ -11,6 +11,8 @@ SIR_TOSCANA_PATH = MASTER_DATA_PATH / "weather/sir_toscana"
 GPKG_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/static_geospatial"
 RASTER_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/rasters"
 
+PLOTS_SPATIAL_AUTOCORRELATION_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/spatial_correlation/plots"
+
 SIR_WEATHER_TASKS = (
     (
         SIR_TOSCANA_PATH / "sir_idrometry_toscana_datasets",

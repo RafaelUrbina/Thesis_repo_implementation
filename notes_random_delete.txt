@@ -21,7 +21,7 @@ NEXT THINGS
 - (DONE)Check  pendolarismo 2021 ISTAT
 - (DONE)Check Autorità di Bacino distrettuale dell'Appennino settentrionale Sentinel1 soil displacement points
 - (DONE)Check ARERA for data regarding toscana and firenze
-- (NEXT, python, first clean layers)Spatial statistics in Qgis (correlation y clustering)
+- (DONE)Spatial statistics in Qgis (correlation y clustering)
 - (NEXT) Start the documentation (racount from the start) for the thesis workbook
 - (DONE) Keep the unique ID, the geometry column, and the specific risk variables
 - (DONE) Drop administrative clutter, internal GIS creation timestamps, and redundant names

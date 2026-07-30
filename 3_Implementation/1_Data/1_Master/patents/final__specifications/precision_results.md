@@ -60,7 +60,6 @@ Only patents whose primary focus is outside the intended domain, for example:
 * Refrigerators and dispensers
 * Garden hoses
 * Hydrants (if solely about the fixture and not water network management)
-* Generic sensors or AI methods with no meaningful water application
 * Mechanical inventions unrelated to water
 * Medical, pharmaceutical, or biological inventions not about water systems
 
@@ -70,7 +69,6 @@ Only patents whose primary focus is outside the intended domain, for example:
 
 --- Precision Analysis Results ---
 Total entries analyzed in 'precision' column: 356
-Percentage of '1's: 76.69%
-Percentage of '0's: 23.31%
-
+Percentage of '1's: 83.15%
+Percentage of '0's: 16.85%
 ---
