@@ -20,10 +20,13 @@ from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import libpysal
-import pandas as pd
 import numpy as np
-from esda.moran import Moran, Moran_Local
+from esda.moran import Moran, Moran_Local, Moran_Local_BV
 from splot.esda import moran_scatterplot, lisa_cluster
+from itertools import combinations
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+
 
 # Add the project root to the Python path to allow for absolute imports
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -150,13 +153,89 @@ def analyze_variable(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variabl
     plt.close(fig) # Close the figure to free up memory
     print(f"  - Saved LISA cluster map to: {lisa_plot_path}")
 
+def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variables: list, output_dir: Path):
+    """
+    Runs Bivariate Local Moran's I analysis for pairs of variables.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
+        variables (list): A list of variable names to analyze in pairs.
+        output_dir (Path): The directory to save the output plots.
+    """
+    print(f"\n{'='*20} Bivariate Analysis (LISA) {'='*20}")
+
+    # Create a copy to work with
+    gdf_bv = gdf[variables].copy()
+
+    # Fill NaNs with the mean for each column
+    for col in gdf_bv.columns:
+        if gdf_bv[col].isnull().any():
+            mean_val = gdf_bv[col].mean()
+            gdf_bv[col].fillna(mean_val, inplace=True)
+            print(f"Filled NaNs in '{col}' with mean ({mean_val:.2f}) for bivariate analysis.")
+
+    # Analyze spatial relationships between pairs of variables
+    for var1, var2 in combinations(variables, 2):
+        print(f"\n--- Analyzing pair: {var1} vs. {var2} ---")
+
+        # Skip if either variable has zero variance
+        if gdf_bv[var1].std() == 0 or gdf_bv[var2].std() == 0:
+            print("Skipping pair: At least one variable has zero variance.")
+            continue
+
+        # Tests if var1 at location i is correlated with var2 in neighbor locations
+        bivariate_lisa = Moran_Local_BV(gdf_bv[var1], gdf_bv[var2], weights)
+
+        # Plot the LISA Cluster Map for the bivariate case
+        fig, ax = plt.subplots(figsize=(12, 10))
+        lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True)
+        ax.set_title(f'Bivariate LISA: {var1} vs. {var2}')
+        ax.set_yticklabels([])
+        ax.set_xticklabels([])
+        plt.tight_layout()
+
+        # Save the figure
+        bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}.png"
+        plt.savefig(bv_plot_path)
+        plt.close(fig)
+        print(f"  - Saved Bivariate LISA cluster map to: {bv_plot_path}")
+
+def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, variables: list, output_dir: Path, n_clusters: int = 5):
+    """
+    Performs non-spatial clustering on all variables and maps the results.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        variables (list): The list of variable names to include in the clustering.
+        output_dir (Path): The directory to save the output plot.
+        n_clusters (int): The number of clusters to create.
+    """
+    print(f"\n{'='*20} Multivariate Clustering Analysis {'='*20}")
+
+    # 1. Select and scale all variables together
+    X = gdf[variables].fillna(gdf[variables].mean()) # Fill NaNs with column mean
+    X_scaled = StandardScaler().fit_transform(X)
+
+    # 2. Cluster across all variables simultaneously
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
+    gdf['multivariate_cluster'] = kmeans.fit_predict(X_scaled)
+
+    # 3. Plot the combined multivariate clusters on a map
+    plot_path = output_dir / "multivariate_kmeans_cluster_map.png"
+    gdf.plot(column='multivariate_cluster', categorical=True, legend=True, figsize=(12, 10), aspect='equal')
+    plt.title(f'Multivariate K-Means Clusters (k={n_clusters})')
+    plt.savefig(plot_path)
+    plt.close()
+    print(f"  - Saved Multivariate K-Means cluster map to: {plot_path}")
+
 def main():
     """
     Main function to execute the full analysis pipeline.
     """
     # --- 1. Load Data ---
-    gpkg_path = GRID_PATH / "master_grid_with_stations.gpkg"
-    gdf = load_data(gpkg_path, layer="master_grid_with_stations")
+    gpkg_path = GRID_PATH / "h310_grid_final_datacube.gpkg"
+    gdf = load_data(gpkg_path, layer="h310_grid_final_datacube")
     if gdf is None:
         return
 
@@ -186,9 +265,19 @@ def main():
     # --- 4. Create Spatial Weights Matrix (once) ---
     weights = create_weights(gdf)
 
-    # --- 5. Loop Through Variables and Analyze ---
+    # --- 5. Univariate Analysis ---
     for variable in variables_to_analyze:
         analyze_variable(gdf, weights, variable, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+
+    # --- 6. Bivariate Analysis ---
+    # To keep the number of plots manageable, let's select a few interesting variables for pairing.
+    # You can expand this list or use `variables_to_analyze` for all combinations.
+    bivariate_vars = [v for v in variables_to_analyze if 'rain' in v or 'temp' in v or 'river' in v or 'wind' in v][:4] # Example subset
+    if len(bivariate_vars) >= 2:
+        analyze_bivariate(gdf, weights, bivariate_vars, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+
+    # --- 7. Multivariate Clustering ---
+    analyze_multivariate_clusters(gdf, variables_to_analyze, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
 
     print(f"\n{'='*20} Pipeline Complete {'='*20}")
 
