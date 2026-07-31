@@ -12,6 +12,7 @@ GPKG_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/static_geospat
 RASTER_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/rasters"
 
 PLOTS_SPATIAL_AUTOCORRELATION_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/spatial_correlation/plots"
+TABLE_SPATIAL_AUTOCORRELATION_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/spatial_correlation/tables"
 
 SIR_WEATHER_TASKS = (
     (

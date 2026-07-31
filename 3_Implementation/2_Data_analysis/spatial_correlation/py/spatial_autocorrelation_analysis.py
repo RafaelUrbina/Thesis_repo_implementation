@@ -15,12 +15,37 @@ Steps:
     LISA cluster map.
 """
 
+""" Available columns:
+['index', 'total_intervention_cost_1ring', 'class_intervention_1ring', 'active_fountains_count_1ring', 
+'total_fountains_count_1ring', 'landslide_point_count_1ring', 'tipo_movimento_<lambda_0>_1ring', 
+'max_peak_elevation_1ring', 'is_locality_1ring', 'locality_name_1ring', 'seismic_event_count_1ring', 
+'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring', 'road_density_m_per_m2', 'm_per_hex', 
+'dominant_highway', 'dominant_surface', 'dominant_tunnel', 'dominant_bridge', 'dist_to_waterway_m', 
+'rooting_depth_class', 'surface_stoniness_class', 'usda_hydrologic_group', 'landslide_surface_class', 
+'pai_landslide_hazard_level', 'avg_descending_soil_speed', 'descending_soil_presence', 
+'avg_ascending_soil_speed', 'ascending_soil_presence', 'hydraulic_hazard_level', 'dominant_building_1', 
+'dominant_building_2', 'dominant_building_3', 'census_pop', 'epr_NTAXP', 'epr_TAXABINC', 'epr_CADINCR', 
+'epr_CADINCF', 'epr_SUBEMPTR', 'epr_PENSINCR', 'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01', 
+'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7', 'erd_E75000_1', 
+'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_COMP_FRA', 'eidx_LAND_CON', 'eidx_EMPL_RAT', 
+'eidx_POP_25_6', 'eidx_POP_DEPE', 'eidx_INDEX_AC', 'eidx_PERSEMP', 'inflow_total', 
+'nearest_hydro_distance_m', 'nearest_hydro_river_stage_max_m', 'nearest_hydro_river_stage_mean_m', 
+'nearest_hydro_river_stage_std_m', 'nearest_hydro_quota', 'idw_temp_max_peak', 'idw_temp_min_nadir', 
+'idw_temp_thermal_range', 'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly', 
+'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_max',
+ 'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max', 'geometry'] """
+
+
 import sys
 from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import libpysal
 import numpy as np
+import fiona
+import pandas as pd # Added for categorical variable handling
+from esda.join_counts import Join_Counts # Added for categorical variable handling
+from libpysal.weights import lag_spatial # Added for spatial contingency analysis
 from esda.moran import Moran, Moran_Local, Moran_Local_BV
 from splot.esda import moran_scatterplot, lisa_cluster
 from itertools import combinations
@@ -33,22 +58,34 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from Utils.paths import GRID_PATH, PLOTS_SPATIAL_AUTOCORRELATION_PATH
+from Utils.paths import GRID_PATH, PLOTS_SPATIAL_AUTOCORRELATION_PATH, TABLE_SPATIAL_AUTOCORRELATION_PATH
 
-def load_data(gpkg_path: Path, layer: str) -> gpd.GeoDataFrame | None:
+# Define a threshold for unique values to consider an integer column as numeric
+# If a column has more unique values than this, it's likely continuous.
+CARDINALITY_THRESHOLD = 25
+
+def load_data(gpkg_path: Path) -> gpd.GeoDataFrame | None:
     """
     Loads the GeoPackage file into a GeoDataFrame.
+    It automatically detects the layer name.
 
     Args:
         gpkg_path (Path): The path to the GeoPackage file.
 
     Returns:
-        A GeoDataFrame if successful, otherwise None.s
+        A GeoDataFrame if successful, otherwise None.
     """
     print(f"Loading data from: {gpkg_path}")
     try:
-        # It's good practice to specify the layer, especially if more are added later
-        gdf = gpd.read_file(gpkg_path, layer=layer)
+        # Discover layers in the GeoPackage
+        layers = fiona.listlayers(gpkg_path)
+        if not layers:
+            print("Error: No layers found in the GeoPackage file.")
+            return None
+        
+        layer_to_load = layers[0]
+        print(f"Found layers: {layers}. Loading the first one: '{layer_to_load}'")
+        gdf = gpd.read_file(gpkg_path, layer=layer_to_load)
         print("Data loaded successfully.")
         print(f"Shape of the dataset: {gdf.shape}")
         print("\nAvailable columns:")
@@ -75,7 +112,7 @@ def create_weights(gdf: gpd.GeoDataFrame) -> libpysal.weights.W:
     print("Weights matrix created.")
     return weights
 
-def analyze_variable(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, output_dir: Path):
+def analyze_variable(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, output_dir: Path): # Renamed for clarity
     """
     Runs the spatial autocorrelation analysis for a single variable.
 
@@ -163,7 +200,7 @@ def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variab
         variables (list): A list of variable names to analyze in pairs.
         output_dir (Path): The directory to save the output plots.
     """
-    print(f"\n{'='*20} Bivariate Analysis (LISA) {'='*20}")
+    print(f"\n{'='*20} Bivariate Numerical Analysis (LISA) {'='*20}")
 
     # Create a copy to work with
     gdf_bv = gdf[variables].copy()
@@ -201,32 +238,228 @@ def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variab
         plt.close(fig)
         print(f"  - Saved Bivariate LISA cluster map to: {bv_plot_path}")
 
-def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, variables: list, output_dir: Path, n_clusters: int = 5):
+def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
     """
-    Performs non-spatial clustering on all variables and maps the results.
+    Runs Join-Count Statistics for a categorical variable.
+    For each unique category, it performs a Join-Count analysis treating that category
+    as 'Black' and all others as 'White'.
 
     Args:
         gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
-        variables (list): The list of variable names to include in the clustering.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
+        variable_name (str): The name of the categorical column to analyze.
+        table_output_dir (Path): The directory to save the output table.
+    """
+    print(f"\n{'='*20} Analyzing Categorical (Join-Counts): {variable_name} {'='*20}")
+
+    original_weights_transform = weights.transform
+    weights.transform = 'b' # Join-counts require binary weights style 'b'
+
+    unique_categories = gdf[variable_name].dropna().unique()
+    results = []
+
+    if len(unique_categories) < 2:
+        print(f"Skipping: Categorical variable '{variable_name}' has less than 2 unique categories or all are NaN.")
+        weights.transform = original_weights_transform
+        return
+
+
+    for category in unique_categories:
+        print(f"\n--- Join-Count for category: '{category}' in {variable_name} ---")
+        # Create a binary variable: 1 if current category, 0 otherwise
+        y_bin = (gdf[variable_name] == category).astype(int)
+
+        # Check if there's enough variation for analysis
+        if y_bin.sum() == 0 or y_bin.sum() == len(y_bin):
+            print(f"Skipping: Category '{category}' in '{variable_name}' is uniform (all 0s or all 1s).")
+            continue
+
+        jc = Join_Counts(y_bin, weights)
+        expected_ww = jc.J - jc.mean_bb - jc.mean_bw
+
+        results.append({
+            'category': category,
+            'observed_BB': jc.bb,
+            'expected_BB': jc.mean_bb,
+            'observed_WW': jc.ww,
+            'expected_WW': expected_ww,
+            'observed_BW': jc.bw,
+            'expected_BW': jc.mean_bw,
+            'p_value_chi2': jc.chi2_p
+        })
+
+        print(f"  Observed Black-Black joins (BB): {jc.bb}")
+        print(f"  Expected BB under randomness: {jc.mean_bb:.2f}")
+        print(f"  P-value (chi2): {jc.chi2_p:.4f}")
+        print(f"  Observed White-White joins (WW): {jc.ww}")
+        # The expected WW is not always a direct attribute, so we derive it.
+        print(f"  Expected WW under randomness: {expected_ww:.2f}")
+        print(f"  Observed Black-White joins (BW): {jc.bw}")
+        print(f"  Expected BW under randomness: {jc.mean_bw:.2f}")
+
+
+        if jc.chi2_p < 0.05:
+            print(f"  Result: Statistically significant clustering for category '{category}'.")
+        else:
+            print(f"  Result: No statistically significant clustering for category '{category}'.")
+
+    results_df = pd.DataFrame(results)
+    table_path = table_output_dir / f"join_counts_{variable_name}.csv"
+    results_df.to_csv(table_path, index=False)
+    print(f"\n  - Saved Join-Counts results to: {table_path}")
+    weights.transform = original_weights_transform # Reset weights transform
+
+def analyze_spatial_contingency(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
+    """
+    Analyzes spatial contingency for a single categorical variable by cross-tabulating
+    the focal region's category against its neighbors' categories.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
+        variable_name (str): The name of the categorical column to analyze.
+        table_output_dir (Path): The directory to save the output table.
+    """
+    print(f"\n{'='*20} Analyzing Categorical (Spatial Contingency): {variable_name} {'='*20}")
+
+    temp_gdf = gdf[[variable_name]].copy()
+    temp_gdf = temp_gdf.dropna(subset=[variable_name]) # Drop NaNs for factorize
+
+    if temp_gdf.empty:
+        print(f"Skipping: Categorical variable '{variable_name}' has no non-null values.")
+        return
+
+    codes, uniques = pd.factorize(temp_gdf[variable_name])
+    temp_gdf['cat_code'] = codes
+
+    # Calculate spatial lag of codes (mean of neighbors' codes)
+    # This will be float, so we round it to get discrete neighbor categories
+    # Note: lag_spatial expects a Series aligned with the weights object.
+    # We need to ensure the index of temp_gdf matches the weights index.
+    if not temp_gdf.index.equals(pd.Series(weights.id_order).index): # Check if indices match
+        # If not, reindex temp_gdf to match weights.id_order
+        # This is a common issue if rows were dropped or reordered.
+        temp_gdf = temp_gdf.reindex(weights.id_order)
+        codes, uniques = pd.factorize(temp_gdf[variable_name]) # Refactorize after reindexing
+        temp_gdf['cat_code'] = codes
+        temp_gdf = temp_gdf.dropna(subset=['cat_code']) # Drop NaNs again if reindexing introduced them
+
+    if temp_gdf.empty:
+        print(f"Skipping: Categorical variable '{variable_name}' has no non-null values after reindexing.")
+        return
+
+    # Ensure the series passed to lag_spatial is aligned with the weights
+    y_for_lag = temp_gdf['cat_code'].reindex(weights.id_order).fillna(-1) # Fill NaNs with a placeholder if needed
+
+    # Only include observations that are part of the weights matrix
+    # This is important if some geometries were dropped due to no neighbors
+    valid_indices = y_for_lag[y_for_lag != -1].index
+    
+    if valid_indices.empty:
+        print(f"Skipping: No valid observations for '{variable_name}' to calculate spatial lag.")
+        return
+
+    # lag_spatial returns a numpy array. Convert it to a pandas Series with the correct index.
+    neighbor_codes_raw_series = pd.Series(lag_spatial(weights, y_for_lag), index=y_for_lag.index)
+    
+    # Filter to only valid indices before rounding and crosstab
+    neighbor_codes_filtered = neighbor_codes_raw_series.loc[valid_indices]
+    neighbor_codes = np.round(neighbor_codes_filtered).astype(int)
+    focal_codes = temp_gdf['cat_code'].loc[valid_indices].astype(int)
+
+    # Cross-tabulate focal region vs. neighbor region
+    # Use the original unique categories for row/column names for readability
+    contingency = pd.crosstab(focal_codes, neighbor_codes)
+    
+    # Map codes back to original category names for display
+    contingency.index = [uniques[i] for i in contingency.index]
+    contingency.columns = [uniques[i] for i in contingency.columns]
+
+    print(f"Spatial Contingency Table for {variable_name} (Focal vs. Neighbor):")
+    print(contingency)
+    print("\nInterpretation: Rows are focal unit categories, columns are neighbor categories.")
+    print("Values indicate counts of how often a focal category is adjacent to a neighbor category.")
+
+    # Save the contingency table to a CSV file
+    table_path = table_output_dir / f"spatial_contingency_{variable_name}.csv"
+    contingency.to_csv(table_path)
+    print(f"  - Saved Spatial Contingency table to: {table_path}")
+
+
+def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, categorical_vars: list, output_dir: Path, n_clusters: int = 5):
+    """
+    Performs non-spatial clustering on a combination of numerical and
+    one-hot encoded categorical variables, then maps the results.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        numerical_vars (list): The list of numerical variable names to include.
+        categorical_vars (list): The list of categorical variable names to include.
         output_dir (Path): The directory to save the output plot.
         n_clusters (int): The number of clusters to create.
     """
     print(f"\n{'='*20} Multivariate Clustering Analysis {'='*20}")
 
-    # 1. Select and scale all variables together
-    X = gdf[variables].fillna(gdf[variables].mean()) # Fill NaNs with column mean
-    X_scaled = StandardScaler().fit_transform(X)
+    # 1. Prepare numerical data: fill NaNs with column mean
+    X_num = gdf[numerical_vars].fillna(gdf[numerical_vars].mean())
 
-    # 2. Cluster across all variables simultaneously
+    # 2. Prepare categorical data: one-hot encode and handle potential NaNs
+    if categorical_vars:
+        # Filter for categorical variables that actually exist in the DataFrame
+        valid_categorical_vars = [col for col in categorical_vars if col in gdf.columns]
+        print(f"  - One-hot encoding {len(valid_categorical_vars)} valid categorical variables.")
+
+        # Convert integer-based categories explicitly to strings so get_dummies processes all columns.
+        # This prevents errors where get_dummies skips numeric-like columns.
+        cat_df = gdf[valid_categorical_vars].astype(str)
+        
+        # Let pandas auto-assign prefixes based on column names and ensure output is float.
+        X_cat = pd.get_dummies(cat_df, dummy_na=False, dtype=float)
+    else:
+        X_cat = pd.DataFrame(index=gdf.index) # Empty DataFrame if no categorical vars
+
+    # 3. Combine numerical and one-hot encoded categorical data
+    # Ensure indices are aligned before concatenation
+    X_combined = pd.concat([X_num, X_cat], axis=1)
+    
+    # Drop any rows that might have become all NaN after combining (e.g., if original GDF had rows with only excluded columns)
+    X_combined.dropna(inplace=True)
+
+    if X_combined.empty:
+        print("Skipping: No valid data points for multivariate clustering after NaN handling.")
+        return
+    
+    # Ensure all columns are numeric after one-hot encoding
+    X_combined = X_combined.select_dtypes(include=np.number)
+    if X_combined.empty:
+        print("Skipping: No numeric columns left for multivariate clustering after one-hot encoding.")
+        return
+
+    # 4. Standardize the combined data
+    # StandardScaler expects 2D array, so ensure X_combined is not a Series if only one column
+    if X_combined.shape[1] == 0:
+        print("Skipping: No features available for clustering after preprocessing.")
+        return
+    
+    X_scaled = StandardScaler().fit_transform(X_combined)
+
+    # 5. Perform KMeans clustering
     kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
-    gdf['multivariate_cluster'] = kmeans.fit_predict(X_scaled)
+    # Assign clusters back to the original GeoDataFrame, aligning by index
+    gdf_filtered = gdf.loc[X_combined.index] # Filter gdf to match X_combined's index
+    gdf_filtered['multivariate_cluster'] = kmeans.fit_predict(X_scaled)
 
-    # 3. Plot the combined multivariate clusters on a map
-    plot_path = output_dir / "multivariate_kmeans_cluster_map.png"
-    gdf.plot(column='multivariate_cluster', categorical=True, legend=True, figsize=(12, 10), aspect='equal')
-    plt.title(f'Multivariate K-Means Clusters (k={n_clusters})')
+    # 6. Plot the combined multivariate clusters on a map
+    plot_path = output_dir / f"multivariate_kmeans_cluster_map_k{n_clusters}.png"
+    
+    fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+    gdf_filtered.plot(column='multivariate_cluster', categorical=True, legend=True, figsize=(12, 10), aspect='equal', ax=ax)
+    ax.set_title(f'Multivariate K-Means Clusters (k={n_clusters})')
+    ax.set_yticklabels([])
+    ax.set_xticklabels([])
+    plt.tight_layout()
     plt.savefig(plot_path)
-    plt.close()
+    plt.close(fig)
     print(f"  - Saved Multivariate K-Means cluster map to: {plot_path}")
 
 def main():
@@ -235,49 +468,92 @@ def main():
     """
     # --- 1. Load Data ---
     gpkg_path = GRID_PATH / "h310_grid_final_datacube.gpkg"
-    gdf = load_data(gpkg_path, layer="h310_grid_final_datacube")
+    gdf = load_data(gpkg_path)
     if gdf is None:
         return
 
     # --- 2. Identify Numeric Variables to Analyze ---
-    # Exclude any known non-data columns like 'index' or other identifiers.
-    # The 'geometry' column is special and will be ignored by select_dtypes.
-    numeric_cols = gdf.select_dtypes(include=np.number).columns.tolist()
-    
-    # Define columns to explicitly exclude from analysis
-    # The user mentioned the 'id' is the h3 index, which is often named 'index' or 'h3_index'
-    # Let's exclude common index names and identifiers.
-    cols_to_exclude = ['index', 'h3_index', 'h310_index'] 
-    
-    variables_to_analyze = [col for col in numeric_cols if col not in cols_to_exclude]
+    # --- Manual Variable Definition ---
+    # Manually define your variable lists here.
+    # Any column not in these lists or 'geometry' will be ignored.
 
-    if not variables_to_analyze:
-        print("\nNo numeric variables found to analyze. Exiting.")
+    numerical_variables = [
+        # Add your numerical variable names here, e.g., 'rainfall_mm', 'temperature'
+    ]
+
+    categorical_variables = [
+        # Add your string-based categorical variable names here, e.g., 'land_use'
+    ]
+
+    categorical_int_variables = [
+        # Add your integer-based categorical variable names here, e.g., 'soil_type_code'
+    ]
+
+    # Combine all categorical variables for analysis functions
+    all_categorical_variables = categorical_variables + categorical_int_variables
+
+    if not numerical_variables and not all_categorical_variables:
+        print("\nNo variables found to analyze after separation. Exiting.")
         return
 
-    print(f"\nFound {len(variables_to_analyze)} numeric variables to analyze:")
-    print(variables_to_analyze)
+    print(f"\nFound {len(numerical_variables)} numerical variables to analyze:")
+    print(numerical_variables)
+    print(f"\nFound {len(all_categorical_variables)} categorical variables to analyze:")
+    print(all_categorical_variables)
 
     # --- 3. Ensure output directory exists ---
     PLOTS_SPATIAL_AUTOCORRELATION_PATH.mkdir(parents=True, exist_ok=True)
     print(f"\nPlots will be saved to: {PLOTS_SPATIAL_AUTOCORRELATION_PATH}")
+    TABLE_SPATIAL_AUTOCORRELATION_PATH.mkdir(parents=True, exist_ok=True)
+    print(f"Tables will be saved to: {TABLE_SPATIAL_AUTOCORRELATION_PATH}")
 
     # --- 4. Create Spatial Weights Matrix (once) ---
     weights = create_weights(gdf)
 
-    # --- 5. Univariate Analysis ---
-    for variable in variables_to_analyze:
-        analyze_variable(gdf, weights, variable, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+    # --- 5. Numerical Variable Pipeline ---
+    if numerical_variables:
+        print(f"\n{'#'*30} Starting Numerical Variable Analysis {'#'*30}")
+        for variable in numerical_variables:
+            analyze_variable(gdf, weights, variable, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
 
-    # --- 6. Bivariate Analysis ---
-    # To keep the number of plots manageable, let's select a few interesting variables for pairing.
-    # You can expand this list or use `variables_to_analyze` for all combinations.
-    bivariate_vars = [v for v in variables_to_analyze if 'rain' in v or 'temp' in v or 'river' in v or 'wind' in v][:4] # Example subset
-    if len(bivariate_vars) >= 2:
-        analyze_bivariate(gdf, weights, bivariate_vars, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+        # Bivariate Analysis for numerical variables
+        # To keep the number of plots manageable, let's select a few interesting variables for pairing.
+        # You can expand this list or use `numerical_variables` for all combinations.
+        # Ensure there are at least two variables for bivariate analysis
+        bivariate_vars_subset = [v for v in numerical_variables]
+        if len(bivariate_vars_subset) < 2 and len(numerical_variables) >= 2:
+            # If subset is too small, just take the first two numerical variables
+            bivariate_vars_subset = numerical_variables[:2]
+        elif len(bivariate_vars_subset) < 2:
+            print("\nSkipping Bivariate Numerical Analysis: Less than 2 suitable numerical variables found.")
+            bivariate_vars_subset = [] # Ensure it's empty if not enough vars
 
-    # --- 7. Multivariate Clustering ---
-    analyze_multivariate_clusters(gdf, variables_to_analyze, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+        if len(bivariate_vars_subset) >= 2:
+            #print(f"\nPerforming Bivariate Numerical Analysis on variables: {bivariate_vars_subset}")
+            analyze_bivariate(gdf, weights, bivariate_vars_subset, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+        print(f"\n{'#'*30} Finished Numerical Variable Analysis {'#'*30}")
+    else:
+        print(f"\n{'#'*30} No Numerical Variables for Analysis {'#'*30}")
+
+
+    # --- 6. Categorical Variable Pipeline ---
+    if all_categorical_variables:
+        print(f"\n{'#'*30} Starting Categorical Variable Analysis {'#'*30}")
+        for variable in all_categorical_variables:
+            print(f"\nAnalyzing Categorical Variable: {variable}")
+            analyze_categorical_join_counts(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+            analyze_spatial_contingency(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+        print(f"\n{'#'*30} Finished Categorical Variable Analysis {'#'*30}")
+    else:
+        print(f"\n{'#'*30} No Categorical Variables for Analysis {'#'*30}")
+
+    # --- 7. Multivariate Clustering (Combined Numerical + Categorical) ---
+    # Only run if there are any variables to cluster
+    if numerical_variables or all_categorical_variables:
+        print(f"\n{'#'*30} Starting Multivariate Clustering Analysis {'#'*30}")
+        analyze_multivariate_clusters(gdf, numerical_variables, all_categorical_variables, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+    else:
+        print(f"\n{'#'*30} No Variables for Multivariate Clustering {'#'*30}")
 
     print(f"\n{'='*20} Pipeline Complete {'='*20}")
 
