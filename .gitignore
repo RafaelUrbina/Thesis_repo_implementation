@@ -1,5 +1,5 @@
 #General temp ignores
-3_Implementation/2_Data_analysis/spatial_correlation/plots/*
+3_Implementation/2_Data_analysis/spatial_correlation/plots*
 
 #Personal documents
 0_Bureaucratic/1_Borsa/Personal
