@@ -36,6 +36,52 @@ Steps:
  'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max', 'geometry'] """
 
 
+""" 
+IGNORED VARIABLES:
+
+'index', 'geometry'
+
+ """
+
+""" 
+CATEGORICAL VARIABLES (STRING):
+
+'class_intervention_1ring', 'locality_name_1ring', 'dominant_highway', 'dominant_surface', 
+'dominant_tunnel', 'dominant_bridge', 'usda_hydrologic_group', 'pai_landslide_hazard_level',
+'dominant_building_1', 'dominant_building_2', 'dominant_building_3',
+
+ """
+
+
+""" 
+NUMERICAL VARIABLES (FLOAT,INT):
+
+'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'active_fountains_count_1ring', 
+'total_fountains_count_1ring', 'landslide_point_count_1ring', 'seismic_event_count_1ring', 
+'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring', 'road_density_m_per_m2', 'm_per_hex',
+'dist_to_waterway_m', 'avg_descending_soil_speed', 'avg_ascending_soil_speed', 'census_pop', 'epr_NTAXP', 
+'epr_TAXABINC', 'epr_CADINCR', 'epr_CADINCF', 'epr_SUBEMPTR', 'epr_PENSINCR', 'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01', 
+'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7', 'erd_E75000_1', 
+'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_COMP_FRA', 'eidx_LAND_CON', 'eidx_EMPL_RAT', 
+'eidx_POP_25_6', 'eidx_POP_DEPE', 'eidx_INDEX_AC', 'eidx_PERSEMP', 'inflow_total', 
+'nearest_hydro_distance_m', 'nearest_hydro_river_stage_max_m', 'nearest_hydro_river_stage_mean_m', 
+'nearest_hydro_river_stage_std_m', 'nearest_hydro_quota', 'idw_temp_max_peak', 'idw_temp_min_nadir', 
+'idw_temp_thermal_range', 'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly', 
+'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_max',
+ 'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max',
+
+ """
+
+
+""" 
+CATEGORICAL VARIABLES (INT):
+
+'tipo_movimento_<lambda_0>_1ring', 'is_locality_1ring', 'rooting_depth_class', 'surface_stoniness_class',
+'landslide_surface_class', 'descending_soil_presence', 'ascending_soil_presence', 'hydraulic_hazard_level',
+
+ """
+
+
 import sys
 from pathlib import Path
 import geopandas as gpd
@@ -123,72 +169,87 @@ def analyze_variable(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variabl
         output_dir (Path): The directory to save the output plots.
     """
     print(f"\n{'='*20} Analyzing: {variable_name} {'='*20}")
-
-    # Create a working copy for this variable to avoid side effects
-    y = gdf[variable_name].copy()
-
-    # For this analysis, we'll fill missing values with the mean.
-    # You might consider other strategies like median or interpolation depending on your data.
-    if y.isnull().any():
-        mean_val = y.mean()
-        y.fillna(mean_val, inplace=True)
-        print(f"Warning: Missing values found. Filled with mean value ({mean_val:.2f}).")
-
-    # Check for zero variance, which makes autocorrelation analysis impossible
-    if y.std() == 0:
-        print("Skipping: This variable has zero variance (all values are the same).")
-        return
-
-    # --- Global Spatial Autocorrelation (Moran's I) ---
-    print(f"--- Calculating Global Moran's I ---")
-    # Moran's I tells us if there is a general pattern of clustering globally.
-    # I > 0: Positive autocorrelation (clustering of similar values)
-    # I < 0: Negative autocorrelation (checkerboard pattern)
-    # I ~ 0: Random pattern
-    moran = Moran(y, weights)
-
-    print(f"Moran's I: {moran.I:.4f}")
-    print(f"P-value: {moran.p_sim:.4f}")
-    print(f"Z-score: {moran.z_sim:.4f}")
-
-    if moran.p_sim < 0.05:
-        print("Global Result: The pattern is statistically significant (p < 0.05).")
-        if moran.I > 0:
-            print("The data exhibits positive spatial autocorrelation (clustering).")
-        else:
-            print("The data exhibits negative spatial autocorrelation (dispersion).")
-    else:
-        print("Global Result: The pattern is not statistically significant (p >= 0.05). We cannot reject the null hypothesis of spatial randomness.")
-
-    # Plot the Moran Scatterplot
-    fig, ax = moran_scatterplot(moran, aspect_equal=True)
-    plt.suptitle(f"Global Moran's I for {variable_name}", fontsize=14)
-    plt.tight_layout()
-    
-    # Save the figure instead of showing it
+    # Define plot path for Moran Scatterplot
     moran_plot_path = output_dir / f"moran_plot_{variable_name}.png"
-    plt.savefig(moran_plot_path)
-    plt.close(fig) # Close the figure to free up memory
-    print(f"  - Saved Moran scatterplot to: {moran_plot_path}")
-    # --- Local Spatial Autocorrelation (LISA) ---
-    print(f"\n--- Calculating Local Moran's I (LISA) ---")
-    # LISA helps us identify the specific locations of clusters and outliers.
-    lisa = Moran_Local(y, weights)
 
-    # Plot the LISA Cluster Map
-    # It classifies each location into categories like High-High (hotspot), Low-Low (coldspot), etc.
-    fig, ax = plt.subplots(figsize=(12, 10))
-    lisa_cluster(lisa, gdf, ax=ax, legend=True)
-    ax.set_title(f'Local Moran\'s I (LISA) for {variable_name}')
-    ax.set_yticklabels([])
-    ax.set_xticklabels([]) 
-    plt.tight_layout()
+    if moran_plot_path.exists() and moran_plot_path.stat().st_size > 0:
+            print(f"  - Plot '{moran_plot_path.name}' already exists. Skipping Moran scatterplot.")
+    else:
+        # Create a working copy for this variable to avoid side effects
+        y = gdf[variable_name].copy()
     
-    # Save the figure instead of showing it
+        # For this analysis, we'll fill missing values with the mean.
+        # You might consider other strategies like median or interpolation depending on your data.
+        if y.isnull().any():
+            mean_val = y.mean()
+            y.fillna(mean_val, inplace=True)
+            print(f"Warning: Missing values found. Filled with mean value ({mean_val:.2f}).")
+    
+        # Check for zero variance, which makes autocorrelation analysis impossible
+        if y.std() == 0:
+            print("Skipping: This variable has zero variance (all values are the same).")
+            return
+    
+        # --- Global Spatial Autocorrelation (Moran's I) ---
+        print(f"--- Calculating Global Moran's I ---")
+        # Moran's I tells us if there is a general pattern of clustering globally.
+        # I > 0: Positive autocorrelation (clustering of similar values)
+        # I < 0: Negative autocorrelation (checkerboard pattern)
+        # I ~ 0: Random pattern
+        moran = Moran(y, weights)
+    
+        print(f"Moran's I: {moran.I:.4f}")
+        print(f"P-value: {moran.p_sim:.4f}")
+        print(f"Z-score: {moran.z_sim:.4f}")
+    
+        if moran.p_sim < 0.05:
+            print("Global Result: The pattern is statistically significant (p < 0.05).")
+            if moran.I > 0:
+                print("The data exhibits positive spatial autocorrelation (clustering).")
+            else:
+                print("The data exhibits negative spatial autocorrelation (dispersion).")
+        else:
+            print("Global Result: The pattern is not statistically significant (p >= 0.05). We cannot reject the null hypothesis of spatial randomness.")
+    
+        # Define plot path for Moran Scatterplot
+        moran_plot_path = output_dir / f"moran_plot_{variable_name}.png"
+    
+        
+        # Plot the Moran Scatterplot
+        fig, ax = moran_scatterplot(moran, aspect_equal=True)
+        title = f"Global Moran's I for {variable_name}\nI={moran.I:.4f}, p-value=({moran.p_sim:.4f})"
+        plt.suptitle(title, fontsize=14)
+        plt.tight_layout()
+        
+        # Save the figure
+        plt.savefig(moran_plot_path)
+        plt.close(fig) # Close the figure to free up memory
+        print(f"  - Saved Moran scatterplot to: {moran_plot_path}")
+
+    # Define plot path for LISA Cluster Map
     lisa_plot_path = output_dir / f"lisa_cluster_map_{variable_name}.png"
-    plt.savefig(lisa_plot_path)
-    plt.close(fig) # Close the figure to free up memory
-    print(f"  - Saved LISA cluster map to: {lisa_plot_path}")
+    if lisa_plot_path.exists() and lisa_plot_path.stat().st_size > 0:
+                print(f"  - Plot '{lisa_plot_path.name}' already exists. Skipping LISA cluster map.")
+
+    else:
+        # --- Local Spatial Autocorrelation (LISA) ---
+        print(f"\n--- Calculating Local Moran's I (LISA) ---")
+        # LISA helps us identify the specific locations of clusters and outliers.
+        lisa = Moran_Local(y, weights)
+        # Define plot path for LISA Cluster Map
+        lisa_plot_path = output_dir / f"lisa_cluster_map_{variable_name}.png"
+        # Plot the LISA Cluster Map
+        # It classifies each location into categories like High-High (hotspot), Low-Low (coldspot), etc.
+        fig, ax = plt.subplots(figsize=(12, 10))
+        lisa_cluster(lisa, gdf, ax=ax, legend=True)
+        ax.set_title(f'Local Moran\'s I (LISA) for {variable_name}')
+        ax.set_yticklabels([])
+        ax.set_xticklabels([]) 
+        plt.tight_layout()
+        # Save the figure
+        plt.savefig(lisa_plot_path)
+        plt.close(fig) # Close the figure to free up memory
+        print(f"  - Saved LISA cluster map to: {lisa_plot_path}")
 
 def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variables: list, output_dir: Path):
     """
@@ -216,6 +277,12 @@ def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variab
     for var1, var2 in combinations(variables, 2):
         print(f"\n--- Analyzing pair: {var1} vs. {var2} ---")
 
+        bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}.png"
+        # Check if the output plot already exists and is not empty
+        if bv_plot_path.exists() and bv_plot_path.stat().st_size > 0:
+            print(f"  - Plot '{bv_plot_path.name}' already exists. Skipping.")
+            continue
+
         # Skip if either variable has zero variance
         if gdf_bv[var1].std() == 0 or gdf_bv[var2].std() == 0:
             print("Skipping pair: At least one variable has zero variance.")
@@ -233,7 +300,6 @@ def analyze_bivariate(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variab
         plt.tight_layout()
 
         # Save the figure
-        bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}.png"
         plt.savefig(bv_plot_path)
         plt.close(fig)
         print(f"  - Saved Bivariate LISA cluster map to: {bv_plot_path}")
@@ -250,6 +316,12 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         variable_name (str): The name of the categorical column to analyze.
         table_output_dir (Path): The directory to save the output table.
     """
+    table_path = table_output_dir / f"join_counts_{variable_name}.csv"
+    # Check if the output table already exists and is not empty
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"  - Table '{table_path.name}' already exists. Skipping Join-Count analysis for '{variable_name}'.")
+        return
+
     print(f"\n{'='*20} Analyzing Categorical (Join-Counts): {variable_name} {'='*20}")
 
     original_weights_transform = weights.transform
@@ -303,10 +375,10 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         else:
             print(f"  Result: No statistically significant clustering for category '{category}'.")
 
-    results_df = pd.DataFrame(results)
-    table_path = table_output_dir / f"join_counts_{variable_name}.csv"
-    results_df.to_csv(table_path, index=False)
-    print(f"\n  - Saved Join-Counts results to: {table_path}")
+    if results: # Only save if there are actual results
+        results_df = pd.DataFrame(results)
+        results_df.to_csv(table_path, index=False)
+        print(f"\n  - Saved Join-Counts results to: {table_path}")
     weights.transform = original_weights_transform # Reset weights transform
 
 def analyze_spatial_contingency(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
@@ -320,6 +392,12 @@ def analyze_spatial_contingency(gdf: gpd.GeoDataFrame, weights: libpysal.weights
         variable_name (str): The name of the categorical column to analyze.
         table_output_dir (Path): The directory to save the output table.
     """
+    table_path = table_output_dir / f"spatial_contingency_{variable_name}.csv"
+    # Check if the output table already exists and is not empty
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"  - Table '{table_path.name}' already exists. Skipping Spatial Contingency analysis for '{variable_name}'.")
+        return
+
     print(f"\n{'='*20} Analyzing Categorical (Spatial Contingency): {variable_name} {'='*20}")
 
     temp_gdf = gdf[[variable_name]].copy()
@@ -380,10 +458,9 @@ def analyze_spatial_contingency(gdf: gpd.GeoDataFrame, weights: libpysal.weights
     print("\nInterpretation: Rows are focal unit categories, columns are neighbor categories.")
     print("Values indicate counts of how often a focal category is adjacent to a neighbor category.")
 
-    # Save the contingency table to a CSV file
-    table_path = table_output_dir / f"spatial_contingency_{variable_name}.csv"
-    contingency.to_csv(table_path)
-    print(f"  - Saved Spatial Contingency table to: {table_path}")
+    if not contingency.empty: # Only save if there are actual results
+        contingency.to_csv(table_path)
+        print(f"  - Saved Spatial Contingency table to: {table_path}")
 
 
 def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, categorical_vars: list, output_dir: Path, n_clusters: int = 5):
@@ -398,6 +475,12 @@ def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, c
         output_dir (Path): The directory to save the output plot.
         n_clusters (int): The number of clusters to create.
     """
+    plot_path = output_dir / f"multivariate_kmeans_cluster_map_k{n_clusters}.png"
+    # Check if the output plot already exists and is not empty
+    if plot_path.exists() and plot_path.stat().st_size > 0:
+        print(f"  - Plot '{plot_path.name}' already exists. Skipping Multivariate Clustering analysis.")
+        return
+
     print(f"\n{'='*20} Multivariate Clustering Analysis {'='*20}")
 
     # 1. Prepare numerical data: fill NaNs with column mean
@@ -449,8 +532,6 @@ def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, c
     gdf_filtered = gdf.loc[X_combined.index] # Filter gdf to match X_combined's index
     gdf_filtered['multivariate_cluster'] = kmeans.fit_predict(X_scaled)
 
-    # 6. Plot the combined multivariate clusters on a map
-    plot_path = output_dir / f"multivariate_kmeans_cluster_map_k{n_clusters}.png"
     
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
     gdf_filtered.plot(column='multivariate_cluster', categorical=True, legend=True, figsize=(12, 10), aspect='equal', ax=ax)
@@ -476,21 +557,73 @@ def main():
     # --- Manual Variable Definition ---
     # Manually define your variable lists here.
     # Any column not in these lists or 'geometry' will be ignored.
-
+    
     numerical_variables = [
-        # Add your numerical variable names here, e.g., 'rainfall_mm', 'temperature'
+        'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'active_fountains_count_1ring',
+        'total_fountains_count_1ring', 'landslide_point_count_1ring', 'seismic_event_count_1ring',
+        'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring', 'road_density_m_per_m2', 'm_per_hex',
+        'dist_to_waterway_m', 'avg_descending_soil_speed', 'avg_ascending_soil_speed', 'census_pop', 'epr_NTAXP',
+        'epr_TAXABINC', 'epr_CADINCR', 'epr_CADINCF', 'epr_SUBEMPTR', 'epr_PENSINCR', 'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01',
+        'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7', 'erd_E75000_1',
+        'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_COMP_FRA', 'eidx_LAND_CON', 'eidx_EMPL_RAT',
+        'eidx_POP_25_6', 'eidx_POP_DEPE', 'eidx_INDEX_AC', 'eidx_PERSEMP', 'inflow_total',
+        'nearest_hydro_distance_m', 'nearest_hydro_river_stage_max_m', 'nearest_hydro_river_stage_mean_m',
+        'nearest_hydro_river_stage_std_m', 'nearest_hydro_quota', 'idw_temp_max_peak', 'idw_temp_min_nadir',
+        'idw_temp_thermal_range', 'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly',
+        'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_max',
+        'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max'
     ]
 
     categorical_variables = [
-        # Add your string-based categorical variable names here, e.g., 'land_use'
+        'class_intervention_1ring', 'locality_name_1ring', 'dominant_highway', 'dominant_surface',
+        'dominant_tunnel', 'dominant_bridge', 'usda_hydrologic_group', 'pai_landslide_hazard_level',
+        'dominant_building_1', 'dominant_building_2', 'dominant_building_3'
     ]
 
     categorical_int_variables = [
-        # Add your integer-based categorical variable names here, e.g., 'soil_type_code'
+        'tipo_movimento_<lambda_0>_1ring', 'is_locality_1ring', 'rooting_depth_class', 'surface_stoniness_class',
+        'landslide_surface_class', 'descending_soil_presence', 'ascending_soil_presence', 'hydraulic_hazard_level'
     ]
 
     # Combine all categorical variables for analysis functions
     all_categorical_variables = categorical_variables + categorical_int_variables
+
+    # --- Data Type Sanity Check and Enforcement ---
+    print("\n--- Enforcing Data Types ---")
+    for var in numerical_variables:
+        if var in gdf.columns:
+            # Check for errors during conversion by seeing if NaNs are introduced
+            initial_nans = gdf[var].isnull().sum()
+            # Convert to numeric, coercing errors to NaN
+            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
+            final_nans = gdf[var].isnull().sum()
+            if final_nans > initial_nans:
+                print(f"  - Warning: Errors found in variable '{var}' while converting to numeric. Non-numeric values were set to NaN.")
+    print("Numerical variables converted to numeric types.")
+
+    for var in categorical_variables:
+        if var in gdf.columns:
+            # .astype(str) is a robust conversion and typically does not produce errors,
+            # as it can represent any value as a string.
+            gdf[var] = gdf[var].astype(str)
+    print("String-based categorical variables converted to string types.")
+
+    for var in categorical_int_variables:
+        if var in gdf.columns:
+            # Check for errors during the initial numeric conversion
+            initial_nans = gdf[var].isnull().sum()
+            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
+            final_nans = gdf[var].isnull().sum()
+            if final_nans > initial_nans:
+                print(f"  - Warning: Errors found in variable '{var}' while converting to integer. Non-numeric values were set to NaN.")
+            # Using Int64 (capital I) to allow for NaNs in integer columns
+            gdf[var] = gdf[var].astype('Int64')
+    print("Integer-based categorical variables converted to nullable integer types.")
+    print("--- Data Type Enforcement Complete ---")
+
+    # Filter out variables that don't exist in the dataframe to prevent errors
+    numerical_variables = [v for v in numerical_variables if v in gdf.columns]
+    all_categorical_variables = [v for v in all_categorical_variables if v in gdf.columns]
 
     if not numerical_variables and not all_categorical_variables:
         print("\nNo variables found to analyze after separation. Exiting.")
@@ -518,18 +651,23 @@ def main():
 
         # Bivariate Analysis for numerical variables
         # To keep the number of plots manageable, let's select a few interesting variables for pairing.
-        # You can expand this list or use `numerical_variables` for all combinations.
-        # Ensure there are at least two variables for bivariate analysis
-        bivariate_vars_subset = [v for v in numerical_variables]
-        if len(bivariate_vars_subset) < 2 and len(numerical_variables) >= 2:
-            # If subset is too small, just take the first two numerical variables
-            bivariate_vars_subset = numerical_variables[:2]
-        elif len(bivariate_vars_subset) < 2:
-            print("\nSkipping Bivariate Numerical Analysis: Less than 2 suitable numerical variables found.")
-            bivariate_vars_subset = [] # Ensure it's empty if not enough vars
+        bivariate_vars_subset = [
+            'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'landslide_point_count_1ring',
+            'seismic_event_count_1ring', 'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring',
+            'road_density_m_per_m2', 'dist_to_waterway_m', 'avg_descending_soil_speed',
+            'avg_ascending_soil_speed', 'census_pop', 'idw_temp_max_peak', 'idw_temp_min_nadir',
+            'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly',
+            'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_95p',
+            'idw_wind_speed_avg_mean', 'inflow_total', 'dtmidcnt_mean', 'hydraulic_hazard_level'
+        ]
 
-        if len(bivariate_vars_subset) >= 2:
-            #print(f"\nPerforming Bivariate Numerical Analysis on variables: {bivariate_vars_subset}")
+        # Filter the list to only include variables that are present in the dataframe
+        bivariate_vars_subset = [v for v in bivariate_vars_subset if v in gdf.columns]
+
+        if len(bivariate_vars_subset) < 2:
+            print("\nSkipping Bivariate Numerical Analysis: Less than 2 suitable numerical variables found.")
+        else:
+            print(f"\nPerforming Bivariate Numerical Analysis on {len(bivariate_vars_subset)} selected variables.")
             analyze_bivariate(gdf, weights, bivariate_vars_subset, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
         print(f"\n{'#'*30} Finished Numerical Variable Analysis {'#'*30}")
     else:
