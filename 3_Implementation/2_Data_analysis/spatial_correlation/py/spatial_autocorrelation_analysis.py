@@ -98,6 +98,7 @@ from itertools import combinations
 from tqdm.auto import tqdm # Import tqdm for progress bars
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+from scipy.stats import contingency # Added for global categorical association
 
 
 # Add the project root to the Python path to allow for absolute imports
@@ -359,87 +360,140 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         results_df.to_csv(table_path, index=False)
         print(f"\n  - Saved Join-Counts results to: {table_path}")
     weights.transform = original_weights_transform # Reset weights transform
-
-def analyze_spatial_contingency(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
+def analyze_bivariate_categorical_association(
+    gdf: gpd.GeoDataFrame, top_vars: list, table_output_dir: Path
+) -> list:
     """
-    Analyzes spatial contingency for a single categorical variable by cross-tabulating
-    the focal region's category against its neighbors' categories.
+    Calculates a global measure of association (Cramér's V) for all pairs of top categorical variables.
+    This is a non-spatial, bivariate analysis.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        top_vars (list): The list of top categorical variable names to analyze.
+        table_output_dir (Path): The directory to save the output table.
+
+    Returns:
+        list: A list of the top 10 variable pairs with the highest Cramér's V values.
+    """
+    table_path = table_output_dir / "bivariate_categorical_association_results.csv"
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"\n--- Bivariate Categorical Association table '{table_path.name}' already exists. Skipping. ---")
+        results_df = pd.read_csv(table_path)
+        top_10_pairs = [tuple(x) for x in results_df.sort_values(by='cramers_v', ascending=False).head(10)[['variable_1', 'variable_2']].to_numpy()]
+        print(f"Loaded existing results. Top 10 pairs by Cramér's V: {top_10_pairs}")
+        return top_10_pairs
+
+    print(f"\n{'='*20} Analyzing Bivariate Categorical Association {'='*20}")
+
+    results = []
+
+    for var1, var2 in tqdm(list(combinations(top_vars, 2)), desc="  - Bivariate Categorical Association"):
+        # Impute missing values for this pair
+        y1 = gdf[var1].copy().fillna("not defined").astype(str)
+        y2 = gdf[var2].copy().fillna("not defined").astype(str)
+
+        # Create a standard contingency table
+        contingency_table = pd.crosstab(y1, y2)
+
+        # Calculate Cramér's V
+        try:
+            cramers_v = contingency.association(contingency_table, method="cramer")
+            results.append({'variable_1': var1, 'variable_2': var2, 'cramers_v': cramers_v})
+        except ValueError as e:
+            print(f"    - Could not calculate Cramér's V for '{var1}' vs '{var2}': {e}")
+
+    if results:
+        results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
+        results_df.to_csv(table_path, index=False)
+        print(f"\n  - Saved Bivariate Categorical Association results to: {table_path.name}")
+        print("\n  - Top 10 most associated variable pairs:")
+        print(results_df.head(10))
+        # Return a list of tuples for the top 10 pairs
+        top_10_pairs = [tuple(x) for x in results_df.head(10)[['variable_1', 'variable_2']].to_numpy()]
+    else:
+        top_10_pairs = []
+
+    print(f"\n{'='*20} Finished Bivariate Categorical Analysis {'='*20}")
+    return top_10_pairs
+
+def analyze_global_categorical_association(
+    gdf: gpd.GeoDataFrame,
+    weights: libpysal.weights.W,
+    categorical_vars: list,
+    table_output_dir: Path,
+) -> list:
+    """
+    Calculates a global measure of spatial association (Cramér's V) for each categorical variable.
 
     Args:
         gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
         weights (libpysal.weights.W): The pre-computed spatial weights matrix.
-        variable_name (str): The name of the categorical column to analyze.
+        categorical_vars (list): The list of categorical variable names to analyze.
         table_output_dir (Path): The directory to save the output table.
+
+    Returns:
+        list: A list of the top 10 variable names with the highest Cramér's V values.
     """
-    table_path = table_output_dir / f"spatial_contingency_{variable_name}.csv"
-    # Check if the output table already exists and is not empty
+    table_path = table_output_dir / "global_categorical_association_results.csv"
     if table_path.exists() and table_path.stat().st_size > 0:
-        print(f"  - Table '{table_path.name}' already exists. Skipping Spatial Contingency analysis for '{variable_name}'.")
-        return
+        print(f"\n--- Global Categorical Association table '{table_path.name}' already exists. Skipping. ---")
+        results_df = pd.read_csv(table_path)
+        top_10_vars = results_df.sort_values(by='cramers_v', ascending=False).head(10)['variable'].tolist()
+        print(f"Loaded existing results. Top 10 variables by Cramér's V: {top_10_vars}")
+        return top_10_vars
 
-    print(f"\n{'='*20} Analyzing Categorical (Spatial Contingency): {variable_name} {'='*20}")
+    print(f"\n{'='*20} Analyzing Global Categorical Spatial Association {'='*20}")
 
-    temp_gdf = gdf[[variable_name]].copy()
-    temp_gdf = temp_gdf.dropna(subset=[variable_name]) # Drop NaNs for factorize
+    results = []
 
-    if temp_gdf.empty:
-        print(f"Skipping: Categorical variable '{variable_name}' has no non-null values.")
-        return
+    for variable in tqdm(categorical_vars, desc="  - Global Categorical Association"):
+        # Create a working copy and impute missing values
+        y = gdf[variable].copy().fillna("not defined").astype(str)
 
-    codes, uniques = pd.factorize(temp_gdf[variable_name])
-    temp_gdf['cat_code'] = codes
+        # Get the unique categories to build the contingency table
+        unique_categories = sorted(y.unique())
+        cat_map = {cat: i for i, cat in enumerate(unique_categories)}
+        n_cats = len(unique_categories)
 
-    # Calculate spatial lag of codes (mean of neighbors' codes)
-    # This will be float, so we round it to get discrete neighbor categories
-    # Note: lag_spatial expects a Series aligned with the weights object.
-    # We need to ensure the index of temp_gdf matches the weights index.
-    if not temp_gdf.index.equals(pd.Series(weights.id_order).index): # Check if indices match
-        # If not, reindex temp_gdf to match weights.id_order
-        # This is a common issue if rows were dropped or reordered.
-        temp_gdf = temp_gdf.reindex(weights.id_order)
-        codes, uniques = pd.factorize(temp_gdf[variable_name]) # Refactorize after reindexing
-        temp_gdf['cat_code'] = codes
-        temp_gdf = temp_gdf.dropna(subset=['cat_code']) # Drop NaNs again if reindexing introduced them
+        if n_cats < 2:
+            print(f"    - Skipping '{variable}': Not enough unique categories.")
+            continue
 
-    if temp_gdf.empty:
-        print(f"Skipping: Categorical variable '{variable_name}' has no non-null values after reindexing.")
-        return
+        # Initialize an empty contingency table
+        contingency_table = np.zeros((n_cats, n_cats), dtype=int)
 
-    # Ensure the series passed to lag_spatial is aligned with the weights
-    y_for_lag = temp_gdf['cat_code'].reindex(weights.id_order).fillna(-1) # Fill NaNs with a placeholder if needed
+        # Build the contingency table from neighbor pairs
+        for i, focal_id in enumerate(weights.id_order):
+            focal_cat = y.loc[focal_id]
+            focal_idx = cat_map[focal_cat]
+            
+            neighbor_ids = weights.neighbors[focal_id]
+            for neighbor_id in neighbor_ids:
+                neighbor_cat = y.loc[neighbor_id]
+                neighbor_idx = cat_map[neighbor_cat]
+                
+                # Increment count for the pair (focal, neighbor)
+                contingency_table[focal_idx, neighbor_idx] += 1
 
-    # Only include observations that are part of the weights matrix
-    # This is important if some geometries were dropped due to no neighbors
-    valid_indices = y_for_lag[y_for_lag != -1].index
-    
-    if valid_indices.empty:
-        print(f"Skipping: No valid observations for '{variable_name}' to calculate spatial lag.")
-        return
+        # Calculate Cramér's V using scipy
+        # The 'association' function returns Cramér's V by default
+        try:
+            cramers_v = contingency.association(contingency_table, method="cramer")
+            results.append({'variable': variable, 'cramers_v': cramers_v})
+            print(f"    - Variable: {variable}, Cramér's V: {cramers_v:.4f}")
+        except ValueError as e:
+            print(f"    - Could not calculate Cramér's V for '{variable}': {e}")
 
-    # lag_spatial returns a numpy array. Convert it to a pandas Series with the correct index.
-    neighbor_codes_raw_series = pd.Series(lag_spatial(weights, y_for_lag), index=y_for_lag.index)
-    
-    # Filter to only valid indices before rounding and crosstab
-    neighbor_codes_filtered = neighbor_codes_raw_series.loc[valid_indices]
-    neighbor_codes = np.round(neighbor_codes_filtered).astype(int)
-    focal_codes = temp_gdf['cat_code'].loc[valid_indices].astype(int)
+    if results:
+        results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
+        results_df.to_csv(table_path, index=False)
+        print(f"\n  - Saved Global Categorical Association results to: {table_path.name}")
+        top_10_vars = results_df.head(10)['variable'].tolist()
+    else:
+        top_10_vars = []
 
-    # Cross-tabulate focal region vs. neighbor region
-    # Use the original unique categories for row/column names for readability
-    contingency = pd.crosstab(focal_codes, neighbor_codes)
-    
-    # Map codes back to original category names for display
-    contingency.index = [uniques[i] for i in contingency.index]
-    contingency.columns = [uniques[i] for i in contingency.columns]
-
-    print(f"Spatial Contingency Table for {variable_name} (Focal vs. Neighbor):")
-    print(contingency)
-    print("\nInterpretation: Rows are focal unit categories, columns are neighbor categories.")
-    print("Values indicate counts of how often a focal category is adjacent to a neighbor category.")
-
-    if not contingency.empty: # Only save if there are actual results
-        contingency.to_csv(table_path)
-        print(f"  - Saved Spatial Contingency table to: {table_path}")
+    print(f"\n{'='*20} Finished Global Categorical Analysis {'='*20}")
+    return top_10_vars
 
 
 def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, categorical_vars: list, output_dir: Path, n_clusters: int = 5):
@@ -623,7 +677,7 @@ def main():
     weights = create_weights(gdf)
 
     # --- 5. Numerical Variable Pipeline ---
-    """ if numerical_variables:
+    if numerical_variables:
         print(f"\n{'#'*30} Starting Univariate Numerical Analysis {'#'*30}")
         
         # Step 1: Calculate Global Moran's I for all variables
@@ -774,16 +828,29 @@ def main():
             print("\n  - Skipping Bivariate Analysis: Fewer than 2 numerical variables available.")
         print(f"\n{'#'*30} Finished Bivariate Spatial Analysis {'#'*30}")
     else:
-        print(f"\n{'#'*30} No Numerical Variables for Analysis {'#'*30}") """
+        print(f"\n{'#'*30} No Numerical Variables for Analysis {'#'*30}")
 
 
     # --- 6. Categorical Variable Pipeline ---
     if all_categorical_variables:
         print(f"\n{'#'*30} Starting Categorical Variable Analysis {'#'*30}")
-        for variable in all_categorical_variables:
-            print(f"\nAnalyzing Categorical Variable: {variable}")
-            analyze_categorical_join_counts(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
-            analyze_spatial_contingency(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+        # Run the global association analysis first to get the top variables
+        top_categorical_vars = analyze_global_categorical_association(gdf, weights, all_categorical_variables, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+
+        if top_categorical_vars:
+            print(f"\n--- Proceeding with detailed analysis for the top {len(top_categorical_vars)} variables by Cramér's V ---")
+            # Univariate Join-Counts analysis for each of the top variables
+            for variable in top_categorical_vars:
+                print(f"\n--- Analyzing Univariate Join-Counts for: {variable} ---")
+                #analyze_categorical_join_counts(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+
+            # Bivariate (non-spatial) association analysis between the top variables
+            top_10_pairs = analyze_bivariate_categorical_association(gdf, top_categorical_vars, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+            print(f"\n--- Top 10 most associated pairs for future local analysis: ---")
+            print(top_10_pairs)
+        else:
+            print("\nNo top categorical variables found to analyze.")
+
         print(f"\n{'#'*30} Finished Categorical Variable Analysis {'#'*30}")
     else:
         print(f"\n{'#'*30} No Categorical Variables for Analysis {'#'*30}")
