@@ -361,59 +361,83 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         print(f"\n  - Saved Join-Counts results to: {table_path}")
     weights.transform = original_weights_transform # Reset weights transform
 def analyze_bivariate_categorical_association(
-    gdf: gpd.GeoDataFrame, top_vars: list, table_output_dir: Path
+    gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, top_vars: list, table_output_dir: Path
 ) -> list:
     """
-    Calculates a global measure of association (Cramér's V) for all pairs of top categorical variables.
-    This is a non-spatial, bivariate analysis.
+    Calculates a global measure of SPATIAL association (Cramér's V) for all pairs of top categorical variables.
+    This is a SPATIAL BIVARIATE analysis that builds a contingency table of
+    Var1 at a focal location vs. Var2 at neighboring locations.
 
     Args:
         gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
         top_vars (list): The list of top categorical variable names to analyze.
         table_output_dir (Path): The directory to save the output table.
 
     Returns:
-        list: A list of the top 10 variable pairs with the highest Cramér's V values.
+        list: A list of the top 10 variable pairs with the highest spatial Cramér's V values.
     """
-    table_path = table_output_dir / "bivariate_categorical_association_results.csv"
+    table_path = table_output_dir / "bivariate_spatial_association_results.csv"
     if table_path.exists() and table_path.stat().st_size > 0:
-        print(f"\n--- Bivariate Categorical Association table '{table_path.name}' already exists. Skipping. ---")
+        print(f"\n--- Bivariate Spatial Association table '{table_path.name}' already exists. Skipping. ---")
         results_df = pd.read_csv(table_path)
         top_10_pairs = [tuple(x) for x in results_df.sort_values(by='cramers_v', ascending=False).head(10)[['variable_1', 'variable_2']].to_numpy()]
-        print(f"Loaded existing results. Top 10 pairs by Cramér's V: {top_10_pairs}")
+        print(f"Loaded existing results. Top 10 pairs by spatial Cramér's V: {top_10_pairs}")
         return top_10_pairs
 
-    print(f"\n{'='*20} Analyzing Bivariate Categorical Association {'='*20}")
+    print(f"\n{'='*20} Analyzing Bivariate SPATIAL Association {'='*20}")
 
     results = []
 
-    for var1, var2 in tqdm(list(combinations(top_vars, 2)), desc="  - Bivariate Categorical Association"):
+    for var1, var2 in tqdm(list(combinations(top_vars, 2)), desc="  - Bivariate Spatial Association"):
         # Impute missing values for this pair
         y1 = gdf[var1].copy().fillna("not defined").astype(str)
         y2 = gdf[var2].copy().fillna("not defined").astype(str)
 
-        # Create a standard contingency table
-        contingency_table = pd.crosstab(y1, y2)
+        # Get unique categories and create mapping for both variables
+        cats1 = sorted(y1.unique())
+        cat_map1 = {cat: i for i, cat in enumerate(cats1)}
+        n_cats1 = len(cats1)
+
+        cats2 = sorted(y2.unique())
+        cat_map2 = {cat: i for i, cat in enumerate(cats2)}
+        n_cats2 = len(cats2)
+
+        # Initialize an empty contingency table
+        contingency_table = np.zeros((n_cats1, n_cats2), dtype=int)
+
+        # Build the spatial contingency table: focal var1 vs neighbor var2
+        for i, focal_id in enumerate(weights.id_order):
+            focal_cat_var1 = y1.loc[focal_id]
+            focal_idx_var1 = cat_map1[focal_cat_var1]
+
+            neighbor_ids = weights.neighbors[focal_id]
+            for neighbor_id in neighbor_ids:
+                neighbor_cat_var2 = y2.loc[neighbor_id]
+                neighbor_idx_var2 = cat_map2[neighbor_cat_var2]
+                
+                contingency_table[focal_idx_var1, neighbor_idx_var2] += 1
 
         # Calculate Cramér's V
         try:
             cramers_v = contingency.association(contingency_table, method="cramer")
             results.append({'variable_1': var1, 'variable_2': var2, 'cramers_v': cramers_v})
+            print(f"    - Pair: {var1} & {var2}, Cramér's V: {cramers_v:.4f}")
         except ValueError as e:
             print(f"    - Could not calculate Cramér's V for '{var1}' vs '{var2}': {e}")
 
     if results:
         results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
         results_df.to_csv(table_path, index=False)
-        print(f"\n  - Saved Bivariate Categorical Association results to: {table_path.name}")
-        print("\n  - Top 10 most associated variable pairs:")
+        print(f"\n  - Saved Bivariate Spatial Association results to: {table_path.name}")
+        print("\n  - Top 10 most spatially associated variable pairs:")
         print(results_df.head(10))
         # Return a list of tuples for the top 10 pairs
         top_10_pairs = [tuple(x) for x in results_df.head(10)[['variable_1', 'variable_2']].to_numpy()]
     else:
         top_10_pairs = []
 
-    print(f"\n{'='*20} Finished Bivariate Categorical Analysis {'='*20}")
+    print(f"\n{'='*20} Finished Bivariate Spatial Analysis {'='*20}")
     return top_10_pairs
 
 def analyze_global_categorical_association(
@@ -423,7 +447,7 @@ def analyze_global_categorical_association(
     table_output_dir: Path,
 ) -> list:
     """
-    Calculates a global measure of spatial association (Cramér's V) for each categorical variable.
+    Calculates a global measure of spatial association (Cramér's V) for each categorical variable (univariate spatial).
 
     Args:
         gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
@@ -434,15 +458,15 @@ def analyze_global_categorical_association(
     Returns:
         list: A list of the top 10 variable names with the highest Cramér's V values.
     """
-    table_path = table_output_dir / "global_categorical_association_results.csv"
+    table_path = table_output_dir / "univariate_spatial_association_results.csv"
     if table_path.exists() and table_path.stat().st_size > 0:
-        print(f"\n--- Global Categorical Association table '{table_path.name}' already exists. Skipping. ---")
+        print(f"\n--- Univariate Spatial Association table '{table_path.name}' already exists. Skipping. ---")
         results_df = pd.read_csv(table_path)
         top_10_vars = results_df.sort_values(by='cramers_v', ascending=False).head(10)['variable'].tolist()
-        print(f"Loaded existing results. Top 10 variables by Cramér's V: {top_10_vars}")
+        print(f"Loaded existing results. Top 10 variables by spatial Cramér's V: {top_10_vars}")
         return top_10_vars
 
-    print(f"\n{'='*20} Analyzing Global Categorical Spatial Association {'='*20}")
+    print(f"\n{'='*20} Analyzing Univariate Spatial Association {'='*20}")
 
     results = []
 
@@ -487,12 +511,12 @@ def analyze_global_categorical_association(
     if results:
         results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
         results_df.to_csv(table_path, index=False)
-        print(f"\n  - Saved Global Categorical Association results to: {table_path.name}")
+        print(f"\n  - Saved Univariate Spatial Association results to: {table_path.name}")
         top_10_vars = results_df.head(10)['variable'].tolist()
     else:
         top_10_vars = []
 
-    print(f"\n{'='*20} Finished Global Categorical Analysis {'='*20}")
+    print(f"\n{'='*20} Finished Univariate Spatial Analysis {'='*20}")
     return top_10_vars
 
 
@@ -842,11 +866,11 @@ def main():
             # Univariate Join-Counts analysis for each of the top variables
             for variable in top_categorical_vars:
                 print(f"\n--- Analyzing Univariate Join-Counts for: {variable} ---")
-                #analyze_categorical_join_counts(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+                analyze_categorical_join_counts(gdf, weights, variable, TABLE_SPATIAL_AUTOCORRELATION_PATH)
 
-            # Bivariate (non-spatial) association analysis between the top variables
-            top_10_pairs = analyze_bivariate_categorical_association(gdf, top_categorical_vars, TABLE_SPATIAL_AUTOCORRELATION_PATH)
-            print(f"\n--- Top 10 most associated pairs for future local analysis: ---")
+            # Bivariate SPATIAL association analysis between the top variables
+            top_10_pairs = analyze_bivariate_categorical_association(gdf, weights, top_categorical_vars, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+            print(f"\n--- Top 10 most spatially associated pairs for future local analysis: ---")
             print(top_10_pairs)
         else:
             print("\nNo top categorical variables found to analyze.")
