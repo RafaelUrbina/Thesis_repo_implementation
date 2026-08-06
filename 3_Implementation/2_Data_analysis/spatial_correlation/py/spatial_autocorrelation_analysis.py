@@ -93,12 +93,15 @@ import pandas as pd # Added for categorical variable handling
 from esda.join_counts import Join_Counts # Added for categorical variable handling
 from libpysal.weights import lag_spatial # Added for spatial contingency analysis
 from esda.moran import Moran, Moran_Local, Moran_Local_BV, Moran_BV
+from esda.geary import Geary
+from esda.getisord import G_Local
 from splot.esda import moran_scatterplot, lisa_cluster
 from itertools import combinations
 from tqdm.auto import tqdm # Import tqdm for progress bars
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
-from scipy.stats import contingency # Added for global categorical association
+from scipy.stats import contingency
+from statsmodels.stats.multitest import multipletests # Added for FDR/Bonferroni correction
 
 
 # Add the project root to the Python path to allow for absolute imports
@@ -225,12 +228,16 @@ def analyze_variable_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W
             print("Skipping LISA: This variable has zero variance.")
             return
 
-        lisa = Moran_Local(y, weights)
+        lisa = Moran_Local(y, weights, seed=42) # Added seed for reproducibility
+
+        # Apply False Discovery Rate (FDR) correction using Benjamini/Hochberg method
+        reject, p_corrected, _, _ = multipletests(lisa.p_sim, alpha=0.05, method='fdr_bh')
+        lisa.p_sim = p_corrected # Update the p_sim attribute with corrected p-values
 
         # Plot the LISA Cluster Map
         fig, ax = plt.subplots(figsize=(12, 10))
-        lisa_cluster(lisa, gdf, ax=ax, legend=True)
-        ax.set_title(f'Local Moran\'s I (LISA) for {variable_name}')
+        lisa_cluster(lisa, gdf, ax=ax, legend=True) # pvalue argument removed
+        ax.set_title(f"Local Moran's I (LISA) for {variable_name} (FDR Corrected, p<0.05)")
         ax.set_yticklabels([])
         ax.set_xticklabels([]) 
         plt.tight_layout()
@@ -250,8 +257,8 @@ def analyze_bivariate_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.
         output_dir (Path): The directory to save the output plots.
     """
     print(f"\n--- Running Detailed Bivariate Analysis for: {var1} vs. {var2} ---")
-
-    bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}.png"
+    
+    bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}_fdr.png" # Changed filename to indicate FDR
     if bv_plot_path.exists() and bv_plot_path.stat().st_size > 0:
         print(f"  - Plot '{bv_plot_path.name}' already exists. Skipping.")
         return
@@ -268,13 +275,15 @@ def analyze_bivariate_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.
         print("  - Skipping pair: At least one variable has zero variance.")
         return
 
-    # Tests if y1 at location i is correlated with y2 in neighbor locations
-    bivariate_lisa = Moran_Local_BV(y1, y2, weights)
+    bivariate_lisa = Moran_Local_BV(y1, y2, weights, seed=42) # Added seed for reproducibility
 
-    # Plot the LISA Cluster Map for the bivariate case
+    # Apply False Discovery Rate (FDR) correction using Benjamini/Hochberg method
+    reject, p_corrected, _, _ = multipletests(bivariate_lisa.p_sim, alpha=0.05, method='fdr_bh')
+    bivariate_lisa.p_sim = p_corrected # Update the p_sim attribute with corrected p-values
+
     fig, ax = plt.subplots(figsize=(12, 10))
-    lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True)
-    ax.set_title(f'Bivariate LISA: {var1} vs. {var2}')
+    lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True) # pvalue argument removed
+    ax.set_title(f"Bivariate LISA: {var1} vs. {var2} (FDR Corrected, p<0.05)")
     ax.set_yticklabels([])
     ax.set_xticklabels([])
     plt.tight_layout()
@@ -283,6 +292,83 @@ def analyze_bivariate_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.
     plt.savefig(bv_plot_path)
     plt.close(fig)
     print(f"  - Saved Bivariate LISA cluster map to: {bv_plot_path.name}")
+
+def analyze_getis_ord_gi(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, output_dir: Path):
+    """
+    Calculates and plots the Getis-Ord Gi* local statistic to identify hot and cold spots.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
+        variable_name (str): The name of the column to analyze.
+        output_dir (Path): The directory to save the output plot.
+    """
+    plot_path = output_dir / f"getis_ord_gi_star_map_{variable_name}_fdr.png"
+    if plot_path.exists() and plot_path.stat().st_size > 0:
+        print(f"  - Plot '{plot_path.name}' already exists. Skipping Getis-Ord Gi* map.")
+        return
+
+    print(f"\n--- Running Getis-Ord Gi* for: {variable_name} ---")
+
+    y = gdf[variable_name].copy()
+    if y.isnull().any():
+        y.fillna(y.mean(), inplace=True)
+    if y.std() == 0:
+        print("  - Skipping Gi*: This variable has zero variance.")
+        return
+
+    # Temporarily set weights to binary for Gi* calculation, which is best practice
+    original_transform = weights.transform
+    weights.transform = 'b'
+
+    # Calculate Gi* statistic. star=True is essential.
+    # The transform='R' here is for the internal calculation of the expected value, not the weights themselves.
+    gi_star = G_Local(y, weights, transform='R', star=True, seed=42)
+
+    # Apply FDR correction to the p-values
+    reject, p_corrected, _, _ = multipletests(gi_star.p_sim, alpha=0.05, method='fdr_bh')
+
+    # Create labels based on corrected significance
+    labels = pd.Series('Not significant', index=gdf.index)
+    labels[ (gi_star.Zs > 0) & (p_corrected < 0.05) ] = 'Hot spot'
+    labels[ (gi_star.Zs < 0) & (p_corrected < 0.05) ] = 'Cold spot'
+
+    # Restore the original weights transformation for other analyses
+    weights.transform = original_transform
+
+    # Plotting
+    # Define a custom color map for clarity
+    color_map = {
+        'Not significant': 'grey',
+        'Hot spot': 'red',
+        'Cold spot': 'blue'
+    }
+    
+    # Create custom legend patches
+    legend_patches = [
+        plt.Rectangle((0, 0), 1, 1, color=color, label=label)
+        for label, color in color_map.items()
+    ]
+    
+    fig, ax = plt.subplots(figsize=(12, 10))
+    gdf.assign(cl=labels).plot(
+        column='cl',
+        categorical=True,
+        color=[color_map.get(l, 'lightgrey') for l in labels], # Use lightgrey for better visibility
+        legend=False, # We will create a manual legend
+        ax=ax,
+    )
+    
+    # Add the manual legend to the plot
+    ax.legend(handles=legend_patches, title='Gi* Cluster Type', loc='upper right')
+    ax.set_title(f"Getis-Ord Gi* Hot/Cold Spot Map for {variable_name}\n(FDR Corrected, p<0.05)")
+    ax.set_yticklabels([])
+    ax.set_xticklabels([])
+    plt.tight_layout()
+    plt.savefig(plot_path)
+    plt.close(fig)
+    print(f"  - Saved Getis-Ord Gi* map to: {plot_path.name}")
+
 
 def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
     """
@@ -519,6 +605,41 @@ def analyze_global_categorical_association(
     print(f"\n{'='*20} Finished Univariate Spatial Analysis {'='*20}")
     return top_10_vars
 
+def analyze_global_gearys_c(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variables_to_analyze: list, table_output_dir: Path):
+    """
+    Calculates Global Geary's C for a list of specified variables to confirm spatial patterns.
+
+    Args:
+        gdf (gpd.GeoDataFrame): The GeoDataFrame containing the data.
+        weights (libpysal.weights.W): The pre-computed spatial weights matrix.
+        variables_to_analyze (list): A list of variable names to analyze.
+        table_output_dir (Path): The directory to save the output table.
+    """
+    table_path = table_output_dir / "univariate_global_gearys_c_results.csv"
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"\n--- Global Geary's C table '{table_path.name}' already exists. Skipping. ---")
+        return
+
+    print(f"\n{'='*20} Analyzing Global Geary's C for Top Variables {'='*20}")
+    geary_results = []
+    for var in tqdm(variables_to_analyze, desc="  - Global Geary's C"):
+        y = gdf[var].copy()
+        if y.isnull().any():
+            y.fillna(y.mean(), inplace=True)
+        if y.std() > 0:
+            geary = Geary(y, weights)
+            geary_results.append({'variable': var, 'gearys_C': geary.C, 'p_value': geary.p_sim})
+            print(f"    - Variable: {var}, Geary's C: {geary.C:.4f}, p-value: {geary.p_sim:.4f}")
+        else:
+            print(f"    - Skipping '{var}': Zero variance.")
+
+    if geary_results:
+        geary_df = pd.DataFrame(geary_results).sort_values(by='gearys_C', ascending=True) # Lower C indicates stronger positive autocorrelation
+        geary_df.to_csv(table_path, index=False)
+        print(f"\n  - Saved Global Geary's C results to: {table_path.name}")
+
+    print(f"\n{'='*20} Finished Global Geary's C Analysis {'='*20}")
+
 
 def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, categorical_vars: list, output_dir: Path, n_clusters: int = 5):
     """
@@ -628,7 +749,8 @@ def main():
         'nearest_hydro_river_stage_std_m', 'nearest_hydro_quota', 'idw_temp_max_peak', 'idw_temp_min_nadir',
         'idw_temp_thermal_range', 'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly',
         'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_max',
-        'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max'
+        'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max','rooting_depth_class', 
+        'surface_stoniness_class','landslide_surface_class',
     ]
 
     categorical_variables = [
@@ -704,27 +826,34 @@ def main():
     if numerical_variables:
         print(f"\n{'#'*30} Starting Univariate Numerical Analysis {'#'*30}")
         
+        table_path = TABLE_SPATIAL_AUTOCORRELATION_PATH / "univariate_global_moran_I_results.csv"
+
         # Step 1: Calculate Global Moran's I for all variables
-        moran_results = []
-        print("\n  - Calculating Global Moran's I for all numerical variables...")
-        for var in tqdm(numerical_variables, desc="  - Univariate Global Moran's I"):
-            y = gdf[var].copy()
-            if y.isnull().any():
-                y.fillna(y.mean(), inplace=True)
-            if y.std() > 0:
-                moran = Moran(y, weights)
-                moran_results.append({'variable': var, 'moran_I': moran.I, 'p_value': moran.p_sim})
-                print(f"    - Variable: {var}, Moran's I: {moran.I:.4f}, p-value: {moran.p_sim:.4f}")
-            else:
-                print(f"    - Skipping '{var}': Zero variance.")
-        
-        if moran_results:
-            moran_df = pd.DataFrame(moran_results).sort_values(by='moran_I', ascending=False)
+        if table_path.exists() and table_path.stat().st_size > 0:
+            print(f"\n--- Univariate Global Moran's I table '{table_path.name}' already exists. Skipping calculation. ---")
+            moran_df = pd.read_csv(table_path)
+        else:
+            moran_results = []
+            print("\n  - Calculating Global Moran's I for all numerical variables...")
+            for var in tqdm(numerical_variables, desc="  - Univariate Global Moran's I"):
+                y = gdf[var].copy()
+                if y.isnull().any():
+                    y.fillna(y.mean(), inplace=True)
+                if y.std() > 0:
+                    moran = Moran(y, weights)
+                    moran_results.append({'variable': var, 'moran_I': moran.I, 'p_value': moran.p_sim})
+                    print(f"    - Variable: {var}, Moran's I: {moran.I:.4f}, p-value: {moran.p_sim:.4f}")
+                else:
+                    print(f"    - Skipping '{var}': Zero variance.")
             
-            # Save results to CSV
-            table_path = TABLE_SPATIAL_AUTOCORRELATION_PATH / "univariate_global_moran_I_results.csv"
-            moran_df.to_csv(table_path, index=False)
-            print(f"\n  - Saved all Univariate Global Moran's I results to: {table_path.name}")
+            if moran_results:
+                moran_df = pd.DataFrame(moran_results).sort_values(by='moran_I', ascending=False)
+                moran_df.to_csv(table_path, index=False)
+                print(f"\n  - Saved all Univariate Global Moran's I results to: {table_path.name}")
+            else:
+                moran_df = pd.DataFrame() # Create empty df if no results
+
+        if not moran_df.empty:
 
             # Create and save bar chart
             plot_path = PLOTS_SPATIAL_AUTOCORRELATION_PATH / "univariate_global_moran_I_barchart.png"
@@ -752,18 +881,24 @@ def main():
             for _, row in lowest_moran_vars.iterrows():
                 print(f"    - {row['variable']} (I={row['moran_I']:.4f})")
 
-            # Step 3: Run detailed analysis on these selected variables, avoiding duplicates
+            # Step 3: Run Global Geary's C on the combined set of top variables as confirmation
+            top_variables_for_confirmation = pd.concat([highest_moran_vars, lowest_moran_vars])['variable'].unique().tolist()
+            analyze_global_gearys_c(gdf, weights, top_variables_for_confirmation, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+
+            # Step 4: Run detailed local analysis (LISA and Gi*) on these selected variables
             processed_vars = set()
-            print(f"\n  - Running detailed analysis for top {top_n} highest Moran's I variables:")
+            print(f"\n  - Running detailed local analysis for top {top_n} highest Moran's I variables:")
             for _, row in highest_moran_vars.iterrows():
                 if row['variable'] not in processed_vars:
                     analyze_variable_detailed(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+                    analyze_getis_ord_gi(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
                     processed_vars.add(row['variable'])
             
-            print(f"\n  - Running detailed analysis for top {top_n} lowest Moran's I variables:")
+            print(f"\n  - Running detailed local analysis for top {top_n} lowest Moran's I variables:")
             for _, row in lowest_moran_vars.iterrows():
                 if row['variable'] not in processed_vars:
                     analyze_variable_detailed(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+                    analyze_getis_ord_gi(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
                     processed_vars.add(row['variable'])
 
         else:
@@ -883,7 +1018,7 @@ def main():
     # Only run if there are any variables to cluster
     if numerical_variables or all_categorical_variables:
         print(f"\n{'#'*30} Starting Multivariate Clustering Analysis {'#'*30}")
-        analyze_multivariate_clusters(gdf, numerical_variables, all_categorical_variables, PLOTS_SPATIAL_AUTOCORRELATION_PATH)
+        analyze_multivariate_clusters(gdf, numerical_variables, all_categorical_variables, PLOTS_SPATIAL_AUTOCORRELATION_PATH, n_clusters=10)
     else:
         print(f"\n{'#'*30} No Variables for Multivariate Clustering {'#'*30}")
 

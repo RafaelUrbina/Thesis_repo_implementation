@@ -34,6 +34,7 @@ import fiona
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import numpy as np
+import altair as alt
 import pandas as pd
 import prince
 from libpysal.weights import Queen
@@ -177,19 +178,30 @@ def analyze_famd(
     famd = famd.fit(famd_data)
 
     # Plot the contribution of each variable to the first two components
-    # The prince.FAMD.plot method returns an Altair chart, not a matplotlib axes.
-    # Titles are set using .properties() and saving requires altair_saver.
-    chart = famd.plot(
+    # The prince.FAMD.plot method returns an Altair chart.
+    # We can customize it for better readability.
+    base_chart = famd.plot(
         famd_data, 
         x_component=0, 
         y_component=1,
         show_row_labels=False,
         show_column_labels=True
-    ).properties(
-        title="FAMD: Row Coordinates (Samples)"
     )
+
+    # Customize the chart for better readability
+    chart = base_chart.properties(
+        width=2000,  # Increase width
+        height=1600, # Increase height
+        title="FAMD: Variable Factor Map & Sample Coordinates"
+    ).configure_axis(
+        labelFontSize=12,
+        titleFontSize=14
+    ).configure_title(
+        fontSize=20
+    )
+
     plot_path = output_dir / "famd_row_coordinates.png"
-    chart.save(plot_path)
+    chart.save(plot_path, scale_factor=3.0) # Increase resolution
     print(f"  - Saved FAMD row coordinates plot to: {plot_path.name}")
 
     # Get and save variable contributions
