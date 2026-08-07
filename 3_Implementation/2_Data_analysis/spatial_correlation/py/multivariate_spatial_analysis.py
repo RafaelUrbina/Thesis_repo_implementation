@@ -151,6 +151,7 @@ def analyze_famd(
     numerical_vars: list,
     categorical_vars: list,
     output_dir: Path,
+    table_output_dir: Path,
 ):
     """
     Performs Factor Analysis of Mixed Data (FAMD) to find latent components
@@ -174,14 +175,43 @@ def analyze_famd(
         print("Skipping FAMD: No data left after imputation.")
         return
 
+    # Create short names for variables and a mapping dictionary for the plot
+    print("  - Creating short names for FAMD plot variables...")
+    
+    # Generate unique 2-character codes for all variables.
+    # This creates a sequence like A0, A1, ..., A9, B0, ...
+    all_famd_vars = [var for var in numerical_vars + categorical_vars if var in famd_data.columns]
+    
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    short_codes = [c1 + c2 for c1 in chars for c2 in chars]
+
+    if len(all_famd_vars) > len(short_codes):
+        raise ValueError("Too many variables to generate unique 2-character codes.")
+
+    short_name_map = {
+        orig_name: short_codes[i] for i, orig_name in enumerate(all_famd_vars)
+    }
+
+    # Create and save the reverse mapping for user reference
+    print("  - Saving variable name mapping...")
+    original_name_map = {v: k for k, v in short_name_map.items()}
+    mapping_df = pd.DataFrame(list(original_name_map.items()), columns=['Short_Name', 'Original_Name'])
+    mapping_path = output_dir / "famd_variable_name_mapping.csv"
+    mapping_df.to_csv(mapping_path, index=False)
+    print(f"  - Saved variable name mapping to: {mapping_path.name}")
+
+    # Create a new DataFrame with renamed columns for FAMD analysis
+    famd_data_renamed = famd_data.rename(columns=short_name_map)
+
     famd = prince.FAMD(n_components=5, n_iter=3, random_state=42)
-    famd = famd.fit(famd_data)
+    # Fit on the data with short names
+    famd = famd.fit(famd_data_renamed)
 
     # Plot the contribution of each variable to the first two components
     # The prince.FAMD.plot method returns an Altair chart.
     # We can customize it for better readability.
     base_chart = famd.plot(
-        famd_data, 
+        famd_data_renamed, # Plot using the renamed data
         x_component=0, 
         y_component=1,
         show_row_labels=False,
@@ -201,14 +231,20 @@ def analyze_famd(
     )
 
     plot_path = output_dir / "famd_row_coordinates.png"
-    chart.save(plot_path, scale_factor=3.0) # Increase resolution
+    chart.save(str(plot_path), scale_factor=3.0) # Increase resolution
     print(f"  - Saved FAMD row coordinates plot to: {plot_path.name}")
 
     # Get and save variable contributions
-    contributions = famd.column_contributions_
-    contributions_path = TABLE_SPATIAL_AUTOCORRELATION_PATH / "famd_variable_contributions.csv"
-    contributions.to_csv(contributions_path)
-    print(f"  - Saved variable contributions to: {contributions_path.name}")
+    # Select only component 0 and 1
+    contributions = famd.column_contributions_[[0, 1]]
+    
+    # Rename the index from short codes back to original variable names for readability
+    contributions_renamed = contributions.rename(index=original_name_map)
+    
+
+    contributions_path = table_output_dir / "famd_variable_contributions.csv"
+    contributions_renamed.to_csv(contributions_path, float_format="%.4e")
+    print(f"  - Saved variable contributions with original names to: {contributions_path.name}")
 
 
 def analyze_association_rules(
@@ -520,7 +556,7 @@ def main():
     # --- Run Analyses ---
     # 1. Feature-Space: Find which variables act together
     if num_vars and cat_vars:
-        analyze_famd(gdf, num_vars, cat_vars, output_plots_dir)
+        analyze_famd(gdf, num_vars, cat_vars, output_plots_dir, output_tables_dir)
     else:
         print("\nSkipping FAMD: Requires both numerical and categorical variables.")
 
@@ -531,7 +567,7 @@ def main():
 
     # 2. Spatial-Domain: Find where they act together
     if num_vars:
-        analyze_skater(gdf, num_vars, output_plots_dir)
+        analyze_skater(gdf, num_vars, output_plots_dir, n_clusters=10)
         analyze_gwpca(gdf, num_vars, output_plots_dir, output_tables_dir)
     else:
         print("\nSkipping SKATER and GWPCA: Requires numerical variables.")

@@ -873,11 +873,11 @@ def main():
             highest_moran_vars = moran_df.head(top_n)
             lowest_moran_vars = moran_df.tail(top_n)
 
-            print(f"\n  - Top {top_n} variables with highest positive autocorrelation:")
+            print(f"\n  - Top {top_n} variables with highest autocorrelation:")
             for _, row in highest_moran_vars.iterrows():
                 print(f"    - {row['variable']} (I={row['moran_I']:.4f})")
             
-            print(f"\n  - Top {top_n} variables with most negative autocorrelation:")
+            print(f"\n  - Top {top_n} variables with lowest autocorrelation:")
             for _, row in lowest_moran_vars.iterrows():
                 print(f"    - {row['variable']} (I={row['moran_I']:.4f})")
 
@@ -960,11 +960,11 @@ def main():
                 highest_moran_pairs = bivariate_df.head(top_n)
                 lowest_moran_pairs = bivariate_df.tail(top_n)
 
-                print(f"\n  - Top {top_n} pairs with highest positive spatial correlation:")
+                print(f"\n  - Top {top_n} pairs with highest spatial correlation:")
                 for _, row in highest_moran_pairs.iterrows():
                     print(f"    - {row['variable_1']} & {row['variable_2']} (I_bv={row['bivariate_moran_I']:.4f})")
                 
-                print(f"\n  - Top {top_n} pairs with most negative spatial correlation:")
+                print(f"\n  - Top {top_n} pairs with lowest spatial correlation:")
                 for _, row in lowest_moran_pairs.iterrows():
                     print(f"    - {row['variable_1']} & {row['variable_2']} (I_bv={row['bivariate_moran_I']:.4f})")
 
