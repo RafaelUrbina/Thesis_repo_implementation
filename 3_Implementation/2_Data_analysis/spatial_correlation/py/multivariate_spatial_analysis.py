@@ -258,6 +258,9 @@ def analyze_association_rules(
     # Discretize high-cardinality categorical variables for meaningful rules
     transactions_df = gdf[categorical_vars].copy()
 
+    # --- Identify missing values before imputation ---
+    missing_mask = transactions_df.isnull()
+
     # Impute missing values for Apriori
     print("  - Imputing missing values for Apriori...")
     for col in transactions_df.columns:
@@ -279,9 +282,21 @@ def analyze_association_rules(
                 print(f"  - Warning: High-cardinality column '{col}' kept as is.")
 
     # Create transactions for Apriori
+    # Create transactions for Apriori, but filter out imputed values
+    print("  - Creating transactions and filtering out imputed values...")
     transactions = transactions_df.apply(
-        lambda row: [f"{col}={val}" for col, val in row.items()], axis=1
+        lambda row: [
+            f"{col}={val}"
+            for col, val in row.items()
+            # Exclude the item if its original value was NaN/missing
+            if not missing_mask.loc[row.name, col]
+        ],
+        axis=1
     ).tolist()
+
+    # Remove any empty lists that might have resulted from the filtering
+    transactions = [t for t in transactions if t]
+    print(f"  - Created {len(transactions)} valid transactions.")
 
     te = TransactionEncoder()
     te_ary = te.fit(transactions).transform(transactions)
@@ -301,6 +316,50 @@ def analyze_association_rules(
         print("  - No association rules found with lift > 1.2.")
         return
 
+    # --- Filter out uninformative rules ---
+    # Define a function to count the number of uninformative items in an itemset
+    def count_uninformative_items(itemset):
+        count = 0
+        for item in itemset:
+            # Check if the item string ends with '=0', '=None', or '="not defined"'
+            if item.endswith("=0") or item.endswith("=None") or item.endswith("='not defined'"):
+                count += 1
+        return count
+
+    # Apply the new filter: allow a max of 1 uninformative item on one side only
+    initial_rule_count = len(rules)
+    rules_to_keep = []
+    for index, row in rules.iterrows():
+        ante_uninformative_count = count_uninformative_items(row['antecedents'])
+        cons_uninformative_count = count_uninformative_items(row['consequents'])
+        
+        # Keep if one side has at most 1 uninformative item and the other has 0.
+        if (ante_uninformative_count <= 1 and cons_uninformative_count == 0) or \
+           (ante_uninformative_count == 0 and cons_uninformative_count <= 1):
+            rules_to_keep.append(True)
+        else:
+            rules_to_keep.append(False)
+
+    rules = rules[rules_to_keep]
+    
+    print(f"  - Filtered out {initial_rule_count - len(rules)} uninformative rules.")
+    if rules.empty:
+        print("  - No informative association rules remain after filtering.")
+        return
+
+    # --- Filter out rules with single-item antecedents or consequents ---
+    initial_rule_count = len(rules)
+    rules_to_keep = rules.apply(
+        lambda row: len(row['antecedents']) > 1 and len(row['consequents']) > 1,
+        axis=1
+    )
+    rules = rules[rules_to_keep]
+    
+    print(f"  - Filtered out {initial_rule_count - len(rules)} rules with single-item antecedents/consequents.")
+    if rules.empty:
+        print("  - No rules with multi-item antecedents and consequents remain.")
+        return
+
     rules = rules.sort_values(by="lift", ascending=False)
     print("  - Top 10 Association Rules by Lift:")
     print(rules.head(10))
@@ -308,6 +367,28 @@ def analyze_association_rules(
     rules_path = table_output_dir / "association_rules.csv"
     rules.to_csv(rules_path, index=False)
     print(f"  - Saved all association rules to: {rules_path.name}")
+
+    # --- Apply a second, stricter filter and save to a new file ---
+    # This filter removes any rule that contains ANY uninformative item.
+    def contains_uninformative(itemset):
+        for item in itemset:
+            if item.endswith("=0") or item.endswith("=None") or item.endswith("='not defined'"):
+                return True
+        return False
+
+    print("\n  - Applying stricter filter (no '=0', '=None', etc. values allowed)...")
+    strict_rules_to_keep = rules.apply(
+        lambda row: not contains_uninformative(row['antecedents']) and not contains_uninformative(row['consequents']),
+        axis=1
+    )
+    rules_strict = rules[strict_rules_to_keep]
+    
+    print(f"  - Stricter filter resulted in {len(rules_strict)} rules.")
+
+    if not rules_strict.empty:
+        strict_rules_path = table_output_dir / "association_rules_strict_filter.csv"
+        rules_strict.to_csv(strict_rules_path, index=False)
+        print(f"  - Saved strictly filtered association rules to: {strict_rules_path.name}")
 
 
 def analyze_skater(
