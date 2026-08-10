@@ -1,0 +1,221 @@
+accumulated sediment
+active leaks
+alligatoring
+backing up
+beach marks
+blockage
+blocked
+blooming
+blushing
+breakage
+breakdown potential
+brittle fracture
+buckling
+burst
+bypassing
+catastrophic rupture
+caustic cracking
+caustic embrittlement
+cavitation
+cavitation damage
+cavitation-corrosion
+cavitation-erosion
+chalking
+checking
+chevron pattern
+chipping
+chloride stress corrosion cracking
+cleavage fracture
+coating defect
+coating failure
+cold cracking
+cold lap
+cold shut
+collapse
+construction and material defects
+contact corrosion
+contact with the pipeline
+contaminants
+contamination
+corrosion
+corrosion failure
+corrosion fatigue
+cost-prohibitive
+cracking
+crazing
+creep
+crevice corrosion
+damage resulting
+damage to in-ground pipelines
+dealloying
+declining snow fall
+deformation
+degradation
+degradation mechanism
+delamination
+delayed cracking
+delayed failure
+deposit corrosion
+deposited materials
+deposits
+dezincification
+difficult to access
+dirty water
+disbondment
+discontinuity
+ductile fracture
+electrical interference
+electrolytic corrosion
+embrittlement
+environmental cracking
+environmental damage
+environmental damage pipeline
+environmental stress
+environmentally assisted cracking
+equipment failure
+erosion
+erosion-corrosion
+excavation damage
+exfoliation corrosion
+external corrosion
+external damage
+external interference
+fail under extreme cold conditions
+failure mechanism
+fatigue
+fatigue failure
+filiform corrosion
+first/second party
+fisheye
+flooding
+flooding pipeline damage
+fouling
+fracture
+freezing
+freezing environmental conditions
+fretting corrosion
+frost heave
+functional failure
+galvanic corrosion
+general corrosion
+girth weld defect
+grain dropping
+graphitic corrosion
+graphitization
+ground movement
+high-temperature hydrogen attack
+holiday
+hot corrosion
+hydrogen embrittlement
+hydrogen stress cracking
+hydrogen-induced cracking
+impeded flow
+impeding flow
+impingement corrosion
+inaccessible
+inclusion
+ineffective
+integrity threat
+intentional hit
+intercrystalline corrosion
+interdendritic corrosion
+intergranular corrosion
+intergranular stress corrosion cracking
+internal corrosion
+internal oxidation
+iron rot
+lamellar corrosion
+landscape changes
+leak
+leak detection
+leakage
+leakage risk
+leakage risk index
+leaking pipelines
+leaks
+lifting
+liquid metal cracking
+localized corrosion
+loss of containment
+macro cell corrosion
+manufacturing defect
+material failure
+metal dusting
+metal loss
+microbiologically influenced corrosion
+mill scale
+mud zone damage
+natural force damage
+not readily accessible
+obstacles
+operational error
+orange peel
+overwhelmed
+oxidation
+parting
+peeling
+persistent problem
+physical failure modes
+pinhole
+pipe failure
+pipeline damage
+pipeline disaster
+pipeline explosion
+pipeline failure
+pipeline rupture
+pipeline sabotage
+pit
+pitting
+plastic deformation
+poultice corrosion
+practical and technical challenges
+pressure failure
+puncture
+reported leaks
+residual stress
+rouge
+run
+runoff
+rupture
+rust
+rust bloom
+sag
+scaling
+sediment-laden water
+selective dissolution
+selective leaching
+sensitization
+sewage and stormwater discharge
+shielding
+significant losses
+soil movement pipeline
+spalling
+stray-current corrosion
+stress corrosion cracking
+structural damage
+sub-surface leaks
+subsidence
+subsurface corrosion
+such damage
+sulfidation
+sulfide stress cracking
+suspended solids
+tarnish
+texture change
+thermogalvanic corrosion
+third-party activity
+third-party damage
+third-party interference
+train disaster
+tubercle
+tuberculation
+undesirable wear and tear
+untreated water
+vegetation intrusion
+void
+water loss
+water network failure
+wear
+weld decay
+white rust
+wrinkling

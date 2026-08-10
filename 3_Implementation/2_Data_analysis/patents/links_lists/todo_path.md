@@ -57,57 +57,6 @@ Terms:
 * pressure failure
 * loss of containment
 
-## 2. Engineering failure databases (high value)
-
-## B. FMEA databases
-
-Search:
-
-**Failure Mode and Effects Analysis (FMEA) examples**
-
-This is probably one of the closest sources to your project.
-
-Common failure terms:
-
-| Failure Mode         | Terms                                  |
-| -------------------- | -------------------------------------- |
-| Leakage              | leak, seepage, loss of fluid           |
-| Structural damage    | crack, fracture, deformation           |
-| Blockage             | obstruction, clogging, restricted flow |
-| Corrosion            | oxidation, deterioration               |
-| Environmental damage | erosion, flooding, contamination       |
-| Functional failure   | malfunction, loss of operation         |
-
-Useful repositories:
-
-* ReliabilityWeb FMEA examples
-* Quality-One FMEA library
-* APIS IQ FMEA examples
-
----
-
-## 3. Pipeline integrity sources
-
-These are probably the most valuable for your patent analysis.
-
-## A. Pipeline and Hazardous Materials Safety Administration (PHMSA)
-
-Search:
-
-**PHMSA pipeline failure causes**
-
-Terms:
-
-* corrosion
-* excavation damage
-* material failure
-* operational error
-* natural force damage
-* equipment failure
-* third-party damage
-* pipeline rupture
-* leak detection
-
 ---
 
 ## B. NACE / AMPP corrosion terminology
@@ -143,28 +92,6 @@ Useful terms:
 * degradation mechanism
 * external interference
 * environmental stress
-
-## A. Google Patents
-
-Search combinations:
-
-```
-pipeline failure
-water network failure
-environmental damage pipeline
-soil movement pipeline
-leak detection
-flooding pipeline damage
-```
-
-Then extract:
-
-* Abstract
-* Background
-* Summary
-* Claims
-
-Your current method is actually close to building a patent ontology.
 
 ---
 
@@ -216,61 +143,16 @@ Common NLP causal terms:
 * dependent on
 * influenced by
 
----
+## B. UniCausal and other Causality detection models on text mining
 
-## B. Penn Discourse Treebank (PDTB)
-
-Very relevant.
-
-It contains discourse relations:
-
-Cause:
-
-* because
-* therefore
-* as a result
-* consequently
-* due to
-
-Condition:
-
-* if
-* when
-* unless
-
-Contrast:
-
-* however
-
-This is probably the closest academic resource for your causal list.
-
----
-
-## A. NASA Fault Tree / Failure Mode databases
-
-Search:
-
-**NASA Fault Management Handbook**
-
-Useful for causal terms:
-
-* caused by
-* induced by
-* triggered by
-* due to
-* resulting from
-* propagated by
-* leads to
-* contributes to
-* failure mechanism
-
-NASA documents are excellent because they describe:
-
-> "failure mode → cause → consequence"
+* Hugging face 
+* GitHub
 
 ---
 
 # [For variable lists]
+
+## 1. Wikipedia categories
 
 ## A. Wikipedia categories (good for broad failure vocabulary)
 
@@ -301,7 +183,7 @@ Terms:
 * flooding
 * debris flow
 
-## 1. Environmental variable vocabulary sources
+## 2. Environmental variable vocabulary sources
 
 Your variable list is actually an **environmental exposure ontology**.
 
@@ -309,70 +191,13 @@ Useful sources:
 
 ---
 
-## A. INSPIRE EU Environmental Vocabulary
-
-Very relevant for Tuscany/EU.
-
-Search:
-
-**INSPIRE environmental terminology**
-
-Categories:
-
-* hydrology
-* soil
-* land use
-* geology
-* climate
-
-Terms:
-
-* precipitation
-* soil moisture
-* groundwater
-* aquifer
-* terrain deformation
-* erosion
-* landslide susceptibility
-
----
-
-## B. Copernicus Climate Data
-
-Useful variables:
-
-* temperature anomaly
-* precipitation deficit
-* soil moisture
-* drought index
-* snow cover
-* land surface temperature
-
----
-
-## C. European Soil Data Centre (ESDAC)
-
-Very relevant for your soil layers.
-
-Vocabulary:
-
-* soil erosion
-* soil sealing
-* hydraulic conductivity
-* rooting depth
-* available water capacity
-* soil salinity
-* drainage capacity
-
----
-
-## 2. Ontologies (probably the best long-term solution)
+## A. Ontologies (probably the best long-term solution)
 
 If you want a formal vocabulary:
 
-## Environmental Ontology (ENVO)
+## Environmental Ontology (ENVO) (OBO) (ExO)
 
-Contains:
+Contains: Github repo environmental-exposure-ontology
 
 * environmental conditions
 * ecosystems
@@ -380,55 +205,3 @@ Contains:
 * geological processes
 
 ---
-
-## SWEET Ontology (NASA)
-
-Very good for your variables.
-
-Includes:
-
-* weather
-* climate
-* hydrology
-* geology
-* hazards
-
----
-
-## SSN/SOSA Ontology
-
-For sensors:
-
-Your:
-
-* pluviometers
-* thermometers
-* hydrometers
-* wind stations
-
-fit directly.
-
-Terms:
-
-* observation
-* sensor
-* measurement
-* observation property
-* feature of interest
-
----
-
-# Best sources ranked for your specific dataset
-
-| Rank | Source                  | Use                           |
-| ---- | ----------------------- | ----------------------------- |
-| 1    | Google Patents          | Expand failure + causal terms |
-| 2    | FMEA databases          | Failure modes                 |
-| 3    | PHMSA pipeline failures | Pipeline terminology          |
-| 4    | INSPIRE EU              | Environmental variables       |
-| 5    | ESDAC                   | Soil variables                |
-| 6    | PDTB                    | Causal expressions            |
-| 7    | NASA SWEET ontology     | Environmental relationships   |
-| 8    | Wikipedia categories    | Broad expansion               |
-
-For your project, I would especially focus on **Google Patents + FMEA + INSPIRE + ESDAC**, because they align almost perfectly with your pipeline-risk-from-environmental-conditions objective.

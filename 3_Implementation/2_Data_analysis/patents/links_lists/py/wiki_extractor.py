@@ -41,10 +41,11 @@ def get_category_members(category_name, max_depth=1, current_depth=0, visited=No
 
 # Categories to extract from
 categories_to_extract = [
-    "Mechanical failure modes",
-    "Pipeline transport",
-        #"Natural hazards",
-        #"Geological hazards"
+    #"Mechanical failure modes",
+    #"Pipeline transport",
+        #"Natural disasters",
+        "Weather hazards",
+        "Geological hazards"
 ]
 
 all_terms = set()
@@ -57,7 +58,7 @@ for cat in categories_to_extract:
 from Utils.paths import PATENTS_OUTPUT_TERMS_PATH
 # Define the output directory and ensure it exists
 PATENTS_OUTPUT_TERMS_PATH.mkdir(parents=True, exist_ok=True)
-output_file = PATENTS_OUTPUT_TERMS_PATH / "extracted_wiki_failure_terms.txt"
+output_file = PATENTS_OUTPUT_TERMS_PATH / "[variable_terms]_wiki_variable_terms.txt"
 
 # Save results to a clean text file
 with open(output_file, "w", encoding="utf-8") as f:
