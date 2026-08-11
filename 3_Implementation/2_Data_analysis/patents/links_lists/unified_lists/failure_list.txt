@@ -18,13 +18,14 @@ caustic cracking
 caustic embrittlement
 cavitation
 cavitation damage
-cavitation-corrosion
-cavitation-erosion
+cavitation corrosion
+cavitation erosion
 chalking
 checking
 chevron pattern
 chipping
-chloride stress corrosion cracking
+chloride stress 
+corrosion cracking
 cleavage fracture
 coating defect
 coating failure
@@ -40,13 +41,13 @@ contamination
 corrosion
 corrosion failure
 corrosion fatigue
-cost-prohibitive
+cost prohibitive
 cracking
 crazing
 creep
 crevice corrosion
 damage resulting
-damage to in-ground pipelines
+damage to in ground pipelines
 dealloying
 declining snow fall
 deformation
@@ -74,7 +75,6 @@ environmental stress
 environmentally assisted cracking
 equipment failure
 erosion
-erosion-corrosion
 excavation damage
 exfoliation corrosion
 external corrosion
@@ -103,8 +103,7 @@ grain dropping
 graphitic corrosion
 graphitization
 ground movement
-high-temperature hydrogen attack
-holiday
+high temperature hydrogen attack
 hot corrosion
 hydrogen embrittlement
 hydrogen stress cracking
@@ -174,14 +173,13 @@ puncture
 reported leaks
 residual stress
 rouge
-run
 runoff
 rupture
 rust
 rust bloom
 sag
 scaling
-sediment-laden water
+sediment laden water
 selective dissolution
 selective leaching
 sensitization
@@ -190,10 +188,10 @@ shielding
 significant losses
 soil movement pipeline
 spalling
-stray-current corrosion
+stray current corrosion
 stress corrosion cracking
 structural damage
-sub-surface leaks
+sub surface leaks
 subsidence
 subsurface corrosion
 such damage
