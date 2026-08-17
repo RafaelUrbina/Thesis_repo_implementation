@@ -1,18 +1,49 @@
 """
 General pipeline for spatial autocorrelation analysis on a static spatial dataset.
 
-This script loads a geospatial dataset and performs both global and local
-spatial autocorrelation tests to identify clustering patterns.
+This script provides a comprehensive workflow for exploring spatial patterns in a
+geospatial dataset. It systematically identifies which variables exhibit spatial
+clustering and where those clusters are located.
 
-Steps:
-1.  Load the final aggregated H3 grid data from the GeoPackage file.
-2.  Define a variable of interest for the analysis.
-3.  Create a spatial weights matrix to define neighborhood relationships.
-4.  Calculate Global Moran's I to test for overall spatial clustering.
-5.  Calculate Local Moran's I (LISA) to identify the location of specific
-    hotspots, coldspots, and spatial outliers.
-6.  Generate plots to visualize the results, including a Moran scatterplot and a
-    LISA cluster map.
+The analysis is divided into several key parts:
+
+1.  **Data Loading and Preparation**:
+    - Loads the master grid GeoDataFrame.
+    - Defines and separates variables into numerical and categorical types.
+    - Enforces correct data types to prevent errors during analysis.
+    - Creates a single Queen contiguity spatial weights matrix, which defines
+      "neighborhoods" for all subsequent spatial calculations.
+
+2.  **Univariate Numerical Analysis**:
+    - Calculates Global Moran's I for all numerical variables to measure the
+      overall degree of spatial clustering (positive, negative, or random).
+    - Ranks variables by their Moran's I value to identify the most and least
+      spatially autocorrelated variables.
+    - For these top variables, it performs detailed local analyses:
+        - **LISA (Local Moran's I)**: Identifies hotspots, coldspots, and spatial
+          outliers (e.g., a high value surrounded by low values).
+        - **Getis-Ord Gi***: Specifically identifies statistically significant
+          hotspots (clusters of high values) and coldspots (clusters of low values).
+
+3.  **Bivariate Numerical Analysis**:
+    - For a predefined subset of interesting numerical variables, it calculates
+      the Bivariate Local Moran's I. This reveals how a variable at a location
+      relates to a *different* variable in neighboring locations (e.g., where
+      high landslide counts are spatially correlated with low population).
+
+4.  **Categorical Analysis**:
+    - **Join-Count Statistics**: For top categorical variables, this univariate
+      test determines if areas of the same category are more clustered together
+      than would be expected by chance.
+    - **Spatial Cramér's V**: A bivariate measure that assesses the spatial
+      association between pairs of categorical variables (e.g., do certain
+      land use types tend to be neighbors with specific soil types?).
+
+5.  **Multivariate Clustering**:
+    - Performs a non-spatial K-Means clustering using both numerical and
+      categorical variables to identify locations with similar overall profiles.
+    - The results are mapped to show the spatial distribution of these
+      multivariate profile clusters.
 """
 
 """ Available columns:
@@ -95,11 +126,11 @@ from libpysal.weights import lag_spatial # Added for spatial contingency analysi
 from esda.moran import Moran, Moran_Local, Moran_Local_BV, Moran_BV
 from esda.geary import Geary
 from esda.getisord import G_Local
-from splot.esda import moran_scatterplot, lisa_cluster
 from itertools import combinations
 from tqdm.auto import tqdm # Import tqdm for progress bars
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
+from splot.esda import moran_scatterplot, lisa_cluster
 from scipy.stats import contingency
 from statsmodels.stats.multitest import multipletests # Added for FDR/Bonferroni correction
 
@@ -163,6 +194,44 @@ def create_weights(gdf: gpd.GeoDataFrame) -> libpysal.weights.W:
     print("Weights matrix created.")
     return weights
 
+def _prepare_variable(gdf: gpd.GeoDataFrame, variable_name: str) -> pd.Series | None:
+    """Prepares a single variable for analysis by handling NaNs and checking variance."""
+    y = gdf[variable_name].copy()
+    if y.isnull().any():
+        mean_val = y.mean()
+        y.fillna(mean_val, inplace=True)
+        print(f"  - Warning: Missing values in '{variable_name}'. Filled with mean ({mean_val:.2f}).")
+    
+    if y.std() == 0:
+        print(f"  - Skipping '{variable_name}': Variable has zero variance.")
+        return None
+    return y
+
+def _check_and_skip(plot_path: Path, analysis_name: str) -> bool:
+    """Checks if a plot already exists and prints a skip message."""
+    if plot_path.exists() and plot_path.stat().st_size > 0:
+        print(f"  - Plot '{plot_path.name}' already exists. Skipping {analysis_name}.")
+        return True
+    return False
+
+def _sanitize_filename(name: str) -> str:
+    """Removes characters that are invalid for file paths."""
+    invalid_chars = '<>:"/\\|?*'
+    for char in invalid_chars:
+        name = name.replace(char, '_')
+    return name
+
+def _apply_fdr_correction(local_stat_model):
+    """Applies FDR correction and returns the results."""
+    reject, p_corrected, _, _ = multipletests(
+        local_stat_model.p_sim, 
+        alpha=0.05, 
+        method='fdr_bh'
+    )
+    # Overwrite the model's p-values with the corrected ones
+    local_stat_model.p_sim = p_corrected
+    return reject, p_corrected # Return both reject and corrected p-values
+
 def analyze_variable_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, output_dir: Path):
     """
     Runs a detailed spatial autocorrelation analysis (Global Moran Plot and LISA) for a single variable.
@@ -175,75 +244,37 @@ def analyze_variable_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W
     """
     print(f"\n--- Running Detailed Univariate Analysis for: {variable_name} ---")
 
-    # Create a working copy for this variable to avoid side effects
-    y = gdf[variable_name].copy()
+    y = _prepare_variable(gdf, variable_name)
+    if y is None:
+        return
 
-    # Define plot path for Moran Scatterplot
-    moran_plot_path = output_dir / f"moran_plot_{variable_name}.png"
-
-    if moran_plot_path.exists() and moran_plot_path.stat().st_size > 0:
-            print(f"  - Plot '{moran_plot_path.name}' already exists. Skipping Moran scatterplot.")
-    else:
-        # For this analysis, we'll fill missing values with the mean.
-        # You might consider other strategies like median or interpolation depending on your data.
-        if y.isnull().any():
-            mean_val = y.mean()
-            y.fillna(mean_val, inplace=True)
-            print(f"Warning: Missing values found. Filled with mean value ({mean_val:.2f}).")
-    
-        # Check for zero variance, which makes autocorrelation analysis impossible
-        if y.std() == 0:
-            print("Skipping: This variable has zero variance (all values are the same).")
-            # We still need 'y' for the LISA part, so we don't return here if only the scatterplot exists
-    
+    sanitized_name = _sanitize_filename(variable_name)
+    # --- 1. Global Moran's I Scatterplot ---
+    moran_plot_path = output_dir / f"moran_plot_{sanitized_name}.png"
+    if not _check_and_skip(moran_plot_path, "Moran scatterplot"):
         moran = Moran(y, weights)
-    
-        # Define plot path for Moran Scatterplot
-        moran_plot_path = output_dir / f"moran_plot_{variable_name}.png"
-    
-        
-        # Plot the Moran Scatterplot
         fig, ax = moran_scatterplot(moran, aspect_equal=True)
         title = f"Global Moran's I for {variable_name}\nI={moran.I:.4f}, p-value=({moran.p_sim:.4f})"
         plt.suptitle(title, fontsize=14)
         plt.tight_layout()
-        
-        # Save the figure
         plt.savefig(moran_plot_path)
-        plt.close(fig) # Close the figure to free up memory
+        plt.close(fig)
         print(f"  - Saved Moran scatterplot to: {moran_plot_path.name}")
 
-    # Define plot path for LISA Cluster Map
-    lisa_plot_path = output_dir / f"lisa_cluster_map_{variable_name}.png"
-    if lisa_plot_path.exists() and lisa_plot_path.stat().st_size > 0:
-                print(f"  - Plot '{lisa_plot_path.name}' already exists. Skipping LISA cluster map.")
-    else:
-        # Re-calculate y if it wasn't calculated for the Moran plot
-        if 'y' not in locals():
-            y = gdf[variable_name].copy()
-            if y.isnull().any():
-                y.fillna(y.mean(), inplace=True)
-        
-        if y.std() == 0:
-            print("Skipping LISA: This variable has zero variance.")
-            return
+    # --- 2. Local Moran's I (LISA) Cluster Map ---
+    lisa_plot_path = output_dir / f"lisa_cluster_map_{sanitized_name}.png"
+    if not _check_and_skip(lisa_plot_path, "LISA cluster map"):
+        lisa = Moran_Local(y, weights, seed=42)
+        _apply_fdr_correction(lisa) # This function modifies 'lisa' in-place
 
-        lisa = Moran_Local(y, weights, seed=42) # Added seed for reproducibility
-
-        # Apply False Discovery Rate (FDR) correction using Benjamini/Hochberg method
-        reject, p_corrected, _, _ = multipletests(lisa.p_sim, alpha=0.05, method='fdr_bh')
-        lisa.p_sim = p_corrected # Update the p_sim attribute with corrected p-values
-
-        # Plot the LISA Cluster Map
         fig, ax = plt.subplots(figsize=(12, 10))
-        lisa_cluster(lisa, gdf, ax=ax, legend=True) # pvalue argument removed
+        lisa_cluster(lisa, gdf, ax=ax, legend=True)
         ax.set_title(f"Local Moran's I (LISA) for {variable_name} (FDR Corrected, p<0.05)")
         ax.set_yticklabels([])
-        ax.set_xticklabels([]) 
+        ax.set_xticklabels([])
         plt.tight_layout()
-        # Save the figure
         plt.savefig(lisa_plot_path)
-        plt.close(fig) # Close the figure to free up memory
+        plt.close(fig)
         print(f"  - Saved LISA cluster map to: {lisa_plot_path.name}")
 
 def analyze_bivariate_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, var1: str, var2: str, output_dir: Path):
@@ -257,38 +288,28 @@ def analyze_bivariate_detailed(gdf: gpd.GeoDataFrame, weights: libpysal.weights.
         output_dir (Path): The directory to save the output plots.
     """
     print(f"\n--- Running Detailed Bivariate Analysis for: {var1} vs. {var2} ---")
-    
-    bv_plot_path = output_dir / f"bivariate_lisa_{var1}_vs_{var2}_fdr.png" # Changed filename to indicate FDR
-    if bv_plot_path.exists() and bv_plot_path.stat().st_size > 0:
-        print(f"  - Plot '{bv_plot_path.name}' already exists. Skipping.")
+    s_var1 = _sanitize_filename(var1)
+    s_var2 = _sanitize_filename(var2)
+    bv_plot_path = output_dir / f"bivariate_lisa_{s_var1}_vs_{s_var2}_fdr.png"
+    if _check_and_skip(bv_plot_path, "Bivariate LISA"):
         return
 
-    y1 = gdf[var1].copy()
-    y2 = gdf[var2].copy()
+    y1 = _prepare_variable(gdf, var1)
+    y2 = _prepare_variable(gdf, var2)
 
-    # Impute NaNs if necessary
-    if y1.isnull().any(): y1.fillna(y1.mean(), inplace=True)
-    if y2.isnull().any(): y2.fillna(y2.mean(), inplace=True)
-
-    # Skip if either variable has zero variance
-    if y1.std() == 0 or y2.std() == 0:
-        print("  - Skipping pair: At least one variable has zero variance.")
+    if y1 is None or y2 is None:
+        print("  - Skipping pair: At least one variable had zero variance.")
         return
 
-    bivariate_lisa = Moran_Local_BV(y1, y2, weights, seed=42) # Added seed for reproducibility
-
-    # Apply False Discovery Rate (FDR) correction using Benjamini/Hochberg method
-    reject, p_corrected, _, _ = multipletests(bivariate_lisa.p_sim, alpha=0.05, method='fdr_bh')
-    bivariate_lisa.p_sim = p_corrected # Update the p_sim attribute with corrected p-values
+    bivariate_lisa = Moran_Local_BV(y1, y2, weights, seed=42)
+    _apply_fdr_correction(bivariate_lisa)
 
     fig, ax = plt.subplots(figsize=(12, 10))
-    lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True) # pvalue argument removed
+    lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True)
     ax.set_title(f"Bivariate LISA: {var1} vs. {var2} (FDR Corrected, p<0.05)")
     ax.set_yticklabels([])
     ax.set_xticklabels([])
     plt.tight_layout()
-
-    # Save the figure
     plt.savefig(bv_plot_path)
     plt.close(fig)
     print(f"  - Saved Bivariate LISA cluster map to: {bv_plot_path.name}")
@@ -303,21 +324,17 @@ def analyze_getis_ord_gi(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, var
         variable_name (str): The name of the column to analyze.
         output_dir (Path): The directory to save the output plot.
     """
-    plot_path = output_dir / f"getis_ord_gi_star_map_{variable_name}_fdr.png"
-    if plot_path.exists() and plot_path.stat().st_size > 0:
-        print(f"  - Plot '{plot_path.name}' already exists. Skipping Getis-Ord Gi* map.")
-        return
-
+    sanitized_name = _sanitize_filename(variable_name)
+    plot_path = output_dir / f"getis_ord_gi_star_map_{sanitized_name}_fdr.png"
     print(f"\n--- Running Getis-Ord Gi* for: {variable_name} ---")
-
-    y = gdf[variable_name].copy()
-    if y.isnull().any():
-        y.fillna(y.mean(), inplace=True)
-    if y.std() == 0:
-        print("  - Skipping Gi*: This variable has zero variance.")
+    if _check_and_skip(plot_path, "Getis-Ord Gi* map"):
         return
 
-    # Temporarily set weights to binary for Gi* calculation, which is best practice
+    y = _prepare_variable(gdf, variable_name)
+    if y is None:
+        return
+
+    # Temporarily set weights to binary for Gi* calculation
     original_transform = weights.transform
     weights.transform = 'b'
 
@@ -326,8 +343,7 @@ def analyze_getis_ord_gi(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, var
     gi_star = G_Local(y, weights, transform='R', star=True, seed=42)
 
     # Apply FDR correction to the p-values
-    reject, p_corrected, _, _ = multipletests(gi_star.p_sim, alpha=0.05, method='fdr_bh')
-
+    reject, p_corrected = _apply_fdr_correction(gi_star)
     # Create labels based on corrected significance
     labels = pd.Series('Not significant', index=gdf.index)
     labels[ (gi_star.Zs > 0) & (p_corrected < 0.05) ] = 'Hot spot'
@@ -336,30 +352,25 @@ def analyze_getis_ord_gi(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, var
     # Restore the original weights transformation for other analyses
     weights.transform = original_transform
 
-    # Plotting
-    # Define a custom color map for clarity
     color_map = {
         'Not significant': 'grey',
         'Hot spot': 'red',
         'Cold spot': 'blue'
     }
-    
-    # Create custom legend patches
     legend_patches = [
         plt.Rectangle((0, 0), 1, 1, color=color, label=label)
         for label, color in color_map.items()
     ]
-    
+
     fig, ax = plt.subplots(figsize=(12, 10))
     gdf.assign(cl=labels).plot(
         column='cl',
         categorical=True,
-        color=[color_map.get(l, 'lightgrey') for l in labels], # Use lightgrey for better visibility
-        legend=False, # We will create a manual legend
+        color=[color_map.get(l, 'lightgrey') for l in labels],
+        legend=False,
         ax=ax,
     )
-    
-    # Add the manual legend to the plot
+
     ax.legend(handles=legend_patches, title='Gi* Cluster Type', loc='upper right')
     ax.set_title(f"Getis-Ord Gi* Hot/Cold Spot Map for {variable_name}\n(FDR Corrected, p<0.05)")
     ax.set_yticklabels([])
@@ -368,7 +379,6 @@ def analyze_getis_ord_gi(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, var
     plt.savefig(plot_path)
     plt.close(fig)
     print(f"  - Saved Getis-Ord Gi* map to: {plot_path.name}")
-
 
 def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, variable_name: str, table_output_dir: Path):
     """
@@ -382,10 +392,9 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         variable_name (str): The name of the categorical column to analyze.
         table_output_dir (Path): The directory to save the output table.
     """
-    table_path = table_output_dir / f"join_counts_{variable_name}.csv"
-    # Check if the output table already exists and is not empty
-    if table_path.exists() and table_path.stat().st_size > 0:
-        print(f"  - Table '{table_path.name}' already exists. Skipping Join-Count analysis for '{variable_name}'.")
+    sanitized_name = _sanitize_filename(variable_name)
+    table_path = table_output_dir / f"join_counts_{sanitized_name}.csv"
+    if _check_and_skip(table_path, f"Join-Count analysis for '{variable_name}'"):
         return
 
     print(f"\n{'='*20} Analyzing Categorical (Join-Counts): {variable_name} {'='*20}")
@@ -400,7 +409,6 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         print(f"Skipping: Categorical variable '{variable_name}' has less than 2 unique categories or all are NaN.")
         weights.transform = original_weights_transform
         return
-
 
     for category in unique_categories:
         print(f"\n--- Join-Count for category: '{category}' in {variable_name} ---")
@@ -435,7 +443,6 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         print(f"  Observed Black-White joins (BW): {jc.bw}")
         print(f"  Expected BW under randomness: {jc.mean_bw:.2f}")
 
-
         if jc.chi2_p < 0.05:
             print(f"  Result: Statistically significant clustering for category '{category}'.")
         else:
@@ -445,6 +452,7 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
         results_df = pd.DataFrame(results)
         results_df.to_csv(table_path, index=False)
         print(f"\n  - Saved Join-Counts results to: {table_path}")
+        
     weights.transform = original_weights_transform # Reset weights transform
 def analyze_bivariate_categorical_association(
     gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, top_vars: list, table_output_dir: Path
@@ -654,11 +662,9 @@ def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, c
         n_clusters (int): The number of clusters to create.
     """
     plot_path = output_dir / f"multivariate_kmeans_cluster_map_k{n_clusters}.png"
-    # Check if the output plot already exists and is not empty
-    if plot_path.exists() and plot_path.stat().st_size > 0:
-        print(f"  - Plot '{plot_path.name}' already exists. Skipping Multivariate Clustering analysis.")
+    if _check_and_skip(plot_path, "Multivariate Clustering analysis"):
         return
-
+        
     print(f"\n{'='*20} Multivariate Clustering Analysis {'='*20}")
 
     # 1. Prepare numerical data: fill NaNs with column mean
@@ -710,7 +716,6 @@ def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, c
     gdf_filtered = gdf.loc[X_combined.index] # Filter gdf to match X_combined's index
     gdf_filtered['multivariate_cluster'] = kmeans.fit_predict(X_scaled)
 
-    
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
     gdf_filtered.plot(column='multivariate_cluster', categorical=True, legend=True, figsize=(12, 10), aspect='equal', ax=ax)
     ax.set_title(f'Multivariate K-Means Clusters (k={n_clusters})')
@@ -720,6 +725,204 @@ def analyze_multivariate_clusters(gdf: gpd.GeoDataFrame, numerical_vars: list, c
     plt.savefig(plot_path)
     plt.close(fig)
     print(f"  - Saved Multivariate K-Means cluster map to: {plot_path}")
+
+def enforce_data_types_and_get_vars(gdf: gpd.GeoDataFrame, num_vars: list, cat_str_vars: list, cat_int_vars: list) -> tuple[list, list]:
+    """Enforces data types and returns filtered lists of existing variables."""
+    print("\n--- Enforcing Data Types ---")
+    for var in num_vars:
+        if var in gdf.columns:
+            initial_nans = gdf[var].isnull().sum()
+            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
+            if gdf[var].isnull().sum() > initial_nans:
+                print(f"  - Warning: Coerced non-numeric values to NaN in '{var}'.")
+    print("Numerical variables enforced.")
+
+    for var in cat_str_vars:
+        if var in gdf.columns:
+            gdf[var] = gdf[var].astype(str)
+    print("String categorical variables enforced.")
+
+    for var in cat_int_vars:
+        if var in gdf.columns:
+            initial_nans = gdf[var].isnull().sum()
+            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
+            if gdf[var].isnull().sum() > initial_nans:
+                print(f"  - Warning: Coerced non-numeric values to NaN in '{var}'.")
+            gdf[var] = gdf[var].astype('Int64')
+    print("Integer categorical variables enforced.")
+    print("--- Data Type Enforcement Complete ---")
+
+    return [v for v in num_vars if v in gdf.columns], [v for v in (cat_str_vars + cat_int_vars) if v in gdf.columns]
+
+def run_univariate_numerical_pipeline(gdf, weights, numerical_vars, output_plots_dir, output_tables_dir):
+    """Orchestrates the entire univariate numerical analysis pipeline."""
+    print(f"\n{'#'*30} Starting Univariate Numerical Analysis {'#'*30}")
+    if not numerical_vars:
+        print("No numerical variables to analyze.")
+        return
+
+    # Step 1: Calculate Global Moran's I for all variables
+    table_path = output_tables_dir / "univariate_global_moran_I_results.csv"
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"\n--- Univariate Global Moran's I table '{table_path.name}' already exists. Skipping calculation. ---")
+        moran_df = pd.read_csv(table_path)
+    else:
+        moran_results = []
+        print("\n  - Calculating Global Moran's I for all numerical variables...")
+        for var in tqdm(numerical_vars, desc="  - Univariate Global Moran's I"):
+            y = _prepare_variable(gdf, var)
+            if y is not None:
+                moran = Moran(y, weights)
+                moran_results.append({'variable': var, 'moran_I': moran.I, 'p_value': moran.p_sim})
+                print(f"    - Variable: {var}, Moran's I: {moran.I:.4f}, p-value: {moran.p_sim:.4f}")
+        
+        moran_df = pd.DataFrame(moran_results).sort_values(by='moran_I', ascending=False) if moran_results else pd.DataFrame()
+        if not moran_df.empty:
+            moran_df.to_csv(table_path, index=False)
+            print(f"\n  - Saved all Univariate Global Moran's I results to: {table_path.name}")
+
+    if moran_df.empty:
+        print("  - No valid Moran's I results to analyze for detailed plotting.")
+        print(f"\n{'#'*30} Finished Univariate Numerical Analysis {'#'*30}")
+        return
+
+    # Step 2: Identify top variables for reporting and detailed analysis
+    top_n = 6
+    highest_moran_vars = moran_df.head(top_n)
+    lowest_moran_vars = moran_df.tail(top_n)
+
+    print(f"\n  - Top {top_n} variables with highest autocorrelation: {[f'{r.variable} (I={r.moran_I:.4f})' for r in highest_moran_vars.itertuples()]}")
+    print(f"  - Top {top_n} variables with lowest autocorrelation: {[f'{r.variable} (I={r.moran_I:.4f})' for r in lowest_moran_vars.itertuples()]}")
+
+    # Step 3: Create and save bar chart for ALL variables
+    plot_path = output_plots_dir / "univariate_global_moran_I_barchart_all_variables.png"
+    if not _check_and_skip(plot_path, "Moran's I summary bar chart for all variables"):
+        moran_df_to_plot = moran_df.sort_values(by='moran_I', ascending=True).copy() # Sort for better visualization
+        
+        # Dynamically adjust figure height based on number of variables
+        fig_height = max(8, len(moran_df_to_plot) * 0.3)
+        plt.figure(figsize=(12, fig_height))
+        
+        plt.barh(moran_df_to_plot['variable'], moran_df_to_plot['moran_I'], color='skyblue')
+        plt.xlabel("Global Moran's I")
+        plt.ylabel("Variable")
+        plt.title("Univariate Global Spatial Autocorrelation (All Variables)")
+        plt.grid(axis='x', linestyle='--', alpha=0.7)
+        plt.yticks(fontsize=8) # Adjust font size for readability if many variables
+        plt.axvline(0, color='black', linewidth=0.8)
+        plt.tight_layout()
+        plt.savefig(plot_path)
+        plt.close()
+        print(f"  - Saved Moran's I summary bar chart for all variables to: {plot_path.name}")
+
+    # Step 4: Run detailed local analyses on the top variables
+    top_variables_for_confirmation = pd.concat([highest_moran_vars, lowest_moran_vars])['variable'].unique().tolist()
+
+    analyze_global_gearys_c(gdf, weights, top_variables_for_confirmation, output_tables_dir)
+
+    processed_vars = set()
+    for var_name in top_variables_for_confirmation:
+        if var_name not in processed_vars:
+            analyze_variable_detailed(gdf, weights, var_name, output_plots_dir)
+            analyze_getis_ord_gi(gdf, weights, var_name, output_plots_dir)
+            processed_vars.add(var_name)
+            
+    print(f"\n{'#'*30} Finished Univariate Numerical Analysis {'#'*30}")
+
+def run_bivariate_numerical_pipeline(gdf, weights, numerical_vars, output_plots_dir, output_tables_dir):
+    """Orchestrates the entire bivariate numerical analysis pipeline."""
+    top_n = 6  # Define how many top/bottom pairs to analyze in detail
+    print(f"\n{'#'*30} Starting Bivariate Numerical Analysis {'#'*30}")
+    
+    bivariate_vars_subset = [
+        'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'landslide_point_count_1ring',
+        'seismic_event_count_1ring', 'avg_seismic_magnitude_1ring',
+        'road_density_m_per_m2', 'dist_to_waterway_m', 'avg_descending_soil_speed',
+        'avg_ascending_soil_speed', 'census_pop','idw_temp_thermal_range',
+        'idw_rain_mm_sum_annual','idw_rain_mm_avg_monthly', 'idw_wind_speed_max_95p',
+        'idw_wind_speed_avg_mean', 'inflow_total', 'dtmidcnt_mean', 'hydraulic_hazard_level'
+    ]
+    bivariate_vars_to_analyze = [v for v in bivariate_vars_subset if v in numerical_vars]
+
+    if len(bivariate_vars_to_analyze) < 2:
+        print("\n  - Skipping Bivariate Analysis: Fewer than 2 numerical variables available from the predefined subset.")
+        return
+
+    print(f"\n  - Selected {len(bivariate_vars_to_analyze)} variables for bivariate analysis.")
+
+    # Step 1: Calculate Global Bivariate Moran's I for all pairs
+    table_path = output_tables_dir / "bivariate_global_moran_I_results.csv"
+    if table_path.exists() and table_path.stat().st_size > 0:
+        print(f"\n--- Bivariate Global Moran's I table '{table_path.name}' already exists. Skipping calculation. ---")
+        bivariate_df = pd.read_csv(table_path)
+    else:
+        bivariate_results = []
+        print("\n  - Calculating Global Bivariate Moran's I for all numerical pairs...")
+        
+        # Standardize all variables first for efficiency
+        gdf_std = gdf[bivariate_vars_to_analyze].copy()
+        for col in gdf_std.columns:
+            prepared_var = _prepare_variable(gdf, col)
+            if prepared_var is not None and prepared_var.std() > 0:
+                gdf_std[col] = (prepared_var - prepared_var.mean()) / prepared_var.std()
+            else:
+                gdf_std[col] = 0
+
+        for var1, var2 in tqdm(list(combinations(bivariate_vars_to_analyze, 2)), desc="  - Bivariate Global Moran's I"):
+            moran_bv = Moran_BV(gdf_std[var1], gdf_std[var2], weights)
+            bivariate_results.append({'variable_1': var1, 'variable_2': var2, 'bivariate_moran_I': moran_bv.I, 'p_value': moran_bv.p_sim})
+            print(f"    - Pair: {var1} & {var2}, Bivariate Moran's I: {moran_bv.I:.4f}, p-value: {moran_bv.p_sim:.4f}")
+
+        bivariate_df = pd.DataFrame(bivariate_results).sort_values(by='bivariate_moran_I', ascending=False) if bivariate_results else pd.DataFrame()
+        if not bivariate_df.empty:
+            bivariate_df.to_csv(table_path, index=False)
+            print(f"\n  - Saved all Bivariate Global Moran's I results to: {table_path.name}")
+
+    if bivariate_df.empty:
+        print("  - No valid Bivariate Moran's I results to analyze.")
+        print(f"\n{'#'*30} Finished Bivariate Numerical Analysis {'#'*30}")
+        return
+
+    # Step 2: Create and save bar chart for ALL bivariate pairs
+    plot_path_all_pairs = output_plots_dir / "bivariate_global_moran_I_barchart_all_pairs.png"
+    if not _check_and_skip(plot_path_all_pairs, "Bivariate Moran's I bar chart for all pairs"):
+        bivariate_df_to_plot = bivariate_df.copy()
+        bivariate_df_to_plot['pair_label'] = bivariate_df_to_plot.apply(lambda row: f"{row['variable_1']} vs. {row['variable_2']}", axis=1)
+        bivariate_df_to_plot = bivariate_df_to_plot.sort_values(by='bivariate_moran_I', ascending=True)
+
+        # Dynamically adjust figure height based on number of pairs
+        fig_height = max(10, len(bivariate_df_to_plot) * 0.05) # 0.05 inches per bar
+        plt.figure(figsize=(14, fig_height))
+        
+        plt.barh(bivariate_df_to_plot['pair_label'], bivariate_df_to_plot['bivariate_moran_I'], color='lightcoral')
+        plt.xlabel("Bivariate Global Moran's I")
+        plt.ylabel("Variable Pair")
+        plt.title("Bivariate Global Spatial Autocorrelation (All Pairs)")
+        plt.grid(axis='x', linestyle='--', alpha=0.7)
+        plt.yticks(fontsize=6) # Adjust font size for readability if many pairs
+        plt.axvline(0, color='black', linewidth=0.8)
+        plt.tight_layout()
+        plt.savefig(plot_path_all_pairs)
+        plt.close()
+        print(f"  - Saved Bivariate Moran's I bar chart for all pairs to: {plot_path_all_pairs.name}")
+
+    # Step 2: Identify top pairs and run detailed local analysis ONLY on them
+    highest_moran_pairs = bivariate_df.head(top_n)
+    lowest_moran_pairs = bivariate_df.tail(top_n)
+    top_pairs_for_analysis = pd.concat([highest_moran_pairs, lowest_moran_pairs])
+
+    print(f"\n  - Top {top_n} pairs with highest spatial correlation: {[f'{r.variable_1} & {r.variable_2} (I_bv={r.bivariate_moran_I:.4f})' for r in highest_moran_pairs.itertuples()]}")
+    print(f"  - Top {top_n} pairs with lowest spatial correlation: {[f'{r.variable_1} & {r.variable_2} (I_bv={r.bivariate_moran_I:.4f})' for r in lowest_moran_pairs.itertuples()]}")
+
+    processed_pairs = set()
+    for _, row in tqdm(top_pairs_for_analysis.iterrows(), total=len(top_pairs_for_analysis), desc="  - Detailed Bivariate Analysis"):
+        var1, var2 = row['variable_1'], row['variable_2']
+        pair_tuple = tuple(sorted((var1, var2)))
+        if pair_tuple not in processed_pairs:
+            analyze_bivariate_detailed(gdf, weights, var1, var2, output_plots_dir)
+            processed_pairs.add(pair_tuple)
+
+    print(f"\n{'#'*30} Finished Bivariate Numerical Analysis {'#'*30}")
 
 def main():
     """
@@ -731,30 +934,23 @@ def main():
     if gdf is None:
         return
 
-    # --- 2. Identify Numeric Variables to Analyze ---
-    # --- Manual Variable Definition ---
-    # Manually define your variable lists here.
-    # Any column not in these lists or 'geometry' will be ignored.
-    
+    # --- 2. Define Variables & Enforce Types ---
     numerical_variables = [
         'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'active_fountains_count_1ring',
         'total_fountains_count_1ring', 'landslide_point_count_1ring', 'seismic_event_count_1ring',
-        'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring', 'road_density_m_per_m2', 'm_per_hex',
-        'dist_to_waterway_m', 'avg_descending_soil_speed', 'avg_ascending_soil_speed', 'census_pop', 'epr_NTAXP',
-        'epr_TAXABINC', 'epr_CADINCR', 'epr_CADINCF', 'epr_SUBEMPTR', 'epr_PENSINCR', 'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01',
-        'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7', 'erd_E75000_1',
-        'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_COMP_FRA', 'eidx_LAND_CON', 'eidx_EMPL_RAT',
-        'eidx_POP_25_6', 'eidx_POP_DEPE', 'eidx_INDEX_AC', 'eidx_PERSEMP', 'inflow_total',
-        'nearest_hydro_distance_m', 'nearest_hydro_river_stage_max_m', 'nearest_hydro_river_stage_mean_m',
-        'nearest_hydro_river_stage_std_m', 'nearest_hydro_quota', 'idw_temp_max_peak', 'idw_temp_min_nadir',
-        'idw_temp_thermal_range', 'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly',
-        'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_max',
-        'idw_wind_speed_max_95p', 'idw_wind_speed_avg_mean', 'dtmidcnt_mean', 'dtmidcnt_max','rooting_depth_class', 
-        'surface_stoniness_class','landslide_surface_class',
+        'avg_seismic_magnitude_1ring', 'road_density_m_per_m2','dist_to_waterway_m', 'avg_descending_soil_speed', 
+        'avg_ascending_soil_speed', 'census_pop', 'epr_NTAXP',
+        'epr_TAXABINC', 'epr_CADINCR', 'epr_CADINCF', 'epr_SUBEMPTR', 'epr_PENSINCR', 'epr_PENSINCF', 
+        'epr_ENTROAIN', 'epr_ENTROAIN01', 'erd_E0_10000', 'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 
+        'erd_E55000_7', 'erd_E75000_1', 'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_COMP_FRA', 
+        'eidx_LAND_CON', 'eidx_EMPL_RAT', 'eidx_POP_25_6', 'eidx_POP_DEPE', 'eidx_INDEX_AC', 'eidx_PERSEMP', 
+        'inflow_total', 'nearest_hydro_distance_m', 'nearest_hydro_river_stage_max_m', 'nearest_hydro_river_stage_mean_m', 
+        'idw_temp_thermal_range', 'idw_rain_mm_sum_annual','idw_rain_mm_avg_monthly', 'idw_wind_speed_max_95p', 
+        'idw_wind_speed_avg_mean', 'dtmidcnt_mean',
     ]
 
     categorical_variables = [
-        'class_intervention_1ring', 'locality_name_1ring', 'dominant_highway', 'dominant_surface',
+        'class_intervention_1ring', 'dominant_highway', 'dominant_surface',
         'dominant_tunnel', 'dominant_bridge', 'usda_hydrologic_group', 'pai_landslide_hazard_level',
         'dominant_building_1', 'dominant_building_2', 'dominant_building_3'
     ]
@@ -764,50 +960,15 @@ def main():
         'landslide_surface_class', 'descending_soil_presence', 'ascending_soil_presence', 'hydraulic_hazard_level'
     ]
 
-    # Combine all categorical variables for analysis functions
-    all_categorical_variables = categorical_variables + categorical_int_variables
+    numerical_vars, categorical_vars = enforce_data_types_and_get_vars(
+        gdf, numerical_variables, categorical_variables, categorical_int_variables
+    )
 
-    # --- Data Type Sanity Check and Enforcement ---
-    print("\n--- Enforcing Data Types ---")
-    for var in numerical_variables:
-        if var in gdf.columns:
-            # Check for errors during conversion by seeing if NaNs are introduced
-            initial_nans = gdf[var].isnull().sum()
-            # Convert to numeric, coercing errors to NaN
-            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
-            final_nans = gdf[var].isnull().sum()
-            if final_nans > initial_nans:
-                print(f"  - Warning: Errors found in variable '{var}' while converting to numeric. Non-numeric values were set to NaN.")
-    print("Numerical variables converted to numeric types.")
-
-    for var in categorical_variables:
-        if var in gdf.columns:
-            # .astype(str) is a robust conversion and typically does not produce errors,
-            # as it can represent any value as a string.
-            gdf[var] = gdf[var].astype(str)
-    print("String-based categorical variables converted to string types.")
-
-    for var in categorical_int_variables:
-        if var in gdf.columns:
-            # Check for errors during the initial numeric conversion
-            initial_nans = gdf[var].isnull().sum()
-            gdf[var] = pd.to_numeric(gdf[var], errors='coerce')
-            final_nans = gdf[var].isnull().sum()
-            if final_nans > initial_nans:
-                print(f"  - Warning: Errors found in variable '{var}' while converting to integer. Non-numeric values were set to NaN.")
-            # Using Int64 (capital I) to allow for NaNs in integer columns
-            gdf[var] = gdf[var].astype('Int64')
-    print("Integer-based categorical variables converted to nullable integer types.")
-    print("--- Data Type Enforcement Complete ---")
-
-    # Filter out variables that don't exist in the dataframe to prevent errors
-    numerical_variables = [v for v in numerical_variables if v in gdf.columns]
-    all_categorical_variables = [v for v in all_categorical_variables if v in gdf.columns]
-
-    if not numerical_variables and not all_categorical_variables:
+    if not numerical_vars and not categorical_vars:
         print("\nNo variables found to analyze after separation. Exiting.")
         return
 
+    all_categorical_variables = categorical_variables + categorical_int_variables
     print(f"\nFound {len(numerical_variables)} numerical variables to analyze:")
     print(numerical_variables)
     print(f"\nFound {len(all_categorical_variables)} categorical variables to analyze:")
@@ -822,179 +983,15 @@ def main():
     # --- 4. Create Spatial Weights Matrix (once) ---
     weights = create_weights(gdf)
 
-    # --- 5. Numerical Variable Pipeline ---
-    if numerical_variables:
-        print(f"\n{'#'*30} Starting Univariate Numerical Analysis {'#'*30}")
-        
-        table_path = TABLE_SPATIAL_AUTOCORRELATION_PATH / "univariate_global_moran_I_results.csv"
-
-        # Step 1: Calculate Global Moran's I for all variables
-        if table_path.exists() and table_path.stat().st_size > 0:
-            print(f"\n--- Univariate Global Moran's I table '{table_path.name}' already exists. Skipping calculation. ---")
-            moran_df = pd.read_csv(table_path)
-        else:
-            moran_results = []
-            print("\n  - Calculating Global Moran's I for all numerical variables...")
-            for var in tqdm(numerical_variables, desc="  - Univariate Global Moran's I"):
-                y = gdf[var].copy()
-                if y.isnull().any():
-                    y.fillna(y.mean(), inplace=True)
-                if y.std() > 0:
-                    moran = Moran(y, weights)
-                    moran_results.append({'variable': var, 'moran_I': moran.I, 'p_value': moran.p_sim})
-                    print(f"    - Variable: {var}, Moran's I: {moran.I:.4f}, p-value: {moran.p_sim:.4f}")
-                else:
-                    print(f"    - Skipping '{var}': Zero variance.")
-            
-            if moran_results:
-                moran_df = pd.DataFrame(moran_results).sort_values(by='moran_I', ascending=False)
-                moran_df.to_csv(table_path, index=False)
-                print(f"\n  - Saved all Univariate Global Moran's I results to: {table_path.name}")
-            else:
-                moran_df = pd.DataFrame() # Create empty df if no results
-
-        if not moran_df.empty:
-
-            # Create and save bar chart
-            plot_path = PLOTS_SPATIAL_AUTOCORRELATION_PATH / "univariate_global_moran_I_barchart.png"
-            plt.figure(figsize=(12, max(8, len(moran_df) * 0.3)))
-            plt.barh(moran_df['variable'], moran_df['moran_I'], color='skyblue')
-            plt.xlabel("Global Moran's I")
-            plt.title("Univariate Global Spatial Autocorrelation")
-            plt.grid(axis='x', linestyle='--', alpha=0.7)
-            plt.axvline(0, color='black', linewidth=0.8)
-            plt.tight_layout()
-            plt.savefig(plot_path)
-            plt.close()
-            print(f"  - Saved Moran's I summary bar chart to: {plot_path.name}")
-
-            # Step 2: Identify top 6 highest and lowest Moran's I variables
-            top_n = 6
-            highest_moran_vars = moran_df.head(top_n)
-            lowest_moran_vars = moran_df.tail(top_n)
-
-            print(f"\n  - Top {top_n} variables with highest autocorrelation:")
-            for _, row in highest_moran_vars.iterrows():
-                print(f"    - {row['variable']} (I={row['moran_I']:.4f})")
-            
-            print(f"\n  - Top {top_n} variables with lowest autocorrelation:")
-            for _, row in lowest_moran_vars.iterrows():
-                print(f"    - {row['variable']} (I={row['moran_I']:.4f})")
-
-            # Step 3: Run Global Geary's C on the combined set of top variables as confirmation
-            top_variables_for_confirmation = pd.concat([highest_moran_vars, lowest_moran_vars])['variable'].unique().tolist()
-            analyze_global_gearys_c(gdf, weights, top_variables_for_confirmation, TABLE_SPATIAL_AUTOCORRELATION_PATH)
-
-            # Step 4: Run detailed local analysis (LISA and Gi*) on these selected variables
-            processed_vars = set()
-            print(f"\n  - Running detailed local analysis for top {top_n} highest Moran's I variables:")
-            for _, row in highest_moran_vars.iterrows():
-                if row['variable'] not in processed_vars:
-                    analyze_variable_detailed(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                    analyze_getis_ord_gi(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                    processed_vars.add(row['variable'])
-            
-            print(f"\n  - Running detailed local analysis for top {top_n} lowest Moran's I variables:")
-            for _, row in lowest_moran_vars.iterrows():
-                if row['variable'] not in processed_vars:
-                    analyze_variable_detailed(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                    analyze_getis_ord_gi(gdf, weights, row['variable'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                    processed_vars.add(row['variable'])
-
-        else:
-            print("  - No valid Moran's I results to analyze.")
-
-        print(f"\n{'#'*30} Finished Univariate Numerical Analysis {'#'*30}")
-
-        # --- Define Bivariate Variables of Interest ---
-        # This list explicitly defines the variables for which bivariate Moran's I will be calculated.
-        # This helps to focus the analysis and reduce computational load and output clutter.
-        bivariate_vars_subset = [
-            'total_intervention_cost_1ring', 'max_peak_elevation_1ring', 'landslide_point_count_1ring',
-            'seismic_event_count_1ring', 'max_seismic_magnitude_1ring', 'avg_seismic_magnitude_1ring',
-            'road_density_m_per_m2', 'dist_to_waterway_m', 'avg_descending_soil_speed',
-            'avg_ascending_soil_speed', 'census_pop', 'idw_temp_max_peak', 'idw_temp_min_nadir',
-            'idw_rain_mm_sum_annual', 'idw_rain_mm_max_monthly', 'idw_rain_mm_min_monthly',
-            'idw_rain_mm_avg_monthly', 'idw_rain_mm_std', 'idw_wind_speed_max_95p',
-            'idw_wind_speed_avg_mean', 'inflow_total', 'dtmidcnt_mean', 'hydraulic_hazard_level'
-        ]
-
-        # Filter the subset to only include variables that are present in the GeoDataFrame
-        bivariate_vars_to_analyze = [v for v in bivariate_vars_subset if v in gdf.columns]
-        print(f"\n  - Selected {len(bivariate_vars_to_analyze)} variables for bivariate analysis from the predefined subset.")
-
-        # --- Bivariate Spatial Analysis Pipeline ---
-        print(f"\n{'#'*30} Starting Bivariate Spatial Analysis {'#'*30}")
-        if len(bivariate_vars_to_analyze) >= 2:
-            # Step 1: Calculate Global Bivariate Moran's I for all pairs
-            bivariate_results = []
-            print("\n  - Calculating Global Bivariate Moran's I for all numerical pairs...")
-            
-            # Standardize all variables first for efficiency and correct calculation
-            gdf_std = gdf[bivariate_vars_to_analyze].copy()
-            for col in gdf_std.columns:
-                if gdf_std[col].isnull().any():
-                    gdf_std[col].fillna(gdf_std[col].mean(), inplace=True)
-                if gdf_std[col].std() > 0:
-                    gdf_std[col] = (gdf_std[col] - gdf_std[col].mean()) / gdf_std[col].std()
-                else: # Handle zero variance columns
-                    gdf_std[col] = 0 
-
-            for var1, var2 in tqdm(list(combinations(bivariate_vars_to_analyze, 2)), desc="  - Bivariate Global Moran's I"):
-                z1 = gdf_std[var1]
-                z2 = gdf_std[var2]
-                moran_bv = Moran_BV(z1, z2, weights)
-                bivariate_results.append({'variable_1': var1, 'variable_2': var2, 'bivariate_moran_I': moran_bv.I, 'p_value': moran_bv.p_sim})
-                print(f"    - Pair: {var1} & {var2}, Bivariate Moran's I: {moran_bv.I:.4f}, p-value: {moran_bv.p_sim:.4f}")
-
-            if bivariate_results:
-                bivariate_df = pd.DataFrame(bivariate_results).sort_values(by='bivariate_moran_I', ascending=False)
-                
-                # Save all results to CSV
-                bivariate_table_path = TABLE_SPATIAL_AUTOCORRELATION_PATH / "bivariate_global_moran_I_results.csv"
-                bivariate_df.to_csv(bivariate_table_path, index=False)
-                print(f"\n  - Saved all Bivariate Global Moran's I results to: {bivariate_table_path.name}")
-
-                # Step 2: Identify top 6 highest and lowest Bivariate Moran's I pairs
-                top_n = 6
-                highest_moran_pairs = bivariate_df.head(top_n)
-                lowest_moran_pairs = bivariate_df.tail(top_n)
-
-                print(f"\n  - Top {top_n} pairs with highest spatial correlation:")
-                for _, row in highest_moran_pairs.iterrows():
-                    print(f"    - {row['variable_1']} & {row['variable_2']} (I_bv={row['bivariate_moran_I']:.4f})")
-                
-                print(f"\n  - Top {top_n} pairs with lowest spatial correlation:")
-                for _, row in lowest_moran_pairs.iterrows():
-                    print(f"    - {row['variable_1']} & {row['variable_2']} (I_bv={row['bivariate_moran_I']:.4f})")
-
-                # Step 3: Run detailed bivariate spatial analysis on these selected pairs, avoiding duplicates
-                processed_pairs = set()
-                print(f"\n  - Running detailed bivariate analysis for top {top_n} highest Bivariate Moran's I pairs:")
-                for _, row in highest_moran_pairs.iterrows():
-                    pair_tuple = tuple(sorted((row['variable_1'], row['variable_2'])))
-                    if pair_tuple not in processed_pairs:
-                        analyze_bivariate_detailed(gdf, weights, row['variable_1'], row['variable_2'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                        processed_pairs.add(pair_tuple)
-                
-                print(f"\n  - Running detailed bivariate analysis for top {top_n} lowest Bivariate Moran's I pairs:")
-                for _, row in lowest_moran_pairs.iterrows():
-                    pair_tuple = tuple(sorted((row['variable_1'], row['variable_2'])))
-                    if pair_tuple not in processed_pairs:
-                        analyze_bivariate_detailed(gdf, weights, row['variable_1'], row['variable_2'], PLOTS_SPATIAL_AUTOCORRELATION_PATH)
-                        processed_pairs.add(pair_tuple)
-        else:
-            print("\n  - Skipping Bivariate Analysis: Fewer than 2 numerical variables available.")
-        print(f"\n{'#'*30} Finished Bivariate Spatial Analysis {'#'*30}")
-    else:
-        print(f"\n{'#'*30} No Numerical Variables for Analysis {'#'*30}")
-
+    # --- 5. Run Analysis Pipelines ---
+    run_univariate_numerical_pipeline(gdf, weights, numerical_vars, PLOTS_SPATIAL_AUTOCORRELATION_PATH, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+    run_bivariate_numerical_pipeline(gdf, weights, numerical_vars, PLOTS_SPATIAL_AUTOCORRELATION_PATH, TABLE_SPATIAL_AUTOCORRELATION_PATH)
 
     # --- 6. Categorical Variable Pipeline ---
-    if all_categorical_variables:
+    if categorical_vars:
         print(f"\n{'#'*30} Starting Categorical Variable Analysis {'#'*30}")
         # Run the global association analysis first to get the top variables
-        top_categorical_vars = analyze_global_categorical_association(gdf, weights, all_categorical_variables, TABLE_SPATIAL_AUTOCORRELATION_PATH)
+        top_categorical_vars = analyze_global_categorical_association(gdf, weights, categorical_vars, TABLE_SPATIAL_AUTOCORRELATION_PATH)
 
         if top_categorical_vars:
             print(f"\n--- Proceeding with detailed analysis for the top {len(top_categorical_vars)} variables by Cramér's V ---")
@@ -1016,9 +1013,9 @@ def main():
 
     # --- 7. Multivariate Clustering (Combined Numerical + Categorical) ---
     # Only run if there are any variables to cluster
-    if numerical_variables or all_categorical_variables:
+    if numerical_vars or categorical_vars:
         print(f"\n{'#'*30} Starting Multivariate Clustering Analysis {'#'*30}")
-        analyze_multivariate_clusters(gdf, numerical_variables, all_categorical_variables, PLOTS_SPATIAL_AUTOCORRELATION_PATH, n_clusters=10)
+        analyze_multivariate_clusters(gdf, numerical_vars, categorical_vars, PLOTS_SPATIAL_AUTOCORRELATION_PATH, n_clusters=10)
     else:
         print(f"\n{'#'*30} No Variables for Multivariate Clustering {'#'*30}")
 

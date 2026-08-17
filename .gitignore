@@ -16,14 +16,16 @@ crede.txt
 .Trashes
 
 #Big files
-#3_Implementation/1_Data/1_Master
-#3_Implementation/1_Data/2_Transformation
+#Not included in the above 100mb
 
 #VScode
 .vscode*
 
 #pycache
 __pycache__/
+
+#Processing temp files
+3_Implementation/2_Data_analysis/patents/links_lists/py/outputterms/*
 
 #limit size IN GITBASH
 # Source - https://stackoverflow.com/a/62857813
@@ -49,5 +51,7 @@ find . -size +100M | cat >> .gitignore
 3_Implementation/1_Data/2_Transformation/static_geospatial/resources/pedologgia_cleaned.gpkg
 3_Implementation/1_Data/2_Transformation/static_geospatial/resources/static_spatial_dimensions.gpkg
 3_Implementation/1_Data/2_Transformation/static_geospatial/resources/static_spatial_dimensions_cleaned.gpkg
+3_Implementation/1_Data/2_Transformation/final_aggregation_grid/h310_grid_final_datacube.gpkg
+3_Implementation/1_Data/2_Transformation/final_aggregation_grid/master_grid_with_stations.gpkg
 
 
