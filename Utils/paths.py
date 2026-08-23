@@ -38,3 +38,5 @@ PENDOLARISMO_PATH = MASTER_DATA_PATH / "pendolarismo"
 CAUSAL_LINKS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/causal_links"
 
 PATENTS_OUTPUT_TERMS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/links_lists/py/outputterms"
+ONTOLOGY_LISTS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/ontology/py/lists"
+ONTOLOGY_OUTPUT_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/ontology/output"

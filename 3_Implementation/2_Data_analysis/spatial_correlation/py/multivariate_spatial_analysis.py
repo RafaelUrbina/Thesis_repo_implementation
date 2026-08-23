@@ -63,19 +63,6 @@ SCRIPT LOGIC AND PIPELINE
       Agglomerative Clustering (using a Ward linkage) is then performed.
     - **Output**: A map showing the resulting spatial clusters.
 
-5.  **Geographically Weighted PCA (GWPCA)** - `analyze_gwpca()`:
-    - **Goal**: To investigate spatial non-stationarity. Unlike standard PCA,
-      which assumes one global correlation structure, GWPCA runs a separate
-      PCA for each location using its neighbors, revealing how correlations
-      between numerical variables change across space.
-    - **Process**: The script interfaces with R's powerful 'GWmodel' package via
-      `rpy2`. It prepares and transfers the data to R, automatically selects an
-      optimal bandwidth (neighborhood size), runs GWPCA, and brings the
-      results back into Python.
-    - **Output**: Maps showing the local variance explained by the first
-      principal component and the spatial variation of variable loadings. A CSV
-      file of the loadings is also saved.
-
 The `main` function orchestrates this entire pipeline, ensuring that each
 analysis is run in a logical sequence and that outputs are saved to organized
 directories.
@@ -85,19 +72,10 @@ import os
 import sys
 from pathlib import Path
 
-# --- R Environment Setup for rpy2 ---
-# This block programmatically sets the R_HOME and PATH environment variables
-# to ensure rpy2 can find the R installation and all its DLLs on Windows.
-# This must be done *before* rpy2 is imported.
-r_home = r"C:\Program Files\R\R-4.6.1"
-os.environ["R_HOME"] = r_home
-os.environ["PATH"] = f"{r_home}\\bin\\x64;" + os.environ["PATH"]
-
 import fiona
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import numpy as np
-import altair as alt
 import pandas as pd
 import prince
 from libpysal.weights import Queen
@@ -105,10 +83,6 @@ from mlxtend.frequent_patterns import apriori, association_rules
 from mlxtend.preprocessing import TransactionEncoder
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.preprocessing import StandardScaler
-import rpy2.robjects as ro
-from rpy2.robjects import pandas2ri
-from rpy2.robjects.packages import importr
-from rpy2.robjects.conversion import localconverter
 
 # Add the project root to the Python path
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -496,145 +470,6 @@ def analyze_skater(
     plt.close()
     print(f"  - Saved spatial cluster map to: {plot_path.name}")
 
-
-def _create_gwpca_plot(gdf: gpd.GeoDataFrame, column: str, title: str, cmap: str, output_path: Path):
-    """Helper function to generate and save a GWPCA map."""
-    fig, ax = plt.subplots(figsize=(12, 10))
-    gdf.plot(column=column, cmap=cmap, legend=True, ax=ax)
-    ax.set_title(title)
-    ax.set_yticklabels([])
-    ax.set_xticklabels([])
-    plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
-    print(f"  - Saved GWPCA map to: {output_path.name}")
-
-def install_r_packages_if_needed(packages: list):
-    """Checks if R packages are installed and installs them if not."""
-    utils = importr('utils')
-    utils.chooseCRANmirror(ind=1)  # Choose a default CRAN mirror
-
-    for package in packages:
-        if not ro.packages.isinstalled(package):
-            print(f"Installing R package: {package}...")
-            utils.install_packages(ro.StrVector([package]))
-        else:
-            print(f"R package '{package}' is already installed.")
-
-
-def analyze_gwpca(
-    gdf: gpd.GeoDataFrame, numerical_vars: list, output_dir: Path, table_output_dir: Path
-):
-    """
-    Performs Geographically Weighted Principal Component Analysis (GWPCA)
-    by calling the 'GWmodel' package in R via rpy2.
-    """
-    gwpca_var_explained_plot = output_dir / "gwpca_local_variance_explained.png"
-    gwpca_loadings_csv = table_output_dir / "gwpca_loadings_component1.csv"
-    
-    # Note: The third plot's name is dynamic, so we rely on the two stable outputs for skipping.
-    if _check_and_skip_analysis([gwpca_var_explained_plot, gwpca_loadings_csv], "Geographically Weighted PCA (GWPCA)"):
-        return
-
-    print("\n--- 4. Running Geographically Weighted PCA (GWPCA) ---")
-    try:
-        # 1. Install required R packages
-        install_r_packages_if_needed(['GWmodel'])
-        gwmodel = importr('GWmodel')
-
-        # 2. Prepare data for R
-        # Use only existing numerical variables
-        gwpca_vars = numerical_vars[:]
-        if len(gwpca_vars) < 2:
-            print("  - Skipping GWPCA: At least 2 numerical variables are required.")
-            return
-        print(f"  - Using variables: {gwpca_vars}")
-
-        gwpca_data = gdf[gwpca_vars].copy()
-        gwpca_data = gwpca_data.fillna(gwpca_data.mean())
-
-        gwpca_data_scaled = pd.DataFrame(StandardScaler().fit_transform(gwpca_data), columns=gwpca_vars, index=gwpca_data.index)
-        coords_df = pd.DataFrame({'x': gdf.geometry.centroid.x, 'y': gdf.geometry.centroid.y}, index=gwpca_data.index)
-
-        # Combine data and coordinates
-        r_input_df = pd.concat([gwpca_data_scaled, coords_df], axis=1)
-
-        # 3. Convert to R SpatialPointsDataFrame
-        with localconverter(ro.default_converter + pandas2ri.converter):
-            r_data_df = ro.conversion.py2rpy(r_input_df)
-        
-        ro.r.assign('r_data_df', r_data_df)
-        ro.r('coordinates(r_data_df) <- ~x+y')
-
-        # 4. Bandwidth Selection and GWPCA Execution
-        # Optimization: If the dataset is large, estimate bandwidth on a sample.
-        sample_size = 10000
-        if len(gdf) > sample_size:
-            print(f"  - Dataset is large ({len(gdf)} rows). Estimating bandwidth on a sample of {sample_size} rows.")
-            
-            # Create a random sample for bandwidth selection
-            sample_df = r_input_df.sample(n=sample_size, random_state=42)
-            with localconverter(ro.default_converter + pandas2ri.converter):
-                r_sample_df = ro.conversion.py2rpy(sample_df)
-            
-            ro.r.assign('r_sample_df', r_sample_df)
-            ro.r('coordinates(r_sample_df) <- ~x+y')
-
-            # Run bandwidth selection on the sample
-            print("  - Selecting optimal bandwidth for GWPCA in R (on sample)...")
-            bw = gwmodel.bw_gwpca(data=ro.r['r_sample_df'], vars=ro.StrVector(gwpca_vars), kernel='bisquare', adaptive=True)
-            gwpca_bw = bw[0]
-            print(f"  - Optimal adaptive bandwidth found from sample: {gwpca_bw} neighbors")
-        else:
-            # For smaller datasets, run on the full data
-            print("  - Selecting optimal bandwidth for GWPCA in R (on full dataset)...")
-            bw = gwmodel.bw_gwpca(data=ro.r['r_data_df'], vars=ro.StrVector(gwpca_vars), kernel='bisquare', adaptive=True)
-            gwpca_bw = bw[0]
-            print(f"  - Optimal adaptive bandwidth found: {gwpca_bw} neighbors")
-
-        print("  - Running GWPCA on the full dataset...")
-        gwpca_results = gwmodel.gwpca(data=ro.r['r_data_df'], vars=ro.StrVector(gwpca_vars), bw=gwpca_bw, k=1, kernel='bisquare', adaptive=True)
-
-        # 5. Extract results from R object and convert back to Python
-        # The result is a list-like object in rpy2. We access elements by index.
-        # The main results are in a SpatialPointsDataFrame called 'SDF'.
-        sdf_results = gwpca_results.rx2('SDF')
-        
-        with localconverter(ro.default_converter + pandas2ri.converter):
-            results_df = ro.conversion.rpy2py(sdf_results)
-
-        # --- Analyze and Plot GWPCA Results ---        
-        # Plot local variance explained by the first component
-        gdf["gwpca_local_var_explained"] = results_df["var1"]
-        _create_gwpca_plot(gdf, "gwpca_local_var_explained", 
-                           "GWPCA: Local Variance Explained by 1st Component", 
-                           "viridis", 
-                           output_dir / "gwpca_local_variance_explained.png")
-
-        # 2. Local Component Loadings
-        # In GWmodel, these are named like 'Comp1_varname'
-        loading_cols = [f"Comp1_{var}" for var in gwpca_vars]
-        loadings_df = results_df[loading_cols]
-        loadings_df.columns = [f"{v}_loading" for v in gwpca_vars] # Rename for consistency
-
-        loadings_path = table_output_dir / "gwpca_loadings_component1.csv"
-        loadings_df.to_csv(loadings_path, index=False)
-        print(f"  - Saved GWPCA component loadings to: {loadings_path.name}")
-
-        # Plot the loading for the first variable as an example (this plot is not used for skipping logic)
-        first_var_loading_col = f"{gwpca_vars[0]}_loading"
-        gdf[first_var_loading_col] = loadings_df[first_var_loading_col]        
-        _create_gwpca_plot(gdf, first_var_loading_col,
-                           f"GWPCA: Loading of '{gwpca_vars[0]}' on 1st Component",
-                           "coolwarm",
-                           output_dir / f"gwpca_loading_{gwpca_vars[0]}.png")
-
-    except Exception as e:
-        print(f"  - GWPCA analysis failed: {e}")
-        print("  - Please ensure R is installed and in your system's PATH.")
-        print("  - You may also need to install the 'sp' and 'GWmodel' R packages manually.")
-
-
 def main():
     """Main function to execute the multivariate analysis pipeline."""
     # --- Configuration ---
@@ -698,7 +533,6 @@ def main():
     # 2. Spatial-Domain: Find where they act together
     if num_vars:
         analyze_skater(gdf, num_vars, output_plots_dir, n_clusters=10)
-        analyze_gwpca(gdf, num_vars, output_plots_dir, output_tables_dir)
     else:
         print("\nSkipping SKATER and GWPCA: Requires numerical variables.")
 
