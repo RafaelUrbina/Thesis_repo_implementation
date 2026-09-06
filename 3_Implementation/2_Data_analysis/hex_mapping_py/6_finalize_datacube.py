@@ -53,15 +53,14 @@ def main() -> None:
     print(f"  - Merging DTM columns: {dtm_cols}")
     final_grid = final_grid.merge(dtm_stats_grid[['index'] + dtm_cols], on="index", how="left")
 
-    # 4. Final cleanup: Fill NaN values based on data type
-    print("\nPerforming final cleanup of NaN values...")
+    # 4. Final cleanup: Fill NaN values and round all float columns to 4 decimals
+    print("\nPerforming final cleanup of NaN values and rounding float variables...")
     for col in final_grid.columns:
-        # Check if the column is numeric (integer, float)
         if pd.api.types.is_numeric_dtype(final_grid[col]):
             final_grid[col] = final_grid[col].fillna(0)
-        # Check if the column is categorical (object/string)
+            if pd.api.types.is_float_dtype(final_grid[col]):
+                final_grid[col] = final_grid[col].round(4)
         elif pd.api.types.is_object_dtype(final_grid[col]):
-            # Using fillna with None on object columns is effective
             final_grid[col] = final_grid[col].fillna(None)
 
     # 5. Save the final data cube

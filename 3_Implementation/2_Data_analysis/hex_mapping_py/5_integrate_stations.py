@@ -219,10 +219,13 @@ def main() -> None:
         except Exception as e:
             print(f"Warning: Could not process layer '{layer_name}'. Skipping. Error: {e}")
 
-    # Final cleanup: Fill NaN values based on data type
-    print("\nPerforming final cleanup of NaN values...")
+    # Final cleanup: Fill NaN values and round all float columns to 4 decimals
+    print("\nPerforming final cleanup of NaN values and rounding float variables...")
     numeric_cols = master_grid.select_dtypes(include=np.number).columns
-    master_grid[numeric_cols] = master_grid[numeric_cols].fillna(0)
+    for col in numeric_cols:
+        master_grid[col] = master_grid[col].fillna(0)
+        if pd.api.types.is_float_dtype(master_grid[col]):
+            master_grid[col] = master_grid[col].round(4)
 
     # 5. Save the enriched grid
     print(f"\nSaving enriched grid to: {output_gpkg}")

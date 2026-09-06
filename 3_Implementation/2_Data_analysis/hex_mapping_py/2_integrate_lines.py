@@ -123,15 +123,14 @@ def main() -> None:
     except Exception as e:
         print(f"Warning: Could not process layer '{layer_name}'. Skipping. Error: {e}")
 
-    # Final cleanup: Fill NaN values based on data type
-    print("\nPerforming final cleanup of NaN values...")
+    # Final cleanup: Fill NaN values and round all float columns to 4 decimals
+    print("\nPerforming final cleanup of NaN values and rounding float variables...")
     for col in master_grid.columns:
-        # Check if the column is numeric (integer, float)
         if pd.api.types.is_numeric_dtype(master_grid[col]):
             master_grid[col] = master_grid[col].fillna(0)
-        # Check if the column is categorical (object/string)
+            if pd.api.types.is_float_dtype(master_grid[col]):
+                master_grid[col] = master_grid[col].round(4)
         elif pd.api.types.is_object_dtype(master_grid[col]):
-            # Using fillna with None on object columns is effective
             master_grid[col] = master_grid[col].fillna(None)
 
     # 4. Save the enriched grid
