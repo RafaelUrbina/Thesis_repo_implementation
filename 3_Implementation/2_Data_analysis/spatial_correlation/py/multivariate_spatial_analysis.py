@@ -244,7 +244,7 @@ def analyze_famd(
     print("  - Saving variable name mapping...")
     mapping_df = pd.DataFrame(original_name_map.items(), columns=['Short_Name', 'Original_Name']).sort_values('Short_Name')
     mapping_path = output_dir / "famd_variable_name_mapping.csv"
-    mapping_df.to_csv(mapping_path, index=False)
+    mapping_df.to_csv(mapping_path, index=False, float_format="%.4e")
     print(f"  - Saved variable name mapping to: {mapping_path.name}")
 
     # Ensure categorical column names are a simple list to avoid indexing issues in prince
@@ -392,7 +392,7 @@ def analyze_association_rules(
     print("  - Top 10 Association Rules (after first filter):")
     print(rules.head(10))
 
-    rules.to_csv(rules_path, index=False)
+    rules.to_csv(rules_path, index=False, float_format="%.4e")
     print(f"  - Saved filtered association rules (max 1 uninformative) to: {rules_path.name}")
 
     # --- Second, Stricter Filter: Allow ZERO uninformative items ---
@@ -405,7 +405,7 @@ def analyze_association_rules(
     print(f"  - Stricter filter resulted in {len(rules_strict)} rules.")
 
     if not rules_strict.empty:
-        rules_strict.to_csv(strict_rules_path, index=False)
+        rules_strict.to_csv(strict_rules_path, index=False, float_format="%.4e")
         print(f"  - Saved strictly filtered association rules to: {strict_rules_path.name}")
 
 

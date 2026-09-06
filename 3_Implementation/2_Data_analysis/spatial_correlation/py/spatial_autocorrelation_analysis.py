@@ -450,7 +450,7 @@ def analyze_categorical_join_counts(gdf: gpd.GeoDataFrame, weights: libpysal.wei
 
     if results: # Only save if there are actual results
         results_df = pd.DataFrame(results)
-        results_df.to_csv(table_path, index=False)
+        results_df.to_csv(table_path, index=False, float_format="%.4e")
         print(f"\n  - Saved Join-Counts results to: {table_path}")
         
     weights.transform = original_weights_transform # Reset weights transform
@@ -522,7 +522,7 @@ def analyze_bivariate_categorical_association(
 
     if results:
         results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
-        results_df.to_csv(table_path, index=False)
+        results_df.to_csv(table_path, index=False, float_format="%.4e")
         print(f"\n  - Saved Bivariate Spatial Association results to: {table_path.name}")
         print("\n  - Top 10 most spatially associated variable pairs:")
         print(results_df.head(10))
@@ -604,7 +604,7 @@ def analyze_global_categorical_association(
 
     if results:
         results_df = pd.DataFrame(results).sort_values(by='cramers_v', ascending=False)
-        results_df.to_csv(table_path, index=False)
+        results_df.to_csv(table_path, index=False, float_format="%.4e")
         print(f"\n  - Saved Univariate Spatial Association results to: {table_path.name}")
         top_10_vars = results_df.head(10)['variable'].tolist()
     else:
@@ -643,7 +643,7 @@ def analyze_global_gearys_c(gdf: gpd.GeoDataFrame, weights: libpysal.weights.W, 
 
     if geary_results:
         geary_df = pd.DataFrame(geary_results).sort_values(by='gearys_C', ascending=True) # Lower C indicates stronger positive autocorrelation
-        geary_df.to_csv(table_path, index=False)
+        geary_df.to_csv(table_path, index=False, float_format="%.4e")
         print(f"\n  - Saved Global Geary's C results to: {table_path.name}")
 
     print(f"\n{'='*20} Finished Global Geary's C Analysis {'='*20}")
@@ -778,7 +778,7 @@ def run_univariate_numerical_pipeline(gdf, weights, numerical_vars, output_plots
         
         moran_df = pd.DataFrame(moran_results).sort_values(by='moran_I', ascending=False) if moran_results else pd.DataFrame()
         if not moran_df.empty:
-            moran_df.to_csv(table_path, index=False)
+            moran_df.to_csv(table_path, index=False, float_format="%.4e")
             print(f"\n  - Saved all Univariate Global Moran's I results to: {table_path.name}")
 
     if moran_df.empty:
@@ -875,7 +875,7 @@ def run_bivariate_numerical_pipeline(gdf, weights, numerical_vars, output_plots_
 
         bivariate_df = pd.DataFrame(bivariate_results).sort_values(by='bivariate_moran_I', ascending=False) if bivariate_results else pd.DataFrame()
         if not bivariate_df.empty:
-            bivariate_df.to_csv(table_path, index=False)
+            bivariate_df.to_csv(table_path, index=False, float_format="%.4e")
             print(f"\n  - Saved all Bivariate Global Moran's I results to: {table_path.name}")
 
     if bivariate_df.empty:

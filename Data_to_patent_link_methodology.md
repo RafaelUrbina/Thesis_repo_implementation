@@ -1,12 +1,10 @@
-For your problem, I think the strongest architecture is:
-
 **Geo dataset → vocabulary/ontology → patent text extraction → causal relation extraction → technical/environmental pairing → risk mechanism → topic modelling as a secondary discovery tool**
 
-You are trying to discover **mechanisms by which environmental/spatial conditions can contribute to infrastructure failure**.
+Discover **mechanisms by which environmental/spatial conditions can contribute to infrastructure failure**.
 
-### 1. Your central object should be a causal chain
+### 1. Central object should be a causal chain
 
-For example, from the patents you've shown:
+For example:
 
 > heavy rainfall → runoff → sediment accumulation → impeded flow → blockage → storm-drain failure
 
@@ -18,9 +16,9 @@ or:
 
 > soil expansion/contraction → terrain movement → pipeline damage → leakage
 
-This is much more informative for your geospatial application than a sentiment score.
+This is much more informative for the geospatial application than a sentiment score.
 
-I'd therefore structure each extracted patent relationship approximately as:
+Structure each extracted patent relationship approximately as:
 
 **Environment variable → causal mechanism → technical system component → failure mode**
 
@@ -34,19 +32,19 @@ For example:
 | landslide            | ground movement | pipeline         | rupture  |
 | flooding             | inundation      | water network    | failure  |
 
-That becomes the bridge between your GIS layers and the patent corpus.
+That becomes the bridge between the GIS layers and the patent corpus.
 
 ---
 
-## 2. Use your vocabulary as a retrieval layer first
+## 2. Use the vocabulary as a retrieval layer first
 
-Your current idea:
+Current idea:
 
 > "Get your vocabulary, take all appearances in documents, take all phrases that contain these phrases..."
 
-is good.
+what if....
 
-But I would make it a **multi-stage extraction pipeline**, rather than immediately throwing the resulting text into LDA/BERTopic.
+We could make it a **multi-stage extraction pipeline**, rather than immediately throwing the resulting text into LDA/BERTopic.
 
 ### Stage A — vocabulary matching
 
@@ -82,7 +80,7 @@ Search the full patent text for:
 
 **D. Technical-system terms**
 
-This fourth vocabulary is extremely important and is currently somewhat implicit in your project.
+This fourth vocabulary is extremely important and is currently somewhat implicit.
 
 Examples:
 
@@ -98,7 +96,7 @@ Examples:
 * sensor
 * reservoir
 
-You need this because otherwise:
+We need this because otherwise:
 
 > "heavy rainfall causes flooding"
 
@@ -149,11 +147,9 @@ Patent F:
 pipeline deformation → monitoring system
 ```
 
-Your objective should be to **join these pieces after extraction**.
+The objective should be to **join these pieces after extraction**.
 
 Don't build one graph per patent
-
-This is the biggest change I'd make to the previous code.
 
 Instead of:
 
@@ -190,7 +186,7 @@ So the graph becomes a **corpus-level graph**.
 
 # 3. Don't just extract the sentence — extract the surrounding context
 
-I would initially take something like:
+Initially take something like:
 
 **±1–3 sentences around each matched term**
 
@@ -218,13 +214,11 @@ Then identify:
 **Technical system:** storm drain conduit
 **Failure:** sediment accumulation / impeded flow
 
-This gives your LLM much more information to work with.
+This gives your model much more information to work with.
 
 ---
 
 # 4. Then perform causal relation extraction
-
-This is probably the most important part of your project.
 
 Instead of merely asking:
 
@@ -256,8 +250,6 @@ And importantly, preserve the **actual patent causal expression**:
 
 rather than immediately replacing it with a generic "causes."
 
-This fits perfectly with your idea of having:
-
 > a very specific connection using the verb used by the patent
 
 and
@@ -266,92 +258,7 @@ and
 
 ---
 
-# 5. I would actually create partial causal graphs
-
-This is a very good idea in your project.
-
-### Level 1 — Abstract causal graph
-
-Normalize it:
-
-> precipitation → hydrological process → sediment deposition → flow restriction → infrastructure failure
-
-This is your **ontology graph**.
-
-That gives you both:
-
-**Patent evidence**
-
-and
-
-**generalizable environmental-risk knowledge.**
-
-I'd create **four retrieval buckets**.
-
-### A. Context → Cause
-
-```text
-VARIABLE + CAUSAL
-```
-
-Examples:
-
-```text
-rainfall → erosion
-temperature → freezing
-soil moisture → soil movement
-```
-
-### B. Cause → Effect
-
-```text
-CAUSAL + FAILURE
-```
-
-Examples:
-
-```text
-erosion → pipeline damage
-flooding → rupture
-freezing → pipe failure
-```
-
-### C. Effect → Technical
-
-```text
-FAILURE + TECHNICAL
-```
-
-Examples:
-
-```text
-pipeline damage → monitoring system
-leakage → acoustic sensor
-rupture → pressure monitoring
-```
-
-### D. Technical → mitigation/solution
-
-```text
-TECHNICAL + CAUSAL
-```
-
-Examples:
-
-```text
-sensor detects leakage
-monitoring system identifies damage
-valve prevents freezing
-```
-
-You can then connect these separately extracted relationships.
-
-
----
-
-# 6. Your "variable list" should become an ontology, not just a keyword list
-
-This is an important evolution of your project.
+# 5. The "variable list" should become an ontology, not just a keyword list
 
 For example:
 
@@ -377,7 +284,7 @@ GROUND MOVEMENT
  └── ground deformation
 ```
 
-And then connect these to your actual GIS variables.
+And then connect these to the actual GIS variables.
 
 For example:
 
@@ -419,9 +326,9 @@ which is much more powerful than simply searching for identical words.
 
 ---
 
-# 7. Your final graph becomes a knowledge graph
+# 6. The final graph becomes a knowledge graph
 
-I'd structure each extracted relation approximately like:
+The structure of the extracted relations can be something like :
 
 ```text
 source
@@ -473,15 +380,9 @@ pipeline damage
 
 even though **no patent ever contained the entire chain**.
 
-# 8. Then use topic modelling — but later
+# 7. Then use topic modelling — as a discovery tool
 
-I **would use BERTopic**, but not as your first analytical method.
-
-Your proposed idea is:
-
-> vocabulary → occurrences → phrases → topic modelling
-
-That's useful, but topic modelling answers a somewhat different question.
+**Would use BERTopic**, but not as first analytical method.
 
 It can tell you:
 
@@ -491,7 +392,7 @@ It does **not reliably tell you:**
 
 > "Does rainfall cause pipeline failure?"
 
-That's why I would use it as a **discovery layer**.
+That's why  we use it as a **discovery layer**.
 
 For example, BERTopic might discover a topic containing:
 
@@ -505,7 +406,7 @@ You can then inspect that topic and potentially discover a new conceptual catego
 
 You can subsequently add those concepts to your ontology.
 
-So I would use:
+Then:
 
 ### Causal extraction = primary analytical method
 
@@ -513,9 +414,7 @@ So I would use:
 
 ---
 
-# 9. Your eventual database could look like this
-
-This is where I think your project becomes really interesting.
+# 8. Eventual database could look like this (IDEAS)
 
 Each patent passage produces a structured record:
 
@@ -551,9 +450,9 @@ That's much more powerful than a simple keyword search.
 
 ---
 
-# 9. Then your H3 hexagon grid becomes the final integration layer
+# 9. Then the H3 hexagon grid becomes the final integration layer
 
-This is where your existing GIS dataset becomes valuable.
+This is where the existing GIS dataset becomes valuable.
 
 Conceptually:
 
@@ -607,51 +506,9 @@ Then you have something resembling a **spatial infrastructure-risk ontology**.
 
 ---
 
-architecture
-
-```text
-                PATENT CORPUS
-                     │
-                     ▼
-             ┌───────────────┐
-             │ #2 RETRIEVAL  │
-             └───────┬───────┘
-                     │
-        ┌────────────┼────────────┐
-        ▼            ▼            ▼
-   Variable      Failure      Technical
-   contexts      contexts      contexts
-        │            │            │
-        └────────────┼────────────┘
-                     ▼
-             #3 CONTEXT WINDOW
-                     │
-                     ▼
-             #4 RELATION EXTRACTION
-                     │
-        ┌────────────┼─────────────┐
-        ▼            ▼             ▼
-      causal       causal       detection/
-      relations    relations    mitigation
-        │            │             │
-        └────────────┼─────────────┘
-                     ▼
-             #5 GLOBAL GRAPH
-                     │
-                     ▼
-           CORPUS CAUSAL NETWORK
-                     │
-                     ▼
-                H3 GRID
-```
-
-The **global graph** is the important part.
-
 ---
 
-## My recommended order
-
-I would therefore change your workflow slightly:
+**Order**
 
 **1. Build vocabulary**
 
@@ -721,15 +578,15 @@ Turn the discovered relationships into a structured taxonomy.
 
 ### One particularly important point
 
-I would **not make the patent the starting point of the final risk score**.
+Patents **should not be the starting point of the final risk score**.
 
 Instead, let patents provide **evidence of plausible mechanisms**.
 
-Your GIS data tells you:
+GIS data tells you:
 
 > *Where and how strongly does the environmental condition exist?*
 
-Your patent corpus tells you:
+Patent corpus tells you:
 
 > *What mechanisms and failure modes could plausibly connect that condition to the technical system?*
 
@@ -737,11 +594,7 @@ So the final conceptual model becomes:
 
 **Spatial exposure × causal mechanism × infrastructure susceptibility → potential failure risk**
 
-That separation will make your methodology much more defensible academically.
-
-And yes: **start pairing the patent full text with your geospatial variables now**, but start with **causal/relation extraction rather than sentiment or topic modelling**. Use BERTopic afterward as a discovery mechanism to find concepts and relationships your manually constructed vocabulary missed.
-
-A useful architecture for your dataset would ultimately be:
+A useful architecture for the dataset would ultimately be:
 
                     ┌────────────────────┐
                     │   PATENT CORPUS    │
