@@ -1,0 +1,27 @@
+"Stazione";"Villore"
+"Codice";"TOS01001011"
+"Comune";"Vicchio"
+"Provincia";"FI"
+"GB [m]";"E";1703880;"N";4871064
+"WGS84 [°]";"Lat";43.964;"Lon";11.541
+"Quota [m]";365,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;7.951613;1.806452
+01/02/2026;12.357143;4.553571
+01/03/2026;14.332258;3.919355
+01/04/2026;20.286667;6.83
+01/05/2026;22.683871;9.809677
+01/06/2026;26.154545;12.536364

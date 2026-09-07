@@ -1,0 +1,56 @@
+"Stazione";"Calenzano"
+"Codice";"TOS01004784"
+"Comune";"Calenzano"
+"Provincia";"FI"
+"GB [m]";"E";1673210;"N";4858692
+"WGS84 [°]";"Lat";43.861;"Lon";11.155
+"Quota [m]";60,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.03871;P
+01/08/2022;2.658065;P
+01/09/2022;3.173333;P
+01/10/2022;0.709677;P
+01/11/2022;3.72;P
+01/12/2022;5.935484;P
+01/01/2023;3.716129;P
+01/02/2023;0.814286;P
+01/03/2023;2.077419;P
+01/04/2023;2.66;P
+01/05/2023;2.245161;P
+01/06/2023;1.806667;P
+01/07/2023;0.677419;P
+01/08/2023;0.516129;P
+01/09/2023;0.133333;P
+01/10/2023;4.645161;P
+01/11/2023;7.153333;P
+01/12/2023;2.174194;P
+01/01/2024;1.664516;P
+01/02/2024;4.786207;P
+01/03/2024;3.225806;P
+01/04/2024;1.84;P
+01/05/2024;3.741935;P
+01/06/2024;2.46;P
+01/07/2024;0.348387;P
+01/08/2024;0.096774;P
+01/09/2024;5.06;P
+01/10/2024;6.735484;P
+01/11/2024;2.013333;P
+01/12/2024;1.948387;P
+01/01/2026;4.729032;P
+01/02/2026;3.85;P
+01/03/2026;1.729032;P
+01/04/2026;0.226667;P
+01/05/2026;9.375;P

@@ -1,0 +1,27 @@
+"Stazione";"Remole"
+"Codice";"TOS11000024"
+"Comune";"Pontassieve"
+"Provincia";"FI"
+"GB [m]";"E";1694137;"N";4852116
+"WGS84 [°]";"Lat";43.796;"Lon";11.413
+"Quota [m]";230,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;10.125806;3.019355
+01/02/2026;13.74;5.924
+01/03/2026;15.996774;5.851613
+01/04/2026;21.78;8.556667
+01/05/2026;24.083871;11.451613
+01/06/2026;27.790909;14.263636

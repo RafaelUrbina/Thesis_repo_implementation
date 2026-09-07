@@ -1,0 +1,56 @@
+"Stazione";"Remole"
+"Codice";"TOS11000024"
+"Comune";"Pontassieve"
+"Provincia";"FI"
+"GB [m]";"E";1694137;"N";4852116
+"WGS84 [°]";"Lat";43.796;"Lon";11.413
+"Quota [m]";230,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.090323;P
+01/08/2022;2.941935;P
+01/09/2022;5.113333;P
+01/10/2022;0.516129;P
+01/11/2022;3.286667;P
+01/12/2022;4.851613;P
+01/01/2023;2.748387;P
+01/02/2023;0.964286;P
+01/03/2023;1.696774;P
+01/04/2023;2.273333;P
+01/05/2023;2.445161;P
+01/06/2023;1.893333;P
+01/07/2023;0.696774;P
+01/08/2023;1.380645;P
+01/09/2023;0.153333;P
+01/10/2023;3.529032;P
+01/11/2023;4.953333;P
+01/12/2023;3.193548;P
+01/01/2024;1.82;P
+01/02/2024;2.962963;P
+01/03/2024;3.993548;P
+01/04/2024;2.253333;P
+01/05/2024;2.380645;P
+01/06/2024;2.2;P
+01/07/2024;0.187097;P
+01/08/2024;0.535484;P
+01/09/2024;3.66;P
+01/10/2024;5.748387;P
+01/11/2024;1.246667;P
+01/12/2024;2.567742;P
+01/01/2026;3.716129;P
+01/02/2026;3.259259;P
+01/03/2026;1.645161;P
+01/04/2026;0.36;P
+01/05/2026;6.09;P

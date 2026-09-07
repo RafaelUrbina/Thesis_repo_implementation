@@ -1,0 +1,56 @@
+"Stazione";"Bibbiana"
+"Codice";"TOS30248000"
+"Comune";"Palazzuolo sul Senio"
+"Provincia";"FI"
+"GB [m]";"E";1700662;"N";4888737
+"WGS84 [°]";"Lat";44.124;"Lon";11.508
+"Quota [m]";785,03
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.496774;P
+01/08/2022;2.509677;P
+01/09/2022;5.253333;P
+01/10/2022;0.787097;P
+01/11/2022;3.106667;P
+01/12/2022;6.477419;P
+01/01/2023;5.16129;P
+01/02/2023;1.7;P
+01/03/2023;2.496774;P
+01/04/2023;1.22;P
+01/05/2023;12.632258;P
+01/06/2023;3.6;P
+01/07/2023;1.174194;P
+01/08/2023;1.109677;P
+01/09/2023;0.893333;P
+01/10/2023;4.432258;P
+01/11/2023;8.913333;P
+01/12/2023;3.703226;P
+01/01/2024;4.36129;P
+01/02/2024;3.951724;P
+01/03/2024;4.490323;P
+01/04/2024;2.4;P
+01/05/2024;2.690323;P
+01/06/2024;5.38;P
+01/07/2024;1.212903;P
+01/08/2024;1.03871;P
+01/09/2024;10.253333;P
+01/10/2024;7.580645;P
+01/11/2024;1.946667;P
+01/12/2024;5.16129;P
+01/01/2026;4.122581;P
+01/02/2026;3.714286;P
+01/03/2026;3.403226;P
+01/04/2026;0.866667;P
+01/05/2026;5.47;P

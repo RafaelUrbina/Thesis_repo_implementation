@@ -1,0 +1,21 @@
+Query:
+-----------------
+(class_ipcr.symbol:(E03B* OR E03F* OR F17D* OR C02F*) OR class_cpc.symbol:("E03B7/00" OR "E03C1/02")) AND date_published:[1950-01-01 TO 2026-01-23] AND jurisdiction:(US OR EP OR JP OR KR) AND lang:(en OR es OR fr OR it OR pt) AND (title:(wastewater* OR water* OR sewage* OR "water pipeline"~5 OR "water transfer"~5 OR aqueduct* OR pipeline* OR watercourse* OR "buried pipe"~5 OR "raised pipe"~5 OR "water distribution"~5 OR "water grid" OR conduit* OR water-main*) OR  abstract:(wastewater* OR "water network"~5 OR "water utility"~5 OR "water supply"~5 OR sewage* OR "water pipeline"~5 OR "water transfer"~5 OR aqueduct* OR pipeline* OR watercourse* OR "buried pipe"~5 OR "raised pipe"~5 OR "water distribution"~5 OR "water grid" OR conduit* OR water-main*)) AND (title:(monitor* OR sensor* OR sensing OR predict* OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR tracer* OR imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR remot* OR classif* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5 OR detect* OR "decision making"~5 OR soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR liquefaction OR "hydraulic gradient" OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR evapotranspiration OR turbidity) OR abstract:(monitor* OR sensor* OR sensing OR predict* OR telemetry OR IoT OR radar OR fiber-optic* OR "fiber optic"~5 OR drone* OR satellite* OR tracer* OR imag* OR wireless OR gateway* OR "ground penetrating" OR "laser scanning" OR remot* OR classif* OR "anomaly detection"~5 OR trend OR "smart water"~5 OR "risk assessment"~5 OR "water management"~5 OR detect* OR "decision making"~5 OR soil OR earth OR ground OR moisture OR seismic* OR earthquake* OR subsidence OR displacement OR deformation OR weather OR rain* OR meteorolog* OR climate OR frost OR freeze* OR "freeze-thaw" OR storm OR flood* OR environ* OR external* OR pressure OR stress OR strain OR vibration* OR leak* OR washout* OR backfill* OR liquefaction OR "hydraulic gradient" OR "flow rate"~3 OR acoustic OR evaporation OR depressurization OR corrosion OR cracking OR strain OR evapotranspiration OR turbidity)) NOT (title:(gas OR oil OR petroleum OR molecular OR faucet* OR shower* OR refrigerator* OR sink* OR household* OR carafe* OR pitcher* OR bottle* OR flask* OR straw* OR countertop* OR "table water" OR "beverage maker" OR "coffee maker" OR "garden hose" OR "backflow box" OR "plumbing fixture" OR spa OR domestic-scale OR bacteria* OR bacill* OR hydrant) OR abstract:(gas OR oil OR petroleum OR molecular OR faucet* OR shower* OR refrigerator* OR sink* OR household* OR carafe* OR pitcher* OR bottle* OR flask* OR straw* OR countertop* OR "table water" OR "beverage maker" OR "coffee maker" OR "garden hose" OR "backflow box" OR "plumbing fixture" OR spa OR domestic-scale OR bacteria* OR bacill* OR hydrant) OR class_ipcr.symbol:("C02F1/003" OR "C02F1/002" OR  "C02F2201/001" OR "C02F1/68" OR "C02F3/32" OR "C02F103/20" OR "C02F101/10") OR class_cpc.symbol:("E03B9/00" OR "E03C" OR "E03D" OR "E03B1/04" OR "E03B11/02"))
+
+Special filters: 
+-----------------
+Document type: Granted patent
+Document family: Group by simple family
+Query tools: Query contains regular expression, Stemmed
+
+Results fetched: 
+-----------------
+4,779
+
+Search source:
+-----------------
+https://www.lens.org
+
+Date of the search:
+-----------------
+23-Jul-2026

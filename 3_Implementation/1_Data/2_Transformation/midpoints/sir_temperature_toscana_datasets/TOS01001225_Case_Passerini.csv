@@ -1,0 +1,27 @@
+"Stazione";"Case Passerini"
+"Codice";"TOS01001225"
+"Comune";"Sesto Fiorentino"
+"Provincia";"FI"
+"GB [m]";"E";1674393;"N";4854154
+"WGS84 [°]";"Lat";43.820;"Lon";11.168
+"Quota [m]";33,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;10.664516;3.458065
+01/02/2026;14.339286;6.982143
+01/03/2026;17.016129;7.019355
+01/04/2026;22.22;9.976667
+01/05/2026;24.545161;13.351613
+01/06/2026;27.554545;16.681818

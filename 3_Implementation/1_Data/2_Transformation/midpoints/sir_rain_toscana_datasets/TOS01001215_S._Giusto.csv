@@ -1,0 +1,56 @@
+"Stazione";"S. Giusto"
+"Codice";"TOS01001215"
+"Comune";"Scandicci"
+"Provincia";"FI"
+"GB [m]";"E";1676623;"N";4847566
+"WGS84 [°]";"Lat";43.760;"Lon";11.194
+"Quota [m]";42,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.109677;P
+01/08/2022;3.612903;P
+01/09/2022;4.126667;P
+01/10/2022;0.548387;P
+01/11/2022;3.593333;P
+01/12/2022;4.625806;P
+01/01/2023;2.658065;P
+01/02/2023;0.85;P
+01/03/2023;1.63871;P
+01/04/2023;1.76;P
+01/05/2023;2.696774;P
+01/06/2023;2.3;P
+01/07/2023;1.012903;P
+01/08/2023;0.76129;P
+01/09/2023;0.053333;P
+01/10/2023;3.587097;P
+01/11/2023;4.393333;P
+01/12/2023;1.987097;P
+01/01/2024;1.574194;P
+01/02/2024;3.282759;P
+01/03/2024;3.2;P
+01/04/2024;2.086667;P
+01/05/2024;3.180645;P
+01/06/2024;1.9;P
+01/07/2024;0.445161;P
+01/08/2024;0.083871;P
+01/09/2024;3.046667;P
+01/10/2024;6.283871;P
+01/11/2024;1.266667;P
+01/12/2024;1.993548;P
+01/01/2026;3.387097;P
+01/02/2026;3.085714;P
+01/03/2026;1.622581;P
+01/04/2026;0.286667;P
+01/05/2026;7.275;P

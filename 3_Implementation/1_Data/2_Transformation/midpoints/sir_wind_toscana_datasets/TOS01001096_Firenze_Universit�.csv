@@ -1,0 +1,47 @@
+"Stazione";"Firenze Università"
+"Codice";"TOS01001096"
+"Comune";"Firenze"
+"Provincia";"FI"
+"GB [m]";"E";1681124;"N";4852004
+"WGS84 [°]";"Lat";43.799;"Lon";11.251
+"Quota [m]";84,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;1.122581;SO;6.93871
+01/06/2024;0.973333;SO;6.563333
+01/07/2024;1.187097;SO;6.512903
+01/08/2024;1.209677;SO;7.654839
+01/09/2024;1.27;E;7.21
+01/10/2024;0.796774;NE;5.419355
+01/11/2024;1.306667;N;6.256667
+01/12/2024;1.783871;N;7.622581
+01/01/2025;2.154839;NE;8.348387
+01/02/2025;2.028571;NE;8.071429
+01/03/2025;1.854839;NE;8.258065
+01/04/2025;1.576667;NE;7.553333
+01/05/2025;1.319355;SO;7.093548
+01/06/2025;1.463333;SO;7.383333
+01/07/2025;1.432258;SO;8.080645
+01/08/2025;1.448387;S;7.445161
+01/09/2025;1.063333;S;5.813333
+01/10/2025;1.467742;N;6.796774
+01/11/2025;1.413333;S;6.353333
+01/12/2025;1.509677;S;5.945161
+01/01/2026;2.019355;S;7.46129
+01/02/2026;1.171429;E;5.339286
+01/03/2026;1.909677;NE;8.425806
+01/04/2026;1.956667;N;8.533333
+01/05/2026;1.46129;SO;7.583871
+01/06/2026;1.227273;SO;6.672727

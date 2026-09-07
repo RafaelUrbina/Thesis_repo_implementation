@@ -1,0 +1,62 @@
+DONE TASKS
+(DONE) Filtering all OSM data to prov FI
+(DONE) Finish checking the validity
+(DONE) Fix the broken geometries by adding the validated ones only
+(DONE) Apply the suggestions for the query 
+
+DONE TASKS
+(DONE) Save the rasters as TIFF
+(DONE) Learn how to load the geopackages on python
+(DONE) Create the python NB documentation file
+
+NEXT THINGS
+- (DONE) Separate fetched data in cause and effects
+- (DONE) Separate sub-queries: TECHNOLOGIES -> iot,satellite,droni,traccianti suolo,monitoring device, leak detection. -- IMPIANTI -> ambiental, temperature, climate, meteo, terremoti, rain, storm, ice, flooding, see the precisions
+- (DONE) Check literature and subquery on day cicle leaks and preassure change and evaporation fluctuactions (They exist but they use sensors)
+- (PENDING)Check water intensive industries in zones, maybe open data or OSM
+- (DONE)Check wild fires dataset from fantoni (EFFI)
+- (DONE)Check temperature dataset SIR toscana
+- (DONE)Check wind gust dataset SIR toscana
+- (DONE)Check water levels dataset SIR toscana
+- (DONE)Check  pendolarismo 2021 ISTAT
+- (DONE)Check Autorità di Bacino distrettuale dell'Appennino settentrionale Sentinel1 soil displacement points
+- (DONE)Check ARERA for data regarding toscana and firenze
+- (DONE)Spatial statistics in Qgis (correlation y clustering)
+- (NEXT) Start the documentation (racount from the start) for the thesis workbook
+- (DONE) Keep the unique ID, the geometry column, and the specific risk variables
+- (DONE) Drop administrative clutter, internal GIS creation timestamps, and redundant names
+- Set or create the H3-10 for (Separately)
+
+------------------------
+
+NOTES:
+Evaporation leak detection and preassure change
+https://onlinelibrary.wiley.com/doi/abs/10.1002/stc.2691?casa_token=StXIAlu5BxYAAAAA:Cf38zG3QkD7qbXbr3_VbP-bT-P-eWxWB8MhuwI-x5j3FS307B7FTyyx7mJBBaMyT4FNxnttD_p3KDZA
+
+Uchit Sangroula1, Victor Viñas1,2, Michael Odhiambo3 & Thomas J. R. Pettersson1:
+
+    - This section spans 13.5 km, with pipe diameters ranging from 25 mm to 200 mm.
+    - The annual water supply volume is approximately 50,000 m³, with losses due to pipe breaks and leakages
+        estimated at 0.054 l/s/km, representing 27% of total water production.
+    - Physical pipe information and break records provided by the municipality were spatially matched using
+        geoprocessing.
+    - The ‘Historical breaks’ variable was used to construct the ‘target’ variable for the model, enabling an assessment
+        f its predictive performance
+    - The decision threshold for RF (0.36) was chosen using training-only
+        OOF predictions to meet a minimum precision of 0.50 and was then applied unchanged to the case study section.
+        Despite the limited test set size, the RF model showed reasonable performance in classifying failure-prone
+        pipes. The model was able to identify 60% of the actual pipes that suffered a break during the study period over
+        the past 20 years. Similarly, the model was able to classify 96% of the pipes not experiencing a break. The model
+        precision was 54%, accuracy 93%, and the resulting F1-score was 57%.
+
+S. Radini, J. González-Camejo *, C. Andreola, A.L. Eusebi, F. Fatone
+    
+    - The agricultural sector has the largest water use,
+        accounting for approximately 70 % of the total extracted water [3].
+    -  risk quotients (RQ) represent the
+        ratio between the concentration at the endpoint and the respective
+        tolerable concentration or dose. An RQ > 1 indicates that, based on
+        current knowledge, risk is above the acceptable levels, hence reduction
+        measures should be implemented. However, an RQ < 0.1 is often
+        defined as areas of negligible risk [28]. 
+

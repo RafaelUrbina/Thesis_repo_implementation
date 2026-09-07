@@ -1,0 +1,990 @@
+accumulated sediment
+active leaks
+alligatoring
+backing up
+beach marks
+blockage
+blocked
+blooming
+blushing
+breakage
+breakdown potential
+brittle fracture
+buckling
+burst
+bypassing
+catastrophic rupture
+caustic cracking
+caustic embrittlement
+cavitation
+cavitation damage
+cavitation corrosion
+cavitation erosion
+chalking
+checking
+chevron pattern
+chipping
+chloride stress 
+corrosion cracking
+cleavage fracture
+coating defect
+coating failure
+cold cracking
+cold lap
+cold shut
+collapse
+construction and material defects
+contact corrosion
+contact with the pipeline
+contaminants
+contamination
+corrosion
+corrosion failure
+corrosion fatigue
+cost prohibitive
+cracking
+crazing
+creep
+crevice corrosion
+damage resulting
+damage to in ground pipelines
+dealloying
+declining snow fall
+deformation
+degradation
+degradation mechanism
+delamination
+delayed cracking
+delayed failure
+deposit corrosion
+deposited materials
+deposits
+dezincification
+difficult to access
+dirty water
+disbondment
+discontinuity
+ductile fracture
+electrical interference
+electrolytic corrosion
+embrittlement
+environmental cracking
+environmental damage
+environmental damage pipeline
+environmental stress
+environmentally assisted cracking
+equipment failure
+erosion
+excavation damage
+exfoliation corrosion
+external corrosion
+external damage
+external interference
+fail under extreme cold conditions
+failure mechanism
+fatigue
+fatigue failure
+filiform corrosion
+first/second party
+fisheye
+flooding
+flooding pipeline damage
+fouling
+fracture
+freezing
+freezing environmental conditions
+fretting corrosion
+frost heave
+functional failure
+galvanic corrosion
+general corrosion
+girth weld defect
+grain dropping
+graphitic corrosion
+graphitization
+ground movement
+high temperature hydrogen attack
+hot corrosion
+hydrogen embrittlement
+hydrogen stress cracking
+hydrogen-induced cracking
+impeded flow
+impeding flow
+impingement corrosion
+inaccessible
+inclusion
+ineffective
+integrity threat
+intentional hit
+intercrystalline corrosion
+interdendritic corrosion
+intergranular corrosion
+intergranular stress corrosion cracking
+internal corrosion
+internal oxidation
+iron rot
+lamellar corrosion
+landscape changes
+leak
+leak detection
+leakage
+leakage risk
+leakage risk index
+leaking pipelines
+leaks
+lifting
+liquid metal cracking
+localized corrosion
+loss of containment
+macro cell corrosion
+manufacturing defect
+material failure
+metal dusting
+metal loss
+microbiologically influenced corrosion
+mill scale
+mud zone damage
+natural force damage
+not readily accessible
+obstacles
+operational error
+orange peel
+overwhelmed
+oxidation
+parting
+peeling
+persistent problem
+physical failure modes
+pinhole
+pipe failure
+pipeline damage
+pipeline disaster
+pipeline explosion
+pipeline failure
+pipeline rupture
+pipeline sabotage
+pit
+pitting
+plastic deformation
+poultice corrosion
+practical and technical challenges
+pressure failure
+puncture
+reported leaks
+residual stress
+rouge
+runoff
+rupture
+rust
+rust bloom
+sag
+scaling
+sediment laden water
+selective dissolution
+selective leaching
+sensitization
+sewage and stormwater discharge
+shielding
+significant losses
+soil movement pipeline
+spalling
+stray current corrosion
+stress corrosion cracking
+structural damage
+sub surface leaks
+subsidence
+subsurface corrosion
+such damage
+sulfidation
+sulfide stress cracking
+suspended solids
+tarnish
+texture change
+thermogalvanic corrosion
+third-party activity
+third-party damage
+third-party interference
+train disaster
+tubercle
+tuberculation
+undesirable wear and tear
+untreated water
+vegetation intrusion
+void
+water loss
+water network failure
+wear
+weld decay
+white rust
+wrinkling
+abrasive wear
+anoxic corrosion
+arc burn
+axial cracking
+biological fouling (biofouling)
+blister
+blistering
+cathodic disbondment
+collapse under negative pressure
+component fatigue
+crevice attack
+crushing
+debonding
+dents
+dent 
+gouges
+desquamation
+fatigue spalling
+field weld defect
+flaking
+fretting wear
+galling
+gouge
+hydrogen blistering
+hydrogeological instability
+joint separation
+mechanical indentation
+micro cracking
+missing coating
+over pressurization
+pitting perforation
+slope instability
+stray current interference
+stress concentration
+thermal fatigue
+wall thinning
+weld porosity
+yield failure
+acid induced cracking
+atmospheric corrosion
+axial stress rupture
+biological degradation
+cave in
+chemical attack
+coating disbondment
+coating holiday
+cold bend deformation
+collapse under external pressure
+construction strike
+cross contamination
+cyclical thermal stress
+elastic instability
+embrittlement failure
+environmental degradation
+erosion corrosion
+field joint failure
+flow induced vibration
+flow restriction
+freeze thaw damage
+localized wall loss
+material degradation
+mechanical fatigue
+microbially induced degradation
+overpressure event
+oxygen pitting
+pipe ovalization
+pressure surge damage
+seal degradation
+shear failure
+slope movement
+soil liquefaction
+soil settlement
+structural instability
+surface score
+thermal degradation
+through wall defect
+valve failure
+water hammer damage
+abrasive wear
+accretion
+accumulated sediment
+accumulated siltation
+acid induced cracking
+acidification degradation
+active leaks
+adhesion failure
+adhesive wear
+adjacent excavation impact
+advanced pitting
+aerobic corrosion
+aggressive soil corrosion
+alligatoring
+alternate wetting and drying
+anchor drag damage
+anoxic corrosion
+anodic dissolution
+anthropic disturbance
+antifouling coating failure
+anti-corrosion shield failure
+apparent wall thinning
+arc burn
+asphaltic coating degradation
+asymmetrical loading
+atmospheric oxidation
+atmospheric corrosion
+axial cracking
+axial force deformation
+axial stress rupture
+backfill damage
+backfill displacement
+backing up
+bacterial corrosion
+barrier coating degradation
+beach marks
+bending stress
+bentonite displacement
+bio-deterioration
+bio-fouling restriction
+biofilm accumulation
+biofilm formation
+biological degradation
+biological fouling (biofouling)
+bituminous disbondment
+blast wave impact
+blister
+blistering
+blockage
+blocked
+blooming
+blushing
+baffle degradation
+bore collapse
+boundary layer erosion
+breakage
+breakdown potential
+brittle fracture
+brushing damage
+buckling
+buckling propagation
+buffeting vibration
+buoyancy displacement
+buoyancy lift
+burst
+burst pressure threshold failure
+bypassing
+calcification
+canalization displacement
+capillary condensation corrosion
+catastrophic rupture
+cathode disbonding
+cathodic disbondment
+cathodic protection interference
+caustic cracking
+caustic embrittlement
+cavitation
+cavitation corrosion
+cavitation damage
+cavitation erosion
+cavitation pitting
+cell action corrosion
+chalking
+charring
+checking
+chemical attack
+chemical degradation
+chevron pattern
+chipping
+chloride stress corrosion cracking
+cleavage fracture
+coalescence of micro-voids
+coating defect
+coating degradation
+coating disbondment
+coating delamination
+coating failure
+coating holiday
+coating holiday perforation
+cold bend deformation
+cold cracking
+cold joint separation
+cold lap
+cold shut
+collapse
+collapse under external pressure
+collapse under negative pressure
+column separation
+component fatigue
+compressive yield
+construction damage
+construction strike
+construction and material defects
+contact corrosion
+contact with the pipeline
+contaminants
+contamination
+corrosion
+corrosion fatigue
+corrosion failure
+cost prohibitive
+crack initiation
+crack propagation
+cracking
+crazing
+creep
+creep rupture
+crevice attack
+crevice corrosion
+cross contamination
+crushing
+cyclic loading fatigue
+cyclical thermal stress
+damage resulting
+damage to in ground pipelines
+daubing defect
+dealloying
+debris accumulation
+debonding
+decay
+declining snow fall
+deep pitting
+deformation
+degradation
+degradation mechanism
+delamination
+delayed cracking
+delayed failure
+denitritification corrosion
+densification failure
+dent
+dent and gouge combination
+dent deformation
+dents
+deposit corrosion
+deposited materials
+deposits
+depth of cover reduction
+desalination scaling
+desquamation
+dezincification
+diffusional degradation
+difficult to access
+dirty water
+disbondment
+discontinuity
+disbonding
+divergent fracture
+docking impact damage
+dormant crack activation
+double-submerged arc weld defect
+downward load stress
+dredging hit
+drilling strike
+dry rot
+ductile fracture
+ductile-to-brittle transition failure
+dynamic fatigue
+dynamic load deformation
+earth movement
+earthquake displacement
+eccentric compression
+efflorescence
+elastic instability
+electrical interference
+electrolysis
+electrolytic corrosion
+electromechanical degradation
+electrogalvanic action
+embrittlement
+embrittlement failure
+environmental cracking
+environmental damage
+environmental damage pipeline
+environmental degradation
+environmental stress
+environmental stress cracking
+environmentally assisted cracking
+equipment failure
+erosion
+erosion corrosion
+excessive deflection
+excavation damage
+excavation strike
+exfoliation corrosion
+expanding soil strain
+expansion joint failure
+expansion stress
+explosive rupture
+external corrosion
+external damage
+external impact
+external interference
+extreme cold failure
+extrusion damage
+fabrication defect
+fail under extreme cold conditions
+failure mechanism
+fused joint separation
+fatigue
+fatigue crack growth
+fatigue failure
+fatigue spalling
+fault displacement
+fibrous matrix degradation
+field joint failure
+field weld defect
+filiform corrosion
+film breakdown
+film rupture
+filter cake blockage
+first/second party
+fisheye
+flaking
+flange separation
+flexural failure
+floating line strain
+flooding
+flooding pipeline damage
+flow restriction
+flow-induced vibration
+fluid transient shock
+flush degradation
+flushing failure
+foam insulation collapse
+foreign object impact
+fouling
+fracture
+fracture mechanics failure
+fracture propagation
+freezing
+freezing environmental conditions
+fretting corrosion
+fretting wear
+frost heave
+frost penetration
+functional failure
+galling
+galvanic action
+galvanic corrosion
+gas pocket blockage
+gaseous cavitation
+gasket degradation
+gasket extrusion
+general corrosion
+general wall thinning
+geohazard displacement
+geotechnical instability
+geothermal stress
+girth weld defect
+girth weld cracking
+glacial action damage
+gouge
+gouges
+grain boundary attack
+grain dropping
+graphitic corrosion
+graphitization
+gravitational settlement
+ground movement
+ground subsidence
+ground motion damage
+ground freezing damage
+ground heave
+gutting
+hardness reduction
+heat-affected zone cracking
+heavy metal contamination
+heave damage
+heterogeneous oxidation
+high temperature hydrogen attack
+high-cycle fatigue
+hoop stress failure
+hot corrosion
+hot spot formation
+hydraulic fracture
+hydraulic jump erosion
+hydraulic shock
+hydraulic surge damage
+hydro-abrasion
+hydro-jetting damage
+hydro-locking
+hydrogen blistering
+hydrogen embrittlement
+hydrogen stress cracking
+hydrogen-induced cracking
+hydrogeological instability
+hydrodynamic drag displacement
+hydrodynamic lift
+hydrolysis
+hydrostatic overload
+hydrostatic rupture
+hygrothermal degradation
+ice lens formation
+ice scour
+immersion degradation
+impeded flow
+impeding flow
+impingement attack
+impingement corrosion
+imperfection
+inaccessible
+inadequate depth cover
+inadequate sleeve fit
+inclusion
+incrustation
+induced current corrosion
+industrial effluent degradation
+ineffective
+infill degradation
+inhibitor depletion
+inhibitor failure
+injection point corrosion
+inland erosion
+inner diameter erosion
+in-service welding defect
+inside-out cracking
+integrity threat
+intentional hit
+intercrystalline corrosion
+interdendritic corrosion
+interface disbondment
+interfacial shear
+interference current
+intergranular corrosion
+intergranular stress corrosion cracking
+intergranular fracture
+internal corrosion
+internal erosion
+internal explosion
+internal oxidation
+internal pressure spike
+interstitial embrittlement
+intrusive root damage
+ion exchange degradation
+iron rot
+jetting damage
+joint dislodgement
+joint leak
+joint separation
+lack of fusion
+lack of penetration
+lamellar corrosion
+lamellar tearing
+landscape changes
+lateral pipe displacement
+lateral spread
+leaching
+leak
+leak detection
+leakage
+leakage risk
+leakage risk index
+leaking pipelines
+leaks
+lift-off
+lifting
+linear indication
+liquid metal cracking
+liquid metal embrittlement
+localized corrosion
+localized wall loss
+loss of bonding
+loss of containment
+loss of cover
+low-cycle fatigue
+macro cell corrosion
+macro-fouling
+macro-pitting
+manufacturing defect
+marine borer attack
+marine growth accumulation
+material degradation
+material failure
+matrix cracking
+mechanical damage
+mechanical fatigue
+mechanical hit
+mechanical indentation
+membrane rupture
+metal dusting
+metal loss
+micro cracking
+micro-fouling
+microbial attack
+microbially induced degradation
+microbiologically influenced corrosion
+micro-void coalescence
+microstructural degradation
+micro-void formation
+migration of fine particles
+mill scale
+missing coating
+moisture ingress
+mold growth
+mud zone damage
+mudslide damage
+narrow crevice corrosion
+native soil corrosion
+natural force damage
+negative pressure collapse
+neutral axis shift
+nitriding degradation
+node failure
+non-metallic inclusion
+notch effect
+notched fatigue
+not readily accessible
+obstacles
+offshore trench collapse
+oil-canning
+one-sided corrosion
+open seam weld
+opening mode fracture
+operational error
+operational overload
+orange peel
+organic fouling
+out-of-roundness
+outfall erosion
+overpressurization
+overpressure event
+overstraining
+overtightening failure
+overwhelmed
+oxidation
+oxidation scale
+oxygen concentration cell
+oxygen depletion
+oxygen pitting
+paint disbondment
+parting
+passive film breakdown
+pavement settlement
+peeling
+penetration flaw
+permafrost thaw settlement
+persistent problem
+physical failure modes
+pigging damage
+pigment degradation
+pillow damage
+pinhole
+pinhole leak
+pinhole perforation
+pipe ovalization
+pipe failure
+pipeline damage
+pipeline disaster
+pipeline explosion
+pipeline failure
+pipeline rupture
+pipeline sabotage
+pitting
+pitting corrosion
+pitting perforation
+pit
+plastic deformation
+plastic flow
+plastic instability
+plugging
+pocket formation
+polymeric degradation
+pore water pressure buildup
+porosity
+post-weld heat treatment defect
+poultice corrosion
+practical and technical challenges
+pressure failure
+pressure surge damage
+pressure transient
+preventable leak
+propagation crack
+protective film removal
+protective layer degradation
+puckering
+puncture
+quick sand action
+radial cracking
+radiation degradation
+rapidity surge
+raw water degradation
+reactive aggregate attack
+reaming damage
+reported leaks
+residual stress
+residual stress cracking
+restraint failure
+reverse flow damage
+riverbed scour
+rock strike
+rockfall damage
+root intrusion
+rouge
+roughness increase
+rubbing wear
+runoff
+rupture
+rust
+rust bloom
+rust tuberculation
+sacrificial anode exhaustion
+sag
+sand jetting wear
+sand production damage
+saponification
+scaling
+scour
+scour depth expansion
+scouring
+scratches
+screen blinding
+seal degradation
+sea-floor gouging
+sea-floor instability
+sediment accumulation
+sediment laden water
+seismic fault rupture
+seismic ground motion
+seismic liquefaction
+selective dissolution
+selective leaching
+sensitization
+sewage and stormwater discharge
+shallow cover damage
+shear fracture
+shear failure
+shearing force
+shielding
+shielding corrosion
+shrinkage defect
+shrinkage cracking
+silt accumulation
+siltation
+sleeve failure
+sleeve movement
+sloughing
+slope instability
+slope movement
+slurry abrasion
+socket weld failure
+softening
+soil dynamic movement
+soil liquefaction
+soil movement pipeline
+soil settlement
+soil heave
+soil-structure interaction failure
+soil-to-air interface corrosion
+solar radiation degradation
+solvent swelling
+soot deposition
+spalling
+spattering defect
+spiral weld flaw
+splash zone corrosion
+spontaneous rupture
+stagnant water corrosion
+stray current corrosion
+stray current interference
+stress concentration
+stress corrosion cracking
+stress intensity factor failure
+stress relaxation
+stress-oriented hydrogen-induced cracking
+structural damage
+structural instability
+stray current attack
+sub surface leaks
+sub-sea slide impact
+sub-surface corrosion
+sub-surface fracture
+sub-surface void
+subsidence
+such damage
+sulfidization
+sulfide stress cracking
+sulfur embrittlement
+surface score
+surface tearing
+suspended solids
+suspended sediment wear
+sweating
+swelling
+sympathetic vibration
+synthetic degradation
+tarnish
+tensile tear
+tensile yield failure
+thermal aging
+thermal degradation
+thermal expansion stress
+thermal fatigue
+thermal shock
+thermal warpage
+texture change
+thermogalvanic corrosion
+third-party activity
+third-party damage
+third-party interference
+through-wall defect
+through-wall leak
+through-wall rupture
+tidal wave displacement
+tie-in weld defect
+torsional buckling
+torsional fatigue
+torsional shear
+train disaster
+transcrystalline cracking
+transgranular stress corrosion cracking
+transient shock
+transition zone attack
+transportation damage
+trench collapse
+trench backfill settlement
+tribo-corrosion
+tubercle
+tuberculation
+turn failure
+twisted line deformation
+ultrasonic fatigue
+unanchored line displacement
+uncontrolled displacement
+under-deposit corrosion
+underground explosion
+under-water landsliding
+under-welding defect
+undesirable wear and tear
+unbonded coating
+under-film corrosion
+unintentional hit
+unrestrained expansion
+untreated water
+vacuum collapse
+valve failure
+vapor lock
+vascular degradation
+vegetation intrusion
+vegetation root damage
+vibration fatigue
+vibro-impact
+viscous flow deformation
+void
+void formation
+volumetric wall loss
+vortex-induced vibration
+wall thinning
+wall collapse
+wall gouging
+wall loss
+washout
+washout cavitation
+water hammer damage
+water loss
+water network failure
+wave action fatigue
+wear
+weld decay
+weld fusion defect
+weld mis-alignment
+weld porosity
+weld root corrosion
+wetting-drying cycle
+white rust
+wind-induced fatigue
+wire draw erosion
+wrought defect
+wrinkling
+wrinkling instability
+yield failure
+yield point strain
+yield strength degradation

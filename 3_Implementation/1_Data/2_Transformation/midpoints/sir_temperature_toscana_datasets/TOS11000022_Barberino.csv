@@ -1,0 +1,27 @@
+"Stazione";"Barberino"
+"Codice";"TOS11000022"
+"Comune";"Barberino Tavarnelle"
+"Provincia";"FI"
+"GB [m]";"E";1680752;"N";4820091
+"WGS84 [°]";"Lat";43.512;"Lon";11.236
+"Quota [m]";430,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;9.006452;4.090323
+01/02/2026;11.942857;6.721429
+01/03/2026;13.96129;6.841935
+01/04/2026;19.93;10.93
+01/05/2026;22.012903;13.545161
+01/06/2026;26.036364;16.436364

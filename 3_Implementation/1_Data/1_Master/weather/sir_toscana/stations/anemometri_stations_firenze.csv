@@ -1,0 +1,21 @@
+fid,id_stazion,nome,comune,provincia,quota,gc,zona
+2,TOS01000926,Le Croci (Barberino),Barberino di Mugello,FI,388,GCVS,M
+3,TOS01001096,Firenze Universit�,Firenze,FI,84,GCVS,A3
+5,TOS01001215,S. Giusto,Scandicci,FI,42,GCVS,A3
+6,TOS01001225,Case Passerini,Sesto Fiorentino,FI,33,GCVS,B
+8,TOS01001445,Poggio Aglione,Gambassi Terme,FI,441,GCVS,A5
+16,TOS01004967,Certaldo,Certaldo,FI,65,GCVS,A5
+17,TOS01004971,Castelfiorentino,Castelfiorentino,FI,50,GCVS,A5
+38,TOS03001001,Monte Giovi,Vicchio,FI,960,GCVS,M
+39,TOS03001099,Firenze Giardino di Boboli,Firenze,FI,112,GCVS,A3
+40,TOS03001135,Poggio alla Croce,Figline e Incisa Valdarno,FI,500,GCVS,A3
+80,TOS11000017,Borgo S. Lorenzo 2,Borgo San Lorenzo,FI,280,GCVS,M
+83,TOS11000021,Tavarnelle,Barberino Tavarnelle,FI,374,GCVS,A3
+84,TOS11000022,Barberino,Barberino Tavarnelle,FI,430,GCVS,A5
+85,TOS11000023,Lamole,Greve in Chianti,FI,536,GCVS,A3
+108,TOS11000057,Sambuca,San Casciano in Val di Pesa,FI,325,GCVS,A3
+116,TOS11000071,Cerreto Guidi,Cerreto Guidi,FI,70,GCVS,A4
+117,TOS11000073,Greve in Chianti,Greve in Chianti,FI,254,GCVS,A3
+133,TOS11000108,Giogo,Firenzuola,FI,880,GCVS,R2
+138,TOS11000504,Monteboro,Empoli,FI,90,GCVS,A4
+139,TOS11000505,Casa Sartori,Montespertoli,FI,198,GCVS,A5

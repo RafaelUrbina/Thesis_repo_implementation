@@ -1,0 +1,47 @@
+"Stazione";"Monte Giovi"
+"Codice";"TOS03001001"
+"Comune";"Vicchio"
+"Provincia";"FI"
+"GB [m]";"E";1696666;"N";4861124
+"WGS84 [°]";"Lat";43.877;"Lon";11.448
+"Quota [m]";960,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Vel Med [m/s]";"Dir Med";"Vel Max [m/s]"
+01/05/2024;3.064516;SO;8.974194
+01/06/2024;3.03;SO;8.446667
+01/07/2024;1.803226;SO;5.935484
+01/08/2024;1.506452;N;6.551613
+01/09/2024;2.76;SO;8.55
+01/10/2024;3.141935;N;8.570968
+01/11/2024;3.396667;N;9.72
+01/12/2024;2.955172;N;9.234483
+01/01/2025;5.755172;SO;13.572414
+01/02/2025;2.917857;N;10.6
+01/03/2025;3.73871;N;10.454839
+01/04/2025;2.976667;SO;8.64
+01/05/2025;2.516129;SO;7.629032
+01/06/2025;2.333333;SO;6.893333
+01/07/2025;2.477419;SO;8.396774
+01/08/2025;1.964516;SO;6.66129
+01/09/2025;2.63;SO;7.43
+01/10/2025;3.367742;N;9.180645
+01/11/2025;3.386667;SO;9.19
+01/12/2025;2.36129;N;6.416129
+01/01/2026;5.16129;SO;17.570968
+01/02/2026;3.385714;SO;10.357143
+01/03/2026;2.248387;N;8.258065
+01/04/2026;2.57;SO;7.48
+01/05/2026;2.619355;SO;8.56129
+01/06/2026;2.836364;SO;9.445455

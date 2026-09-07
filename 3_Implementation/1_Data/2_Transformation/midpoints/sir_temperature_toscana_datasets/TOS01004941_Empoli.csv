@@ -1,0 +1,27 @@
+"Stazione";"Empoli"
+"Codice";"TOS01004941"
+"Comune";"Empoli"
+"Provincia";"FI"
+"GB [m]";"E";1656789;"N";4843079
+"WGS84 [°]";"Lat";43.724;"Lon";10.946
+"Quota [m]";25,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;11.077419;4.103226
+01/02/2026;14.453571;6.707143
+01/03/2026;17.054839;7.03871
+01/04/2026;21.973333;9.87
+01/05/2026;24.309677;12.954839
+01/06/2026;27.209091;16.427273

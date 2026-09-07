@@ -1,0 +1,27 @@
+"Stazione";"Poggio alla Croce"
+"Codice";"TOS03001135"
+"Comune";"Figline e Incisa Valdarno"
+"Provincia";"FI"
+"GB [m]";"E";1692971;"N";4835808
+"WGS84 [°]";"Lat";43.650;"Lon";11.392
+"Quota [m]";500,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;7.264516;2.545161
+01/02/2026;10.367857;5.439286
+01/03/2026;12.812903;5.970968
+01/04/2026;18.746667;9.96
+01/05/2026;21.122581;12.616129
+01/06/2026;25.255556;15.544444

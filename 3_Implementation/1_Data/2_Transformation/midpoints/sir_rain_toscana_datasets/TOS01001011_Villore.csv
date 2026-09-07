@@ -1,0 +1,56 @@
+"Stazione";"Villore"
+"Codice";"TOS01001011"
+"Comune";"Vicchio"
+"Provincia";"FI"
+"GB [m]";"E";1703880;"N";4871064
+"WGS84 [°]";"Lat";43.964;"Lon";11.541
+"Quota [m]";365,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.619355;P
+01/08/2022;1.780645;P
+01/09/2022;4.173333;P
+01/10/2022;0.735484;P
+01/11/2022;4.073333;P
+01/12/2022;7.576923;P
+01/01/2023;6.451613;P
+01/02/2023;2.414286;P
+01/03/2023;2.541935;P
+01/04/2023;3.0;P
+01/05/2023;8.167742;P
+01/06/2023;2.053333;P
+01/07/2023;0.632258;P
+01/08/2023;0.909677;P
+01/09/2023;0.946667;P
+01/10/2023;3.922581;P
+01/11/2023;7.006667;P
+01/12/2023;4.329032;P
+01/01/2024;3.129032;P
+01/02/2024;3.641379;P
+01/03/2024;4.716129;P
+01/04/2024;3.253333;P
+01/05/2024;4.387097;P
+01/06/2024;4.226667;P
+01/07/2024;0.2;P
+01/08/2024;0.154839;P
+01/09/2024;5.946667;P
+01/10/2024;6.980645;P
+01/11/2024;3.36;P
+01/12/2024;4.051613;P
+01/01/2026;4.167742;P
+01/02/2026;3.957143;P
+01/03/2026;3.929032;P
+01/04/2026;0.736667;P
+01/05/2026;7.83;P

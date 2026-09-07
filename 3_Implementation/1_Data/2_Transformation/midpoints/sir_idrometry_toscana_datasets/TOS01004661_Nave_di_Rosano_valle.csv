@@ -1,0 +1,58 @@
+"Stazione";"Nave di Rosano valle"
+"Codice";"TOS01004661"
+"Comune";"Bagno a Ripoli"
+"Provincia";"FI"
+"GB [m]";"E";1694301;"N";4849654
+"WGS84 [°]";"Lat";43.774;"Lon";11.414
+"Quota [m]";0,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;1.635333;V
+01/07/2023;1.263871;V
+01/08/2023;1.182258;V
+01/09/2023;1.186;V
+01/10/2023;1.221935;V
+01/11/2023;1.908333;V
+01/12/2023;1.907742;V
+01/01/2024;1.777097;V
+01/02/2024;1.902759;V
+01/03/2024;2.338065;V
+01/04/2024;1.792667;V
+01/05/2024;1.657097;V
+01/06/2024;1.368333;V
+01/07/2024;1.223548;V
+01/08/2024;1.188065;V
+01/09/2024;1.272333;V
+01/10/2024;1.898065;V
+01/11/2024;1.541;V
+01/12/2024;1.872581;V
+01/01/2025;1.896129;V
+01/02/2025;2.285714;V
+01/03/2025;2.549677;V
+01/04/2025;2.080667;V
+01/05/2025;1.803871;V
+01/06/2025;1.299;V
+01/07/2025;1.204194;V
+01/08/2025;1.210323;V
+01/09/2025;1.236667;V
+01/10/2025;1.291935;V
+01/11/2025;1.647;V
+01/12/2025;1.577419;V
+01/01/2026;2.065484;P
+01/02/2026;2.532143;P
+01/03/2026;1.745484;P
+01/04/2026;1.566667;P
+01/05/2026;1.613548;P
+01/06/2026;1.391818;P

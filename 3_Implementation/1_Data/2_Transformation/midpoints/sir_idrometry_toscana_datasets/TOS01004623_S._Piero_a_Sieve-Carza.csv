@@ -1,0 +1,58 @@
+"Stazione";"S. Piero a Sieve-Carza"
+"Codice";"TOS01004623"
+"Comune";"Scarperia e San Piero "
+"Provincia";"FI"
+"GB [m]";"E";1686352;"N";4869963
+"WGS84 [°]";"Lat";43.959;"Lon";11.322
+"Quota [m]";
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Livello [m]";"Tipo Dato"
+01/06/2023;1.035;V
+01/07/2023;0.952258;V
+01/08/2023;0.8975;@
+01/09/2023;;@
+01/10/2023;0.968;@
+01/11/2023;1.219333;V
+01/12/2023;1.243871;V
+01/01/2024;1.206774;V
+01/02/2024;1.247586;V
+01/03/2024;1.29871;V
+01/04/2024;1.195667;V
+01/05/2024;1.180645;V
+01/06/2024;1.082667;V
+01/07/2024;1.015806;V
+01/08/2024;0.9268;V
+01/09/2024;1.000833;V
+01/10/2024;1.165484;V
+01/11/2024;1.124333;V
+01/12/2024;1.152581;V
+01/01/2025;1.233226;V
+01/02/2025;1.233214;V
+01/03/2025;1.285161;V
+01/04/2025;1.203;V
+01/05/2025;1.097097;V
+01/06/2025;0.999333;V
+01/07/2025;0.961613;V
+01/08/2025;0.908387;V
+01/09/2025;0.957;V
+01/10/2025;1.020968;V
+01/11/2025;1.179;V
+01/12/2025;1.160968;V
+01/01/2026;1.276452;P
+01/02/2026;1.318929;P
+01/03/2026;1.164194;P
+01/04/2026;1.098;P
+01/05/2026;1.16129;P
+01/06/2026;1.062727;P

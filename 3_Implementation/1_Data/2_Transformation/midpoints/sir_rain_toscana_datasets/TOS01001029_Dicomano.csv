@@ -1,0 +1,56 @@
+"Stazione";"Dicomano"
+"Codice";"TOS01001029"
+"Comune";"Dicomano"
+"Provincia";"FI"
+"GB [m]";"E";1702439;"N";4862568
+"WGS84 [°]";"Lat";43.888;"Lon";11.520
+"Quota [m]";148,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Precipitazione [mm]";"Tipo Dato"
+01/07/2022;0.277419;P
+01/08/2022;2.090323;P
+01/09/2022;7.013333;P
+01/10/2022;0.587097;P
+01/11/2022;3.8;P
+01/12/2022;6.032258;P
+01/01/2023;5.154839;P
+01/02/2023;1.185185;P
+01/03/2023;2.122581;P
+01/04/2023;2.42;P
+01/05/2023;3.225806;P
+01/06/2023;2.486667;P
+01/07/2023;0.896774;P
+01/08/2023;1.735484;P
+01/09/2023;0.306667;P
+01/10/2023;4.516129;P
+01/11/2023;7.1;P
+01/12/2023;5.290323;P
+01/01/2024;2.666667;P
+01/02/2024;3.303448;P
+01/03/2024;3.709677;P
+01/04/2024;2.58;P
+01/05/2024;4.019355;P
+01/06/2024;2.186667;P
+01/07/2024;0.23871;P
+01/08/2024;0.187097;P
+01/09/2024;4.14;P
+01/10/2024;6.180645;P
+01/11/2024;3.073333;P
+01/12/2024;2.677419;P
+01/01/2026;4.819355;P
+01/02/2026;4.807143;P
+01/03/2026;3.119355;P
+01/04/2026;0.893333;P
+01/05/2026;6.37;P

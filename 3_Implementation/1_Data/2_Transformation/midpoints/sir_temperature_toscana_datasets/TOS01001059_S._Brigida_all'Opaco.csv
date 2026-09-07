@@ -1,0 +1,27 @@
+"Stazione";"S. Brigida all'Opaco"
+"Codice";"TOS01001059"
+"Comune";"Pontassieve"
+"Provincia";"FI"
+"GB [m]";"E";1693112;"N";4857923
+"WGS84 [°]";"Lat";43.849;"Lon";11.402
+"Quota [m]";407,00
+
+;;;ATTENZIONE i dati sono nel fomato csv ed utilizzano
+;;;come separatore di colonna il "punto e virgola" e
+;;;come separatore decimale la "virgola"
+;;;verificare le proprie impostazioni internazionali per una corretta visulizzazione.
+;;;Il valore contrassegnato con N corrisponde al dato non validato
+;;;Il valore contrassegnato con R corrisponde al dato ricostruito
+;;;Il valore contrassegnato con I corrisponde al dato incerto
+;;;Il valore contrassegnato con @ corrisponde al dato mancante
+;;;Il valore contrassegnato con V corrisponde al dato validato
+;;;Il valore contrassegnato con P corrisponde al dato prevalidato soggetto ad eventuali modifiche
+;;;(consultare la sezione Criteri di validazione)
+
+"gg/mm/aaaa";"Max [Â°C]";"Min [Â°C]"
+01/01/2026;8.548387;2.703226
+01/02/2026;12.160714;5.542857
+01/03/2026;14.525806;5.777419
+01/04/2026;20.036667;9.206667
+01/05/2026;22.154839;11.896774
+01/06/2026;25.536364;14.327273

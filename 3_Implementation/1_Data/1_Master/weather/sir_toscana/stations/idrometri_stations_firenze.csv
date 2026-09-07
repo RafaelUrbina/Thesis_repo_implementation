@@ -1,0 +1,35 @@
+fid,id_stazion,nome,comune,provincia,zero_idrom,quota,gc,zona
+10,TOS01004591,Incisa Valle,Figline e Incisa Valdarno,FI,103.11,108.42,GCVS,A2
+11,TOS01004611,Bilancino,Barberino di Mugello,FI,213.39,0,GCVS,M
+12,TOS01004621,S. Piero a Sieve-Sieve,Scarperia e San Piero,FI,195.85,222,GCVS,M
+13,TOS01004623,S. Piero a Sieve-Carza,Scarperia e San Piero,FI,201.61,,GCVS,M
+14,TOS01004625,Dicomano,Dicomano,FI,141.87,148,GCVS,M
+15,TOS01004641,Fornacina,Rufina,FI,93.44,102,GCVS,M
+16,TOS01004642,Fornacina 2 ul,Rufina,FI,93.44,102,GCVS,M
+17,TOS01004659,Nave di Rosano,Rignano sull'Arno,FI,72.27,78.84,GCVS,A3
+18,TOS01004661,Nave di Rosano valle,Bagno a Ripoli,FI,69.43,0,GCVS,A3
+19,TOS01004679,Firenze Uffizi,Firenze,FI,40.51,43.78,GCVS,A3
+20,TOS01004683,Firenze Uffizi 3,Firenze,FI,40.51,43.25,GCVS,A3
+21,TOS01004702,Ponte alle Mosse,Firenze,FI,40.44,,GCVS,A3
+22,TOS01004705,Greve,Greve in Chianti,FI,227.29,,GCVS,A3
+23,TOS01004723,Tavarnuzze,Impruneta,FI,67.11,,GCVS,A3
+24,TOS01004725,Strada in Chianti,Greve in Chianti,FI,138.41,144,GCVS,A3
+25,TOS01004731,Ponte di Scandicci,Scandicci,FI,42.26,,GCVS,A3
+28,TOS01004784,Calenzano,Calenzano,FI,55.31,60,GCVC,B
+29,TOS01004791,S. Piero a Ponti,Signa,FI,32.29,40,GCVC,B
+30,TOS01004795,Sesto Fiorentino,Sesto Fiorentino,FI,35.74,0,GCVS,B
+31,TOS01004811,Ponte a Signa,Signa,FI,27.89,32,GCVS,B
+34,TOS01004901,Montelupo,Lastra a Signa,FI,25.24,,GCVS,A3
+35,TOS01004915,Montespertoli,Montespertoli,FI,114.06,117,GCVS,A5
+36,TOS01004921,Turbone,Montelupo Fiorentino,FI,34.36,45,GCVS,A4
+37,TOS01004941,Empoli,Empoli,FI,20.32,25,GCVS,A4
+39,TOS01004967,Certaldo,Certaldo,FI,60.48,65,GCVS,A5
+40,TOS01004971,Castelfiorentino,Castelfiorentino,FI,45.91,50,GCVS,A5
+42,TOS01005001,Fucecchio valle,Fucecchio,FI,16.14,0,GCVS,A4
+118,TOS03004373,Firenzuola Coniale,Firenzuola,FI,275.79,279,GCVS,R2
+130,TOS03004729,Ponte a Niccheri,Bagno a Ripoli,FI,78.41,0,GCVS,A3
+136,TOS03004911,Sambuca,Barberino Tavarnelle,FI,171.62,0,GCVS,A3
+137,TOS03004935,Empoli-Pontorme,Empoli,FI,24.94,0,GCVS,A4
+185,TOS15004682,Firenze Uffizi 2,Firenze,FI,40.51,40.58,GCVS,A3
+189,TOS19000704,Grassina,Bagno a Ripoli,FI,83.88,90,GCVS,A3
+191,TOS30250000,Marradi,Marradi,FI,305.4,323,GCVS,R2

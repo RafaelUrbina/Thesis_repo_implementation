@@ -1,0 +1,698 @@
+accumulator
+aqueduct
+aquifer
+air release valve
+backflow preventer
+basin
+blow-off valve
+booster station
+bore 
+casing pipe
+bypass line
+canal
+catch basin
+cathodically protected pipe
+check valve
+cistern
+cleanout
+collector pipe
+combined sewer
+compressor station
+conduit
+control valve
+control volume
+culvert
+dam
+detritus tank
+diffuser
+discharge pipe
+distribution network
+distribution main
+diversion canal
+drain
+drainage pipe
+drainage ditch
+drop inlet
+ductile iron pipe
+effluent line
+filter bed
+fire hydrant
+flange
+flexible joint
+flow meter
+force main
+gasket
+gate valve
+gauge
+pressure gauge
+header pipe
+high-density polyethylene pipe
+HDPE
+holding tank
+hydraulic actuator
+impoundment
+industrial pipeline
+infiltration basin
+inlet
+intake structure
+inspection chamber
+manhole
+intake pipe
+interceptor sewer
+isolation valve
+joint
+pipe joint
+lateral line
+leak detector
+levee
+dyke
+main line
+trunk line
+meter station
+monitoring station
+multi-stage pump
+nozzle
+orifice plate
+outfall
+overflow channel
+penstock
+pig launcher
+receiver
+pipe wall
+pipe fitting
+pipeline
+pressure reducer
+regulator
+pressure relief valve
+pressure sensor
+pressure vessel
+pump
+pumping station
+rain barrel
+cistern
+raw water intake
+recirculating loop
+reservoir
+retention basin
+return line
+riser
+scada system
+telemetry unit
+sediment trap
+sensor
+service connection
+service line
+settlement tank
+sewer main
+sluice gate
+spillway
+storm drain
+storm canal
+stormwater basin
+strainer
+surge tank
+surge tower
+suction line
+tank
+transmission main
+trenchless pipe
+utility corridor
+valve
+valve vault
+valve box
+water main
+water meter
+water network
+water tower
+water intake
+water channel
+weir
+wellhead
+aerator
+ball valve
+blow-off box
+butterfly valve
+centrifugal pump
+chlorination station
+clearwell
+coffer dam
+collection basin
+corrugated pipe
+diversion channel
+drainage gallery
+drop manhole
+dual-containment pipe
+elbow fitting
+expansion joint
+flow transmitter
+flume
+foot valve
+force main junction
+gravity main
+headwall
+heat exchanger
+hydraulic ram
+hydro-pneumatic tank
+interceptor ditch
+Inverted siphon
+knife gate valve
+lift station
+meter vault
+observation well
+outfall diffuser
+piezometer
+pipe benching
+pipe gallery
+pipe manifold
+pressure reducing valve station
+pressure transmitter
+pressure zone
+PVC pipe
+reducer fitting
+reinforced concrete pipe 
+RCP
+trash rack
+siphoning pipe
+slotted drain
+spill containment basin
+Standpipe
+submersible pump
+sub-surface drain
+sump
+sump pump
+tee fitting
+thrust block
+underground storage tank 
+UST
+vacuum breaker valve
+accumulator
+acid metering pump
+action actuator
+active cathodic system
+aerator
+aeration basin
+air injector
+air release valve
+air vacuum valve
+alarm switch
+air relief valve
+alignment sleeve
+anchor block
+anchor flange
+anode bed
+anode groundbed
+anti-cavitation valve
+anti-slam check valve
+appliances box
+aqueduct
+aquifer
+arc-welded steel pipe
+asbestos cement pipe
+atomizer
+automated control valve
+backflow preventer
+backflow valve
+backwash system
+balancing valve
+ball valve
+bar screen
+barrier line
+basin
+bellows joint
+bevel gear actuator
+booster pump
+booster station
+bore
+bore casing
+bottom discharge valve
+branch fitting
+break pressure tank
+bypass valve
+bypass line
+blow-down line
+blow-off box
+blow-off valve
+booster main
+branch line
+blind flange
+bucket trap
+bubble diffuser
+butterfly valve
+calamity valve
+calibrated orifice
+canal
+canalization
+case drain
+casing pipe
+catch basin
+cathodic protection station
+cathodically protected pipe
+centrifugal pump
+chamfer ring
+chamber
+check valve
+chlorination station
+circuit setter
+cistern
+clarifier
+clearwell
+cleanout
+coffer dam
+collector pipe
+collection basin
+combined sewer
+compressor station
+compression coupling
+conduit
+control valve
+control volume
+copper service line
+corrugated HDPE pipe
+corrugated metal pipe
+corrugated pipe
+coupling
+counterweight check valve
+cross fitting
+culvert
+curb stop valve
+curb box
+current transmitter
+cut-off valve
+dam
+debris screen
+de-aerator
+de-siltation basin
+de-watering pump
+de-watering valve
+depth transmitter
+desalinating plant
+desalination intake
+detritus tank
+diaphragm valve
+differential pressure transmitter
+diffuser
+direct-acting pressure regulator
+discharge line
+discharge pipe
+discharge manifold
+dissolved air flotation unit
+distribution main
+distribution network
+distribution node
+diversion canal
+diversion channel
+diversion structure
+dosing pump
+dosing station
+double-block and bleed valve
+double check valve assembly
+double-containment pipe
+downspout
+drain
+drainage channel
+drainage ditch
+drainage gallery
+drainage line
+drainage pipe
+drainage pump
+drip leg
+drive pipe
+drop inlet
+drop manhole
+dry pit pump
+ductile iron pipe
+duplex strainer
+earth dam
+eccentric reducer
+eductor
+effluent channel
+effluent line
+ejector
+elbow fitting
+electro-fusion coupling
+electro-hydraulic actuator
+electromagnetic flowmeter
+emergency shut-off valve
+equalization tank
+expansion bend
+expansion joint
+feeder main
+fiberglass reinforced plastic pipe
+fiber-optic monitoring sensor
+field joint sleeve
+filter bed
+filter press
+filtration gallery
+fire hydrant
+fire line
+fire loop
+fire sprinkler line
+fittings
+fitted collar
+flange
+flange adapter
+flanged joint
+flexible hose
+flexible joint
+float valve
+floating intake
+flow calibration unit
+flow conditioning plate
+flow control valve
+flow meter
+flow nozzle
+flow restrictor
+flow sensor
+flow transmitter
+flume
+flush valve
+flush hydrant
+flutter valve
+foot valve
+footing drain
+force main
+force main junction
+force main manifold
+fractioning column
+french drain
+galleries
+gasket
+gas-over-oil actuator
+gate valve
+gauge
+gear box
+glass-lined pipe
+globe valve
+governor
+gravity feed line
+gravity main
+gravity sewer
+groundbed
+grout curtain
+grit chamber
+headrace canal
+headrace tunnel
+headwall
+header pipe
+heat exchanger
+high-density polyethylene pipe (HDPE)
+holding basin
+holding tank
+hollow jet valve
+horizontal directional drilling line
+hose bibb
+hydrant
+hydrated lime injector
+hydraulic actuator
+hydraulic accumulator
+hydraulic jumper
+hydraulic power unit
+hydraulic ram
+hydraulic valve
+hydro-electric penstock
+hydro-pneumatic tank
+hydrophone array
+impeller
+impoundment
+impulse line
+inclined plate separator
+industrial pipeline
+infiltration basin
+infiltration gallery
+infiltration trench
+inlet
+inlet structure
+in-line pump
+inline strainer
+in-line check valve
+inspection chamber
+inspection port
+instrumentation manifold
+intake pipe
+intake screen
+intake structure
+interceptor ditch
+interceptor sewer
+inverted siphon
+isolation valve
+joint
+joint clamp
+joint harness
+junction box
+junction chamber
+knife gate valve
+lateral line
+leak detector
+leak detection cable
+levee (dyke)
+lift pump
+lift station
+liner pipe
+liquid ring vacuum pump
+lock chamber
+lock ring
+low-pressure sewer
+lubricated plug valve
+manhole
+main line
+manifold
+marginal channel
+meter box
+meter vault
+meter station
+metering pump
+mixing tank
+modulating valve
+monitoring station
+monitoring well
+mortar-lined pipe
+multi-stage pump
+needle valve
+non-return valve
+nozzle
+observation well
+offline storage tank
+orifice plate
+outfall
+outfall diffuser
+outfall structure
+overflow box
+overflow channel
+overflow pipe
+overflow weir
+packet station
+panelboard
+parallel pipeline
+pedestal hydrant
+penstock
+perforated pipe
+petcock
+photovoltaic-powered monitoring unit
+piezometer
+pig
+pig launcher
+pig receiver
+pilot-operated pressure relief valve
+pinch valve
+pipe benching
+pipe cross
+pipe flange
+pipe gallery
+pipe joint
+pipe loop
+pipe manifold
+pipe saddle
+pipe segment
+pipe shoe
+pipe spool
+pipe support
+pipe wall
+pipe fitting
+pipeline
+pipeline pig
+piping network
+piston pump
+pitch line
+plunger valve
+pneumatic actuator
+polyethylene pipe
+polypropylene pipe
+pumping main
+pumping station
+pump
+pvdf pipe
+pvc pipe
+quick-connect coupling
+radial gate
+rain barrel
+rain harvesting tank
+raw water conduit
+raw water intake
+raw water pipeline
+reaction basin
+recirculating loop
+recirculating line
+recirculating pump
+reclamation line
+reducer
+reducer fitting
+regulating valve
+reinforced concrete cylinder pipe
+reinforced concrete pipe (RCP)
+relief valve
+remote terminal unit (RTU)
+reservoir
+restraint harness
+retaining wall
+retention basin
+retention pond
+return line
+return sludge line
+reverse osomosis unit
+riser
+riser pipe
+rock trap
+roller gate
+rotary vane pump
+rupture disc
+sacrificial anode
+saddle clamp
+sample tap
+sampling port
+sand filter
+scada system
+scour valve
+screwed joint
+seal pot
+sediment trap
+sedimentation basin
+segmented pipe
+self-priming pump
+semi-submersible pump
+sensor
+service clamp
+service connection
+service line
+settlement tank
+sewage ejection pump
+sewer main
+shear gate
+shut-off valve
+side stream filter
+siphon
+siphoning pipe
+sleeved pipe
+slice gate
+slotted drain
+slow sand filter
+sludge return line
+sluice
+sluice gate
+slurry line
+soakaway
+solar powered telemetry unit
+solenoid valve
+spigot
+spill containment basin
+spillway
+sprinkler head
+spiral-welded pipe
+splitter box
+standpipe
+standpipe tank
+steam-traced line
+step-up pumping unit
+storm canal
+storm drain
+storm sewer
+stormwater basin
+stormwater interceptor
+strainer
+sub-surface drain
+submersible pump
+suction header
+suction line
+suction pipe
+suction pit
+sump
+sump pump
+surge absorber
+surge anticipator valve
+surge suppressor
+surge tank
+surge tower
+surge vessel
+swap station
+swivel joint
+swing check valve
+tailrace
+tallow trap
+tank
+tank battery
+tapped sleeve
+tee fitting
+telemetry unit
+telemetric sensor
+thermoplastic pipe
+threaded joint
+thrust block
+thrust collar
+tie-in
+tile drain
+tilting disc check valve
+transmission main
+trash rack
+treatment basin
+trench drain
+trenchless pipe
+trenchless lining
+triple-eccentric butterfly valve
+trunk line
+trunnion ball valve
+turbine flowmeter
+turbine pump
+ultrasonic flowmeter
+underground storage tank (UST)
+underdrain
+unit heater
+unplasticized polyvinyl chloride pipe (uPVC)
+utility corridor
+vacuum breaker valve
+vacuum relief valve
+vacuum sewer
+valve
+valve actuator
+valve box
+valve chamber
+valve manifold
+valve pit
+valve positioner
+valve vault
+vane pump
+variable frequency drive pump
+vent pipe
+vent stack
+venturi meter
+venturi tube
+vessel
+victaulic coupling
+vibrating wire piezometer
+waste washwater tank
+wastewater force main
+water channel
+water column
+water intake
+water main
+water meter
+water network
+water purification unit
+water ring vacuum pump
+water tower
+weir
+well casing
+well screen
+wellhead
+wet pit
+wet well
+yield point monitor
+y-strainer
