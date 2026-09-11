@@ -235,24 +235,61 @@ def analyze_famd(
         print("Skipping FAMD: No data left after imputation.")
         return
 
-    # Create short names for variables for better plot readability
-    print("  - Creating short names for FAMD plot variables...")    
-    original_name_map = {f"V{i:02d}": name for i, name in enumerate(famd_data.columns)}
-    famd_data_renamed = famd_data.rename(columns={v: k for k, v in original_name_map.items()})
+    PAIRS_TO_PROCESS = [
+        ("surface_stoniness_class", "rooting_depth_class"),
+        ("surface_stoniness_class", "usda_hydrologic_group"),
+        ("landslide_surface_class", "rooting_depth_class"),
+        ("landslide_surface_class", "surface_stoniness_class"),
+        ("rooting_depth_class", "usda_hydrologic_group"),
+        ("landslide_surface_class", "usda_hydrologic_group"),
+        ("landslide_surface_class", "hydraulic_hazard_level"),
+        ("pai_landslide_hazard_level", "landslide_surface_class"),
+    ]
+    keep_long_names = {var for pair in PAIRS_TO_PROCESS for var in pair}
 
-    # Save the mapping for user reference
+    # Create short names ONLY for variables NOT in PAIRS_TO_PROCESS
+    print("  - Creating short names for secondary FAMD plot variables...")
+    original_name_map = {}
+    column_rename_map = {}
+    for i, col in enumerate(famd_data.columns):
+        if col in keep_long_names:
+            # Keep original name
+            original_name_map[col] = col
+            column_rename_map[col] = col
+        else:
+            # Shorten other names
+            short_code = f"V{i:02d}"
+            original_name_map[short_code] = col
+            column_rename_map[col] = short_code
+
+    famd_data_renamed = famd_data.rename(columns=column_rename_map)
+
+    # Save the full mapping for reference
     print("  - Saving variable name mapping...")
-    mapping_df = pd.DataFrame(original_name_map.items(), columns=['Short_Name', 'Original_Name']).sort_values('Short_Name')
+    mapping_df = pd.DataFrame(
+        original_name_map.items(), columns=["Plot_Label", "Original_Name"]
+    ).sort_values("Plot_Label")
     mapping_path = output_dir / "famd_variable_name_mapping.csv"
-    mapping_df.to_csv(mapping_path, index=False, float_format="%.4e")
-    print(f"  - Saved variable name mapping to: {mapping_path.name}")
+    mapping_df.to_csv(mapping_path, index=False)
 
     # Ensure categorical column names are a simple list to avoid indexing issues in prince
     famd_data_renamed.columns = famd_data_renamed.columns.tolist()
 
     famd = prince.FAMD(n_components=5, n_iter=3, random_state=42).fit(famd_data_renamed)
 
-    # Plot the contribution of each variable to the first two components
+    # COORDINTATES: Extract row coordinates (dimensionality reduction scores per row/individual)
+    # Extract row coordinates (dimensionality reduction scores per row/individual)
+    row_coordinates = famd.row_coordinates(famd_data_renamed)
+    
+    # Rename columns to clear factor names (e.g., FAMD_Dim_0, FAMD_Dim_1...)
+    row_coordinates.columns = [f"FAMD_Dim_{i}" for i in range(row_coordinates.shape[1])]
+
+    # Save the row coordinates as CSV
+    famd_coords_path = table_output_dir / "famd_row_coordinates.csv"
+    row_coordinates.to_csv(famd_coords_path, index=True)
+    print(f"  - Saved FAMD row coordinates to: {famd_coords_path.name}")
+
+    # PLOT: Plot the contribution of each variable to the first two components
     chart = famd.plot(
         famd_data_renamed,
         x_component=0, 
@@ -283,6 +320,7 @@ def analyze_famd(
     contributions_renamed.to_csv(contributions_path, float_format="%.4e")
     print(f"  - Saved variable contributions with original names to: {contributions_path.name}")
 
+    return row_coordinates
 
 def analyze_association_rules(
     gdf: gpd.GeoDataFrame, categorical_vars: list, table_output_dir: Path
@@ -521,7 +559,12 @@ def main():
     # --- Run Analyses ---
     # 1. Feature-Space: Find which variables act together
     if num_vars and cat_vars:
-        analyze_famd(gdf, num_vars, cat_vars, output_plots_dir, output_tables_dir)
+        famd_coords = analyze_famd(gdf, num_vars, cat_vars, output_plots_dir, output_tables_dir)
+        if famd_coords is not None:
+            gdf = gdf.join(famd_coords)
+        updated_gpkg_path = GRID_PATH / "h310_grid_datacube_famd.gpkg"
+        gdf.to_file(updated_gpkg_path, layer="h310_famd_results", driver="GPKG")
+        print(f"Saved updated GeoPackage with FAMD coordinates to: {updated_gpkg_path.name}")
     else:
         print("\nSkipping FAMD: Requires both numerical and categorical variables.")
 
