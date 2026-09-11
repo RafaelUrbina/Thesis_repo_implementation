@@ -29,6 +29,10 @@ __pycache__/
 #Processing temp files
 3_Implementation/2_Data_analysis/patents/links_lists/py/outputterms/*
 
+#Patents full text
+3_Implementation/1_Data/1_Master/patents/full_text/*
+3_Implementation/2_Data_analysis/patents/pipeline/data_creation/output/patent_dataset.csv
+
 #limit size IN GITBASH
 # Source - https://stackoverflow.com/a/62857813
 # Posted by stevec

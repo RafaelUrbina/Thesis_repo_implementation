@@ -84,6 +84,7 @@ def build_unified_knowledge_graph(
     tech_file=ONTOLOGY_LISTS_PATH / "technical_list.txt",
     failure_file=ONTOLOGY_LISTS_PATH / "failure_list.txt",
     risk_file=ONTOLOGY_LISTS_PATH / "variable_list.txt",
+    causal_file=ONTOLOGY_LISTS_PATH / "causal_list.txt",
 ):
     g = Graph()
     EX = Namespace("http://www.semanticweb.org/thesis/pipeline-risk#")
@@ -102,17 +103,18 @@ def build_unified_knowledge_graph(
             ont_uri,
             RDFS.comment,
             Literal(
-                "Unified Knowledge Graph of Pipeline Assets, Failure Modes, and Environmental/Social Risk Variables.",
+                "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations, and Environmental/Social Risk Variables.",
                 lang="en",
             ),
         )
     )
 
-    # 2. Concept Schemes
+    # 2. Concept Schemes (4 Pillars)
     schemes = {
         "technical": EX.TechnicalComponentScheme,
         "failure": EX.FailureModeScheme,
         "risk": EX.EnvironmentalSocialRiskScheme,
+        "causal": EX.CausalRelationalScheme,
     }
 
     for key, uri in schemes.items():
@@ -149,8 +151,8 @@ def build_unified_knowledge_graph(
     if tech_terms:
         root_tech = add_concept_node(
             schemes["technical"],
-            "TechnicalSolutionComponent",
-            "Technical Solution and Component",
+            "TechnicalTerm",
+            "Technical Term",
         )
         print(f"Ingesting {len(tech_terms)} technical components...")
         for item in tech_terms:
@@ -168,7 +170,7 @@ def build_unified_knowledge_graph(
     failure_terms = parse_term_file(failure_file)
     if failure_terms:
         root_fail = add_concept_node(
-            schemes["failure"], "PipelineFailureMode", "Pipeline Failure Mode"
+            schemes["failure"], "FailureTerm", "Failure Term"
         )
 
         corr_fail = add_concept_node(
@@ -301,8 +303,8 @@ def build_unified_knowledge_graph(
     if risk_terms:
         root_risk = add_concept_node(
             schemes["risk"],
-            "EnvironmentalAndSocialRiskVariable",
-            "Environmental and Social Risk Variable",
+            "VariableTerm",
+            "Variable Term",
         )
 
         hydro_risk = add_concept_node(
@@ -459,7 +461,68 @@ def build_unified_knowledge_graph(
                 broader_uri=parent,
             )
 
-    # 6. Export Graph
+    # 6. Process Causal Terms
+    causal_terms = parse_term_file(causal_file)
+    if causal_terms:
+        root_causal = add_concept_node(
+            schemes["causal"],
+            "CausalTerm",
+            "Causal Term",
+        )
+
+        dir_causal = add_concept_node(
+            schemes["causal"],
+            "DirectCausationRelation",
+            "Direct Causation Relation",
+            broader_uri=root_causal,
+        )
+        cond_causal = add_concept_node(
+            schemes["causal"],
+            "ConditionalAndContributingRelation",
+            "Conditional and Contributing Relation",
+            broader_uri=root_causal,
+        )
+        corr_causal = add_concept_node(
+            schemes["causal"],
+            "CorrelationAndAssociationRelation",
+            "Correlation and Association Relation",
+            broader_uri=root_causal,
+        )
+        attr_causal = add_concept_node(
+            schemes["causal"],
+            "AttributionAndDerivationRelation",
+            "Attribution and Derivation Relation",
+            broader_uri=root_causal,
+        )
+
+        print(f"Ingesting {len(causal_terms)} causal terms...")
+        for item in causal_terms:
+            pref = item["pref"]
+            cid = slugify(pref)
+            if not cid:
+                continue
+
+            plow = pref.lower()
+            parent = root_causal
+
+            if any(k in plow for k in ["cause", "lead", "result", "produce", "give rise", "break", "create"]):
+                parent = dir_causal
+            elif any(k in plow for k in ["contribute", "trigger", "induce", "exacerbated", "allow", "require", "prevent", "exceed", "impos"]):
+                parent = cond_causal
+            elif any(k in plow for k in ["associate", "correlate", "link", "correspond", "common", "depend"]):
+                parent = corr_causal
+            elif any(k in plow for k in ["due to", "attribute", "derive", "base", "originate", "owing", "stem"]):
+                parent = attr_causal
+
+            add_concept_node(
+                schemes["causal"],
+                cid,
+                pref,
+                alt_labels=item["alts"],
+                broader_uri=parent,
+            )
+
+    # 7. Export Graph
     g.serialize(destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.ttl", format="turtle")
     g.serialize(destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.rdf", format="xml")
 
