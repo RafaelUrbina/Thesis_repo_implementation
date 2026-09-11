@@ -129,7 +129,7 @@ def main():
     print(f"\nSummary statistics report exported to: {output_excel}")
 
     # Save each text-categorical variable as its own sheet in a separate workbook.
-    text_output_excel = gpkg_file.parent / "datacube_text_category_statistics.xlsx"
+    text_output_excel = gpkg_file.parent / "summary_statistics" / "datacube_text_category_statistics.xlsx"
     if text_sum:
         with pd.ExcelWriter(text_output_excel, engine="xlsxwriter") as writer:
             used_sheet_names = set()
