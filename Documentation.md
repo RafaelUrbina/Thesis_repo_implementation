@@ -78,8 +78,8 @@ This is the most crucial step. The workflow ingests a wide variety of structured
 3.  **Spatial Aggregation:** Data is transformed into a common spatial unit—an **H3 hex grid** (Resolution 10).
     *   `final_sources_categorized.ipynb` outlines the logic for a parsimonious "snowflake" schema:
         *   **Tier A (Static Base):** Soil type, elevation, slope.
-        *   **Tier B (Coarse Temporal Base):** InSAR subsidence, land use.
-        *   **Tier C (Fine Temporal Base):** Monthly rain, hydrological stress index.
+        *   **Tier B (Coarse Aggregated Temporal Base):** InSAR subsidence, land use.
+        *   **Tier C (Fine Temporal Base):** Aggregates Monthly rain, hydrological stress index.
     *   The transformation scripts in `2_Transformation/` handle the necessary spatial joins and overlays.
 
 #### 4.2. Data Analysis and Feature Engineering (`3_Implementation/2_Data_analysis/`)
