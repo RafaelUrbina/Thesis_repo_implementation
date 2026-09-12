@@ -12,15 +12,24 @@ sys.path.insert(0, str(project_root))
 from Utils.paths import MASTER_DATA_PATH, PATENT_PIPELINE_PATH
 
 
+def clean_text(text: str) -> str:
+    """Normalizes text to lowercase and removes punctuation/symbols while keeping numbers."""
+    if not text:
+        return ""
+    # Convert to lowercase
+    text = text.lower()
+    # Replace anything that is NOT an alphanumeric character (a-z, 0-9) or whitespace with an empty space
+    text = re.sub(r"[^\w\s]", " ", text)
+    # Collapse multiple whitespaces into a single space and strip leading/trailing spaces
+    return re.sub(r"\s+", " ", text).strip()
+
+
 def split_by_newlines(text: str) -> list[str]:
     """Splits text strictly by newline characters (\n)."""
     if not text:
         return []
 
-    # Splits on unix (\n) or windows (\r\n) newlines
     lines = re.split(r"\r?\n+", text)
-
-    # Clean leading/trailing spaces, discarding blank lines
     return [line.strip() for line in lines if line.strip()]
 
 
@@ -53,36 +62,40 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
         pat_id = data.get("pat_id", "")
         title = data.get("title", "")
 
-        # 1. Process Claims (Each claim split by newlines if internal \n exist)
+        # 1. Process Claims
         claims = data.get("claims") or []
         for claim in claims:
             if not claim:
                 continue
             claim_lines = split_by_newlines(claim)
             for line in claim_lines:
+                cleaned_line = clean_text(line)
+                if cleaned_line:
+                    records.append(
+                        {
+                            "pat_id": pat_id,
+                            "title": title,
+                            "text_type": "claim",
+                            "text": cleaned_line,
+                        }
+                    )
+                    total_claims += 1
+
+        # 2. Process Description
+        description = data.get("description") or ""
+        desc_lines = split_by_newlines(description)
+        for line in desc_lines:
+            cleaned_line = clean_text(line)
+            if cleaned_line:
                 records.append(
                     {
                         "pat_id": pat_id,
                         "title": title,
-                        "text_type": "claim",
-                        "text": line,
+                        "text_type": "description",
+                        "text": cleaned_line,
                     }
                 )
-                total_claims += 1
-
-        # 2. Process Description (Split strictly by newlines)
-        description = data.get("description") or ""
-        desc_lines = split_by_newlines(description)
-        for line in desc_lines:
-            records.append(
-                {
-                    "pat_id": pat_id,
-                    "title": title,
-                    "text_type": "description",
-                    "text": line,
-                }
-            )
-            total_description_lines += 1
+                total_description_lines += 1
 
     # Processing summary
     processed_count = total_files - skipped_files
