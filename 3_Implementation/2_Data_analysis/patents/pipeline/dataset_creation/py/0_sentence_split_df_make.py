@@ -99,28 +99,39 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
 
     # Processing summary
     processed_count = total_files - skipped_files
-    print("\n" + "=" * 50)
-    print("PROCESSING SUMMARY")
-    print("=" * 50)
-    print(f"Files Processed successfully : {processed_count:,} / {total_files:,}")
+    summary_lines = [
+        "=" * 50,
+        "PROCESSING SUMMARY",
+        "=" * 50,
+        f"Files Processed successfully : {processed_count:,} / {total_files:,}",
+    ]
     if skipped_files > 0:
-        print(f"Files Skipped (Invalid JSON) : {skipped_files:,}")
-    print(f"Total Claim Rows Extracted   : {total_claims:,}")
-    print(f"Total Description Rows       : {total_description_lines:,}")
-    print(f"Total Dataset Rows Created   : {len(records):,}")
-    print("=" * 50 + "\n")
+        summary_lines.append(f"Files Skipped (Invalid JSON) : {skipped_files:,}")
+    summary_lines.extend([
+        f"Total Claim Rows Extracted   : {total_claims:,}",
+        f"Total Description Rows       : {total_description_lines:,}",
+        f"Total Dataset Rows Created   : {len(records):,}",
+        "=" * 50
+    ])
+    
+    summary_text = "\n" + "\n".join(summary_lines) + "\n\n"
+    print(summary_text)
 
-    return pd.DataFrame(records)
+    return pd.DataFrame(records), summary_text
 
 
 if __name__ == "__main__":
     folder_path = MASTER_DATA_PATH / "patents/full_text"
 
-    df = process_patent_files(folder_path)
+    df, summary_text = process_patent_files(folder_path)
 
     if not df.empty:
-        output_dir = PATENT_PIPELINE_PATH / "data_creation/output"
+        output_dir = PATENT_PIPELINE_PATH / "dataset_creation/output"
         output_dir.mkdir(parents=True, exist_ok=True)
+
+        summary_file = output_dir / "processing_summary.txt"
+        summary_file.write_text(summary_text, encoding="utf-8")
+        print(f"Saved processing summary to: {summary_file.resolve()}")
 
         output_file = output_dir / "patent_dataset.csv"
         print(f"Saving dataset to: {output_file.resolve()}...")

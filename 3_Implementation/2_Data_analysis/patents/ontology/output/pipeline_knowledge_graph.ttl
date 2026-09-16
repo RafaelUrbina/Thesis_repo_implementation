@@ -9,6 +9,7 @@
 ex:AbrasiveSurfaceStoniness a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ass"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "abrasive surface stoniness"@en .
@@ -23,6 +24,7 @@ ex:AbrasiveWear a owl:Class,
 ex:AbruptTerrainTransition a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "att"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "abrupt terrain transition"@en .
@@ -100,6 +102,7 @@ ex:Accumulator a owl:Class,
 ex:AcidInducedCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "aic"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "acid induced cracking"@en .
@@ -107,6 +110,7 @@ ex:AcidInducedCracking a owl:Class,
 ex:AcidMeteringPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "amp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "acid metering pump"@en .
@@ -114,6 +118,7 @@ ex:AcidMeteringPump a owl:Class,
 ex:AcidSoilHorizon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "ash"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "acid soil horizon"@en .
@@ -121,6 +126,7 @@ ex:AcidSoilHorizon a owl:Class,
 ex:AcidicSoilProfile a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "asp"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "acidic soil profile"@en .
@@ -156,6 +162,7 @@ ex:ActivationOf a owl:Class,
 ex:ActiveCathodicSystem a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "acs"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "active cathodic system"@en .
@@ -163,6 +170,7 @@ ex:ActiveCathodicSystem a owl:Class,
 ex:ActiveFaultTrace a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "aft"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active fault trace"@en .
@@ -177,6 +185,7 @@ ex:ActiveFountain a owl:Class,
 ex:ActiveGeohazardZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "agz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active geohazard zone"@en .
@@ -184,6 +193,7 @@ ex:ActiveGeohazardZone a owl:Class,
 ex:ActiveLandslideMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "alm"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active landslide movement"@en .
@@ -198,6 +208,7 @@ ex:ActiveLeaks a owl:Class,
 ex:ActiveMudslidePath a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "amp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active mudslide path"@en .
@@ -205,6 +216,7 @@ ex:ActiveMudslidePath a owl:Class,
 ex:ActiveSoilMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "asm"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active soil movement"@en .
@@ -212,6 +224,7 @@ ex:ActiveSoilMovement a owl:Class,
 ex:ActiveWaterFeatures a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "awf"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active water features"@en .
@@ -219,6 +232,7 @@ ex:ActiveWaterFeatures a owl:Class,
 ex:ActsAsACatalystFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "aaacf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "acts as a catalyst for"@en .
@@ -261,6 +275,7 @@ ex:AdministrativeBoundary a owl:Class,
 ex:AdministrativeBoundaryBuffer a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "abb"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "administrative boundary buffer"@en .
@@ -324,6 +339,7 @@ ex:Affect a owl:Class,
 ex:AffectTheRateOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "atro"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "affect the rate of"@en .
@@ -338,6 +354,7 @@ ex:Affected a owl:Class,
 ex:AgglomeratedUrbanZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "auz"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "agglomerated urban zone"@en .
@@ -352,6 +369,7 @@ ex:AggravatedBy a owl:Class,
 ex:AggregateTaxLiability a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "atl"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "aggregate tax liability"@en .
@@ -359,6 +377,7 @@ ex:AggregateTaxLiability a owl:Class,
 ex:AggressiveSoilCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "asc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "aggressive soil corrosion"@en .
@@ -366,6 +385,7 @@ ex:AggressiveSoilCorrosion a owl:Class,
 ex:AgriculturalLandClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "alc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "agricultural land class"@en .
@@ -373,6 +393,7 @@ ex:AgriculturalLandClass a owl:Class,
 ex:AgriculturalLimitationClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "alc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "agricultural limitation class"@en .
@@ -387,6 +408,7 @@ ex:AgriculturalVulnerability a owl:Class,
 ex:AgricultureLandClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "alc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "agriculture land class"@en .
@@ -401,6 +423,7 @@ ex:AirInjector a owl:Class,
 ex:AirReleaseValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "arv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "air release valve"@en .
@@ -408,6 +431,7 @@ ex:AirReleaseValve a owl:Class,
 ex:AirReliefValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "arv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "air relief valve"@en .
@@ -415,6 +439,7 @@ ex:AirReliefValve a owl:Class,
 ex:AirVacuumValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "avv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "air vacuum valve"@en .
@@ -457,6 +482,7 @@ ex:Altering a owl:Class,
 ex:AlternateWettingAndDrying a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "awad"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "alternate wetting and drying"@en .
@@ -478,6 +504,7 @@ ex:Altitude a owl:Class,
 ex:AltitudinalClimateConstraint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "acc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "altitudinal climate constraint"@en .
@@ -492,6 +519,7 @@ ex:AltitudinalGradient a owl:Class,
 ex:AltitudinalTemperatureLapse a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "atl"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "altitudinal temperature lapse"@en .
@@ -499,6 +527,7 @@ ex:AltitudinalTemperatureLapse a owl:Class,
 ex:AmbientAirTemperature a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "aat"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ambient air temperature"@en .
@@ -520,6 +549,7 @@ ex:AnchorBlock a owl:Class,
 ex:AnchorDragDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ThirdPartyAndExternalInterference ;
+    skos:altLabel "add"@en ;
     skos:broader ex:ThirdPartyAndExternalInterference ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "anchor drag damage"@en .
@@ -569,6 +599,7 @@ ex:AnoxicCorrosion a owl:Class,
 ex:AnoxicSoilLayer a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "asl"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "anoxic soil layer"@en .
@@ -583,6 +614,7 @@ ex:AnthropicDisturbance a owl:Class,
 ex:AnthropicLandModification a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "alm"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "anthropic land modification"@en .
@@ -625,6 +657,7 @@ ex:Anti-SlamCheckValve a owl:Class,
 ex:ApparentWallThinning a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "awt"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "apparent wall thinning"@en .
@@ -646,6 +679,7 @@ ex:Aqueduct a owl:Class,
 ex:AquiferRechargeRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "arr"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "aquifer recharge rate"@en .
@@ -660,6 +694,7 @@ ex:Aquifers a owl:Class,
 ex:ArableLandCapacity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "alc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "arable land capacity"@en .
@@ -709,6 +744,7 @@ ex:ArisingFrom a owl:Class,
 ex:AsAConsequenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "aaco"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a consequence of"@en .
@@ -716,6 +752,7 @@ ex:AsAConsequenceOf a owl:Class,
 ex:AsAResult a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "aar"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a result"@en .
@@ -723,6 +760,7 @@ ex:AsAResult a owl:Class,
 ex:AsAResultOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "aaro"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a result of"@en .
@@ -730,6 +768,7 @@ ex:AsAResultOf a owl:Class,
 ex:AsComparedTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "act"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as compared to"@en .
@@ -737,6 +776,7 @@ ex:AsComparedTo a owl:Class,
 ex:AsbestosCementPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "acp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "asbestos cement pipe"@en .
@@ -758,6 +798,7 @@ ex:AsperityIndex a owl:Class,
 ex:AsphalticCoatingDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "acd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "asphaltic coating degradation"@en .
@@ -765,6 +806,7 @@ ex:AsphalticCoatingDegradation a owl:Class,
 ex:AsphalticSurfaceCoverage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "asc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "asphaltic surface coverage"@en .
@@ -800,6 +842,7 @@ ex:AtmosphericCorrosion a owl:Class,
 ex:AtmosphericCorrosionExposure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "ace"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "atmospheric corrosion exposure"@en .
@@ -807,6 +850,7 @@ ex:AtmosphericCorrosionExposure a owl:Class,
 ex:AtmosphericMoistureDeficit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "amd"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "atmospheric moisture deficit"@en .
@@ -835,6 +879,7 @@ ex:AttributedTo a owl:Class,
 ex:AutomatedControlValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "acv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "automated control valve"@en .
@@ -856,6 +901,7 @@ ex:AvalancheChute a owl:Class,
 ex:AvalancheHazardZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ahz"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "avalanche hazard zone"@en .
@@ -870,6 +916,7 @@ ex:AxialCracking a owl:Class,
 ex:AxialForceDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "afd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "axial force deformation"@en .
@@ -877,6 +924,7 @@ ex:AxialForceDeformation a owl:Class,
 ex:AxialStressDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "asd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "axial stress deformation"@en .
@@ -884,6 +932,7 @@ ex:AxialStressDeformation a owl:Class,
 ex:AxialStressRupture a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "asr"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "axial stress rupture"@en .
@@ -961,6 +1010,7 @@ ex:BarScreen a owl:Class,
 ex:BarrierCoatingDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "bcd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "barrier coating degradation"@en .
@@ -989,6 +1039,7 @@ ex:Basin a owl:Class,
 ex:BasinSlopeGradient a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "bsg"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "basin slope gradient"@en .
@@ -996,6 +1047,7 @@ ex:BasinSlopeGradient a owl:Class,
 ex:BeAssociatedWith a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
+    skos:altLabel "baw"@en ;
     skos:broader ex:CorrelationAndAssociationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be associated with"@en .
@@ -1003,6 +1055,7 @@ ex:BeAssociatedWith a owl:Class,
 ex:BePartiallyResponsibleFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "bprf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be partially responsible for"@en .
@@ -1024,6 +1077,7 @@ ex:BeachMarks a owl:Class,
 ex:BearsResponsibilityFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "brf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "bears responsibility for"@en .
@@ -1115,6 +1169,7 @@ ex:BentoniteDisplacement a owl:Class,
 ex:BevelGearActuator a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "bga"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "bevel gear actuator"@en .
@@ -1179,6 +1234,7 @@ ex:BlackIce a owl:Class,
 ex:BlastWaveImpact a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "bwi"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "blast wave impact"@en .
@@ -1298,6 +1354,7 @@ ex:BoreCollapse a owl:Class,
 ex:BottomDischargeValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "bdv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "bottom discharge valve"@en .
@@ -1312,6 +1369,7 @@ ex:BoulderConcentration a owl:Class,
 ex:BoundaryLayerErosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ble"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "boundary layer erosion"@en .
@@ -1319,6 +1377,7 @@ ex:BoundaryLayerErosion a owl:Class,
 ex:BoundaryShearStress a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "bss"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "boundary shear stress"@en .
@@ -1326,6 +1385,7 @@ ex:BoundaryShearStress a owl:Class,
 ex:BracketedIncomeTier a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "bit"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "bracketed income tier"@en .
@@ -1354,6 +1414,7 @@ ex:Break a owl:Class,
 ex:BreakPressureTank a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "bpt"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "break pressure tank"@en .
@@ -1410,6 +1471,7 @@ ex:BrittleFracture a owl:Class,
 ex:BroughtAboutBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "bab"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "brought about by"@en .
@@ -1417,6 +1479,7 @@ ex:BroughtAboutBy a owl:Class,
 ex:BroughtOnBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "bob"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "brought on by"@en .
@@ -1515,6 +1578,7 @@ ex:Built-UpSurfaceFraction a owl:Class,
 ex:BuiltEnvironmentDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "bed"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "built environment density"@en .
@@ -1543,6 +1607,7 @@ ex:Burst a owl:Class,
 ex:BurstPressureThresholdFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "bptf"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "burst pressure threshold failure"@en .
@@ -1578,6 +1643,7 @@ ex:Bypassing a owl:Class,
 ex:CadastralBuildingValue a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "cbv"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cadastral building value"@en .
@@ -1585,6 +1651,7 @@ ex:CadastralBuildingValue a owl:Class,
 ex:CadastralPropertyIncome a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "cpi"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cadastral property income"@en .
@@ -1613,6 +1680,7 @@ ex:CalibratedOrifice a owl:Class,
 ex:CanBeAttributedTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:AttributionAndDerivationRelation ;
+    skos:altLabel "cbat"@en ;
     skos:broader ex:AttributionAndDerivationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be attributed to"@en .
@@ -1620,6 +1688,7 @@ ex:CanBeAttributedTo a owl:Class,
 ex:CanBePlaced a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "cbp"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be placed"@en .
@@ -1627,6 +1696,7 @@ ex:CanBePlaced a owl:Class,
 ex:CanBeTransmitted a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "cbt"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be transmitted"@en .
@@ -1641,6 +1711,7 @@ ex:CanCause a owl:Class,
 ex:CanGiveRiseTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "cgrt"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can give rise to"@en .
@@ -1655,6 +1726,7 @@ ex:CanGo a owl:Class,
 ex:CanLeadTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "clt"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can lead to"@en .
@@ -1683,6 +1755,7 @@ ex:CanProduce a owl:Class,
 ex:CanResultIn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "cri"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can result in"@en .
@@ -1704,6 +1777,7 @@ ex:Canalization a owl:Class,
 ex:CannotBeUsed a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "cbu"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "cannot be used"@en .
@@ -1711,6 +1785,7 @@ ex:CannotBeUsed a owl:Class,
 ex:CanopyCoverPercentage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ccp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "canopy cover percentage"@en .
@@ -1718,6 +1793,7 @@ ex:CanopyCoverPercentage a owl:Class,
 ex:CapillaryCondensationCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "ccc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "capillary condensation corrosion"@en .
@@ -1725,6 +1801,7 @@ ex:CapillaryCondensationCorrosion a owl:Class,
 ex:CapillaryFringeDynamic a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "cfd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "capillary fringe dynamic"@en .
@@ -1732,6 +1809,7 @@ ex:CapillaryFringeDynamic a owl:Class,
 ex:CapillaryWaterRetention a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "cwr"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "capillary water retention"@en .
@@ -1774,6 +1852,7 @@ ex:CatalyticEffect a owl:Class,
 ex:CatastrophicMassWasting a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "cmw"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "catastrophic mass wasting"@en .
@@ -1795,6 +1874,7 @@ ex:CatchBasin a owl:Class,
 ex:CatchmentAreaSize a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "cas"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "catchment area size"@en .
@@ -1823,6 +1903,7 @@ ex:CathodicDisbondment a owl:Class,
 ex:CathodicProtectionInterference a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "cpi"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cathodic protection interference"@en .
@@ -1830,6 +1911,7 @@ ex:CathodicProtectionInterference a owl:Class,
 ex:CathodicProtectionStation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "cps"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "cathodic protection station"@en .
@@ -1837,6 +1919,7 @@ ex:CathodicProtectionStation a owl:Class,
 ex:CathodicallyProtectedPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "cpp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "cathodically protected pipe"@en .
@@ -1844,6 +1927,7 @@ ex:CathodicallyProtectedPipe a owl:Class,
 ex:CationExchangeCapacity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "cec"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cation exchange capacity"@en .
@@ -1949,6 +2033,7 @@ ex:CavitationPitting a owl:Class,
 ex:CellActionCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "cac"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cell action corrosion"@en .
@@ -1963,6 +2048,7 @@ ex:CentrifugalPump a owl:Class,
 ex:ChainOfEvents a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "coe"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "chain of events"@en .
@@ -2068,6 +2154,7 @@ ex:ChemicalDegradation a owl:Class,
 ex:ChemicalFertilityClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "cfc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "chemical fertility class"@en .
@@ -2075,6 +2162,7 @@ ex:ChemicalFertilityClass a owl:Class,
 ex:ChemicalSoilDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "csd"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "chemical soil degradation"@en .
@@ -2103,6 +2191,7 @@ ex:ChlorideStress a owl:Class,
 ex:ChlorideStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "cscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "chloride stress corrosion cracking"@en .
@@ -2145,6 +2234,7 @@ ex:CityStreets a owl:Class,
 ex:CivilProtectionExpenditure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "cpe"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "civil protection expenditure"@en .
@@ -2208,6 +2298,7 @@ ex:CleavageFracture a owl:Class,
 ex:ClimateInterferenceIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "cii"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "climate interference index"@en .
@@ -2215,6 +2306,7 @@ ex:ClimateInterferenceIndex a owl:Class,
 ex:ClimaticStressGradient a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "csg"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "climatic stress gradient"@en .
@@ -2222,6 +2314,7 @@ ex:ClimaticStressGradient a owl:Class,
 ex:ClosedBasinDrainage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "cbd"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "closed basin drainage"@en .
@@ -2306,6 +2399,7 @@ ex:CoatingHoliday a owl:Class,
 ex:CoatingHolidayPerforation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "chp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "coating holiday perforation"@en .
@@ -2320,6 +2414,7 @@ ex:CofferDam a owl:Class,
 ex:CohesiveSoilMatrix a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "csm"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cohesive soil matrix"@en .
@@ -2327,6 +2422,7 @@ ex:CohesiveSoilMatrix a owl:Class,
 ex:ColdAirDrainageZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "cadz"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cold air drainage zone"@en .
@@ -2334,6 +2430,7 @@ ex:ColdAirDrainageZone a owl:Class,
 ex:ColdBendDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "cbd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cold bend deformation"@en .
@@ -2355,6 +2452,7 @@ ex:ColdCracking a owl:Class,
 ex:ColdJointSeparation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "cjs"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cold joint separation"@en .
@@ -2383,6 +2481,7 @@ ex:Collapse a owl:Class,
 ex:CollapseUnderExternalPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "cuep"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "collapse under external pressure"@en .
@@ -2390,6 +2489,7 @@ ex:CollapseUnderExternalPressure a owl:Class,
 ex:CollapseUnderNegativePressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "cunp"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "collapse under negative pressure"@en .
@@ -2425,6 +2525,7 @@ ex:CombinedSewer a owl:Class,
 ex:CommercialBuildingArea a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "cba"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "commercial building area"@en .
@@ -2439,6 +2540,7 @@ ex:Common a owl:Class,
 ex:CommuterDestinationIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "cdi"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "commuter destination index"@en .
@@ -2446,6 +2548,7 @@ ex:CommuterDestinationIndex a owl:Class,
 ex:CommuterInflowAggregation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "cia"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "commuter inflow aggregation"@en .
@@ -2453,6 +2556,7 @@ ex:CommuterInflowAggregation a owl:Class,
 ex:CompactedSoilHorizon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "csh"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "compacted soil horizon"@en .
@@ -2565,6 +2669,7 @@ ex:ConstrainedBy a owl:Class,
 ex:ConstructionAndMaterialDefects a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "camd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "construction and material defects"@en .
@@ -2593,6 +2698,7 @@ ex:ContactCorrosion a owl:Class,
 ex:ContactWithThePipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "cwtp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "contact with the pipeline"@en .
@@ -2614,6 +2720,7 @@ ex:Contamination a owl:Class,
 ex:ContinuousBuildingFootprint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "cbf"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "continuous building footprint"@en .
@@ -2656,6 +2763,7 @@ ex:ControlVolume a owl:Class,
 ex:CopperServiceLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "csl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "copper service line"@en .
@@ -2705,6 +2813,7 @@ ex:CorrosionFatigue a owl:Class,
 ex:CorrugatedHdpePipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "chp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "corrugated hdpe pipe"@en .
@@ -2712,6 +2821,7 @@ ex:CorrugatedHdpePipe a owl:Class,
 ex:CorrugatedMetalPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "cmp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "corrugated metal pipe"@en .
@@ -2740,6 +2850,7 @@ ex:CouldCause a owl:Class,
 ex:CounterweightCheckValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ccv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "counterweight check valve"@en .
@@ -2831,6 +2942,7 @@ ex:CreviceCorrosion a owl:Class,
 ex:CriticalSlopeAngle a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "csa"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "critical slope angle"@en .
@@ -2838,6 +2950,7 @@ ex:CriticalSlopeAngle a owl:Class,
 ex:CriticalVelocityThreshold a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "cvt"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "critical velocity threshold"@en .
@@ -2915,6 +3028,7 @@ ex:CurbBox a owl:Class,
 ex:CurbStopValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "csv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "curb stop valve"@en .
@@ -2936,6 +3050,7 @@ ex:Cut-OffValve a owl:Class,
 ex:CyclicLoadingFatigue a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "clf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cyclic loading fatigue"@en .
@@ -2943,6 +3058,7 @@ ex:CyclicLoadingFatigue a owl:Class,
 ex:CyclicalThermalStress a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "cts"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cyclical thermal stress"@en .
@@ -2950,6 +3066,7 @@ ex:CyclicalThermalStress a owl:Class,
 ex:DailyCommuterVolume a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dcv"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "daily commuter volume"@en .
@@ -2957,6 +3074,7 @@ ex:DailyCommuterVolume a owl:Class,
 ex:DailyInflowTransit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dit"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "daily inflow transit"@en .
@@ -2978,6 +3096,7 @@ ex:DamageResulting a owl:Class,
 ex:DamageToInGroundPipelines a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "dtigp"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "damage to in ground pipelines"@en .
@@ -2999,6 +3118,7 @@ ex:DaubingDefect a owl:Class,
 ex:DaytimeTransientPopulation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "dtp"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "daytime transient population"@en .
@@ -3062,6 +3182,7 @@ ex:DebrisFlow a owl:Class,
 ex:DebrisFlowChannel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dfc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "debris flow channel"@en .
@@ -3090,6 +3211,7 @@ ex:DecayInto a owl:Class,
 ex:DecayingSoilHorizon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "dsh"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "decaying soil horizon"@en .
@@ -3097,6 +3219,7 @@ ex:DecayingSoilHorizon a owl:Class,
 ex:DecileVulnerabilityRank a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dvr"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "decile vulnerability rank"@en .
@@ -3104,6 +3227,7 @@ ex:DecileVulnerabilityRank a owl:Class,
 ex:DeepDrainageConductivity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "ddc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "deep drainage conductivity"@en .
@@ -3118,6 +3242,7 @@ ex:DeepPitting a owl:Class,
 ex:DeepSoilSalinity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "dss"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "deep soil salinity"@en .
@@ -3174,6 +3299,7 @@ ex:DelayedFailure a owl:Class,
 ex:DemographicDependencyBurden a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "ddb"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "demographic dependency burden"@en .
@@ -3209,6 +3335,7 @@ ex:DensificationFailure a owl:Class,
 ex:DensityOfPublicWaterPoints a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "dopwp"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "density of public water points"@en .
@@ -3223,6 +3350,7 @@ ex:Dent a owl:Class,
 ex:DentAndGougeCombination a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "dagc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "dent and gouge combination"@en .
@@ -3279,6 +3407,7 @@ ex:DeprivationIndex a owl:Class,
 ex:DepthOfCoverReduction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "docr"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "depth of cover reduction"@en .
@@ -3328,6 +3457,7 @@ ex:Desquamation a owl:Class,
 ex:DetachedRockCoverage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "drc"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "detached rock coverage"@en .
@@ -3391,6 +3521,7 @@ ex:Dictates a owl:Class,
 ex:DifferentialPressureTransmitter a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "dpt"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "differential pressure transmitter"@en .
@@ -3405,6 +3536,7 @@ ex:DifficultTerrain a owl:Class,
 ex:DifficultToAccess a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "dta"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "difficult to access"@en .
@@ -3433,6 +3565,7 @@ ex:DiffusionalDegradation a owl:Class,
 ex:DigitalTerrainModelStatistics a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "dtms"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "digital terrain model statistics"@en .
@@ -3447,6 +3580,7 @@ ex:Direct-ActingPressureRegulator a owl:Class,
 ex:DirectResultOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "dro"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "direct result of"@en .
@@ -3538,6 +3672,7 @@ ex:DisposedWithin a owl:Class,
 ex:DisruptedGroundFootprint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dgf"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "disrupted ground footprint"@en .
@@ -3545,6 +3680,7 @@ ex:DisruptedGroundFootprint a owl:Class,
 ex:DissolvedAirFlotationUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "dafu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "dissolved air flotation unit"@en .
@@ -3601,6 +3737,7 @@ ex:DiversionStructure a owl:Class,
 ex:DockingImpactDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "did"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "docking impact damage"@en .
@@ -3615,6 +3752,7 @@ ex:Dominant a owl:Class,
 ex:DormantCrackActivation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "dca"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "dormant crack activation"@en .
@@ -3636,6 +3774,7 @@ ex:DosingStation a owl:Class,
 ex:Double-BlockAndBleedValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "abv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "double-block and bleed valve"@en .
@@ -3650,6 +3789,7 @@ ex:Double-ContainmentPipe a owl:Class,
 ex:Double-SubmergedArcWeldDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "awd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "double-submerged arc weld defect"@en .
@@ -3657,6 +3797,7 @@ ex:Double-SubmergedArcWeldDefect a owl:Class,
 ex:DoubleCheckValveAssembly a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "dcva"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "double check valve assembly"@en .
@@ -3664,6 +3805,7 @@ ex:DoubleCheckValveAssembly a owl:Class,
 ex:DownslopeMovementRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "dmr"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "downslope movement rate"@en .
@@ -3678,6 +3820,7 @@ ex:Downspout a owl:Class,
 ex:DownwardGroundDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dgd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "downward ground deformation"@en .
@@ -3685,6 +3828,7 @@ ex:DownwardGroundDeformation a owl:Class,
 ex:DownwardLoadStress a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "dls"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "downward load stress"@en .
@@ -3699,6 +3843,7 @@ ex:Drain a owl:Class,
 ex:DrainageBasinSlope a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "dbs"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "drainage basin slope"@en .
@@ -3755,6 +3900,7 @@ ex:DrainagePump a owl:Class,
 ex:DrainedSoilLayer a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "dsl"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "drained soil layer"@en .
@@ -3832,6 +3978,7 @@ ex:Drought a owl:Class,
 ex:DroughtSeverityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "dsi"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "drought severity index"@en .
@@ -3846,6 +3993,7 @@ ex:DroughtStress a owl:Class,
 ex:DryPitPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "dpp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "dry pit pump"@en .
@@ -3881,6 +4029,7 @@ ex:DuctileFracture a owl:Class,
 ex:DuctileIronPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "dip"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "ductile iron pipe"@en .
@@ -3916,6 +4065,7 @@ ex:DynamicFatigue a owl:Class,
 ex:DynamicLoadDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "dld"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "dynamic load deformation"@en .
@@ -3923,6 +4073,7 @@ ex:DynamicLoadDeformation a owl:Class,
 ex:DynamicMobilityPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "dmp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "dynamic mobility pressure"@en .
@@ -3993,6 +4144,7 @@ ex:EccentricReducer a owl:Class,
 ex:EcologicallySensitiveZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "esz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ecologically sensitive zone"@en .
@@ -4007,6 +4159,7 @@ ex:EconomicMagnetism a owl:Class,
 ex:EducationalAttainmentGap a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "eag"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "educational attainment gap"@en .
@@ -4035,6 +4188,7 @@ ex:EffectiveCause a owl:Class,
 ex:EffectiveRootDepth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "erd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "effective root depth"@en .
@@ -4042,6 +4196,7 @@ ex:EffectiveRootDepth a owl:Class,
 ex:EffectiveSoilDepth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "esd"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "effective soil depth"@en .
@@ -4084,6 +4239,7 @@ ex:ElasticInstability a owl:Class,
 ex:ElasticStrainThreshold a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "est"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "elastic strain threshold"@en .
@@ -4224,6 +4380,7 @@ ex:Engenders a owl:Class,
 ex:EngendersTheCreationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "etco"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "engenders the creation of"@en .
@@ -4231,6 +4388,7 @@ ex:EngendersTheCreationOf a owl:Class,
 ex:EngineRoomOfLocalEconomy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "erole"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "engine room of local economy"@en .
@@ -4245,6 +4403,7 @@ ex:Entails a owl:Class,
 ex:EntailsTheFormationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "etfo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "entails the formation of"@en .
@@ -4266,6 +4425,7 @@ ex:EnvironmentalDamage a owl:Class,
 ex:EnvironmentalDamagePipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "edp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "environmental damage pipeline"@en .
@@ -4273,6 +4433,7 @@ ex:EnvironmentalDamagePipeline a owl:Class,
 ex:EnvironmentalDamageRepairCost a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "edrc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "environmental damage repair cost"@en .
@@ -4287,6 +4448,7 @@ ex:EnvironmentalDegradation a owl:Class,
 ex:EnvironmentalRepairExpenditure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ere"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "environmental repair expenditure"@en .
@@ -4294,6 +4456,7 @@ ex:EnvironmentalRepairExpenditure a owl:Class,
 ex:EnvironmentalRestorationSpending a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "ers"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "environmental restoration spending"@en .
@@ -4315,6 +4478,7 @@ ex:EnvironmentalStress a owl:Class,
 ex:EnvironmentalStressCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "esc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "environmental stress cracking"@en .
@@ -4322,6 +4486,7 @@ ex:EnvironmentalStressCracking a owl:Class,
 ex:EnvironmentalStressThreshold a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "est"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "environmental stress threshold"@en .
@@ -4329,6 +4494,7 @@ ex:EnvironmentalStressThreshold a owl:Class,
 ex:EnvironmentallyAssistedCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "eac"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "environmentally assisted cracking"@en .
@@ -4364,6 +4530,7 @@ ex:ErosionCorrosion a owl:Class,
 ex:ErosionProneSlope a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "eps"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "erosion prone slope"@en .
@@ -4371,6 +4538,7 @@ ex:ErosionProneSlope a owl:Class,
 ex:ErosionRiskClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "erc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "erosion risk class"@en .
@@ -4441,6 +4609,7 @@ ex:ExceedingValues a owl:Class,
 ex:ExcessStormWater a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "esw"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "excess storm water"@en .
@@ -4455,6 +4624,7 @@ ex:ExcessiveDeflection a owl:Class,
 ex:ExertsAnEffectOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "eaeo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exerts an effect on"@en .
@@ -4469,6 +4639,7 @@ ex:ExfoliationCorrosion a owl:Class,
 ex:ExistingLandslideFootprint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "elf"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "existing landslide footprint"@en .
@@ -4476,6 +4647,7 @@ ex:ExistingLandslideFootprint a owl:Class,
 ex:ExpandingSoilStrain a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "ess"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "expanding soil strain"@en .
@@ -4497,6 +4669,7 @@ ex:ExpansionJoint a owl:Class,
 ex:ExpansionJointFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ejf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "expansion joint failure"@en .
@@ -4518,6 +4691,7 @@ ex:ExplosiveRupture a owl:Class,
 ex:ExposedBedrockPercentage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ebp"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "exposed bedrock percentage"@en .
@@ -4546,6 +4720,7 @@ ex:ExternalDamage a owl:Class,
 ex:ExternalHydraulicPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ehp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "external hydraulic pressure"@en .
@@ -4567,6 +4742,7 @@ ex:ExternalInterference a owl:Class,
 ex:ExtremeColdFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ecf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "extreme cold failure"@en .
@@ -4574,6 +4750,7 @@ ex:ExtremeColdFailure a owl:Class,
 ex:ExtremePrecipitationEvent a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "epe"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "extreme precipitation event"@en .
@@ -4602,6 +4779,7 @@ ex:Factor a owl:Class,
 ex:FailUnderExtremeColdConditions a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fuecc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fail under extreme cold conditions"@en .
@@ -4623,6 +4801,7 @@ ex:Fatigue a owl:Class,
 ex:FatigueCrackGrowth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "fcg"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fatigue crack growth"@en .
@@ -4651,6 +4830,7 @@ ex:FaultDisplacement a owl:Class,
 ex:FaultLineProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "flp"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "fault line proximity"@en .
@@ -4658,6 +4838,7 @@ ex:FaultLineProximity a owl:Class,
 ex:FaultTraceProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ftp"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "fault trace proximity"@en .
@@ -4686,6 +4867,7 @@ ex:Fiber-OpticMonitoringSensor a owl:Class,
 ex:FiberglassReinforcedPlasticPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "frpp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "fiberglass reinforced plastic pipe"@en .
@@ -4693,6 +4875,7 @@ ex:FiberglassReinforcedPlasticPipe a owl:Class,
 ex:FibrousMatrixDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fmd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fibrous matrix degradation"@en .
@@ -4700,6 +4883,7 @@ ex:FibrousMatrixDegradation a owl:Class,
 ex:FieldJointFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fjf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "field joint failure"@en .
@@ -4707,6 +4891,7 @@ ex:FieldJointFailure a owl:Class,
 ex:FieldJointSleeve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fjs"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "field joint sleeve"@en .
@@ -4714,6 +4899,7 @@ ex:FieldJointSleeve a owl:Class,
 ex:FieldWeldDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "fwd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "field weld defect"@en .
@@ -4749,6 +4935,7 @@ ex:FilterBed a owl:Class,
 ex:FilterCakeBlockage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fcb"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "filter cake blockage"@en .
@@ -4798,6 +4985,7 @@ ex:FireLoop a owl:Class,
 ex:FireSprinklerLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fsl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "fire sprinkler line"@en .
@@ -4889,6 +5077,7 @@ ex:FlashFlood a owl:Class,
 ex:FlashFloodRisk a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "ffr"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flash flood risk"@en .
@@ -4896,6 +5085,7 @@ ex:FlashFloodRisk a owl:Class,
 ex:FlashFloodSusceptibility a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "ffs"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flash flood susceptibility"@en .
@@ -4903,6 +5093,7 @@ ex:FlashFloodSusceptibility a owl:Class,
 ex:FlashFloodZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "ffz"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flash flood zone"@en .
@@ -4945,6 +5136,7 @@ ex:FloatingIntake a owl:Class,
 ex:FloatingLineStrain a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "fls"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "floating line strain"@en .
@@ -4959,6 +5151,7 @@ ex:Flood a owl:Class,
 ex:FloodHazardZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "fhz"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flood hazard zone"@en .
@@ -4973,6 +5166,7 @@ ex:FloodManagement a owl:Class,
 ex:FloodPlainExtent a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "fpe"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flood plain extent"@en .
@@ -4987,6 +5181,7 @@ ex:FloodRisk a owl:Class,
 ex:FloodRiskMap a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "frm"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flood risk map"@en .
@@ -4994,6 +5189,7 @@ ex:FloodRiskMap a owl:Class,
 ex:FloodSeverityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "fsi"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flood severity index"@en .
@@ -5001,6 +5197,7 @@ ex:FloodSeverityIndex a owl:Class,
 ex:FloodingPipelineDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fpd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "flooding pipeline damage"@en .
@@ -5036,6 +5233,7 @@ ex:FlowAccumulation a owl:Class,
 ex:FlowCalibrationUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fcu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "flow calibration unit"@en .
@@ -5043,6 +5241,7 @@ ex:FlowCalibrationUnit a owl:Class,
 ex:FlowConditioningPlate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fcp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "flow conditioning plate"@en .
@@ -5050,6 +5249,7 @@ ex:FlowConditioningPlate a owl:Class,
 ex:FlowControlValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fcv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "flow control valve"@en .
@@ -5057,6 +5257,7 @@ ex:FlowControlValve a owl:Class,
 ex:FlowInducedVibration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "fiv"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "flow induced vibration"@en .
@@ -5092,6 +5293,7 @@ ex:FlowRestrictor a owl:Class,
 ex:FlowRoutingModel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "frm"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "flow routing model"@en .
@@ -5113,6 +5315,7 @@ ex:FlowTransmitter a owl:Class,
 ex:FluidTransientShock a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "fts"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fluid transient shock"@en .
@@ -5197,6 +5400,7 @@ ex:FlyschFormation a owl:Class,
 ex:FoamInsulationCollapse a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fic"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "foam insulation collapse"@en .
@@ -5239,6 +5443,7 @@ ex:ForceMain a owl:Class,
 ex:ForceMainJunction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fmj"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "force main junction"@en .
@@ -5246,6 +5451,7 @@ ex:ForceMainJunction a owl:Class,
 ex:ForceMainManifold a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "fmm"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "force main manifold"@en .
@@ -5253,6 +5459,7 @@ ex:ForceMainManifold a owl:Class,
 ex:ForeignObjectImpact a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "foi"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "foreign object impact"@en .
@@ -5274,6 +5481,7 @@ ex:ForestCoverage a owl:Class,
 ex:ForestStandDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "fsd"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "forest stand density"@en .
@@ -5316,6 +5524,7 @@ ex:Fracture a owl:Class,
 ex:FractureMechanicsFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "fmf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fracture mechanics failure"@en .
@@ -5330,6 +5539,7 @@ ex:FracturePropagation a owl:Class,
 ex:FreezeThawDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ftd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "freeze thaw damage"@en .
@@ -5372,6 +5582,7 @@ ex:FrettingWear a owl:Class,
 ex:FrictionalShearStrength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "fss"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "frictional shear strength"@en .
@@ -5386,6 +5597,7 @@ ex:FrostPenetration a owl:Class,
 ex:FrostPenetrationDepth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "fpd"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "frost penetration depth"@en .
@@ -5400,6 +5612,7 @@ ex:FunctionalFailure a owl:Class,
 ex:FusedJointSeparation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "fjs"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fused joint separation"@en .
@@ -5442,6 +5655,7 @@ ex:Gas-Over-OilActuator a owl:Class,
 ex:GasNetworkProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "gnp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "gas network proximity"@en .
@@ -5449,6 +5663,7 @@ ex:GasNetworkProximity a owl:Class,
 ex:GasPocketBlockage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "gpb"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "gas pocket blockage"@en .
@@ -5512,6 +5727,7 @@ ex:GeneralCorrosion a owl:Class,
 ex:GeneralWallThinning a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "gwt"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "general wall thinning"@en .
@@ -5519,6 +5735,7 @@ ex:GeneralWallThinning a owl:Class,
 ex:GeneratedBasedOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:AttributionAndDerivationRelation ;
+    skos:altLabel "gbo"@en ;
     skos:broader ex:AttributionAndDerivationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "generated based on"@en .
@@ -5533,6 +5750,7 @@ ex:GeneratedBy a owl:Class,
 ex:GeneratedEstimateOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "geo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "generated estimate of"@en .
@@ -5596,6 +5814,7 @@ ex:GeothermalStress a owl:Class,
 ex:GirthWeldCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "gwc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "girth weld cracking"@en .
@@ -5603,6 +5822,7 @@ ex:GirthWeldCracking a owl:Class,
 ex:GirthWeldDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "gwd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "girth weld defect"@en .
@@ -5610,6 +5830,7 @@ ex:GirthWeldDefect a owl:Class,
 ex:GivesImpulseTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "git"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "gives impulse to"@en .
@@ -5617,6 +5838,7 @@ ex:GivesImpulseTo a owl:Class,
 ex:GivesOriginTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "got"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "gives origin to"@en .
@@ -5624,6 +5846,7 @@ ex:GivesOriginTo a owl:Class,
 ex:GivesRiseTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "grt"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "gives rise to"@en .
@@ -5631,6 +5854,7 @@ ex:GivesRiseTo a owl:Class,
 ex:GivesRiseToTheOccurrenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "grttoo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "gives rise to the occurrence of"@en .
@@ -5638,6 +5862,7 @@ ex:GivesRiseToTheOccurrenceOf a owl:Class,
 ex:GlacialActionDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "gad"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "glacial action damage"@en .
@@ -5701,6 +5926,7 @@ ex:Gradient a owl:Class,
 ex:GrainBoundaryAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "gba"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "grain boundary attack"@en .
@@ -5743,6 +5969,7 @@ ex:GravitationalStress a owl:Class,
 ex:GravityFeedLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "gfl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "gravity feed line"@en .
@@ -5771,6 +5998,7 @@ ex:GritChamber a owl:Class,
 ex:GroundDeformationVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "gdv"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ground deformation velocity"@en .
@@ -5785,6 +6013,7 @@ ex:GroundFailure a owl:Class,
 ex:GroundFreezingDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "gfd"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "ground freezing damage"@en .
@@ -5799,6 +6028,7 @@ ex:GroundHeave a owl:Class,
 ex:GroundMotionAcceleration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "gma"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ground motion acceleration"@en .
@@ -5806,6 +6036,7 @@ ex:GroundMotionAcceleration a owl:Class,
 ex:GroundMotionDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "gmd"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "ground motion damage"@en .
@@ -5834,6 +6065,7 @@ ex:GroundwaterElevation a owl:Class,
 ex:GroundwaterRechargeRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "grr"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "groundwater recharge rate"@en .
@@ -5869,6 +6101,7 @@ ex:HardnessReduction a owl:Class,
 ex:HasABearingOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "habo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "has a bearing on"@en .
@@ -5946,6 +6179,7 @@ ex:HeaveDamage a owl:Class,
 ex:HeavyMetalContamination a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "hmc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "heavy metal contamination"@en .
@@ -5967,6 +6201,7 @@ ex:HeavyRains a owl:Class,
 ex:HeightAboveNearestDrainage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "hand"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "height above nearest drainage"@en .
@@ -6017,6 +6252,7 @@ ex:High-FrequencyFloodHazard a owl:Class,
 ex:HighHazardZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "hhz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "high hazard zone"@en .
@@ -6024,6 +6260,7 @@ ex:HighHazardZone a owl:Class,
 ex:HighTemperatureHydrogenAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "htha"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "high temperature hydrogen attack"@en .
@@ -6038,6 +6275,7 @@ ex:HighwayCorridor a owl:Class,
 ex:HistoricalDisasterFrequency a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "hdf"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "historical disaster frequency"@en .
@@ -6045,6 +6283,7 @@ ex:HistoricalDisasterFrequency a owl:Class,
 ex:HistoricalFailureSite a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "hfs"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "historical failure site"@en .
@@ -6052,6 +6291,7 @@ ex:HistoricalFailureSite a owl:Class,
 ex:HistoricalLandslideFrequency a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "hlf"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "historical landslide frequency"@en .
@@ -6059,6 +6299,7 @@ ex:HistoricalLandslideFrequency a owl:Class,
 ex:HistoricalResidentPopulation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "hrp"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "historical resident population"@en .
@@ -6080,6 +6321,7 @@ ex:HoldingTank a owl:Class,
 ex:HollowJetValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "hjv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "hollow jet valve"@en .
@@ -6087,6 +6329,7 @@ ex:HollowJetValve a owl:Class,
 ex:HoopStressFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "hsf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hoop stress failure"@en .
@@ -6094,6 +6337,7 @@ ex:HoopStressFailure a owl:Class,
 ex:HorizontalDirectionalDrillingLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "hddl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "horizontal directional drilling line"@en .
@@ -6115,6 +6359,7 @@ ex:HotCorrosion a owl:Class,
 ex:HotSpotFormation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "hsf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hot spot formation"@en .
@@ -6136,6 +6381,7 @@ ex:HydrantDensity a owl:Class,
 ex:HydratedLimeInjector a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "hli"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "hydrated lime injector"@en .
@@ -6192,6 +6438,7 @@ ex:HydraulicHead a owl:Class,
 ex:HydraulicJumpErosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "hje"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hydraulic jump erosion"@en .
@@ -6206,6 +6453,7 @@ ex:HydraulicJumper a owl:Class,
 ex:HydraulicPowerUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "hpu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "hydraulic power unit"@en .
@@ -6248,6 +6496,7 @@ ex:HydraulicShock a owl:Class,
 ex:HydraulicShockWave a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "hsw"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "hydraulic shock wave"@en .
@@ -6262,6 +6511,7 @@ ex:HydraulicSurge a owl:Class,
 ex:HydraulicSurgeDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "hsd"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hydraulic surge damage"@en .
@@ -6311,6 +6561,7 @@ ex:Hydro-PneumaticTank a owl:Class,
 ex:HydrodynamicDragDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "hdd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hydrodynamic drag displacement"@en .
@@ -6346,6 +6597,7 @@ ex:HydrogenEmbrittlement a owl:Class,
 ex:HydrogenStressCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "hsc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "hydrogen stress cracking"@en .
@@ -6374,6 +6626,7 @@ ex:HydrographicNetwork a owl:Class,
 ex:HydrographicNetworkDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "hnd"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "hydrographic network density"@en .
@@ -6381,6 +6634,7 @@ ex:HydrographicNetworkDensity a owl:Class,
 ex:HydrographicNetworkLength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "hnl"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "hydrographic network length"@en .
@@ -6388,6 +6642,7 @@ ex:HydrographicNetworkLength a owl:Class,
 ex:HydrologicSoilGroup a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "hsg"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "hydrologic soil group"@en .
@@ -6402,6 +6657,7 @@ ex:Hydrolysis a owl:Class,
 ex:HydrometricMonitoringStation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "hms"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "hydrometric monitoring station"@en .
@@ -6458,6 +6714,7 @@ ex:IceFormation a owl:Class,
 ex:IceLensFormation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ilf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "ice lens formation"@en .
@@ -6535,6 +6792,7 @@ ex:Imperfection a owl:Class,
 ex:ImperviousLandCoverage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ilc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "impervious land coverage"@en .
@@ -6542,6 +6800,7 @@ ex:ImperviousLandCoverage a owl:Class,
 ex:ImperviousSurfacePercentage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "isp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "impervious surface percentage"@en .
@@ -6584,6 +6843,7 @@ ex:Important a owl:Class,
 ex:ImposeALimitOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
+    skos:altLabel "ialo"@en ;
     skos:broader ex:ConditionalAndContributingRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "impose a limit on"@en .
@@ -6633,6 +6893,7 @@ ex:In-ServiceWeldingDefect a owl:Class,
 ex:InTheEventOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "iteo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "in the event of"@en .
@@ -6654,6 +6915,7 @@ ex:InaccessibleTerrain a owl:Class,
 ex:InadequateDepthCover a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "idc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "inadequate depth cover"@en .
@@ -6661,6 +6923,7 @@ ex:InadequateDepthCover a owl:Class,
 ex:InadequateSleeveFit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "isf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "inadequate sleeve fit"@en .
@@ -6668,6 +6931,7 @@ ex:InadequateSleeveFit a owl:Class,
 ex:IncisedStreamChannel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "isc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "incised stream channel"@en .
@@ -6675,6 +6939,7 @@ ex:IncisedStreamChannel a owl:Class,
 ex:InclinedPlateSeparator a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ips"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "inclined plate separator"@en .
@@ -6682,6 +6947,7 @@ ex:InclinedPlateSeparator a owl:Class,
 ex:InclinedSlopeClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "isc"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "inclined slope class"@en .
@@ -6703,6 +6969,7 @@ ex:Inclusion a owl:Class,
 ex:IncomeDistributionTier a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "idt"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "income distribution tier"@en .
@@ -6717,6 +6984,7 @@ ex:Increase a owl:Class,
 ex:IncreaseTheRiskOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "itro"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "increase the risk of"@en .
@@ -6752,6 +7020,7 @@ ex:InducedBy a owl:Class,
 ex:InducedCurrentCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "icc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "induced current corrosion"@en .
@@ -6766,6 +7035,7 @@ ex:Induces a owl:Class,
 ex:InducesTheFormationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
+    skos:altLabel "itfo"@en ;
     skos:broader ex:ConditionalAndContributingRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "induces the formation of"@en .
@@ -6773,6 +7043,7 @@ ex:InducesTheFormationOf a owl:Class,
 ex:IndustrialBuildingCluster a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "ibc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "industrial building cluster"@en .
@@ -6780,6 +7051,7 @@ ex:IndustrialBuildingCluster a owl:Class,
 ex:IndustrialEffluentDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ied"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "industrial effluent degradation"@en .
@@ -6787,6 +7059,7 @@ ex:IndustrialEffluentDegradation a owl:Class,
 ex:IndustrialLandUse a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "ilu"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "industrial land use"@en .
@@ -6913,6 +7186,7 @@ ex:Inhibits a owl:Class,
 ex:InjectionPointCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "ipc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "injection point corrosion"@en .
@@ -6927,6 +7201,7 @@ ex:InlandErosion a owl:Class,
 ex:InlandWaterSurface a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "iws"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "inland water surface"@en .
@@ -6955,6 +7230,7 @@ ex:InlineStrainer a owl:Class,
 ex:InnerDiameterErosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ide"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "inner diameter erosion"@en .
@@ -7039,6 +7315,7 @@ ex:IntentionalHit a owl:Class,
 ex:InteractsToProduce a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "itp"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "interacts to produce"@en .
@@ -7109,6 +7386,7 @@ ex:IntergranularFracture a owl:Class,
 ex:IntergranularStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "iscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "intergranular stress corrosion cracking"@en .
@@ -7144,6 +7422,7 @@ ex:InternalOxidation a owl:Class,
 ex:InternalPressureSpike a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "ips"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "internal pressure spike"@en .
@@ -7165,6 +7444,7 @@ ex:IntroducedInto a owl:Class,
 ex:IntroducedThePotentialFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "itpf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "introduced the potential for"@en .
@@ -7172,6 +7452,7 @@ ex:IntroducedThePotentialFor a owl:Class,
 ex:IntrusiveRootDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ird"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "intrusive root damage"@en .
@@ -7214,6 +7495,7 @@ ex:InvertedSiphon a owl:Class,
 ex:InvolvingTheAggregationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "itao"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "involving the aggregation of"@en .
@@ -7221,6 +7503,7 @@ ex:InvolvingTheAggregationOf a owl:Class,
 ex:IonExchangeDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ied"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "ion exchange degradation"@en .
@@ -7242,6 +7525,7 @@ ex:IrrigationChannel a owl:Class,
 ex:IsAFunctionOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "iafo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is a function of"@en .
@@ -7249,6 +7533,7 @@ ex:IsAFunctionOf a owl:Class,
 ex:IsAPrerequisiteFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "iapf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is a prerequisite for"@en .
@@ -7256,6 +7541,7 @@ ex:IsAPrerequisiteFor a owl:Class,
 ex:IsCausedBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "icb"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is caused by"@en .
@@ -7263,6 +7549,7 @@ ex:IsCausedBy a owl:Class,
 ex:IsContingentUpon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "icu"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is contingent upon"@en .
@@ -7270,6 +7557,7 @@ ex:IsContingentUpon a owl:Class,
 ex:IsDependentUpon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
+    skos:altLabel "idu"@en ;
     skos:broader ex:CorrelationAndAssociationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is dependent upon"@en .
@@ -7277,6 +7565,7 @@ ex:IsDependentUpon a owl:Class,
 ex:IsDrivenBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "idb"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is driven by"@en .
@@ -7284,6 +7573,7 @@ ex:IsDrivenBy a owl:Class,
 ex:IsResponsibleFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "irf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "is responsible for"@en .
@@ -7305,6 +7595,7 @@ ex:IsolationValve a owl:Class,
 ex:IspraFloodHazardClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "ifhc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ispra flood hazard class"@en .
@@ -7312,6 +7603,7 @@ ex:IspraFloodHazardClass a owl:Class,
 ex:IspraLandslideRiskLevel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ilrl"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ispra landslide risk level"@en .
@@ -7389,6 +7681,7 @@ ex:KFactor a owl:Class,
 ex:KnifeGateValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "kgv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "knife gate valve"@en .
@@ -7417,6 +7710,7 @@ ex:Ksat30Cm a owl:Class,
 ex:LackOfFusion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lof"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "lack of fusion"@en .
@@ -7424,6 +7718,7 @@ ex:LackOfFusion a owl:Class,
 ex:LackOfPenetration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lop"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "lack of penetration"@en .
@@ -7459,6 +7754,7 @@ ex:LandCapability a owl:Class,
 ex:LandCapabilityClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lcc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "land capability class"@en .
@@ -7466,6 +7762,7 @@ ex:LandCapabilityClass a owl:Class,
 ex:LandConsumptionRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lcr"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "land consumption rate"@en .
@@ -7494,6 +7791,7 @@ ex:LandUse a owl:Class,
 ex:LandUseIntensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "lui"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "land use intensity"@en .
@@ -7529,6 +7827,7 @@ ex:LandscapeVulnerability a owl:Class,
 ex:LandscapeVulnerabilityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lvi"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landscape vulnerability index"@en .
@@ -7550,6 +7849,7 @@ ex:LandslideAnalysis a owl:Class,
 ex:LandslideDebrisZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ldz"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide debris zone"@en .
@@ -7564,6 +7864,7 @@ ex:LandslideFrequency a owl:Class,
 ex:LandslideHazardZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lhz"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide hazard zone"@en .
@@ -7578,6 +7879,7 @@ ex:LandslideInventory a owl:Class,
 ex:LandslideInventoryPoint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lip"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide inventory point"@en .
@@ -7585,6 +7887,7 @@ ex:LandslideInventoryPoint a owl:Class,
 ex:LandslideMassDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lmd"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide mass displacement"@en .
@@ -7606,6 +7909,7 @@ ex:LandslidePath a owl:Class,
 ex:LandslidePolygonBoundary a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lpb"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide polygon boundary"@en .
@@ -7620,6 +7924,7 @@ ex:LandslidePrevention a owl:Class,
 ex:LandslideRiskIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lri"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide risk index"@en .
@@ -7627,6 +7932,7 @@ ex:LandslideRiskIndex a owl:Class,
 ex:LandslideSurfaceAreaPercentage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "lsap"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide surface area percentage"@en .
@@ -7655,6 +7961,7 @@ ex:LargeLakes a owl:Class,
 ex:LargeScaleGroundDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lsgd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "large scale ground displacement"@en .
@@ -7662,6 +7969,7 @@ ex:LargeScaleGroundDisplacement a owl:Class,
 ex:LateralEarthPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lep"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "lateral earth pressure"@en .
@@ -7669,6 +7977,7 @@ ex:LateralEarthPressure a owl:Class,
 ex:LateralGroundMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lgm"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "lateral ground movement"@en .
@@ -7683,6 +7992,7 @@ ex:LateralLine a owl:Class,
 ex:LateralPipeDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lpd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "lateral pipe displacement"@en .
@@ -7697,6 +8007,7 @@ ex:LateralSpread a owl:Class,
 ex:LaysTheGroundworkFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "ltgf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lays the groundwork for"@en .
@@ -7704,6 +8015,7 @@ ex:LaysTheGroundworkFor a owl:Class,
 ex:LeachedSoilProfile a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "lsp"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "leached soil profile"@en .
@@ -7739,6 +8051,7 @@ ex:LeadsTo a owl:Class,
 ex:LeadsToTheOnsetOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "lttoo"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "leads to the onset of"@en .
@@ -7760,6 +8073,7 @@ ex:LeakDetection a owl:Class,
 ex:LeakDetectionCable a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ldc"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "leak detection cable"@en .
@@ -7788,6 +8102,7 @@ ex:LeakageRisk a owl:Class,
 ex:LeakageRiskIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lri"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "leakage risk index"@en .
@@ -7859,6 +8174,7 @@ ex:LimitedIn a owl:Class,
 ex:LinearAssetProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lap"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "linear asset proximity"@en .
@@ -7887,6 +8203,7 @@ ex:LinkedTo a owl:Class,
 ex:LiquidMetalCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "lmc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "liquid metal cracking"@en .
@@ -7894,6 +8211,7 @@ ex:LiquidMetalCracking a owl:Class,
 ex:LiquidMetalEmbrittlement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lme"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "liquid metal embrittlement"@en .
@@ -7901,6 +8219,7 @@ ex:LiquidMetalEmbrittlement a owl:Class,
 ex:LiquidRingVacuumPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "lrvp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "liquid ring vacuum pump"@en .
@@ -7922,6 +8241,7 @@ ex:LoadCapacity a owl:Class,
 ex:LocalAdministrativeUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "lau"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "local administrative unit"@en .
@@ -7936,6 +8256,7 @@ ex:LocalizedCorrosion a owl:Class,
 ex:LocalizedIncomeDistribution a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "lid"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "localized income distribution"@en .
@@ -7943,6 +8264,7 @@ ex:LocalizedIncomeDistribution a owl:Class,
 ex:LocalizedWallLoss a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lwl"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "localized wall loss"@en .
@@ -7971,6 +8293,7 @@ ex:Loosen a owl:Class,
 ex:LossOfBonding a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "lob"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "loss of bonding"@en .
@@ -7978,6 +8301,7 @@ ex:LossOfBonding a owl:Class,
 ex:LossOfContainment a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "loc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "loss of containment"@en .
@@ -7985,6 +8309,7 @@ ex:LossOfContainment a owl:Class,
 ex:LossOfCover a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "loc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "loss of cover"@en .
@@ -8013,6 +8338,7 @@ ex:Low-PressureSewer a owl:Class,
 ex:LowIncomePopulationRatio a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "lipr"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "low income population ratio"@en .
@@ -8020,6 +8346,7 @@ ex:LowIncomePopulationRatio a owl:Class,
 ex:LowProductivityIndustrialDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "lpid"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "low productivity industrial density"@en .
@@ -8027,6 +8354,7 @@ ex:LowProductivityIndustrialDensity a owl:Class,
 ex:LubricatedPlugValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "lpv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "lubricated plug valve"@en .
@@ -8055,6 +8383,7 @@ ex:Macro-VulnerabilityDecile a owl:Class,
 ex:MacroCellCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "mcc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "macro cell corrosion"@en .
@@ -8062,6 +8391,7 @@ ex:MacroCellCorrosion a owl:Class,
 ex:MagnitudeErrorMargin a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "mem"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "magnitude error margin"@en .
@@ -8069,6 +8399,7 @@ ex:MagnitudeErrorMargin a owl:Class,
 ex:MainIncomeCategory a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "mic"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "main income category"@en .
@@ -8083,6 +8414,7 @@ ex:MainLine a owl:Class,
 ex:ManagedForestZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "mfz"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "managed forest zone"@en .
@@ -8118,6 +8450,7 @@ ex:MarginalChannel a owl:Class,
 ex:MarineBorerAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "mba"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "marine borer attack"@en .
@@ -8125,6 +8458,7 @@ ex:MarineBorerAttack a owl:Class,
 ex:MarineGrowthAccumulation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "mga"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "marine growth accumulation"@en .
@@ -8132,6 +8466,7 @@ ex:MarineGrowthAccumulation a owl:Class,
 ex:MarineSplashZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "msz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "marine splash zone"@en .
@@ -8146,6 +8481,7 @@ ex:Marshland a owl:Class,
 ex:MassMovementVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "mmv"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mass movement velocity"@en .
@@ -8160,6 +8496,7 @@ ex:MassWasting a owl:Class,
 ex:MasterHexagonalIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "mhi"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "master hexagonal index"@en .
@@ -8202,6 +8539,7 @@ ex:May a owl:Class,
 ex:MayBeBlocked a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "mbb"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "may be blocked"@en .
@@ -8209,6 +8547,7 @@ ex:MayBeBlocked a owl:Class,
 ex:MeanAnnualRainfall a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "mar"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mean annual rainfall"@en .
@@ -8216,6 +8555,7 @@ ex:MeanAnnualRainfall a owl:Class,
 ex:MeanAnnualTemperature a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "mat"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mean annual temperature"@en .
@@ -8258,6 +8598,7 @@ ex:MechanicalIndentation a owl:Class,
 ex:MechanicalStressIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "msi"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mechanical stress index"@en .
@@ -8377,6 +8718,7 @@ ex:MicrobialAttack a owl:Class,
 ex:MicrobiallyInducedDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "mid"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "microbially induced degradation"@en .
@@ -8384,6 +8726,7 @@ ex:MicrobiallyInducedDegradation a owl:Class,
 ex:MicrobiologicallyInfluencedCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "mic"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "microbiologically influenced corrosion"@en .
@@ -8405,6 +8748,7 @@ ex:MigrationOf a owl:Class,
 ex:MigrationOfFineParticles a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "mofp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "migration of fine particles"@en .
@@ -8419,6 +8763,7 @@ ex:MillScale a owl:Class,
 ex:MineralSoilHorizon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "msh"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mineral soil horizon"@en .
@@ -8426,6 +8771,7 @@ ex:MineralSoilHorizon a owl:Class,
 ex:MinimumInfiltrationRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "mir"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "minimum infiltration rate"@en .
@@ -8447,6 +8793,7 @@ ex:MixingTank a owl:Class,
 ex:ModeratelyWellDrainedSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "mwds"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "moderately well drained soil"@en .
@@ -8545,6 +8892,7 @@ ex:Mountains a owl:Class,
 ex:MudZoneDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "mzd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "mud zone damage"@en .
@@ -8573,6 +8921,7 @@ ex:MudslideDamage a owl:Class,
 ex:MudslideInitiationZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "miz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "mudslide initiation zone"@en .
@@ -8594,6 +8943,7 @@ ex:MunicipalBorder a owl:Class,
 ex:MunicipalWaterInput a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "mwi"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "municipal water input"@en .
@@ -8601,6 +8951,7 @@ ex:MunicipalWaterInput a owl:Class,
 ex:MunicipalWaterMetabolism a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "mwm"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "municipal water metabolism"@en .
@@ -8608,6 +8959,7 @@ ex:MunicipalWaterMetabolism a owl:Class,
 ex:MunicipalWaterOutput a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "mwo"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "municipal water output"@en .
@@ -8629,6 +8981,7 @@ ex:NamingLandmark a owl:Class,
 ex:NarrowCreviceCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "ncc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "narrow crevice corrosion"@en .
@@ -8636,6 +8989,7 @@ ex:NarrowCreviceCorrosion a owl:Class,
 ex:NativeSoilCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "nsc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "native soil corrosion"@en .
@@ -8643,6 +8997,7 @@ ex:NativeSoilCorrosion a owl:Class,
 ex:NaturalForceDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "nfd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "natural force damage"@en .
@@ -8664,6 +9019,7 @@ ex:NaturalHazards a owl:Class,
 ex:NaturalInternalDrainage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "nid"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "natural internal drainage"@en .
@@ -8671,6 +9027,7 @@ ex:NaturalInternalDrainage a owl:Class,
 ex:NaturalLandscapeZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "nlz"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "natural landscape zone"@en .
@@ -8699,6 +9056,7 @@ ex:NeedleValve a owl:Class,
 ex:NegativePressureCollapse a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "npc"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "negative pressure collapse"@en .
@@ -8706,6 +9064,7 @@ ex:NegativePressureCollapse a owl:Class,
 ex:NegativeSlopeDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "nsd"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "negative slope displacement"@en .
@@ -8713,6 +9072,7 @@ ex:NegativeSlopeDisplacement a owl:Class,
 ex:NetTaxableIncome a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "nti"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "net taxable income"@en .
@@ -8720,6 +9080,7 @@ ex:NetTaxableIncome a owl:Class,
 ex:NeutralAxisShift a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "nas"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "neutral axis shift"@en .
@@ -8769,6 +9130,7 @@ ex:Non-RevenueWaterLoss a owl:Class,
 ex:NotReadilyAccessible a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "nra"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "not readily accessible"@en .
@@ -8818,6 +9180,7 @@ ex:ObtainedFrom a owl:Class,
 ex:OccupiedHousingUnits a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ohu"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "occupied housing units"@en .
@@ -8832,6 +9195,7 @@ ex:Occurrence a owl:Class,
 ex:OfficialCommunalBorder a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ocb"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "official communal border"@en .
@@ -8839,6 +9203,7 @@ ex:OfficialCommunalBorder a owl:Class,
 ex:OfflineStorageTank a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ost"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "offline storage tank"@en .
@@ -8846,6 +9211,7 @@ ex:OfflineStorageTank a owl:Class,
 ex:OffshoreTrenchCollapse a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "otc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "offshore trench collapse"@en .
@@ -8860,6 +9226,7 @@ ex:Oil-Canning a owl:Class,
 ex:OnAccountOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "oao"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "on account of"@en .
@@ -8874,6 +9241,7 @@ ex:One-SidedCorrosion a owl:Class,
 ex:OpenSeamWeld a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "osw"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "open seam weld"@en .
@@ -8881,6 +9249,7 @@ ex:OpenSeamWeld a owl:Class,
 ex:OpeningModeFracture a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "omf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "opening mode fracture"@en .
@@ -8923,6 +9292,7 @@ ex:OrganicFouling a owl:Class,
 ex:OrganicMatterContent a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "omc"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "organic matter content"@en .
@@ -9021,6 +9391,7 @@ ex:OverflowWeir a owl:Class,
 ex:OverlandFlowPath a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "ofp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "overland flow path"@en .
@@ -9028,6 +9399,7 @@ ex:OverlandFlowPath a owl:Class,
 ex:OverlandRunoffVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "orv"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "overland runoff velocity"@en .
@@ -9091,6 +9463,7 @@ ex:OxidationScale a owl:Class,
 ex:OxygenConcentrationCell a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "occ"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "oxygen concentration cell"@en .
@@ -9161,6 +9534,7 @@ ex:PassingVehicles a owl:Class,
 ex:PassiveFilmBreakdown a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "pfb"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "passive film breakdown"@en .
@@ -9189,6 +9563,7 @@ ex:PavementSettlement a owl:Class,
 ex:PavesTheWayFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "ptwf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "paves the way for"@en .
@@ -9203,6 +9578,7 @@ ex:PeakElevation a owl:Class,
 ex:PeakFlowRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "pfr"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "peak flow rate"@en .
@@ -9210,6 +9586,7 @@ ex:PeakFlowRate a owl:Class,
 ex:PeakGroundAcceleration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "pga"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "peak ground acceleration"@en .
@@ -9217,6 +9594,7 @@ ex:PeakGroundAcceleration a owl:Class,
 ex:PeakWaterLevel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pwl"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "peak water level"@en .
@@ -9252,6 +9630,7 @@ ex:PenetrationFlaw a owl:Class,
 ex:PensionIncomeDistribution a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "pid"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "pension income distribution"@en .
@@ -9266,6 +9645,7 @@ ex:Penstock a owl:Class,
 ex:PerCapitaTaxableBase a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "pctb"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "per capita taxable base"@en .
@@ -9273,6 +9653,7 @@ ex:PerCapitaTaxableBase a owl:Class,
 ex:PercentageOfBareSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "pobs"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "percentage of bare soil"@en .
@@ -9280,6 +9661,7 @@ ex:PercentageOfBareSoil a owl:Class,
 ex:PerchedWaterTable a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pwt"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "perched water table"@en .
@@ -9287,6 +9669,7 @@ ex:PerchedWaterTable a owl:Class,
 ex:PerenniallyActiveStream a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pas"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "perennially active stream"@en .
@@ -9301,6 +9684,7 @@ ex:PerforatedPipe a owl:Class,
 ex:PermafrostThawSettlement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "pts"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "permafrost thaw settlement"@en .
@@ -9322,6 +9706,7 @@ ex:PersistentProblem a owl:Class,
 ex:PerviousSurfaceFraction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "psf"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "pervious surface fraction"@en .
@@ -9343,6 +9728,7 @@ ex:Photovoltaic-PoweredMonitoringUnit a owl:Class,
 ex:PhysicalAttributesForSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "pafs"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "physical attributes for soil"@en .
@@ -9350,6 +9736,7 @@ ex:PhysicalAttributesForSoil a owl:Class,
 ex:PhysicalFailureModes a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "pfm"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "physical failure modes"@en .
@@ -9413,6 +9800,7 @@ ex:PillowDamage a owl:Class,
 ex:Pilot-OperatedPressureReliefValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "prv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pilot-operated pressure relief valve"@en .
@@ -9455,6 +9843,7 @@ ex:PipeBenching a owl:Class,
 ex:PipeBurialDepth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "pbd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "pipe burial depth"@en .
@@ -9707,6 +10096,7 @@ ex:PlasticityIndex a owl:Class,
 ex:PlayARoleInDetermining a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "parid"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "play a role in determining"@en .
@@ -9714,6 +10104,7 @@ ex:PlayARoleInDetermining a owl:Class,
 ex:PlaysAPivotalRoleIn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "papri"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "plays a pivotal role in"@en .
@@ -9749,6 +10140,7 @@ ex:PocketFormation a owl:Class,
 ex:PointFeatureDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "pfd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "point feature density"@en .
@@ -9784,6 +10176,7 @@ ex:Pore-WaterPressureBuildup a owl:Class,
 ex:PoreWaterPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pwp"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "pore water pressure"@en .
@@ -9791,6 +10184,7 @@ ex:PoreWaterPressure a owl:Class,
 ex:PoreWaterPressureBuildup a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "pwpb"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "pore water pressure buildup"@en .
@@ -9812,6 +10206,7 @@ ex:Post-SeismicMotion a owl:Class,
 ex:Post-WeldHeatTreatmentDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "htd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "post-weld heat treatment defect"@en .
@@ -9819,6 +10214,7 @@ ex:Post-WeldHeatTreatmentDefect a owl:Class,
 ex:PotentialSoilLoss a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "psl"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "potential soil loss"@en .
@@ -9833,6 +10229,7 @@ ex:PoulticeCorrosion a owl:Class,
 ex:PracticalAndTechnicalChallenges a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "patc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "practical and technical challenges"@en .
@@ -9931,6 +10328,7 @@ ex:PressureReducer a owl:Class,
 ex:PressureReducingValveStation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "prvs"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pressure reducing valve station"@en .
@@ -9938,6 +10336,8 @@ ex:PressureReducingValveStation a owl:Class,
 ex:PressureReliefValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "prv"@en,
+        "relief valve"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pressure relief valve"@en .
@@ -9952,6 +10352,7 @@ ex:PressureSensor a owl:Class,
 ex:PressureSurgeDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "psd"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "pressure surge damage"@en .
@@ -10057,6 +10458,7 @@ ex:PropagationCrack a owl:Class,
 ex:ProtectiveFilmRemoval a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "pfr"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "protective film removal"@en .
@@ -10064,6 +10466,7 @@ ex:ProtectiveFilmRemoval a owl:Class,
 ex:ProtectiveLayerDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "pld"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "protective layer degradation"@en .
@@ -10071,6 +10474,7 @@ ex:ProtectiveLayerDegradation a owl:Class,
 ex:ProvincialAdministrativeLimit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "pal"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "provincial administrative limit"@en .
@@ -10085,6 +10489,7 @@ ex:Provokes a owl:Class,
 ex:ProvokesTheOccurrenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "ptoo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "provokes the occurrence of"@en .
@@ -10092,6 +10497,7 @@ ex:ProvokesTheOccurrenceOf a owl:Class,
 ex:PublicServiceAccessibilityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "psai"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "public service accessibility index"@en .
@@ -10099,6 +10505,7 @@ ex:PublicServiceAccessibilityIndex a owl:Class,
 ex:PublicWaterAccessDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pwad"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "public water access density"@en .
@@ -10106,6 +10513,7 @@ ex:PublicWaterAccessDensity a owl:Class,
 ex:PublicWaterFountain a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "pwf"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "public water fountain"@en .
@@ -10183,6 +10591,7 @@ ex:Quick-ConnectCoupling a owl:Class,
 ex:QuickSandAction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "qsa"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "quick sand action"@en .
@@ -10211,6 +10620,7 @@ ex:RadialGate a owl:Class,
 ex:RadialSlopeAngle a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "rsa"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "radial slope angle"@en .
@@ -10246,6 +10656,7 @@ ex:RainEvents a owl:Class,
 ex:RainGaugeNetwork a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rgn"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "rain gauge network"@en .
@@ -10253,6 +10664,7 @@ ex:RainGaugeNetwork a owl:Class,
 ex:RainHarvestingTank a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rht"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "rain harvesting tank"@en .
@@ -10267,6 +10679,7 @@ ex:Rainfall a owl:Class,
 ex:RainfallErosivityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rei"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "rainfall erosivity index"@en .
@@ -10295,6 +10708,7 @@ ex:Rainwater a owl:Class,
 ex:RainwaterDispersionChannel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rdc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "rainwater dispersion channel"@en .
@@ -10309,6 +10723,7 @@ ex:RapiditySurge a owl:Class,
 ex:RawWaterConduit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rwc"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "raw water conduit"@en .
@@ -10316,6 +10731,7 @@ ex:RawWaterConduit a owl:Class,
 ex:RawWaterDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "rwd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "raw water degradation"@en .
@@ -10323,6 +10739,7 @@ ex:RawWaterDegradation a owl:Class,
 ex:RawWaterIntake a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rwi"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "raw water intake"@en .
@@ -10330,6 +10747,7 @@ ex:RawWaterIntake a owl:Class,
 ex:RawWaterPipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rwp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "raw water pipeline"@en .
@@ -10351,6 +10769,7 @@ ex:ReactionBasin a owl:Class,
 ex:ReactiveAggregateAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "raa"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "reactive aggregate attack"@en .
@@ -10435,6 +10854,7 @@ ex:Reduces a owl:Class,
 ex:RegionalSoilDivision a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "rsd"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "regional soil division"@en .
@@ -10442,6 +10862,7 @@ ex:RegionalSoilDivision a owl:Class,
 ex:RegisterResidentCount a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "rrc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "register resident count"@en .
@@ -10470,6 +10891,7 @@ ex:Regulator a owl:Class,
 ex:ReinforcedConcreteCylinderPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rccp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "reinforced concrete cylinder pipe"@en .
@@ -10513,6 +10935,7 @@ ex:RemainsBelow a owl:Class,
 ex:RemediationFinancialExpenditure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "rfe"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "remediation financial expenditure"@en .
@@ -10577,6 +11000,7 @@ ex:Reservoir a owl:Class,
 ex:ResidualShearStrength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "rss"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "residual shear strength"@en .
@@ -10591,6 +11015,7 @@ ex:ResidualStress a owl:Class,
 ex:ResidualStressCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "rsc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "residual stress cracking"@en .
@@ -10675,6 +11100,7 @@ ex:RetentionPond a owl:Class,
 ex:RetentionStorageCapacity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "rsc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "retention storage capacity"@en .
@@ -10689,6 +11115,7 @@ ex:ReturnLine a owl:Class,
 ex:ReturnSludgeLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rsl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "return sludge line"@en .
@@ -10696,6 +11123,7 @@ ex:ReturnSludgeLine a owl:Class,
 ex:ReverseFlowDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "rfd"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "reverse flow damage"@en .
@@ -10703,6 +11131,7 @@ ex:ReverseFlowDamage a owl:Class,
 ex:ReverseOsomosisUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rou"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "reverse osomosis unit"@en .
@@ -10731,6 +11160,7 @@ ex:RiserPipe a owl:Class,
 ex:RiverBankErosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rbe"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river bank erosion"@en .
@@ -10738,6 +11168,7 @@ ex:RiverBankErosion a owl:Class,
 ex:RiverBankScoving a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rbs"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river bank scoving"@en .
@@ -10745,6 +11176,7 @@ ex:RiverBankScoving a owl:Class,
 ex:RiverBankStability a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rbs"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river bank stability"@en .
@@ -10752,6 +11184,7 @@ ex:RiverBankStability a owl:Class,
 ex:RiverBasinThreshold a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rbt"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river basin threshold"@en .
@@ -10773,6 +11206,7 @@ ex:RiverDischarge a owl:Class,
 ex:RiverSegmentLength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rsl"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river segment length"@en .
@@ -10780,6 +11214,7 @@ ex:RiverSegmentLength a owl:Class,
 ex:RiverStandardWidth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rsw"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "river standard width"@en .
@@ -10829,6 +11264,7 @@ ex:RoadCenterline a owl:Class,
 ex:RoadNetworkDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "rnd"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "road network density"@en .
@@ -10836,6 +11272,7 @@ ex:RoadNetworkDensity a owl:Class,
 ex:RoadNetworkLength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "rnl"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "road network length"@en .
@@ -10850,6 +11287,7 @@ ex:RoadProximity a owl:Class,
 ex:RoadSurfaceType a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "rst"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "road surface type"@en .
@@ -10920,6 +11358,7 @@ ex:RootCause a owl:Class,
 ex:RootDepthLimitation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "rdl"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "root depth limitation"@en .
@@ -10934,6 +11373,7 @@ ex:RootIntrusion a owl:Class,
 ex:RootSystemPenetration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "rsp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "root system penetration"@en .
@@ -10948,6 +11388,7 @@ ex:RootingDepth a owl:Class,
 ex:RotaryVanePump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "rvp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "rotary vane pump"@en .
@@ -10983,6 +11424,7 @@ ex:RunoffCoefficient a owl:Class,
 ex:RunoffPotentialClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "rpc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "runoff potential class"@en .
@@ -11039,6 +11481,7 @@ ex:SacrificialAnode a owl:Class,
 ex:SacrificialAnodeExhaustion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "sae"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sacrificial anode exhaustion"@en .
@@ -11081,6 +11524,7 @@ ex:SalinizationRisk a owl:Class,
 ex:SaltToleranceIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "sti"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "salt tolerance index"@en .
@@ -11116,6 +11560,7 @@ ex:SandFraction a owl:Class,
 ex:SandJettingWear a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "sjw"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sand jetting wear"@en .
@@ -11123,6 +11568,7 @@ ex:SandJettingWear a owl:Class,
 ex:SandProductionDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "spd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sand production damage"@en .
@@ -11130,6 +11576,7 @@ ex:SandProductionDamage a owl:Class,
 ex:SandSiltRatio a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "ssr"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "sand silt ratio"@en .
@@ -11144,6 +11591,7 @@ ex:Saponification a owl:Class,
 ex:SaturatedHydraulicConductivity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "shc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "saturated hydraulic conductivity"@en .
@@ -11193,6 +11641,7 @@ ex:Scour a owl:Class,
 ex:ScourDepthExpansion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "sde"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "scour depth expansion"@en .
@@ -11256,6 +11705,7 @@ ex:Sea-FloorInstability a owl:Class,
 ex:SeaLevelRiseExposure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "slre"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "sea level rise exposure"@en .
@@ -11277,6 +11727,7 @@ ex:SealPot a owl:Class,
 ex:SedimentLadenWater a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "slw"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sediment laden water"@en .
@@ -11291,6 +11742,7 @@ ex:SedimentLoad a owl:Class,
 ex:SedimentTransportCapacity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "stc"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "sediment transport capacity"@en .
@@ -11340,6 +11792,7 @@ ex:SeismicEpicenter a owl:Class,
 ex:SeismicFaultRupture a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "sfr"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "seismic fault rupture"@en .
@@ -11347,6 +11800,7 @@ ex:SeismicFaultRupture a owl:Class,
 ex:SeismicGroundMotion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "sgm"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "seismic ground motion"@en .
@@ -11354,6 +11808,7 @@ ex:SeismicGroundMotion a owl:Class,
 ex:SeismicHazardClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "shc"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "seismic hazard class"@en .
@@ -11368,6 +11823,7 @@ ex:SeismicLiquefaction a owl:Class,
 ex:SeismicMomentMagnitude a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "smm"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "seismic moment magnitude"@en .
@@ -11438,6 +11894,7 @@ ex:ServiceLine a owl:Class,
 ex:SetOffBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "sob"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "set off by"@en .
@@ -11445,6 +11902,7 @@ ex:SetOffBy a owl:Class,
 ex:SetsInMotion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "sim"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "sets in motion"@en .
@@ -11466,6 +11924,7 @@ ex:Settles a owl:Class,
 ex:SewageAndStormwaterDischarge a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "sasd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sewage and stormwater discharge"@en .
@@ -11473,6 +11932,7 @@ ex:SewageAndStormwaterDischarge a owl:Class,
 ex:SewageEjectionPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "sep"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "sewage ejection pump"@en .
@@ -11487,6 +11947,7 @@ ex:SewerMain a owl:Class,
 ex:ShallowCoverDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "scd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "shallow cover damage"@en .
@@ -11571,6 +12032,7 @@ ex:Shut-OffValve a owl:Class,
 ex:SideStreamFilter a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ssf"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "side stream filter"@en .
@@ -11683,6 +12145,7 @@ ex:SlopeMovement a owl:Class,
 ex:SlopeMovementVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "smv"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "slope movement velocity"@en .
@@ -11718,6 +12181,7 @@ ex:Sloughing a owl:Class,
 ex:SlowSandFilter a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ssf"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "slow sand filter"@en .
@@ -11725,6 +12189,7 @@ ex:SlowSandFilter a owl:Class,
 ex:SlowSlopeMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "ssm"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "slow slope movement"@en .
@@ -11732,6 +12197,7 @@ ex:SlowSlopeMovement a owl:Class,
 ex:SludgeReturnLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "srl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "sludge return line"@en .
@@ -11781,6 +12247,7 @@ ex:Soakaway a owl:Class,
 ex:SocketWeldFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "swf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "socket weld failure"@en .
@@ -11823,6 +12290,7 @@ ex:SoilAcidification a owl:Class,
 ex:SoilBulkDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sbd"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil bulk density"@en .
@@ -11858,6 +12326,7 @@ ex:SoilDegradation a owl:Class,
 ex:SoilDrainingCapability a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "sdc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil draining capability"@en .
@@ -11865,6 +12334,7 @@ ex:SoilDrainingCapability a owl:Class,
 ex:SoilDynamicMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "sdm"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "soil dynamic movement"@en .
@@ -11872,6 +12342,7 @@ ex:SoilDynamicMovement a owl:Class,
 ex:SoilElectricalConductivity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sec"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil electrical conductivity"@en .
@@ -11879,6 +12350,7 @@ ex:SoilElectricalConductivity a owl:Class,
 ex:SoilErodibilityFactor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sef"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil erodibility factor"@en .
@@ -11921,6 +12393,7 @@ ex:SoilHeave a owl:Class,
 ex:SoilHorizonThickness a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sht"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil horizon thickness"@en .
@@ -11935,6 +12408,7 @@ ex:SoilInstability a owl:Class,
 ex:SoilLandscapeUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "slu"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil landscape unit"@en .
@@ -11949,6 +12423,7 @@ ex:SoilLiquefaction a owl:Class,
 ex:SoilMatrixSuction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sms"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil matrix suction"@en .
@@ -11963,6 +12438,7 @@ ex:SoilMoisture a owl:Class,
 ex:SoilMoistureDeficit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "smd"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil moisture deficit"@en .
@@ -11970,6 +12446,7 @@ ex:SoilMoistureDeficit a owl:Class,
 ex:SoilMovementPipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
+    skos:altLabel "smp"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "soil movement pipeline"@en .
@@ -11977,6 +12454,7 @@ ex:SoilMovementPipeline a owl:Class,
 ex:SoilMovementRate a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "smr"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil movement rate"@en .
@@ -11984,6 +12462,7 @@ ex:SoilMovementRate a owl:Class,
 ex:SoilOrganicCarbon a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "soc"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil organic carbon"@en .
@@ -11991,6 +12470,7 @@ ex:SoilOrganicCarbon a owl:Class,
 ex:SoilPenetrometerResistance a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "spr"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil penetrometer resistance"@en .
@@ -12019,6 +12499,7 @@ ex:SoilSettlement a owl:Class,
 ex:SoilShearStrength a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "sss"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil shear strength"@en .
@@ -12026,6 +12507,7 @@ ex:SoilShearStrength a owl:Class,
 ex:SoilTextureClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "stc"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "soil texture class"@en .
@@ -12033,6 +12515,7 @@ ex:SoilTextureClass a owl:Class,
 ex:SolarPoweredTelemetryUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "sptu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "solar powered telemetry unit"@en .
@@ -12040,6 +12523,7 @@ ex:SolarPoweredTelemetryUnit a owl:Class,
 ex:SolarRadiationDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "srd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "solar radiation degradation"@en .
@@ -12047,6 +12531,7 @@ ex:SolarRadiationDegradation a owl:Class,
 ex:SolarRadiationExposure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "sre"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "solar radiation exposure"@en .
@@ -12089,6 +12574,7 @@ ex:SootDeposition a owl:Class,
 ex:SourcesSuchAs a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "ssa"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "sources such as"@en .
@@ -12124,6 +12610,7 @@ ex:Spigot a owl:Class,
 ex:SpillContainmentBasin a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "scb"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "spill containment basin"@en .
@@ -12145,6 +12632,7 @@ ex:Spiral-WeldedPipe a owl:Class,
 ex:SpiralWeldFlaw a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "swf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "spiral weld flaw"@en .
@@ -12152,6 +12640,7 @@ ex:SpiralWeldFlaw a owl:Class,
 ex:SplashZoneCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "szc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "splash zone corrosion"@en .
@@ -12180,6 +12669,7 @@ ex:SprinklerHead a owl:Class,
 ex:StagnantWaterCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "swc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stagnant water corrosion"@en .
@@ -12271,6 +12761,7 @@ ex:StormWater a owl:Class,
 ex:StormWaterSurges a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "sws"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "storm water surges"@en .
@@ -12292,6 +12783,7 @@ ex:StormwaterInterceptor a owl:Class,
 ex:StormwaterRunoffChannel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "src"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "stormwater runoff channel"@en .
@@ -12313,6 +12805,7 @@ ex:StrataOrientation a owl:Class,
 ex:StrayCurrentAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "sca"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stray current attack"@en .
@@ -12320,6 +12813,7 @@ ex:StrayCurrentAttack a owl:Class,
 ex:StrayCurrentCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "scc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stray current corrosion"@en .
@@ -12327,6 +12821,7 @@ ex:StrayCurrentCorrosion a owl:Class,
 ex:StrayCurrentInterference a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ThirdPartyAndExternalInterference ;
+    skos:altLabel "sci"@en ;
     skos:broader ex:ThirdPartyAndExternalInterference ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stray current interference"@en .
@@ -12362,6 +12857,7 @@ ex:StreamOrder a owl:Class,
 ex:StreamOrderIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "soi"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "stream order index"@en .
@@ -12397,6 +12893,7 @@ ex:StressConcentration a owl:Class,
 ex:StressIntensityFactorFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "siff"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stress intensity factor failure"@en .
@@ -12488,6 +12985,7 @@ ex:Sub-SurfaceVoid a owl:Class,
 ex:SubSurfaceLeaks a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ssl"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sub surface leaks"@en .
@@ -12495,6 +12993,7 @@ ex:SubSurfaceLeaks a owl:Class,
 ex:SubjectToFlooding a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "stf"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "subject to flooding"@en .
@@ -12586,6 +13085,7 @@ ex:Sulfidation a owl:Class,
 ex:SulfideStressCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "ssc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sulfide stress cracking"@en .
@@ -12621,6 +13121,7 @@ ex:SumpPump a owl:Class,
 ex:SurfaceBedrockExposure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "sbe"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "surface bedrock exposure"@en .
@@ -12642,6 +13143,7 @@ ex:SurfaceRoughness a owl:Class,
 ex:SurfaceRunoffVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "srv"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "surface runoff velocity"@en .
@@ -12684,6 +13186,7 @@ ex:SurgeAbsorber a owl:Class,
 ex:SurgeAnticipatorValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "sav"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "surge anticipator valve"@en .
@@ -12719,6 +13222,7 @@ ex:SurgeVessel a owl:Class,
 ex:SuspendedSedimentWear a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "ssw"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "suspended sediment wear"@en .
@@ -12754,6 +13258,7 @@ ex:Swelling a owl:Class,
 ex:SwingCheckValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "scv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "swing check valve"@en .
@@ -12831,6 +13336,7 @@ ex:Tarnish a owl:Class,
 ex:TaxableIncomeBracket a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "tib"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "taxable income bracket"@en .
@@ -12901,6 +13407,7 @@ ex:TensileTear a owl:Class,
 ex:TensileYieldFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "tyf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "tensile yield failure"@en .
@@ -12964,6 +13471,7 @@ ex:ThermalExpansion a owl:Class,
 ex:ThermalExpansionStress a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "tes"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "thermal expansion stress"@en .
@@ -13027,6 +13535,7 @@ ex:Third-PartyInterference a owl:Class,
 ex:ThirdPartyCauses a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:altLabel "tpc"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "third party causes"@en .
@@ -13062,6 +13571,7 @@ ex:Through-WallRupture a owl:Class,
 ex:ThroughWallDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "twd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "through wall defect"@en .
@@ -13104,6 +13614,7 @@ ex:TidalFlooding a owl:Class,
 ex:TidalWaveDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "twd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "tidal wave displacement"@en .
@@ -13132,6 +13643,7 @@ ex:TileDrain a owl:Class,
 ex:TiltingDiscCheckValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "tdcv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "tilting disc check valve"@en .
@@ -13139,6 +13651,7 @@ ex:TiltingDiscCheckValve a owl:Class,
 ex:TimberLandCoverage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "tlc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "timber land coverage"@en .
@@ -13153,6 +13666,7 @@ ex:ToPrevent a owl:Class,
 ex:TopographicMaximumElevation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "tme"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "topographic maximum elevation"@en .
@@ -13160,6 +13674,7 @@ ex:TopographicMaximumElevation a owl:Class,
 ex:TopographicMeanElevation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "tme"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "topographic mean elevation"@en .
@@ -13167,6 +13682,7 @@ ex:TopographicMeanElevation a owl:Class,
 ex:TopographicWetnessIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "twi"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "topographic wetness index"@en .
@@ -13188,6 +13704,7 @@ ex:TopsoilDepth a owl:Class,
 ex:TopsoilFertilityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:PedologicalAndSoilConditionVariable ;
+    skos:altLabel "tfi"@en ;
     skos:broader ex:PedologicalAndSoilConditionVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "topsoil fertility index"@en .
@@ -13216,6 +13733,7 @@ ex:TorsionalShear a owl:Class,
 ex:TotalInjectionVolume a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "tiv"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "total injection volume"@en .
@@ -13251,6 +13769,7 @@ ex:TranscrystallineCracking a owl:Class,
 ex:TransgranularStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "tscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "transgranular stress corrosion cracking"@en .
@@ -13258,6 +13777,7 @@ ex:TransgranularStressCorrosionCracking a owl:Class,
 ex:TransientDaytimePopulation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "tdp"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "transient daytime population"@en .
@@ -13279,6 +13799,7 @@ ex:TransientShock a owl:Class,
 ex:TransitCommutingVolume a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "tcv"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "transit commuting volume"@en .
@@ -13286,6 +13807,7 @@ ex:TransitCommutingVolume a owl:Class,
 ex:TransitionZoneAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "tza"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "transition zone attack"@en .
@@ -13328,6 +13850,7 @@ ex:TreatmentBasin a owl:Class,
 ex:TreeCanopyDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "tcd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "tree canopy density"@en .
@@ -13335,6 +13858,7 @@ ex:TreeCanopyDensity a owl:Class,
 ex:TrenchBackfillSettlement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "tbs"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "trench backfill settlement"@en .
@@ -13405,6 +13929,7 @@ ex:TrunkLine a owl:Class,
 ex:TrunnionBallValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "tbv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "trunnion ball valve"@en .
@@ -13454,6 +13979,7 @@ ex:Twi a owl:Class,
 ex:TwistedLineDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "tld"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "twisted line deformation"@en .
@@ -13482,6 +14008,7 @@ ex:UltrasonicFlowmeter a owl:Class,
 ex:UnanchoredLineDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ThirdPartyAndExternalInterference ;
+    skos:altLabel "uld"@en ;
     skos:broader ex:ThirdPartyAndExternalInterference ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "unanchored line displacement"@en .
@@ -13588,6 +14115,7 @@ ex:UnderlyingCause a owl:Class,
 ex:UndesirableWearAndTear a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "uwat"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "undesirable wear and tear"@en .
@@ -13609,6 +14137,7 @@ ex:UnitHeater a owl:Class,
 ex:UnitaDiPaesaggio a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "udp"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "unita di paesaggio"@en .
@@ -13638,6 +14167,7 @@ ex:UnstableSlope a owl:Class,
 ex:UntreatedStormwaterFlow a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "usf"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "untreated stormwater flow"@en .
@@ -13680,6 +14210,7 @@ ex:UrbanExpansion a owl:Class,
 ex:UrbanHeatIsland a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "uhi"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "urban heat island"@en .
@@ -13694,6 +14225,7 @@ ex:UrbanInfrastructure a owl:Class,
 ex:UrbanInfrastructureLoad a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "uil"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "urban infrastructure load"@en .
@@ -13708,6 +14240,7 @@ ex:UrbanLayer a owl:Class,
 ex:UrbanRunoffWater a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "urw"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "urban runoff water"@en .
@@ -13722,6 +14255,7 @@ ex:UrbanSprawl a owl:Class,
 ex:UsdHydrologicSoilGroup a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "uhsg"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "usd hydrologic soil group"@en .
@@ -13736,6 +14270,7 @@ ex:UsedTo a owl:Class,
 ex:UsedWaterDeliveryVolume a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "uwdv"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "used water delivery volume"@en .
@@ -13757,6 +14292,7 @@ ex:UtilityCorridor a owl:Class,
 ex:UtilityNetworkMetric a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "unm"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "utility network metric"@en .
@@ -13764,6 +14300,7 @@ ex:UtilityNetworkMetric a owl:Class,
 ex:VacuumBreakerValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "vbv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "vacuum breaker valve"@en .
@@ -13778,6 +14315,7 @@ ex:VacuumCollapse a owl:Class,
 ex:VacuumReliefValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "vrv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "vacuum relief valve"@en .
@@ -13869,6 +14407,7 @@ ex:VaporLock a owl:Class,
 ex:VariableFrequencyDrivePump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "vfdp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "variable frequency drive pump"@en .
@@ -13904,6 +14443,7 @@ ex:VegetationIndex a owl:Class,
 ex:VegetationRootDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "vrd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "vegetation root damage"@en .
@@ -13911,6 +14451,7 @@ ex:VegetationRootDamage a owl:Class,
 ex:VegetationRootPenetration a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "vrp"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "vegetation root penetration"@en .
@@ -13946,6 +14487,7 @@ ex:VenturiTube a owl:Class,
 ex:VerticalGroundDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "vgd"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "vertical ground deformation"@en .
@@ -13953,6 +14495,7 @@ ex:VerticalGroundDeformation a owl:Class,
 ex:VerticalSlopeDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "vsd"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "vertical slope displacement"@en .
@@ -13960,6 +14503,7 @@ ex:VerticalSlopeDisplacement a owl:Class,
 ex:VerticalTerrainMovement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "vtm"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "vertical terrain movement"@en .
@@ -13981,6 +14525,7 @@ ex:Via a owl:Class,
 ex:VibratingWirePiezometer a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "vwp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "vibrating wire piezometer"@en .
@@ -14009,6 +14554,7 @@ ex:VictaulicCoupling a owl:Class,
 ex:ViscousFlowDeformation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "vfd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "viscous flow deformation"@en .
@@ -14016,6 +14562,7 @@ ex:ViscousFlowDeformation a owl:Class,
 ex:VisualLandscapeSubsystem a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "vls"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "visual landscape subsystem"@en .
@@ -14037,6 +14584,7 @@ ex:VoidFormation a owl:Class,
 ex:VolumetricWallLoss a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "vwl"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "volumetric wall loss"@en .
@@ -14044,6 +14592,7 @@ ex:VolumetricWallLoss a owl:Class,
 ex:VolumetricWaterContent a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "vwc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "volumetric water content"@en .
@@ -14093,6 +14642,7 @@ ex:WashoutCavitation a owl:Class,
 ex:WasteWashwaterTank a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "wwt"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "waste washwater tank"@en .
@@ -14100,6 +14650,7 @@ ex:WasteWashwaterTank a owl:Class,
 ex:WastewaterForceMain a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "wfm"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "wastewater force main"@en .
@@ -14107,6 +14658,7 @@ ex:WastewaterForceMain a owl:Class,
 ex:WaterBalanceDeficit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wbd"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water balance deficit"@en .
@@ -14128,6 +14680,7 @@ ex:WaterColumn a owl:Class,
 ex:WaterConveyancyEfficiency a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wce"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water conveyancy efficiency"@en .
@@ -14142,6 +14695,7 @@ ex:WaterDeficit a owl:Class,
 ex:WaterHammerDamage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
+    skos:altLabel "whd"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "water hammer damage"@en .
@@ -14163,6 +14717,7 @@ ex:WaterLevel a owl:Class,
 ex:WaterLevelElevation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wle"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water level elevation"@en .
@@ -14170,6 +14725,7 @@ ex:WaterLevelElevation a owl:Class,
 ex:WaterLineProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wlp"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water line proximity"@en .
@@ -14205,6 +14761,7 @@ ex:WaterNetwork a owl:Class,
 ex:WaterNetworkFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "wnf"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "water network failure"@en .
@@ -14212,6 +14769,7 @@ ex:WaterNetworkFailure a owl:Class,
 ex:WaterPurificationUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "wpu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "water purification unit"@en .
@@ -14219,6 +14777,7 @@ ex:WaterPurificationUnit a owl:Class,
 ex:WaterRetentionCapacity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wrc"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water retention capacity"@en .
@@ -14226,6 +14785,7 @@ ex:WaterRetentionCapacity a owl:Class,
 ex:WaterRingVacuumPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "wrvp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "water ring vacuum pump"@en .
@@ -14233,6 +14793,7 @@ ex:WaterRingVacuumPump a owl:Class,
 ex:WaterTableDepth a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wtd"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water table depth"@en .
@@ -14240,6 +14801,7 @@ ex:WaterTableDepth a owl:Class,
 ex:WaterTableFluctuation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydrologicalAndInundationVariable ;
+    skos:altLabel "wtf"@en ;
     skos:broader ex:HydrologicalAndInundationVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "water table fluctuation"@en .
@@ -14261,6 +14823,7 @@ ex:Waterways a owl:Class,
 ex:WaveActionFatigue a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "waf"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "wave action fatigue"@en .
@@ -14289,6 +14852,7 @@ ex:WeatherHazard a owl:Class,
 ex:WeightedLandCapability a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:VariableTerm ;
+    skos:altLabel "wlc"@en ;
     skos:broader ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "weighted land capability"@en .
@@ -14296,6 +14860,7 @@ ex:WeightedLandCapability a owl:Class,
 ex:WeightedSlopeValue a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeomorphologicalAndGeotechnicalVariable ;
+    skos:altLabel "wsv"@en ;
     skos:broader ex:GeomorphologicalAndGeotechnicalVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "weighted slope value"@en .
@@ -14317,6 +14882,7 @@ ex:WeldDecay a owl:Class,
 ex:WeldFusionDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "wfd"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "weld fusion defect"@en .
@@ -14338,6 +14904,7 @@ ex:WeldPorosity a owl:Class,
 ex:WeldRootCorrosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
+    skos:altLabel "wrc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "weld root corrosion"@en .
@@ -14429,6 +14996,7 @@ ex:Wind-InducedFatigue a owl:Class,
 ex:WindDirectionVector a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "wdv"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "wind direction vector"@en .
@@ -14436,6 +15004,7 @@ ex:WindDirectionVector a owl:Class,
 ex:WindGustVelocity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ClimaticAndAtmosphericVariable ;
+    skos:altLabel "wgv"@en ;
     skos:broader ex:ClimaticAndAtmosphericVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "wind gust velocity"@en .
@@ -14450,6 +15019,7 @@ ex:WindSpeed a owl:Class,
 ex:WireDrawErosion a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "wde"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "wire draw erosion"@en .
@@ -14457,6 +15027,7 @@ ex:WireDrawErosion a owl:Class,
 ex:WithoutAccessTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
+    skos:altLabel "wat"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "without access to"@en .
@@ -14506,6 +15077,7 @@ ex:YieldFailure a owl:Class,
 ex:YieldPointMonitor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
+    skos:altLabel "ypm"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "yield point monitor"@en .
@@ -14513,6 +15085,7 @@ ex:YieldPointMonitor a owl:Class,
 ex:YieldPointStrain a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
+    skos:altLabel "yps"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "yield point strain"@en .
@@ -14520,6 +15093,7 @@ ex:YieldPointStrain a owl:Class,
 ex:YieldStrengthDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
+    skos:altLabel "ysd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "yield strength degradation"@en .
@@ -14534,6 +15108,7 @@ ex:Yields a owl:Class,
 ex:ZeroIncomePopulation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:SocioEconomicAndUrbanSpatioVariable ;
+    skos:altLabel "zip"@en ;
     skos:broader ex:SocioEconomicAndUrbanSpatioVariable ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "zero income population"@en .
@@ -14552,6 +15127,7 @@ ex:AdjacentExcavationImpact a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ThirdPartyAndExternalInterference,
         ex:VariableTerm ;
+    skos:altLabel "aei"@en ;
     skos:broader ex:ThirdPartyAndExternalInterference,
         ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme,
@@ -14562,6 +15138,7 @@ ex:AntifoulingCoatingFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm,
         ex:VariableTerm ;
+    skos:altLabel "acf"@en ;
     skos:broader ex:FailureTerm,
         ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme,
@@ -14632,6 +15209,7 @@ ex:DecliningSnowFall a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm,
         ex:VariableTerm ;
+    skos:altLabel "dsf"@en ;
     skos:broader ex:FailureTerm,
         ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme,
@@ -14682,6 +15260,7 @@ ex:FreezingEnvironmentalConditions a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm,
         ex:VariableTerm ;
+    skos:altLabel "fec"@en ;
     skos:broader ex:FailureTerm,
         ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme,
@@ -14792,6 +15371,7 @@ ex:StressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure,
         ex:VariableTerm ;
+    skos:altLabel "scc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure,
         ex:VariableTerm ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme,

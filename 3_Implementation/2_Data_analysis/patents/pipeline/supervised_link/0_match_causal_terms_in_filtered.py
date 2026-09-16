@@ -5,9 +5,10 @@ import sys
 from pathlib import Path
 
 current_dir = Path(__file__).resolve().parent
-sys.path.insert(0, str(current_dir))
+project_root = current_dir.parents[4]
+sys.path.insert(0, str(project_root))
 
-from Utils.paths import PATENT_PIPELINE_PATH, ONTOLOGY_OUTPUT_PATH, REPO_ROOT
+from Utils.paths import PATENT_PIPELINE_PATH, ONTOLOGY_OUTPUT_PATH
 
 import pandas as pd
 from rdflib import Graph, RDF, SKOS, RDFS
@@ -85,6 +86,27 @@ def extract_ontology_data(g):
     print(f'Extracted {len(concepts)} concepts and {len(term_to_uri)} unique term strings.')
     return term_to_uri, uri_to_hierarchy, term_to_category
 
+def extract_text_windows(text, compiled_regex, window_size=300):
+    if not compiled_regex:
+        return text
+    spans = [m.span() for m in compiled_regex.finditer(text)]
+    if not spans:
+        return ""
+    
+    spans.sort(key=lambda x: x[0])
+    
+    windows = []
+    for start, end in spans:
+        w_start = max(0, start - window_size)
+        w_end = min(len(text), end + window_size)
+        if windows and w_start <= windows[-1][1]:
+            windows[-1] = (windows[-1][0], max(windows[-1][1], w_end))
+        else:
+            windows.append((w_start, w_end))
+            
+    snippets = [text[s:e] for s, e in windows]
+    return " ... ".join(snippets)
+
 def process_dataset(
     csv_path, 
     rdf_path, 
@@ -93,7 +115,8 @@ def process_dataset(
     include_technical=True,
     include_failures=True,
     include_causal=True,
-    include_variable=True
+    include_variable=True,
+    window_size=60
 ):
     g = load_ontology(rdf_path)
     term_to_uri, uri_to_hierarchy, term_to_category = extract_ontology_data(g)
@@ -151,19 +174,30 @@ def process_dataset(
                 
         filtered_chunk = chunk[matched_mask].copy()
         if len(filtered_chunk) > 0:
-            filtered_chunk['ocurrence_words'] = [ocurrence_words_col[i] for i, m in enumerate(matched_mask) if m]
-            filtered_chunk['ontology_hierarchy'] = [hierarchy_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['causal_ocurrence_words'] = [ocurrence_words_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['text'] = filtered_chunk['text'].fillna('').str.lower().apply(
+                lambda t: extract_text_windows(t, compiled_regex, window_size)
+            )
+            #filtered_chunk['causal_ontology_hierarchy'] = [hierarchy_col[i] for i, m in enumerate(matched_mask) if m]
             filtered_chunks.append(filtered_chunk)
             total_matched += len(filtered_chunk)
             
         print(f'Processed chunk {chunk_idx + 1} (Total rows scanned: {total_rows}, Matched so far: {total_matched})')
 
-    final_df = pd.concat(filtered_chunks, ignore_index=True) if filtered_chunks else pd.DataFrame(columns=list(pd.read_csv(csv_path, nrows=1).columns) + ['ocurrence_words', 'ontology_hierarchy'])
+    final_df = pd.concat(filtered_chunks, ignore_index=True) if filtered_chunks else pd.DataFrame(columns=list(pd.read_csv(csv_path, nrows=1).columns) + ['causal_ocurrence_words', 'causal_ontology_hierarchy'])
 
     print(f'Processing complete in {time.time() - start_time:.2f} seconds.')
-    print(f'Total rows: {total_rows}, Remaining after filtering: {len(final_df)}')
+    summary_msg = f'Total rows: {total_rows}, Remaining after filtering: {len(final_df)}'
+    print(summary_msg)
 
     if output_csv_path:
+        out_dir = Path(output_csv_path).parent
+        out_dir.mkdir(parents=True, exist_ok=True)
+        summary_file = out_dir / 'filtering_summary.txt'
+        with open(summary_file, 'w', encoding='utf-8') as f:
+            f.write(summary_msg + '\n')
+        print(f'Saved summary to {summary_file}')
+
         print(f'Saving filtered dataset to {output_csv_path}...')
         final_df.to_csv(output_csv_path, index=False)
         print('Saved successfully.')
@@ -171,17 +205,18 @@ def process_dataset(
     return final_df
 
 if __name__ == '__main__':
-    csv_file = PATENT_PIPELINE_PATH / 'data_creation/output/patent_dataset.csv'
+    csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/output/patent_dataset_filtered_ontology.csv'
     rdf_file = ONTOLOGY_OUTPUT_PATH / 'pipeline_knowledge_graph.rdf'
-    output_file = PATENT_PIPELINE_PATH / 'data_creation/output/patent_dataset_filtered_ontology.csv'
+    output_file = PATENT_PIPELINE_PATH / 'supervised_link/output/causal_filtered_supervised.csv'
     
     df_filtered = process_dataset(
         csv_file, 
         rdf_file, 
         output_file,
-        include_technical=True,
-        include_failures=True,
-        include_causal=False,
-        include_variable=True
+        include_technical=False,
+        include_failures=False,
+        include_causal=True,
+        include_variable=False,
+        window_size=100
     )
-    print(df_filtered[['pat_id', 'ocurrence_words']].head(10))
+    print(df_filtered[['pat_id', 'causal_ocurrence_words']].head(10))

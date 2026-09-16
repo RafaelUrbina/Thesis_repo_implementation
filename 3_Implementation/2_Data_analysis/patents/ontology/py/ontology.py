@@ -42,34 +42,60 @@ from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
 
 
+
+DOMAIN_SYNONYMS = {
+    'cathodic protection': ['cp'],
+    'inline inspection': ['ili', 'smart pigging'],
+    'stress corrosion cracking': ['scc'],
+    'geographic information system': ['gis'],
+    'digital elevation model': ['dem'],
+    'topographic wetness index': ['twi'],
+    'supervisory control and data acquisition': ['scada'],
+    'finite element analysis': ['fea'],
+    'internal corrosion direct assessment': ['icda'],
+    'external corrosion direct assessment': ['ecda'],
+    'above ground storage tank': ['ast'],
+    'underground storage tank': ['ust'],
+    'liquefied natural gas': ['lng'],
+    'pressure relief valve': ['prv', 'relief valve'],
+    'surge relief valve': ['srv'],
+    'water hammer': ['hydraulic shock'],
+    'risk assessment': ['ra'],
+    'failure mode and effects analysis': ['fmea'],
+    'hazard and operability study': ['hazop']
+}
+
 def parse_term_file(filepath):
-    """Reads a text file line-by-line, cleans whitespace, removes exact duplicates,
-
-    and extracts parenthetical acronyms/synonyms as SKOS altLabels.
-    """
     if not os.path.exists(filepath):
-        print(f"Warning: File '{filepath}' not found. Skipping.")
+        print(f'Warning: File {filepath} not found. Skipping.')
         return []
-
     terms_data = []
     seen = set()
-
-    with open(filepath, "r", encoding="utf-8") as f:
+    with open(filepath, 'r', encoding='utf-8') as f:
         for line in f:
             clean_line = line.strip()
             if not clean_line or clean_line.lower() in seen:
                 continue
             seen.add(clean_line.lower())
-
-            # Extract parenthetical synonyms (e.g., "topographic wetness index (twi)")
-            match = re.match(r"^(.*?)\s*\((.*?)\)$", clean_line)
+            alts = []
+            pref = clean_line
+            match = re.match(r'^(.*?)\s*\((.*?)\)$', clean_line)
             if match:
                 pref = match.group(1).strip()
                 alt = match.group(2).strip()
-                terms_data.append({"pref": pref, "alts": [alt]})
-            else:
-                terms_data.append({"pref": clean_line, "alts": []})
-
+                if alt:
+                    alts.append(alt)
+            pref_lower = pref.lower()
+            if pref_lower in DOMAIN_SYNONYMS:
+                for syn in DOMAIN_SYNONYMS[pref_lower]:
+                    if syn not in alts and syn != pref_lower:
+                        alts.append(syn)
+            words = pref.split()
+            if len(words) >= 3 and not alts:
+                initialism = ''.join(w[0] for w in words if w.isalnum()).lower()
+                if len(initialism) >= 3 and initialism != pref_lower:
+                    alts.append(initialism)
+            terms_data.append({'pref': pref, 'alts': alts})
     return terms_data
 
 
