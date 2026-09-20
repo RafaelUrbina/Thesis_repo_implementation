@@ -87,8 +87,25 @@ def extract_ontology_data(g):
     return term_to_uri, uri_to_hierarchy, term_to_category
 
 def extract_text_windows(text, compiled_regex, window_size=300):
-    if not compiled_regex:
+    if window_size is None or window_size is False or not compiled_regex:
         return text
+
+    # Option A: Sentence-based extraction
+    if window_size == "sentence":
+        # Split text on punctuation followed by whitespace or end of line
+        sentences = [s.strip() for s in re.split(r"[.!?]+(?:\s+|$)", text) if s.strip()]
+        
+        matched_sentences = []
+        seen = set()
+        
+        for sentence in sentences:
+            if compiled_regex.search(sentence) and sentence not in seen:
+                seen.add(sentence)
+                matched_sentences.append(sentence)
+                
+        return " ... ".join(matched_sentences)
+
+
     spans = [m.span() for m in compiled_regex.finditer(text)]
     if not spans:
         return ""
@@ -116,7 +133,7 @@ def process_dataset(
     include_failures=True,
     include_causal=True,
     include_variable=True,
-    window_size=60
+    window_size="sentence" #int()chars, "sentence", or none 
 ):
     g = load_ontology(rdf_path)
     term_to_uri, uri_to_hierarchy, term_to_category = extract_ontology_data(g)

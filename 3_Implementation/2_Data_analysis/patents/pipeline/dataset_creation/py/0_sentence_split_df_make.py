@@ -13,13 +13,18 @@ from Utils.paths import MASTER_DATA_PATH, PATENT_PIPELINE_PATH
 
 
 def clean_text(text: str) -> str:
-    """Normalizes text to lowercase and removes punctuation/symbols while keeping numbers."""
+    """Normalizes text to lowercase, keeps .!? and alphanumeric characters,
+
+    and removes all other symbols.
+    """
     if not text:
         return ""
     # Convert to lowercase
     text = text.lower()
-    # Replace anything that is NOT an alphanumeric character (a-z, 0-9) or whitespace with an empty space
-    text = re.sub(r"[^\w\s]", " ", text)
+
+    # Replace anything that is NOT alphanumeric (a-z, 0-9), whitespace, or [.!?] with a space
+    text = re.sub(r"[^\w\s.]", " ", text)
+
     # Collapse multiple whitespaces into a single space and strip leading/trailing spaces
     return re.sub(r"\s+", " ", text).strip()
 
@@ -64,7 +69,7 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
 
         # 1. Process Claims
         claims = data.get("claims") or []
-        for claim in claims:
+        for claim_idx, claim in enumerate(claims, start=1):
             if not claim:
                 continue
             claim_lines = split_by_newlines(claim)
@@ -76,6 +81,7 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
                             "pat_id": pat_id,
                             "title": title,
                             "text_type": "claim",
+                            "paragraph_id": f"claim_{claim_idx}",  # <-- ADDED
                             "text": cleaned_line,
                         }
                     )
@@ -84,7 +90,7 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
         # 2. Process Description
         description = data.get("description") or ""
         desc_lines = split_by_newlines(description)
-        for line in desc_lines:
+        for para_idx, line in enumerate(desc_lines, start=1):
             cleaned_line = clean_text(line)
             if cleaned_line:
                 records.append(
@@ -92,11 +98,12 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
                         "pat_id": pat_id,
                         "title": title,
                         "text_type": "description",
+                        "paragraph_id": f"para_{para_idx}",  # <-- ADDED
                         "text": cleaned_line,
                     }
                 )
                 total_description_lines += 1
-
+        
     # Processing summary
     processed_count = total_files - skipped_files
     summary_lines = [

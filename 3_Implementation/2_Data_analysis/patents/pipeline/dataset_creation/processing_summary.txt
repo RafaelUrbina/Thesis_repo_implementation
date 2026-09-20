@@ -1,0 +1,10 @@
+
+==================================================
+PROCESSING SUMMARY
+==================================================
+Files Processed successfully : 17,987 / 17,987
+Total Claim Rows Extracted   : 220,467
+Total Description Rows       : 1,322,208
+Total Dataset Rows Created   : 1,542,675
+==================================================
+

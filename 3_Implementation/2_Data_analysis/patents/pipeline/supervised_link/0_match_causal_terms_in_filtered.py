@@ -87,23 +87,43 @@ def extract_ontology_data(g):
     return term_to_uri, uri_to_hierarchy, term_to_category
 
 def extract_text_windows(text, compiled_regex, window_size=300):
-    if not compiled_regex:
-        return text
+    """Extracts matching text.
+
+    If window_size is 'sentence', it splits by '...' and keeps full sentences containing a match.
+    If window_size is an integer, it extracts character windows around matches.
+    """
+    if not compiled_regex or not text:
+        return "" if window_size == "sentence" else text
+
+    # --- Mode 1: Sentence Filtering ---
+    if window_size == "sentence" or str(window_size).lower() == "sentence":
+        sentences = [s.strip() for s in text.split("...") if s.strip()]
+    
+        # Use dict.fromkeys() to deduplicate sentences while preserving original order
+        unique_sentences = list(dict.fromkeys(sentences))
+    
+        matched_sentences = [
+            s for s in unique_sentences if compiled_regex.search(s)
+        ]
+        return " ... ".join(matched_sentences)
+
+    # --- Mode 2: Character Windowing ---
     spans = [m.span() for m in compiled_regex.finditer(text)]
     if not spans:
         return ""
-    
+
     spans.sort(key=lambda x: x[0])
-    
+    size = int(window_size)
+
     windows = []
     for start, end in spans:
-        w_start = max(0, start - window_size)
-        w_end = min(len(text), end + window_size)
+        w_start = max(0, start - size)
+        w_end = min(len(text), end + size)
         if windows and w_start <= windows[-1][1]:
             windows[-1] = (windows[-1][0], max(windows[-1][1], w_end))
         else:
             windows.append((w_start, w_end))
-            
+
     snippets = [text[s:e] for s, e in windows]
     return " ... ".join(snippets)
 
@@ -116,7 +136,7 @@ def process_dataset(
     include_failures=True,
     include_causal=True,
     include_variable=True,
-    window_size=60
+    window_size="sentence"
 ):
     g = load_ontology(rdf_path)
     term_to_uri, uri_to_hierarchy, term_to_category = extract_ontology_data(g)
@@ -217,6 +237,5 @@ if __name__ == '__main__':
         include_failures=False,
         include_causal=True,
         include_variable=False,
-        window_size=100
     )
     print(df_filtered[['pat_id', 'causal_ocurrence_words']].head(10))
