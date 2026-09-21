@@ -173,7 +173,10 @@ def process_dataset(
         total_rows += len(chunk)
         texts = chunk['text'].fillna('').str.lower()
         
-        ocurrence_words_col = []
+        occurrence_technical_col = []
+        occurrence_failures_col = []
+        occurrence_causal_col = []
+        occurrence_variable_col = []
         hierarchy_col = []
         matched_mask = []
         
@@ -181,17 +184,26 @@ def process_dataset(
             matches = list(set(compiled_regex.findall(text))) if compiled_regex else []
             if matches:
                 matched_mask.append(True)
-                ocurrence_words_col.append(matches)
+                occurrence_technical_col.append([m for m in matches if term_to_category.get(m) == 'technical'])
+                occurrence_failures_col.append([m for m in matches if term_to_category.get(m) == 'failures'])
+                occurrence_causal_col.append([m for m in matches if term_to_category.get(m) == 'causal'])
+                occurrence_variable_col.append([m for m in matches if term_to_category.get(m) == 'variable'])
                 term_hierarchy_map = {term: uri_to_hierarchy[filtered_term_to_uri[term]] for term in matches if term in filtered_term_to_uri}
                 hierarchy_col.append(term_hierarchy_map)
             else:
                 matched_mask.append(False)
-                ocurrence_words_col.append([])
+                occurrence_technical_col.append([])
+                occurrence_failures_col.append([])
+                occurrence_causal_col.append([])
+                occurrence_variable_col.append([])
                 hierarchy_col.append({})
                 
         filtered_chunk = chunk[matched_mask].copy()
         if len(filtered_chunk) > 0:
-            filtered_chunk['ocurrence_words'] = [ocurrence_words_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['occurrence_technical'] = [occurrence_technical_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['occurrence_failures'] = [occurrence_failures_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['occurrence_causal'] = [occurrence_causal_col[i] for i, m in enumerate(matched_mask) if m]
+            filtered_chunk['occurrence_variable'] = [occurrence_variable_col[i] for i, m in enumerate(matched_mask) if m]
             filtered_chunk['text'] = filtered_chunk['text'].fillna('').str.lower().apply(
                 lambda t: extract_text_windows(t, compiled_regex, window_size)
             )
@@ -201,7 +213,7 @@ def process_dataset(
             
         print(f'Processed chunk {chunk_idx + 1} (Total rows scanned: {total_rows}, Matched so far: {total_matched})')
 
-    final_df = pd.concat(filtered_chunks, ignore_index=True) if filtered_chunks else pd.DataFrame(columns=list(pd.read_csv(csv_path, nrows=1).columns) + ['ocurrence_words', 'ontology_hierarchy'])
+    final_df = pd.concat(filtered_chunks, ignore_index=True) if filtered_chunks else pd.DataFrame(columns=list(pd.read_csv(csv_path, nrows=1).columns) + ['occurrence_technical', 'occurrence_failures', 'occurrence_causal', 'occurrence_variable', 'ontology_hierarchy'])
 
     print(f'Processing complete in {time.time() - start_time:.2f} seconds.')
     summary_msg = f'Total rows: {total_rows}, Remaining after filtering: {len(final_df)}'
@@ -235,4 +247,4 @@ if __name__ == '__main__':
         include_causal=False,
         include_variable=True
     )
-    print(df_filtered[['pat_id', 'ocurrence_words']].head(10))
+    print(df_filtered[['pat_id', 'occurrence_technical', 'occurrence_failures', 'occurrence_causal', 'occurrence_variable']].head(10))
