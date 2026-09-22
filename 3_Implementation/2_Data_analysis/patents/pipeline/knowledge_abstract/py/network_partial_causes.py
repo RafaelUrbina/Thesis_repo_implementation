@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import sys
+from collections import defaultdict
 
 try:
     import networkx as nx
@@ -263,8 +264,9 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
         return
 
     stage_nodes = {}
-    edge_metadata = {}
+    edge_counts = defaultdict(int)
 
+    # 1. Accumulate flow counts across all valid paths
     for path in valid_paths:
         t_node, a_node, f_node = path[0], path[1], path[2]
 
@@ -272,13 +274,15 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
         stage_nodes[(a_node, 1)] = G.nodes[a_node].get("node_type", "Attribute")
         stage_nodes[(f_node, 2)] = G.nodes[f_node].get("node_type", "Failure")
 
+        # Define stage-specific directed edge keys
         e1_key = ((t_node, 0), (a_node, 1), t_node, a_node)
         e2_key = ((a_node, 1), (f_node, 2), a_node, f_node)
 
-        # Direct assignment to avoid repeating multiplication loops across paths
-        edge_metadata[e1_key] = (t_node, a_node)
-        edge_metadata[e2_key] = (a_node, f_node)
+        # Increment path flow count for each stage transition
+        edge_counts[e1_key] += 1
+        edge_counts[e2_key] += 1
 
+    # 2. Map staged nodes to unique indices
     indexed_nodes = list(stage_nodes.keys())
     node_to_idx = {node_key: idx for idx, node_key in enumerate(indexed_nodes)}
 
@@ -292,12 +296,11 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
 
     sources, targets, values, link_labels = [], [], [], []
 
-    for (src_key, tgt_key, orig_u, orig_v) in edge_metadata:
+    # 3. Build Plotly Sankey links directly from conserved path flows
+    for (src_key, tgt_key, orig_u, orig_v), flow_value in edge_counts.items():
         sources.append(node_to_idx[src_key])
         targets.append(node_to_idx[tgt_key])
-        
-        weight = G[orig_u][orig_v].get("weight", 1) if G.has_edge(orig_u, orig_v) else 1
-        values.append(weight)
+        values.append(flow_value)  # Exact count of valid paths through this edge
 
         data = G[orig_u][orig_v] if G.has_edge(orig_u, orig_v) else {}
         patents_list = list(data.get("patents", []))
@@ -309,7 +312,7 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
             f"<b>To:</b> {orig_v}<br>"
             f"<b>Triggers:</b> {triggers}<br>"
             f"<b>Patents:</b> {patents}<br>"
-            f"<b>Weight:</b> {weight}"
+            f"<b>Path Flow Count:</b> {flow_value}"
         )
         link_labels.append(hover_info)
 
