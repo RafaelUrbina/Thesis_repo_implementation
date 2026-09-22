@@ -1,3 +1,4 @@
+import ast
 import itertools
 import json
 import os
@@ -33,13 +34,12 @@ OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "causal_gr
 GRAPH_CACHE_FILE = OUTPUT_DIR / "patent_causal_graph.graphml"
 SANKEY_OUTPUT_FILE = OUTPUT_DIR / "patent_edge_cases_sankey.html"
 
-# Set integer (e.g., 500) to inspect subset, or None to process entire file
 MAX_ROWS = None  
 
 NODE_COLOR_MAP = {
     "Technical": "rgba(31, 119, 180, 0.8)",  # Blue
     "Attribute": "rgba(44, 160, 44, 0.8)",  # Green
-    "Failure": "rgba(214, 39, 40, 0.8)",  # Red
+    "Failure": "rgba(214, 39, 40, 0.8)",    # Red
 }
 
 TYPE_SHORT_MAP = {
@@ -53,20 +53,35 @@ TYPE_SHORT_MAP = {
 # 1. STRICT CAUSAL CHAIN EXTRACTION
 # =====================================================================
 def parse_field(field_val):
-    """Safely parses stringified lists or raw list objects."""
+    """Safely parses stringified Python lists, JSON arrays, or raw list objects."""
     if isinstance(field_val, list):
-        return field_val
+        return [str(i).strip() for i in field_val if str(i).strip()]
+    
+    if pd.isna(field_val):
+        return []
+        
     if isinstance(field_val, str) and field_val.strip():
-        # Handle stringified Python lists or JSON arrays
         cleaned = field_val.strip()
         if cleaned.startswith("[") and cleaned.endswith("]"):
+            # Try python literal eval first (handles single quotes/apostrophes correctly)
             try:
-                # Replace single quotes for valid JSON parsing
-                return json.loads(cleaned.replace("'", '"'))
-            except Exception:
-                # Fallback simple string cleaning if json parser fails
-                items = cleaned.strip("[]").split(",")
-                return [i.strip().strip("'\"") for i in items if i.strip()]
+                parsed = ast.literal_eval(cleaned)
+                if isinstance(parsed, list):
+                    return [str(i).strip() for i in parsed if str(i).strip()]
+            except (ValueError, SyntaxError):
+                pass
+            
+            # Fallback to json parsing
+            try:
+                parsed = json.loads(cleaned)
+                if isinstance(parsed, list):
+                    return [str(i).strip() for i in parsed if str(i).strip()]
+            except json.JSONDecodeError:
+                pass
+                
+            # Final fallback to manual split
+            items = cleaned.strip("[]").split(",")
+            return [i.strip().strip("'\"") for i in items if i.strip()]
         return [cleaned]
     return []
 
@@ -80,13 +95,11 @@ def extract_causal_triplets(row):
     pat_id = str(row.get("pat_id", "UNKNOWN"))
     para_id = str(row.get("paragraph_id", "UNKNOWN"))
 
-    # Map dataset column names to graph taxonomy
     techs = parse_field(row.get("occurrence_technical", []))
     attrs = parse_field(row.get("occurrence_variable", []))
     failures = parse_field(row.get("occurrence_failures", []))
     causals = parse_field(row.get("causal_ocurrence_words", []))
 
-    # Discard if any required component is missing
     if not (causals and techs and attrs and failures):
         return edges
 
@@ -130,7 +143,7 @@ def extract_causal_triplets(row):
 # =====================================================================
 def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
     """Checks if a pre-computed GraphML file exists.
-    If present, loads it directly. Otherwise, processes the data frame and saves it.
+    If present, loads it directly. Otherwise, processes the dataframe and saves it.
     """
     cache_path = Path(cache_file)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -139,12 +152,13 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
         print(f"[Cache] Found existing graph at '{cache_path}'. Loading from disk...")
         G = nx.read_graphml(cache_path)
 
-        # Deserialize sets stored as stringified JSON in GraphML
         for u, v, d in G.edges(data=True):
-            if "patents" in d and isinstance(d["patents"], str):
-                d["patents"] = set(json.loads(d["patents"]))
-            if "triggers" in d and isinstance(d["triggers"], str):
-                d["triggers"] = set(json.loads(d["triggers"]))
+            for key in ("patents", "triggers"):
+                if key in d and isinstance(d[key], str):
+                    try:
+                        d[key] = set(json.loads(d[key]))
+                    except json.JSONDecodeError:
+                        d[key] = set()
         return G
 
     print("[Pipeline] Computing knowledge graph from dataset...")
@@ -193,18 +207,19 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
 
 
 # =====================================================================
-# 3. HIGH-PERFORMANCE GENERALIZED PATHFINDER (NO TYPE REPETITION)
+# 3. HIGH-PERFORMANCE GENERALIZED PATHFINDER
 # =====================================================================
 def find_strict_cross_patent_chains_fast(G):
     """Fast path finder enforcing zero node-type repetition along any path.
     Enforces strict categorical progression without hardcoded term checks.
     """
     valid_paths = []
-
     node_type_map = {n: d.get("node_type", "Unknown") for n, d in G.nodes(data=True)}
 
     for middle in G.nodes():
         type_middle = node_type_map[middle]
+        if type_middle != "Attribute":
+            continue
 
         predecessors = [u for u in G.predecessors(middle) if u != middle]
         successors = [v for v in G.successors(middle) if v != middle]
@@ -213,21 +228,11 @@ def find_strict_cross_patent_chains_fast(G):
             continue
 
         for t in predecessors:
-            type_t = node_type_map[t]
-
-            # Rule 1: Node type of Source cannot match Node type of Middle
-            if type_t == type_middle:
+            if node_type_map[t] != "Technical":
                 continue
 
             for f in successors:
-                type_f = node_type_map[f]
-
-                # Rule 2: No repeated node types along the chain (T != M, M != F, T != F)
-                if type_middle == type_f or type_t == type_f:
-                    continue
-
-                # Rule 3: Enforce standard forward progression order
-                if (type_t, type_middle, type_f) != ("Technical", "Attribute", "Failure"):
+                if node_type_map[f] != "Failure":
                     continue
 
                 e1 = G[t][middle]
@@ -258,8 +263,6 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
         return
 
     stage_nodes = {}
-    # Use a dictionary to ACCUMULATE flow weights across paths
-    edge_weights = {} 
     edge_metadata = {}
 
     for path in valid_paths:
@@ -269,18 +272,11 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
         stage_nodes[(a_node, 1)] = G.nodes[a_node].get("node_type", "Attribute")
         stage_nodes[(f_node, 2)] = G.nodes[f_node].get("node_type", "Failure")
 
-        # Define stage-aware edge keys
         e1_key = ((t_node, 0), (a_node, 1), t_node, a_node)
         e2_key = ((a_node, 1), (f_node, 2), a_node, f_node)
 
-        # Accumulate weight for e1
-        w1 = G[t_node][a_node].get("weight", 1) if G.has_edge(t_node, a_node) else 1
-        edge_weights[e1_key] = edge_weights.get(e1_key, 0) + w1
+        # Direct assignment to avoid repeating multiplication loops across paths
         edge_metadata[e1_key] = (t_node, a_node)
-
-        # Accumulate weight for e2
-        w2 = G[a_node][f_node].get("weight", 1) if G.has_edge(a_node, f_node) else 1
-        edge_weights[e2_key] = edge_weights.get(e2_key, 0) + w2
         edge_metadata[e2_key] = (a_node, f_node)
 
     indexed_nodes = list(stage_nodes.keys())
@@ -296,10 +292,12 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
 
     sources, targets, values, link_labels = [], [], [], []
 
-    for (src_key, tgt_key, orig_u, orig_v), total_weight in edge_weights.items():
+    for (src_key, tgt_key, orig_u, orig_v) in edge_metadata:
         sources.append(node_to_idx[src_key])
         targets.append(node_to_idx[tgt_key])
-        values.append(total_weight)
+        
+        weight = G[orig_u][orig_v].get("weight", 1) if G.has_edge(orig_u, orig_v) else 1
+        values.append(weight)
 
         data = G[orig_u][orig_v] if G.has_edge(orig_u, orig_v) else {}
         patents_list = list(data.get("patents", []))
@@ -311,7 +309,7 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
             f"<b>To:</b> {orig_v}<br>"
             f"<b>Triggers:</b> {triggers}<br>"
             f"<b>Patents:</b> {patents}<br>"
-            f"<b>Total Flow Weight:</b> {total_weight}"
+            f"<b>Weight:</b> {weight}"
         )
         link_labels.append(hover_info)
 
@@ -346,6 +344,7 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
 
     fig.write_html(output_path)
     print(f"\n[Visualizer] Interactive Sankey diagram exported to: {output_path}")
+
 
 # =====================================================================
 # 5. MAIN EXECUTION PIPELINE
