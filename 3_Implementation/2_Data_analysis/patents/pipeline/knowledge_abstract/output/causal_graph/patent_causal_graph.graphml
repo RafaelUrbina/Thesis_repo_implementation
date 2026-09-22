@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d4" for="edge" attr.name="triggers" attr.type="string"/>
+<key id="d3" for="edge" attr.name="patents" attr.type="string"/>
+<key id="d2" for="edge" attr.name="trigger" attr.type="string"/>
+<key id="d1" for="edge" attr.name="weight" attr.type="long"/>
+<key id="d0" for="node" attr.name="node_type" attr.type="string"/>
+<graph edgedefault="directed"><node id="heat exchanger">
+  <data key="d0">Technical</data>
+</node>
+<node id="temperature">
+  <data key="d0">Attribute</data>
+</node>
+<node id="freezing">
+  <data key="d0">Failure</data>
+</node>
+<node id="filter press">
+  <data key="d0">Technical</data>
+</node>
+<node id="ash">
+  <data key="d0">Attribute</data>
+</node>
+<node id="chamber">
+  <data key="d0">Technical</data>
+</node>
+<node id="add">
+  <data key="d0">Failure</data>
+</node>
+<node id="impeller">
+  <data key="d0">Technical</data>
+</node>
+<node id="nature">
+  <data key="d0">Attribute</data>
+</node>
+<node id="oxidation">
+  <data key="d0">Failure</data>
+</node>
+<node id="vessel">
+  <data key="d0">Technical</data>
+</node>
+<node id="perforated pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="tank">
+  <data key="d0">Technical</data>
+</node>
+<node id="drain">
+  <data key="d0">Technical</data>
+</node>
+<node id="flow control valve">
+  <data key="d0">Technical</data>
+</node>
+<node id="fouling">
+  <data key="d0">Failure</data>
+</node>
+<node id="discharge pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="lid">
+  <data key="d0">Attribute</data>
+</node>
+<node id="pit">
+  <data key="d0">Failure</data>
+</node>
+<node id="contaminants">
+  <data key="d0">Failure</data>
+</node>
+<node id="bed">
+  <data key="d0">Attribute</data>
+</node>
+<node id="void">
+  <data key="d0">Failure</data>
+</node>
+<node id="pressure sensor">
+  <data key="d0">Technical</data>
+</node>
+<node id="joint">
+  <data key="d0">Technical</data>
+</node>
+<node id="hand">
+  <data key="d0">Attribute</data>
+</node>
+<node id="crushing">
+  <data key="d0">Failure</data>
+</node>
+<edge source="heat exchanger" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0008176-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="temperature" target="freezing">
+  <data key="d1">1</data>
+  <data key="d2">result in</data>
+  <data key="d3">["EP-0008176-B1"]</data>
+  <data key="d4">["result in"]</data>
+</edge>
+<edge source="temperature" target="oxidation">
+  <data key="d1">2</data>
+  <data key="d2">associated with</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["introduced into", "associated with"]</data>
+</edge>
+<edge source="temperature" target="fouling">
+  <data key="d1">1</data>
+  <data key="d2">becomes</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["becomes"]</data>
+</edge>
+<edge source="temperature" target="contaminants">
+  <data key="d1">1</data>
+  <data key="d2">via</data>
+  <data key="d3">["EP-0119205-B1"]</data>
+  <data key="d4">["via"]</data>
+</edge>
+<edge source="filter press" target="ash">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="ash" target="add">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="chamber" target="ash">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="chamber" target="temperature">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="impeller" target="nature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="nature" target="oxidation">
+  <data key="d1">1</data>
+  <data key="d2">may</data>
+  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d4">["may"]</data>
+</edge>
+<edge source="vessel" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="perforated pipe" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="temperature">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0119205-B1", "EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="bed">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="tank" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0119205-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="drain" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="flow control valve" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="discharge pipe" target="lid">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0084398-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="lid" target="pit">
+  <data key="d1">2</data>
+  <data key="d2">while</data>
+  <data key="d3">["EP-0084398-B1"]</data>
+  <data key="d4">["thus", "while"]</data>
+</edge>
+<edge source="bed" target="void">
+  <data key="d1">2</data>
+  <data key="d2">increase</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["increase"]</data>
+</edge>
+<edge source="pressure sensor" target="bed">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="joint" target="hand">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0188487-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="hand" target="crushing">
+  <data key="d1">1</data>
+  <data key="d2">may</data>
+  <data key="d3">["EP-0188487-B1"]</data>
+  <data key="d4">["may"]</data>
+</edge>
+</graph></graphml>

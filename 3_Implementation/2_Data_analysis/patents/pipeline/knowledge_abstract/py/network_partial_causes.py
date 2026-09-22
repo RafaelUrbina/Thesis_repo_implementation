@@ -1,18 +1,40 @@
 import itertools
 import json
-import networkx as nx
+import os
+from pathlib import Path
+import sys
+
+try:
+    import networkx as nx
+except ImportError:
+    pass
+
 import pandas as pd
 import plotly.graph_objects as go
 
-FORWARD_TRIGGERS = {
-    "results in",
-    "gives rise to",
-    "leads to",
-    "causes",
-    "produces",
-    "controls",
-}
-BACKWARD_TRIGGERS = {"due to", "as a result of", "caused by", "owing to"}
+# Setup project root imports
+current_dir = Path(__file__).resolve().parent
+project_root = current_dir.parents[5]  # Adjust parent index if needed
+sys.path.insert(0, str(project_root))
+
+from Utils.paths import PATENT_PIPELINE_PATH
+
+# =====================================================================
+# CONFIGURATION & CONFIGURABLE ROW LIMIT
+# =====================================================================
+INPUT_CSV_PATH = (
+    PATENT_PIPELINE_PATH
+    / "supervised_link"
+    / "output"
+    / "causal_filtered_supervised_exploded.csv"
+)
+
+OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "causal_graph"
+GRAPH_CACHE_FILE = OUTPUT_DIR / "patent_causal_graph.graphml"
+SANKEY_OUTPUT_FILE = OUTPUT_DIR / "patent_edge_cases_sankey.html"
+
+# Set integer (e.g., 500) to inspect subset, or None to process entire file
+MAX_ROWS = None  
 
 NODE_COLOR_MAP = {
     "Technical": "rgba(31, 119, 180, 0.8)",  # Blue
@@ -20,37 +42,57 @@ NODE_COLOR_MAP = {
     "Failure": "rgba(214, 39, 40, 0.8)",  # Red
 }
 
+TYPE_SHORT_MAP = {
+    "Technical": "T",
+    "Attribute": "A",
+    "Failure": "F",
+}
+
 
 # =====================================================================
-# 1. STRICT 4-ELEMENT CAUSAL CHAIN EXTRACTION
+# 1. STRICT CAUSAL CHAIN EXTRACTION
 # =====================================================================
+def parse_field(field_val):
+    """Safely parses stringified lists or raw list objects."""
+    if isinstance(field_val, list):
+        return field_val
+    if isinstance(field_val, str) and field_val.strip():
+        # Handle stringified Python lists or JSON arrays
+        cleaned = field_val.strip()
+        if cleaned.startswith("[") and cleaned.endswith("]"):
+            try:
+                # Replace single quotes for valid JSON parsing
+                return json.loads(cleaned.replace("'", '"'))
+            except Exception:
+                # Fallback simple string cleaning if json parser fails
+                items = cleaned.strip("[]").split(",")
+                return [i.strip().strip("'\"") for i in items if i.strip()]
+        return [cleaned]
+    return []
+
+
 def extract_causal_triplets(row):
-    """Parses a sentence row and extracts directed edges strictly adhering to:
+    """Parses a row from the real dataset schema and extracts directed edges strictly:
     [Technical] -> [Attribute] -> [Failure]
-
-    Strict Constraints:
-    - Requires complete sequence (Technical, Attribute, Failure, and Causal terms).
-    - Incomplete or partial sequences are completely discarded.
     """
     edges = []
 
-    pat_id = row.get("pat_id", "UNKNOWN")
-    para_id = row.get("paragraph_id", "UNKNOWN")
+    pat_id = str(row.get("pat_id", "UNKNOWN"))
+    para_id = str(row.get("paragraph_id", "UNKNOWN"))
 
-    techs = row.get("technical_terms", [])
-    attrs = row.get("attribute_terms", [])
-    failures = row.get("failure_terms", [])
-    causals = row.get("causal_ocurrence_words", [])
+    # Map dataset column names to graph taxonomy
+    techs = parse_field(row.get("occurrence_technical", []))
+    attrs = parse_field(row.get("occurrence_variable", []))
+    failures = parse_field(row.get("occurrence_failures", []))
+    causals = parse_field(row.get("causal_ocurrence_words", []))
 
-    # Strict Requirement: Discard if any required component is missing
+    # Discard if any required component is missing
     if not (causals and techs and attrs and failures):
         return edges
 
-    trigger = causals[0].lower()
+    trigger = str(causals[0]).lower()
 
-    # -----------------------------------------------------------------
-    # STEP 1: Context Pair: [Technical] -> [Attribute]
-    # -----------------------------------------------------------------
+    # Step 1: Technical -> Attribute
     for t, a in itertools.product(techs, attrs):
         if t != a:
             edges.append(
@@ -62,13 +104,10 @@ def extract_causal_triplets(row):
                     "trigger": "context_pair",
                     "pat_id": pat_id,
                     "para_id": para_id,
-                    "is_complete": True,
                 }
             )
 
-    # -----------------------------------------------------------------
-    # STEP 2: Causal Link: [Attribute] -> [Failure]
-    # -----------------------------------------------------------------
+    # Step 2: Attribute -> Failure
     for a, f in itertools.product(attrs, failures):
         if a != f:
             edges.append(
@@ -80,7 +119,6 @@ def extract_causal_triplets(row):
                     "trigger": trigger,
                     "pat_id": pat_id,
                     "para_id": para_id,
-                    "is_complete": True,
                 }
             )
 
@@ -88,9 +126,35 @@ def extract_causal_triplets(row):
 
 
 # =====================================================================
-# 2. NETWORKX GRAPH BUILDER & STRICT TOPOLOGY PATHFINDER
+# 2. NETWORKX GRAPH BUILDER WITH DISK CACHING
 # =====================================================================
-def build_knowledge_graph(df):
+def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
+    """Checks if a pre-computed GraphML file exists.
+    If present, loads it directly. Otherwise, processes the data frame and saves it.
+    """
+    cache_path = Path(cache_file)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if cache_path.exists():
+        print(f"[Cache] Found existing graph at '{cache_path}'. Loading from disk...")
+        G = nx.read_graphml(cache_path)
+
+        # Deserialize sets stored as stringified JSON in GraphML
+        for u, v, d in G.edges(data=True):
+            if "patents" in d and isinstance(d["patents"], str):
+                d["patents"] = set(json.loads(d["patents"]))
+            if "triggers" in d and isinstance(d["triggers"], str):
+                d["triggers"] = set(json.loads(d["triggers"]))
+        return G
+
+    print("[Pipeline] Computing knowledge graph from dataset...")
+
+    if isinstance(df_or_path, (str, Path)):
+        print(f"[Data] Loading CSV: {df_or_path} (nrows={max_rows})")
+        df = pd.read_csv(df_or_path, nrows=max_rows)
+    else:
+        df = df_or_path.head(max_rows) if max_rows is not None else df_or_path
+
     G = nx.DiGraph()
 
     for _, row in df.iterrows():
@@ -112,140 +176,142 @@ def build_knowledge_graph(df):
                     e["target"],
                     weight=1,
                     trigger=e["trigger"],
-                    pat_id=e["pat_id"],
-                    para_id=e["para_id"],
                     patents={e["pat_id"]},
                     triggers={e["trigger"]},
-                    is_complete=e["is_complete"],
                 )
+
+    # Save graph for future runs
+    G_save = G.copy()
+    for u, v, d in G_save.edges(data=True):
+        d["patents"] = json.dumps(list(d["patents"]))
+        d["triggers"] = json.dumps(list(d["triggers"]))
+
+    nx.write_graphml(G_save, cache_path)
+    print(f"[Cache] Knowledge graph saved to '{cache_path}'.")
 
     return G
 
 
-def find_strict_cross_patent_chains(G):
-    """Finds valid causal paths strictly following:
-    [Technical] -> [Attribute] -> [Failure] (or longer valid cross-patent extensions).
-
-    Strict Topology Rules:
-    - Path must consist of at least 3 nodes (2 edges).
-    - Prevents type shortcuts/stacking.
-    - Ensures valid node-type progression: Technical -> Attribute -> Failure.
+# =====================================================================
+# 3. HIGH-PERFORMANCE GENERALIZED PATHFINDER (NO TYPE REPETITION)
+# =====================================================================
+def find_strict_cross_patent_chains_fast(G):
+    """Fast path finder enforcing zero node-type repetition along any path.
+    Enforces strict categorical progression without hardcoded term checks.
     """
     valid_paths = []
 
-    tech_nodes = [
-        n for n, d in G.nodes(data=True) if d.get("node_type") == "Technical"
-    ]
-    failure_nodes = [
-        n for n, d in G.nodes(data=True) if d.get("node_type") == "Failure"
-    ]
+    node_type_map = {n: d.get("node_type", "Unknown") for n, d in G.nodes(data=True)}
 
-    for start in tech_nodes:
-        for end in failure_nodes:
-            if nx.has_path(G, start, end):
-                for path in nx.all_simple_paths(G, start, end):
-                    # Rule 0: Minimum length enforcement (Must have at least 3 nodes)
-                    if len(path) < 3:
+    for middle in G.nodes():
+        type_middle = node_type_map[middle]
+
+        predecessors = [u for u in G.predecessors(middle) if u != middle]
+        successors = [v for v in G.successors(middle) if v != middle]
+
+        if not predecessors or not successors:
+            continue
+
+        for t in predecessors:
+            type_t = node_type_map[t]
+
+            # Rule 1: Node type of Source cannot match Node type of Middle
+            if type_t == type_middle:
+                continue
+
+            for f in successors:
+                type_f = node_type_map[f]
+
+                # Rule 2: No repeated node types along the chain (T != M, M != F, T != F)
+                if type_middle == type_f or type_t == type_f:
+                    continue
+
+                # Rule 3: Enforce standard forward progression order
+                if (type_t, type_middle, type_f) != ("Technical", "Attribute", "Failure"):
+                    continue
+
+                e1 = G[t][middle]
+                e2 = G[middle][f]
+
+                # Check Cross-Patent Transition Validation
+                shared = e1["patents"].intersection(e2["patents"])
+                if not shared:
+                    has_causal_1 = any(tr != "context_pair" for tr in e1["triggers"])
+                    has_causal_2 = any(tr != "context_pair" for tr in e2["triggers"])
+                    if not (has_causal_1 and has_causal_2):
                         continue
 
-                    is_valid_chain = True
-
-                    # Rule 1: Strict Type Progression & No Type Stacking
-                    node_types = [
-                        G.nodes[node].get("node_type") for node in path
-                    ]
-
-                    # Enforce strict initial sequence: Technical -> Attribute -> Failure
-                    if node_types[0] != "Technical" or node_types[1] != "Attribute":
-                        continue
-
-                    for i in range(len(node_types) - 1):
-                        if node_types[i] == node_types[i + 1]:
-                            is_valid_chain = False
-                            break
-
-                    if not is_valid_chain:
-                        continue
-
-                    # Rule 2: Strict Cross-Patent Hop Validation
-                    for i in range(len(path) - 1):
-                        u, v = path[i], path[i + 1]
-                        edge_data = G[u][v]
-
-                        if i > 0:
-                            prev_u, prev_v = path[i - 1], path[i]
-                            prev_edge_data = G[prev_u][prev_v]
-
-                            shared_patents = prev_edge_data[
-                                "patents"
-                            ].intersection(edge_data["patents"])
-
-                            if not shared_patents:
-                                has_causal_in_prev = any(
-                                    t != "context_pair"
-                                    for t in prev_edge_data["triggers"]
-                                )
-                                has_causal_in_next = any(
-                                    t != "context_pair"
-                                    for t in edge_data["triggers"]
-                                )
-
-                                if not (
-                                    has_causal_in_prev and has_causal_in_next
-                                ):
-                                    is_valid_chain = False
-                                    break
-
-                    if is_valid_chain:
-                        valid_paths.append(path)
+                valid_paths.append([t, middle, f])
 
     return valid_paths
 
 
 # =====================================================================
-# 3. SANKEY DIAGRAM GENERATOR (PLOTLY)
+# 4. SANKEY DIAGRAM GENERATOR
 # =====================================================================
-def export_sankey_html(G, valid_paths, output_filename="causal_sankey_diagram.html"):
-    """Transforms valid NetworkX DiGraph paths into an interactive Plotly Sankey diagram HTML file.
+def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
+    output_path = Path(output_filename)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    Only edges that participate in valid paths are included.
-    """
-    # 1. Collect only nodes and edges that participate in valid paths
-    valid_nodes = set()
-    valid_edges = set()
+    if not valid_paths:
+        print("\n[Visualizer] No valid paths to render.")
+        return
+
+    stage_nodes = {}
+    # Use a dictionary to ACCUMULATE flow weights across paths
+    edge_weights = {} 
+    edge_metadata = {}
 
     for path in valid_paths:
-        for node in path:
-            valid_nodes.add(node)
-        for i in range(len(path) - 1):
-            valid_edges.add((path[i], path[i + 1]))
+        t_node, a_node, f_node = path[0], path[1], path[2]
 
-    nodes = list(valid_nodes)
-    node_indices = {node: idx for idx, node in enumerate(nodes)}
+        stage_nodes[(t_node, 0)] = G.nodes[t_node].get("node_type", "Technical")
+        stage_nodes[(a_node, 1)] = G.nodes[a_node].get("node_type", "Attribute")
+        stage_nodes[(f_node, 2)] = G.nodes[f_node].get("node_type", "Failure")
+
+        # Define stage-aware edge keys
+        e1_key = ((t_node, 0), (a_node, 1), t_node, a_node)
+        e2_key = ((a_node, 1), (f_node, 2), a_node, f_node)
+
+        # Accumulate weight for e1
+        w1 = G[t_node][a_node].get("weight", 1) if G.has_edge(t_node, a_node) else 1
+        edge_weights[e1_key] = edge_weights.get(e1_key, 0) + w1
+        edge_metadata[e1_key] = (t_node, a_node)
+
+        # Accumulate weight for e2
+        w2 = G[a_node][f_node].get("weight", 1) if G.has_edge(a_node, f_node) else 1
+        edge_weights[e2_key] = edge_weights.get(e2_key, 0) + w2
+        edge_metadata[e2_key] = (a_node, f_node)
+
+    indexed_nodes = list(stage_nodes.keys())
+    node_to_idx = {node_key: idx for idx, node_key in enumerate(indexed_nodes)}
 
     node_labels = []
     node_colors = []
-    for node in nodes:
-        n_type = G.nodes[node].get("node_type", "Technical")
-        node_labels.append(f"{node} ({n_type})")
+    for node_name, stage in indexed_nodes:
+        n_type = stage_nodes[(node_name, stage)]
+        short_type = TYPE_SHORT_MAP.get(n_type, n_type)
+        node_labels.append(f"{node_name} ({short_type})")
         node_colors.append(NODE_COLOR_MAP.get(n_type, "rgba(100,100,100,0.8)"))
 
     sources, targets, values, link_labels = [], [], [], []
 
-    for u, v in valid_edges:
-        data = G[u][v]
-        sources.append(node_indices[u])
-        targets.append(node_indices[v])
-        values.append(data.get("weight", 1))
+    for (src_key, tgt_key, orig_u, orig_v), total_weight in edge_weights.items():
+        sources.append(node_to_idx[src_key])
+        targets.append(node_to_idx[tgt_key])
+        values.append(total_weight)
 
-        patents = ", ".join(data.get("patents", [data.get("pat_id", "N/A")]))
-        triggers = ", ".join(data.get("triggers", [data.get("trigger", "link")]))
+        data = G[orig_u][orig_v] if G.has_edge(orig_u, orig_v) else {}
+        patents_list = list(data.get("patents", []))
+        patents = ", ".join(patents_list[:5]) + ("..." if len(patents_list) > 5 else "")
+        triggers = ", ".join(data.get("triggers", []))
+
         hover_info = (
-            f"<b>From:</b> {u}<br>"
-            f"<b>To:</b> {v}<br>"
+            f"<b>From:</b> {orig_u}<br>"
+            f"<b>To:</b> {orig_v}<br>"
             f"<b>Triggers:</b> {triggers}<br>"
             f"<b>Patents:</b> {patents}<br>"
-            f"<b>Flow Count:</b> {data.get('weight', 1)}"
+            f"<b>Total Flow Weight:</b> {total_weight}"
         )
         link_labels.append(hover_info)
 
@@ -253,7 +319,7 @@ def export_sankey_html(G, valid_paths, output_filename="causal_sankey_diagram.ht
         data=[
             go.Sankey(
                 node=dict(
-                    pad=20,
+                    pad=25,
                     thickness=20,
                     line=dict(color="black", width=0.5),
                     label=node_labels,
@@ -272,122 +338,38 @@ def export_sankey_html(G, valid_paths, output_filename="causal_sankey_diagram.ht
     )
 
     fig.update_layout(
-        title_text="4-Element Patent Causal Chain: [Technical] ➔ [Attribute] ➔ [Causal Term] ➔ [Failure]",
+        title_text="Patent Causal Chain: [Technical] ➔ [Attribute] ➔ [Failure]",
         font_size=12,
         height=750,
+        margin=dict(l=50, r=200, t=60, b=50),
     )
 
-    fig.write_html(output_filename)
-    print(f"\n[Visualizer] Interactive Sankey diagram exported to: {output_filename}")
-
+    fig.write_html(output_path)
+    print(f"\n[Visualizer] Interactive Sankey diagram exported to: {output_path}")
 
 # =====================================================================
-# 4. MAIN EXECUTION PIPELINE
+# 5. MAIN EXECUTION PIPELINE
 # =====================================================================
 if __name__ == "__main__":
-    sample_rows = [
-        # =====================================================================
-        # 1. NORMAL / COMMON EXPECTED CASES
-        # =====================================================================
-        {
-            # Normal Case 1: Standard 4-element forward chain
-            "pat_id": "US-1001-A",
-            "paragraph_id": "para_01",
-            "text": "excess heat exchanger temperature leads to overheating of the core",
-            "technical_terms": ["heat exchanger"],
-            "attribute_terms": ["temperature"],
-            "failure_terms": ["overheating"],
-            "causal_ocurrence_words": ["leads to"],
-        },
-        {
-            # Normal Case 2: Standard 4-element backward chain
-            "pat_id": "US-1002-A",
-            "paragraph_id": "para_05",
-            "text": "cavitation occurs in the fuel pump owing to a sudden pressure drop",
-            "technical_terms": ["fuel pump"],
-            "attribute_terms": ["pressure drop"],
-            "failure_terms": ["cavitation"],
-            "causal_ocurrence_words": ["owing to"],
-        },
-        {
-            # Normal Case 3: Valid Cross-Patent Bridge
-            # Patent A: turbine blade -> vibration -> fatigue
-            # Patent B: turbine blade -> fatigue -> cracking
-            # Expected Full Chain: turbine blade -> vibration -> fatigue -> cracking
-            "pat_id": "US-1003-A",
-            "paragraph_id": "para_12",
-            "text": "turbine blade vibration results in structural fatigue",
-            "technical_terms": ["turbine blade"],
-            "attribute_terms": ["vibration"],
-            "failure_terms": ["fatigue"],
-            "causal_ocurrence_words": ["results in"],
-        },
-        {
-            "pat_id": "EP-2003-B",
-            "paragraph_id": "para_08",
-            "text": "severe fatigue causes surface cracking",
-            "technical_terms": ["turbine blade"],
-            "attribute_terms": ["fatigue"],
-            "failure_terms": ["cracking"],
-            "causal_ocurrence_words": ["causes"],
-        },
+    if os.path.exists(GRAPH_CACHE_FILE):
+        os.remove(GRAPH_CACHE_FILE)
 
-        # =====================================================================
-        # 2. NOISY & EDGE CASES (Pipeline Stress-Tests)
-        # =====================================================================
-        {
-            # Edge Case 1: Type-Stacking Attempt / Missing Attribute
-            "pat_id": "US-9001-X",
-            "paragraph_id": "para_30",
-            "text": "corrosion results in severe leakage in the pipe",
-            "technical_terms": ["pipe"],
-            "attribute_terms": [],
-            "failure_terms": ["corrosion", "leakage"],
-            "causal_ocurrence_words": ["results in"],
-        },
-        {
-            # Edge Case 2: Passive Mention without Causal Trigger
-            "pat_id": "US-9002-X",
-            "paragraph_id": "para_03",
-            "text": "the overall vibration of the housing is monitored continuously",
-            "technical_terms": ["housing"],
-            "attribute_terms": ["vibration"],
-            "failure_terms": [],
-            "causal_ocurrence_words": [],
-        },
-        {
-            # Edge Case 3: Cartesian Product Combinatorial Noise
-            "pat_id": "US-9003-X",
-            "paragraph_id": "para_45",
-            "text": "high rotor speed and valve voltage cause thermal deformation and stalling",
-            "technical_terms": ["rotor", "valve"],
-            "attribute_terms": ["speed", "voltage"],
-            "failure_terms": ["thermal deformation", "stalling"],
-            "causal_ocurrence_words": ["cause"],
-        },
-        {
-            # Edge Case 4: Incomplete Tuple (Missing Technical Term)
-            "pat_id": "EP-9004-Y",
-            "paragraph_id": "para_11",
-            "text": "excessive friction causes overheating",
-            "technical_terms": [],
-            "attribute_terms": ["friction"],
-            "failure_terms": ["overheating"],
-            "causal_ocurrence_words": ["causes"],
-        },
-    ]
+    G = build_or_load_graph(
+        INPUT_CSV_PATH, cache_file=GRAPH_CACHE_FILE, max_rows=1000
+    )
 
-    df = pd.DataFrame(sample_rows)
-    G = build_knowledge_graph(df)
-
-    print("=== Knowledge Extraction Pipeline ===")
+    print("\n=== Knowledge Extraction Pipeline ===")
     print(f"Total Nodes Processed: {G.number_of_nodes()}")
     print(f"Total Edges Extracted: {G.number_of_edges()}")
 
-    paths = find_strict_cross_patent_chains(G)
+    paths = find_strict_cross_patent_chains_fast(G)
     print(f"\nStrict Cross-Patent Chains Found: {len(paths)}")
-    for p in paths:
+    for p in paths[:20]:
         print(" ➔ ".join(p))
+    if len(paths) > 20:
+        print(f"... and {len(paths) - 20} more chains.")
 
-    # Export visualization passing both graph and validated paths
-    export_sankey_html(G, paths, output_filename="patent_edge_cases_sankey.html")
+    if paths:
+        export_sankey_html(G, paths, output_filename=SANKEY_OUTPUT_FILE)
+    else:
+        print("\n[Visualizer] No valid 3-step causal chains found to visualize.")
