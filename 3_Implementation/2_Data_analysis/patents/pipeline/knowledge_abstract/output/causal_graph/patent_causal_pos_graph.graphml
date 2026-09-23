@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d6" for="edge" attr.name="verbs" attr.type="string"/>
+<key id="d5" for="edge" attr.name="nouns" attr.type="string"/>
+<key id="d4" for="edge" attr.name="triggers" attr.type="string"/>
+<key id="d3" for="edge" attr.name="patents" attr.type="string"/>
+<key id="d2" for="edge" attr.name="trigger" attr.type="string"/>
+<key id="d1" for="edge" attr.name="weight" attr.type="long"/>
+<key id="d0" for="node" attr.name="node_type" attr.type="string"/>
+<graph edgedefault="directed"><node id="heat exchanger">
+  <data key="d0">Technical</data>
+</node>
+<node id="temperature">
+  <data key="d0">Attribute</data>
+</node>
+<node id="freezing">
+  <data key="d0">Failure</data>
+</node>
+<node id="filter press">
+  <data key="d0">Technical</data>
+</node>
+<node id="ash">
+  <data key="d0">Attribute</data>
+</node>
+<node id="chamber">
+  <data key="d0">Technical</data>
+</node>
+<node id="add">
+  <data key="d0">Failure</data>
+</node>
+<node id="impeller">
+  <data key="d0">Technical</data>
+</node>
+<node id="nature">
+  <data key="d0">Attribute</data>
+</node>
+<node id="oxidation">
+  <data key="d0">Failure</data>
+</node>
+<node id="vessel">
+  <data key="d0">Technical</data>
+</node>
+<node id="perforated pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="tank">
+  <data key="d0">Technical</data>
+</node>
+<node id="drain">
+  <data key="d0">Technical</data>
+</node>
+<node id="flow control valve">
+  <data key="d0">Technical</data>
+</node>
+<node id="fouling">
+  <data key="d0">Failure</data>
+</node>
+<node id="discharge pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="lid">
+  <data key="d0">Attribute</data>
+</node>
+<node id="pit">
+  <data key="d0">Failure</data>
+</node>
+<node id="contaminants">
+  <data key="d0">Failure</data>
+</node>
+<node id="bed">
+  <data key="d0">Attribute</data>
+</node>
+<node id="void">
+  <data key="d0">Failure</data>
+</node>
+<node id="pressure sensor">
+  <data key="d0">Technical</data>
+</node>
+<node id="joint">
+  <data key="d0">Technical</data>
+</node>
+<node id="hand">
+  <data key="d0">Attribute</data>
+</node>
+<node id="crushing">
+  <data key="d0">Failure</data>
+</node>
+<edge source="heat exchanger" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0008176-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["risk", "solution", "water", "cooling", "flow", "heat", "fouling", "temperature", "exchanger", "disadvantage", "waste", "receptacle", "addition", "freeze"]</data>
+  <data key="d6">["give", "prevail", "occur", "draw", "mention", "become", "result", "freeze"]</data>
+</edge>
+<edge source="temperature" target="freezing">
+  <data key="d1">1</data>
+  <data key="d2">result in</data>
+  <data key="d3">["EP-0008176-B1"]</data>
+  <data key="d4">["result in"]</data>
+  <data key="d5">["risk", "water", "cooling", "flow", "heat", "temperature", "exchanger", "disadvantage", "waste", "receptacle", "addition"]</data>
+  <data key="d6">["give", "prevail", "draw", "mention", "result", "freeze"]</data>
+</edge>
+<edge source="temperature" target="oxidation">
+  <data key="d1">2</data>
+  <data key="d2">associated with</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["associated with", "introduced into"]</data>
+  <data key="d5">["place", "gas", "process", "uptake", "time", "aeration", "level", "basis", "oxidation", "point", "water", "reaction", "wall", "pressure", "bottom", "nozzle", "end", "cleaning", "purification", "perforation", "base", "way", "container", "device", "catalyst", "temperature", "chamber", "distance", "substance", "vessel", "width", "presence", "top", "apparatus", "liquid", "oxygen", "pipe", "particle", "waste", "ventilation"]</data>
+  <data key="d6">["provide", "associate", "span", "divide", "fill", "end", "comprise", "discharge", "incline", "contain", "carry", "take", "construct", "extend", "begin", "perforate", "supply", "introduce", "characterise", "situate"]</data>
+</edge>
+<edge source="temperature" target="fouling">
+  <data key="d1">1</data>
+  <data key="d2">becomes</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["becomes"]</data>
+  <data key="d5">["solution", "fouling", "freeze"]</data>
+  <data key="d6">["occur", "become"]</data>
+</edge>
+<edge source="temperature" target="contaminants">
+  <data key="d1">1</data>
+  <data key="d2">via</data>
+  <data key="d3">["EP-0119205-B1"]</data>
+  <data key="d4">["via"]</data>
+  <data key="d5">["buffer", "pump", "filter", "system", "device", "displacement", "tank", "ph", "temperature", "contaminant", "feeding", "wastewater"]</data>
+  <data key="d6">["set", "come", "retain", "pass", "require", "ensure"]</data>
+</edge>
+<edge source="filter press" target="ash">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["content", "process", "need", "presscake", "solid", "amount", "sludge", "weight", "additive"]</data>
+  <data key="d6">["dewatere", "add", "mention"]</data>
+</edge>
+<edge source="ash" target="add">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["content", "process", "need", "presscake", "solid", "amount", "sludge", "weight", "additive"]</data>
+  <data key="d6">["dewatere", "add", "mention"]</data>
+</edge>
+<edge source="chamber" target="ash">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["content", "process", "need", "presscake", "solid", "amount", "sludge", "weight", "additive"]</data>
+  <data key="d6">["dewatere", "add", "mention"]</data>
+</edge>
+<edge source="chamber" target="temperature">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["place", "gas", "process", "uptake", "time", "aeration", "level", "basis", "freeze", "solution", "oxidation", "point", "water", "reaction", "wall", "fouling", "pressure", "bottom", "nozzle", "end", "cleaning", "purification", "perforation", "base", "way", "container", "device", "catalyst", "temperature", "chamber", "distance", "substance", "vessel", "width", "presence", "top", "apparatus", "liquid", "oxygen", "pipe", "particle", "waste", "ventilation"]</data>
+  <data key="d6">["provide", "occur", "associate", "span", "divide", "fill", "end", "comprise", "discharge", "incline", "become", "contain", "carry", "take", "construct", "extend", "begin", "perforate", "supply", "introduce", "characterise", "situate"]</data>
+</edge>
+<edge source="impeller" target="nature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["bod", "shear", "oxidation", "time", "effect", "impeller", "contact", "order", "action", "oxygen", "amount", "chance", "surface", "sludge", "nature", "area"]</data>
+  <data key="d6">["re", "dissolve", "increase", "come", "promote", "disintegrate", "activate", "allow", "coagulate", "hold", "make", "moderate"]</data>
+</edge>
+<edge source="nature" target="oxidation">
+  <data key="d1">1</data>
+  <data key="d2">may</data>
+  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d4">["may"]</data>
+  <data key="d5">["bod", "shear", "oxidation", "time", "effect", "impeller", "contact", "order", "action", "oxygen", "amount", "chance", "surface", "sludge", "nature", "area"]</data>
+  <data key="d6">["re", "dissolve", "increase", "come", "promote", "disintegrate", "activate", "allow", "coagulate", "hold", "make", "moderate"]</data>
+</edge>
+<edge source="vessel" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["place", "gas", "uptake", "time", "aeration", "level", "basis", "oxidation", "point", "water", "reaction", "wall", "pressure", "bottom", "end", "purification", "perforation", "base", "way", "container", "device", "catalyst", "temperature", "chamber", "distance", "substance", "vessel", "width", "presence", "top", "apparatus", "liquid", "oxygen", "pipe", "particle", "waste"]</data>
+  <data key="d6">["situate", "extend", "comprise", "provide", "begin", "discharge", "incline", "perforate", "associate", "span", "supply", "characterise", "end", "divide", "contain", "take", "construct"]</data>
+</edge>
+<edge source="perforated pipe" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["place", "gas", "uptake", "time", "aeration", "level", "basis", "oxidation", "point", "water", "reaction", "wall", "pressure", "bottom", "end", "purification", "perforation", "base", "way", "container", "device", "catalyst", "temperature", "chamber", "distance", "substance", "vessel", "width", "presence", "top", "apparatus", "liquid", "oxygen", "pipe", "particle", "waste"]</data>
+  <data key="d6">["situate", "extend", "comprise", "provide", "begin", "discharge", "incline", "perforate", "associate", "span", "supply", "characterise", "end", "divide", "contain", "take", "construct"]</data>
+</edge>
+<edge source="pump" target="temperature">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0119205-B1", "EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["gas", "process", "buffer", "displacement", "ph", "freeze", "wastewater", "solution", "water", "reaction", "fouling", "bottom", "nozzle", "cleaning", "system", "device", "tank", "catalyst", "temperature", "chamber", "feeding", "pump", "filter", "oxygen", "contaminant", "waste", "ventilation"]</data>
+  <data key="d6">["ensure", "occur", "set", "come", "retain", "pass", "require", "fill", "introduce", "become", "contain", "carry"]</data>
+</edge>
+<edge source="pump" target="bed">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["pump", "point", "rate", "water", "increase", "flow", "bed", "condensate", "pressure", "feedwater", "space", "decrease", "drop"]</data>
+  <data key="d6">["supply", "result", "cause"]</data>
+</edge>
+<edge source="tank" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0119205-B1", "EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["solution", "buffer", "pump", "filter", "system", "wastewater", "device", "fouling", "displacement", "ph", "tank", "temperature", "contaminant", "feeding", "freeze"]</data>
+  <data key="d6">["occur", "set", "come", "retain", "pass", "require", "become", "ensure"]</data>
+</edge>
+<edge source="drain" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["solution", "fouling", "freeze"]</data>
+  <data key="d6">["occur", "become"]</data>
+</edge>
+<edge source="flow control valve" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["solution", "fouling", "freeze"]</data>
+  <data key="d6">["occur", "become"]</data>
+</edge>
+<edge source="discharge pipe" target="lid">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0084398-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["position", "stub", "discharge", "relationship", "water", "tube", "pit", "lid", "pipe", "invention", "sealing", "trap", "pot", "opening", "housing", "end", "ring", "part"]</data>
+  <data key="d6">["say", "provide", "connencte", "adapt", "relate", "maintain", "characterize", "adjust", "comprise", "form", "define", "connect", "support", "direct", "carry", "extend", "perforate", "seal", "remain", "include"]</data>
+</edge>
+<edge source="lid" target="pit">
+  <data key="d1">2</data>
+  <data key="d2">while</data>
+  <data key="d3">["EP-0084398-B1"]</data>
+  <data key="d4">["while", "thus"]</data>
+  <data key="d5">["position", "stub", "discharge", "relationship", "water", "tube", "pit", "lid", "pipe", "invention", "sealing", "trap", "pot", "opening", "housing", "end", "ring", "part"]</data>
+  <data key="d6">["say", "provide", "connencte", "adapt", "relate", "maintain", "characterize", "adjust", "comprise", "form", "define", "connect", "support", "direct", "carry", "extend", "perforate", "seal", "remain", "include"]</data>
+</edge>
+<edge source="bed" target="void">
+  <data key="d1">2</data>
+  <data key="d2">increase</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["increase"]</data>
+  <data key="d5">["condensate", "condition", "feedwater", "velocity", "point", "water", "pressure", "resin", "air", "rate", "bed", "drop", "sensor", "pump", "increase", "outlet", "flow", "line", "space", "decrease"]</data>
+  <data key="d6">["stir", "cause", "occur", "increase", "inject", "supply", "result", "remedie", "indicate"]</data>
+</edge>
+<edge source="pressure sensor" target="bed">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["sensor", "outlet", "line", "bed", "pressure", "condition", "resin", "air", "space", "velocity"]</data>
+  <data key="d6">["stir", "occur", "increase", "inject", "remedie", "indicate"]</data>
+</edge>
+<edge source="joint" target="hand">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-0188487-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["cable", "section", "seal", "hoop", "outside", "possibility", "clamp", "hand", "metal", "application"]</data>
+  <data key="d6">["leave", "crush", "maintain", "allow", "hold"]</data>
+</edge>
+<edge source="hand" target="crushing">
+  <data key="d1">1</data>
+  <data key="d2">may</data>
+  <data key="d3">["EP-0188487-B1"]</data>
+  <data key="d4">["may"]</data>
+  <data key="d5">["cable", "section", "seal", "hoop", "outside", "possibility", "clamp", "hand", "metal", "application"]</data>
+  <data key="d6">["leave", "crush", "maintain", "allow", "hold"]</data>
+</edge>
+</graph></graphml>

@@ -88,7 +88,7 @@
 <edge source="heat exchanger" target="temperature">
   <data key="d1">2</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1", "EP-0008176-B1"]</data>
+  <data key="d3">["EP-0008176-B1", "EP-0070989-B1"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
 <edge source="temperature" target="freezing">
@@ -166,7 +166,7 @@
 <edge source="pump" target="temperature">
   <data key="d1">3</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1", "EP-0119205-B1", "EP-0070989-B1"]</data>
+  <data key="d3">["EP-0119205-B1", "EP-0069220-B1", "EP-0070989-B1"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
 <edge source="pump" target="bed">
@@ -203,7 +203,7 @@
   <data key="d1">2</data>
   <data key="d2">while</data>
   <data key="d3">["EP-0084398-B1"]</data>
-  <data key="d4">["thus", "while"]</data>
+  <data key="d4">["while", "thus"]</data>
 </edge>
 <edge source="bed" target="void">
   <data key="d1">2</data>

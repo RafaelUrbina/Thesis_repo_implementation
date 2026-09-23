@@ -22,20 +22,28 @@ sys.path.insert(0, str(project_root))
 from Utils.paths import PATENT_PIPELINE_PATH
 
 # =====================================================================
-# CONFIGURATION & CONFIGURABLE ROW LIMIT
+# CONFIGURATION & OUTPUT PATHS
 # =====================================================================
 INPUT_CSV_PATH = (
     PATENT_PIPELINE_PATH
-    / "supervised_link"
+    / "unsupervised_link"
     / "output"
-    / "causal_filtered_supervised_exploded.csv"
+    / "causal_filtered_unsupervised_sentiment_pos.csv"
 )
 
 OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "causal_graph"
+
+# Primary Outputs
 GRAPH_CACHE_FILE = OUTPUT_DIR / "patent_causal_graph.graphml"
 SANKEY_OUTPUT_FILE = OUTPUT_DIR / "patent_edge_cases_sankey.html"
+SUMMARY_CSV_FILE = OUTPUT_DIR / "patent_causal_chains_summary.csv"
 
-MAX_ROWS = None  
+# Secondary POS-Enriched Outputs
+POS_GRAPH_CACHE_FILE = OUTPUT_DIR / "patent_causal_pos_graph.graphml"
+POS_SANKEY_OUTPUT_FILE = OUTPUT_DIR / "patent_edge_cases_pos_sankey.html"
+POS_SUMMARY_CSV_FILE = OUTPUT_DIR / "patent_causal_chains_pos_summary.csv"
+
+MAX_ROWS = None
 
 NODE_COLOR_MAP = {
     "Technical": "rgba(31, 119, 180, 0.8)",  # Blue
@@ -51,7 +59,7 @@ TYPE_SHORT_MAP = {
 
 
 # =====================================================================
-# 1. STRICT CAUSAL CHAIN EXTRACTION
+# 1. PARSING & CAUSAL CHAIN EXTRACTION
 # =====================================================================
 def parse_field(field_val):
     """Safely parses stringified Python lists, JSON arrays, or raw list objects."""
@@ -64,7 +72,6 @@ def parse_field(field_val):
     if isinstance(field_val, str) and field_val.strip():
         cleaned = field_val.strip()
         if cleaned.startswith("[") and cleaned.endswith("]"):
-            # Try python literal eval first (handles single quotes/apostrophes correctly)
             try:
                 parsed = ast.literal_eval(cleaned)
                 if isinstance(parsed, list):
@@ -72,7 +79,6 @@ def parse_field(field_val):
             except (ValueError, SyntaxError):
                 pass
             
-            # Fallback to json parsing
             try:
                 parsed = json.loads(cleaned)
                 if isinstance(parsed, list):
@@ -80,7 +86,6 @@ def parse_field(field_val):
             except json.JSONDecodeError:
                 pass
                 
-            # Final fallback to manual split
             items = cleaned.strip("[]").split(",")
             return [i.strip().strip("'\"") for i in items if i.strip()]
         return [cleaned]
@@ -101,6 +106,10 @@ def extract_causal_triplets(row):
     failures = parse_field(row.get("occurrence_failures", []))
     causals = parse_field(row.get("causal_ocurrence_words", []))
 
+    # CORRECTED: Read 'nouns' and 'verbs' directly matching your CSV column headers
+    nouns = parse_field(row.get("nouns", []))
+    verbs = parse_field(row.get("verbs", []))
+
     if not (causals and techs and attrs and failures):
         return edges
 
@@ -109,32 +118,32 @@ def extract_causal_triplets(row):
     # Step 1: Technical -> Attribute
     for t, a in itertools.product(techs, attrs):
         if t != a:
-            edges.append(
-                {
-                    "source": t,
-                    "source_type": "Technical",
-                    "target": a,
-                    "target_type": "Attribute",
-                    "trigger": "context_pair",
-                    "pat_id": pat_id,
-                    "para_id": para_id,
-                }
-            )
+            edges.append({
+                "source": t,
+                "source_type": "Technical",
+                "target": a,
+                "target_type": "Attribute",
+                "trigger": "context_pair",
+                "pat_id": pat_id,
+                "para_id": para_id,
+                "nouns": nouns,
+                "verbs": verbs,
+            })
 
     # Step 2: Attribute -> Failure
     for a, f in itertools.product(attrs, failures):
         if a != f:
-            edges.append(
-                {
-                    "source": a,
-                    "source_type": "Attribute",
-                    "target": f,
-                    "target_type": "Failure",
-                    "trigger": trigger,
-                    "pat_id": pat_id,
-                    "para_id": para_id,
-                }
-            )
+            edges.append({
+                "source": a,
+                "source_type": "Attribute",
+                "target": f,
+                "target_type": "Failure",
+                "trigger": trigger,
+                "pat_id": pat_id,
+                "para_id": para_id,
+                "nouns": nouns,
+                "verbs": verbs,
+            })
 
     return edges
 
@@ -142,19 +151,21 @@ def extract_causal_triplets(row):
 # =====================================================================
 # 2. NETWORKX GRAPH BUILDER WITH DISK CACHING
 # =====================================================================
-def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
+def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, include_pos=False):
     """Checks if a pre-computed GraphML file exists.
     If present, loads it directly. Otherwise, processes the dataframe and saves it.
     """
     cache_path = Path(cache_file)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
 
+    target_name = "POS Causal Graph" if include_pos else "Primary Causal Graph"
+
     if cache_path.exists():
-        print(f"[Cache] Found existing graph at '{cache_path}'. Loading from disk...")
+        print(f"[Cache] Found existing graph ({target_name}) at '{cache_path}'. Loading from disk...")
         G = nx.read_graphml(cache_path)
 
         for u, v, d in G.edges(data=True):
-            for key in ("patents", "triggers"):
+            for key in ("patents", "triggers", "nouns", "verbs"):
                 if key in d and isinstance(d[key], str):
                     try:
                         d[key] = set(json.loads(d[key]))
@@ -162,10 +173,9 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
                         d[key] = set()
         return G
 
-    print("[Pipeline] Computing knowledge graph from dataset...")
+    print(f"[Pipeline] Computing {target_name} from dataset...")
 
     if isinstance(df_or_path, (str, Path)):
-        print(f"[Data] Loading CSV: {df_or_path} (nrows={max_rows})")
         df = pd.read_csv(df_or_path, nrows=max_rows)
     else:
         df = df_or_path.head(max_rows) if max_rows is not None else df_or_path
@@ -185,35 +195,43 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None):
                 G[e["source"]][e["target"]]["weight"] += 1
                 G[e["source"]][e["target"]]["patents"].add(e["pat_id"])
                 G[e["source"]][e["target"]]["triggers"].add(e["trigger"])
+                if include_pos:
+                    # CORRECTED: Key matching 'nouns' and 'verbs' from dictionary
+                    G[e["source"]][e["target"]]["nouns"].update(e.get("nouns", []))
+                    G[e["source"]][e["target"]]["verbs"].update(e.get("verbs", []))
             else:
-                G.add_edge(
-                    e["source"],
-                    e["target"],
-                    weight=1,
-                    trigger=e["trigger"],
-                    patents={e["pat_id"]},
-                    triggers={e["trigger"]},
-                )
+                edge_attr = {
+                    "weight": 1,
+                    "trigger": e["trigger"],
+                    "patents": {e["pat_id"]},
+                    "triggers": {e["trigger"]},
+                }
+                if include_pos:
+                    edge_attr["nouns"] = set(e.get("nouns", []))
+                    edge_attr["verbs"] = set(e.get("verbs", []))
+
+                G.add_edge(e["source"], e["target"], **edge_attr)
 
     # Save graph for future runs
     G_save = G.copy()
     for u, v, d in G_save.edges(data=True):
         d["patents"] = json.dumps(list(d["patents"]))
         d["triggers"] = json.dumps(list(d["triggers"]))
+        if include_pos:
+            d["nouns"] = json.dumps(list(d.get("nouns", set())))
+            d["verbs"] = json.dumps(list(d.get("verbs", set())))
 
     nx.write_graphml(G_save, cache_path)
-    print(f"[Cache] Knowledge graph saved to '{cache_path}'.")
+    print(f"[Cache] Saved {target_name} to '{cache_path}'.")
 
     return G
 
 
 # =====================================================================
-# 3. HIGH-PERFORMANCE GENERALIZED PATHFINDER
+# 3. PATHFINDER
 # =====================================================================
 def find_strict_cross_patent_chains_fast(G):
-    """Fast path finder enforcing zero node-type repetition along any path.
-    Enforces strict categorical progression without hardcoded term checks.
-    """
+    """Fast path finder enforcing zero node-type repetition along any path."""
     valid_paths = []
     node_type_map = {n: d.get("node_type", "Unknown") for n, d in G.nodes(data=True)}
 
@@ -239,7 +257,6 @@ def find_strict_cross_patent_chains_fast(G):
                 e1 = G[t][middle]
                 e2 = G[middle][f]
 
-                # Check Cross-Patent Transition Validation
                 shared = e1["patents"].intersection(e2["patents"])
                 if not shared:
                     has_causal_1 = any(tr != "context_pair" for tr in e1["triggers"])
@@ -255,18 +272,17 @@ def find_strict_cross_patent_chains_fast(G):
 # =====================================================================
 # 4. SANKEY DIAGRAM GENERATOR
 # =====================================================================
-def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
+def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE, include_pos=False):
     output_path = Path(output_filename)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     if not valid_paths:
-        print("\n[Visualizer] No valid paths to render.")
+        print(f"\n[Visualizer] No valid paths to render for {output_filename}.")
         return
 
     stage_nodes = {}
     edge_counts = defaultdict(int)
 
-    # 1. Accumulate flow counts across all valid paths
     for path in valid_paths:
         t_node, a_node, f_node = path[0], path[1], path[2]
 
@@ -274,15 +290,12 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
         stage_nodes[(a_node, 1)] = G.nodes[a_node].get("node_type", "Attribute")
         stage_nodes[(f_node, 2)] = G.nodes[f_node].get("node_type", "Failure")
 
-        # Define stage-specific directed edge keys
         e1_key = ((t_node, 0), (a_node, 1), t_node, a_node)
         e2_key = ((a_node, 1), (f_node, 2), a_node, f_node)
 
-        # Increment path flow count for each stage transition
         edge_counts[e1_key] += 1
         edge_counts[e2_key] += 1
 
-    # 2. Map staged nodes to unique indices
     indexed_nodes = list(stage_nodes.keys())
     node_to_idx = {node_key: idx for idx, node_key in enumerate(indexed_nodes)}
 
@@ -296,25 +309,36 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
 
     sources, targets, values, link_labels = [], [], [], []
 
-    # 3. Build Plotly Sankey links directly from conserved path flows
     for (src_key, tgt_key, orig_u, orig_v), flow_value in edge_counts.items():
         sources.append(node_to_idx[src_key])
         targets.append(node_to_idx[tgt_key])
-        values.append(flow_value)  # Exact count of valid paths through this edge
+        values.append(flow_value)
 
         data = G[orig_u][orig_v] if G.has_edge(orig_u, orig_v) else {}
         patents_list = list(data.get("patents", []))
         patents = ", ".join(patents_list[:5]) + ("..." if len(patents_list) > 5 else "")
         triggers = ", ".join(data.get("triggers", []))
 
-        hover_info = (
-            f"<b>From:</b> {orig_u}<br>"
-            f"<b>To:</b> {orig_v}<br>"
-            f"<b>Triggers:</b> {triggers}<br>"
-            f"<b>Patents:</b> {patents}<br>"
-            f"<b>Path Flow Count:</b> {flow_value}"
-        )
-        link_labels.append(hover_info)
+        hover_lines = [
+            f"<b>From:</b> {orig_u}",
+            f"<b>To:</b> {orig_v}",
+            f"<b>Triggers:</b> {triggers}",
+            f"<b>Patents:</b> {patents}",
+            f"<b>Path Flow Count:</b> {flow_value}",
+        ]
+
+        if include_pos:
+            nouns_list = sorted(list(data.get("nouns", [])))
+            verbs_list = sorted(list(data.get("verbs", [])))
+            nouns_str = ", ".join(nouns_list[:8]) + ("..." if len(nouns_list) > 8 else "")
+            verbs_str = ", ".join(verbs_list[:8]) + ("..." if len(verbs_list) > 8 else "")
+
+            hover_lines.append(f"<b>Nouns:</b> {nouns_str or 'None'}")
+            hover_lines.append(f"<b>Verbs:</b> {verbs_str or 'None'}")
+
+        link_labels.append("<br>".join(hover_lines))
+
+    title_suffix = " (With POS Meta)" if include_pos else ""
 
     fig = go.Figure(
         data=[
@@ -339,39 +363,90 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
     )
 
     fig.update_layout(
-        title_text="Patent Causal Chain: [Technical] ➔ [Attribute] ➔ [Failure]",
+        title_text=f"Patent Causal Chain: [Technical] ➔ [Attribute] ➔ [Failure]{title_suffix}",
         font_size=12,
         height=750,
         margin=dict(l=50, r=200, t=60, b=50),
     )
 
     fig.write_html(output_path)
-    print(f"\n[Visualizer] Interactive Sankey diagram exported to: {output_path}")
+    print(f"[Visualizer] Sankey diagram exported to: {output_path}")
 
 
 # =====================================================================
-# 5. MAIN EXECUTION PIPELINE
+# 5. CSV EXPORTER
+# =====================================================================
+def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FILE, include_pos=False):
+    output_path = Path(output_filename)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    records = []
+
+    for path in valid_paths:
+        t_node, a_node, f_node = path[0], path[1], path[2]
+
+        e1_data = G[t_node][a_node] if G.has_edge(t_node, a_node) else {}
+        e2_data = G[a_node][f_node] if G.has_edge(a_node, f_node) else {}
+
+        all_patents = sorted(list(set(e1_data.get("patents", set())).union(e2_data.get("patents", set()))))
+        all_triggers = sorted(list(set(e1_data.get("triggers", set())).union(e2_data.get("triggers", set()))))
+
+        rec = {
+            "technical": t_node,
+            "attribute": a_node,
+            "failure": f_node,
+            "patents": ", ".join(all_patents),
+            "triggers": ", ".join(all_triggers),
+        }
+
+        if include_pos:
+            chain_nouns = sorted(list(set(e1_data.get("nouns", set())).union(e2_data.get("nouns", set()))))
+            chain_verbs = sorted(list(set(e1_data.get("verbs", set())).union(e2_data.get("verbs", set()))))
+
+            rec["nouns"] = ", ".join(chain_nouns)
+            rec["verbs"] = ", ".join(chain_verbs)
+            rec["noun_count"] = len(chain_nouns)
+            rec["verb_count"] = len(chain_verbs)
+
+        records.append(rec)
+
+    df_summary = pd.DataFrame(records)
+    df_summary.to_csv(output_path, index=False)
+    print(f"[CSV Exporter] Saved summary report to: {output_path}")
+    return df_summary
+
+
+# =====================================================================
+# 6. MAIN EXECUTION PIPELINE
 # =====================================================================
 if __name__ == "__main__":
-    if os.path.exists(GRAPH_CACHE_FILE):
-        os.remove(GRAPH_CACHE_FILE)
+    # Remove cached graphs to force re-computation with new POS fields
+    for f in (GRAPH_CACHE_FILE, POS_GRAPH_CACHE_FILE):
+        if os.path.exists(f):
+            os.remove(f)
 
-    G = build_or_load_graph(
-        INPUT_CSV_PATH, cache_file=GRAPH_CACHE_FILE, max_rows=1000
+    print("\n=== Pipeline 1: Processing Primary Causal Graph ===")
+    G_primary = build_or_load_graph(
+        INPUT_CSV_PATH, cache_file=GRAPH_CACHE_FILE, max_rows=1000, include_pos=False
     )
 
-    print("\n=== Knowledge Extraction Pipeline ===")
-    print(f"Total Nodes Processed: {G.number_of_nodes()}")
-    print(f"Total Edges Extracted: {G.number_of_edges()}")
+    paths_primary = find_strict_cross_patent_chains_fast(G_primary)
+    print(f"Strict Cross-Patent Chains Found: {len(paths_primary)}")
 
-    paths = find_strict_cross_patent_chains_fast(G)
-    print(f"\nStrict Cross-Patent Chains Found: {len(paths)}")
-    for p in paths[:20]:
-        print(" ➔ ".join(p))
-    if len(paths) > 20:
-        print(f"... and {len(paths) - 20} more chains.")
+    if paths_primary:
+        export_sankey_html(G_primary, paths_primary, output_filename=SANKEY_OUTPUT_FILE, include_pos=False)
+        export_causal_chains_summary(G_primary, paths_primary, output_filename=SUMMARY_CSV_FILE, include_pos=False)
 
-    if paths:
-        export_sankey_html(G, paths, output_filename=SANKEY_OUTPUT_FILE)
-    else:
-        print("\n[Visualizer] No valid 3-step causal chains found to visualize.")
+    print("\n=== Pipeline 2: Processing Secondary POS-Enriched Graph ===")
+    G_pos = build_or_load_graph(
+        INPUT_CSV_PATH, cache_file=POS_GRAPH_CACHE_FILE, max_rows=1000, include_pos=True
+    )
+
+    paths_pos = find_strict_cross_patent_chains_fast(G_pos)
+    print(f"Strict Cross-Patent Chains (POS) Found: {len(paths_pos)}")
+
+    if paths_pos:
+        export_sankey_html(G_pos, paths_pos, output_filename=POS_SANKEY_OUTPUT_FILE, include_pos=True)
+        export_causal_chains_summary(G_pos, paths_pos, output_filename=POS_SUMMARY_CSV_FILE, include_pos=True)
+
+    print("\n[Done] All primary and secondary outputs generated successfully.")
