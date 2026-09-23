@@ -23,9 +23,9 @@ from Utils.paths import PATENT_PIPELINE_PATH
 # =====================================================================
 INPUT_CSV_PATH = (
     PATENT_PIPELINE_PATH
-    / "supervised_link"
+    / "unsupervised_link"
     / "output"
-    / "causal_filtered_supervised_exploded.csv"
+    / "causal_filtered_unsupervised_sentiment_pos.csv"
 )
 
 OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "summary_statistics"
@@ -33,12 +33,16 @@ OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "summary_s
 # Ensure output directory exists
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Output File Destinations
+# Output File Destinations (Existing + POS Extensions)
 TOP_ASSOC_TECH_ATTR_CSV = OUTPUT_DIR / "top_associations_tech_vs_attr.csv"
 TOP_ASSOC_ATTR_FAIL_CSV = OUTPUT_DIR / "top_associations_attr_vs_fail.csv"
+TOP_ASSOC_VERB_FAIL_CSV = OUTPUT_DIR / "top_associations_verb_vs_fail.csv"
+TOP_ASSOC_NOUN_VERB_CSV = OUTPUT_DIR / "top_associations_noun_vs_verb.csv"
 
 HEATMAP_TECH_ATTR_PNG = OUTPUT_DIR / "heatmap_top20_tech_vs_attr.png"
 HEATMAP_ATTR_FAIL_PNG = OUTPUT_DIR / "heatmap_top20_attr_vs_fail.png"
+HEATMAP_VERB_FAIL_PNG = OUTPUT_DIR / "heatmap_top20_verb_vs_fail.png"
+HEATMAP_NOUN_VERB_PNG = OUTPUT_DIR / "heatmap_top20_noun_vs_verb.png"
 
 SUMMARY_CARDS_CSV = OUTPUT_DIR / "patent_summary_cards.csv"
 SUMMARY_CARDS_JSON = OUTPUT_DIR / "patent_summary_cards.json"
@@ -51,7 +55,7 @@ SUMMARY_CARDS_JSON = OUTPUT_DIR / "patent_summary_cards.json"
 def load_and_preprocess_dataset(file_path: Path) -> pd.DataFrame:
     """
     Loads dataset and parses string-encoded list columns 
-    (e.g., "['reservoir', 'pump']") back into Python lists.
+    (including POS-tagged 'verbs' and 'nouns') back into Python lists.
     """
     if not file_path.exists():
         raise FileNotFoundError(f"Input dataset not found at: {file_path}")
@@ -63,7 +67,9 @@ def load_and_preprocess_dataset(file_path: Path) -> pd.DataFrame:
         "occurrence_failures",
         "occurrence_causal",
         "occurrence_variable",
-        "causal_ocurrence_words"
+        "causal_ocurrence_words",
+        "verbs",
+        "nouns"
     ]
 
     def safe_parse_list(val):
@@ -90,7 +96,7 @@ def load_and_preprocess_dataset(file_path: Path) -> pd.DataFrame:
 
 
 # ==========================================
-# TASK 1: TOP ASSOCIATION TABLES (NPMI BASED, NO P-VALUE)
+# TASK 1: TOP ASSOCIATION TABLES (NPMI BASED)
 # ==========================================
 
 def compute_npmi_associations(
@@ -101,9 +107,13 @@ def compute_npmi_associations(
     npmi_thresh: float = 0.3
 ) -> pd.DataFrame:
     """
-    Computes pair associations between two occurrence columns using NPMI.
+    Computes pair associations between two occurrence/POS columns using NPMI.
     Excludes p-values entirely to focus on actual association strength.
     """
+    if col_a not in df.columns or col_b not in df.columns:
+        print(f"Warning: One of the columns ({col_a}, {col_b}) does not exist in the DataFrame.")
+        return pd.DataFrame()
+
     N = len(df)
     
     contexts_a = df[col_a].apply(lambda x: list(set(x)) if isinstance(x, list) else [])
@@ -155,7 +165,7 @@ def compute_npmi_associations(
 
 
 # ==========================================
-# TASK 2: CO-OCCURRENCE HEATMAP (LIMITED TO TOP 20 MOST FREQUENT)
+# TASK 2: CO-OCCURRENCE HEATMAP (TOP 20 TERMS)
 # ==========================================
 
 def save_top20_category_heatmap(
@@ -219,12 +229,13 @@ def save_top20_category_heatmap(
 
 
 # ==========================================
-# TASK 3: PATENT SUMMARY CARDS
+# TASK 3: PATENT SUMMARY CARDS (POS-ENRICHED)
 # ==========================================
 
 def generate_and_save_patent_summary_cards(df: pd.DataFrame, csv_output_path: Path, json_output_path: Path) -> pd.DataFrame:
     """
-    Aggregates data at the pat_id level showing primary failure pathways and saves to CSV and JSON formats.
+    Aggregates data at the pat_id level showing primary failure pathways and 
+    verb-component-failure action triplets.
     """
     cards = []
     grouped = df.groupby("pat_id")
@@ -238,28 +249,44 @@ def generate_and_save_patent_summary_cards(df: pd.DataFrame, csv_output_path: Pa
         failure_terms = list(set([f for sub in group["occurrence_failures"] for f in sub]))
         variable_terms = list(set([v for sub in group["occurrence_variable"] for v in sub]))
         
-        # Sentence-level triplet matches
-        pathways = []
+        # POS terms extraction
+        verbs_list = list(set([v for sub in group["verbs"] for v in sub])) if "verbs" in group.columns else []
+        nouns_list = list(set([n for sub in group["nouns"] for n in sub])) if "nouns" in group.columns else []
+
+        # Standard Causal Triplets: [Technical] ➔ [Causal Word] ➔ [Failure]
+        causal_pathways = []
+        # Action Triplets: [Verb] ➔ [Technical] ➔ [Failure]
+        action_pathways = []
+
         for _, row in group.iterrows():
             row_techs = row["occurrence_technical"]
             row_causes = row["causal_ocurrence_words"] + row["occurrence_causal"]
             row_failures = row["occurrence_failures"]
+            row_verbs = row.get("verbs", [])
             
+            # Sentence-level causal pathways
             for t, c, f in product(row_techs, row_causes, row_failures):
-                pathways.append(f"{t} ➔ [{c}] ➔ {f}")
+                causal_pathways.append(f"{t} ➔ [{c}] ➔ {f}")
+            
+            # Sentence-level verb-component-failure action pathways
+            for v, t, f in product(row_verbs, row_techs, row_failures):
+                action_pathways.append(f"[{v.upper()}] ➔ {t} ➔ {f}")
                 
-        pathway_counts = Counter(pathways).most_common(3)
-        formatted_pathways = [f"{path} (x{count})" for path, count in pathway_counts]
+        formatted_causal_pathways = [f"{p} (x{c})" for p, c in Counter(causal_pathways).most_common(3)]
+        formatted_action_pathways = [f"{p} (x{c})" for p, c in Counter(action_pathways).most_common(3)]
         
         cards.append({
             "pat_id": pat_id,
             "title": title,
             "total_sentences": len(group),
+            "key_verbs": verbs_list,
+            "key_nouns": nouns_list,
             "technical_terms": tech_terms,
             "causal_words_and_terms": list(set(causal_words + causal_terms)),
             "failure_terms": failure_terms,
             "variable_terms": variable_terms,
-            "primary_failure_pathways": formatted_pathways if formatted_pathways else ["No sentence-level triplet found"]
+            "primary_failure_pathways": formatted_causal_pathways if formatted_causal_pathways else ["No sentence-level triplet found"],
+            "verb_action_pathways": formatted_action_pathways if formatted_action_pathways else ["No verb-component-failure triplet found"]
         })
         
     summary_cards_df = pd.DataFrame(cards)
@@ -271,8 +298,14 @@ def generate_and_save_patent_summary_cards(df: pd.DataFrame, csv_output_path: Pa
 
     # Save as CSV
     csv_df = summary_cards_df.copy()
-    for list_col in ["technical_terms", "causal_words_and_terms", "failure_terms", "variable_terms", "primary_failure_pathways"]:
-        csv_df[list_col] = csv_df[list_col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
+    list_cols = [
+        "key_verbs", "key_nouns", "technical_terms", 
+        "causal_words_and_terms", "failure_terms", 
+        "variable_terms", "primary_failure_pathways", "verb_action_pathways"
+    ]
+    for list_col in list_cols:
+        if list_col in csv_df.columns:
+            csv_df[list_col] = csv_df[list_col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
         
     csv_df.to_csv(csv_output_path, index=False)
     print(f"Patent summary cards saved as CSV to: {csv_output_path}")
@@ -286,15 +319,15 @@ def generate_and_save_patent_summary_cards(df: pd.DataFrame, csv_output_path: Pa
 
 def main():
     print("=" * 60)
-    print("STARTING REVISED PATENT SUMMARY STATISTICS PIPELINE")
+    print("STARTING REVISED PATENT SUMMARY STATISTICS PIPELINE (WITH POS)")
     print("=" * 60)
     
-    # 1. Load Data
+    # 1. Load Data (Includes verbs & nouns parsing)
     print(f"\nLoading data from: {INPUT_CSV_PATH}")
     df = load_and_preprocess_dataset(INPUT_CSV_PATH)
     print(f"Successfully loaded {len(df)} rows.")
 
-    # 2. TASK 1: Compute Associations (Without P-Value)
+    # 2. TASK 1: Compute Associations
     print("\n[Task 1a] Computing NPMI Associations (Technical Terms vs Attributes)...")
     tech_attr_assoc = compute_npmi_associations(
         df, col_a="occurrence_technical", col_b="occurrence_variable", min_freq=2, npmi_thresh=0.3
@@ -310,6 +343,22 @@ def main():
     if not attr_fail_assoc.empty:
         attr_fail_assoc.to_csv(TOP_ASSOC_ATTR_FAIL_CSV, index=False)
         print(f"  -> Saved table to: {TOP_ASSOC_ATTR_FAIL_CSV}")
+
+    print("\n[Task 1c] Computing NPMI Associations (Verbs vs Failures)...")
+    verb_fail_assoc = compute_npmi_associations(
+        df, col_a="verbs", col_b="occurrence_failures", min_freq=2, npmi_thresh=0.3
+    )
+    if not verb_fail_assoc.empty:
+        verb_fail_assoc.to_csv(TOP_ASSOC_VERB_FAIL_CSV, index=False)
+        print(f"  -> Saved table to: {TOP_ASSOC_VERB_FAIL_CSV}")
+
+    print("\n[Task 1d] Computing NPMI Associations (Nouns vs Verbs)...")
+    noun_verb_assoc = compute_npmi_associations(
+        df, col_a="nouns", col_b="verbs", min_freq=2, npmi_thresh=0.3
+    )
+    if not noun_verb_assoc.empty:
+        noun_verb_assoc.to_csv(TOP_ASSOC_NOUN_VERB_CSV, index=False)
+        print(f"  -> Saved table to: {TOP_ASSOC_NOUN_VERB_CSV}")
 
     # 3. TASK 2: Heatmaps (Top 20 Terms)
     print("\n[Task 2a] Generating Top 20 Heatmap (Technical Terms vs Attributes)...")
@@ -332,8 +381,28 @@ def main():
         metric="npmi"
     )
 
-    # 4. TASK 3: Patent Summary Cards
-    print("\n[Task 3] Generating and saving Patent Summary Cards...")
+    print("\n[Task 2c] Generating Top 20 Heatmap (Verbs vs Failure Terms)...")
+    save_top20_category_heatmap(
+        verb_fail_assoc, 
+        category_a_name="Action Verbs", 
+        category_b_name="Failure Terms", 
+        output_path=HEATMAP_VERB_FAIL_PNG,
+        top_k=20,
+        metric="npmi"
+    )
+
+    print("\n[Task 2d] Generating Top 20 Heatmap (Nouns vs Verbs)...")
+    save_top20_category_heatmap(
+        noun_verb_assoc, 
+        category_a_name="Nouns", 
+        category_b_name="Action Verbs", 
+        output_path=HEATMAP_NOUN_VERB_PNG,
+        top_k=20,
+        metric="npmi"
+    )
+
+    # 4. TASK 3: Patent Summary Cards (Enriched with POS Triplets)
+    print("\n[Task 3] Generating and saving POS-Enriched Patent Summary Cards...")
     generate_and_save_patent_summary_cards(
         df, 
         csv_output_path=SUMMARY_CARDS_CSV, 

@@ -64,7 +64,7 @@ def main():
         PATENT_PIPELINE_PATH
         / "unsupervised_link"
         / "output"
-        / "causal_filtered_supervised_sentiment_pos.csv"
+        / "causal_filtered_unsupervised_sentiment_pos.csv"
     )
 
     print(f"Loading CSV from: {input_path}")
