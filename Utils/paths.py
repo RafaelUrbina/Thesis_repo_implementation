@@ -6,6 +6,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 MASTER_DATA_PATH = REPO_ROOT / "3_Implementation/1_Data/1_Master"
 MIDPOINTS_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/midpoints"
 GRID_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/final_aggregation_grid"
+GRID_SUMMARY_STATISTICS_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/summary_statistics"
 
 SIR_TOSCANA_PATH = MASTER_DATA_PATH / "weather/sir_toscana"
 GPKG_PATH = REPO_ROOT / "3_Implementation/1_Data/2_Transformation/static_geospatial"
