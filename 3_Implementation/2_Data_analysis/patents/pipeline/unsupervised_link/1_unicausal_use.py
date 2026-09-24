@@ -38,37 +38,26 @@ print(f"[VERIFY] Sequence Model Path/Name: {seq_model.name_or_path}")
 print(f"[VERIFY] Token Model Path/Name: {tok_model.name_or_path}")
 # 2. Define Prediction Functions
 def classify_causality(text: str, threshold: float = 0.5) -> bool:
-    # Ensure text casing matches bert-base-cased expectations if lowercased
     text = str(text).strip()
-    if text and text[0].islower():
-        text = text[0].upper() + text[1:]
+    if not text:
+        return False
 
     inputs = seq_tokenizer(
         text, return_tensors="pt", truncation=True, max_length=512
     ).to(device)
+
     with torch.inference_mode():
         outputs = seq_model(**inputs)
         probs = torch.softmax(outputs.logits, dim=-1)[0]
-        
-        # Dynamically identify causal label index from model config
-        id2label = seq_model.config.id2label
-        causal_idx = 0  # Default to LABEL_0 as causal in unicausal-seq-baseline
-        for idx, label in id2label.items():
-            lbl = str(label).lower()
-            if any(neg in lbl for neg in ["non", "not", "negative", "label_1"]):
-                continue
-            if "causal" in lbl or "cause" in lbl or lbl == "label_0":
-                causal_idx = int(idx)
-                break
-                
-        causal_prob = probs[causal_idx].item()
+
+    # Index 0 is Causal in your PatentBERT sequence model
+    causal_prob = probs[0].item()
     return causal_prob >= threshold
 
 def extract_spans(text: str):
-    # Ensure consistent casing for token classification as well
     text = str(text).strip()
-    if text and text[0].islower():
-        text = text[0].upper() + text[1:]
+    if not text:
+        return "", ""
 
     inputs = tok_tokenizer(
         text,
@@ -77,6 +66,7 @@ def extract_spans(text: str):
         max_length=512,
         return_offsets_mapping=True,
     )
+    
     offset_mapping = inputs.pop("offset_mapping")[0].cpu().numpy()
     inputs = {k: v.to(device) for k, v in inputs.items()}
 
@@ -85,36 +75,26 @@ def extract_spans(text: str):
         preds = torch.argmax(outputs.logits, dim=-1)[0].cpu().numpy()
 
     cause_chars, effect_chars = [], []
-    id2label = tok_model.config.id2label
 
-    cause_label_ids = set()
-    effect_label_ids = set()
-    for idx, label in id2label.items():
-        lbl = str(label).lower()
-        if (
-            any(c_kw in lbl for c_kw in ["cause", "antecedent", "trigger"])
-            and "effect" not in lbl
-        ):
-            cause_label_ids.add(int(idx))
-        elif (
-            any(e_kw in lbl for e_kw in ["effect", "consequent", "result"])
-            and "cause" not in lbl
-        ):
-            effect_label_ids.add(int(idx))
-        elif lbl in ["c", "b-c", "i-c"]:
-            cause_label_ids.add(int(idx))
-        elif lbl in ["e", "b-e", "i-e"]:
-            effect_label_ids.add(int(idx))
+    # Token Map based on your PatentBERT Diagnostic Predictions:
+    # 0 = Outside (O)
+    # 1, 2 = Cause Spans
+    # 4 = Effect Spans
+    # (Label 3 represents Signal words like "due to", which are excluded from cause/effect)
+    CAUSE_LABEL_IDS = {1, 2}
+    EFFECT_LABEL_IDS = {4}
 
     for idx, pred_id in enumerate(preds):
         start, end = offset_mapping[idx]
+        
+        # Ignore special tokens ([CLS], [SEP], [PAD])
         if start == end:
             continue
 
         pred_int = int(pred_id)
-        if pred_int in cause_label_ids:
+        if pred_int in CAUSE_LABEL_IDS:
             cause_chars.append((start, end))
-        elif pred_int in effect_label_ids:
+        elif pred_int in EFFECT_LABEL_IDS:
             effect_chars.append((start, end))
 
     cause_str = (
@@ -123,6 +103,7 @@ def extract_spans(text: str):
     effect_str = (
         text[effect_chars[0][0] : effect_chars[-1][1]] if effect_chars else ""
     )
+
     return cause_str, effect_str
 
 # 3. Execution Pipeline for CSV with Checkpoint/Resume Support
@@ -183,6 +164,6 @@ def process_csv(input_path: str, text_column: str, output_path: str, save_every:
         writer.writerows(rows)
 
 if __name__ == "__main__":
-    input_file = PATENT_PIPELINE_PATH / "supervised_link/output/causal_filtered_supervised_exploded.csv"
-    output_file = PATENT_PIPELINE_PATH / "supervised_link/output/unicausal_causal_filtered_supervised_exploded.csv"
+    input_file = PATENT_PIPELINE_PATH / "unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
+    output_file = PATENT_PIPELINE_PATH / "unsupervised_link/output/unicausal_sentiment_filtered_unsupervised.csv"
     process_csv(input_path=str(input_file), text_column="text", output_path=str(output_file), threshold=0.5)
