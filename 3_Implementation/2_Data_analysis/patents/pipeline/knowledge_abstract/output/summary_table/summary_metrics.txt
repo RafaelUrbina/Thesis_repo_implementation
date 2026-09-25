@@ -1,0 +1,42 @@
+PATENT DATASET SUMMARY STATISTICS
+============================================================
+Total Rows: 105500
+Total Unique Patents: 5716
+Mean Patent Appearances: 18.46
+
+OCCURRENCE PRESENCE & PROPORTIONS:
+  all_three           : Count = 3519, Proportion = 0.6156 (61.56%)
+  tech_and_attr_only  : Count = 832, Proportion = 0.1456 (14.56%)
+  attr_and_fail_only  : Count = 284, Proportion = 0.0497 (4.97%)
+  tech_and_fail_only  : Count = 666, Proportion = 0.1165 (11.65%)
+  singular_tech_only  : Count = 252, Proportion = 0.0441 (4.41%)
+  singular_attr_only  : Count = 84, Proportion = 0.0147 (1.47%)
+  singular_fail_only  : Count = 79, Proportion = 0.0138 (1.38%)
+
+SENTIMENT:
+  Mean: -0.0054
+  Std: 0.4017
+
+TOP 10 NOUNS:
+  water: 51641
+  tank: 25864
+  pipe: 19260
+  device: 12495
+  invention: 12282
+  pressure: 11176
+  flow: 10716
+  valve: 10604
+  treatment: 10375
+  pump: 10264
+
+TOP 10 VERBS:
+  use: 11727
+  provide: 10825
+  form: 9330
+  prevent: 9061
+  discharge: 8838
+  accord: 8339
+  connect: 8227
+  introduce: 8225
+  instal: 8210
+  flow: 7936

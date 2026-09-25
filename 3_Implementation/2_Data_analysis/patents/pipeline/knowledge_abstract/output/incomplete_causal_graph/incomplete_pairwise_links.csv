@@ -1,0 +1,1149 @@
+source,target,source_stage,target_stage,value
+(A) ash,(C) due to,occurrence_variable,causal_ocurrence_words,28
+(A) ash,(C) may,occurrence_variable,causal_ocurrence_words,38
+(A) bed,(C) based on,occurrence_variable,causal_ocurrence_words,21
+(A) bed,(C) because,occurrence_variable,causal_ocurrence_words,23
+(A) bed,(C) becomes,occurrence_variable,causal_ocurrence_words,20
+(A) bed,(C) due to,occurrence_variable,causal_ocurrence_words,36
+(A) bed,(C) increase,occurrence_variable,causal_ocurrence_words,29
+(A) bed,(C) may,occurrence_variable,causal_ocurrence_words,91
+(A) bed,(C) remove,occurrence_variable,causal_ocurrence_words,32
+(A) bed,(C) shape,occurrence_variable,causal_ocurrence_words,20
+(A) bed,(C) thereby,occurrence_variable,causal_ocurrence_words,32
+(A) bed,(C) therefore,occurrence_variable,causal_ocurrence_words,60
+(A) bed,(C) thus,occurrence_variable,causal_ocurrence_words,26
+(A) bed,(C) while,occurrence_variable,causal_ocurrence_words,72
+(A) clay,(C) due to,occurrence_variable,causal_ocurrence_words,23
+(A) clay,(C) may,occurrence_variable,causal_ocurrence_words,32
+(A) flood,(C) based on,occurrence_variable,causal_ocurrence_words,22
+(A) flood,(C) due to,occurrence_variable,causal_ocurrence_words,24
+(A) flooding,(C) caused by,occurrence_variable,causal_ocurrence_words,38
+(A) flooding,(C) due to,occurrence_variable,causal_ocurrence_words,90
+(A) flooding,(C) increase,occurrence_variable,causal_ocurrence_words,22
+(A) flooding,(C) may,occurrence_variable,causal_ocurrence_words,26
+(A) flooding,(C) to prevent,occurrence_variable,causal_ocurrence_words,51
+(A) ground subsidence,(C) due to,occurrence_variable,causal_ocurrence_words,24
+(A) hand,(C) as a result of,occurrence_variable,causal_ocurrence_words,26
+(A) hand,(C) based on,occurrence_variable,causal_ocurrence_words,31
+(A) hand,(C) because,occurrence_variable,causal_ocurrence_words,96
+(A) hand,(C) becomes,occurrence_variable,causal_ocurrence_words,65
+(A) hand,(C) causes,occurrence_variable,causal_ocurrence_words,27
+(A) hand,(C) configured to,occurrence_variable,causal_ocurrence_words,45
+(A) hand,(C) corresponding to,occurrence_variable,causal_ocurrence_words,32
+(A) hand,(C) determines,occurrence_variable,causal_ocurrence_words,35
+(A) hand,(C) discharged to,occurrence_variable,causal_ocurrence_words,28
+(A) hand,(C) due to,occurrence_variable,causal_ocurrence_words,177
+(A) hand,(C) effect of,occurrence_variable,causal_ocurrence_words,31
+(A) hand,(C) important,occurrence_variable,causal_ocurrence_words,21
+(A) hand,(C) increase,occurrence_variable,causal_ocurrence_words,80
+(A) hand,(C) increases,occurrence_variable,causal_ocurrence_words,67
+(A) hand,(C) introduced into,occurrence_variable,causal_ocurrence_words,45
+(A) hand,(C) may,occurrence_variable,causal_ocurrence_words,253
+(A) hand,(C) monitoring,occurrence_variable,causal_ocurrence_words,40
+(A) hand,(C) remove,occurrence_variable,causal_ocurrence_words,56
+(A) hand,(C) requires,occurrence_variable,causal_ocurrence_words,28
+(A) hand,(C) shape,occurrence_variable,causal_ocurrence_words,81
+(A) hand,(C) thereby,occurrence_variable,causal_ocurrence_words,25
+(A) hand,(C) therefore,occurrence_variable,causal_ocurrence_words,38
+(A) hand,(C) thus,occurrence_variable,causal_ocurrence_words,41
+(A) hand,(C) to prevent,occurrence_variable,causal_ocurrence_words,57
+(A) hand,(C) used to,occurrence_variable,causal_ocurrence_words,22
+(A) hand,(C) via,occurrence_variable,causal_ocurrence_words,58
+(A) hand,(C) while,occurrence_variable,causal_ocurrence_words,113
+(A) heavy rain,(C) due to,occurrence_variable,causal_ocurrence_words,63
+(A) heavy rains,(C) due to,occurrence_variable,causal_ocurrence_words,20
+(A) hydraulic pressure,(C) may,occurrence_variable,causal_ocurrence_words,27
+(A) lid,(C) configured to,occurrence_variable,causal_ocurrence_words,27
+(A) lid,(C) may,occurrence_variable,causal_ocurrence_words,68
+(A) lid,(C) shape,occurrence_variable,causal_ocurrence_words,44
+(A) lid,(C) thereby,occurrence_variable,causal_ocurrence_words,24
+(A) lid,(C) therefore,occurrence_variable,causal_ocurrence_words,20
+(A) lid,(C) to prevent,occurrence_variable,causal_ocurrence_words,33
+(A) lid,(C) while,occurrence_variable,causal_ocurrence_words,25
+(A) nature,(C) because,occurrence_variable,causal_ocurrence_words,23
+(A) nature,(C) due to,occurrence_variable,causal_ocurrence_words,72
+(A) nature,(C) may,occurrence_variable,causal_ocurrence_words,35
+(A) precipitation,(C) based on,occurrence_variable,causal_ocurrence_words,42
+(A) precipitation,(C) because,occurrence_variable,causal_ocurrence_words,40
+(A) precipitation,(C) becomes,occurrence_variable,causal_ocurrence_words,24
+(A) precipitation,(C) due to,occurrence_variable,causal_ocurrence_words,77
+(A) precipitation,(C) effect of,occurrence_variable,causal_ocurrence_words,20
+(A) precipitation,(C) increase,occurrence_variable,causal_ocurrence_words,35
+(A) precipitation,(C) influence,occurrence_variable,causal_ocurrence_words,33
+(A) precipitation,(C) introduced into,occurrence_variable,causal_ocurrence_words,20
+(A) precipitation,(C) may,occurrence_variable,causal_ocurrence_words,127
+(A) precipitation,(C) occurrence,occurrence_variable,causal_ocurrence_words,32
+(A) precipitation,(C) precipitates,occurrence_variable,causal_ocurrence_words,24
+(A) precipitation,(C) remove,occurrence_variable,causal_ocurrence_words,52
+(A) precipitation,(C) thereby,occurrence_variable,causal_ocurrence_words,20
+(A) precipitation,(C) therefore,occurrence_variable,causal_ocurrence_words,54
+(A) precipitation,(C) thus,occurrence_variable,causal_ocurrence_words,25
+(A) precipitation,(C) to prevent,occurrence_variable,causal_ocurrence_words,31
+(A) precipitation,(C) while,occurrence_variable,causal_ocurrence_words,49
+(A) rain,(C) because,occurrence_variable,causal_ocurrence_words,24
+(A) rain,(C) discharged to,occurrence_variable,causal_ocurrence_words,25
+(A) rain,(C) due to,occurrence_variable,causal_ocurrence_words,83
+(A) rain,(C) increase,occurrence_variable,causal_ocurrence_words,21
+(A) rain,(C) introduced into,occurrence_variable,causal_ocurrence_words,25
+(A) rain,(C) may,occurrence_variable,causal_ocurrence_words,48
+(A) rain,(C) shape,occurrence_variable,causal_ocurrence_words,25
+(A) rain,(C) therefore,occurrence_variable,causal_ocurrence_words,52
+(A) rain,(C) to prevent,occurrence_variable,causal_ocurrence_words,52
+(A) rain,(C) while,occurrence_variable,causal_ocurrence_words,31
+(A) rainfall,(C) based on,occurrence_variable,causal_ocurrence_words,81
+(A) rainfall,(C) because,occurrence_variable,causal_ocurrence_words,31
+(A) rainfall,(C) caused by,occurrence_variable,causal_ocurrence_words,25
+(A) rainfall,(C) discharged to,occurrence_variable,causal_ocurrence_words,26
+(A) rainfall,(C) due to,occurrence_variable,causal_ocurrence_words,149
+(A) rainfall,(C) increase,occurrence_variable,causal_ocurrence_words,46
+(A) rainfall,(C) increases,occurrence_variable,causal_ocurrence_words,38
+(A) rainfall,(C) introduced into,occurrence_variable,causal_ocurrence_words,23
+(A) rainfall,(C) may,occurrence_variable,causal_ocurrence_words,95
+(A) rainfall,(C) therefore,occurrence_variable,causal_ocurrence_words,59
+(A) rainfall,(C) to prevent,occurrence_variable,causal_ocurrence_words,31
+(A) rainfall,(C) while,occurrence_variable,causal_ocurrence_words,25
+(A) rainwater,(C) accumulate,occurrence_variable,causal_ocurrence_words,21
+(A) rainwater,(C) as a result,occurrence_variable,causal_ocurrence_words,26
+(A) rainwater,(C) based on,occurrence_variable,causal_ocurrence_words,64
+(A) rainwater,(C) because,occurrence_variable,causal_ocurrence_words,79
+(A) rainwater,(C) becomes,occurrence_variable,causal_ocurrence_words,36
+(A) rainwater,(C) caused by,occurrence_variable,causal_ocurrence_words,37
+(A) rainwater,(C) causes,occurrence_variable,causal_ocurrence_words,20
+(A) rainwater,(C) configured to,occurrence_variable,causal_ocurrence_words,56
+(A) rainwater,(C) determines,occurrence_variable,causal_ocurrence_words,25
+(A) rainwater,(C) discharged to,occurrence_variable,causal_ocurrence_words,110
+(A) rainwater,(C) due to,occurrence_variable,causal_ocurrence_words,231
+(A) rainwater,(C) effect of,occurrence_variable,causal_ocurrence_words,21
+(A) rainwater,(C) exceeding,occurrence_variable,causal_ocurrence_words,20
+(A) rainwater,(C) factor,occurrence_variable,causal_ocurrence_words,22
+(A) rainwater,(C) increase,occurrence_variable,causal_ocurrence_words,72
+(A) rainwater,(C) increases,occurrence_variable,causal_ocurrence_words,58
+(A) rainwater,(C) introduced into,occurrence_variable,causal_ocurrence_words,99
+(A) rainwater,(C) may,occurrence_variable,causal_ocurrence_words,165
+(A) rainwater,(C) prevented from,occurrence_variable,causal_ocurrence_words,21
+(A) rainwater,(C) remove,occurrence_variable,causal_ocurrence_words,56
+(A) rainwater,(C) shape,occurrence_variable,causal_ocurrence_words,58
+(A) rainwater,(C) thereby,occurrence_variable,causal_ocurrence_words,62
+(A) rainwater,(C) therefore,occurrence_variable,causal_ocurrence_words,184
+(A) rainwater,(C) thus,occurrence_variable,causal_ocurrence_words,64
+(A) rainwater,(C) to prevent,occurrence_variable,causal_ocurrence_words,141
+(A) rainwater,(C) used to,occurrence_variable,causal_ocurrence_words,20
+(A) rainwater,(C) via,occurrence_variable,causal_ocurrence_words,41
+(A) rainwater,(C) while,occurrence_variable,causal_ocurrence_words,109
+(A) rivers,(C) because,occurrence_variable,causal_ocurrence_words,25
+(A) rivers,(C) caused by,occurrence_variable,causal_ocurrence_words,30
+(A) rivers,(C) causes,occurrence_variable,causal_ocurrence_words,44
+(A) rivers,(C) discharged to,occurrence_variable,causal_ocurrence_words,42
+(A) rivers,(C) due to,occurrence_variable,causal_ocurrence_words,108
+(A) rivers,(C) increase,occurrence_variable,causal_ocurrence_words,38
+(A) rivers,(C) may,occurrence_variable,causal_ocurrence_words,32
+(A) rivers,(C) remove,occurrence_variable,causal_ocurrence_words,31
+(A) rivers,(C) thereby,occurrence_variable,causal_ocurrence_words,20
+(A) rivers,(C) therefore,occurrence_variable,causal_ocurrence_words,52
+(A) rivers,(C) to prevent,occurrence_variable,causal_ocurrence_words,43
+(A) rivers,(C) used to,occurrence_variable,causal_ocurrence_words,25
+(A) runoff,(C) due to,occurrence_variable,causal_ocurrence_words,21
+(A) salinity,(C) may,occurrence_variable,causal_ocurrence_words,33
+(A) storm water,(C) may,occurrence_variable,causal_ocurrence_words,32
+(A) streams,(C) may,occurrence_variable,causal_ocurrence_words,26
+(A) temperature,(C) affected,occurrence_variable,causal_ocurrence_words,55
+(A) temperature,(C) as a result,occurrence_variable,causal_ocurrence_words,51
+(A) temperature,(C) as a result of,occurrence_variable,causal_ocurrence_words,21
+(A) temperature,(C) based on,occurrence_variable,causal_ocurrence_words,217
+(A) temperature,(C) because,occurrence_variable,causal_ocurrence_words,130
+(A) temperature,(C) becomes,occurrence_variable,causal_ocurrence_words,98
+(A) temperature,(C) caused by,occurrence_variable,causal_ocurrence_words,49
+(A) temperature,(C) causes,occurrence_variable,causal_ocurrence_words,38
+(A) temperature,(C) common,occurrence_variable,causal_ocurrence_words,21
+(A) temperature,(C) configured to,occurrence_variable,causal_ocurrence_words,50
+(A) temperature,(C) corresponding to,occurrence_variable,causal_ocurrence_words,58
+(A) temperature,(C) determine,occurrence_variable,causal_ocurrence_words,45
+(A) temperature,(C) discharged to,occurrence_variable,causal_ocurrence_words,30
+(A) temperature,(C) due to,occurrence_variable,causal_ocurrence_words,314
+(A) temperature,(C) effect of,occurrence_variable,causal_ocurrence_words,60
+(A) temperature,(C) factor,occurrence_variable,causal_ocurrence_words,46
+(A) temperature,(C) generated by,occurrence_variable,causal_ocurrence_words,47
+(A) temperature,(C) important,occurrence_variable,causal_ocurrence_words,37
+(A) temperature,(C) increase,occurrence_variable,causal_ocurrence_words,217
+(A) temperature,(C) increases,occurrence_variable,causal_ocurrence_words,159
+(A) temperature,(C) influence,occurrence_variable,causal_ocurrence_words,40
+(A) temperature,(C) introduced into,occurrence_variable,causal_ocurrence_words,83
+(A) temperature,(C) may,occurrence_variable,causal_ocurrence_words,482
+(A) temperature,(C) monitoring,occurrence_variable,causal_ocurrence_words,121
+(A) temperature,(C) obtained from,occurrence_variable,causal_ocurrence_words,21
+(A) temperature,(C) occurrence,occurrence_variable,causal_ocurrence_words,20
+(A) temperature,(C) remove,occurrence_variable,causal_ocurrence_words,60
+(A) temperature,(C) requires,occurrence_variable,causal_ocurrence_words,26
+(A) temperature,(C) shape,occurrence_variable,causal_ocurrence_words,48
+(A) temperature,(C) thereby,occurrence_variable,causal_ocurrence_words,156
+(A) temperature,(C) therefore,occurrence_variable,causal_ocurrence_words,230
+(A) temperature,(C) thus,occurrence_variable,causal_ocurrence_words,131
+(A) temperature,(C) to prevent,occurrence_variable,causal_ocurrence_words,74
+(A) temperature,(C) used to,occurrence_variable,causal_ocurrence_words,49
+(A) temperature,(C) via,occurrence_variable,causal_ocurrence_words,57
+(A) temperature,(C) while,occurrence_variable,causal_ocurrence_words,251
+(A) urban,(C) due to,occurrence_variable,causal_ocurrence_words,61
+(A) urban,(C) increase,occurrence_variable,causal_ocurrence_words,28
+(A) urban areas,(C) due to,occurrence_variable,causal_ocurrence_words,28
+(A) vegetation,(C) may,occurrence_variable,causal_ocurrence_words,28
+(A) water level,(C) as a result,occurrence_variable,causal_ocurrence_words,27
+(A) water level,(C) based on,occurrence_variable,causal_ocurrence_words,225
+(A) water level,(C) because,occurrence_variable,causal_ocurrence_words,29
+(A) water level,(C) becomes,occurrence_variable,causal_ocurrence_words,46
+(A) water level,(C) causes,occurrence_variable,causal_ocurrence_words,20
+(A) water level,(C) configured to,occurrence_variable,causal_ocurrence_words,28
+(A) water level,(C) corresponding to,occurrence_variable,causal_ocurrence_words,48
+(A) water level,(C) determines,occurrence_variable,causal_ocurrence_words,55
+(A) water level,(C) discharged to,occurrence_variable,causal_ocurrence_words,21
+(A) water level,(C) due to,occurrence_variable,causal_ocurrence_words,118
+(A) water level,(C) increase,occurrence_variable,causal_ocurrence_words,54
+(A) water level,(C) increases,occurrence_variable,causal_ocurrence_words,57
+(A) water level,(C) introduced into,occurrence_variable,causal_ocurrence_words,26
+(A) water level,(C) may,occurrence_variable,causal_ocurrence_words,141
+(A) water level,(C) monitoring,occurrence_variable,causal_ocurrence_words,191
+(A) water level,(C) predict,occurrence_variable,causal_ocurrence_words,45
+(A) water level,(C) shape,occurrence_variable,causal_ocurrence_words,21
+(A) water level,(C) thereby,occurrence_variable,causal_ocurrence_words,30
+(A) water level,(C) therefore,occurrence_variable,causal_ocurrence_words,71
+(A) water level,(C) thus,occurrence_variable,causal_ocurrence_words,29
+(A) water level,(C) to prevent,occurrence_variable,causal_ocurrence_words,32
+(A) water level,(C) via,occurrence_variable,causal_ocurrence_words,56
+(A) water level,(C) while,occurrence_variable,causal_ocurrence_words,72
+(A) wind,(C) may,occurrence_variable,causal_ocurrence_words,25
+(C) accumulate,(F) contaminants,causal_ocurrence_words,occurrence_failures,20
+(C) as a result,(F) leakage,causal_ocurrence_words,occurrence_failures,45
+(C) as a result,(F) oxidation,causal_ocurrence_words,occurrence_failures,22
+(C) associated with,(F) fouling,causal_ocurrence_words,occurrence_failures,24
+(C) based on,(F) contamination,causal_ocurrence_words,occurrence_failures,39
+(C) based on,(F) corrosion,causal_ocurrence_words,occurrence_failures,85
+(C) based on,(F) electrolysis,causal_ocurrence_words,occurrence_failures,26
+(C) based on,(F) fouling,causal_ocurrence_words,occurrence_failures,29
+(C) based on,(F) leak,causal_ocurrence_words,occurrence_failures,146
+(C) based on,(F) leak detection,causal_ocurrence_words,occurrence_failures,20
+(C) based on,(F) leakage,causal_ocurrence_words,occurrence_failures,223
+(C) based on,(F) leaks,causal_ocurrence_words,occurrence_failures,25
+(C) based on,(F) oxidation,causal_ocurrence_words,occurrence_failures,39
+(C) because,(F) contaminants,causal_ocurrence_words,occurrence_failures,43
+(C) because,(F) contamination,causal_ocurrence_words,occurrence_failures,40
+(C) because,(F) corrosion,causal_ocurrence_words,occurrence_failures,58
+(C) because,(F) electrolysis,causal_ocurrence_words,occurrence_failures,25
+(C) because,(F) leak,causal_ocurrence_words,occurrence_failures,37
+(C) because,(F) leakage,causal_ocurrence_words,occurrence_failures,44
+(C) because,(F) oxidation,causal_ocurrence_words,occurrence_failures,50
+(C) because,(F) suspended solids,causal_ocurrence_words,occurrence_failures,30
+(C) becomes,(F) blocked,causal_ocurrence_words,occurrence_failures,20
+(C) becomes,(F) contaminants,causal_ocurrence_words,occurrence_failures,22
+(C) becomes,(F) contamination,causal_ocurrence_words,occurrence_failures,29
+(C) becomes,(F) corrosion,causal_ocurrence_words,occurrence_failures,34
+(C) becomes,(F) electrolysis,causal_ocurrence_words,occurrence_failures,25
+(C) becomes,(F) leak,causal_ocurrence_words,occurrence_failures,32
+(C) becomes,(F) leakage,causal_ocurrence_words,occurrence_failures,38
+(C) caused by,(F) contaminants,causal_ocurrence_words,occurrence_failures,22
+(C) caused by,(F) contamination,causal_ocurrence_words,occurrence_failures,34
+(C) caused by,(F) corrosion,causal_ocurrence_words,occurrence_failures,60
+(C) caused by,(F) leak,causal_ocurrence_words,occurrence_failures,29
+(C) caused by,(F) leakage,causal_ocurrence_words,occurrence_failures,60
+(C) causes,(F) contamination,causal_ocurrence_words,occurrence_failures,29
+(C) causes,(F) corrosion,causal_ocurrence_words,occurrence_failures,57
+(C) causes,(F) leakage,causal_ocurrence_words,occurrence_failures,33
+(C) causes,(F) oxidation,causal_ocurrence_words,occurrence_failures,20
+(C) comprise,(F) corrosion,causal_ocurrence_words,occurrence_failures,29
+(C) configured to,(F) electrolysis,causal_ocurrence_words,occurrence_failures,22
+(C) configured to,(F) leak,causal_ocurrence_words,occurrence_failures,29
+(C) configured to,(F) leakage,causal_ocurrence_words,occurrence_failures,32
+(C) configured to,(F) lifting,causal_ocurrence_words,occurrence_failures,20
+(C) corresponding to,(F) corrosion,causal_ocurrence_words,occurrence_failures,53
+(C) corresponding to,(F) leak,causal_ocurrence_words,occurrence_failures,25
+(C) corresponding to,(F) leakage,causal_ocurrence_words,occurrence_failures,39
+(C) determine,(F) corrosion,causal_ocurrence_words,occurrence_failures,22
+(C) determine,(F) fouling,causal_ocurrence_words,occurrence_failures,31
+(C) determine,(F) leak,causal_ocurrence_words,occurrence_failures,81
+(C) determine,(F) leakage,causal_ocurrence_words,occurrence_failures,46
+(C) determines,(F) leak,causal_ocurrence_words,occurrence_failures,42
+(C) determines,(F) leakage,causal_ocurrence_words,occurrence_failures,67
+(C) discharged to,(F) contaminants,causal_ocurrence_words,occurrence_failures,24
+(C) due to,(F) blockage,causal_ocurrence_words,occurrence_failures,54
+(C) due to,(F) blocked,causal_ocurrence_words,occurrence_failures,31
+(C) due to,(F) breakage,causal_ocurrence_words,occurrence_failures,100
+(C) due to,(F) collapse,causal_ocurrence_words,occurrence_failures,30
+(C) due to,(F) contaminants,causal_ocurrence_words,occurrence_failures,108
+(C) due to,(F) contamination,causal_ocurrence_words,occurrence_failures,163
+(C) due to,(F) corrosion,causal_ocurrence_words,occurrence_failures,263
+(C) due to,(F) cracking,causal_ocurrence_words,occurrence_failures,21
+(C) due to,(F) decay,causal_ocurrence_words,occurrence_failures,28
+(C) due to,(F) deformation,causal_ocurrence_words,occurrence_failures,75
+(C) due to,(F) degradation,causal_ocurrence_words,occurrence_failures,56
+(C) due to,(F) deposits,causal_ocurrence_words,occurrence_failures,36
+(C) due to,(F) electrolysis,causal_ocurrence_words,occurrence_failures,58
+(C) due to,(F) fouling,causal_ocurrence_words,occurrence_failures,52
+(C) due to,(F) freezing,causal_ocurrence_words,occurrence_failures,41
+(C) due to,(F) leak,causal_ocurrence_words,occurrence_failures,58
+(C) due to,(F) leakage,causal_ocurrence_words,occurrence_failures,217
+(C) due to,(F) leaks,causal_ocurrence_words,occurrence_failures,69
+(C) due to,(F) oxidation,causal_ocurrence_words,occurrence_failures,87
+(C) due to,(F) rust,causal_ocurrence_words,occurrence_failures,27
+(C) due to,(F) suspended solids,causal_ocurrence_words,occurrence_failures,64
+(C) due to,(F) wear,causal_ocurrence_words,occurrence_failures,54
+(C) effect of,(F) contaminants,causal_ocurrence_words,occurrence_failures,21
+(C) effect of,(F) contamination,causal_ocurrence_words,occurrence_failures,22
+(C) effect of,(F) corrosion,causal_ocurrence_words,occurrence_failures,61
+(C) effect of,(F) electrolysis,causal_ocurrence_words,occurrence_failures,24
+(C) effect of,(F) leakage,causal_ocurrence_words,occurrence_failures,23
+(C) effect of,(F) oxidation,causal_ocurrence_words,occurrence_failures,50
+(C) effect of,(F) suspended solids,causal_ocurrence_words,occurrence_failures,26
+(C) exceeding,(F) corrosion,causal_ocurrence_words,occurrence_failures,95
+(C) factor,(F) corrosion,causal_ocurrence_words,occurrence_failures,152
+(C) factor,(F) inclusion,causal_ocurrence_words,occurrence_failures,24
+(C) generated based on,(F) corrosion,causal_ocurrence_words,occurrence_failures,25
+(C) generated by,(F) contaminants,causal_ocurrence_words,occurrence_failures,25
+(C) generated by,(F) electrolysis,causal_ocurrence_words,occurrence_failures,91
+(C) generated by,(F) leakage,causal_ocurrence_words,occurrence_failures,20
+(C) generated by,(F) oxidation,causal_ocurrence_words,occurrence_failures,39
+(C) identify,(F) leak,causal_ocurrence_words,occurrence_failures,40
+(C) identify,(F) leakage,causal_ocurrence_words,occurrence_failures,32
+(C) identifying,(F) leak,causal_ocurrence_words,occurrence_failures,27
+(C) increase,(F) add,causal_ocurrence_words,occurrence_failures,20
+(C) increase,(F) contaminants,causal_ocurrence_words,occurrence_failures,60
+(C) increase,(F) contamination,causal_ocurrence_words,occurrence_failures,56
+(C) increase,(F) corrosion,causal_ocurrence_words,occurrence_failures,110
+(C) increase,(F) degradation,causal_ocurrence_words,occurrence_failures,27
+(C) increase,(F) electrolysis,causal_ocurrence_words,occurrence_failures,49
+(C) increase,(F) fouling,causal_ocurrence_words,occurrence_failures,35
+(C) increase,(F) hydrolysis,causal_ocurrence_words,occurrence_failures,22
+(C) increase,(F) leak,causal_ocurrence_words,occurrence_failures,32
+(C) increase,(F) leakage,causal_ocurrence_words,occurrence_failures,51
+(C) increase,(F) oxidation,causal_ocurrence_words,occurrence_failures,63
+(C) increase,(F) suspended solids,causal_ocurrence_words,occurrence_failures,41
+(C) increases,(F) contaminants,causal_ocurrence_words,occurrence_failures,22
+(C) increases,(F) contamination,causal_ocurrence_words,occurrence_failures,28
+(C) increases,(F) corrosion,causal_ocurrence_words,occurrence_failures,29
+(C) increases,(F) fouling,causal_ocurrence_words,occurrence_failures,23
+(C) increases,(F) leak,causal_ocurrence_words,occurrence_failures,21
+(C) increases,(F) leakage,causal_ocurrence_words,occurrence_failures,28
+(C) inhibiting,(F) corrosion,causal_ocurrence_words,occurrence_failures,157
+(C) introduced into,(F) contaminants,causal_ocurrence_words,occurrence_failures,48
+(C) introduced into,(F) electrolysis,causal_ocurrence_words,occurrence_failures,20
+(C) may,(F) add,causal_ocurrence_words,occurrence_failures,55
+(C) may,(F) blockage,causal_ocurrence_words,occurrence_failures,37
+(C) may,(F) blocked,causal_ocurrence_words,occurrence_failures,29
+(C) may,(F) breakage,causal_ocurrence_words,occurrence_failures,22
+(C) may,(F) contaminants,causal_ocurrence_words,occurrence_failures,128
+(C) may,(F) contamination,causal_ocurrence_words,occurrence_failures,83
+(C) may,(F) corrosion,causal_ocurrence_words,occurrence_failures,288
+(C) may,(F) crushing,causal_ocurrence_words,occurrence_failures,28
+(C) may,(F) deformation,causal_ocurrence_words,occurrence_failures,32
+(C) may,(F) degradation,causal_ocurrence_words,occurrence_failures,26
+(C) may,(F) deposits,causal_ocurrence_words,occurrence_failures,26
+(C) may,(F) electrolysis,causal_ocurrence_words,occurrence_failures,80
+(C) may,(F) fouling,causal_ocurrence_words,occurrence_failures,100
+(C) may,(F) freezing,causal_ocurrence_words,occurrence_failures,20
+(C) may,(F) leak,causal_ocurrence_words,occurrence_failures,218
+(C) may,(F) leak detection,causal_ocurrence_words,occurrence_failures,56
+(C) may,(F) leakage,causal_ocurrence_words,occurrence_failures,198
+(C) may,(F) leaks,causal_ocurrence_words,occurrence_failures,64
+(C) may,(F) lifting,causal_ocurrence_words,occurrence_failures,27
+(C) may,(F) oxidation,causal_ocurrence_words,occurrence_failures,118
+(C) may,(F) psd,causal_ocurrence_words,occurrence_failures,23
+(C) may,(F) shielding,causal_ocurrence_words,occurrence_failures,25
+(C) may,(F) suspended solids,causal_ocurrence_words,occurrence_failures,43
+(C) may,(F) void,causal_ocurrence_words,occurrence_failures,30
+(C) monitoring,(F) contaminants,causal_ocurrence_words,occurrence_failures,24
+(C) monitoring,(F) contamination,causal_ocurrence_words,occurrence_failures,54
+(C) monitoring,(F) corrosion,causal_ocurrence_words,occurrence_failures,63
+(C) monitoring,(F) fouling,causal_ocurrence_words,occurrence_failures,33
+(C) monitoring,(F) leak,causal_ocurrence_words,occurrence_failures,89
+(C) monitoring,(F) leakage,causal_ocurrence_words,occurrence_failures,229
+(C) monitoring,(F) leaks,causal_ocurrence_words,occurrence_failures,32
+(C) occurrence,(F) corrosion,causal_ocurrence_words,occurrence_failures,61
+(C) occurrence,(F) leak,causal_ocurrence_words,occurrence_failures,47
+(C) occurrence,(F) leakage,causal_ocurrence_words,occurrence_failures,147
+(C) reduces,(F) corrosion,causal_ocurrence_words,occurrence_failures,23
+(C) remove,(F) add,causal_ocurrence_words,occurrence_failures,21
+(C) remove,(F) contaminants,causal_ocurrence_words,occurrence_failures,300
+(C) remove,(F) contamination,causal_ocurrence_words,occurrence_failures,48
+(C) remove,(F) corrosion,causal_ocurrence_words,occurrence_failures,35
+(C) remove,(F) deposits,causal_ocurrence_words,occurrence_failures,27
+(C) remove,(F) electrolysis,causal_ocurrence_words,occurrence_failures,44
+(C) remove,(F) oxidation,causal_ocurrence_words,occurrence_failures,76
+(C) remove,(F) rust,causal_ocurrence_words,occurrence_failures,31
+(C) remove,(F) suspended solids,causal_ocurrence_words,occurrence_failures,138
+(C) shape,(F) contaminants,causal_ocurrence_words,occurrence_failures,21
+(C) shape,(F) corrosion,causal_ocurrence_words,occurrence_failures,32
+(C) shape,(F) deformation,causal_ocurrence_words,occurrence_failures,22
+(C) shape,(F) leak,causal_ocurrence_words,occurrence_failures,20
+(C) shape,(F) leakage,causal_ocurrence_words,occurrence_failures,34
+(C) shape,(F) lifting,causal_ocurrence_words,occurrence_failures,23
+(C) thereby,(F) contaminants,causal_ocurrence_words,occurrence_failures,63
+(C) thereby,(F) contamination,causal_ocurrence_words,occurrence_failures,47
+(C) thereby,(F) corrosion,causal_ocurrence_words,occurrence_failures,70
+(C) thereby,(F) electrolysis,causal_ocurrence_words,occurrence_failures,40
+(C) thereby,(F) leak,causal_ocurrence_words,occurrence_failures,24
+(C) thereby,(F) leakage,causal_ocurrence_words,occurrence_failures,49
+(C) thereby,(F) oxidation,causal_ocurrence_words,occurrence_failures,51
+(C) thereby,(F) suspended solids,causal_ocurrence_words,occurrence_failures,27
+(C) therefore,(F) add,causal_ocurrence_words,occurrence_failures,25
+(C) therefore,(F) blocked,causal_ocurrence_words,occurrence_failures,32
+(C) therefore,(F) breakage,causal_ocurrence_words,occurrence_failures,20
+(C) therefore,(F) contaminants,causal_ocurrence_words,occurrence_failures,93
+(C) therefore,(F) contamination,causal_ocurrence_words,occurrence_failures,76
+(C) therefore,(F) corrosion,causal_ocurrence_words,occurrence_failures,165
+(C) therefore,(F) deformation,causal_ocurrence_words,occurrence_failures,24
+(C) therefore,(F) electrolysis,causal_ocurrence_words,occurrence_failures,58
+(C) therefore,(F) fouling,causal_ocurrence_words,occurrence_failures,34
+(C) therefore,(F) freezing,causal_ocurrence_words,occurrence_failures,22
+(C) therefore,(F) leak,causal_ocurrence_words,occurrence_failures,91
+(C) therefore,(F) leakage,causal_ocurrence_words,occurrence_failures,159
+(C) therefore,(F) leaks,causal_ocurrence_words,occurrence_failures,40
+(C) therefore,(F) oxidation,causal_ocurrence_words,occurrence_failures,73
+(C) therefore,(F) suspended solids,causal_ocurrence_words,occurrence_failures,44
+(C) thus,(F) contaminants,causal_ocurrence_words,occurrence_failures,53
+(C) thus,(F) contamination,causal_ocurrence_words,occurrence_failures,42
+(C) thus,(F) corrosion,causal_ocurrence_words,occurrence_failures,65
+(C) thus,(F) degradation,causal_ocurrence_words,occurrence_failures,26
+(C) thus,(F) electrolysis,causal_ocurrence_words,occurrence_failures,30
+(C) thus,(F) leak,causal_ocurrence_words,occurrence_failures,31
+(C) thus,(F) leakage,causal_ocurrence_words,occurrence_failures,36
+(C) thus,(F) oxidation,causal_ocurrence_words,occurrence_failures,50
+(C) to prevent,(F) blockage,causal_ocurrence_words,occurrence_failures,25
+(C) to prevent,(F) blocked,causal_ocurrence_words,occurrence_failures,38
+(C) to prevent,(F) breakage,causal_ocurrence_words,occurrence_failures,67
+(C) to prevent,(F) contaminants,causal_ocurrence_words,occurrence_failures,62
+(C) to prevent,(F) contamination,causal_ocurrence_words,occurrence_failures,140
+(C) to prevent,(F) corrosion,causal_ocurrence_words,occurrence_failures,234
+(C) to prevent,(F) deformation,causal_ocurrence_words,occurrence_failures,64
+(C) to prevent,(F) degradation,causal_ocurrence_words,occurrence_failures,21
+(C) to prevent,(F) deposits,causal_ocurrence_words,occurrence_failures,23
+(C) to prevent,(F) electrolysis,causal_ocurrence_words,occurrence_failures,21
+(C) to prevent,(F) freezing,causal_ocurrence_words,occurrence_failures,79
+(C) to prevent,(F) leak,causal_ocurrence_words,occurrence_failures,31
+(C) to prevent,(F) leakage,causal_ocurrence_words,occurrence_failures,220
+(C) to prevent,(F) oxidation,causal_ocurrence_words,occurrence_failures,30
+(C) to prevent,(F) rust,causal_ocurrence_words,occurrence_failures,26
+(C) used to,(F) contaminants,causal_ocurrence_words,occurrence_failures,49
+(C) used to,(F) contamination,causal_ocurrence_words,occurrence_failures,22
+(C) used to,(F) corrosion,causal_ocurrence_words,occurrence_failures,46
+(C) used to,(F) leak,causal_ocurrence_words,occurrence_failures,35
+(C) used to,(F) leakage,causal_ocurrence_words,occurrence_failures,23
+(C) used to,(F) leaks,causal_ocurrence_words,occurrence_failures,25
+(C) used to,(F) oxidation,causal_ocurrence_words,occurrence_failures,22
+(C) via,(F) leak,causal_ocurrence_words,occurrence_failures,22
+(C) via,(F) leakage,causal_ocurrence_words,occurrence_failures,28
+(C) while,(F) blocked,causal_ocurrence_words,occurrence_failures,25
+(C) while,(F) checking,causal_ocurrence_words,occurrence_failures,29
+(C) while,(F) contaminants,causal_ocurrence_words,occurrence_failures,97
+(C) while,(F) contamination,causal_ocurrence_words,occurrence_failures,33
+(C) while,(F) corrosion,causal_ocurrence_words,occurrence_failures,89
+(C) while,(F) crushing,causal_ocurrence_words,occurrence_failures,23
+(C) while,(F) electrolysis,causal_ocurrence_words,occurrence_failures,43
+(C) while,(F) leak,causal_ocurrence_words,occurrence_failures,33
+(C) while,(F) leakage,causal_ocurrence_words,occurrence_failures,84
+(C) while,(F) lifting,causal_ocurrence_words,occurrence_failures,41
+(C) while,(F) oxidation,causal_ocurrence_words,occurrence_failures,65
+(C) while,(F) suspended solids,causal_ocurrence_words,occurrence_failures,34
+(T) accumulator,(C) via,occurrence_technical,causal_ocurrence_words,32
+(T) aerator,(C) via,occurrence_technical,causal_ocurrence_words,30
+(T) basin,(C) based on,occurrence_technical,causal_ocurrence_words,25
+(T) basin,(C) discharged to,occurrence_technical,causal_ocurrence_words,27
+(T) basin,(C) due to,occurrence_technical,causal_ocurrence_words,23
+(T) basin,(C) increase,occurrence_technical,causal_ocurrence_words,20
+(T) basin,(C) introduced into,occurrence_technical,causal_ocurrence_words,44
+(T) basin,(C) may,occurrence_technical,causal_ocurrence_words,83
+(T) basin,(C) monitoring,occurrence_technical,causal_ocurrence_words,30
+(T) basin,(C) remove,occurrence_technical,causal_ocurrence_words,40
+(T) basin,(C) shape,occurrence_technical,causal_ocurrence_words,20
+(T) basin,(C) therefore,occurrence_technical,causal_ocurrence_words,44
+(T) basin,(C) thus,occurrence_technical,causal_ocurrence_words,34
+(T) basin,(C) via,occurrence_technical,causal_ocurrence_words,75
+(T) basin,(C) while,occurrence_technical,causal_ocurrence_words,49
+(T) bore,(C) may,occurrence_technical,causal_ocurrence_words,23
+(T) branch line,(C) may,occurrence_technical,causal_ocurrence_words,22
+(T) branch line,(C) via,occurrence_technical,causal_ocurrence_words,30
+(T) chamber,(C) act,occurrence_technical,causal_ocurrence_words,20
+(T) chamber,(C) as a result,occurrence_technical,causal_ocurrence_words,93
+(T) chamber,(C) based on,occurrence_technical,causal_ocurrence_words,43
+(T) chamber,(C) because,occurrence_technical,causal_ocurrence_words,60
+(T) chamber,(C) becomes,occurrence_technical,causal_ocurrence_words,91
+(T) chamber,(C) causes,occurrence_technical,causal_ocurrence_words,36
+(T) chamber,(C) common,occurrence_technical,causal_ocurrence_words,25
+(T) chamber,(C) comprise,occurrence_technical,causal_ocurrence_words,45
+(T) chamber,(C) configured to,occurrence_technical,causal_ocurrence_words,134
+(T) chamber,(C) corresponding to,occurrence_technical,causal_ocurrence_words,54
+(T) chamber,(C) discharged to,occurrence_technical,causal_ocurrence_words,170
+(T) chamber,(C) disposed between,occurrence_technical,causal_ocurrence_words,35
+(T) chamber,(C) due to,occurrence_technical,causal_ocurrence_words,150
+(T) chamber,(C) generated by,occurrence_technical,causal_ocurrence_words,55
+(T) chamber,(C) increase,occurrence_technical,causal_ocurrence_words,93
+(T) chamber,(C) increases,occurrence_technical,causal_ocurrence_words,86
+(T) chamber,(C) introduced into,occurrence_technical,causal_ocurrence_words,370
+(T) chamber,(C) leading to,occurrence_technical,causal_ocurrence_words,20
+(T) chamber,(C) may,occurrence_technical,causal_ocurrence_words,496
+(T) chamber,(C) monitoring,occurrence_technical,causal_ocurrence_words,32
+(T) chamber,(C) receive,occurrence_technical,causal_ocurrence_words,31
+(T) chamber,(C) remove,occurrence_technical,causal_ocurrence_words,81
+(T) chamber,(C) shape,occurrence_technical,causal_ocurrence_words,235
+(T) chamber,(C) thereby,occurrence_technical,causal_ocurrence_words,167
+(T) chamber,(C) therefore,occurrence_technical,causal_ocurrence_words,186
+(T) chamber,(C) thus,occurrence_technical,causal_ocurrence_words,172
+(T) chamber,(C) to prevent,occurrence_technical,causal_ocurrence_words,84
+(T) chamber,(C) used to,occurrence_technical,causal_ocurrence_words,32
+(T) chamber,(C) via,occurrence_technical,causal_ocurrence_words,417
+(T) chamber,(C) while,occurrence_technical,causal_ocurrence_words,359
+(T) check valve,(C) configured to,occurrence_technical,causal_ocurrence_words,38
+(T) check valve,(C) discharged to,occurrence_technical,causal_ocurrence_words,27
+(T) check valve,(C) due to,occurrence_technical,causal_ocurrence_words,34
+(T) check valve,(C) introduced into,occurrence_technical,causal_ocurrence_words,23
+(T) check valve,(C) may,occurrence_technical,causal_ocurrence_words,48
+(T) check valve,(C) thereby,occurrence_technical,causal_ocurrence_words,20
+(T) check valve,(C) to prevent,occurrence_technical,causal_ocurrence_words,81
+(T) check valve,(C) via,occurrence_technical,causal_ocurrence_words,83
+(T) check valve,(C) while,occurrence_technical,causal_ocurrence_words,53
+(T) clarifier,(C) may,occurrence_technical,causal_ocurrence_words,37
+(T) clarifier,(C) via,occurrence_technical,causal_ocurrence_words,24
+(T) conduit,(C) because,occurrence_technical,causal_ocurrence_words,34
+(T) conduit,(C) comprise,occurrence_technical,causal_ocurrence_words,45
+(T) conduit,(C) configured to,occurrence_technical,causal_ocurrence_words,135
+(T) conduit,(C) corresponding to,occurrence_technical,causal_ocurrence_words,42
+(T) conduit,(C) discharged to,occurrence_technical,causal_ocurrence_words,24
+(T) conduit,(C) due to,occurrence_technical,causal_ocurrence_words,67
+(T) conduit,(C) generated by,occurrence_technical,causal_ocurrence_words,24
+(T) conduit,(C) increase,occurrence_technical,causal_ocurrence_words,36
+(T) conduit,(C) introduced into,occurrence_technical,causal_ocurrence_words,72
+(T) conduit,(C) may,occurrence_technical,causal_ocurrence_words,501
+(T) conduit,(C) monitoring,occurrence_technical,causal_ocurrence_words,62
+(T) conduit,(C) receive,occurrence_technical,causal_ocurrence_words,36
+(T) conduit,(C) remove,occurrence_technical,causal_ocurrence_words,42
+(T) conduit,(C) shape,occurrence_technical,causal_ocurrence_words,132
+(T) conduit,(C) thereby,occurrence_technical,causal_ocurrence_words,46
+(T) conduit,(C) therefore,occurrence_technical,causal_ocurrence_words,72
+(T) conduit,(C) thus,occurrence_technical,causal_ocurrence_words,56
+(T) conduit,(C) to prevent,occurrence_technical,causal_ocurrence_words,58
+(T) conduit,(C) used to,occurrence_technical,causal_ocurrence_words,43
+(T) conduit,(C) via,occurrence_technical,causal_ocurrence_words,220
+(T) conduit,(C) while,occurrence_technical,causal_ocurrence_words,122
+(T) control valve,(C) based on,occurrence_technical,causal_ocurrence_words,71
+(T) control valve,(C) becomes,occurrence_technical,causal_ocurrence_words,36
+(T) control valve,(C) configured to,occurrence_technical,causal_ocurrence_words,39
+(T) control valve,(C) corresponding to,occurrence_technical,causal_ocurrence_words,20
+(T) control valve,(C) discharged to,occurrence_technical,causal_ocurrence_words,30
+(T) control valve,(C) due to,occurrence_technical,causal_ocurrence_words,32
+(T) control valve,(C) increases,occurrence_technical,causal_ocurrence_words,25
+(T) control valve,(C) introduced into,occurrence_technical,causal_ocurrence_words,36
+(T) control valve,(C) may,occurrence_technical,causal_ocurrence_words,112
+(T) control valve,(C) monitoring,occurrence_technical,causal_ocurrence_words,31
+(T) control valve,(C) therefore,occurrence_technical,causal_ocurrence_words,53
+(T) control valve,(C) thus,occurrence_technical,causal_ocurrence_words,37
+(T) control valve,(C) via,occurrence_technical,causal_ocurrence_words,80
+(T) control valve,(C) while,occurrence_technical,causal_ocurrence_words,62
+(T) coupling,(C) because,occurrence_technical,causal_ocurrence_words,25
+(T) coupling,(C) configured to,occurrence_technical,causal_ocurrence_words,63
+(T) coupling,(C) corresponding to,occurrence_technical,causal_ocurrence_words,96
+(T) coupling,(C) due to,occurrence_technical,causal_ocurrence_words,37
+(T) coupling,(C) increase,occurrence_technical,causal_ocurrence_words,32
+(T) coupling,(C) may,occurrence_technical,causal_ocurrence_words,168
+(T) coupling,(C) shape,occurrence_technical,causal_ocurrence_words,184
+(T) coupling,(C) thereby,occurrence_technical,causal_ocurrence_words,28
+(T) coupling,(C) therefore,occurrence_technical,causal_ocurrence_words,44
+(T) coupling,(C) thus,occurrence_technical,causal_ocurrence_words,27
+(T) coupling,(C) to prevent,occurrence_technical,causal_ocurrence_words,46
+(T) coupling,(C) via,occurrence_technical,causal_ocurrence_words,54
+(T) coupling,(C) while,occurrence_technical,causal_ocurrence_words,123
+(T) culvert,(C) shape,occurrence_technical,causal_ocurrence_words,40
+(T) culvert,(C) while,occurrence_technical,causal_ocurrence_words,24
+(T) dam,(C) while,occurrence_technical,causal_ocurrence_words,24
+(T) diffuser,(C) because,occurrence_technical,causal_ocurrence_words,24
+(T) diffuser,(C) configured to,occurrence_technical,causal_ocurrence_words,39
+(T) diffuser,(C) due to,occurrence_technical,causal_ocurrence_words,80
+(T) diffuser,(C) generated by,occurrence_technical,causal_ocurrence_words,31
+(T) diffuser,(C) increase,occurrence_technical,causal_ocurrence_words,48
+(T) diffuser,(C) introduced into,occurrence_technical,causal_ocurrence_words,69
+(T) diffuser,(C) may,occurrence_technical,causal_ocurrence_words,138
+(T) diffuser,(C) remove,occurrence_technical,causal_ocurrence_words,31
+(T) diffuser,(C) shape,occurrence_technical,causal_ocurrence_words,61
+(T) diffuser,(C) thereby,occurrence_technical,causal_ocurrence_words,42
+(T) diffuser,(C) therefore,occurrence_technical,causal_ocurrence_words,54
+(T) diffuser,(C) thus,occurrence_technical,causal_ocurrence_words,20
+(T) diffuser,(C) to prevent,occurrence_technical,causal_ocurrence_words,32
+(T) diffuser,(C) via,occurrence_technical,causal_ocurrence_words,26
+(T) diffuser,(C) while,occurrence_technical,causal_ocurrence_words,95
+(T) discharge line,(C) discharged to,occurrence_technical,causal_ocurrence_words,54
+(T) discharge line,(C) may,occurrence_technical,causal_ocurrence_words,48
+(T) discharge line,(C) via,occurrence_technical,causal_ocurrence_words,64
+(T) discharge line,(C) while,occurrence_technical,causal_ocurrence_words,22
+(T) discharge pipe,(C) as a result,occurrence_technical,causal_ocurrence_words,23
+(T) discharge pipe,(C) based on,occurrence_technical,causal_ocurrence_words,21
+(T) discharge pipe,(C) because,occurrence_technical,causal_ocurrence_words,20
+(T) discharge pipe,(C) becomes,occurrence_technical,causal_ocurrence_words,29
+(T) discharge pipe,(C) configured to,occurrence_technical,causal_ocurrence_words,138
+(T) discharge pipe,(C) corresponding to,occurrence_technical,causal_ocurrence_words,42
+(T) discharge pipe,(C) discharged to,occurrence_technical,causal_ocurrence_words,413
+(T) discharge pipe,(C) due to,occurrence_technical,causal_ocurrence_words,56
+(T) discharge pipe,(C) generated by,occurrence_technical,causal_ocurrence_words,26
+(T) discharge pipe,(C) increase,occurrence_technical,causal_ocurrence_words,39
+(T) discharge pipe,(C) introduced into,occurrence_technical,causal_ocurrence_words,199
+(T) discharge pipe,(C) may,occurrence_technical,causal_ocurrence_words,169
+(T) discharge pipe,(C) remove,occurrence_technical,causal_ocurrence_words,52
+(T) discharge pipe,(C) shape,occurrence_technical,causal_ocurrence_words,128
+(T) discharge pipe,(C) thereby,occurrence_technical,causal_ocurrence_words,51
+(T) discharge pipe,(C) therefore,occurrence_technical,causal_ocurrence_words,67
+(T) discharge pipe,(C) thus,occurrence_technical,causal_ocurrence_words,39
+(T) discharge pipe,(C) to prevent,occurrence_technical,causal_ocurrence_words,69
+(T) discharge pipe,(C) via,occurrence_technical,causal_ocurrence_words,140
+(T) discharge pipe,(C) while,occurrence_technical,causal_ocurrence_words,212
+(T) distribution network,(C) based on,occurrence_technical,causal_ocurrence_words,23
+(T) distribution network,(C) monitoring,occurrence_technical,causal_ocurrence_words,29
+(T) drain,(C) as a result,occurrence_technical,causal_ocurrence_words,50
+(T) drain,(C) based on,occurrence_technical,causal_ocurrence_words,45
+(T) drain,(C) because,occurrence_technical,causal_ocurrence_words,45
+(T) drain,(C) becomes,occurrence_technical,causal_ocurrence_words,60
+(T) drain,(C) configured to,occurrence_technical,causal_ocurrence_words,126
+(T) drain,(C) corresponding to,occurrence_technical,causal_ocurrence_words,34
+(T) drain,(C) discharged to,occurrence_technical,causal_ocurrence_words,222
+(T) drain,(C) due to,occurrence_technical,causal_ocurrence_words,95
+(T) drain,(C) generated by,occurrence_technical,causal_ocurrence_words,39
+(T) drain,(C) increase,occurrence_technical,causal_ocurrence_words,56
+(T) drain,(C) increases,occurrence_technical,causal_ocurrence_words,27
+(T) drain,(C) introduced into,occurrence_technical,causal_ocurrence_words,133
+(T) drain,(C) may,occurrence_technical,causal_ocurrence_words,308
+(T) drain,(C) monitoring,occurrence_technical,causal_ocurrence_words,35
+(T) drain,(C) receive,occurrence_technical,causal_ocurrence_words,20
+(T) drain,(C) remove,occurrence_technical,causal_ocurrence_words,62
+(T) drain,(C) shape,occurrence_technical,causal_ocurrence_words,164
+(T) drain,(C) thereby,occurrence_technical,causal_ocurrence_words,97
+(T) drain,(C) therefore,occurrence_technical,causal_ocurrence_words,115
+(T) drain,(C) thus,occurrence_technical,causal_ocurrence_words,73
+(T) drain,(C) to prevent,occurrence_technical,causal_ocurrence_words,120
+(T) drain,(C) used to,occurrence_technical,causal_ocurrence_words,39
+(T) drain,(C) via,occurrence_technical,causal_ocurrence_words,212
+(T) drain,(C) while,occurrence_technical,causal_ocurrence_words,248
+(T) drainage line,(C) via,occurrence_technical,causal_ocurrence_words,28
+(T) drainage pipe,(C) configured to,occurrence_technical,causal_ocurrence_words,27
+(T) drainage pipe,(C) due to,occurrence_technical,causal_ocurrence_words,27
+(T) drainage pipe,(C) may,occurrence_technical,causal_ocurrence_words,25
+(T) drainage pipe,(C) therefore,occurrence_technical,causal_ocurrence_words,25
+(T) drainage pipe,(C) via,occurrence_technical,causal_ocurrence_words,22
+(T) drainage pipe,(C) while,occurrence_technical,causal_ocurrence_words,39
+(T) ejector,(C) introduced into,occurrence_technical,causal_ocurrence_words,28
+(T) ejector,(C) may,occurrence_technical,causal_ocurrence_words,29
+(T) ejector,(C) via,occurrence_technical,causal_ocurrence_words,36
+(T) filter press,(C) may,occurrence_technical,causal_ocurrence_words,22
+(T) fittings,(C) may,occurrence_technical,causal_ocurrence_words,28
+(T) flange,(C) configured to,occurrence_technical,causal_ocurrence_words,43
+(T) flange,(C) corresponding to,occurrence_technical,causal_ocurrence_words,69
+(T) flange,(C) due to,occurrence_technical,causal_ocurrence_words,21
+(T) flange,(C) increase,occurrence_technical,causal_ocurrence_words,24
+(T) flange,(C) introduced into,occurrence_technical,causal_ocurrence_words,22
+(T) flange,(C) may,occurrence_technical,causal_ocurrence_words,119
+(T) flange,(C) shape,occurrence_technical,causal_ocurrence_words,194
+(T) flange,(C) thereby,occurrence_technical,causal_ocurrence_words,29
+(T) flange,(C) therefore,occurrence_technical,causal_ocurrence_words,38
+(T) flange,(C) to prevent,occurrence_technical,causal_ocurrence_words,26
+(T) flange,(C) via,occurrence_technical,causal_ocurrence_words,49
+(T) flange,(C) while,occurrence_technical,causal_ocurrence_words,82
+(T) flow control valve,(C) may,occurrence_technical,causal_ocurrence_words,28
+(T) flow meter,(C) based on,occurrence_technical,causal_ocurrence_words,103
+(T) flow meter,(C) becomes,occurrence_technical,causal_ocurrence_words,41
+(T) flow meter,(C) configured to,occurrence_technical,causal_ocurrence_words,37
+(T) flow meter,(C) corresponding to,occurrence_technical,causal_ocurrence_words,20
+(T) flow meter,(C) discharged to,occurrence_technical,causal_ocurrence_words,23
+(T) flow meter,(C) increase,occurrence_technical,causal_ocurrence_words,20
+(T) flow meter,(C) may,occurrence_technical,causal_ocurrence_words,109
+(T) flow meter,(C) monitoring,occurrence_technical,causal_ocurrence_words,66
+(T) flow meter,(C) therefore,occurrence_technical,causal_ocurrence_words,28
+(T) flow meter,(C) via,occurrence_technical,causal_ocurrence_words,59
+(T) flow meter,(C) while,occurrence_technical,causal_ocurrence_words,32
+(T) flow sensor,(C) based on,occurrence_technical,causal_ocurrence_words,20
+(T) flow sensor,(C) configured to,occurrence_technical,causal_ocurrence_words,27
+(T) flow sensor,(C) may,occurrence_technical,causal_ocurrence_words,60
+(T) gasket,(C) may,occurrence_technical,causal_ocurrence_words,24
+(T) heat exchanger,(C) as a result,occurrence_technical,causal_ocurrence_words,24
+(T) heat exchanger,(C) based on,occurrence_technical,causal_ocurrence_words,25
+(T) heat exchanger,(C) configured to,occurrence_technical,causal_ocurrence_words,41
+(T) heat exchanger,(C) increase,occurrence_technical,causal_ocurrence_words,32
+(T) heat exchanger,(C) introduced into,occurrence_technical,causal_ocurrence_words,61
+(T) heat exchanger,(C) may,occurrence_technical,causal_ocurrence_words,177
+(T) heat exchanger,(C) monitoring,occurrence_technical,causal_ocurrence_words,23
+(T) heat exchanger,(C) via,occurrence_technical,causal_ocurrence_words,122
+(T) heat exchanger,(C) while,occurrence_technical,causal_ocurrence_words,45
+(T) impeller,(C) driven by,occurrence_technical,causal_ocurrence_words,22
+(T) impeller,(C) due to,occurrence_technical,causal_ocurrence_words,31
+(T) impeller,(C) generated by,occurrence_technical,causal_ocurrence_words,30
+(T) impeller,(C) introduced into,occurrence_technical,causal_ocurrence_words,46
+(T) impeller,(C) may,occurrence_technical,causal_ocurrence_words,55
+(T) impeller,(C) shape,occurrence_technical,causal_ocurrence_words,36
+(T) impeller,(C) thereby,occurrence_technical,causal_ocurrence_words,34
+(T) impeller,(C) therefore,occurrence_technical,causal_ocurrence_words,21
+(T) impeller,(C) while,occurrence_technical,causal_ocurrence_words,44
+(T) inlet,(C) as a result,occurrence_technical,causal_ocurrence_words,69
+(T) inlet,(C) associated with,occurrence_technical,causal_ocurrence_words,24
+(T) inlet,(C) based on,occurrence_technical,causal_ocurrence_words,73
+(T) inlet,(C) because,occurrence_technical,causal_ocurrence_words,86
+(T) inlet,(C) becomes,occurrence_technical,causal_ocurrence_words,65
+(T) inlet,(C) causes,occurrence_technical,causal_ocurrence_words,36
+(T) inlet,(C) common,occurrence_technical,causal_ocurrence_words,33
+(T) inlet,(C) comprise,occurrence_technical,causal_ocurrence_words,44
+(T) inlet,(C) configured to,occurrence_technical,causal_ocurrence_words,376
+(T) inlet,(C) corresponding to,occurrence_technical,causal_ocurrence_words,160
+(T) inlet,(C) coupled with,occurrence_technical,causal_ocurrence_words,21
+(T) inlet,(C) determine,occurrence_technical,causal_ocurrence_words,34
+(T) inlet,(C) discharged to,occurrence_technical,causal_ocurrence_words,244
+(T) inlet,(C) disposed between,occurrence_technical,causal_ocurrence_words,45
+(T) inlet,(C) due to,occurrence_technical,causal_ocurrence_words,178
+(T) inlet,(C) effect of,occurrence_technical,causal_ocurrence_words,32
+(T) inlet,(C) generated by,occurrence_technical,causal_ocurrence_words,82
+(T) inlet,(C) increase,occurrence_technical,causal_ocurrence_words,124
+(T) inlet,(C) increases,occurrence_technical,causal_ocurrence_words,41
+(T) inlet,(C) introduced into,occurrence_technical,causal_ocurrence_words,885
+(T) inlet,(C) leading to,occurrence_technical,causal_ocurrence_words,36
+(T) inlet,(C) may,occurrence_technical,causal_ocurrence_words,736
+(T) inlet,(C) monitoring,occurrence_technical,causal_ocurrence_words,36
+(T) inlet,(C) prevented from,occurrence_technical,causal_ocurrence_words,33
+(T) inlet,(C) receive,occurrence_technical,causal_ocurrence_words,104
+(T) inlet,(C) remove,occurrence_technical,causal_ocurrence_words,149
+(T) inlet,(C) shape,occurrence_technical,causal_ocurrence_words,455
+(T) inlet,(C) thereby,occurrence_technical,causal_ocurrence_words,154
+(T) inlet,(C) therefore,occurrence_technical,causal_ocurrence_words,250
+(T) inlet,(C) thus,occurrence_technical,causal_ocurrence_words,173
+(T) inlet,(C) to prevent,occurrence_technical,causal_ocurrence_words,241
+(T) inlet,(C) used to,occurrence_technical,causal_ocurrence_words,54
+(T) inlet,(C) via,occurrence_technical,causal_ocurrence_words,490
+(T) inlet,(C) while,occurrence_technical,causal_ocurrence_words,663
+(T) intake pipe,(C) may,occurrence_technical,causal_ocurrence_words,20
+(T) intake pipe,(C) shape,occurrence_technical,causal_ocurrence_words,33
+(T) joint,(C) configured to,occurrence_technical,causal_ocurrence_words,43
+(T) joint,(C) corresponding to,occurrence_technical,causal_ocurrence_words,53
+(T) joint,(C) due to,occurrence_technical,causal_ocurrence_words,45
+(T) joint,(C) may,occurrence_technical,causal_ocurrence_words,108
+(T) joint,(C) shape,occurrence_technical,causal_ocurrence_words,121
+(T) joint,(C) thereby,occurrence_technical,causal_ocurrence_words,21
+(T) joint,(C) therefore,occurrence_technical,causal_ocurrence_words,55
+(T) joint,(C) thus,occurrence_technical,causal_ocurrence_words,23
+(T) joint,(C) to prevent,occurrence_technical,causal_ocurrence_words,36
+(T) joint,(C) via,occurrence_technical,causal_ocurrence_words,74
+(T) joint,(C) while,occurrence_technical,causal_ocurrence_words,96
+(T) manhole,(C) as a result,occurrence_technical,causal_ocurrence_words,24
+(T) manhole,(C) based on,occurrence_technical,causal_ocurrence_words,25
+(T) manhole,(C) because,occurrence_technical,causal_ocurrence_words,46
+(T) manhole,(C) becomes,occurrence_technical,causal_ocurrence_words,23
+(T) manhole,(C) carry,occurrence_technical,causal_ocurrence_words,22
+(T) manhole,(C) configured to,occurrence_technical,causal_ocurrence_words,76
+(T) manhole,(C) corresponding to,occurrence_technical,causal_ocurrence_words,37
+(T) manhole,(C) discharged to,occurrence_technical,causal_ocurrence_words,23
+(T) manhole,(C) due to,occurrence_technical,causal_ocurrence_words,65
+(T) manhole,(C) generated by,occurrence_technical,causal_ocurrence_words,28
+(T) manhole,(C) introduced into,occurrence_technical,causal_ocurrence_words,57
+(T) manhole,(C) may,occurrence_technical,causal_ocurrence_words,158
+(T) manhole,(C) monitoring,occurrence_technical,causal_ocurrence_words,34
+(T) manhole,(C) remove,occurrence_technical,causal_ocurrence_words,50
+(T) manhole,(C) shape,occurrence_technical,causal_ocurrence_words,184
+(T) manhole,(C) thereby,occurrence_technical,causal_ocurrence_words,36
+(T) manhole,(C) therefore,occurrence_technical,causal_ocurrence_words,92
+(T) manhole,(C) thus,occurrence_technical,causal_ocurrence_words,41
+(T) manhole,(C) to prevent,occurrence_technical,causal_ocurrence_words,84
+(T) manhole,(C) used to,occurrence_technical,causal_ocurrence_words,29
+(T) manhole,(C) via,occurrence_technical,causal_ocurrence_words,55
+(T) manhole,(C) while,occurrence_technical,causal_ocurrence_words,155
+(T) manifold,(C) may,occurrence_technical,causal_ocurrence_words,37
+(T) manifold,(C) via,occurrence_technical,causal_ocurrence_words,20
+(T) mixing tank,(C) discharged to,occurrence_technical,causal_ocurrence_words,25
+(T) mixing tank,(C) generated by,occurrence_technical,causal_ocurrence_words,21
+(T) mixing tank,(C) introduced into,occurrence_technical,causal_ocurrence_words,82
+(T) mixing tank,(C) may,occurrence_technical,causal_ocurrence_words,26
+(T) mixing tank,(C) via,occurrence_technical,causal_ocurrence_words,51
+(T) mixing tank,(C) while,occurrence_technical,causal_ocurrence_words,40
+(T) nozzle,(C) as a result,occurrence_technical,causal_ocurrence_words,25
+(T) nozzle,(C) because,occurrence_technical,causal_ocurrence_words,27
+(T) nozzle,(C) becomes,occurrence_technical,causal_ocurrence_words,44
+(T) nozzle,(C) causes,occurrence_technical,causal_ocurrence_words,23
+(T) nozzle,(C) configured to,occurrence_technical,causal_ocurrence_words,107
+(T) nozzle,(C) corresponding to,occurrence_technical,causal_ocurrence_words,29
+(T) nozzle,(C) discharged to,occurrence_technical,causal_ocurrence_words,55
+(T) nozzle,(C) due to,occurrence_technical,causal_ocurrence_words,71
+(T) nozzle,(C) effect of,occurrence_technical,causal_ocurrence_words,24
+(T) nozzle,(C) generated by,occurrence_technical,causal_ocurrence_words,39
+(T) nozzle,(C) increase,occurrence_technical,causal_ocurrence_words,57
+(T) nozzle,(C) increases,occurrence_technical,causal_ocurrence_words,26
+(T) nozzle,(C) introduced into,occurrence_technical,causal_ocurrence_words,113
+(T) nozzle,(C) may,occurrence_technical,causal_ocurrence_words,200
+(T) nozzle,(C) remove,occurrence_technical,causal_ocurrence_words,61
+(T) nozzle,(C) shape,occurrence_technical,causal_ocurrence_words,163
+(T) nozzle,(C) thereby,occurrence_technical,causal_ocurrence_words,62
+(T) nozzle,(C) therefore,occurrence_technical,causal_ocurrence_words,79
+(T) nozzle,(C) thus,occurrence_technical,causal_ocurrence_words,62
+(T) nozzle,(C) to prevent,occurrence_technical,causal_ocurrence_words,30
+(T) nozzle,(C) used to,occurrence_technical,causal_ocurrence_words,29
+(T) nozzle,(C) via,occurrence_technical,causal_ocurrence_words,104
+(T) nozzle,(C) while,occurrence_technical,causal_ocurrence_words,210
+(T) pig,(C) configured to,occurrence_technical,causal_ocurrence_words,27
+(T) pig,(C) may,occurrence_technical,causal_ocurrence_words,73
+(T) pig,(C) thus,occurrence_technical,causal_ocurrence_words,20
+(T) pig,(C) used to,occurrence_technical,causal_ocurrence_words,20
+(T) pig,(C) while,occurrence_technical,causal_ocurrence_words,22
+(T) pipeline,(C) as a result,occurrence_technical,causal_ocurrence_words,38
+(T) pipeline,(C) associated with,occurrence_technical,causal_ocurrence_words,33
+(T) pipeline,(C) based on,occurrence_technical,causal_ocurrence_words,190
+(T) pipeline,(C) because,occurrence_technical,causal_ocurrence_words,55
+(T) pipeline,(C) becomes,occurrence_technical,causal_ocurrence_words,25
+(T) pipeline,(C) caused by,occurrence_technical,causal_ocurrence_words,38
+(T) pipeline,(C) causes,occurrence_technical,causal_ocurrence_words,32
+(T) pipeline,(C) comprise,occurrence_technical,causal_ocurrence_words,23
+(T) pipeline,(C) configured to,occurrence_technical,causal_ocurrence_words,79
+(T) pipeline,(C) corresponding to,occurrence_technical,causal_ocurrence_words,112
+(T) pipeline,(C) determine,occurrence_technical,causal_ocurrence_words,62
+(T) pipeline,(C) determines,occurrence_technical,causal_ocurrence_words,29
+(T) pipeline,(C) due to,occurrence_technical,causal_ocurrence_words,124
+(T) pipeline,(C) generated by,occurrence_technical,causal_ocurrence_words,70
+(T) pipeline,(C) identify,occurrence_technical,causal_ocurrence_words,30
+(T) pipeline,(C) important,occurrence_technical,causal_ocurrence_words,20
+(T) pipeline,(C) increase,occurrence_technical,causal_ocurrence_words,38
+(T) pipeline,(C) influence,occurrence_technical,causal_ocurrence_words,23
+(T) pipeline,(C) introduced into,occurrence_technical,causal_ocurrence_words,31
+(T) pipeline,(C) may,occurrence_technical,causal_ocurrence_words,337
+(T) pipeline,(C) monitoring,occurrence_technical,causal_ocurrence_words,294
+(T) pipeline,(C) obtained from,occurrence_technical,causal_ocurrence_words,26
+(T) pipeline,(C) occurrence,occurrence_technical,causal_ocurrence_words,53
+(T) pipeline,(C) receive,occurrence_technical,causal_ocurrence_words,21
+(T) pipeline,(C) remove,occurrence_technical,causal_ocurrence_words,29
+(T) pipeline,(C) shape,occurrence_technical,causal_ocurrence_words,142
+(T) pipeline,(C) thereby,occurrence_technical,causal_ocurrence_words,46
+(T) pipeline,(C) therefore,occurrence_technical,causal_ocurrence_words,139
+(T) pipeline,(C) thus,occurrence_technical,causal_ocurrence_words,79
+(T) pipeline,(C) to prevent,occurrence_technical,causal_ocurrence_words,56
+(T) pipeline,(C) used to,occurrence_technical,causal_ocurrence_words,62
+(T) pipeline,(C) via,occurrence_technical,causal_ocurrence_words,139
+(T) pipeline,(C) while,occurrence_technical,causal_ocurrence_words,144
+(T) pressure gauge,(C) based on,occurrence_technical,causal_ocurrence_words,61
+(T) pressure gauge,(C) becomes,occurrence_technical,causal_ocurrence_words,30
+(T) pressure gauge,(C) increases,occurrence_technical,causal_ocurrence_words,24
+(T) pressure gauge,(C) may,occurrence_technical,causal_ocurrence_words,57
+(T) pressure gauge,(C) therefore,occurrence_technical,causal_ocurrence_words,36
+(T) pressure gauge,(C) via,occurrence_technical,causal_ocurrence_words,22
+(T) pressure sensor,(C) based on,occurrence_technical,causal_ocurrence_words,41
+(T) pressure sensor,(C) configured to,occurrence_technical,causal_ocurrence_words,47
+(T) pressure sensor,(C) may,occurrence_technical,causal_ocurrence_words,75
+(T) pressure sensor,(C) monitoring,occurrence_technical,causal_ocurrence_words,23
+(T) pressure sensor,(C) therefore,occurrence_technical,causal_ocurrence_words,20
+(T) pressure sensor,(C) thus,occurrence_technical,causal_ocurrence_words,24
+(T) pressure sensor,(C) via,occurrence_technical,causal_ocurrence_words,51
+(T) pressure vessel,(C) via,occurrence_technical,causal_ocurrence_words,26
+(T) pump,(C) affected,occurrence_technical,causal_ocurrence_words,21
+(T) pump,(C) as a result,occurrence_technical,causal_ocurrence_words,113
+(T) pump,(C) as a result of,occurrence_technical,causal_ocurrence_words,37
+(T) pump,(C) associated with,occurrence_technical,causal_ocurrence_words,55
+(T) pump,(C) based on,occurrence_technical,causal_ocurrence_words,385
+(T) pump,(C) because,occurrence_technical,causal_ocurrence_words,135
+(T) pump,(C) becomes,occurrence_technical,causal_ocurrence_words,229
+(T) pump,(C) caused by,occurrence_technical,causal_ocurrence_words,47
+(T) pump,(C) causes,occurrence_technical,causal_ocurrence_words,66
+(T) pump,(C) common,occurrence_technical,causal_ocurrence_words,79
+(T) pump,(C) comprise,occurrence_technical,causal_ocurrence_words,40
+(T) pump,(C) configured to,occurrence_technical,causal_ocurrence_words,378
+(T) pump,(C) corresponding to,occurrence_technical,causal_ocurrence_words,135
+(T) pump,(C) determine,occurrence_technical,causal_ocurrence_words,89
+(T) pump,(C) determines,occurrence_technical,causal_ocurrence_words,97
+(T) pump,(C) discharged to,occurrence_technical,causal_ocurrence_words,272
+(T) pump,(C) disposed between,occurrence_technical,causal_ocurrence_words,30
+(T) pump,(C) driven by,occurrence_technical,causal_ocurrence_words,93
+(T) pump,(C) drives,occurrence_technical,causal_ocurrence_words,89
+(T) pump,(C) due to,occurrence_technical,causal_ocurrence_words,353
+(T) pump,(C) effect of,occurrence_technical,causal_ocurrence_words,64
+(T) pump,(C) generated by,occurrence_technical,causal_ocurrence_words,221
+(T) pump,(C) in the event of,occurrence_technical,causal_ocurrence_words,23
+(T) pump,(C) increase,occurrence_technical,causal_ocurrence_words,233
+(T) pump,(C) increases,occurrence_technical,causal_ocurrence_words,143
+(T) pump,(C) influence,occurrence_technical,causal_ocurrence_words,21
+(T) pump,(C) introduced into,occurrence_technical,causal_ocurrence_words,583
+(T) pump,(C) is driven by,occurrence_technical,causal_ocurrence_words,67
+(T) pump,(C) leading to,occurrence_technical,causal_ocurrence_words,40
+(T) pump,(C) leads to,occurrence_technical,causal_ocurrence_words,23
+(T) pump,(C) may,occurrence_technical,causal_ocurrence_words,1102
+(T) pump,(C) monitoring,occurrence_technical,causal_ocurrence_words,266
+(T) pump,(C) obtained from,occurrence_technical,causal_ocurrence_words,37
+(T) pump,(C) occurrence,occurrence_technical,causal_ocurrence_words,28
+(T) pump,(C) pumped from,occurrence_technical,causal_ocurrence_words,71
+(T) pump,(C) receive,occurrence_technical,causal_ocurrence_words,92
+(T) pump,(C) reduces,occurrence_technical,causal_ocurrence_words,34
+(T) pump,(C) remove,occurrence_technical,causal_ocurrence_words,228
+(T) pump,(C) requires,occurrence_technical,causal_ocurrence_words,56
+(T) pump,(C) shape,occurrence_technical,causal_ocurrence_words,121
+(T) pump,(C) thereby,occurrence_technical,causal_ocurrence_words,251
+(T) pump,(C) therefore,occurrence_technical,causal_ocurrence_words,453
+(T) pump,(C) thus,occurrence_technical,causal_ocurrence_words,245
+(T) pump,(C) to prevent,occurrence_technical,causal_ocurrence_words,202
+(T) pump,(C) used to,occurrence_technical,causal_ocurrence_words,199
+(T) pump,(C) via,occurrence_technical,causal_ocurrence_words,1079
+(T) pump,(C) while,occurrence_technical,causal_ocurrence_words,773
+(T) receiver,(C) configured to,occurrence_technical,causal_ocurrence_words,23
+(T) receiver,(C) may,occurrence_technical,causal_ocurrence_words,83
+(T) receiver,(C) monitoring,occurrence_technical,causal_ocurrence_words,21
+(T) receiver,(C) receive,occurrence_technical,causal_ocurrence_words,36
+(T) receiver,(C) via,occurrence_technical,causal_ocurrence_words,34
+(T) reducer,(C) while,occurrence_technical,causal_ocurrence_words,21
+(T) regulating valve,(C) configured to,occurrence_technical,causal_ocurrence_words,40
+(T) regulating valve,(C) may,occurrence_technical,causal_ocurrence_words,24
+(T) regulator,(C) may,occurrence_technical,causal_ocurrence_words,25
+(T) regulator,(C) via,occurrence_technical,causal_ocurrence_words,21
+(T) regulator,(C) while,occurrence_technical,causal_ocurrence_words,23
+(T) reservoir,(C) based on,occurrence_technical,causal_ocurrence_words,52
+(T) reservoir,(C) because,occurrence_technical,causal_ocurrence_words,38
+(T) reservoir,(C) becomes,occurrence_technical,causal_ocurrence_words,23
+(T) reservoir,(C) configured to,occurrence_technical,causal_ocurrence_words,100
+(T) reservoir,(C) corresponding to,occurrence_technical,causal_ocurrence_words,31
+(T) reservoir,(C) discharged to,occurrence_technical,causal_ocurrence_words,82
+(T) reservoir,(C) due to,occurrence_technical,causal_ocurrence_words,73
+(T) reservoir,(C) generated by,occurrence_technical,causal_ocurrence_words,23
+(T) reservoir,(C) increase,occurrence_technical,causal_ocurrence_words,31
+(T) reservoir,(C) introduced into,occurrence_technical,causal_ocurrence_words,129
+(T) reservoir,(C) may,occurrence_technical,causal_ocurrence_words,224
+(T) reservoir,(C) monitoring,occurrence_technical,causal_ocurrence_words,46
+(T) reservoir,(C) remove,occurrence_technical,causal_ocurrence_words,50
+(T) reservoir,(C) shape,occurrence_technical,causal_ocurrence_words,83
+(T) reservoir,(C) thereby,occurrence_technical,causal_ocurrence_words,55
+(T) reservoir,(C) therefore,occurrence_technical,causal_ocurrence_words,92
+(T) reservoir,(C) thus,occurrence_technical,causal_ocurrence_words,56
+(T) reservoir,(C) to prevent,occurrence_technical,causal_ocurrence_words,55
+(T) reservoir,(C) used to,occurrence_technical,causal_ocurrence_words,27
+(T) reservoir,(C) via,occurrence_technical,causal_ocurrence_words,137
+(T) reservoir,(C) while,occurrence_technical,causal_ocurrence_words,189
+(T) return line,(C) via,occurrence_technical,causal_ocurrence_words,47
+(T) sedimentation basin,(C) based on,occurrence_technical,causal_ocurrence_words,31
+(T) sedimentation basin,(C) configured to,occurrence_technical,causal_ocurrence_words,28
+(T) sedimentation basin,(C) discharged to,occurrence_technical,causal_ocurrence_words,39
+(T) sedimentation basin,(C) due to,occurrence_technical,causal_ocurrence_words,26
+(T) sedimentation basin,(C) increase,occurrence_technical,causal_ocurrence_words,23
+(T) sedimentation basin,(C) introduced into,occurrence_technical,causal_ocurrence_words,50
+(T) sedimentation basin,(C) may,occurrence_technical,causal_ocurrence_words,57
+(T) sedimentation basin,(C) monitoring,occurrence_technical,causal_ocurrence_words,24
+(T) sedimentation basin,(C) remove,occurrence_technical,causal_ocurrence_words,84
+(T) sedimentation basin,(C) thereby,occurrence_technical,causal_ocurrence_words,24
+(T) sedimentation basin,(C) therefore,occurrence_technical,causal_ocurrence_words,54
+(T) sedimentation basin,(C) to prevent,occurrence_technical,causal_ocurrence_words,27
+(T) sedimentation basin,(C) while,occurrence_technical,causal_ocurrence_words,80
+(T) sensor,(C) as a result,occurrence_technical,causal_ocurrence_words,48
+(T) sensor,(C) associated with,occurrence_technical,causal_ocurrence_words,100
+(T) sensor,(C) based on,occurrence_technical,causal_ocurrence_words,517
+(T) sensor,(C) because,occurrence_technical,causal_ocurrence_words,59
+(T) sensor,(C) becomes,occurrence_technical,causal_ocurrence_words,83
+(T) sensor,(C) caused by,occurrence_technical,causal_ocurrence_words,27
+(T) sensor,(C) causes,occurrence_technical,causal_ocurrence_words,35
+(T) sensor,(C) comprise,occurrence_technical,causal_ocurrence_words,65
+(T) sensor,(C) configured to,occurrence_technical,causal_ocurrence_words,303
+(T) sensor,(C) corresponding to,occurrence_technical,causal_ocurrence_words,109
+(T) sensor,(C) determine,occurrence_technical,causal_ocurrence_words,154
+(T) sensor,(C) determines,occurrence_technical,causal_ocurrence_words,132
+(T) sensor,(C) discharged to,occurrence_technical,causal_ocurrence_words,33
+(T) sensor,(C) due to,occurrence_technical,causal_ocurrence_words,136
+(T) sensor,(C) generated by,occurrence_technical,causal_ocurrence_words,103
+(T) sensor,(C) increase,occurrence_technical,causal_ocurrence_words,54
+(T) sensor,(C) increases,occurrence_technical,causal_ocurrence_words,40
+(T) sensor,(C) influence,occurrence_technical,causal_ocurrence_words,21
+(T) sensor,(C) introduced into,occurrence_technical,causal_ocurrence_words,82
+(T) sensor,(C) may,occurrence_technical,causal_ocurrence_words,1042
+(T) sensor,(C) monitoring,occurrence_technical,causal_ocurrence_words,452
+(T) sensor,(C) obtained from,occurrence_technical,causal_ocurrence_words,74
+(T) sensor,(C) occurrence,occurrence_technical,causal_ocurrence_words,47
+(T) sensor,(C) receive,occurrence_technical,causal_ocurrence_words,170
+(T) sensor,(C) remove,occurrence_technical,causal_ocurrence_words,45
+(T) sensor,(C) shape,occurrence_technical,causal_ocurrence_words,86
+(T) sensor,(C) thereby,occurrence_technical,causal_ocurrence_words,109
+(T) sensor,(C) therefore,occurrence_technical,causal_ocurrence_words,197
+(T) sensor,(C) thus,occurrence_technical,causal_ocurrence_words,90
+(T) sensor,(C) to prevent,occurrence_technical,causal_ocurrence_words,56
+(T) sensor,(C) used to,occurrence_technical,causal_ocurrence_words,80
+(T) sensor,(C) via,occurrence_technical,causal_ocurrence_words,257
+(T) sensor,(C) while,occurrence_technical,causal_ocurrence_words,168
+(T) siphon,(C) due to,occurrence_technical,causal_ocurrence_words,29
+(T) siphon,(C) may,occurrence_technical,causal_ocurrence_words,25
+(T) sluice,(C) configured to,occurrence_technical,causal_ocurrence_words,26
+(T) sluice,(C) discharged to,occurrence_technical,causal_ocurrence_words,20
+(T) sluice,(C) may,occurrence_technical,causal_ocurrence_words,32
+(T) sluice,(C) shape,occurrence_technical,causal_ocurrence_words,43
+(T) sluice,(C) while,occurrence_technical,causal_ocurrence_words,46
+(T) solenoid valve,(C) configured to,occurrence_technical,causal_ocurrence_words,31
+(T) solenoid valve,(C) discharged to,occurrence_technical,causal_ocurrence_words,33
+(T) solenoid valve,(C) introduced into,occurrence_technical,causal_ocurrence_words,38
+(T) solenoid valve,(C) may,occurrence_technical,causal_ocurrence_words,79
+(T) solenoid valve,(C) therefore,occurrence_technical,causal_ocurrence_words,21
+(T) solenoid valve,(C) via,occurrence_technical,causal_ocurrence_words,69
+(T) solenoid valve,(C) while,occurrence_technical,causal_ocurrence_words,63
+(T) strainer,(C) introduced into,occurrence_technical,causal_ocurrence_words,23
+(T) strainer,(C) may,occurrence_technical,causal_ocurrence_words,36
+(T) strainer,(C) remove,occurrence_technical,causal_ocurrence_words,20
+(T) strainer,(C) shape,occurrence_technical,causal_ocurrence_words,23
+(T) strainer,(C) to prevent,occurrence_technical,causal_ocurrence_words,33
+(T) strainer,(C) while,occurrence_technical,causal_ocurrence_words,29
+(T) suction line,(C) via,occurrence_technical,causal_ocurrence_words,30
+(T) suction pipe,(C) configured to,occurrence_technical,causal_ocurrence_words,29
+(T) suction pipe,(C) discharged to,occurrence_technical,causal_ocurrence_words,28
+(T) suction pipe,(C) due to,occurrence_technical,causal_ocurrence_words,28
+(T) suction pipe,(C) may,occurrence_technical,causal_ocurrence_words,33
+(T) suction pipe,(C) thus,occurrence_technical,causal_ocurrence_words,21
+(T) suction pipe,(C) via,occurrence_technical,causal_ocurrence_words,27
+(T) suction pipe,(C) while,occurrence_technical,causal_ocurrence_words,39
+(T) sump,(C) configured to,occurrence_technical,causal_ocurrence_words,24
+(T) sump,(C) discharged to,occurrence_technical,causal_ocurrence_words,23
+(T) sump,(C) due to,occurrence_technical,causal_ocurrence_words,22
+(T) sump,(C) introduced into,occurrence_technical,causal_ocurrence_words,30
+(T) sump,(C) may,occurrence_technical,causal_ocurrence_words,52
+(T) sump,(C) shape,occurrence_technical,causal_ocurrence_words,30
+(T) sump,(C) therefore,occurrence_technical,causal_ocurrence_words,27
+(T) sump,(C) to prevent,occurrence_technical,causal_ocurrence_words,35
+(T) sump,(C) while,occurrence_technical,causal_ocurrence_words,34
+(T) tank,(C) accumulate,occurrence_technical,causal_ocurrence_words,57
+(T) tank,(C) act,occurrence_technical,causal_ocurrence_words,38
+(T) tank,(C) activated by,occurrence_technical,causal_ocurrence_words,30
+(T) tank,(C) affect,occurrence_technical,causal_ocurrence_words,36
+(T) tank,(C) affected,occurrence_technical,causal_ocurrence_words,39
+(T) tank,(C) as a result,occurrence_technical,causal_ocurrence_words,330
+(T) tank,(C) as a result of,occurrence_technical,causal_ocurrence_words,57
+(T) tank,(C) associated with,occurrence_technical,causal_ocurrence_words,42
+(T) tank,(C) based on,occurrence_technical,causal_ocurrence_words,565
+(T) tank,(C) because,occurrence_technical,causal_ocurrence_words,412
+(T) tank,(C) because of,occurrence_technical,causal_ocurrence_words,37
+(T) tank,(C) becomes,occurrence_technical,causal_ocurrence_words,492
+(T) tank,(C) carry,occurrence_technical,causal_ocurrence_words,50
+(T) tank,(C) caused by,occurrence_technical,causal_ocurrence_words,88
+(T) tank,(C) causes,occurrence_technical,causal_ocurrence_words,134
+(T) tank,(C) common,occurrence_technical,causal_ocurrence_words,78
+(T) tank,(C) comprise,occurrence_technical,causal_ocurrence_words,93
+(T) tank,(C) configured to,occurrence_technical,causal_ocurrence_words,789
+(T) tank,(C) corresponding to,occurrence_technical,causal_ocurrence_words,265
+(T) tank,(C) creating,occurrence_technical,causal_ocurrence_words,24
+(T) tank,(C) derived,occurrence_technical,causal_ocurrence_words,21
+(T) tank,(C) determine,occurrence_technical,causal_ocurrence_words,107
+(T) tank,(C) determines,occurrence_technical,causal_ocurrence_words,105
+(T) tank,(C) discharged to,occurrence_technical,causal_ocurrence_words,857
+(T) tank,(C) disposed between,occurrence_technical,causal_ocurrence_words,81
+(T) tank,(C) driven by,occurrence_technical,causal_ocurrence_words,59
+(T) tank,(C) drives,occurrence_technical,causal_ocurrence_words,46
+(T) tank,(C) due to,occurrence_technical,causal_ocurrence_words,801
+(T) tank,(C) effect of,occurrence_technical,causal_ocurrence_words,190
+(T) tank,(C) exceeding,occurrence_technical,causal_ocurrence_words,41
+(T) tank,(C) factor,occurrence_technical,causal_ocurrence_words,43
+(T) tank,(C) generated by,occurrence_technical,causal_ocurrence_words,369
+(T) tank,(C) important,occurrence_technical,causal_ocurrence_words,61
+(T) tank,(C) in the event of,occurrence_technical,causal_ocurrence_words,37
+(T) tank,(C) increase,occurrence_technical,causal_ocurrence_words,634
+(T) tank,(C) increases,occurrence_technical,causal_ocurrence_words,279
+(T) tank,(C) induces,occurrence_technical,causal_ocurrence_words,33
+(T) tank,(C) influence,occurrence_technical,causal_ocurrence_words,35
+(T) tank,(C) inhibiting,occurrence_technical,causal_ocurrence_words,22
+(T) tank,(C) introduced into,occurrence_technical,causal_ocurrence_words,2084
+(T) tank,(C) is caused by,occurrence_technical,causal_ocurrence_words,25
+(T) tank,(C) is driven by,occurrence_technical,causal_ocurrence_words,38
+(T) tank,(C) leading to,occurrence_technical,causal_ocurrence_words,58
+(T) tank,(C) leads to,occurrence_technical,causal_ocurrence_words,49
+(T) tank,(C) may,occurrence_technical,causal_ocurrence_words,2471
+(T) tank,(C) monitoring,occurrence_technical,causal_ocurrence_words,592
+(T) tank,(C) obtained from,occurrence_technical,causal_ocurrence_words,37
+(T) tank,(C) occurrence,occurrence_technical,causal_ocurrence_words,67
+(T) tank,(C) precipitated by,occurrence_technical,causal_ocurrence_words,25
+(T) tank,(C) precipitates,occurrence_technical,causal_ocurrence_words,81
+(T) tank,(C) prevented from,occurrence_technical,causal_ocurrence_words,106
+(T) tank,(C) prior to,occurrence_technical,causal_ocurrence_words,54
+(T) tank,(C) produces,occurrence_technical,causal_ocurrence_words,36
+(T) tank,(C) pumped from,occurrence_technical,causal_ocurrence_words,82
+(T) tank,(C) receive,occurrence_technical,causal_ocurrence_words,183
+(T) tank,(C) reduces,occurrence_technical,causal_ocurrence_words,79
+(T) tank,(C) remove,occurrence_technical,causal_ocurrence_words,932
+(T) tank,(C) requires,occurrence_technical,causal_ocurrence_words,105
+(T) tank,(C) requiring,occurrence_technical,causal_ocurrence_words,32
+(T) tank,(C) settles,occurrence_technical,causal_ocurrence_words,50
+(T) tank,(C) shape,occurrence_technical,causal_ocurrence_words,900
+(T) tank,(C) thereby,occurrence_technical,causal_ocurrence_words,782
+(T) tank,(C) therefore,occurrence_technical,causal_ocurrence_words,1201
+(T) tank,(C) thus,occurrence_technical,causal_ocurrence_words,600
+(T) tank,(C) to prevent,occurrence_technical,causal_ocurrence_words,608
+(T) tank,(C) used to,occurrence_technical,causal_ocurrence_words,283
+(T) tank,(C) via,occurrence_technical,causal_ocurrence_words,1550
+(T) tank,(C) while,occurrence_technical,causal_ocurrence_words,1822
+(T) valve,(C) act,occurrence_technical,causal_ocurrence_words,27
+(T) valve,(C) acts on,occurrence_technical,causal_ocurrence_words,26
+(T) valve,(C) as a result,occurrence_technical,causal_ocurrence_words,145
+(T) valve,(C) as a result of,occurrence_technical,causal_ocurrence_words,35
+(T) valve,(C) associated with,occurrence_technical,causal_ocurrence_words,66
+(T) valve,(C) based on,occurrence_technical,causal_ocurrence_words,352
+(T) valve,(C) because,occurrence_technical,causal_ocurrence_words,113
+(T) valve,(C) becomes,occurrence_technical,causal_ocurrence_words,176
+(T) valve,(C) break,occurrence_technical,causal_ocurrence_words,36
+(T) valve,(C) carry,occurrence_technical,causal_ocurrence_words,26
+(T) valve,(C) caused by,occurrence_technical,causal_ocurrence_words,44
+(T) valve,(C) causes,occurrence_technical,causal_ocurrence_words,71
+(T) valve,(C) common,occurrence_technical,causal_ocurrence_words,40
+(T) valve,(C) comprise,occurrence_technical,causal_ocurrence_words,43
+(T) valve,(C) configured to,occurrence_technical,causal_ocurrence_words,452
+(T) valve,(C) corresponding to,occurrence_technical,causal_ocurrence_words,180
+(T) valve,(C) determine,occurrence_technical,causal_ocurrence_words,77
+(T) valve,(C) determines,occurrence_technical,causal_ocurrence_words,113
+(T) valve,(C) discharged to,occurrence_technical,causal_ocurrence_words,286
+(T) valve,(C) disposed between,occurrence_technical,causal_ocurrence_words,34
+(T) valve,(C) drives,occurrence_technical,causal_ocurrence_words,36
+(T) valve,(C) due to,occurrence_technical,causal_ocurrence_words,307
+(T) valve,(C) effect of,occurrence_technical,causal_ocurrence_words,25
+(T) valve,(C) exceeding,occurrence_technical,causal_ocurrence_words,55
+(T) valve,(C) generated by,occurrence_technical,causal_ocurrence_words,83
+(T) valve,(C) in the event of,occurrence_technical,causal_ocurrence_words,26
+(T) valve,(C) increase,occurrence_technical,causal_ocurrence_words,110
+(T) valve,(C) increases,occurrence_technical,causal_ocurrence_words,108
+(T) valve,(C) introduced into,occurrence_technical,causal_ocurrence_words,352
+(T) valve,(C) leading to,occurrence_technical,causal_ocurrence_words,36
+(T) valve,(C) leads to,occurrence_technical,causal_ocurrence_words,23
+(T) valve,(C) may,occurrence_technical,causal_ocurrence_words,1162
+(T) valve,(C) monitoring,occurrence_technical,causal_ocurrence_words,336
+(T) valve,(C) occurrence,occurrence_technical,causal_ocurrence_words,32
+(T) valve,(C) prevented from,occurrence_technical,causal_ocurrence_words,31
+(T) valve,(C) receive,occurrence_technical,causal_ocurrence_words,74
+(T) valve,(C) reduces,occurrence_technical,causal_ocurrence_words,23
+(T) valve,(C) remove,occurrence_technical,causal_ocurrence_words,104
+(T) valve,(C) shape,occurrence_technical,causal_ocurrence_words,223
+(T) valve,(C) thereby,occurrence_technical,causal_ocurrence_words,267
+(T) valve,(C) therefore,occurrence_technical,causal_ocurrence_words,393
+(T) valve,(C) thus,occurrence_technical,causal_ocurrence_words,253
+(T) valve,(C) to prevent,occurrence_technical,causal_ocurrence_words,250
+(T) valve,(C) used to,occurrence_technical,causal_ocurrence_words,125
+(T) valve,(C) via,occurrence_technical,causal_ocurrence_words,1017
+(T) valve,(C) while,occurrence_technical,causal_ocurrence_words,591
+(T) vessel,(C) comprise,occurrence_technical,causal_ocurrence_words,34
+(T) vessel,(C) configured to,occurrence_technical,causal_ocurrence_words,26
+(T) vessel,(C) increase,occurrence_technical,causal_ocurrence_words,23
+(T) vessel,(C) introduced into,occurrence_technical,causal_ocurrence_words,52
+(T) vessel,(C) may,occurrence_technical,causal_ocurrence_words,225
+(T) vessel,(C) monitoring,occurrence_technical,causal_ocurrence_words,24
+(T) vessel,(C) shape,occurrence_technical,causal_ocurrence_words,22
+(T) vessel,(C) thereby,occurrence_technical,causal_ocurrence_words,24
+(T) vessel,(C) therefore,occurrence_technical,causal_ocurrence_words,25
+(T) vessel,(C) thus,occurrence_technical,causal_ocurrence_words,35
+(T) vessel,(C) via,occurrence_technical,causal_ocurrence_words,86
+(T) vessel,(C) while,occurrence_technical,causal_ocurrence_words,79
+(T) water channel,(C) may,occurrence_technical,causal_ocurrence_words,34
+(T) water channel,(C) shape,occurrence_technical,causal_ocurrence_words,37
+(T) water channel,(C) therefore,occurrence_technical,causal_ocurrence_words,21
+(T) water channel,(C) while,occurrence_technical,causal_ocurrence_words,31
+(T) water intake,(C) based on,occurrence_technical,causal_ocurrence_words,31
+(T) water intake,(C) configured to,occurrence_technical,causal_ocurrence_words,28
+(T) water intake,(C) discharged to,occurrence_technical,causal_ocurrence_words,23
+(T) water intake,(C) due to,occurrence_technical,causal_ocurrence_words,29
+(T) water intake,(C) introduced into,occurrence_technical,causal_ocurrence_words,26
+(T) water intake,(C) may,occurrence_technical,causal_ocurrence_words,58
+(T) water intake,(C) monitoring,occurrence_technical,causal_ocurrence_words,41
+(T) water intake,(C) shape,occurrence_technical,causal_ocurrence_words,21
+(T) water intake,(C) therefore,occurrence_technical,causal_ocurrence_words,35
+(T) water intake,(C) to prevent,occurrence_technical,causal_ocurrence_words,23
+(T) water intake,(C) via,occurrence_technical,causal_ocurrence_words,32
+(T) water intake,(C) while,occurrence_technical,causal_ocurrence_words,39
+(T) water meter,(C) based on,occurrence_technical,causal_ocurrence_words,50
+(T) water meter,(C) because,occurrence_technical,causal_ocurrence_words,24
+(T) water meter,(C) configured to,occurrence_technical,causal_ocurrence_words,62
+(T) water meter,(C) due to,occurrence_technical,causal_ocurrence_words,21
+(T) water meter,(C) generated by,occurrence_technical,causal_ocurrence_words,23
+(T) water meter,(C) may,occurrence_technical,causal_ocurrence_words,107
+(T) water meter,(C) monitoring,occurrence_technical,causal_ocurrence_words,48
+(T) water meter,(C) shape,occurrence_technical,causal_ocurrence_words,50
+(T) water meter,(C) thereby,occurrence_technical,causal_ocurrence_words,22
+(T) water meter,(C) therefore,occurrence_technical,causal_ocurrence_words,50
+(T) water meter,(C) thus,occurrence_technical,causal_ocurrence_words,34
+(T) water meter,(C) to prevent,occurrence_technical,causal_ocurrence_words,48
+(T) water meter,(C) via,occurrence_technical,causal_ocurrence_words,48
+(T) water meter,(C) while,occurrence_technical,causal_ocurrence_words,46
+(T) water network,(C) may,occurrence_technical,causal_ocurrence_words,30
+(T) water network,(C) monitoring,occurrence_technical,causal_ocurrence_words,45
+(T) weir,(C) may,occurrence_technical,causal_ocurrence_words,20
