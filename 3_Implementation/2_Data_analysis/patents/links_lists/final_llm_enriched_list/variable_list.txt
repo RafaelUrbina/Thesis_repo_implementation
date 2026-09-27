@@ -25,7 +25,6 @@ flood management
 flood risk
 flooding
 floods
-fog
 freezing environmental conditions
 freezing rain
 geological hazard
@@ -73,7 +72,6 @@ rooting depth
 runoff
 rural locations
 seiche
-shorter seasons
 slope failure
 snow fall
 soil contraction

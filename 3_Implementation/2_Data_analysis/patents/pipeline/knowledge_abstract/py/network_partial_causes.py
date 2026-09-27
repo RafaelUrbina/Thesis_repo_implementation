@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import sys
+import re
 from collections import defaultdict
 
 try:
@@ -62,34 +63,49 @@ TYPE_SHORT_MAP = {
 # 1. PARSING & CAUSAL CHAIN EXTRACTION
 # =====================================================================
 def parse_field(field_val):
-    """Safely parses stringified Python lists, JSON arrays, or raw list objects."""
+    """Safely parses stringified Python lists, JSON arrays, or raw list/string objects."""
     if isinstance(field_val, list):
         return [str(i).strip() for i in field_val if str(i).strip()]
     
-    if pd.isna(field_val):
+    if pd.isna(field_val) or field_val is None:
         return []
-        
-    if isinstance(field_val, str) and field_val.strip():
-        cleaned = field_val.strip()
-        if cleaned.startswith("[") and cleaned.endswith("]"):
-            try:
-                parsed = ast.literal_eval(cleaned)
-                if isinstance(parsed, list):
-                    return [str(i).strip() for i in parsed if str(i).strip()]
-            except (ValueError, SyntaxError):
-                pass
-            
-            try:
-                parsed = json.loads(cleaned)
-                if isinstance(parsed, list):
-                    return [str(i).strip() for i in parsed if str(i).strip()]
-            except json.JSONDecodeError:
-                pass
-                
-            items = cleaned.strip("[]").split(",")
-            return [i.strip().strip("'\"") for i in items if i.strip()]
-        return [cleaned]
-    return []
+
+    # Handle numeric or non-string single values
+    if not isinstance(field_val, str):
+        val_str = str(field_val).strip()
+        return [val_str] if val_str else []
+
+    cleaned = field_val.strip()
+    if not cleaned or cleaned.lower() == "nan":
+        return []
+
+    # Attempt AST eval (handles Python list syntax like "['term1', 'term2']")
+    if cleaned.startswith("[") and cleaned.endswith("]"):
+        try:
+            parsed = ast.literal_eval(cleaned)
+            if isinstance(parsed, (list, tuple, set)):
+                return [str(i).strip() for i in parsed if str(i).strip()]
+        except (ValueError, SyntaxError):
+            pass
+
+        # Attempt JSON loads
+        try:
+            parsed = json.loads(cleaned)
+            if isinstance(parsed, list):
+                return [str(i).strip() for i in parsed if str(i).strip()]
+        except json.JSONDecodeError:
+            pass
+
+        # Robust Fallback: extract word tokens or quoted substrings using Regex
+        # This handles unquoted lists like "[term1, term2, term3]" cleanly
+        tokens = re.findall(r"[^\s,\[\]'\"']+", cleaned)
+        return [t.strip() for t in tokens if t.strip()]
+
+    # If it's a plain comma-separated string without brackets
+    if "," in cleaned:
+        return [item.strip().strip("'\"") for item in cleaned.split(",") if item.strip()]
+
+    return [cleaned.strip("'\"")]
 
 
 def extract_causal_triplets(row):

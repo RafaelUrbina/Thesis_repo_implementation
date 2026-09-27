@@ -1,33 +1,22 @@
-""" Python script designed to automatically generate a __Semantic Web Knowledge Graph and Ontology__ 
-for pipeline engineering, focusing on pipeline assets, failure modes, and environmental & social risk variables.
+"""Python script designed to automatically generate a Semantic Web Knowledge Graph
+and Ontology for pipeline engineering, focusing on pipeline assets, failure
+modes, and environmental & social risk variables.
 
-It leverages the __`rdflib`__ library to construct a formal Resource Description Framework (RDF) knowledge graph 
-using established semantic web standards (`SKOS`, `OWL`, `RDFS`), and serializes it into standard 
-formats (`.ttl` Turtle and `.rdf` XML).
+Hierarchy per risk variable term: Concept Scheme -> Variable Classification
+(ex:VariableClassification)
+  -> Lemmatized Concept (skos:Concept) -> Original Surface Form
+  (ex:SurfaceForm)
+"""
 
-Here is a detailed breakdown of how the script works, its core functions, and its architecture:
-
----
-
-### 1. Core Helper Functions
-
-- __`parse_term_list(terms_raw)`__:
-
-  - Cleans raw text strings by stripping whitespace and filtering out case-insensitive duplicates.
-  - Uses regular expressions (`re.match`) to extract parenthetical acronyms or synonyms 
-  (e.g., converting `"topographic wetness index (twi)"` into a preferred label `"topographic wetness index"` and an 
-  alternative label `"twi"`). These are later mapped to `skos:altLabel`.
-
-- __`slugify(text)`__:
-
-  - Converts descriptive phrase labels into clean, strict PascalCase URI identifiers 
-  (e.g., `"Soil Draining Capability"` becomes `"SoilDrainingCapability"`).
-
- """
 import os
 import re
-from pathlib import Path
 import sys
+from pathlib import Path
+
+# Load spaCy for lemmatization
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
 
 # Ensure repository root is on sys.path by locating 'Utils' directory upwards
 REPO_ROOT = Path(__file__).resolve()
@@ -35,43 +24,45 @@ while not (REPO_ROOT / "Utils").exists() and REPO_ROOT != REPO_ROOT.parent:
     REPO_ROOT = REPO_ROOT.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from Utils.paths import ONTOLOGY_LISTS_PATH
-from Utils.paths import ONTOLOGY_OUTPUT_PATH
-
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import OWL, RDF, RDFS, SKOS, XSD
+from Utils.paths import ONTOLOGY_LISTS_PATH, ONTOLOGY_OUTPUT_PATH
 
-
-
+# Kept domain synonyms with length >= 4 to avoid 3-letter collisions
 DOMAIN_SYNONYMS = {
-    'cathodic protection': ['cp'],
-    'inline inspection': ['ili', 'smart pigging'],
-    'stress corrosion cracking': ['scc'],
-    'geographic information system': ['gis'],
-    'digital elevation model': ['dem'],
-    'topographic wetness index': ['twi'],
-    'supervisory control and data acquisition': ['scada'],
-    'finite element analysis': ['fea'],
-    'internal corrosion direct assessment': ['icda'],
-    'external corrosion direct assessment': ['ecda'],
-    'above ground storage tank': ['ast'],
-    'underground storage tank': ['ust'],
-    'liquefied natural gas': ['lng'],
-    'pressure relief valve': ['prv', 'relief valve'],
-    'surge relief valve': ['srv'],
-    'water hammer': ['hydraulic shock'],
-    'risk assessment': ['ra'],
-    'failure mode and effects analysis': ['fmea'],
-    'hazard and operability study': ['hazop']
+    "inline inspection": ["smart pigging"],
+    "supervisory control and data acquisition": ["scada"],
+    "internal corrosion direct assessment": ["icda"],
+    "external corrosion direct assessment": ["ecda"],
+    "pressure relief valve": ["relief valve"],
+    "water hammer": ["hydraulic shock"],
+    "failure mode and effects analysis": ["fmea"],
+    "hazard and operability study": ["hazop"],
 }
+
+
+def get_lemma(term: str) -> str:
+    """Frames the term in a full sentence to supply POS context to spaCy."""
+    clean_term = term.strip().lower()
+
+    # Wrap in a simple English clause
+    doc = nlp(f"This is a {clean_term}.")
+
+    # Extract tokens belonging ONLY to the term (ignoring "This", "is", "a", ".")
+    term_tokens = doc[3:-1]
+
+    lemmatized = " ".join([token.lemma_ for token in term_tokens])
+    # Remove extra whitespace around hyphens caused by spaCy tokenization
+    return re.sub(r"\s*-\s*", "-", lemmatized)
+
 
 def parse_term_file(filepath):
     if not os.path.exists(filepath):
-        print(f'Warning: File {filepath} not found. Skipping.')
+        print(f"Warning: File {filepath} not found. Skipping.")
         return []
     terms_data = []
     seen = set()
-    with open(filepath, 'r', encoding='utf-8') as f:
+    with open(filepath, "r", encoding="utf-8") as f:
         for line in f:
             clean_line = line.strip()
             if not clean_line or clean_line.lower() in seen:
@@ -79,23 +70,27 @@ def parse_term_file(filepath):
             seen.add(clean_line.lower())
             alts = []
             pref = clean_line
-            match = re.match(r'^(.*?)\s*\((.*?)\)$', clean_line)
+            match = re.match(r"^(.*?)\s*\((.*?)\)$", clean_line)
             if match:
                 pref = match.group(1).strip()
                 alt = match.group(2).strip()
-                if alt:
+                # Ignore 3-letter acronyms from explicitly parenthesized alternatives
+                if alt and len(alt) > 3:
                     alts.append(alt)
             pref_lower = pref.lower()
             if pref_lower in DOMAIN_SYNONYMS:
                 for syn in DOMAIN_SYNONYMS[pref_lower]:
-                    if syn not in alts and syn != pref_lower:
+                    if syn not in alts and syn != pref_lower and len(syn) > 3:
                         alts.append(syn)
             words = pref.split()
             if len(words) >= 3 and not alts:
-                initialism = ''.join(w[0] for w in words if w.isalnum()).lower()
-                if len(initialism) >= 3 and initialism != pref_lower:
+                initialism = "".join(
+                    w[0] for w in words if w.isalnum()
+                ).lower()
+                # Filter out initialisms that are 3 characters or fewer
+                if len(initialism) > 3 and initialism != pref_lower:
                     alts.append(initialism)
-            terms_data.append({'pref': pref, 'alts': alts})
+            terms_data.append({"pref": pref, "alts": alts})
     return terms_data
 
 
@@ -124,18 +119,17 @@ def build_unified_knowledge_graph(
     # Base Ontology Declaration
     ont_uri = URIRef("http://www.semanticweb.org/thesis/pipeline-risk")
     g.add((ont_uri, RDF.type, OWL.Ontology))
-    g.add(
-        (
-            ont_uri,
-            RDFS.comment,
-            Literal(
-                "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations, and Environmental/Social Risk Variables.",
-                lang="en",
-            ),
-        )
-    )
+    g.add((
+        ont_uri,
+        RDFS.comment,
+        Literal(
+            "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal"
+            " Relations, and Environmental/Social Risk Variables.",
+            lang="en",
+        ),
+    ))
 
-    # 2. Concept Schemes (4 Pillars)
+    # Concept Schemes (4 Pillars)
     schemes = {
         "technical": EX.TechnicalComponentScheme,
         "failure": EX.FailureModeScheme,
@@ -145,48 +139,83 @@ def build_unified_knowledge_graph(
 
     for key, uri in schemes.items():
         g.add((uri, RDF.type, SKOS.ConceptScheme))
-        g.add(
-            (
-                uri,
-                SKOS.prefLabel,
-                Literal(f"Pipeline {key.title()} Concept Scheme", lang="en"),
-            )
-        )
+        g.add((
+            uri,
+            SKOS.prefLabel,
+            Literal(f"Pipeline {key.title()} Concept Scheme", lang="en"),
+        ))
 
-    def add_concept_node(
-        scheme, concept_id, pref_label, alt_labels=None, broader_uri=None
+    def add_category_root(
+        scheme,
+        category_id,
+        pref_label,
+        broader_uri=None,
+        is_variable_class=False,
     ):
-        uri = EX[concept_id]
+        """Creates category nodes within a scheme."""
+        uri = EX[category_id]
         g.add((uri, RDF.type, SKOS.Concept))
         g.add((uri, RDF.type, OWL.Class))
         g.add((uri, SKOS.inScheme, scheme))
-        g.add((uri, SKOS.prefLabel, Literal(pref_label.lower(), lang="en")))
+        g.add((uri, SKOS.prefLabel, Literal(pref_label, lang="en")))
+
+        if is_variable_class:
+            g.add((uri, RDF.type, EX.VariableClassification))
+            g.add((scheme, SKOS.hasTopConcept, uri))
 
         if broader_uri:
             g.add((uri, SKOS.broader, broader_uri))
             g.add((broader_uri, SKOS.narrower, uri))
             g.add((uri, RDFS.subClassOf, broader_uri))
+        return uri
 
+    def add_term_nodes(scheme, pref_label, alt_labels=None, broader_uri=None):
+        """Creates structure: Lemma Concept -> Surface Form Instance."""
+        lemmatized_str = get_lemma(pref_label)
+
+        lemma_id = f"Lemma_{slugify(lemmatized_str)}"
+        surface_id = f"Term_{slugify(pref_label)}"
+
+        lemma_uri = EX[lemma_id]
+        surface_uri = EX[surface_id]
+
+        # --- Layer 1: Scheme / Class -> Lemmatized Concept ---
+        g.add((lemma_uri, RDF.type, SKOS.Concept))
+        g.add((lemma_uri, RDF.type, OWL.Class))
+        g.add((lemma_uri, SKOS.inScheme, scheme))
+        g.add((lemma_uri, SKOS.prefLabel, Literal(lemmatized_str, lang="en")))
+
+        if broader_uri:
+            g.add((lemma_uri, SKOS.broader, broader_uri))
+            g.add((broader_uri, SKOS.narrower, lemma_uri))
+            g.add((lemma_uri, RDFS.subClassOf, broader_uri))
+
+        # --- Layer 2: Lemmatized Concept -> Original Surface Term ---
+        g.add((surface_uri, RDF.type, EX.SurfaceForm))
+        g.add((surface_uri, EX.hasLemma, lemma_uri))
+        g.add((surface_uri, RDFS.label, Literal(pref_label, lang="en")))
+
+        # Add synonyms and alternative forms to the surface term & lemma
         if alt_labels:
             for alt in alt_labels:
-                g.add((uri, SKOS.altLabel, Literal(alt.lower(), lang="en")))
-        return uri
+                g.add((surface_uri, SKOS.altLabel, Literal(alt, lang="en")))
+                g.add((lemma_uri, SKOS.altLabel, Literal(alt, lang="en")))
+
+        return lemma_uri
 
     # 3. Process Technical Terms
     tech_terms = parse_term_file(tech_file)
     if tech_terms:
-        root_tech = add_concept_node(
+        root_tech = add_category_root(
             schemes["technical"],
             "TechnicalTerm",
-            "Technical Term",
+            "technical term",
         )
         print(f"Ingesting {len(tech_terms)} technical components...")
         for item in tech_terms:
-            cid = slugify(item["pref"])
-            if cid:
-                add_concept_node(
+            if item["pref"]:
+                add_term_nodes(
                     schemes["technical"],
-                    cid,
                     item["pref"],
                     alt_labels=item["alts"],
                     broader_uri=root_tech,
@@ -195,46 +224,45 @@ def build_unified_knowledge_graph(
     # 4. Process Failure Mode Terms
     failure_terms = parse_term_file(failure_file)
     if failure_terms:
-        root_fail = add_concept_node(
-            schemes["failure"], "FailureTerm", "Failure Term"
+        root_fail = add_category_root(
+            schemes["failure"], "FailureTerm", "failure term"
         )
 
-        corr_fail = add_concept_node(
+        corr_fail = add_category_root(
             schemes["failure"],
             "CorrosionAndElectrochemicalFailure",
-            "Corrosion and Electrochemical Failure",
+            "corrosion and electrochemical failure",
             broader_uri=root_fail,
         )
-        mech_fail = add_concept_node(
+        mech_fail = add_category_root(
             schemes["failure"],
             "MechanicalAndStructuralFailure",
-            "Mechanical and Structural Failure",
+            "mechanical and structural failure",
             broader_uri=root_fail,
         )
-        geo_fail = add_concept_node(
+        geo_fail = add_category_root(
             schemes["failure"],
             "GeotechnicalAndGroundFailure",
-            "Geotechnical and Ground Failure",
+            "geotechnical and ground failure",
             broader_uri=root_fail,
         )
-        hydr_fail = add_concept_node(
+        hydr_fail = add_category_root(
             schemes["failure"],
             "HydraulicAndOperationalSurgeFailure",
-            "Hydraulic and Operational Surge Failure",
+            "hydraulic and operational surge failure",
             broader_uri=root_fail,
         )
-        third_fail = add_concept_node(
+        third_fail = add_category_root(
             schemes["failure"],
             "ThirdPartyAndExternalInterference",
-            "Third Party and External Interference",
+            "third party and external interference",
             broader_uri=root_fail,
         )
 
         print(f"Ingesting {len(failure_terms)} failure modes...")
         for item in failure_terms:
             pref = item["pref"]
-            cid = slugify(pref)
-            if not cid:
+            if not pref:
                 continue
 
             plow = pref.lower()
@@ -316,172 +344,192 @@ def build_unified_knowledge_graph(
             ):
                 parent = third_fail
 
-            add_concept_node(
+            add_term_nodes(
                 schemes["failure"],
-                cid,
                 pref,
                 alt_labels=item["alts"],
                 broader_uri=parent,
             )
 
-    # 5. Process Risk Variable Terms
+    # 5. Process Risk Variable Terms (4-Tier Hierarchy)
     risk_terms = parse_term_file(risk_file)
     if risk_terms:
-        root_risk = add_concept_node(
+        # Define the 8 Variable Classification Categories (Tier 2)
+        class_meteo = add_category_root(
             schemes["risk"],
-            "VariableTerm",
-            "Variable Term",
+            "Class_MeteorologicalMonitoring",
+            "Meteorological & Hydrological Monitoring",
+            is_variable_class=True,
+        )
+        class_hydro = add_category_root(
+            schemes["risk"],
+            "Class_HydrologicalSettingsAndFloodRisk",
+            "Hydrological Settings & Flood Risk",
+            is_variable_class=True,
+        )
+        class_geotech = add_category_root(
+            schemes["risk"],
+            "Class_GeotechnicalDynamics",
+            "Geotechnical Dynamics & Landslide Hazards",
+            is_variable_class=True,
+        )
+        class_pedo = add_category_root(
+            schemes["risk"],
+            "Class_PedologicalProperties",
+            "Pedological Soil Properties & Agricultural Capacity",
+            is_variable_class=True,
+        )
+        class_topo_clim = add_category_root(
+            schemes["risk"],
+            "Class_TopographicAndClimaticIndicators",
+            "Topographic & Climatic Indicators",
+            is_variable_class=True,
+        )
+        class_built_env = add_category_root(
+            schemes["risk"],
+            "Class_BuiltEnvironmentAndLandUse",
+            "Built Environment, Land Use, & Human Interventions",
+            is_variable_class=True,
+        )
+        class_landscape = add_category_root(
+            schemes["risk"],
+            "Class_LandscapeRegionalization",
+            "Landscape Regionalization",
+            is_variable_class=True,
+        )
+        class_socio = add_category_root(
+            schemes["risk"],
+            "Class_SocioEconomicIndicators",
+            "Socio-Economic Indicators, Vulnerability, & Municipal Metabolism",
+            is_variable_class=True,
         )
 
-        hydro_risk = add_concept_node(
-            schemes["risk"],
-            "HydrologicalAndInundationVariable",
-            "Hydrological and Inundation Variable",
-            broader_uri=root_risk,
+        print(
+            f"Ingesting {len(risk_terms)} environmental/social risk"
+            " variables into 4-tier hierarchy..."
         )
-        geo_risk = add_concept_node(
-            schemes["risk"],
-            "GeomorphologicalAndGeotechnicalVariable",
-            "Geomorphological and Geotechnical Variable",
-            broader_uri=root_risk,
-        )
-        ped_risk = add_concept_node(
-            schemes["risk"],
-            "PedologicalAndSoilConditionVariable",
-            "Pedological and Soil Condition Variable",
-            broader_uri=root_risk,
-        )
-        clim_risk = add_concept_node(
-            schemes["risk"],
-            "ClimaticAndAtmosphericVariable",
-            "Climatic and Atmospheric Variable",
-            broader_uri=root_risk,
-        )
-        soc_risk = add_concept_node(
-            schemes["risk"],
-            "SocioEconomicAndUrbanSpatioVariable",
-            "Socio-Economic and Urban Spatial Variable",
-            broader_uri=root_risk,
-        )
-
-        print(f"Ingesting {len(risk_terms)} environmental/social risk variables...")
         for item in risk_terms:
             pref = item["pref"]
-            cid = slugify(pref)
-            if not cid:
+            if not pref:
                 continue
 
             plow = pref.lower()
-            parent = root_risk
+            parent = class_socio  # Fallback classification
 
+            # Specific keyword matching rules for the 8 classification categories
             if any(
                 k in plow
                 for k in [
-                    "flood",
-                    "rain",
-                    "water",
-                    "river",
-                    "stream",
-                    "inundation",
-                    "discharge",
-                    "runoff",
-                    "aquifer",
-                    "lake",
-                    "hydrol",
-                    "hydrog",
-                    "catchment",
-                    "wetness",
-                    "drainage",
+                    "gauge",
+                    "real-time discharge",
+                    "station",
+                    "sensor",
+                    "monitoring",
                 ]
             ):
-                parent = hydro_risk
+                parent = class_meteo
+            elif any(
+                k in plow
+                for k in [
+                    "flood",
+                    "river",
+                    "waterway",
+                    "culvert",
+                    "stormwater",
+                    "hydraulic risk",
+                    "inundation",
+                    "hydrographic",
+                    "run-off",
+                    "runoff",
+                ]
+            ):
+                parent = class_hydro
             elif any(
                 k in plow
                 for k in [
                     "landslide",
-                    "slope",
-                    "terrain",
-                    "elevation",
+                    "mass movement",
+                    "mass wasting",
                     "seismic",
                     "earthquake",
-                    "fault",
-                    "bedrock",
-                    "rock",
-                    "avalanche",
-                    "subsidence",
-                    "geol",
-                    "geomorph",
-                    "gradient",
-                    "topographic",
-                    "mass wasting",
+                    "ground deformation",
+                    "downward deformation",
+                    "vertical deformation",
+                    "slope movement",
                 ]
             ):
-                parent = geo_risk
+                parent = class_geotech
             elif any(
                 k in plow
                 for k in [
-                    "soil",
-                    "clay",
-                    "silt",
-                    "sand",
+                    "hydrologic soil group",
                     "ksat",
-                    "pedol",
+                    "hydraulic conductivity",
                     "salinity",
-                    "organic",
-                    "cation",
-                    "porosity",
-                    "bulk density",
-                    "horizon",
-                    "suction",
+                    "soil depth",
+                    "rooting depth",
+                    "internal drainage",
+                    "electrical conductivity",
+                    "pedological",
                 ]
             ):
-                parent = ped_risk
+                parent = class_pedo
             elif any(
                 k in plow
                 for k in [
-                    "climate",
-                    "temperature",
-                    "wind",
-                    "storm",
-                    "ice",
-                    "frost",
-                    "fog",
+                    "elevation",
                     "drought",
-                    "atmospheric",
-                    "humidity",
-                    "weather",
-                    "solar",
+                    "climate interference",
+                    "altitudinal",
+                    "moisture deficit",
+                    "topographic",
                 ]
             ):
-                parent = clim_risk
+                parent = class_topo_clim
             elif any(
                 k in plow
                 for k in [
-                    "urban",
-                    "city",
-                    "town",
-                    "building",
+                    "building footprint",
+                    "building density",
+                    "architectural density",
+                    "remediation cost",
+                    "repair cost",
+                    "damage repair",
+                    "built environment",
+                ]
+            ):
+                parent = class_built_env
+            elif any(
+                k in plow
+                for k in [
+                    "landscape unit",
+                    "unita di paesaggio",
+                    "soil region",
+                    "landscape system",
+                    "subsystem",
+                    "regionalization",
+                ]
+            ):
+                parent = class_landscape
+            elif any(
+                k in plow
+                for k in [
                     "population",
                     "income",
-                    "cadastral",
-                    "road",
+                    "wealth",
+                    "commuter",
+                    "water metabolism",
+                    "taxable",
+                    "pension",
+                    "economic magnetism",
+                    "daytime population",
                     "demographic",
-                    "tax",
-                    "administrative",
-                    "economic",
-                    "spending",
-                    "cost",
-                    "vegetation",
-                    "forest",
-                    "land use",
-                    "agricultural",
                 ]
             ):
-                parent = soc_risk
+                parent = class_socio
 
-            add_concept_node(
+            add_term_nodes(
                 schemes["risk"],
-                cid,
                 pref,
                 alt_labels=item["alts"],
                 broader_uri=parent,
@@ -490,67 +538,117 @@ def build_unified_knowledge_graph(
     # 6. Process Causal Terms
     causal_terms = parse_term_file(causal_file)
     if causal_terms:
-        root_causal = add_concept_node(
+        root_causal = add_category_root(
             schemes["causal"],
             "CausalTerm",
-            "Causal Term",
+            "causal term",
         )
 
-        dir_causal = add_concept_node(
+        dir_causal = add_category_root(
             schemes["causal"],
             "DirectCausationRelation",
-            "Direct Causation Relation",
+            "direct causation relation",
             broader_uri=root_causal,
         )
-        cond_causal = add_concept_node(
+        cond_causal = add_category_root(
             schemes["causal"],
             "ConditionalAndContributingRelation",
-            "Conditional and Contributing Relation",
+            "conditional and contributing relation",
             broader_uri=root_causal,
         )
-        corr_causal = add_concept_node(
+        corr_causal = add_category_root(
             schemes["causal"],
             "CorrelationAndAssociationRelation",
-            "Correlation and Association Relation",
+            "correlation and association relation",
             broader_uri=root_causal,
         )
-        attr_causal = add_concept_node(
+        attr_causal = add_category_root(
             schemes["causal"],
             "AttributionAndDerivationRelation",
-            "Attribution and Derivation Relation",
+            "attribution and derivation relation",
             broader_uri=root_causal,
         )
 
         print(f"Ingesting {len(causal_terms)} causal terms...")
         for item in causal_terms:
             pref = item["pref"]
-            cid = slugify(pref)
-            if not cid:
+            if not pref:
                 continue
 
             plow = pref.lower()
             parent = root_causal
 
-            if any(k in plow for k in ["cause", "lead", "result", "produce", "give rise", "break", "create"]):
+            if any(
+                k in plow
+                for k in [
+                    "cause",
+                    "lead",
+                    "result",
+                    "produce",
+                    "give rise",
+                    "break",
+                    "create",
+                ]
+            ):
                 parent = dir_causal
-            elif any(k in plow for k in ["contribute", "trigger", "induce", "exacerbated", "allow", "require", "prevent", "exceed", "impos"]):
+            elif any(
+                k in plow
+                for k in [
+                    "contribute",
+                    "trigger",
+                    "induce",
+                    "exacerbated",
+                    "allow",
+                    "require",
+                    "prevent",
+                    "exceed",
+                    "impos",
+                ]
+            ):
                 parent = cond_causal
-            elif any(k in plow for k in ["associate", "correlate", "link", "correspond", "common", "depend"]):
+            elif any(
+                k in plow
+                for k in [
+                    "associate",
+                    "correlate",
+                    "link",
+                    "correspond",
+                    "common",
+                    "depend",
+                ]
+            ):
                 parent = corr_causal
-            elif any(k in plow for k in ["due to", "attribute", "derive", "base", "originate", "owing", "stem"]):
+            elif any(
+                k in plow
+                for k in [
+                    "due to",
+                    "attribute",
+                    "derive",
+                    "base",
+                    "originate",
+                    "owing",
+                    "stem",
+                ]
+            ):
                 parent = attr_causal
 
-            add_concept_node(
+            add_term_nodes(
                 schemes["causal"],
-                cid,
                 pref,
                 alt_labels=item["alts"],
                 broader_uri=parent,
             )
 
     # 7. Export Graph
-    g.serialize(destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.ttl", format="turtle")
-    g.serialize(destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.rdf", format="xml")
+    g.serialize(
+        destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.ttl",
+        format="turtle",
+    )
+    g.serialize(
+        destination=ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.rdf",
+        format="xml",
+        base="http://www.semanticweb.org/thesis/pipeline-risk#",
+    )
 
     print(f"\nGraph Generation Complete! Total RDF Triples: {len(g)}")
 

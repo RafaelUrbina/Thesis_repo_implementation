@@ -88,7 +88,7 @@
 <edge source="heat exchanger" target="temperature">
   <data key="d1">2</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0008176-B1", "EP-0070989-B1"]</data>
+  <data key="d3">["EP-0070989-B1", "EP-0008176-B1"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
 <edge source="temperature" target="freezing">
@@ -101,7 +101,7 @@
   <data key="d1">2</data>
   <data key="d2">associated with</data>
   <data key="d3">["EP-0069220-B1"]</data>
-  <data key="d4">["associated with", "introduced into"]</data>
+  <data key="d4">["introduced into", "associated with"]</data>
 </edge>
 <edge source="temperature" target="fouling">
   <data key="d1">1</data>

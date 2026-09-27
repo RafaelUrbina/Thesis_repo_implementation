@@ -194,7 +194,6 @@ structural damage
 sub surface leaks
 subsidence
 subsurface corrosion
-such damage
 sulfidation
 sulfide stress cracking
 suspended solids
@@ -204,7 +203,6 @@ thermogalvanic corrosion
 third-party activity
 third-party damage
 third-party interference
-train disaster
 tubercle
 tuberculation
 undesirable wear and tear
