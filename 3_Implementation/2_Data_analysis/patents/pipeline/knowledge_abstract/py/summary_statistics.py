@@ -8,6 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from itertools import product
 from collections import Counter
+from scipy.cluster.hierarchy import linkage, leaves_list
 
 # =====================================================================
 # Setup project root imports & Path Logic
@@ -165,7 +166,7 @@ def compute_npmi_associations(
 
 
 # ==========================================
-# TASK 2: CO-OCCURRENCE HEATMAP (TOP 20 TERMS)
+# TASK 2: CO-OCCURRENCE HEATMAP (CLUSTERED HOTSPOTS)
 # ==========================================
 
 def save_top20_category_heatmap(
@@ -177,7 +178,8 @@ def save_top20_category_heatmap(
     metric: str = "npmi"
 ):
     """
-    Filters the association dataframe to the Top 20 most frequent terms on each axis
+    Filters the association dataframe to the Top 20 terms, applies hierarchical 
+    clustering on rows and columns to create visually coherent 'hotspots', 
     and saves an annotated heatmap as a high-resolution PNG image.
     """
     if associations_df.empty:
@@ -200,23 +202,52 @@ def save_top20_category_heatmap(
     # Pivot into Category Matrix
     matrix = filtered_df.pivot(index="term_1", columns="term_2", values=metric).fillna(0)
 
+    # Reorder rows and columns using Hierarchical Clustering to aggregate hotspots
+    if matrix.shape[0] > 1:
+        row_linkage = linkage(matrix.values, method='average', metric='euclidean')
+        row_order = leaves_list(row_linkage)
+        matrix = matrix.iloc[row_order, :]
+
+    if matrix.shape[1] > 1:
+        col_linkage = linkage(matrix.T.values, method='average', metric='euclidean')
+        col_order = leaves_list(col_linkage)
+        matrix = matrix.iloc[:, col_order]
+
     # Dynamic sizing based on grid dimension
     fig_width = max(8, len(matrix.columns) * 0.55)
     fig_height = max(6, len(matrix.index) * 0.45)
     
-    plt.figure(figsize=(fig_width, fig_height))
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
     
+    # Plot heatmap without default text labels
     sns.heatmap(
         matrix, 
-        annot=True, 
-        fmt=".2f", 
+        annot=False, 
         cmap="YlOrRd", 
         cbar_kws={'label': metric.upper()},
         linewidths=0.5,
-        square=True
+        square=True,
+        ax=ax
     )
     
-    plt.title(f"Top {top_k} Co-occurrence Matrix: {category_a_name} vs {category_b_name} ({metric.upper()})", fontsize=11, fontweight="bold")
+    # Overlay custom text annotations to make zeros smaller and washed out
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            val = matrix.iloc[i, j]
+            if val == 0:
+                ax.text(
+                    j + 0.5, i + 0.5, "0.0",
+                    ha="center", va="center",
+                    fontsize=6.5, color="#888888", alpha=0.35
+                )
+            else:
+                ax.text(
+                    j + 0.5, i + 0.5, f"{val:.2f}",
+                    ha="center", va="center",
+                    fontsize=8.5, color="#000000"
+                )
+
+    plt.title(f"Clustered Co-occurrence Matrix: {category_a_name} vs {category_b_name} ({metric.upper()})", fontsize=11, fontweight="bold")
     plt.xlabel(category_b_name, fontsize=10)
     plt.ylabel(category_a_name, fontsize=10)
     plt.xticks(rotation=45, ha="right", fontsize=9)
@@ -225,7 +256,7 @@ def save_top20_category_heatmap(
     
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
-    print(f"Heatmap successfully saved to: {output_path}")
+    print(f"Clustered heatmap successfully saved to: {output_path}")
 
 
 # ==========================================

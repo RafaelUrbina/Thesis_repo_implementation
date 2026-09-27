@@ -1,69 +1,68 @@
 term_1,term_2,co_occurrences,freq_term_1,freq_term_2,npmi
-hydrant,hydraulic head,11,56,26,0.7275
-water network,vegetation intrusion,25,226,29,0.7172
-fire hydrant,hydraulic head,9,49,26,0.7047
-trunk line,hydraulic head,5,31,26,0.6498
-water network,terrain motion,20,226,36,0.6469
-anchor block,vegetation,2,2,180,0.5847
-water network,terrain movement,4,226,5,0.5802
-storm sewer,storm drain,3,12,63,0.5752
-float valve,river discharge,3,114,9,0.5459
-backwash system,flood,5,9,281,0.5345
-main line,hydraulic head,4,76,26,0.5251
-water main,hydraulic head,5,110,26,0.5221
-culvert,eps,10,290,29,0.5196
-water network,vertical terrain movement,5,226,13,0.5194
-levee,altitude,2,9,85,0.5151
-main line,discharge rate,5,76,44,0.5064
-siphon,large lakes,3,271,6,0.5017
-drainage pump,discharge rate,6,110,44,0.4966
-receiver,storm,48,485,248,0.4834
-perforated pipe,irrigation channel,4,108,29,0.4797
-water network,soil moisture,10,226,56,0.4753
-flange adapter,hydraulic pressure,3,6,454,0.4522
-drainage pipe,slope gradient,2,524,3,0.4486
-storm sewer,storm,3,12,248,0.4438
-outfall,flood,2,6,281,0.4422
-rtu,streams,3,13,256,0.433
-sewer main,earthquakes,2,59,32,0.4317
-diffuser,avalanche,3,913,4,0.4241
-drainage ditch,heavy rain,3,14,292,0.4133
-pumping station,discharge rate,4,160,44,0.3998
-reducer,pid,3,126,41,0.3909
-sedimentation basin,large lakes,3,892,6,0.3875
-perforated pipe,drought,6,108,130,0.3872
-hydraulic valve,hydraulic pressure,2,7,454,0.3837
-gauge,water level,176,316,4940,0.3834
-vessel,ice formation,4,1109,8,0.377
-regulating valve,aquifer,7,160,124,0.3734
-basin,large lakes,3,1117,6,0.3659
-drainage ditch,flood,2,14,281,0.364
-water network,vegetation,11,226,180,0.3628
-retaining wall,vegetation,3,41,180,0.3567
-receiver,transmission loss,2,485,9,0.3544
-bore,hydraulic head,2,173,26,0.3516
-levee,flooding,2,9,516,0.3487
-water channel,irrigation channel,4,413,29,0.3474
-surge tank,wind,2,18,267,0.3455
-filter bed,discharge rate,2,112,44,0.3432
-water main,cities,2,110,45,0.3428
-meter box,wind,3,34,267,0.3368
-submersible pump,riverbed,2,178,31,0.3327
-sewer main,heavy rains,2,59,96,0.3303
-drainage line,storm drain,2,100,63,0.3205
-drainage pipe,ground subsidence,10,524,103,0.3181
-downspout,rainwater,10,12,4573,0.3163
-ball valve,elevation,2,100,66,0.3162
-air injector,storm water,2,27,249,0.3145
-infiltration basin,rainwater,5,5,4573,0.3125
-combined sewer,inundation,3,75,160,0.3101
-surge tank,bed,5,18,1307,0.3097
-drainage pump,inundation,4,110,160,0.3095
-combined sewer,erosion,2,75,97,0.3072
-pumping station,flood,8,160,281,0.3063
-combined sewer,rainfall,14,75,1246,0.3062
-nozzle,groundwater table,2,1843,4,0.306
-water intake,ccp,5,719,35,0.3029
-overflow pipe,storm water,7,157,249,0.3027
-filter bed,bed,19,112,1307,0.3004
-siphon,irrigation channel,2,271,29,0.3001
+hydrant,hydraulic head,11,56,26,0.7287
+water network,vegetation intrusion,25,226,29,0.7185
+fire hydrant,hydraulic head,9,49,26,0.7059
+trunk line,hydraulic head,5,31,26,0.6512
+water network,terrain motion,20,226,36,0.6485
+water network,terrain movement,4,226,5,0.5818
+anchor block,vegetation,2,2,193,0.5797
+storm sewer,storm drain,3,12,77,0.5576
+float valve,river discharge,3,114,9,0.5475
+backwash system,flood,5,9,286,0.5346
+main line,hydraulic head,4,76,26,0.5269
+water main,hydraulic head,5,110,26,0.524
+water network,vertical terrain movement,5,226,13,0.5213
+culvert,eps,10,290,31,0.5144
+main line,discharge rate,5,76,46,0.5038
+siphon,large lakes,3,276,6,0.5018
+drainage pump,discharge rate,6,111,46,0.4931
+levee,altitude,2,11,94,0.4891
+receiver,storm,52,496,277,0.4842
+water network,soil moisture,10,226,56,0.4775
+perforated pipe,irrigation channel,4,125,29,0.4673
+flange adapter,hydraulic pressure,3,6,472,0.4506
+drainage pipe,slope gradient,2,542,3,0.4475
+outfall,flood,2,6,286,0.4425
+storm sewer,storm,3,12,277,0.4353
+sewer main,earthquakes,2,59,32,0.4338
+rtu,streams,3,13,262,0.4329
+levee,flooding,4,11,534,0.4199
+diffuser,avalanche,3,999,4,0.4177
+drainage ditch,heavy rain,3,14,300,0.4129
+pumping station,discharge rate,4,167,46,0.3935
+sedimentation basin,large lakes,3,917,6,0.3871
+reducer,pid,3,133,42,0.3857
+gauge,water level,186,344,5176,0.3785
+vessel,ice formation,4,1130,8,0.3775
+perforated pipe,drought,6,125,135,0.3708
+regulating valve,aquifer,7,163,132,0.3675
+basin,large lakes,3,1136,6,0.3667
+drainage ditch,flood,2,14,286,0.3646
+hydraulic valve,hydraulic pressure,2,9,472,0.3592
+water network,vegetation,11,226,193,0.3579
+receiver,transmission loss,2,496,9,0.3546
+bore,hydraulic head,2,173,26,0.3539
+pipe support,ground subsidence,2,40,113,0.3535
+retaining wall,vegetation,3,41,193,0.3524
+water channel,irrigation channel,4,417,29,0.349
+surge tank,wind,2,18,275,0.3451
+filter bed,discharge rate,2,117,46,0.3374
+water main,cities,2,110,49,0.3373
+meter box,wind,3,36,275,0.331
+sewer main,heavy rains,2,59,104,0.3254
+downspout,rainwater,10,12,4858,0.3126
+overflow pipe,storm water,8,167,264,0.3112
+surge tank,bed,5,18,1344,0.3095
+infiltration basin,rainwater,5,5,4858,0.3091
+drainage pump,inundation,4,111,165,0.3082
+submersible pump,riverbed,2,190,39,0.308
+drainage pipe,ground subsidence,10,542,113,0.3073
+combined sewer,inundation,3,78,165,0.3059
+nozzle,groundwater table,2,1918,4,0.3048
+drainage line,storm drain,2,100,77,0.3045
+ball valve,elevation,2,111,70,0.3036
+filter bed,bed,20,117,1344,0.303
+pumping station,flood,8,167,286,0.3027
+air injector,storm water,2,30,264,0.3019
+combined sewer,erosion,2,78,102,0.3015
+siphon,irrigation channel,2,276,29,0.3009
