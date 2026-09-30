@@ -132,8 +132,7 @@ ex:Term_ActiveWaterFeatures a ex:SurfaceForm ;
 
 ex:Term_ActsAsACatalystFor a ex:SurfaceForm ;
     rdfs:label "acts as a catalyst for"@en ;
-    ex:hasLemma ex:Lemma_ActAsACatalystFor ;
-    skos:altLabel "aaacf"@en .
+    ex:hasLemma ex:Lemma_ActAsACatalystFor .
 
 ex:Term_ActsOn a ex:SurfaceForm ;
     rdfs:label "acts on"@en ;
@@ -197,8 +196,7 @@ ex:Term_Affect a ex:SurfaceForm ;
 
 ex:Term_AffectTheRateOf a ex:SurfaceForm ;
     rdfs:label "affect the rate of"@en ;
-    ex:hasLemma ex:Lemma_AffectTheRateOf ;
-    skos:altLabel "atro"@en .
+    ex:hasLemma ex:Lemma_AffectTheRateOf .
 
 ex:Term_Affected a ex:SurfaceForm ;
     rdfs:label "affected"@en ;
@@ -274,8 +272,7 @@ ex:Term_Altering a ex:SurfaceForm ;
 
 ex:Term_AlternateWettingAndDrying a ex:SurfaceForm ;
     rdfs:label "alternate wetting and drying"@en ;
-    ex:hasLemma ex:Lemma_AlternateWettingAndDrying ;
-    skos:altLabel "awad"@en .
+    ex:hasLemma ex:Lemma_AlternateWettingAndDrying .
 
 ex:Term_Alters a ex:SurfaceForm ;
     rdfs:label "alters"@en ;
@@ -427,8 +424,7 @@ ex:Term_ArisingFrom a ex:SurfaceForm ;
 
 ex:Term_AsAConsequenceOf a ex:SurfaceForm ;
     rdfs:label "as a consequence of"@en ;
-    ex:hasLemma ex:Lemma_AsAConsequenceOf ;
-    skos:altLabel "aaco"@en .
+    ex:hasLemma ex:Lemma_AsAConsequenceOf .
 
 ex:Term_AsAResult a ex:SurfaceForm ;
     rdfs:label "as a result"@en ;
@@ -436,8 +432,7 @@ ex:Term_AsAResult a ex:SurfaceForm ;
 
 ex:Term_AsAResultOf a ex:SurfaceForm ;
     rdfs:label "as a result of"@en ;
-    ex:hasLemma ex:Lemma_AsAResultOf ;
-    skos:altLabel "aaro"@en .
+    ex:hasLemma ex:Lemma_AsAResultOf .
 
 ex:Term_AsComparedTo a ex:SurfaceForm ;
     rdfs:label "as compared to"@en ;
@@ -609,8 +604,7 @@ ex:Term_BeAssociatedWith a ex:SurfaceForm ;
 
 ex:Term_BePartiallyResponsibleFor a ex:SurfaceForm ;
     rdfs:label "be partially responsible for"@en ;
-    ex:hasLemma ex:Lemma_BePartiallyResponsibleFor ;
-    skos:altLabel "bprf"@en .
+    ex:hasLemma ex:Lemma_BePartiallyResponsibleFor .
 
 ex:Term_BeSubjected a ex:SurfaceForm ;
     rdfs:label "be subjected"@en ;
@@ -923,8 +917,7 @@ ex:Term_Burst a ex:SurfaceForm ;
 
 ex:Term_BurstPressureThresholdFailure a ex:SurfaceForm ;
     rdfs:label "burst pressure threshold failure"@en ;
-    ex:hasLemma ex:Lemma_BurstPressureThresholdFailure ;
-    skos:altLabel "bptf"@en .
+    ex:hasLemma ex:Lemma_BurstPressureThresholdFailure .
 
 ex:Term_ButterflyValve a ex:SurfaceForm ;
     rdfs:label "butterfly valve"@en ;
@@ -964,8 +957,7 @@ ex:Term_CalibratedOrifice a ex:SurfaceForm ;
 
 ex:Term_CanBeAttributedTo a ex:SurfaceForm ;
     rdfs:label "can be attributed to"@en ;
-    ex:hasLemma ex:Lemma_CanBeAttributeTo ;
-    skos:altLabel "cbat"@en .
+    ex:hasLemma ex:Lemma_CanBeAttributeTo .
 
 ex:Term_CanBePlaced a ex:SurfaceForm ;
     rdfs:label "can be placed"@en ;
@@ -981,8 +973,7 @@ ex:Term_CanCause a ex:SurfaceForm ;
 
 ex:Term_CanGiveRiseTo a ex:SurfaceForm ;
     rdfs:label "can give rise to"@en ;
-    ex:hasLemma ex:Lemma_CanGiveRiseTo ;
-    skos:altLabel "cgrt"@en .
+    ex:hasLemma ex:Lemma_CanGiveRiseTo .
 
 ex:Term_CanGo a ex:SurfaceForm ;
     rdfs:label "can go"@en ;
@@ -1250,8 +1241,7 @@ ex:Term_ChlorideStress a ex:SurfaceForm ;
 
 ex:Term_ChlorideStressCorrosionCracking a ex:SurfaceForm ;
     rdfs:label "chloride stress corrosion cracking"@en ;
-    ex:hasLemma ex:Lemma_ChlorideStressCorrosionCracking ;
-    skos:altLabel "cscc"@en .
+    ex:hasLemma ex:Lemma_ChlorideStressCorrosionCracking .
 
 ex:Term_ChlorinationStation a ex:SurfaceForm ;
     rdfs:label "chlorination station"@en ;
@@ -1379,8 +1369,7 @@ ex:Term_CohesiveSoilMatrix a ex:SurfaceForm ;
 
 ex:Term_ColdAirDrainageZone a ex:SurfaceForm ;
     rdfs:label "cold air drainage zone"@en ;
-    ex:hasLemma ex:Lemma_ColdAirDrainageZone ;
-    skos:altLabel "cadz"@en .
+    ex:hasLemma ex:Lemma_ColdAirDrainageZone .
 
 ex:Term_ColdBendDeformation a ex:SurfaceForm ;
     rdfs:label "cold bend deformation"@en ;
@@ -1412,13 +1401,11 @@ ex:Term_Collapse a ex:SurfaceForm ;
 
 ex:Term_CollapseUnderExternalPressure a ex:SurfaceForm ;
     rdfs:label "collapse under external pressure"@en ;
-    ex:hasLemma ex:Lemma_CollapseUnderExternalPressure ;
-    skos:altLabel "cuep"@en .
+    ex:hasLemma ex:Lemma_CollapseUnderExternalPressure .
 
 ex:Term_CollapseUnderNegativePressure a ex:SurfaceForm ;
     rdfs:label "collapse under negative pressure"@en ;
-    ex:hasLemma ex:Lemma_CollapseUnderNegativePressure ;
-    skos:altLabel "cunp"@en .
+    ex:hasLemma ex:Lemma_CollapseUnderNegativePressure .
 
 ex:Term_CollectionBasin a ex:SurfaceForm ;
     rdfs:label "collection basin"@en ;
@@ -1514,8 +1501,7 @@ ex:Term_ConstrainedBy a ex:SurfaceForm ;
 
 ex:Term_ConstructionAndMaterialDefects a ex:SurfaceForm ;
     rdfs:label "construction and material defects"@en ;
-    ex:hasLemma ex:Lemma_ConstructionAndMaterialDefect ;
-    skos:altLabel "camd"@en .
+    ex:hasLemma ex:Lemma_ConstructionAndMaterialDefect .
 
 ex:Term_ConstructionDamage a ex:SurfaceForm ;
     rdfs:label "construction damage"@en ;
@@ -1531,8 +1517,7 @@ ex:Term_ContactCorrosion a ex:SurfaceForm ;
 
 ex:Term_ContactWithThePipeline a ex:SurfaceForm ;
     rdfs:label "contact with the pipeline"@en ;
-    ex:hasLemma ex:Lemma_ContactWithThePipeline ;
-    skos:altLabel "cwtp"@en .
+    ex:hasLemma ex:Lemma_ContactWithThePipeline .
 
 ex:Term_Contaminants a ex:SurfaceForm ;
     rdfs:label "contaminants"@en ;
@@ -1752,8 +1737,7 @@ ex:Term_DamageResulting a ex:SurfaceForm ;
 
 ex:Term_DamageToInGroundPipelines a ex:SurfaceForm ;
     rdfs:label "damage to in ground pipelines"@en ;
-    ex:hasLemma ex:Lemma_DamageToInGroundPipeline ;
-    skos:altLabel "dtigp"@en .
+    ex:hasLemma ex:Lemma_DamageToInGroundPipeline .
 
 ex:Term_Dampens a ex:SurfaceForm ;
     rdfs:label "dampens"@en ;
@@ -1889,8 +1873,7 @@ ex:Term_DensificationFailure a ex:SurfaceForm ;
 
 ex:Term_DensityOfPublicWaterPoints a ex:SurfaceForm ;
     rdfs:label "density of public water points"@en ;
-    ex:hasLemma ex:Lemma_DensityOfPublicWaterPoint ;
-    skos:altLabel "dopwp"@en .
+    ex:hasLemma ex:Lemma_DensityOfPublicWaterPoint .
 
 ex:Term_Dent a ex:SurfaceForm ;
     rdfs:label "dent"@en ;
@@ -1898,8 +1881,7 @@ ex:Term_Dent a ex:SurfaceForm ;
 
 ex:Term_DentAndGougeCombination a ex:SurfaceForm ;
     rdfs:label "dent and gouge combination"@en ;
-    ex:hasLemma ex:Lemma_DentAndGougeCombination ;
-    skos:altLabel "dagc"@en .
+    ex:hasLemma ex:Lemma_DentAndGougeCombination .
 
 ex:Term_DentDeformation a ex:SurfaceForm ;
     rdfs:label "dent deformation"@en ;
@@ -1931,8 +1913,7 @@ ex:Term_DeprivationIndex a ex:SurfaceForm ;
 
 ex:Term_DepthOfCoverReduction a ex:SurfaceForm ;
     rdfs:label "depth of cover reduction"@en ;
-    ex:hasLemma ex:Lemma_DepthOfCoverReduction ;
-    skos:altLabel "docr"@en .
+    ex:hasLemma ex:Lemma_DepthOfCoverReduction .
 
 ex:Term_DepthTransmitter a ex:SurfaceForm ;
     rdfs:label "depth transmitter"@en ;
@@ -2024,8 +2005,7 @@ ex:Term_DiffusionalDegradation a ex:SurfaceForm ;
 
 ex:Term_DigitalTerrainModelStatistics a ex:SurfaceForm ;
     rdfs:label "digital terrain model statistics"@en ;
-    ex:hasLemma ex:Lemma_DigitalTerrainModelStatistic ;
-    skos:altLabel "dtms"@en .
+    ex:hasLemma ex:Lemma_DigitalTerrainModelStatistic .
 
 ex:Term_Direct-ActingPressureRegulator a ex:SurfaceForm ;
     rdfs:label "direct-acting pressure regulator"@en ;
@@ -2089,8 +2069,7 @@ ex:Term_DisruptedGroundFootprint a ex:SurfaceForm ;
 
 ex:Term_DissolvedAirFlotationUnit a ex:SurfaceForm ;
     rdfs:label "dissolved air flotation unit"@en ;
-    ex:hasLemma ex:Lemma_DissolveAirFlotationUnit ;
-    skos:altLabel "dafu"@en .
+    ex:hasLemma ex:Lemma_DissolveAirFlotationUnit .
 
 ex:Term_DistributionMain a ex:SurfaceForm ;
     rdfs:label "distribution main"@en ;
@@ -2150,8 +2129,7 @@ ex:Term_Double-SubmergedArcWeldDefect a ex:SurfaceForm ;
 
 ex:Term_DoubleCheckValveAssembly a ex:SurfaceForm ;
     rdfs:label "double check valve assembly"@en ;
-    ex:hasLemma ex:Lemma_DoubleCheckValveAssembly ;
-    skos:altLabel "dcva"@en .
+    ex:hasLemma ex:Lemma_DoubleCheckValveAssembly .
 
 ex:Term_DownslopeMovementRate a ex:SurfaceForm ;
     rdfs:label "downslope movement rate"@en ;
@@ -2475,13 +2453,11 @@ ex:Term_Engenders a ex:SurfaceForm ;
 
 ex:Term_EngendersTheCreationOf a ex:SurfaceForm ;
     rdfs:label "engenders the creation of"@en ;
-    ex:hasLemma ex:Lemma_EngenderTheCreationOf ;
-    skos:altLabel "etco"@en .
+    ex:hasLemma ex:Lemma_EngenderTheCreationOf .
 
 ex:Term_EngineRoomOfLocalEconomy a ex:SurfaceForm ;
     rdfs:label "engine room of local economy"@en ;
-    ex:hasLemma ex:Lemma_EngineRoomOfLocalEconomy ;
-    skos:altLabel "erole"@en .
+    ex:hasLemma ex:Lemma_EngineRoomOfLocalEconomy .
 
 ex:Term_Entails a ex:SurfaceForm ;
     rdfs:label "entails"@en ;
@@ -2489,8 +2465,7 @@ ex:Term_Entails a ex:SurfaceForm ;
 
 ex:Term_EntailsTheFormationOf a ex:SurfaceForm ;
     rdfs:label "entails the formation of"@en ;
-    ex:hasLemma ex:Lemma_EntailTheFormationOf ;
-    skos:altLabel "etfo"@en .
+    ex:hasLemma ex:Lemma_EntailTheFormationOf .
 
 ex:Term_EnvironmentalCracking a ex:SurfaceForm ;
     rdfs:label "environmental cracking"@en ;
@@ -2506,8 +2481,7 @@ ex:Term_EnvironmentalDamagePipeline a ex:SurfaceForm ;
 
 ex:Term_EnvironmentalDamageRepairCost a ex:SurfaceForm ;
     rdfs:label "Environmental Damage Repair Cost"@en ;
-    ex:hasLemma ex:Lemma_EnvironmentalDamageRepairCost ;
-    skos:altLabel "edrc"@en .
+    ex:hasLemma ex:Lemma_EnvironmentalDamageRepairCost .
 
 ex:Term_EnvironmentalDegradation a ex:SurfaceForm ;
     rdfs:label "environmental degradation"@en ;
@@ -2615,8 +2589,7 @@ ex:Term_ExcessiveDeflection a ex:SurfaceForm ;
 
 ex:Term_ExertsAnEffectOn a ex:SurfaceForm ;
     rdfs:label "exerts an effect on"@en ;
-    ex:hasLemma ex:Lemma_ExertAnEffectOn ;
-    skos:altLabel "eaeo"@en .
+    ex:hasLemma ex:Lemma_ExertAnEffectOn .
 
 ex:Term_ExfoliationCorrosion a ex:SurfaceForm ;
     rdfs:label "exfoliation corrosion"@en ;
@@ -2700,8 +2673,7 @@ ex:Term_Factor a ex:SurfaceForm ;
 
 ex:Term_FailUnderExtremeColdConditions a ex:SurfaceForm ;
     rdfs:label "fail under extreme cold conditions"@en ;
-    ex:hasLemma ex:Lemma_FailUnderExtremeColdCondition ;
-    skos:altLabel "fuecc"@en .
+    ex:hasLemma ex:Lemma_FailUnderExtremeColdCondition .
 
 ex:Term_FailureMechanism a ex:SurfaceForm ;
     rdfs:label "failure mechanism"@en ;
@@ -2753,8 +2725,7 @@ ex:Term_Fiber-OpticMonitoringSensor a ex:SurfaceForm ;
 
 ex:Term_FiberglassReinforcedPlasticPipe a ex:SurfaceForm ;
     rdfs:label "fiberglass reinforced plastic pipe"@en ;
-    ex:hasLemma ex:Lemma_FiberglassReinforcePlasticPipe ;
-    skos:altLabel "frpp"@en .
+    ex:hasLemma ex:Lemma_FiberglassReinforcePlasticPipe .
 
 ex:Term_FibrousMatrixDegradation a ex:SurfaceForm ;
     rdfs:label "fibrous matrix degradation"@en ;
@@ -3306,8 +3277,7 @@ ex:Term_GivesRiseTo a ex:SurfaceForm ;
 
 ex:Term_GivesRiseToTheOccurrenceOf a ex:SurfaceForm ;
     rdfs:label "gives rise to the occurrence of"@en ;
-    ex:hasLemma ex:Lemma_GiveRiseToTheOccurrenceOf ;
-    skos:altLabel "grttoo"@en .
+    ex:hasLemma ex:Lemma_GiveRiseToTheOccurrenceOf .
 
 ex:Term_GlacialActionDamage a ex:SurfaceForm ;
     rdfs:label "glacial action damage"@en ;
@@ -3451,8 +3421,7 @@ ex:Term_HardnessReduction a ex:SurfaceForm ;
 
 ex:Term_HasABearingOn a ex:SurfaceForm ;
     rdfs:label "has a bearing on"@en ;
-    ex:hasLemma ex:Lemma_HaveABearingOn ;
-    skos:altLabel "habo"@en .
+    ex:hasLemma ex:Lemma_HaveABearingOn .
 
 ex:Term_HasProven a ex:SurfaceForm ;
     rdfs:label "has proven"@en ;
@@ -3508,8 +3477,7 @@ ex:Term_HeavyRains a ex:SurfaceForm ;
 
 ex:Term_HeightAboveNearestDrainage a ex:SurfaceForm ;
     rdfs:label "height above nearest drainage"@en ;
-    ex:hasLemma ex:Lemma_HeightAboveNearDrainage ;
-    skos:altLabel "hand"@en .
+    ex:hasLemma ex:Lemma_HeightAboveNearDrainage .
 
 ex:Term_Heightens a ex:SurfaceForm ;
     rdfs:label "heightens"@en ;
@@ -3542,8 +3510,7 @@ ex:Term_HighHazardZone a ex:SurfaceForm ;
 
 ex:Term_HighTemperatureHydrogenAttack a ex:SurfaceForm ;
     rdfs:label "high temperature hydrogen attack"@en ;
-    ex:hasLemma ex:Lemma_HighTemperatureHydrogenAttack ;
-    skos:altLabel "htha"@en .
+    ex:hasLemma ex:Lemma_HighTemperatureHydrogenAttack .
 
 ex:Term_HighwayCorridor a ex:SurfaceForm ;
     rdfs:label "highway corridor"@en ;
@@ -3583,8 +3550,7 @@ ex:Term_HoopStressFailure a ex:SurfaceForm ;
 
 ex:Term_HorizontalDirectionalDrillingLine a ex:SurfaceForm ;
     rdfs:label "horizontal directional drilling line"@en ;
-    ex:hasLemma ex:Lemma_HorizontalDirectionalDrillingLine ;
-    skos:altLabel "hddl"@en .
+    ex:hasLemma ex:Lemma_HorizontalDirectionalDrillingLine .
 
 ex:Term_HoseBibb a ex:SurfaceForm ;
     rdfs:label "hose bibb"@en ;
@@ -3868,8 +3834,7 @@ ex:Term_ImplicatedIn a ex:SurfaceForm ;
 
 ex:Term_ImposeALimitOn a ex:SurfaceForm ;
     rdfs:label "impose a limit on"@en ;
-    ex:hasLemma ex:Lemma_ImposeALimitOn ;
-    skos:altLabel "ialo"@en .
+    ex:hasLemma ex:Lemma_ImposeALimitOn .
 
 ex:Term_ImposedBy a ex:SurfaceForm ;
     rdfs:label "imposed by"@en ;
@@ -3897,8 +3862,7 @@ ex:Term_In-ServiceWeldingDefect a ex:SurfaceForm ;
 
 ex:Term_InTheEventOf a ex:SurfaceForm ;
     rdfs:label "in the event of"@en ;
-    ex:hasLemma ex:Lemma_InTheEventOf ;
-    skos:altLabel "iteo"@en .
+    ex:hasLemma ex:Lemma_InTheEventOf .
 
 ex:Term_Inaccessible a ex:SurfaceForm ;
     rdfs:label "inaccessible"@en ;
@@ -3946,8 +3910,7 @@ ex:Term_Increase a ex:SurfaceForm ;
 
 ex:Term_IncreaseTheRiskOf a ex:SurfaceForm ;
     rdfs:label "increase the risk of"@en ;
-    ex:hasLemma ex:Lemma_IncreaseTheRiskOf ;
-    skos:altLabel "itro"@en .
+    ex:hasLemma ex:Lemma_IncreaseTheRiskOf .
 
 ex:Term_Increases a ex:SurfaceForm ;
     rdfs:label "increases"@en ;
@@ -3975,8 +3938,7 @@ ex:Term_Induces a ex:SurfaceForm ;
 
 ex:Term_InducesTheFormationOf a ex:SurfaceForm ;
     rdfs:label "induces the formation of"@en ;
-    ex:hasLemma ex:Lemma_InduceTheFormationOf ;
-    skos:altLabel "itfo"@en .
+    ex:hasLemma ex:Lemma_InduceTheFormationOf .
 
 ex:Term_IndustrialBuildingCluster a ex:SurfaceForm ;
     rdfs:label "industrial building cluster"@en ;
@@ -4172,8 +4134,7 @@ ex:Term_IntergranularFracture a ex:SurfaceForm ;
 
 ex:Term_IntergranularStressCorrosionCracking a ex:SurfaceForm ;
     rdfs:label "intergranular stress corrosion cracking"@en ;
-    ex:hasLemma ex:Lemma_IntergranularStressCorrosionCracking ;
-    skos:altLabel "iscc"@en .
+    ex:hasLemma ex:Lemma_IntergranularStressCorrosionCracking .
 
 ex:Term_InternalCorrosion a ex:SurfaceForm ;
     rdfs:label "internal corrosion"@en ;
@@ -4205,8 +4166,7 @@ ex:Term_IntroducedInto a ex:SurfaceForm ;
 
 ex:Term_IntroducedThePotentialFor a ex:SurfaceForm ;
     rdfs:label "introduced the potential for"@en ;
-    ex:hasLemma ex:Lemma_IntroduceThePotentialFor ;
-    skos:altLabel "itpf"@en .
+    ex:hasLemma ex:Lemma_IntroduceThePotentialFor .
 
 ex:Term_IntrusiveRootDamage a ex:SurfaceForm ;
     rdfs:label "intrusive root damage"@en ;
@@ -4234,8 +4194,7 @@ ex:Term_InvertedSiphon a ex:SurfaceForm ;
 
 ex:Term_InvolvingTheAggregationOf a ex:SurfaceForm ;
     rdfs:label "involving the aggregation of"@en ;
-    ex:hasLemma ex:Lemma_InvolveTheAggregationOf ;
-    skos:altLabel "itao"@en .
+    ex:hasLemma ex:Lemma_InvolveTheAggregationOf .
 
 ex:Term_IonExchangeDegradation a ex:SurfaceForm ;
     rdfs:label "ion exchange degradation"@en ;
@@ -4251,13 +4210,11 @@ ex:Term_IrrigationChannel a ex:SurfaceForm ;
 
 ex:Term_IsAFunctionOf a ex:SurfaceForm ;
     rdfs:label "is a function of"@en ;
-    ex:hasLemma ex:Lemma_BeAFunctionOf ;
-    skos:altLabel "iafo"@en .
+    ex:hasLemma ex:Lemma_BeAFunctionOf .
 
 ex:Term_IsAPrerequisiteFor a ex:SurfaceForm ;
     rdfs:label "is a prerequisite for"@en ;
-    ex:hasLemma ex:Lemma_BeAPrerequisiteFor ;
-    skos:altLabel "iapf"@en .
+    ex:hasLemma ex:Lemma_BeAPrerequisiteFor .
 
 ex:Term_IsCausedBy a ex:SurfaceForm ;
     rdfs:label "is caused by"@en ;
@@ -4289,13 +4246,11 @@ ex:Term_IsolationValve a ex:SurfaceForm ;
 
 ex:Term_IspraFloodHazardClass a ex:SurfaceForm ;
     rdfs:label "ispra flood hazard class"@en ;
-    ex:hasLemma ex:Lemma_IspraFloodHazardClass ;
-    skos:altLabel "ifhc"@en .
+    ex:hasLemma ex:Lemma_IspraFloodHazardClass .
 
 ex:Term_IspraLandslideRiskLevel a ex:SurfaceForm ;
     rdfs:label "ispra landslide risk level"@en ;
-    ex:hasLemma ex:Lemma_IspraLandslideRiskLevel ;
-    skos:altLabel "ilrl"@en .
+    ex:hasLemma ex:Lemma_IspraLandslideRiskLevel .
 
 ex:Term_JettingDamage a ex:SurfaceForm ;
     rdfs:label "jetting damage"@en ;
@@ -4479,8 +4434,7 @@ ex:Term_LandslideRiskIndex a ex:SurfaceForm ;
 
 ex:Term_LandslideSurfaceAreaPercentage a ex:SurfaceForm ;
     rdfs:label "Landslide Surface Area Percentage"@en ;
-    ex:hasLemma ex:Lemma_LandslideSurfaceAreaPercentage ;
-    skos:altLabel "lsap"@en .
+    ex:hasLemma ex:Lemma_LandslideSurfaceAreaPercentage .
 
 ex:Term_LandslideTypes a ex:SurfaceForm ;
     rdfs:label "landslide types"@en ;
@@ -4496,8 +4450,7 @@ ex:Term_LargeLakes a ex:SurfaceForm ;
 
 ex:Term_LargeScaleGroundDisplacement a ex:SurfaceForm ;
     rdfs:label "large scale ground displacement"@en ;
-    ex:hasLemma ex:Lemma_LargeScaleGroundDisplacement ;
-    skos:altLabel "lsgd"@en .
+    ex:hasLemma ex:Lemma_LargeScaleGroundDisplacement .
 
 ex:Term_LateralEarthPressure a ex:SurfaceForm ;
     rdfs:label "lateral earth pressure"@en ;
@@ -4521,8 +4474,7 @@ ex:Term_LateralSpread a ex:SurfaceForm ;
 
 ex:Term_LaysTheGroundworkFor a ex:SurfaceForm ;
     rdfs:label "lays the groundwork for"@en ;
-    ex:hasLemma ex:Lemma_LayTheGroundworkFor ;
-    skos:altLabel "ltgf"@en .
+    ex:hasLemma ex:Lemma_LayTheGroundworkFor .
 
 ex:Term_LeachedSoilProfile a ex:SurfaceForm ;
     rdfs:label "leached soil profile"@en ;
@@ -4546,8 +4498,7 @@ ex:Term_LeadsTo a ex:SurfaceForm ;
 
 ex:Term_LeadsToTheOnsetOf a ex:SurfaceForm ;
     rdfs:label "leads to the onset of"@en ;
-    ex:hasLemma ex:Lemma_LeadToTheOnsetOf ;
-    skos:altLabel "lttoo"@en .
+    ex:hasLemma ex:Lemma_LeadToTheOnsetOf .
 
 ex:Term_Leak a ex:SurfaceForm ;
     rdfs:label "leak"@en ;
@@ -4640,8 +4591,7 @@ ex:Term_LiquidMetalEmbrittlement a ex:SurfaceForm ;
 
 ex:Term_LiquidRingVacuumPump a ex:SurfaceForm ;
     rdfs:label "liquid ring vacuum pump"@en ;
-    ex:hasLemma ex:Lemma_LiquidRingVacuumPump ;
-    skos:altLabel "lrvp"@en .
+    ex:hasLemma ex:Lemma_LiquidRingVacuumPump .
 
 ex:Term_LithologicalUnit a ex:SurfaceForm ;
     rdfs:label "lithological unit"@en ;
@@ -4705,13 +4655,11 @@ ex:Term_Low-PressureSewer a ex:SurfaceForm ;
 
 ex:Term_LowIncomePopulationRatio a ex:SurfaceForm ;
     rdfs:label "low income population ratio"@en ;
-    ex:hasLemma ex:Lemma_LowIncomePopulationRatio ;
-    skos:altLabel "lipr"@en .
+    ex:hasLemma ex:Lemma_LowIncomePopulationRatio .
 
 ex:Term_LowProductivityIndustrialDensity a ex:SurfaceForm ;
     rdfs:label "low productivity industrial density"@en ;
-    ex:hasLemma ex:Lemma_LowProductivityIndustrialDensity ;
-    skos:altLabel "lpid"@en .
+    ex:hasLemma ex:Lemma_LowProductivityIndustrialDensity .
 
 ex:Term_LubricatedPlugValve a ex:SurfaceForm ;
     rdfs:label "lubricated plug valve"@en ;
@@ -4931,8 +4879,7 @@ ex:Term_MigrationOf a ex:SurfaceForm ;
 
 ex:Term_MigrationOfFineParticles a ex:SurfaceForm ;
     rdfs:label "migration of fine particles"@en ;
-    ex:hasLemma ex:Lemma_MigrationOfFineParticle ;
-    skos:altLabel "mofp"@en .
+    ex:hasLemma ex:Lemma_MigrationOfFineParticle .
 
 ex:Term_MillScale a ex:SurfaceForm ;
     rdfs:label "mill scale"@en ;
@@ -4956,8 +4903,7 @@ ex:Term_MixingTank a ex:SurfaceForm ;
 
 ex:Term_ModeratelyWellDrainedSoil a ex:SurfaceForm ;
     rdfs:label "moderately well drained soil"@en ;
-    ex:hasLemma ex:Lemma_ModeratelyWellDrainSoil ;
-    skos:altLabel "mwds"@en .
+    ex:hasLemma ex:Lemma_ModeratelyWellDrainSoil .
 
 ex:Term_Modifies a ex:SurfaceForm ;
     rdfs:label "modifies"@en ;
@@ -5381,8 +5327,7 @@ ex:Term_PavementSettlement a ex:SurfaceForm ;
 
 ex:Term_PavesTheWayFor a ex:SurfaceForm ;
     rdfs:label "paves the way for"@en ;
-    ex:hasLemma ex:Lemma_PaveTheWayFor ;
-    skos:altLabel "ptwf"@en .
+    ex:hasLemma ex:Lemma_PaveTheWayFor .
 
 ex:Term_PeakElevation a ex:SurfaceForm ;
     rdfs:label "peak elevation"@en ;
@@ -5426,13 +5371,11 @@ ex:Term_Penstock a ex:SurfaceForm ;
 
 ex:Term_PerCapitaTaxableBase a ex:SurfaceForm ;
     rdfs:label "per capita taxable base"@en ;
-    ex:hasLemma ex:Lemma_PerCapitaTaxableBase ;
-    skos:altLabel "pctb"@en .
+    ex:hasLemma ex:Lemma_PerCapitaTaxableBase .
 
 ex:Term_PercentageOfBareSoil a ex:SurfaceForm ;
     rdfs:label "percentage of bare soil"@en ;
-    ex:hasLemma ex:Lemma_PercentageOfBareSoil ;
-    skos:altLabel "pobs"@en .
+    ex:hasLemma ex:Lemma_PercentageOfBareSoil .
 
 ex:Term_PerchedWaterTable a ex:SurfaceForm ;
     rdfs:label "perched water table"@en ;
@@ -5472,8 +5415,7 @@ ex:Term_Photovoltaic-PoweredMonitoringUnit a ex:SurfaceForm ;
 
 ex:Term_PhysicalAttributesForSoil a ex:SurfaceForm ;
     rdfs:label "physical attributes for soil"@en ;
-    ex:hasLemma ex:Lemma_PhysicalAttributeForSoil ;
-    skos:altLabel "pafs"@en .
+    ex:hasLemma ex:Lemma_PhysicalAttributeForSoil .
 
 ex:Term_PhysicalFailureModes a ex:SurfaceForm ;
     rdfs:label "physical failure modes"@en ;
@@ -5681,13 +5623,11 @@ ex:Term_PlasticityIndex a ex:SurfaceForm ;
 
 ex:Term_PlayARoleInDetermining a ex:SurfaceForm ;
     rdfs:label "play a role in determining"@en ;
-    ex:hasLemma ex:Lemma_PlayARoleInDetermine ;
-    skos:altLabel "parid"@en .
+    ex:hasLemma ex:Lemma_PlayARoleInDetermine .
 
 ex:Term_PlaysAPivotalRoleIn a ex:SurfaceForm ;
     rdfs:label "plays a pivotal role in"@en ;
-    ex:hasLemma ex:Lemma_PlayAPivotalRoleIn ;
-    skos:altLabel "papri"@en .
+    ex:hasLemma ex:Lemma_PlayAPivotalRoleIn .
 
 ex:Term_Plugging a ex:SurfaceForm ;
     rdfs:label "plugging"@en ;
@@ -5731,8 +5671,7 @@ ex:Term_PoreWaterPressure a ex:SurfaceForm ;
 
 ex:Term_PoreWaterPressureBuildup a ex:SurfaceForm ;
     rdfs:label "pore water pressure buildup"@en ;
-    ex:hasLemma ex:Lemma_PoreWaterPressureBuildup ;
-    skos:altLabel "pwpb"@en .
+    ex:hasLemma ex:Lemma_PoreWaterPressureBuildup .
 
 ex:Term_Porosity a ex:SurfaceForm ;
     rdfs:label "porosity"@en ;
@@ -5756,8 +5695,7 @@ ex:Term_PoulticeCorrosion a ex:SurfaceForm ;
 
 ex:Term_PracticalAndTechnicalChallenges a ex:SurfaceForm ;
     rdfs:label "practical and technical challenges"@en ;
-    ex:hasLemma ex:Lemma_PracticalAndTechnicalChallenge ;
-    skos:altLabel "patc"@en .
+    ex:hasLemma ex:Lemma_PracticalAndTechnicalChallenge .
 
 ex:Term_PrecipitableWater a ex:SurfaceForm ;
     rdfs:label "precipitable water"@en ;
@@ -5813,8 +5751,7 @@ ex:Term_PressureReducer a ex:SurfaceForm ;
 
 ex:Term_PressureReducingValveStation a ex:SurfaceForm ;
     rdfs:label "pressure reducing valve station"@en ;
-    ex:hasLemma ex:Lemma_PressureReduceValveStation ;
-    skos:altLabel "prvs"@en .
+    ex:hasLemma ex:Lemma_PressureReduceValveStation .
 
 ex:Term_PressureReliefValve a ex:SurfaceForm ;
     rdfs:label "pressure relief valve"@en ;
@@ -5903,18 +5840,15 @@ ex:Term_Provokes a ex:SurfaceForm ;
 
 ex:Term_ProvokesTheOccurrenceOf a ex:SurfaceForm ;
     rdfs:label "provokes the occurrence of"@en ;
-    ex:hasLemma ex:Lemma_ProvokeTheOccurrenceOf ;
-    skos:altLabel "ptoo"@en .
+    ex:hasLemma ex:Lemma_ProvokeTheOccurrenceOf .
 
 ex:Term_PublicServiceAccessibilityIndex a ex:SurfaceForm ;
     rdfs:label "public service accessibility index"@en ;
-    ex:hasLemma ex:Lemma_PublicServiceAccessibilityIndex ;
-    skos:altLabel "psai"@en .
+    ex:hasLemma ex:Lemma_PublicServiceAccessibilityIndex .
 
 ex:Term_PublicWaterAccessDensity a ex:SurfaceForm ;
     rdfs:label "public water access density"@en ;
-    ex:hasLemma ex:Lemma_PublicWaterAccessDensity ;
-    skos:altLabel "pwad"@en .
+    ex:hasLemma ex:Lemma_PublicWaterAccessDensity .
 
 ex:Term_PublicWaterFountain a ex:SurfaceForm ;
     rdfs:label "public water fountain"@en ;
@@ -6126,8 +6060,7 @@ ex:Term_Regulator a ex:SurfaceForm ;
 
 ex:Term_ReinforcedConcreteCylinderPipe a ex:SurfaceForm ;
     rdfs:label "reinforced concrete cylinder pipe"@en ;
-    ex:hasLemma ex:Lemma_ReinforceConcreteCylinderPipe ;
-    skos:altLabel "rccp"@en .
+    ex:hasLemma ex:Lemma_ReinforceConcreteCylinderPipe .
 
 ex:Term_ReinforcedConcretePipe a ex:SurfaceForm ;
     rdfs:label "reinforced concrete pipe"@en ;
@@ -6579,8 +6512,7 @@ ex:Term_Sea-FloorInstability a ex:SurfaceForm ;
 
 ex:Term_SeaLevelRiseExposure a ex:SurfaceForm ;
     rdfs:label "sea level rise exposure"@en ;
-    ex:hasLemma ex:Lemma_SeaLevelRiseExposure ;
-    skos:altLabel "slre"@en .
+    ex:hasLemma ex:Lemma_SeaLevelRiseExposure .
 
 ex:Term_SealDegradation a ex:SurfaceForm ;
     rdfs:label "seal degradation"@en ;
@@ -6704,8 +6636,7 @@ ex:Term_Settles a ex:SurfaceForm ;
 
 ex:Term_SewageAndStormwaterDischarge a ex:SurfaceForm ;
     rdfs:label "sewage and stormwater discharge"@en ;
-    ex:hasLemma ex:Lemma_SewageAndStormwaterDischarge ;
-    skos:altLabel "sasd"@en .
+    ex:hasLemma ex:Lemma_SewageAndStormwaterDischarge .
 
 ex:Term_SewageEjectionPump a ex:SurfaceForm ;
     rdfs:label "sewage ejection pump"@en ;
@@ -7033,8 +6964,7 @@ ex:Term_SoilTextureClass a ex:SurfaceForm ;
 
 ex:Term_SolarPoweredTelemetryUnit a ex:SurfaceForm ;
     rdfs:label "solar powered telemetry unit"@en ;
-    ex:hasLemma ex:Lemma_SolarPowerTelemetryUnit ;
-    skos:altLabel "sptu"@en .
+    ex:hasLemma ex:Lemma_SolarPowerTelemetryUnit .
 
 ex:Term_SolarRadiationDegradation a ex:SurfaceForm ;
     rdfs:label "solar radiation degradation"@en ;
@@ -7250,8 +7180,7 @@ ex:Term_StressCorrosionCracking a ex:SurfaceForm ;
 
 ex:Term_StressIntensityFactorFailure a ex:SurfaceForm ;
     rdfs:label "stress intensity factor failure"@en ;
-    ex:hasLemma ex:Lemma_StressIntensityFactorFailure ;
-    skos:altLabel "siff"@en .
+    ex:hasLemma ex:Lemma_StressIntensityFactorFailure .
 
 ex:Term_StressRelaxation a ex:SurfaceForm ;
     rdfs:label "stress relaxation"@en ;
@@ -7679,8 +7608,7 @@ ex:Term_TileDrain a ex:SurfaceForm ;
 
 ex:Term_TiltingDiscCheckValve a ex:SurfaceForm ;
     rdfs:label "tilting disc check valve"@en ;
-    ex:hasLemma ex:Lemma_TiltingDiscCheckValve ;
-    skos:altLabel "tdcv"@en .
+    ex:hasLemma ex:Lemma_TiltingDiscCheckValve .
 
 ex:Term_TimberLandCoverage a ex:SurfaceForm ;
     rdfs:label "timber land coverage"@en ;
@@ -7748,8 +7676,7 @@ ex:Term_TranscrystallineCracking a ex:SurfaceForm ;
 
 ex:Term_TransgranularStressCorrosionCracking a ex:SurfaceForm ;
     rdfs:label "transgranular stress corrosion cracking"@en ;
-    ex:hasLemma ex:Lemma_TransgranularStressCorrosionCracking ;
-    skos:altLabel "tscc"@en .
+    ex:hasLemma ex:Lemma_TransgranularStressCorrosionCracking .
 
 ex:Term_TransientDaytimePopulation a ex:SurfaceForm ;
     rdfs:label "transient daytime population"@en ;
@@ -7941,8 +7868,7 @@ ex:Term_UnderlyingCause a ex:SurfaceForm ;
 
 ex:Term_UndesirableWearAndTear a ex:SurfaceForm ;
     rdfs:label "undesirable wear and tear"@en ;
-    ex:hasLemma ex:Lemma_UndesirableWearAndTear ;
-    skos:altLabel "uwat"@en .
+    ex:hasLemma ex:Lemma_UndesirableWearAndTear .
 
 ex:Term_UnintentionalHit a ex:SurfaceForm ;
     rdfs:label "unintentional hit"@en ;
@@ -8019,8 +7945,7 @@ ex:Term_UrbanSprawl a ex:SurfaceForm ;
 
 ex:Term_UsdHydrologicSoilGroup a ex:SurfaceForm ;
     rdfs:label "usd hydrologic soil group"@en ;
-    ex:hasLemma ex:Lemma_UsdHydrologicSoilGroup ;
-    skos:altLabel "uhsg"@en .
+    ex:hasLemma ex:Lemma_UsdHydrologicSoilGroup .
 
 ex:Term_UsedTo a ex:SurfaceForm ;
     rdfs:label "used to"@en ;
@@ -8028,8 +7953,7 @@ ex:Term_UsedTo a ex:SurfaceForm ;
 
 ex:Term_UsedWaterDeliveryVolume a ex:SurfaceForm ;
     rdfs:label "used water delivery volume"@en ;
-    ex:hasLemma ex:Lemma_UseWaterDeliveryVolume ;
-    skos:altLabel "uwdv"@en .
+    ex:hasLemma ex:Lemma_UseWaterDeliveryVolume .
 
 ex:Term_Ust a ex:SurfaceForm ;
     rdfs:label "UST"@en ;
@@ -8105,8 +8029,7 @@ ex:Term_VaporLock a ex:SurfaceForm ;
 
 ex:Term_VariableFrequencyDrivePump a ex:SurfaceForm ;
     rdfs:label "variable frequency drive pump"@en ;
-    ex:hasLemma ex:Lemma_VariableFrequencyDrivePump ;
-    skos:altLabel "vfdp"@en .
+    ex:hasLemma ex:Lemma_VariableFrequencyDrivePump .
 
 ex:Term_VascularDegradation a ex:SurfaceForm ;
     rdfs:label "vascular degradation"@en ;
@@ -8318,8 +8241,7 @@ ex:Term_WaterRetentionCapacity a ex:SurfaceForm ;
 
 ex:Term_WaterRingVacuumPump a ex:SurfaceForm ;
     rdfs:label "water ring vacuum pump"@en ;
-    ex:hasLemma ex:Lemma_WaterRingVacuumPump ;
-    skos:altLabel "wrvp"@en .
+    ex:hasLemma ex:Lemma_WaterRingVacuumPump .
 
 ex:Term_WaterTableDepth a ex:SurfaceForm ;
     rdfs:label "water table depth"@en ;
@@ -8626,7 +8548,6 @@ ex:Lemma_AcidityIndex a owl:Class,
 ex:Lemma_ActAsACatalystFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "aaacf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "act as a catalyst for"@en .
@@ -8816,7 +8737,6 @@ ex:Lemma_Affect a owl:Class,
 ex:Lemma_AffectTheRateOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "atro"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "affect the rate of"@en .
@@ -8957,7 +8877,6 @@ ex:Lemma_Altering a owl:Class,
 ex:Lemma_AlternateWettingAndDrying a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "awad"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "alternate wetting and drying"@en .
@@ -9175,7 +9094,6 @@ ex:Lemma_ArchitecturalDensity a owl:Class,
 ex:Lemma_AsAConsequenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "aaco"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a consequence of"@en .
@@ -9190,7 +9108,6 @@ ex:Lemma_AsAResult a owl:Class,
 ex:Lemma_AsAResultOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:altLabel "aaro"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a result of"@en .
@@ -9464,7 +9381,6 @@ ex:Lemma_BasinSlopeGradient a owl:Class,
 ex:Lemma_BeAFunctionOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "iafo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be a function of"@en .
@@ -9472,7 +9388,6 @@ ex:Lemma_BeAFunctionOf a owl:Class,
 ex:Lemma_BeAPrerequisiteFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "iapf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be a prerequisite for"@en .
@@ -9515,7 +9430,6 @@ ex:Lemma_BeDriveBy a owl:Class,
 ex:Lemma_BePartiallyResponsibleFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "bprf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be partially responsible for"@en .
@@ -10063,7 +9977,6 @@ ex:Lemma_Burst a owl:Class,
 ex:Lemma_BurstPressureThresholdFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
-    skos:altLabel "bptf"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "burst pressure threshold failure"@en .
@@ -10134,7 +10047,6 @@ ex:Lemma_CalibratedOrifice a owl:Class,
 ex:Lemma_CanBeAttributeTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:altLabel "cbat"@en ;
     skos:broader ex:AttributionAndDerivationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be attribute to"@en .
@@ -10163,7 +10075,6 @@ ex:Lemma_CanCause a owl:Class,
 ex:Lemma_CanGiveRiseTo a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:altLabel "cgrt"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can give rise to"@en .
@@ -10626,7 +10537,6 @@ ex:Lemma_ChlorideStress a owl:Class,
 ex:Lemma_ChlorideStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
-    skos:altLabel "cscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "chloride stress corrosion cracking"@en .
@@ -10851,7 +10761,6 @@ ex:Lemma_CohesiveSoilMatrix a owl:Class,
 ex:Lemma_ColdAirDrainageZone a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "cadz"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "cold air drainage zone"@en .
@@ -10908,7 +10817,6 @@ ex:Lemma_Collapse a owl:Class,
 ex:Lemma_CollapseUnderExternalPressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
-    skos:altLabel "cuep"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "collapse under external pressure"@en .
@@ -10916,7 +10824,6 @@ ex:Lemma_CollapseUnderExternalPressure a owl:Class,
 ex:Lemma_CollapseUnderNegativePressure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
-    skos:altLabel "cunp"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "collapse under negative pressure"@en .
@@ -11085,7 +10992,6 @@ ex:Lemma_ConstrainBy a owl:Class,
 ex:Lemma_ConstructionAndMaterialDefect a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "camd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "construction and material defect"@en .
@@ -11114,7 +11020,6 @@ ex:Lemma_ContactCorrosion a owl:Class,
 ex:Lemma_ContactWithThePipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "cwtp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "contact with the pipeline"@en .
@@ -11500,7 +11405,6 @@ ex:Lemma_DamageResult a owl:Class,
 ex:Lemma_DamageToInGroundPipeline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:GeotechnicalAndGroundFailure ;
-    skos:altLabel "dtigp"@en ;
     skos:broader ex:GeotechnicalAndGroundFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "damage to in ground pipeline"@en .
@@ -11732,7 +11636,6 @@ ex:Lemma_DensificationFailure a owl:Class,
 ex:Lemma_DensityOfPublicWaterPoint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "dopwp"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "density of public water point"@en .
@@ -11740,7 +11643,6 @@ ex:Lemma_DensityOfPublicWaterPoint a owl:Class,
 ex:Lemma_DentAndGougeCombination a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
-    skos:altLabel "dagc"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "dent and gouge combination"@en .
@@ -11790,7 +11692,6 @@ ex:Lemma_DeprivationIndex a owl:Class,
 ex:Lemma_DepthOfCoverReduction a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "docr"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "depth of cover reduction"@en .
@@ -11931,7 +11832,6 @@ ex:Lemma_DiffusionalDegradation a owl:Class,
 ex:Lemma_DigitalTerrainModelStatistic a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "dtms"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "digital terrain model statistic"@en .
@@ -12044,7 +11944,6 @@ ex:Lemma_DisruptGroundFootprint a owl:Class,
 ex:Lemma_DissolveAirFlotationUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "dafu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "dissolve air flotation unit"@en .
@@ -12150,7 +12049,6 @@ ex:Lemma_Double-SubmergeArcWeldDefect a owl:Class,
 ex:Lemma_DoubleCheckValveAssembly a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "dcva"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "double check valve assembly"@en .
@@ -12718,7 +12616,6 @@ ex:Lemma_Engender a owl:Class,
 ex:Lemma_EngenderTheCreationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "etco"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "engender the creation of"@en .
@@ -12726,7 +12623,6 @@ ex:Lemma_EngenderTheCreationOf a owl:Class,
 ex:Lemma_EngineRoomOfLocalEconomy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "erole"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "engine room of local economy"@en .
@@ -12741,7 +12637,6 @@ ex:Lemma_Entail a owl:Class,
 ex:Lemma_EntailTheFormationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "etfo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "entail the formation of"@en .
@@ -12770,7 +12665,6 @@ ex:Lemma_EnvironmentalDamagePipeline a owl:Class,
 ex:Lemma_EnvironmentalDamageRepairCost a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_BuiltEnvironmentAndLandUse ;
-    skos:altLabel "edrc"@en ;
     skos:broader ex:Class_BuiltEnvironmentAndLandUse ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "environmental damage repair cost"@en .
@@ -12953,7 +12847,6 @@ ex:Lemma_ExcessiveDeflection a owl:Class,
 ex:Lemma_ExertAnEffectOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "eaeo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exert an effect on"@en .
@@ -13101,7 +12994,6 @@ ex:Lemma_Factor a owl:Class,
 ex:Lemma_FailUnderExtremeColdCondition a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "fuecc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fail under extreme cold condition"@en .
@@ -13186,7 +13078,6 @@ ex:Lemma_Fiber-OpticMonitoringSensor a owl:Class,
 ex:Lemma_FiberglassReinforcePlasticPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "frpp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "fiberglass reinforce plastic pipe"@en .
@@ -14118,7 +14009,6 @@ ex:Lemma_GiveRiseTo a owl:Class,
 ex:Lemma_GiveRiseToTheOccurrenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "grttoo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "give rise to the occurrence of"@en .
@@ -14343,7 +14233,6 @@ ex:Lemma_HardnessReduction a owl:Class,
 ex:Lemma_HaveABearingOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "habo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "have a bearing on"@en .
@@ -14428,7 +14317,6 @@ ex:Lemma_HeavyMetalContamination a owl:Class,
 ex:Lemma_HeightAboveNearDrainage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "hand"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "height above near drainage"@en .
@@ -14486,7 +14374,6 @@ ex:Lemma_HighHazardZone a owl:Class,
 ex:Lemma_HighTemperatureHydrogenAttack a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
-    skos:altLabel "htha"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "high temperature hydrogen attack"@en .
@@ -14557,7 +14444,6 @@ ex:Lemma_HoopStressFailure a owl:Class,
 ex:Lemma_HorizontalDirectionalDrillingLine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "hddl"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "horizontal directional drilling line"@en .
@@ -15027,7 +14913,6 @@ ex:Lemma_ImplicateIn a owl:Class,
 ex:Lemma_ImposeALimitOn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:altLabel "ialo"@en ;
     skos:broader ex:ConditionalAndContributingRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "impose a limit on"@en .
@@ -15077,7 +14962,6 @@ ex:Lemma_In-ServiceWeldingDefect a owl:Class,
 ex:Lemma_InTheEventOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "iteo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "in the event of"@en .
@@ -15155,7 +15039,6 @@ ex:Lemma_IncomeDistributionTier a owl:Class,
 ex:Lemma_IncreaseTheRiskOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "itro"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "increase the risk of"@en .
@@ -15191,7 +15074,6 @@ ex:Lemma_InduceBy a owl:Class,
 ex:Lemma_InduceTheFormationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:altLabel "itfo"@en ;
     skos:broader ex:ConditionalAndContributingRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "induce the formation of"@en .
@@ -15528,7 +15410,6 @@ ex:Lemma_IntergranularFracture a owl:Class,
 ex:Lemma_IntergranularStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
-    skos:altLabel "iscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "intergranular stress corrosion cracking"@en .
@@ -15585,7 +15466,6 @@ ex:Lemma_IntroduceInto a owl:Class,
 ex:Lemma_IntroduceThePotentialFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "itpf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "introduce the potential for"@en .
@@ -15635,7 +15515,6 @@ ex:Lemma_InvertSiphon a owl:Class,
 ex:Lemma_InvolveTheAggregationOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "itao"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "involve the aggregation of"@en .
@@ -15678,7 +15557,6 @@ ex:Lemma_IsolationValve a owl:Class,
 ex:Lemma_IspraFloodHazardClass a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_HydrologicalSettingsAndFloodRisk ;
-    skos:altLabel "ifhc"@en ;
     skos:broader ex:Class_HydrologicalSettingsAndFloodRisk ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ispra flood hazard class"@en .
@@ -15686,7 +15564,6 @@ ex:Lemma_IspraFloodHazardClass a owl:Class,
 ex:Lemma_IspraLandslideRiskLevel a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_GeotechnicalDynamics ;
-    skos:altLabel "ilrl"@en ;
     skos:broader ex:Class_GeotechnicalDynamics ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "ispra landslide risk level"@en .
@@ -15995,7 +15872,6 @@ ex:Lemma_LandslideRiskIndex a owl:Class,
 ex:Lemma_LandslideSurfaceAreaPercentage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_GeotechnicalDynamics ;
-    skos:altLabel "lsap"@en ;
     skos:broader ex:Class_GeotechnicalDynamics ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "landslide surface area percentage"@en .
@@ -16017,7 +15893,6 @@ ex:Lemma_LargeLake a owl:Class,
 ex:Lemma_LargeScaleGroundDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "lsgd"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "large scale ground displacement"@en .
@@ -16060,7 +15935,6 @@ ex:Lemma_LateralSpread a owl:Class,
 ex:Lemma_LayTheGroundworkFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "ltgf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lay the groundwork for"@en .
@@ -16082,7 +15956,6 @@ ex:Lemma_Leaching a owl:Class,
 ex:Lemma_LeadToTheOnsetOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:altLabel "lttoo"@en ;
     skos:broader ex:DirectCausationRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lead to the onset of"@en .
@@ -16231,7 +16104,6 @@ ex:Lemma_LiquidMetalEmbrittlement a owl:Class,
 ex:Lemma_LiquidRingVacuumPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "lrvp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "liquid ring vacuum pump"@en .
@@ -16344,7 +16216,6 @@ ex:Lemma_Low-PressureSewer a owl:Class,
 ex:Lemma_LowIncomePopulationRatio a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "lipr"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "low income population ratio"@en .
@@ -16352,7 +16223,6 @@ ex:Lemma_LowIncomePopulationRatio a owl:Class,
 ex:Lemma_LowProductivityIndustrialDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "lpid"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "low productivity industrial density"@en .
@@ -16738,7 +16608,6 @@ ex:Lemma_MigrationOf a owl:Class,
 ex:Lemma_MigrationOfFineParticle a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "mofp"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "migration of fine particle"@en .
@@ -16781,7 +16650,6 @@ ex:Lemma_MixTank a owl:Class,
 ex:Lemma_ModeratelyWellDrainSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "mwds"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "moderately well drain soil"@en .
@@ -17489,7 +17357,6 @@ ex:Lemma_PassiveFilmBreakdown a owl:Class,
 ex:Lemma_PaveTheWayFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "ptwf"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "pave the way for"@en .
@@ -17588,7 +17455,6 @@ ex:Lemma_Penstock a owl:Class,
 ex:Lemma_PerCapitaTaxableBase a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "pctb"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "per capita taxable base"@en .
@@ -17596,7 +17462,6 @@ ex:Lemma_PerCapitaTaxableBase a owl:Class,
 ex:Lemma_PercentageOfBareSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "pobs"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "percentage of bare soil"@en .
@@ -17667,7 +17532,6 @@ ex:Lemma_Photovoltaic-PowerMonitoringUnit a owl:Class,
 ex:Lemma_PhysicalAttributeForSoil a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "pafs"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "physical attribute for soil"@en .
@@ -18032,7 +17896,6 @@ ex:Lemma_PlasticityIndex a owl:Class,
 ex:Lemma_PlayAPivotalRoleIn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "papri"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "play a pivotal role in"@en .
@@ -18040,7 +17903,6 @@ ex:Lemma_PlayAPivotalRoleIn a owl:Class,
 ex:Lemma_PlayARoleInDetermine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "parid"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "play a role in determine"@en .
@@ -18118,7 +17980,6 @@ ex:Lemma_PoreWaterPressure a owl:Class,
 ex:Lemma_PoreWaterPressureBuildup a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:HydraulicAndOperationalSurgeFailure ;
-    skos:altLabel "pwpb"@en ;
     skos:broader ex:HydraulicAndOperationalSurgeFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "pore water pressure buildup"@en .
@@ -18161,7 +18022,6 @@ ex:Lemma_PoulticeCorrosion a owl:Class,
 ex:Lemma_PracticalAndTechnicalChallenge a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "patc"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "practical and technical challenge"@en .
@@ -18253,7 +18113,6 @@ ex:Lemma_PressureGauge a owl:Class,
 ex:Lemma_PressureReduceValveStation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "prvs"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pressure reduce valve station"@en .
@@ -18416,7 +18275,6 @@ ex:Lemma_Provoke a owl:Class,
 ex:Lemma_ProvokeTheOccurrenceOf a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
-    skos:altLabel "ptoo"@en ;
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "provoke the occurrence of"@en .
@@ -18424,7 +18282,6 @@ ex:Lemma_ProvokeTheOccurrenceOf a owl:Class,
 ex:Lemma_PublicServiceAccessibilityIndex a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "psai"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "public service accessibility index"@en .
@@ -18432,7 +18289,6 @@ ex:Lemma_PublicServiceAccessibilityIndex a owl:Class,
 ex:Lemma_PublicWaterAccessDensity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "pwad"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "public water access density"@en .
@@ -18804,7 +18660,6 @@ ex:Lemma_Regulator a owl:Class,
 ex:Lemma_ReinforceConcreteCylinderPipe a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "rccp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "reinforce concrete cylinder pipe"@en .
@@ -19575,7 +19430,6 @@ ex:Lemma_Sea-FloorInstability a owl:Class,
 ex:Lemma_SeaLevelRiseExposure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "slre"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "sea level rise exposure"@en .
@@ -19786,7 +19640,6 @@ ex:Lemma_SettlementTank a owl:Class,
 ex:Lemma_SewageAndStormwaterDischarge a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "sasd"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "sewage and stormwater discharge"@en .
@@ -20354,7 +20207,6 @@ ex:Lemma_SoilTextureClass a owl:Class,
 ex:Lemma_SolarPowerTelemetryUnit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "sptu"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "solar power telemetry unit"@en .
@@ -20719,7 +20571,6 @@ ex:Lemma_StressConcentration a owl:Class,
 ex:Lemma_StressIntensityFactorFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
-    skos:altLabel "siff"@en ;
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "stress intensity factor failure"@en .
@@ -21455,7 +21306,6 @@ ex:Lemma_TileDrain a owl:Class,
 ex:Lemma_TiltingDiscCheckValve a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "tdcv"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "tilting disc check valve"@en .
@@ -21575,7 +21425,6 @@ ex:Lemma_TranscrystallineCrack a owl:Class,
 ex:Lemma_TransgranularStressCorrosionCracking a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CorrosionAndElectrochemicalFailure ;
-    skos:altLabel "tscc"@en ;
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "transgranular stress corrosion cracking"@en .
@@ -21912,7 +21761,6 @@ ex:Lemma_UnderlyingCause a owl:Class,
 ex:Lemma_UndesirableWearAndTear a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:MechanicalAndStructuralFailure ;
-    skos:altLabel "uwat"@en ;
     skos:broader ex:MechanicalAndStructuralFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "undesirable wear and tear"@en .
@@ -22047,7 +21895,6 @@ ex:Lemma_UrbanSprawl a owl:Class,
 ex:Lemma_UsdHydrologicSoilGroup a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_PedologicalProperties ;
-    skos:altLabel "uhsg"@en ;
     skos:broader ex:Class_PedologicalProperties ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "usd hydrologic soil group"@en .
@@ -22062,7 +21909,6 @@ ex:Lemma_UseTo a owl:Class,
 ex:Lemma_UseWaterDeliveryVolume a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_SocioEconomicIndicators ;
-    skos:altLabel "uwdv"@en ;
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "use water delivery volume"@en .
@@ -22196,7 +22042,6 @@ ex:Lemma_VaporLock a owl:Class,
 ex:Lemma_VariableFrequencyDrivePump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "vfdp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "variable frequency drive pump"@en .
@@ -22554,7 +22399,6 @@ ex:Lemma_WaterRetentionCapacity a owl:Class,
 ex:Lemma_WaterRingVacuumPump a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
-    skos:altLabel "wrvp"@en ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "water ring vacuum pump"@en .

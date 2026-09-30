@@ -4,32 +4,86 @@
 <key id="d2" for="edge" attr.name="trigger" attr.type="string"/>
 <key id="d1" for="edge" attr.name="weight" attr.type="long"/>
 <key id="d0" for="node" attr.name="node_type" attr.type="string"/>
-<graph edgedefault="directed"><node id="heat exchanger">
+<graph edgedefault="directed"><node id="reservoir">
   <data key="d0">Technical</data>
+</node>
+<node id="water level">
+  <data key="d0">Attribute</data>
+</node>
+<node id="metering pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="discharge pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="sensor">
+  <data key="d0">Technical</data>
+</node>
+<node id="valve">
+  <data key="d0">Technical</data>
+</node>
+<node id="tank">
+  <data key="d0">Technical</data>
+</node>
+<node id="nozzle">
+  <data key="d0">Technical</data>
+</node>
+<node id="contamination">
+  <data key="d0">Failure</data>
+</node>
+<node id="precipitation">
+  <data key="d0">Attribute</data>
+</node>
+<node id="diffuser">
+  <data key="d0">Technical</data>
+</node>
+<node id="decay">
+  <data key="d0">Failure</data>
+</node>
+<node id="earthquake">
+  <data key="d0">Attribute</data>
+</node>
+<node id="clay">
+  <data key="d0">Attribute</data>
+</node>
+<node id="permeability coefficient">
+  <data key="d0">Attribute</data>
+</node>
+<node id="conduit">
+  <data key="d0">Technical</data>
+</node>
+<node id="block">
+  <data key="d0">Failure</data>
+</node>
+<node id="rainwater">
+  <data key="d0">Attribute</data>
+</node>
+<node id="levee">
+  <data key="d0">Technical</data>
+</node>
+<node id="hydraulic pressure">
+  <data key="d0">Attribute</data>
+</node>
+<node id="sluice">
+  <data key="d0">Technical</data>
+</node>
+<node id="water channel">
+  <data key="d0">Technical</data>
+</node>
+<node id="waterway">
+  <data key="d0">Attribute</data>
 </node>
 <node id="temperature">
   <data key="d0">Attribute</data>
 </node>
-<node id="freezing">
+<node id="degradation">
   <data key="d0">Failure</data>
 </node>
-<node id="filter press">
+<node id="heat exchanger">
   <data key="d0">Technical</data>
-</node>
-<node id="ash">
-  <data key="d0">Attribute</data>
-</node>
-<node id="chamber">
-  <data key="d0">Technical</data>
-</node>
-<node id="add">
-  <data key="d0">Failure</data>
-</node>
-<node id="impeller">
-  <data key="d0">Technical</data>
-</node>
-<node id="nature">
-  <data key="d0">Attribute</data>
 </node>
 <node id="oxidation">
   <data key="d0">Failure</data>
@@ -37,196 +91,313 @@
 <node id="vessel">
   <data key="d0">Technical</data>
 </node>
-<node id="perforated pipe">
+<node id="regulator">
   <data key="d0">Technical</data>
 </node>
-<node id="pump">
+<node id="water main">
   <data key="d0">Technical</data>
 </node>
-<node id="tank">
-  <data key="d0">Technical</data>
-</node>
-<node id="drain">
-  <data key="d0">Technical</data>
-</node>
-<node id="flow control valve">
-  <data key="d0">Technical</data>
-</node>
-<node id="fouling">
-  <data key="d0">Failure</data>
-</node>
-<node id="discharge pipe">
-  <data key="d0">Technical</data>
-</node>
-<node id="lid">
+<node id="city">
   <data key="d0">Attribute</data>
 </node>
-<node id="pit">
-  <data key="d0">Failure</data>
-</node>
-<node id="contaminants">
-  <data key="d0">Failure</data>
-</node>
-<node id="bed">
-  <data key="d0">Attribute</data>
-</node>
-<node id="void">
-  <data key="d0">Failure</data>
-</node>
-<node id="pressure sensor">
-  <data key="d0">Technical</data>
-</node>
-<node id="joint">
-  <data key="d0">Technical</data>
-</node>
-<node id="hand">
-  <data key="d0">Attribute</data>
-</node>
-<node id="crushing">
-  <data key="d0">Failure</data>
-</node>
-<edge source="heat exchanger" target="temperature">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1", "EP-0008176-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="temperature" target="freezing">
-  <data key="d1">1</data>
-  <data key="d2">result in</data>
-  <data key="d3">["EP-0008176-B1"]</data>
-  <data key="d4">["result in"]</data>
-</edge>
-<edge source="temperature" target="oxidation">
-  <data key="d1">2</data>
-  <data key="d2">associated with</data>
-  <data key="d3">["EP-0069220-B1"]</data>
-  <data key="d4">["introduced into", "associated with"]</data>
-</edge>
-<edge source="temperature" target="fouling">
-  <data key="d1">1</data>
-  <data key="d2">becomes</data>
-  <data key="d3">["EP-0070989-B1"]</data>
-  <data key="d4">["becomes"]</data>
-</edge>
-<edge source="temperature" target="contaminants">
-  <data key="d1">1</data>
-  <data key="d2">via</data>
-  <data key="d3">["EP-0119205-B1"]</data>
-  <data key="d4">["via"]</data>
-</edge>
-<edge source="filter press" target="ash">
+<edge source="reservoir" target="water level">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d3">["KR-102715270-B1"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="ash" target="add">
-  <data key="d1">1</data>
-  <data key="d2">due to</data>
-  <data key="d3">["EP-0019176-B1"]</data>
-  <data key="d4">["due to"]</data>
-</edge>
-<edge source="chamber" target="ash">
-  <data key="d1">1</data>
+<edge source="reservoir" target="earthquake">
+  <data key="d1">5</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="chamber" target="temperature">
+<edge source="reservoir" target="clay">
+  <data key="d1">4</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="reservoir" target="permeability coefficient">
   <data key="d1">3</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="impeller" target="nature">
+<edge source="reservoir" target="rainwater">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="nature" target="oxidation">
+<edge source="water level" target="contamination">
+  <data key="d1">3</data>
+  <data key="d2">drive</data>
+  <data key="d3">["KR-102715270-B1", "KR-200395622-Y1"]</data>
+  <data key="d4">["to prevent", "thereby", "drive"]</data>
+</edge>
+<edge source="metering pump" target="water level">
   <data key="d1">1</data>
-  <data key="d2">may</data>
-  <data key="d3">["EP-0058225-B1"]</data>
-  <data key="d4">["may"]</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="earthquake">
+  <data key="d1">4</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2", "JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="clay">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="permeability coefficient">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="pump" target="city">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="discharge pipe" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="sensor" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="sensor" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-3032245-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="valve" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="valve" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="tank" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="tank" target="precipitation">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="tank" target="earthquake">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="tank" target="city">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="nozzle" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="precipitation" target="decay">
+  <data key="d1">1</data>
+  <data key="d2">to prevent</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["to prevent"]</data>
+</edge>
+<edge source="diffuser" target="precipitation">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="earthquake" target="block">
+  <data key="d1">5</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="earthquake" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">monitoring</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["monitoring"]</data>
+</edge>
+<edge source="clay" target="block">
+  <data key="d1">4</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="permeability coefficient" target="block">
+  <data key="d1">3</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="conduit" target="earthquake">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="conduit" target="clay">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="conduit" target="permeability coefficient">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="conduit" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="rainwater" target="block">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="levee" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="levee" target="hydraulic pressure">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="hydraulic pressure" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">to prevent</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["to prevent"]</data>
+</edge>
+<edge source="sluice" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="sluice" target="hydraulic pressure">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="water channel" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="water channel" target="waterway">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+</edge>
+<edge source="waterway" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">thereby</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["thereby"]</data>
+</edge>
+<edge source="temperature" target="degradation">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["EP-3032245-B1"]</data>
+  <data key="d4">["due to"]</data>
+</edge>
+<edge source="temperature" target="oxidation">
+  <data key="d1">4</data>
+  <data key="d2">receive</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["may", "produce", "receive"]</data>
+</edge>
+<edge source="heat exchanger" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
 </edge>
 <edge source="vessel" target="temperature">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d3">["US-5888389-A"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="perforated pipe" target="temperature">
+<edge source="regulator" target="temperature">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d3">["US-5888389-A"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="pump" target="temperature">
-  <data key="d1">3</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0119205-B1", "EP-0069220-B1", "EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="pump" target="bed">
+<edge source="water main" target="earthquake">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d3">["US-10982416-B2"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="tank" target="temperature">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0119205-B1", "EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="drain" target="temperature">
+<edge source="water main" target="city">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d3">["US-10982416-B2"]</data>
   <data key="d4">["context_pair"]</data>
 </edge>
-<edge source="flow control valve" target="temperature">
+<edge source="city" target="contamination">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="discharge pipe" target="lid">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0084398-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="lid" target="pit">
-  <data key="d1">2</data>
-  <data key="d2">while</data>
-  <data key="d3">["EP-0084398-B1"]</data>
-  <data key="d4">["while", "thus"]</data>
-</edge>
-<edge source="bed" target="void">
-  <data key="d1">2</data>
-  <data key="d2">increase</data>
-  <data key="d3">["EP-0139001-B1"]</data>
-  <data key="d4">["increase"]</data>
-</edge>
-<edge source="pressure sensor" target="bed">
-  <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0139001-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="joint" target="hand">
-  <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0188487-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-</edge>
-<edge source="hand" target="crushing">
-  <data key="d1">1</data>
-  <data key="d2">may</data>
-  <data key="d3">["EP-0188487-B1"]</data>
-  <data key="d4">["may"]</data>
+  <data key="d2">monitoring</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 </graph></graphml>

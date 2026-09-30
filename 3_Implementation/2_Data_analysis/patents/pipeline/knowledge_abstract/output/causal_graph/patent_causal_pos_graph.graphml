@@ -6,32 +6,86 @@
 <key id="d2" for="edge" attr.name="trigger" attr.type="string"/>
 <key id="d1" for="edge" attr.name="weight" attr.type="long"/>
 <key id="d0" for="node" attr.name="node_type" attr.type="string"/>
-<graph edgedefault="directed"><node id="heat exchanger">
+<graph edgedefault="directed"><node id="reservoir">
   <data key="d0">Technical</data>
+</node>
+<node id="water level">
+  <data key="d0">Attribute</data>
+</node>
+<node id="metering pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="pump">
+  <data key="d0">Technical</data>
+</node>
+<node id="discharge pipe">
+  <data key="d0">Technical</data>
+</node>
+<node id="sensor">
+  <data key="d0">Technical</data>
+</node>
+<node id="valve">
+  <data key="d0">Technical</data>
+</node>
+<node id="tank">
+  <data key="d0">Technical</data>
+</node>
+<node id="nozzle">
+  <data key="d0">Technical</data>
+</node>
+<node id="contamination">
+  <data key="d0">Failure</data>
+</node>
+<node id="precipitation">
+  <data key="d0">Attribute</data>
+</node>
+<node id="diffuser">
+  <data key="d0">Technical</data>
+</node>
+<node id="decay">
+  <data key="d0">Failure</data>
+</node>
+<node id="earthquake">
+  <data key="d0">Attribute</data>
+</node>
+<node id="clay">
+  <data key="d0">Attribute</data>
+</node>
+<node id="permeability coefficient">
+  <data key="d0">Attribute</data>
+</node>
+<node id="conduit">
+  <data key="d0">Technical</data>
+</node>
+<node id="block">
+  <data key="d0">Failure</data>
+</node>
+<node id="rainwater">
+  <data key="d0">Attribute</data>
+</node>
+<node id="levee">
+  <data key="d0">Technical</data>
+</node>
+<node id="hydraulic pressure">
+  <data key="d0">Attribute</data>
+</node>
+<node id="sluice">
+  <data key="d0">Technical</data>
+</node>
+<node id="water channel">
+  <data key="d0">Technical</data>
+</node>
+<node id="waterway">
+  <data key="d0">Attribute</data>
 </node>
 <node id="temperature">
   <data key="d0">Attribute</data>
 </node>
-<node id="freezing">
+<node id="degradation">
   <data key="d0">Failure</data>
 </node>
-<node id="filter press">
+<node id="heat exchanger">
   <data key="d0">Technical</data>
-</node>
-<node id="ash">
-  <data key="d0">Attribute</data>
-</node>
-<node id="chamber">
-  <data key="d0">Technical</data>
-</node>
-<node id="add">
-  <data key="d0">Failure</data>
-</node>
-<node id="impeller">
-  <data key="d0">Technical</data>
-</node>
-<node id="nature">
-  <data key="d0">Attribute</data>
 </node>
 <node id="oxidation">
   <data key="d0">Failure</data>
@@ -39,244 +93,413 @@
 <node id="vessel">
   <data key="d0">Technical</data>
 </node>
-<node id="perforated pipe">
+<node id="regulator">
   <data key="d0">Technical</data>
 </node>
-<node id="pump">
+<node id="water main">
   <data key="d0">Technical</data>
 </node>
-<node id="tank">
-  <data key="d0">Technical</data>
-</node>
-<node id="drain">
-  <data key="d0">Technical</data>
-</node>
-<node id="flow control valve">
-  <data key="d0">Technical</data>
-</node>
-<node id="fouling">
-  <data key="d0">Failure</data>
-</node>
-<node id="discharge pipe">
-  <data key="d0">Technical</data>
-</node>
-<node id="lid">
+<node id="city">
   <data key="d0">Attribute</data>
 </node>
-<node id="pit">
-  <data key="d0">Failure</data>
-</node>
-<node id="contaminants">
-  <data key="d0">Failure</data>
-</node>
-<node id="bed">
-  <data key="d0">Attribute</data>
-</node>
-<node id="void">
-  <data key="d0">Failure</data>
-</node>
-<node id="pressure sensor">
-  <data key="d0">Technical</data>
-</node>
-<node id="joint">
-  <data key="d0">Technical</data>
-</node>
-<node id="hand">
-  <data key="d0">Attribute</data>
-</node>
-<node id="crushing">
-  <data key="d0">Failure</data>
-</node>
-<edge source="heat exchanger" target="temperature">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1", "EP-0008176-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["disadvantage", "flow", "receptacle", "exchanger", "temperature", "risk", "waste", "water", "cooling", "heat", "solution", "addition", "fouling", "freeze"]</data>
-  <data key="d6">["result", "mention", "prevail", "give", "draw", "occur", "become", "freeze"]</data>
-</edge>
-<edge source="temperature" target="freezing">
-  <data key="d1">1</data>
-  <data key="d2">result in</data>
-  <data key="d3">["EP-0008176-B1"]</data>
-  <data key="d4">["result in"]</data>
-  <data key="d5">["disadvantage", "flow", "receptacle", "exchanger", "temperature", "risk", "waste", "water", "cooling", "heat", "addition"]</data>
-  <data key="d6">["result", "mention", "prevail", "give", "draw", "freeze"]</data>
-</edge>
-<edge source="temperature" target="oxidation">
-  <data key="d1">2</data>
-  <data key="d2">associated with</data>
-  <data key="d3">["EP-0069220-B1"]</data>
-  <data key="d4">["introduced into", "associated with"]</data>
-  <data key="d5">["end", "width", "oxygen", "liquid", "container", "water", "oxidation", "uptake", "gas", "ventilation", "presence", "way", "temperature", "aeration", "apparatus", "nozzle", "pipe", "reaction", "vessel", "basis", "chamber", "process", "level", "place", "cleaning", "wall", "pressure", "distance", "top", "base", "catalyst", "time", "waste", "perforation", "particle", "purification", "bottom", "device", "point", "substance"]</data>
-  <data key="d6">["end", "discharge", "perforate", "characterise", "span", "carry", "situate", "supply", "introduce", "extend", "contain", "fill", "comprise", "take", "construct", "associate", "provide", "incline", "divide", "begin"]</data>
-</edge>
-<edge source="temperature" target="fouling">
-  <data key="d1">1</data>
-  <data key="d2">becomes</data>
-  <data key="d3">["EP-0070989-B1"]</data>
-  <data key="d4">["becomes"]</data>
-  <data key="d5">["solution", "freeze", "fouling"]</data>
-  <data key="d6">["become", "occur"]</data>
-</edge>
-<edge source="temperature" target="contaminants">
-  <data key="d1">1</data>
-  <data key="d2">via</data>
-  <data key="d3">["EP-0119205-B1"]</data>
-  <data key="d4">["via"]</data>
-  <data key="d5">["tank", "feeding", "filter", "wastewater", "buffer", "temperature", "ph", "pump", "system", "device", "displacement", "contaminant"]</data>
-  <data key="d6">["require", "pass", "come", "retain", "ensure", "set"]</data>
-</edge>
-<edge source="filter press" target="ash">
+<edge source="reservoir" target="water level">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d3">["KR-102715270-B1"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["additive", "process", "amount", "solid", "content", "presscake", "need", "weight", "sludge"]</data>
-  <data key="d6">["mention", "add", "dewatere"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="ash" target="add">
-  <data key="d1">1</data>
-  <data key="d2">due to</data>
-  <data key="d3">["EP-0019176-B1"]</data>
-  <data key="d4">["due to"]</data>
-  <data key="d5">["additive", "process", "amount", "solid", "content", "presscake", "need", "weight", "sludge"]</data>
-  <data key="d6">["mention", "add", "dewatere"]</data>
-</edge>
-<edge source="chamber" target="ash">
-  <data key="d1">1</data>
+<edge source="reservoir" target="earthquake">
+  <data key="d1">5</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0019176-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["additive", "process", "amount", "solid", "content", "presscake", "need", "weight", "sludge"]</data>
-  <data key="d6">["mention", "add", "dewatere"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "structure", "top", "which", "outer", "from", "provide", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "occurred", "breaks", "side", "preventing", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "broke", "below", "facility", "space", "block", "conditioner", "through", "suppressing", "characterized", "groundwater", "sheet", "caused", "by", "sec", "furthermore", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "capable", "time", "suppress", "storage", "rising", "skeletal", "as", "purpose", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="chamber" target="temperature">
+<edge source="reservoir" target="clay">
+  <data key="d1">4</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "occurred", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "broke", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="reservoir" target="permeability coefficient">
   <data key="d1">3</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1", "EP-0070989-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["end", "width", "oxygen", "solution", "liquid", "container", "water", "oxidation", "uptake", "gas", "ventilation", "presence", "way", "temperature", "aeration", "apparatus", "nozzle", "pipe", "reaction", "vessel", "basis", "chamber", "process", "level", "place", "cleaning", "wall", "pressure", "distance", "top", "base", "catalyst", "time", "waste", "perforation", "particle", "purification", "bottom", "device", "point", "fouling", "freeze", "substance"]</data>
-  <data key="d6">["end", "discharge", "perforate", "characterise", "become", "span", "carry", "situate", "supply", "introduce", "occur", "extend", "contain", "fill", "comprise", "take", "construct", "associate", "provide", "incline", "divide", "begin"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="impeller" target="nature">
+<edge source="reservoir" target="rainwater">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0058225-B1"]</data>
+  <data key="d3">["JP-5356115-B2"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["bod", "shear", "order", "oxygen", "sludge", "time", "amount", "impeller", "surface", "area", "nature", "contact", "chance", "oxidation", "action", "effect"]</data>
-  <data key="d6">["re", "promote", "dissolve", "coagulate", "increase", "allow", "make", "disintegrate", "activate", "moderate", "come", "hold"]</data>
+  <data key="d5">["same", "method", "structure", "from", "for", "provide", "earthquake", "constructing", "water", "capable", "inflow", "is", "rapid", "time", "reservoir", "storage", "having", "at", "rising", "skeletal", "the", "as", "into", "purpose", "and", "facility", "block", "during", "suppressing", "preventing", "of", "to", "groundwater", "due", "an", "furthermore"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="nature" target="oxidation">
+<edge source="water level" target="contamination">
+  <data key="d1">3</data>
+  <data key="d2">drive</data>
+  <data key="d3">["KR-102715270-B1", "KR-200395622-Y1"]</data>
+  <data key="d4">["to prevent", "thereby", "drive"]</data>
+  <data key="d5">["measurement", "pollution", "part", "determined", "pump", "sprinkled", "third", "transfer", "structure", "contaminated", "adjust", "from", "provide", "reservoir", "present", "stored", "the", "rail", "washing", "according", "close", "area", "and", "sensor", "but", "discharging", "even", "section", "solve", "prevented", "that", "prevent", "of", "to", "problem", "concentration", "second", "projector", "concentrated", "camera", "such", "accordingly", "true", "pipe", "described", "for", "levee", "claims", "description", "discharged", "dioxide", "hydrologic", "quantitative", "cleaning", "spawning", "sprinkling", "long", "drinking", "closed", "preventing", "protection", "movable", "an", "nozzle", "supply", "invention", "alarm", "reaction", "thereby", "drive", "valve", "low", "continuously", "open", "object", "gas", "is", "tank", "should", "above", "generally", "egg", "adopts", "intensive", "be", "amount", "because", "through", "waterway", "outside", "scope", "deep", "by", "unit", "generating", "level", "pressure", "completely", "it", "auxiliary", "inducing", "water", "drainage", "metering", "if", "time", "storage", "aeration", "chlorine", "movement", "device", "integrated", "sluice", "guide", "function", "discharge", "over", "being", "equivalents", "contamination", "hydraulic"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="metering pump" target="water level">
   <data key="d1">1</data>
-  <data key="d2">may</data>
-  <data key="d3">["EP-0058225-B1"]</data>
-  <data key="d4">["may"]</data>
-  <data key="d5">["bod", "shear", "order", "oxygen", "sludge", "time", "amount", "impeller", "surface", "area", "nature", "contact", "chance", "oxidation", "action", "effect"]</data>
-  <data key="d6">["re", "promote", "dissolve", "coagulate", "increase", "allow", "make", "disintegrate", "activate", "moderate", "come", "hold"]</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="earthquake">
+  <data key="d1">4</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2", "JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["control", "out", "part", "provided", "same", "pump", "direction", "all", "clay", "directly", "sufficient", "top", "which", "between", "outer", "both", "from", "covering", "occurs", "allow", "tensile", "pumping", "excavation", "reservoir", "present", "before", "filters", "the", "station", "capacity", "suddenly", "main", "and", "area", "on", "even", "section", "modulating", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "especially", "circulation", "path", "configured", "pipe", "distribution", "functionality", "floating", "automation", "lifted", "private", "for", "or", "different", "remedy", "permeability", "strength", "has", "local", "comprising", "predetermined", "at", "soil", "city", "into", "cm", "combined", "autonomous", "breaks", "side", "automatic", "single", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "panel", "due", "deficiencies", "flow", "supply", "flows", "pumped", "surface", "invention", "fabric", "ingredients", "enters", "them", "purifying", "zones", "low", "reliable", "using", "earthquake", "constructing", "limitation", "is", "monitoring", "tank", "having", "skeleton", "attached", "above", "homogenous", "below", "facility", "situations", "space", "block", "conditioner", "through", "integrate", "characterized", "groundwater", "sheet", "caused", "by", "sec", "high", "permeable", "kinds", "unit", "nonwoven", "way", "down", "forming", "pressure", "fully", "manage", "more", "so", "suppressed", "coefficient", "assembling", "inside", "under", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "constraints", "as", "emergency", "conduit", "flowing", "penetrates", "longitudinal", "system", "crack", "step", "elongation", "condition", "attaching", "line", "user", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="clay">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="permeability coefficient">
+  <data key="d1">3</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="temperature">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["introducing", "mixture", "heat", "reactor", "arrangement", "effluent", "pump", "all", "least", "material", "oxidized", "adapted", "reacted", "within", "oxidize", "sufficient", "reaction", "pressure", "point", "organic", "oxidation", "heater", "from", "for", "sludges", "water", "fluid", "temperature", "time", "has", "comprising", "at", "before", "pressurized", "apparatus", "after", "partially", "the", "above", "into", "conduit", "receive", "undigested", "and", "treating", "produce", "means", "connected", "range", "feed", "with", "initiating", "exchange", "wastewater", "oxidant", "sludge", "exchanger", "critical", "through", "to", "substantially", "maintaining", "pressurize", "one", "supercritical", "second", "exchanged", "may", "first", "injection", "an", "relationship", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="pump" target="city">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="discharge pipe" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="sensor" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="sensor" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["EP-3032245-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["surface", "known", "accordingly", "otherwise", "electrode", "detection", "would", "which", "response", "change", "provide", "or", "coating", "concern", "liquid", "is", "temperature", "malfunction", "required", "anticorrosion", "the", "degradation", "and", "sensor", "performance", "impedance", "whether", "be", "circulating", "interest", "of", "to", "property", "due", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="valve" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="valve" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["at", "example", "between", "the", "reduced", "approximately", "for", "of", "steam", "to", "produce", "psig", "may", "temperature", "pressure", "be"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="tank" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="tank" target="precipitation">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["precipitation", "membrane", "fig", "this", "method", "suspended", "down", "separation", "circulate", "solids", "which", "decay", "or", "feature", "water", "is", "tank", "field", "immersion", "stored", "the", "as", "main", "and", "conventional", "quality", "prevent", "of", "to", "up", "shown", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="tank" target="earthquake">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="tank" target="city">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="nozzle" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-102715270-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["nozzle", "measurement", "camera", "supply", "determined", "pump", "unit", "invention", "accordingly", "generating", "third", "transfer", "alarm", "level", "reaction", "drive", "valve", "pipe", "auxiliary", "water", "gas", "metering", "claims", "reservoir", "storage", "tank", "present", "aeration", "should", "chlorine", "description", "the", "rail", "protection", "washing", "area", "and", "device", "dioxide", "egg", "intensive", "sensor", "integrated", "quantitative", "cleaning", "section", "be", "spawning", "guide", "drinking", "of", "discharge", "concentration", "equivalents", "projector", "contamination", "second", "scope", "concentrated", "by"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="precipitation" target="decay">
+  <data key="d1">1</data>
+  <data key="d2">to prevent</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["to prevent"]</data>
+  <data key="d5">["precipitation", "membrane", "fig", "this", "method", "suspended", "down", "separation", "circulate", "solids", "which", "decay", "or", "feature", "water", "is", "tank", "field", "immersion", "stored", "the", "as", "main", "and", "conventional", "quality", "prevent", "of", "to", "up", "shown", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="diffuser" target="precipitation">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-100472278-B1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["precipitation", "membrane", "fig", "this", "method", "suspended", "down", "separation", "circulate", "solids", "which", "decay", "or", "feature", "water", "is", "tank", "field", "immersion", "stored", "the", "as", "main", "and", "conventional", "quality", "prevent", "of", "to", "up", "shown", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="earthquake" target="block">
+  <data key="d1">5</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "structure", "top", "which", "outer", "from", "provide", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "occurred", "breaks", "side", "preventing", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "broke", "below", "facility", "space", "block", "conditioner", "through", "suppressing", "characterized", "groundwater", "sheet", "caused", "by", "sec", "furthermore", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "capable", "time", "suppress", "storage", "rising", "skeletal", "as", "purpose", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="earthquake" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">monitoring</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["monitoring"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="clay" target="block">
+  <data key="d1">4</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "occurred", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "broke", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="permeability coefficient" target="block">
+  <data key="d1">3</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "occurs", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "suddenly", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "vertical", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "portion", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "ingredients", "enters", "purifying", "using", "earthquake", "constructing", "is", "having", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "use", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "crack", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="conduit" target="earthquake">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "purifying", "using", "earthquake", "constructing", "is", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="conduit" target="clay">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "purifying", "using", "earthquake", "constructing", "is", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="conduit" target="permeability coefficient">
+  <data key="d1">2</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["out", "part", "provided", "same", "pump", "direction", "clay", "top", "which", "outer", "from", "covering", "tensile", "pumping", "excavation", "reservoir", "before", "filters", "the", "and", "on", "even", "section", "with", "wherein", "prevented", "that", "during", "of", "to", "second", "dug", "layer", "ground", "least", "method", "treated", "bottom", "path", "configured", "pipe", "floating", "lifted", "for", "or", "permeability", "strength", "comprising", "predetermined", "at", "soil", "into", "cm", "breaks", "side", "filter", "sudden", "improver", "covers", "polyester", "an", "in", "buoyancy", "due", "flow", "flows", "pumped", "surface", "fabric", "purifying", "using", "earthquake", "constructing", "is", "skeleton", "attached", "above", "below", "facility", "space", "block", "conditioner", "through", "characterized", "groundwater", "sheet", "caused", "by", "sec", "permeable", "unit", "nonwoven", "down", "forming", "more", "so", "suppressed", "coefficient", "assembling", "inside", "water", "extends", "inflow", "rapid", "if", "time", "suppress", "storage", "as", "conduit", "flowing", "penetrates", "longitudinal", "step", "elongation", "attaching", "line", "impermeable", "first"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="conduit" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["introducing", "mixture", "heat", "reactor", "arrangement", "effluent", "pump", "all", "least", "material", "oxidized", "adapted", "reacted", "within", "oxidize", "sufficient", "reaction", "pressure", "point", "organic", "oxidation", "heater", "from", "for", "sludges", "water", "fluid", "temperature", "time", "has", "comprising", "at", "before", "pressurized", "apparatus", "after", "partially", "the", "above", "into", "conduit", "receive", "undigested", "and", "treating", "produce", "means", "connected", "feed", "with", "exchange", "wastewater", "oxidant", "sludge", "exchanger", "critical", "through", "to", "substantially", "maintaining", "pressurize", "one", "supercritical", "second", "exchanged", "first", "injection", "an", "relationship", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="rainwater" target="block">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["JP-5356115-B2"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["same", "method", "structure", "from", "for", "provide", "earthquake", "constructing", "water", "capable", "inflow", "is", "rapid", "time", "reservoir", "storage", "having", "at", "rising", "skeletal", "the", "as", "into", "purpose", "and", "facility", "block", "during", "suppressing", "preventing", "of", "to", "groundwater", "due", "an", "furthermore"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="levee" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["by", "pollution", "invention", "such", "outside", "true", "structure", "level", "pressure", "adjust", "low", "open", "for", "it", "levee", "object", "provide", "drainage", "water", "is", "time", "storage", "present", "stored", "the", "according", "generally", "and", "close", "adopts", "but", "discharging", "hydrologic", "sluice", "sprinkling", "solve", "long", "that", "amount", "prevent", "through", "function", "of", "problem", "to", "contamination", "movable", "an", "hydraulic", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="levee" target="hydraulic pressure">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["by", "pollution", "invention", "such", "outside", "true", "structure", "level", "pressure", "adjust", "low", "open", "for", "it", "levee", "object", "provide", "drainage", "water", "is", "time", "storage", "present", "stored", "the", "according", "generally", "and", "close", "adopts", "but", "discharging", "hydrologic", "sluice", "sprinkling", "solve", "long", "that", "amount", "prevent", "through", "function", "of", "problem", "to", "contamination", "movable", "an", "hydraulic", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="hydraulic pressure" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">to prevent</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["to prevent"]</data>
+  <data key="d5">["by", "pollution", "invention", "such", "outside", "true", "structure", "level", "pressure", "adjust", "low", "open", "for", "it", "levee", "object", "provide", "drainage", "water", "is", "time", "storage", "present", "stored", "the", "according", "generally", "and", "close", "adopts", "but", "discharging", "hydrologic", "sluice", "sprinkling", "solve", "long", "that", "amount", "prevent", "through", "function", "of", "problem", "to", "contamination", "movable", "an", "hydraulic", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="sluice" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["by", "pollution", "invention", "such", "outside", "true", "structure", "level", "pressure", "adjust", "low", "open", "for", "it", "levee", "object", "provide", "drainage", "water", "is", "time", "storage", "present", "stored", "the", "according", "generally", "and", "close", "adopts", "but", "discharging", "hydrologic", "sluice", "sprinkling", "solve", "long", "that", "amount", "prevent", "through", "function", "of", "problem", "to", "contamination", "movable", "an", "hydraulic", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="sluice" target="hydraulic pressure">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["by", "pollution", "invention", "such", "outside", "true", "structure", "level", "pressure", "adjust", "low", "open", "for", "it", "levee", "object", "provide", "drainage", "water", "is", "time", "storage", "present", "stored", "the", "according", "generally", "and", "close", "adopts", "but", "discharging", "hydrologic", "sluice", "sprinkling", "solve", "long", "that", "amount", "prevent", "through", "function", "of", "problem", "to", "contamination", "movable", "an", "hydraulic", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="water channel" target="water level">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["part", "pollution", "invention", "sprinkled", "contaminated", "level", "thereby", "completely", "pipe", "continuously", "described", "low", "from", "inducing", "water", "is", "if", "present", "stored", "the", "above", "according", "movement", "and", "discharged", "even", "prevented", "because", "closed", "of", "over", "preventing", "to", "being", "waterway", "outside", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="water channel" target="waterway">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["part", "pollution", "invention", "sprinkled", "contaminated", "level", "thereby", "completely", "pipe", "continuously", "described", "low", "from", "inducing", "water", "is", "if", "present", "stored", "the", "above", "according", "movement", "and", "discharged", "even", "prevented", "because", "closed", "of", "over", "preventing", "to", "being", "waterway", "outside", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="waterway" target="contamination">
+  <data key="d1">1</data>
+  <data key="d2">thereby</data>
+  <data key="d3">["KR-200395622-Y1"]</data>
+  <data key="d4">["thereby"]</data>
+  <data key="d5">["part", "pollution", "invention", "sprinkled", "contaminated", "level", "thereby", "completely", "pipe", "continuously", "described", "low", "from", "inducing", "water", "is", "if", "present", "stored", "the", "above", "according", "movement", "and", "discharged", "even", "prevented", "because", "closed", "of", "over", "preventing", "to", "being", "waterway", "outside", "deep"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="temperature" target="degradation">
+  <data key="d1">1</data>
+  <data key="d2">due to</data>
+  <data key="d3">["EP-3032245-B1"]</data>
+  <data key="d4">["due to"]</data>
+  <data key="d5">["surface", "known", "accordingly", "otherwise", "electrode", "detection", "would", "which", "response", "change", "provide", "or", "coating", "concern", "liquid", "is", "temperature", "malfunction", "required", "anticorrosion", "the", "degradation", "and", "sensor", "performance", "impedance", "whether", "be", "circulating", "interest", "of", "to", "property", "due", "in"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="temperature" target="oxidation">
+  <data key="d1">4</data>
+  <data key="d2">receive</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["may", "produce", "receive"]</data>
+  <data key="d5">["vessel", "pump", "all", "adapted", "sufficient", "which", "between", "from", "force", "sludges", "weaken", "before", "apparatus", "the", "and", "produce", "means", "connected", "range", "feed", "with", "to", "substantially", "of", "second", "exchanged", "injection", "relationship", "introducing", "arrangement", "reacted", "oxidized", "least", "first", "point", "oxidation", "heater", "for", "fluid", "has", "comprising", "at", "into", "receive", "undigested", "treating", "withstand", "exchanger", "pressurize", "may", "an", "in", "materials", "mixture", "effluent", "material", "within", "steam", "reaction", "organic", "reduced", "psig", "is", "temperature", "after", "partially", "above", "be", "initiating", "exchange", "wastewater", "sludge", "through", "heat", "oxidize", "pressure", "approximately", "water", "time", "conduit", "unable", "example", "oxidant", "critical", "maintaining", "one", "supercritical", "pressurized", "reactor"]</data>
+  <data key="d6">[]</data>
+</edge>
+<edge source="heat exchanger" target="temperature">
+  <data key="d1">1</data>
+  <data key="d2">context_pair</data>
+  <data key="d3">["US-5888389-A"]</data>
+  <data key="d4">["context_pair"]</data>
+  <data key="d5">["introducing", "mixture", "heat", "reactor", "arrangement", "effluent", "pump", "all", "least", "material", "oxidized", "adapted", "reacted", "within", "oxidize", "sufficient", "reaction", "pressure", "point", "organic", "oxidation", "heater", "from", "for", "sludges", "water", "fluid", "temperature", "time", "has", "comprising", "at", "before", "pressurized", "apparatus", "after", "partially", "the", "above", "into", "conduit", "receive", "undigested", "and", "treating", "produce", "means", "connected", "feed", "with", "exchange", "wastewater", "oxidant", "sludge", "exchanger", "critical", "through", "to", "substantially", "maintaining", "pressurize", "one", "supercritical", "second", "exchanged", "first", "injection", "an", "relationship", "in"]</data>
+  <data key="d6">[]</data>
 </edge>
 <edge source="vessel" target="temperature">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d3">["US-5888389-A"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["end", "width", "oxygen", "liquid", "container", "water", "oxidation", "uptake", "gas", "presence", "way", "temperature", "aeration", "apparatus", "pipe", "reaction", "vessel", "basis", "chamber", "level", "place", "wall", "pressure", "distance", "top", "base", "catalyst", "time", "waste", "perforation", "particle", "purification", "bottom", "device", "point", "substance"]</data>
-  <data key="d6">["end", "discharge", "situate", "perforate", "supply", "incline", "take", "characterise", "extend", "provide", "contain", "span", "construct", "associate", "begin", "divide", "comprise"]</data>
+  <data key="d5">["materials", "mixture", "vessel", "material", "reaction", "pressure", "which", "point", "from", "force", "is", "weaken", "at", "the", "unable", "withstand", "of", "to", "may", "reactor"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="perforated pipe" target="temperature">
+<edge source="regulator" target="temperature">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0069220-B1"]</data>
+  <data key="d3">["US-5888389-A"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["end", "width", "oxygen", "liquid", "container", "water", "oxidation", "uptake", "gas", "presence", "way", "temperature", "aeration", "apparatus", "pipe", "reaction", "vessel", "basis", "chamber", "level", "place", "wall", "pressure", "distance", "top", "base", "catalyst", "time", "waste", "perforation", "particle", "purification", "bottom", "device", "point", "substance"]</data>
-  <data key="d6">["end", "discharge", "situate", "perforate", "supply", "incline", "take", "characterise", "extend", "provide", "contain", "span", "construct", "associate", "begin", "divide", "comprise"]</data>
+  <data key="d5">["at", "example", "between", "the", "reduced", "approximately", "for", "of", "steam", "to", "produce", "psig", "may", "temperature", "pressure", "be"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="pump" target="temperature">
-  <data key="d1">3</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0119205-B1", "EP-0069220-B1", "EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["tank", "oxygen", "solution", "buffer", "water", "gas", "contaminant", "ventilation", "wastewater", "temperature", "ph", "system", "nozzle", "displacement", "reaction", "feeding", "chamber", "process", "cleaning", "catalyst", "filter", "waste", "pump", "bottom", "fouling", "device", "freeze"]</data>
-  <data key="d6">["carry", "require", "introduce", "pass", "occur", "come", "retain", "ensure", "contain", "set", "fill", "become"]</data>
-</edge>
-<edge source="pump" target="bed">
+<edge source="water main" target="earthquake">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0139001-B1"]</data>
+  <data key="d3">["US-10982416-B2"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["drop", "increase", "flow", "water", "pump", "bed", "condensate", "decrease", "point", "pressure", "rate", "space", "feedwater"]</data>
-  <data key="d6">["supply", "cause", "result"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="tank" target="temperature">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0119205-B1", "EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["tank", "feeding", "filter", "wastewater", "solution", "buffer", "temperature", "ph", "pump", "system", "fouling", "device", "displacement", "contaminant", "freeze"]</data>
-  <data key="d6">["require", "pass", "occur", "come", "retain", "ensure", "set", "become"]</data>
-</edge>
-<edge source="drain" target="temperature">
+<edge source="water main" target="city">
   <data key="d1">1</data>
   <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1"]</data>
+  <data key="d3">["US-10982416-B2"]</data>
   <data key="d4">["context_pair"]</data>
-  <data key="d5">["solution", "freeze", "fouling"]</data>
-  <data key="d6">["become", "occur"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
 </edge>
-<edge source="flow control valve" target="temperature">
+<edge source="city" target="contamination">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0070989-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["solution", "freeze", "fouling"]</data>
-  <data key="d6">["become", "occur"]</data>
-</edge>
-<edge source="discharge pipe" target="lid">
-  <data key="d1">2</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0084398-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["end", "pot", "relationship", "position", "discharge", "tube", "ring", "sealing", "stub", "water", "invention", "pit", "part", "opening", "pipe", "housing", "trap", "lid"]</data>
-  <data key="d6">["perforate", "say", "relate", "define", "adjust", "carry", "extend", "characterize", "form", "adapt", "connencte", "maintain", "remain", "comprise", "connect", "include", "direct", "support", "provide", "seal"]</data>
-</edge>
-<edge source="lid" target="pit">
-  <data key="d1">2</data>
-  <data key="d2">while</data>
-  <data key="d3">["EP-0084398-B1"]</data>
-  <data key="d4">["while", "thus"]</data>
-  <data key="d5">["end", "pot", "relationship", "position", "discharge", "tube", "ring", "sealing", "stub", "water", "invention", "pit", "part", "opening", "pipe", "housing", "trap", "lid"]</data>
-  <data key="d6">["perforate", "say", "relate", "define", "adjust", "carry", "extend", "characterize", "form", "adapt", "connencte", "maintain", "remain", "comprise", "connect", "include", "direct", "support", "provide", "seal"]</data>
-</edge>
-<edge source="bed" target="void">
-  <data key="d1">2</data>
-  <data key="d2">increase</data>
-  <data key="d3">["EP-0139001-B1"]</data>
-  <data key="d4">["increase"]</data>
-  <data key="d5">["water", "sensor", "condensate", "decrease", "drop", "outlet", "flow", "velocity", "rate", "feedwater", "increase", "pressure", "resin", "space", "air", "condition", "pump", "bed", "point", "line"]</data>
-  <data key="d6">["increase", "result", "supply", "stir", "indicate", "occur", "remedie", "inject", "cause"]</data>
-</edge>
-<edge source="pressure sensor" target="bed">
-  <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0139001-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["air", "outlet", "condition", "sensor", "velocity", "bed", "line", "pressure", "space", "resin"]</data>
-  <data key="d6">["increase", "stir", "indicate", "occur", "remedie", "inject"]</data>
-</edge>
-<edge source="joint" target="hand">
-  <data key="d1">1</data>
-  <data key="d2">context_pair</data>
-  <data key="d3">["EP-0188487-B1"]</data>
-  <data key="d4">["context_pair"]</data>
-  <data key="d5">["application", "hand", "hoop", "metal", "cable", "outside", "section", "clamp", "seal", "possibility"]</data>
-  <data key="d6">["allow", "crush", "leave", "hold", "maintain"]</data>
-</edge>
-<edge source="hand" target="crushing">
-  <data key="d1">1</data>
-  <data key="d2">may</data>
-  <data key="d3">["EP-0188487-B1"]</data>
-  <data key="d4">["may"]</data>
-  <data key="d5">["application", "hand", "hoop", "metal", "cable", "outside", "section", "clamp", "seal", "possibility"]</data>
-  <data key="d6">["allow", "crush", "leave", "hold", "maintain"]</data>
+  <data key="d2">monitoring</data>
+  <data key="d3">["US-10982416-B2"]</data>
+  <data key="d4">["monitoring"]</data>
+  <data key="d5">["control", "deficiencies", "panel", "flow", "high", "kinds", "supply", "pump", "all", "invention", "way", "directly", "especially", "sufficient", "circulation", "pressure", "them", "zones", "fully", "manage", "distribution", "between", "functionality", "automation", "low", "both", "private", "from", "reliable", "for", "under", "water", "different", "allow", "limitation", "remedy", "monitoring", "has", "local", "tank", "present", "at", "constraints", "station", "the", "city", "emergency", "capacity", "into", "main", "homogenous", "area", "and", "system", "combined", "situations", "modulating", "autonomous", "with", "condition", "that", "automatic", "of", "to", "integrate", "single", "user", "an", "in"]</data>
+  <data key="d6">[]</data>
 </edge>
 </graph></graphml>

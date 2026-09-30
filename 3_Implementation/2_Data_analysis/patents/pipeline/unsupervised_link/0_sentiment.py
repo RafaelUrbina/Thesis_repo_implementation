@@ -4,7 +4,7 @@ import os
 # HARDWARE THROTTLING: Must be configured BEFORE importing torch / spacy
 # Limit PyTorch / OpenMP / BLAS thread pools (e.g., to 2 threads)
 # =====================================================================
-MAX_CPU_THREADS = "4"  # Adjust: "1" (coolest), "2" (balanced), "4" (faster)
+MAX_CPU_THREADS = "2"  # Adjust: "1" (coolest), "2" (balanced), "4" (faster)
 os.environ["OMP_NUM_THREADS"] = MAX_CPU_THREADS
 os.environ["MKL_NUM_THREADS"] = MAX_CPU_THREADS
 os.environ["OPENBLAS_NUM_THREADS"] = MAX_CPU_THREADS
@@ -85,7 +85,12 @@ def main():
     # Initialize SpaCy Transformer model
     print(f"Loading SpaCy transformer model ('en_core_web_trf')...")
     print(f"CPU threads limited to: {MAX_CPU_THREADS}")
-    nlp = spacy.load("en_core_web_trf")
+    
+    #Choose the specified model, trf is more accurate but slower, lg is faster but less accurate
+    #Uncomment the model you want to use
+    
+    #nlp = spacy.load("en_core_web_trf")
+    nlp = spacy.load("en_core_web_lg")
 
     # Initialize VADER sentiment analyzer
     analyzer = SentimentIntensityAnalyzer()

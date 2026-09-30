@@ -1,42 +1,32 @@
 PATENT DATASET SUMMARY STATISTICS
 ============================================================
-Total Rows: 105500
-Total Unique Patents: 5716
-Mean Patent Appearances: 18.46
+Total Rows: 346954
+Total Unique Patents: 17529
+Mean Patent Appearances: 19.79
 
 OCCURRENCE PRESENCE & PROPORTIONS:
-  all_three           : Count = 3519, Proportion = 0.6156 (61.56%)
-  tech_and_attr_only  : Count = 832, Proportion = 0.1456 (14.56%)
-  attr_and_fail_only  : Count = 284, Proportion = 0.0497 (4.97%)
-  tech_and_fail_only  : Count = 666, Proportion = 0.1165 (11.65%)
-  singular_tech_only  : Count = 252, Proportion = 0.0441 (4.41%)
-  singular_attr_only  : Count = 84, Proportion = 0.0147 (1.47%)
-  singular_fail_only  : Count = 79, Proportion = 0.0138 (1.38%)
+  all_three           : Count = 9490, Proportion = 0.5414 (54.14%)
+  tech_and_attr_only  : Count = 2540, Proportion = 0.1449 (14.49%)
+  attr_and_fail_only  : Count = 528, Proportion = 0.0301 (3.01%)
+  tech_and_fail_only  : Count = 3050, Proportion = 0.1740 (17.40%)
+  singular_tech_only  : Count = 1394, Proportion = 0.0795 (7.95%)
+  singular_attr_only  : Count = 253, Proportion = 0.0144 (1.44%)
+  singular_fail_only  : Count = 274, Proportion = 0.0156 (1.56%)
 
 SENTIMENT:
-  Mean: -0.0054
-  Std: 0.4017
+  Mean: -0.0063
+  Std: 0.3999
 
 TOP 10 NOUNS:
-  water: 51641
-  tank: 25864
-  pipe: 19260
-  device: 12495
-  invention: 12282
-  pressure: 11176
-  flow: 10716
-  valve: 10604
-  treatment: 10375
-  pump: 10264
+  the: 328819
+  of: 248659
+  to: 240728
+  and: 220962
+  in: 199476
+  is: 179544
+  water: 148540
+  be: 124913
+  may: 116028
+  by: 87871
 
 TOP 10 VERBS:
-  use: 11727
-  provide: 10825
-  form: 9330
-  prevent: 9061
-  discharge: 8838
-  accord: 8339
-  connect: 8227
-  introduce: 8225
-  instal: 8210
-  flow: 7936

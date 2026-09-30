@@ -1,11 +1,11 @@
 import ast
+from collections import defaultdict
 import itertools
 import json
 import os
 from pathlib import Path
-import sys
 import re
-from collections import defaultdict
+import sys
 
 try:
     import networkx as nx
@@ -49,7 +49,7 @@ MAX_ROWS = None
 NODE_COLOR_MAP = {
     "Technical": "rgba(31, 119, 180, 0.8)",  # Blue
     "Attribute": "rgba(44, 160, 44, 0.8)",  # Green
-    "Failure": "rgba(214, 39, 40, 0.8)",    # Red
+    "Failure": "rgba(214, 39, 40, 0.8)",  # Red
 }
 
 TYPE_SHORT_MAP = {
@@ -66,11 +66,10 @@ def parse_field(field_val):
     """Safely parses stringified Python lists, JSON arrays, or raw list/string objects."""
     if isinstance(field_val, list):
         return [str(i).strip() for i in field_val if str(i).strip()]
-    
+
     if pd.isna(field_val) or field_val is None:
         return []
 
-    # Handle numeric or non-string single values
     if not isinstance(field_val, str):
         val_str = str(field_val).strip()
         return [val_str] if val_str else []
@@ -79,7 +78,6 @@ def parse_field(field_val):
     if not cleaned or cleaned.lower() == "nan":
         return []
 
-    # Attempt AST eval (handles Python list syntax like "['term1', 'term2']")
     if cleaned.startswith("[") and cleaned.endswith("]"):
         try:
             parsed = ast.literal_eval(cleaned)
@@ -88,7 +86,6 @@ def parse_field(field_val):
         except (ValueError, SyntaxError):
             pass
 
-        # Attempt JSON loads
         try:
             parsed = json.loads(cleaned)
             if isinstance(parsed, list):
@@ -96,33 +93,32 @@ def parse_field(field_val):
         except json.JSONDecodeError:
             pass
 
-        # Robust Fallback: extract word tokens or quoted substrings using Regex
-        # This handles unquoted lists like "[term1, term2, term3]" cleanly
         tokens = re.findall(r"[^\s,\[\]'\"']+", cleaned)
         return [t.strip() for t in tokens if t.strip()]
 
-    # If it's a plain comma-separated string without brackets
     if "," in cleaned:
-        return [item.strip().strip("'\"") for item in cleaned.split(",") if item.strip()]
+        return [
+            item.strip().strip("'\"") for item in cleaned.split(",") if item.strip()
+        ]
 
     return [cleaned.strip("'\"")]
 
 
 def extract_causal_triplets(row):
     """Parses a row from the real dataset schema and extracts directed edges strictly:
+
     [Technical] -> [Attribute] -> [Failure]
     """
     edges = []
 
-    pat_id = str(row.get("pat_id", "UNKNOWN"))
-    para_id = str(row.get("paragraph_id", "UNKNOWN"))
+    pat_id = str(row.get("pat_id", "UNKNOWN")).strip()
+    para_id = str(row.get("paragraph_id", "UNKNOWN")).strip()
 
     techs = parse_field(row.get("occurrence_technical", []))
     attrs = parse_field(row.get("occurrence_variable", []))
     failures = parse_field(row.get("occurrence_failures", []))
     causals = parse_field(row.get("causal_ocurrence_words", []))
 
-    # CORRECTED: Read 'nouns' and 'verbs' directly matching your CSV column headers
     nouns = parse_field(row.get("nouns", []))
     verbs = parse_field(row.get("verbs", []))
 
@@ -134,32 +130,36 @@ def extract_causal_triplets(row):
     # Step 1: Technical -> Attribute
     for t, a in itertools.product(techs, attrs):
         if t != a:
-            edges.append({
-                "source": t,
-                "source_type": "Technical",
-                "target": a,
-                "target_type": "Attribute",
-                "trigger": "context_pair",
-                "pat_id": pat_id,
-                "para_id": para_id,
-                "nouns": nouns,
-                "verbs": verbs,
-            })
+            edges.append(
+                {
+                    "source": t,
+                    "source_type": "Technical",
+                    "target": a,
+                    "target_type": "Attribute",
+                    "trigger": "context_pair",
+                    "pat_id": pat_id,
+                    "para_id": para_id,
+                    "nouns": nouns,
+                    "verbs": verbs,
+                }
+            )
 
     # Step 2: Attribute -> Failure
     for a, f in itertools.product(attrs, failures):
         if a != f:
-            edges.append({
-                "source": a,
-                "source_type": "Attribute",
-                "target": f,
-                "target_type": "Failure",
-                "trigger": trigger,
-                "pat_id": pat_id,
-                "para_id": para_id,
-                "nouns": nouns,
-                "verbs": verbs,
-            })
+            edges.append(
+                {
+                    "source": a,
+                    "source_type": "Attribute",
+                    "target": f,
+                    "target_type": "Failure",
+                    "trigger": trigger,
+                    "pat_id": pat_id,
+                    "para_id": para_id,
+                    "nouns": nouns,
+                    "verbs": verbs,
+                }
+            )
 
     return edges
 
@@ -167,9 +167,13 @@ def extract_causal_triplets(row):
 # =====================================================================
 # 2. NETWORKX GRAPH BUILDER WITH DISK CACHING
 # =====================================================================
-def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, include_pos=False):
+def build_or_load_graph(
+    df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, include_pos=False
+):
     """Checks if a pre-computed GraphML file exists.
-    If present, loads it directly. Otherwise, processes the dataframe and saves it.
+
+    If present, loads it directly. Otherwise, processes the dataframe and saves
+    it.
     """
     cache_path = Path(cache_file)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
@@ -177,7 +181,9 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, 
     target_name = "POS Causal Graph" if include_pos else "Primary Causal Graph"
 
     if cache_path.exists():
-        print(f"[Cache] Found existing graph ({target_name}) at '{cache_path}'. Loading from disk...")
+        print(
+            f"[Cache] Found existing graph ({target_name}) at '{cache_path}'. Loading from disk..."
+        )
         G = nx.read_graphml(cache_path)
 
         for u, v, d in G.edges(data=True):
@@ -212,9 +218,12 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, 
                 G[e["source"]][e["target"]]["patents"].add(e["pat_id"])
                 G[e["source"]][e["target"]]["triggers"].add(e["trigger"])
                 if include_pos:
-                    # CORRECTED: Key matching 'nouns' and 'verbs' from dictionary
-                    G[e["source"]][e["target"]]["nouns"].update(e.get("nouns", []))
-                    G[e["source"]][e["target"]]["verbs"].update(e.get("verbs", []))
+                    G[e["source"]][e["target"]]["nouns"].update(
+                        e.get("nouns", [])
+                    )
+                    G[e["source"]][e["target"]]["verbs"].update(
+                        e.get("verbs", [])
+                    )
             else:
                 edge_attr = {
                     "weight": 1,
@@ -249,7 +258,9 @@ def build_or_load_graph(df_or_path, cache_file=GRAPH_CACHE_FILE, max_rows=None, 
 def find_strict_cross_patent_chains_fast(G):
     """Fast path finder enforcing zero node-type repetition along any path."""
     valid_paths = []
-    node_type_map = {n: d.get("node_type", "Unknown") for n, d in G.nodes(data=True)}
+    node_type_map = {
+        n: d.get("node_type", "Unknown") for n, d in G.nodes(data=True)
+    }
 
     for middle in G.nodes():
         type_middle = node_type_map[middle]
@@ -275,8 +286,12 @@ def find_strict_cross_patent_chains_fast(G):
 
                 shared = e1["patents"].intersection(e2["patents"])
                 if not shared:
-                    has_causal_1 = any(tr != "context_pair" for tr in e1["triggers"])
-                    has_causal_2 = any(tr != "context_pair" for tr in e2["triggers"])
+                    has_causal_1 = any(
+                        tr != "context_pair" for tr in e1["triggers"]
+                    )
+                    has_causal_2 = any(
+                        tr != "context_pair" for tr in e2["triggers"]
+                    )
                     if not (has_causal_1 and has_causal_2):
                         continue
 
@@ -288,7 +303,9 @@ def find_strict_cross_patent_chains_fast(G):
 # =====================================================================
 # 4. SANKEY DIAGRAM GENERATOR
 # =====================================================================
-def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE, include_pos=False):
+def export_sankey_html(
+    G, valid_paths, output_filename=SANKEY_OUTPUT_FILE, include_pos=False
+):
     output_path = Path(output_filename)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -331,23 +348,31 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE, inclu
         values.append(flow_value)
 
         data = G[orig_u][orig_v] if G.has_edge(orig_u, orig_v) else {}
-        patents_list = list(data.get("patents", []))
-        patents = ", ".join(patents_list[:5]) + ("..." if len(patents_list) > 5 else "")
-        triggers = ", ".join(data.get("triggers", []))
+
+        # Format patent IDs for hover
+        patents_list = sorted(list(data.get("patents", [])))
+        patents_str = ", ".join(patents_list[:8]) + (
+            "..." if len(patents_list) > 8 else ""
+        )
+        triggers = ", ".join(sorted(list(data.get("triggers", []))))
 
         hover_lines = [
             f"<b>From:</b> {orig_u}",
             f"<b>To:</b> {orig_v}",
+            f"<b>Patent IDs:</b> {patents_str or 'None'}",
             f"<b>Triggers:</b> {triggers}",
-            f"<b>Patents:</b> {patents}",
             f"<b>Path Flow Count:</b> {flow_value}",
         ]
 
         if include_pos:
             nouns_list = sorted(list(data.get("nouns", [])))
             verbs_list = sorted(list(data.get("verbs", [])))
-            nouns_str = ", ".join(nouns_list[:8]) + ("..." if len(nouns_list) > 8 else "")
-            verbs_str = ", ".join(verbs_list[:8]) + ("..." if len(verbs_list) > 8 else "")
+            nouns_str = ", ".join(nouns_list[:8]) + (
+                "..." if len(nouns_list) > 8 else ""
+            )
+            verbs_str = ", ".join(verbs_list[:8]) + (
+                "..." if len(verbs_list) > 8 else ""
+            )
 
             hover_lines.append(f"<b>Nouns:</b> {nouns_str or 'None'}")
             hover_lines.append(f"<b>Verbs:</b> {verbs_str or 'None'}")
@@ -392,7 +417,9 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE, inclu
 # =====================================================================
 # 5. CSV EXPORTER
 # =====================================================================
-def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FILE, include_pos=False):
+def export_causal_chains_summary(
+    G, valid_paths, output_filename=SUMMARY_CSV_FILE, include_pos=False
+):
     output_path = Path(output_filename)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -404,20 +431,45 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
         e1_data = G[t_node][a_node] if G.has_edge(t_node, a_node) else {}
         e2_data = G[a_node][f_node] if G.has_edge(a_node, f_node) else {}
 
-        all_patents = sorted(list(set(e1_data.get("patents", set())).union(e2_data.get("patents", set()))))
-        all_triggers = sorted(list(set(e1_data.get("triggers", set())).union(e2_data.get("triggers", set()))))
+        all_patents = sorted(
+            list(
+                set(e1_data.get("patents", set())).union(
+                    e2_data.get("patents", set())
+                )
+            )
+        )
+        all_triggers = sorted(
+            list(
+                set(e1_data.get("triggers", set())).union(
+                    e2_data.get("triggers", set())
+                )
+            )
+        )
 
         rec = {
             "technical": t_node,
             "attribute": a_node,
             "failure": f_node,
-            "patents": ", ".join(all_patents),
+            "patent_ids": ", ".join(all_patents),
+            "patent_count": len(all_patents),
             "triggers": ", ".join(all_triggers),
         }
 
         if include_pos:
-            chain_nouns = sorted(list(set(e1_data.get("nouns", set())).union(e2_data.get("nouns", set()))))
-            chain_verbs = sorted(list(set(e1_data.get("verbs", set())).union(e2_data.get("verbs", set()))))
+            chain_nouns = sorted(
+                list(
+                    set(e1_data.get("nouns", set())).union(
+                        e2_data.get("nouns", set())
+                    )
+                )
+            )
+            chain_verbs = sorted(
+                list(
+                    set(e1_data.get("verbs", set())).union(
+                        e2_data.get("verbs", set())
+                    )
+                )
+            )
 
             rec["nouns"] = ", ".join(chain_nouns)
             rec["verbs"] = ", ".join(chain_verbs)
@@ -436,33 +488,58 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
 # 6. MAIN EXECUTION PIPELINE
 # =====================================================================
 if __name__ == "__main__":
-    # Remove cached graphs to force re-computation with new POS fields
     for f in (GRAPH_CACHE_FILE, POS_GRAPH_CACHE_FILE):
         if os.path.exists(f):
             os.remove(f)
 
     print("\n=== Pipeline 1: Processing Primary Causal Graph ===")
     G_primary = build_or_load_graph(
-        INPUT_CSV_PATH, cache_file=GRAPH_CACHE_FILE, max_rows=1000, include_pos=False
+        INPUT_CSV_PATH,
+        cache_file=GRAPH_CACHE_FILE,
+        max_rows=1000,
+        include_pos=False,
     )
 
     paths_primary = find_strict_cross_patent_chains_fast(G_primary)
     print(f"Strict Cross-Patent Chains Found: {len(paths_primary)}")
 
     if paths_primary:
-        export_sankey_html(G_primary, paths_primary, output_filename=SANKEY_OUTPUT_FILE, include_pos=False)
-        export_causal_chains_summary(G_primary, paths_primary, output_filename=SUMMARY_CSV_FILE, include_pos=False)
+        export_sankey_html(
+            G_primary,
+            paths_primary,
+            output_filename=SANKEY_OUTPUT_FILE,
+            include_pos=False,
+        )
+        export_causal_chains_summary(
+            G_primary,
+            paths_primary,
+            output_filename=SUMMARY_CSV_FILE,
+            include_pos=False,
+        )
 
     print("\n=== Pipeline 2: Processing Secondary POS-Enriched Graph ===")
     G_pos = build_or_load_graph(
-        INPUT_CSV_PATH, cache_file=POS_GRAPH_CACHE_FILE, max_rows=1000, include_pos=True
+        INPUT_CSV_PATH,
+        cache_file=POS_GRAPH_CACHE_FILE,
+        max_rows=1000,
+        include_pos=True,
     )
 
     paths_pos = find_strict_cross_patent_chains_fast(G_pos)
     print(f"Strict Cross-Patent Chains (POS) Found: {len(paths_pos)}")
 
     if paths_pos:
-        export_sankey_html(G_pos, paths_pos, output_filename=POS_SANKEY_OUTPUT_FILE, include_pos=True)
-        export_causal_chains_summary(G_pos, paths_pos, output_filename=POS_SUMMARY_CSV_FILE, include_pos=True)
+        export_sankey_html(
+            G_pos,
+            paths_pos,
+            output_filename=POS_SANKEY_OUTPUT_FILE,
+            include_pos=True,
+        )
+        export_causal_chains_summary(
+            G_pos,
+            paths_pos,
+            output_filename=POS_SUMMARY_CSV_FILE,
+            include_pos=True,
+        )
 
     print("\n[Done] All primary and secondary outputs generated successfully.")

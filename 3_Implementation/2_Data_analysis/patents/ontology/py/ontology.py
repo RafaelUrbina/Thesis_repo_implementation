@@ -41,6 +41,26 @@ DOMAIN_SYNONYMS = {
 }
 
 
+def is_common_english_word(text: str) -> bool:
+    """Checks if a string corresponds to a standard English word.
+    
+    Used to discard automatically generated initialisms that accidentally spell 
+    out dictionary words (e.g., 'hand') rather than true technical abbreviations.
+    """
+    clean_text = text.lower()
+    
+    # 1. Reject if it is a stop word in spaCy
+    if nlp.vocab[clean_text].is_stop:
+        return True
+        
+    # 2. Check if the word is recognized as a valid word in spaCy's lookups/lexicon
+    token = nlp.vocab[clean_text]
+    
+    # In en_core_web_sm, common dictionary words have rank < 200000 
+    # or exist in the lexeme store with valid morphology/prob
+    return not token.is_oov or token.prob != 0
+
+
 def get_lemma(term: str) -> str:
     """Frames the term in a full sentence to supply POS context to spaCy."""
     clean_term = term.strip().lower()
@@ -87,8 +107,12 @@ def parse_term_file(filepath):
                 initialism = "".join(
                     w[0] for w in words if w.isalnum()
                 ).lower()
-                # Filter out initialisms that are 3 characters or fewer
-                if len(initialism) > 3 and initialism != pref_lower:
+                # Filter out initialisms <= 3 chars or those that spell valid English words (e.g., 'hand')
+                if (
+                    len(initialism) > 3
+                    and initialism != pref_lower
+                    and not is_common_english_word(initialism)
+                ):
                     alts.append(initialism)
             terms_data.append({"pref": pref, "alts": alts})
     return terms_data

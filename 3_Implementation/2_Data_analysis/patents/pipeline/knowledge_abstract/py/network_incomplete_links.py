@@ -1,7 +1,8 @@
 import ast
 import csv
-import sys
 from pathlib import Path
+import sys
+
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -22,10 +23,12 @@ INPUT_CSV = (
     / "unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
 )
 OUTPUT_LINKS_CSV = (
-    PATENT_PIPELINE_PATH / "knowledge_abstract/output/incomplete_causal_graph/incomplete_pairwise_links.csv"
+    PATENT_PIPELINE_PATH
+    / "knowledge_abstract/output/incomplete_causal_graph/incomplete_pairwise_links.csv"
 )
 OUTPUT_HTML = (
-    PATENT_PIPELINE_PATH / "knowledge_abstract/output/incomplete_causal_graph/incomplete_sankey_diagram.html"
+    PATENT_PIPELINE_PATH
+    / "knowledge_abstract/output/incomplete_causal_graph/incomplete_sankey_diagram.html"
 )
 
 # Set the percentile threshold for link occurrence (e.g., 0.75 = top 25% links, 0.50 = above median)
@@ -51,9 +54,9 @@ STAGE_PREFIXES = {
 # Color palette matching the pipeline's visual design system
 STAGE_COLORS = {
     "occurrence_technical": "#1f77b4",  # Muted Blue
-    "occurrence_variable": "#2ca02c",   # Cooked Green
+    "occurrence_variable": "#2ca02c",  # Cooked Green
     "causal_ocurrence_words": "#ff7f0e",  # Safety Orange
-    "occurrence_failures": "#d62728",   # Brick Red
+    "occurrence_failures": "#d62728",  # Brick Red
 }
 DEFAULT_NODE_COLOR = "#7f7f7f"
 
@@ -98,6 +101,8 @@ def build_pairwise_sankey(
 
     # 2. Extract Stage Values per Row
     for idx, row in df.iterrows():
+        pat_id = str(row.get("pat_id", "UNKNOWN")).strip()
+
         stage_items = {}
         for stage in STAGES:
             if stage in df.columns:
@@ -128,20 +133,39 @@ def build_pairwise_sankey(
                             "target": f"{tgt_prefix} {tgt_item}",
                             "source_stage": src_stage,
                             "target_stage": tgt_stage,
+                            "pat_id": pat_id,
                         }
                     )
 
     if not links:
-        print("[WARNING] No valid pairwise links found in dataset matching criteria.")
+        print(
+            "[WARNING] No valid pairwise links found in dataset matching criteria."
+        )
         return
 
-    # 3. Aggregate Links
+    # 3. Aggregate Links and Group Patent IDs
     links_df = pd.DataFrame(links)
-    aggregated_links = (
-        links_df.groupby(["source", "target", "source_stage", "target_stage"])
-        .size()
-        .reset_index(name="value")
+
+    aggregated_records = []
+    grouped = links_df.groupby(
+        ["source", "target", "source_stage", "target_stage"]
     )
+
+    for (src, tgt, src_stage, tgt_stage), group in grouped:
+        unique_patents = sorted(list(set(group["pat_id"])))
+        aggregated_records.append(
+            {
+                "source": src,
+                "target": tgt,
+                "source_stage": src_stage,
+                "target_stage": tgt_stage,
+                "value": len(group),
+                "patent_ids": ", ".join(unique_patents),
+                "patent_count": len(unique_patents),
+            }
+        )
+
+    aggregated_links = pd.DataFrame(aggregated_records)
 
     # -------------------------------------------------------------------------
     # PERCENTILE FILTERING LOGIC
@@ -152,17 +176,22 @@ def build_pairwise_sankey(
             f"[INFO] Filtering links above {percentile_threshold * 100:.0f}th percentile "
             f"(Minimum occurrences required: > {cutoff_value:.2f})"
         )
-        # Keep links strictly greater than the percentile cutoff (or >= if you want boundary included)
-        aggregated_links = aggregated_links[aggregated_links["value"] > cutoff_value].reset_index(drop=True)
+        aggregated_links = aggregated_links[
+            aggregated_links["value"] > cutoff_value
+        ].reset_index(drop=True)
 
         if aggregated_links.empty:
-            print("[WARNING] No links remained after applying the percentile filter. Try lowering PERCENTILE_THRESHOLD.")
+            print(
+                "[WARNING] No links remained after applying the percentile filter. Try lowering PERCENTILE_THRESHOLD."
+            )
             return
 
     # Save filtered output CSV
     output_csv_path.parent.mkdir(parents=True, exist_ok=True)
     aggregated_links.to_csv(output_csv_path, index=False)
-    print(f"[INFO] Pairwise links CSV saved to: {output_csv_path} ({len(aggregated_links)} links)")
+    print(
+        f"[INFO] Pairwise links CSV saved to: {output_csv_path} ({len(aggregated_links)} links)"
+    )
 
     # 4. Map Node Labels to Plotly Indices & Build Color Lists
     unique_nodes = list(
@@ -175,6 +204,21 @@ def build_pairwise_sankey(
     plotly_sources = aggregated_links["source"].map(node_indices).tolist()
     plotly_targets = aggregated_links["target"].map(node_indices).tolist()
     plotly_values = aggregated_links["value"].tolist()
+
+    # Create link hover labels containing Patent IDs
+    link_hover_labels = []
+    for _, row in aggregated_links.iterrows():
+        p_list = [
+            p.strip() for p in row["patent_ids"].split(",") if p.strip()
+        ]
+        p_str = ", ".join(p_list[:8]) + ("..." if len(p_list) > 8 else "")
+        hover_text = (
+            f"<b>From:</b> {row['source']}<br>"
+            f"<b>To:</b> {row['target']}<br>"
+            f"<b>Patent IDs:</b> {p_str or 'None'}<br>"
+            f"<b>Occurrences:</b> {row['value']}"
+        )
+        link_hover_labels.append(hover_text)
 
     # Link colors with transparency matching Plotly's pipeline style
     link_colors = [
@@ -198,19 +242,29 @@ def build_pairwise_sankey(
                     line=dict(color="#222222", width=0.6),
                     label=unique_nodes,
                     color=node_colors,
-                    hoverlabel=dict(bgcolor="#ffffff", font_size=12, font_family="Arial"),
+                    hoverlabel=dict(
+                        bgcolor="#ffffff",
+                        font_size=12,
+                        font_family="Arial",
+                    ),
                 ),
                 link=dict(
                     source=plotly_sources,
                     target=plotly_targets,
                     value=plotly_values,
                     color=link_colors,
+                    customdata=link_hover_labels,
+                    hovertemplate="%{customdata}<extra></extra>",
                 ),
             )
         ]
     )
 
-    p_label = f" (Top {(1 - percentile_threshold) * 100:.0f}% Links)" if percentile_threshold > 0 else ""
+    p_label = (
+        f" (Top {(1 - percentile_threshold) * 100:.0f}% Links)"
+        if percentile_threshold > 0
+        else ""
+    )
     fig.update_layout(
         title=dict(
             text=f"<b>Incomplete 2-Node Association Pathways{p_label}</b><br><sup>(T) Technical, (A) Attribute, (C) Causal Term, and (F) Failure Dyads</sup>",

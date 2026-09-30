@@ -1,49 +1,75 @@
 term_1,term_2,co_occurrences,freq_term_1,freq_term_2,npmi
-ace,ncc,2,10,2,0.852
-vegetation intrusion,leakage risk index,5,29,7,0.7897
-stress corrosion cracking,scc,6,33,10,0.7733
-terrain motion,leakage risk index,5,36,7,0.7679
-erosion,external damage,3,102,3,0.6631
-drought,lwl,9,135,21,0.6205
-terrain motion,sub surface leaks,2,36,10,0.5862
-erosion,erosion corrosion,3,102,7,0.5822
-large lakes,obstacles,3,6,143,0.5646
-gradient,metal loss,5,265,10,0.5316
-bulk density,porosity,4,10,227,0.5133
-erosion,internal corrosion,3,102,16,0.5032
-riverbed,scouring,2,39,27,0.4875
-mountains,decay,7,29,239,0.4853
-thermal expansion,cracking,6,47,124,0.4796
-tcd,freezing,2,2,729,0.4575
-nature,spd,2,384,4,0.4527
-sediment accumulation,breakage,7,16,603,0.4509
-ground subsidence,external impact,4,113,45,0.4341
-bulk density,hydrolysis,2,10,221,0.4193
-stress corrosion cracking,cracking,3,33,124,0.4154
-earthquakes,obstacles,3,32,143,0.4047
-stress corrosion cracking,corrosion,28,33,3205,0.4044
-nature,sci,3,384,12,0.404
-streams,metal loss,2,262,10,0.4036
-bit,crushing,11,62,464,0.4033
-permeability coefficient,softening,11,79,439,0.3829
-dss,suspended solids,4,7,1289,0.3777
-land subsidence,collapse,2,22,158,0.3776
-bit,collapse,4,62,158,0.3696
-cfc,electrolysis,2,3,1366,0.3625
-thermal expansion,peeling,2,47,88,0.3616
-tlc,corrosion,8,9,3205,0.3559
-building material,cracking,2,36,124,0.3546
-cec,porosity,2,22,227,0.3443
-drought,decay,8,135,239,0.3441
-aquifers,degradation,3,18,489,0.3422
-subsidence,breakage,9,64,603,0.3419
-water level,lwl,19,5176,21,0.338
-slope instability,corrosion,3,3,3205,0.3338
-ground subsidence,breakage,13,113,603,0.3335
-dtp,oxidation,6,14,1942,0.322
-roofs,wear,2,16,411,0.319
-transmission loss,leaks,2,9,773,0.3138
-storm water,void,5,264,93,0.3081
-erosion,cracking,3,102,124,0.3076
-scale formation,obstacles,2,54,143,0.3042
-permeability coefficient,fouling,8,79,611,0.3016
+vegetation intrusion,leakage risk index,6,26,7,0.8522
+terrain motion,leakage risk index,6,35,7,0.8251
+terrain motion,sub surface leak,2,35,5,0.6868
+stress corrosion cracking,corrosion fatigue,2,62,6,0.6243
+stress corrosion cracking,sensitization,2,62,6,0.6243
+structural failure,earth movement,2,25,15,0.6236
+excess storm water,overwhelmed,2,19,31,0.5862
+thermal expansion,contact with the pipeline,12,211,48,0.5859
+washout,scour,6,39,116,0.5592
+structural failure,pipeline failure,2,25,33,0.5583
+storm drain,sediment laden water,2,398,3,0.5276
+load capacity,buckling,2,15,83,0.5241
+ground subsidence,external impact,30,348,249,0.5118
+erosion,external damage,4,523,9,0.5001
+erosion,soil settlement,2,523,4,0.4811
+soil erosion,siltation,2,128,18,0.4731
+thermal expansion,pinhole,5,211,47,0.4633
+wind,blistering,4,1563,6,0.4395
+groundwater table,water loss,2,27,134,0.4357
+earthquake,earth movement,5,915,15,0.4341
+sediment load,deposit,3,8,874,0.4291
+nature,bacterial corrosion,2,1971,2,0.4286
+clay,stress relaxation,2,1027,4,0.4252
+clay,adhesion failure,2,1027,4,0.4252
+thermal expansion,delamination,2,211,20,0.423
+erosion,erosion corrosion,3,523,16,0.4137
+stress corrosion cracking,corrosion,49,62,7771,0.402
+nature,microbial attack,3,1971,5,0.3997
+soil degradation,degradation,2,4,1398,0.3996
+hydraulic head,buckling,2,75,83,0.3907
+erosion,pinhole,5,523,47,0.3818
+storm water,debris accumulation,3,2080,6,0.3794
+structural failure,cracking,3,25,507,0.3781
+subsidence,cracking,15,245,507,0.3717
+nature,stress relaxation,2,1971,4,0.3712
+waterway,fisheye,2,1342,6,0.3694
+structural failure,rupture,3,25,572,0.3678
+earthquake,external damage,2,915,9,0.3675
+landslide,collapse,2,14,625,0.3625
+storm drain,backing up,5,398,77,0.3621
+permeability coefficient,porosity,13,150,768,0.3598
+flood,fisheye,2,1614,6,0.3541
+vegetation,siltation,3,962,18,0.3514
+street,backing up,4,336,77,0.3502
+atmospheric oxidation,contamination,2,2,5327,0.3462
+storm,overwhelmed,7,1913,31,0.3434
+erosion,internal corrosion,4,523,54,0.3425
+erosion,incrustation,2,523,22,0.3398
+bulk density,porosity,3,26,768,0.3391
+nature,fisheye,2,1971,6,0.3375
+ground subsidence,fracture,5,348,120,0.3343
+erosion,scouring,8,523,150,0.334
+ground subsidence,breakage,33,348,1500,0.3335
+stress corrosion cracking,cracking,4,62,507,0.3331
+thermal expansion,cracking,10,211,507,0.3328
+ground movement,deformation,5,23,1851,0.3326
+ice formation,freezing,22,78,4031,0.33
+city,chemical attack,2,1113,12,0.3275
+slope instability,corrosion,3,3,7771,0.3258
+ground subsidence,collapse,16,348,625,0.3245
+erosion,scour,6,523,116,0.3224
+flooding,overwhelmed,6,2010,31,0.32
+soil erosion,scour,2,128,116,0.3187
+mountain,inaccessible,2,369,42,0.3151
+structural failure,leaching,2,25,622,0.3148
+mountain,difficult to access,2,369,43,0.3132
+urban heat island,porosity,3,36,768,0.3112
+subsidence,breakage,21,245,1500,0.3075
+erosion,such damage,2,523,33,0.3062
+earthquake,pipeline damage,2,915,19,0.3056
+rain,debris accumulation,3,5086,6,0.3027
+flooding,external damage,2,2010,9,0.3023
+ground subsidence,deformation,31,348,1851,0.302
+thermal expansion,deformation,21,211,1851,0.3013
