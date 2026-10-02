@@ -36,19 +36,37 @@ from Utils.paths import PATENT_PIPELINE_PATH
 
 
 def extract_nouns_and_verbs(doc):
-    """Extracts lemmas of Nouns (NOUN, PROPN) and Verbs (VERB) from a SpaCy Doc
+    """Extracts lemmas of Nouns (NOUN, PROPN) and Verbs/Auxiliaries (VERB, AUX) from a SpaCy Doc
 
-    as separate sorted unique lists.
+    as separate sorted unique lists. Filters out standalone modal verbs like 'can'/'will'
+    while capturing true action verbs and phrasal particles.
     """
     nouns = set()
     verbs = set()
+
     for token in doc:
         clean_term = token.lemma_.lower().strip()
-        if len(clean_term) > 1 and clean_term.isalpha():
-            if token.pos_ in ("NOUN", "PROPN"):
-                nouns.add(clean_term)
-            elif token.pos_ == "VERB":
-                verbs.add(clean_term)
+
+        # Skip punctuation, non-alphabetic, or single-character noise
+        if len(clean_term) <= 1 or not clean_term.isalpha():
+            continue
+
+        if token.pos_ in ("NOUN", "PROPN"):
+            nouns.add(clean_term)
+
+        elif token.pos_ in ("VERB", "AUX"):
+            # Exclude standalone modal/auxiliary verbs unless part of a phrasal verb
+            if token.dep_ == "aux" and token.pos_ == "AUX":
+                continue
+
+            # Capture phrasal particles (e.g., 'carry out' -> 'carry out')
+            particle = ""
+            for child in token.children:
+                if child.dep_ == "prt":
+                    particle = f" {child.lemma_.lower().strip()}"
+                    break
+
+            verbs.add(f"{clean_term}{particle}")
 
     return sorted(list(nouns)), sorted(list(verbs))
 
@@ -82,15 +100,18 @@ def main():
             already_processed = max(0, sum(1 for _ in f) - 1)
         print(f"Found existing output file. Resuming from row {already_processed:,}...")
 
-    # Initialize SpaCy Transformer model
-    print(f"Loading SpaCy transformer model ('en_core_web_trf')...")
+    # Load SpaCy model
+    MODEL_NAME = "en_core_web_lg"  # Switch Between en_core_web_lg and en_core_web_trf if maximum accuracy is needed
+    print(f"Loading SpaCy model ('{MODEL_NAME}')...")
     print(f"CPU threads limited to: {MAX_CPU_THREADS}")
-    
-    #Choose the specified model, trf is more accurate but slower, lg is faster but less accurate
-    #Uncomment the model you want to use
-    
-    #nlp = spacy.load("en_core_web_trf")
-    nlp = spacy.load("en_core_web_lg")
+
+    nlp = spacy.load(MODEL_NAME)
+
+    # Safely determine active pipeline components depending on whether model is TRF or Standard
+    available_pipes = nlp.pipe_names
+    disable_pipes = [
+        pipe for pipe in ["ner", "parser", "senter"] if pipe in available_pipes
+    ]
 
     # Initialize VADER sentiment analyzer
     analyzer = SentimentIntensityAnalyzer()
@@ -106,7 +127,7 @@ def main():
     try:
         # Open output in 'a' (append) mode so existing rows are preserved
         file_mode = "a" if already_processed > 0 else "w"
-        
+
         with (
             open(input_path, mode="r", encoding="utf-8", newline="") as infile,
             open(output_path, mode=file_mode, encoding="utf-8", newline="") as outfile,
@@ -131,7 +152,7 @@ def main():
                 writer.writerow(new_header)
                 outfile.flush()
 
-            # 2. Fast-forward input reader past already processed rows
+            # Fast-forward input reader past already processed rows
             for _ in range(already_processed):
                 next(reader, None)
 
@@ -150,14 +171,7 @@ def main():
 
                 # Process batch when buffer fills
                 if len(unprocessed_texts) >= BATCH_SIZE:
-                    with nlp.select_pipes(
-                        enable=[
-                            "transformer",
-                            "tagger",
-                            "attribute_ruler",
-                            "lemmatizer",
-                        ]
-                    ):
+                    with nlp.select_pipes(disable=disable_pipes):
                         docs = list(nlp.pipe(unprocessed_texts))
 
                     for orig_row, text, doc in zip(
@@ -183,7 +197,7 @@ def main():
 
                     # Write out processed batch to disk & flush
                     writer.writerows(batch_rows)
-                    outfile.flush()  # Forces immediate write to disk
+                    outfile.flush()
                     pbar.update(len(batch_rows))
 
                     # Reset buffers
@@ -196,14 +210,7 @@ def main():
 
             # Process remaining rows in final buffer
             if unprocessed_texts:
-                with nlp.select_pipes(
-                    enable=[
-                        "transformer",
-                        "tagger",
-                        "attribute_ruler",
-                        "lemmatizer",
-                    ]
-                ):
+                with nlp.select_pipes(disable=disable_pipes):
                     docs = list(nlp.pipe(unprocessed_texts))
 
                 for orig_row, text, doc in zip(

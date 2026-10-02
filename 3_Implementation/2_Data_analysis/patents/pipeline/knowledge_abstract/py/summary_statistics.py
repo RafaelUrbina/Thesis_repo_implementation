@@ -224,7 +224,7 @@ def save_top20_category_heatmap(
         matrix, 
         annot=False, 
         cmap="YlOrRd", 
-        cbar_kws={'label': metric.upper()},
+        cbar_kws={'label': metric.upper(), 'shrink': 0.7},
         linewidths=0.5,
         square=True,
         ax=ax
@@ -247,7 +247,7 @@ def save_top20_category_heatmap(
                     fontsize=8.5, color="#000000"
                 )
 
-    plt.title(f"Clustered Co-occurrence Matrix: {category_a_name} vs {category_b_name} ({metric.upper()})", fontsize=11, fontweight="bold")
+    plt.title(f"Clustered Co-occurrence Matrix: {category_a_name} vs {category_b_name} ({metric.upper()})", fontsize=11, fontweight="bold", pad=25)
     plt.xlabel(category_b_name, fontsize=10)
     plt.ylabel(category_a_name, fontsize=10)
     plt.xticks(rotation=45, ha="right", fontsize=9)

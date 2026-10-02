@@ -15,6 +15,36 @@ from shapely.affinity import rotate, scale, translate
 from shapely.geometry import Polygon
 from Utils.paths import GRID_PATH, GRID_SUMMARY_STATISTICS_PATH
 
+# Set to True for Euler notation (e.g., 1.2e+04), or False for max 2 decimals
+USE_EULER_NOTATION = True
+
+
+# -----------------------------------------------------------------------------
+# Formatting Helper
+# -----------------------------------------------------------------------------
+def format_dataframe_outputs(df: pd.DataFrame, euler_notation: bool = False) -> pd.DataFrame:
+    """
+    Rounds numerical columns in a DataFrame to a maximum of 2 decimal places,
+    or formats them using Euler / scientific notation with 1 decimal place.
+    Values equal to 0 are kept as 0 without notation.
+    """
+    df_out = df.copy()
+    numeric_cols = df_out.select_dtypes(include=[np.number]).columns
+
+    def format_val(val):
+        if pd.isna(val):
+            return val
+        if val == 0:
+            return 0
+        if euler_notation:
+            return f"{val:.1e}"
+        return round(val, 2)
+
+    for col in numeric_cols:
+        df_out[col] = df_out[col].apply(format_val)
+
+    return df_out
+
 
 # -----------------------------------------------------------------------------
 # Color Generator Helper
@@ -271,7 +301,7 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
     print(f"Loading GeoPackage from: {input_path}")
     gdf = gpd.read_file(input_path)
 
-    ignore_cols = {"h3_index", "geometry"}
+    ignore_cols = {"h3_index", "geometry", "nearest_hydro_river_stage_std_m", "nearest_hydro_river_stage_mean_m"}
     cols_to_analyze = [c for c in gdf.columns if c.lower() not in ignore_cols]
 
     float_cols = []
@@ -303,7 +333,11 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
             "count", "missing_count", "missing_pct", "mean", "std", "variance",
             "min", "5%", "25%", "50%", "75%", "95%", "max", "skewness"
         ]
-        float_summary[col_order].to_csv(output_dir / "summary_floats_continuous.csv")
+        float_summary = float_summary[col_order]
+        
+        # Round / format outputs
+        float_summary = format_dataframe_outputs(float_summary, euler_notation=USE_EULER_NOTATION)
+        float_summary.to_csv(output_dir / "summary_floats_continuous.csv")
 
     if int_cols:
         int_summary = gdf[int_cols].describe(percentiles=[0.25, 0.50, 0.75]).T
@@ -315,7 +349,11 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
             "count", "missing_count", "unique_categories", "min", "25%", 
             "50%", "75%", "max", "mean", "mode", "std"
         ]
-        int_summary[col_order].to_csv(output_dir / "summary_integers_ordinal.csv")
+        int_summary = int_summary[col_order]
+
+        # Round / format outputs
+        int_summary = format_dataframe_outputs(int_summary, euler_notation=USE_EULER_NOTATION)
+        int_summary.to_csv(output_dir / "summary_integers_ordinal.csv")
 
     if string_cols:
         string_summary = gdf[string_cols].describe().T
@@ -336,7 +374,11 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
             "count", "missing_count", "missing_pct", "unique_categories", 
             "most_frequent_value", "most_frequent_count", "most_frequent_pct"
         ]
-        string_summary[col_order].to_csv(output_dir / "summary_strings_categorical.csv")
+        string_summary = string_summary[col_order]
+
+        # Round / format outputs
+        string_summary = format_dataframe_outputs(string_summary, euler_notation=USE_EULER_NOTATION)
+        string_summary.to_csv(output_dir / "summary_strings_categorical.csv")
 
     # 2. Spatial Metrics Calculation
     print("Calculating spatial metrics...")
@@ -379,11 +421,14 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
         })
 
     spatial_df = pd.DataFrame(spatial_metrics)
-    spatial_df.to_csv(output_dir / "spatial_statistics_summary.csv", index=False)
 
     # 3. Render Batched Maps
     print("Generating batched spatial map figures...")
     save_batched_spatial_maps(gdf, spatial_df, output_dir)
+
+    # Round / format outputs before export
+    spatial_df_formatted = format_dataframe_outputs(spatial_df, euler_notation=USE_EULER_NOTATION)
+    spatial_df_formatted.to_csv(output_dir / "spatial_statistics_summary.csv", index=False)
 
     print(f"\nExecution complete! Output directory:\n{output_dir}")
 

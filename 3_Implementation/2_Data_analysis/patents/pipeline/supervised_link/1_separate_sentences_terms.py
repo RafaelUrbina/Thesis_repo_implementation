@@ -54,6 +54,12 @@ def main():
         / "output"
         / "causal_filtered_supervised_exploded.csv"
     )
+    stats_path = (
+        PATENT_PIPELINE_PATH
+        / "supervised_link"
+        / "output"
+        / "causal_filtered_supervised_exploded_stats.txt"
+    )
 
     print(f"Loading CSV from: {input_path}")
     if not input_path.exists():
@@ -62,8 +68,8 @@ def main():
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    original_count = 0
-    exploded_count = 0
+    total_rows = 0
+    remaining_rows = 0
     batch_rows = []
     BATCH_SIZE = 10000
 
@@ -100,9 +106,10 @@ def main():
             writer.writerow(header)
 
             for row in reader:
+                total_rows += 1
+
                 if not row or len(row) <= text_idx:
                     continue
-                original_count += 1
 
                 text_val = row[text_idx]
 
@@ -131,10 +138,10 @@ def main():
                                 new_row[idx] = str(matched_terms)
 
                             batch_rows.append(new_row)
-                            exploded_count += 1
+                            remaining_rows += 1
                 else:
                     batch_rows.append(row)
-                    exploded_count += 1
+                    remaining_rows += 1
 
                 if len(batch_rows) >= BATCH_SIZE:
                     writer.writerows(batch_rows)
@@ -143,8 +150,16 @@ def main():
             if batch_rows:
                 writer.writerows(batch_rows)
 
-        print(f"Total original rows processed: {original_count:,}")
-        print(f"Total exploded rows written: {exploded_count:,}")
+        summary_text = (
+            f"Total rows: {total_rows}, Remaining after filtering: {remaining_rows}"
+        )
+
+        # Write stats to file
+        with open(stats_path, mode="w", encoding="utf-8") as stats_file:
+            stats_file.write(summary_text + "\n")
+
+        print(summary_text)
+        print(f"Saved stats summary to: {stats_path}")
         print(f"Saved exploded CSV to: {output_path}")
         print("Done!")
     except Exception as e:

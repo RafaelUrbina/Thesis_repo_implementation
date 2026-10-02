@@ -18,15 +18,25 @@ SENTIMENT:
   Std: 0.3999
 
 TOP 10 NOUNS:
-  the: 328819
-  of: 248659
-  to: 240728
-  and: 220962
-  in: 199476
-  is: 179544
-  water: 148540
-  be: 124913
-  may: 116028
-  by: 87871
+  water: 148772
+  tank: 70474
+  pipe: 54365
+  valve: 39621
+  flow: 39243
+  invention: 39085
+  pressure: 38046
+  system: 36417
+  device: 33121
+  unit: 31972
 
 TOP 10 VERBS:
+  be: 271838
+  may: 115953
+  have: 48543
+  can: 42365
+  provide: 39232
+  include: 33524
+  use: 33509
+  form: 33274
+  prevent: 32576
+  connect: 28500

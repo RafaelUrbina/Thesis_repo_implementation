@@ -39,8 +39,8 @@ siphon,large lake,2,1070,4,0.4218
 levee,altitude,3,32,269,0.4113
 perforated pipe,irrigation channel,4,405,32,0.411
 hydrant,hydraulic gradient,2,185,27,0.409
-hydraulic power unit,hydraulic pressure,2,4,1277,0.4071
 flange adapter,hydraulic pressure,2,4,1277,0.4071
+hydraulic power unit,hydraulic pressure,2,4,1277,0.4071
 bypass line,excess storm water,2,274,19,0.4056
 filter press,clay content,2,448,12,0.4029
 overflow weir,riverbed,3,74,135,0.3985
@@ -67,8 +67,8 @@ anchor block,vegetation,2,9,962,0.3634
 culvert,load capacity,2,589,15,0.3617
 relief valve,ice formation,4,294,78,0.3608
 storm sewer,storm,26,156,1913,0.3589
-diffuser,avalanche,3,2647,6,0.3588
 wet well,peak flow rate,2,305,30,0.3588
+diffuser,avalanche,3,2647,6,0.3588
 riser,elevation,75,909,1399,0.3577
 retention pond,street,3,48,336,0.3574
 drainage channel,flash flood,2,410,23,0.3563
@@ -119,15 +119,15 @@ pumping station,hydraulic gradient,2,593,27,0.3124
 side stream filter,stream,4,4,10107,0.311
 overflow box,city,2,15,1113,0.309
 check valve,hydraulic surge,3,2860,10,0.3083
-overflow box,storm,3,15,1913,0.308
 trunk line,elevation,8,74,1399,0.308
+overflow box,storm,3,15,1913,0.308
 sluice,river,104,489,6069,0.3079
 infiltration gallery,storm,2,9,1913,0.3064
 turbine pump,waterway,3,22,1342,0.3056
 electromagnetic flowmeter,rain,8,21,5086,0.3051
 water column,hydraulic head,3,397,75,0.3049
-pipe support,ground subsidence,4,125,348,0.3045
 gauge,water level,329,1130,12133,0.3045
+pipe support,ground subsidence,4,125,348,0.3045
 sluice,waterway,32,489,1342,0.3044
 overflow box,flooding,3,15,2010,0.3038
 receiver,transmission loss,2,1829,10,0.3014
