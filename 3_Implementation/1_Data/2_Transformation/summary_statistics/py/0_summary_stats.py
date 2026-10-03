@@ -301,7 +301,7 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
     print(f"Loading GeoPackage from: {input_path}")
     gdf = gpd.read_file(input_path)
 
-    ignore_cols = {"h3_index", "geometry", "nearest_hydro_river_stage_std_m", "nearest_hydro_river_stage_mean_m"}
+    ignore_cols = {"index", "geometry", "nearest_hydro_river_stage_std_m", "nearest_hydro_river_stage_mean_m"}
     cols_to_analyze = [c for c in gdf.columns if c.lower() not in ignore_cols]
 
     float_cols = []
@@ -375,6 +375,15 @@ def generate_geopackage_summary(input_path: Path, output_dir: Path):
             "most_frequent_value", "most_frequent_count", "most_frequent_pct"
         ]
         string_summary = string_summary[col_order]
+
+        # Coerce known-numeric columns to float/int types before formatting
+        numeric_cols_to_coerce = [
+            "count", "missing_count", "missing_pct",
+            "unique_categories", "most_frequent_count", "most_frequent_pct"
+        ]
+        for col in numeric_cols_to_coerce:
+            if col in string_summary.columns:
+                string_summary[col] = pd.to_numeric(string_summary[col], errors="coerce")
 
         # Round / format outputs
         string_summary = format_dataframe_outputs(string_summary, euler_notation=USE_EULER_NOTATION)
