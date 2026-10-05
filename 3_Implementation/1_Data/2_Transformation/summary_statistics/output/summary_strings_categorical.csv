@@ -1,13 +1,12 @@
 ,count,missing_count,missing_pct,unique_categories,most_frequent_value,most_frequent_count,most_frequent_pct
-index,225503,0,0,225503,8a1ea208eacffff,1,0.0004434530804468233
-class_intervention_1ring,63,2.3e+05,1.0e+02,3,Misto,35,55.55555555555556
-locality_name_1ring,27174,2.0e+05,8.8e+01,3560,Il Poggio,105,0.38639876352395675
-dominant_highway,120975,1.0e+05,4.6e+01,29,track,47358,39.14693118412895
-dominant_surface,59880,1.7e+05,7.3e+01,35,asphalt,28685,47.90414161656646
-dominant_tunnel,1722,2.2e+05,9.9e+01,7,yes,1419,82.40418118466899
-dominant_bridge,4052,2.2e+05,9.8e+01,9,yes,3717,91.73247778874631
-usda_hydrologic_group,225491,1.2e+01,5.3e-03,5,C,95438,42.324527364728525
-pai_landslide_hazard_level,183178,4.2e+04,1.9e+01,5,Moderata P1,76406,41.71134088154691
-dominant_building_1,51441,1.7e+05,7.7e+01,76,yes,43982,85.49989308139422
-dominant_building_2,8329,2.2e+05,9.6e+01,85,yes,2727,32.741025333173255
-dominant_building_3,2323,2.2e+05,9.9e+01,76,yes,428,18.42445114076625
+class_intervention_1ring,6.3e+01,2.3e+05,1.0e+02,3.0e+00,Misto,3.5e+01,5.6e+01
+locality_name_1ring,2.7e+04,2.0e+05,8.8e+01,3.6e+03,Il Poggio,1.0e+02,3.9e-01
+dominant_highway,1.2e+05,1.0e+05,4.6e+01,2.9e+01,track,4.7e+04,3.9e+01
+dominant_surface,6.0e+04,1.7e+05,7.3e+01,3.5e+01,asphalt,2.9e+04,4.8e+01
+dominant_tunnel,1.7e+03,2.2e+05,9.9e+01,7.0e+00,yes,1.4e+03,8.2e+01
+dominant_bridge,4.1e+03,2.2e+05,9.8e+01,9.0e+00,yes,3.7e+03,9.2e+01
+usda_hydrologic_group,2.3e+05,1.2e+01,5.3e-03,5.0e+00,C,9.5e+04,4.2e+01
+pai_landslide_hazard_level,1.8e+05,4.2e+04,1.9e+01,5.0e+00,Moderata P1,7.6e+04,4.2e+01
+dominant_building_1,5.1e+04,1.7e+05,7.7e+01,7.6e+01,yes,4.4e+04,8.5e+01
+dominant_building_2,8.3e+03,2.2e+05,9.6e+01,8.5e+01,yes,2.7e+03,3.3e+01
+dominant_building_3,2.3e+03,2.2e+05,9.9e+01,7.6e+01,yes,4.3e+02,1.8e+01

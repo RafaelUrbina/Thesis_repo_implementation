@@ -123,8 +123,16 @@ def compute_standard_deviational_ellipse(centroids, weights=None):
 def create_ellipse_geometry(
     center_x, center_y, semi_major, semi_minor, rotation_deg, num_points=100
 ):
-    """Generates a Shapely Polygon representing a Standard Deviational Ellipse."""
-    if np.isnan(center_x) or np.isnan(semi_major) or semi_major == 0 or semi_minor == 0:
+    """Generates a Shapely Polygon representing a Standard Deviational Ellipse strictly checking for invalid geometries."""
+    if (
+        np.isnan(center_x)
+        or np.isnan(center_y)
+        or np.isnan(semi_major)
+        or np.isnan(semi_minor)
+        or np.isnan(rotation_deg)
+        or semi_major <= 1e-6
+        or semi_minor <= 1e-6
+    ):
         return None
 
     angles = np.linspace(0, 2 * np.pi, num_points)
@@ -135,6 +143,9 @@ def create_ellipse_geometry(
     scaled_poly = scale(base_poly, xfact=semi_major, yfact=semi_minor)
     rotated_poly = rotate(scaled_poly, rotation_deg, origin=(0, 0))
     ellipse_poly = translate(rotated_poly, xoff=center_x, yoff=center_y)
+
+    if not ellipse_poly.is_valid or ellipse_poly.is_empty:
+        return None
 
     return ellipse_poly
 
@@ -148,7 +159,7 @@ def save_batched_spatial_maps(
     """Generates separate static figures with unique color maps per variable."""
     
     batch_definitions = {
-        "spatial_map_epr_erd_eidx.png": lambda v: any(k in v.lower() for k in ["epr", "erd", "eidx"]),
+        "spatial_map_epr_erd_eidx.png": lambda v: any(k in v.lower() for k in ["epr", "erd", "eidx", "census", "inflow"]),
         "spatial_map_idw_nearest.png": lambda v: any(k in v.lower() for k in ["idw", "nearest"]),
     }
 
@@ -167,9 +178,10 @@ def save_batched_spatial_maps(
             batches[file_name] = matched
             assigned_vars.update(matched["variable"].tolist())
 
+    # Assign all remaining unmapped variables to hydrogeopedological batch
     rest_df = weighted_df[~weighted_df["variable"].isin(assigned_vars)]
     if not rest_df.empty:
-        batches["spatial_map_other_variables.png"] = rest_df
+        batches["spatial_map_hydrogeopedological_variables.png"] = rest_df
 
     for file_name, batch_df in batches.items():
         fig, ax = plt.subplots(figsize=(12, 10))
@@ -210,13 +222,13 @@ def save_batched_spatial_maps(
             unweighted_row["sde_semi_minor_axis"],
             unweighted_row["sde_rotation_deg"],
         )
-        if unweighted_ellipse:
+        if unweighted_ellipse is not None:
             gpd.GeoSeries([unweighted_ellipse]).plot(
                 ax=ax,
                 facecolor="none",
                 edgecolor="black",
                 linestyle="--",
-                linewidth=2,
+                linewidth=1.5,
                 zorder=5,
                 label="Unweighted SDE",
             )
@@ -229,7 +241,7 @@ def save_batched_spatial_maps(
             color = unique_colors[idx]
 
             # Weighted Mean Center
-            if not np.isnan(row["mean_center_x"]):
+            if not np.isnan(row["mean_center_x"]) and not np.isnan(row["mean_center_y"]):
                 ax.scatter(
                     row["mean_center_x"],
                     row["mean_center_y"],
@@ -250,7 +262,7 @@ def save_batched_spatial_maps(
                 row["sde_semi_minor_axis"],
                 row["sde_rotation_deg"],
             )
-            if weighted_ellipse:
+            if weighted_ellipse is not None:
                 gpd.GeoSeries([weighted_ellipse]).plot(
                     ax=ax,
                     facecolor=color,
@@ -288,7 +300,7 @@ def save_batched_spatial_maps(
         output_file = output_dir / file_name
         plt.tight_layout()
         plt.savefig(output_file, dpi=300, bbox_inches="tight")
-        plt.close()
+        plt.close(fig)
         print(f"Batch map saved to: {output_file}")
 
 
