@@ -36,12 +36,18 @@ SIR_WEATHER_TASKS = (
 
 PENDOLARISMO_PATH = MASTER_DATA_PATH / "pendolarismo"
 
-CAUSAL_LINKS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/causal_links"
+CAUSAL_LINKS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/links_lists"
 
 PATENTS_OUTPUT_TERMS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/links_lists/py/outputterms"
+
 ONTOLOGY_LISTS_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/ontology/py/lists"
+
 ONTOLOGY_OUTPUT_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/ontology/output"
 
 SUMMARY_STATISTICS_PATH = REPO_ROOT / "1_Bibliography/3_Tables_lit_dat_review/summary_statistics"
 
 PATENT_PIPELINE_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/pipeline"
+
+CAUSAL_RELATION_MODEL_PATH = REPO_ROOT / "3_Implementation/3_Models/causal_relation_extraction"
+
+KNOWLEDGE_ABSTRACT_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/knowledge_abstract"
