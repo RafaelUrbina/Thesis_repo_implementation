@@ -50,4 +50,4 @@ PATENT_PIPELINE_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/pip
 
 CAUSAL_RELATION_MODEL_PATH = REPO_ROOT / "3_Implementation/3_Models/causal_relation_extraction"
 
-KNOWLEDGE_ABSTRACT_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/knowledge_abstract"
+KNOWLEDGE_ABSTRACT_PATH = REPO_ROOT / "3_Implementation/2_Data_analysis/patents/pipeline/knowledge_abstract"

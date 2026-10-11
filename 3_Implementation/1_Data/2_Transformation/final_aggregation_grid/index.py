@@ -1,7 +1,16 @@
 import geopandas as gpd
 import pandas as pd
 
-gpkg_path = '/Users/rafaelurbina/Downloads/Thesis_repo_implementation/3_Implementation/1_Data/2_Transformation/final_aggregation_grid/h310_grid_final_datacube.gpkg'
+import sys
+from pathlib import Path
+
+current_dir = Path(__file__).resolve().parent
+project_root = current_dir.parents[3]
+sys.path.insert(0, str(project_root))
+
+from Utils.paths import (GRID_PATH)
+
+gpkg_path = GRID_PATH / 'h310_grid_final_datacube.gpkg'
 
 
 def list_gpkg_layers(path):

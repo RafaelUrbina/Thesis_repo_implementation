@@ -18,6 +18,10 @@ import spacy
 
 nlp = spacy.load("en_core_web_sm")
 
+# Machine Learning imports for Semantic Classification
+import torch
+from sentence_transformers import SentenceTransformer, util
+
 # Ensure repository root is on sys.path by locating 'Utils' directory upwards
 REPO_ROOT = Path(__file__).resolve()
 while not (REPO_ROOT / "Utils").exists() and REPO_ROOT != REPO_ROOT.parent:
@@ -39,6 +43,9 @@ DOMAIN_SYNONYMS = {
     "failure mode and effects analysis": ["fmea"],
     "hazard and operability study": ["hazop"],
 }
+
+# Initialize Sentence Transformer model globally (lightweight, efficient sentence encoder)
+EMBEDDING_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 def is_common_english_word(text: str) -> bool:
@@ -375,14 +382,14 @@ def build_unified_knowledge_graph(
                 broader_uri=parent,
             )
 
-    # 5. Process Risk Variable Terms (4-Tier Hierarchy)
+    # 5. Process Risk Variable Terms (Semantic Vector Classification)
     risk_terms = parse_term_file(risk_file)
     if risk_terms:
-        # Define the 8 Variable Classification Categories (Tier 2)
-        class_meteo = add_category_root(
+        # Define the 6 Variable Classification Categories (Tier 2)
+        class_meteo_clim_topo = add_category_root(
             schemes["risk"],
-            "Class_MeteorologicalMonitoring",
-            "Meteorological & Hydrological Monitoring",
+            "Class_MeteorologicalClimaticAndTopographicIndicators",
+            "Meteorological, Climatic, & Topographic Indicators",
             is_variable_class=True,
         )
         class_hydro = add_category_root(
@@ -403,22 +410,10 @@ def build_unified_knowledge_graph(
             "Pedological Soil Properties & Agricultural Capacity",
             is_variable_class=True,
         )
-        class_topo_clim = add_category_root(
-            schemes["risk"],
-            "Class_TopographicAndClimaticIndicators",
-            "Topographic & Climatic Indicators",
-            is_variable_class=True,
-        )
         class_built_env = add_category_root(
             schemes["risk"],
             "Class_BuiltEnvironmentAndLandUse",
             "Built Environment, Land Use, & Human Interventions",
-            is_variable_class=True,
-        )
-        class_landscape = add_category_root(
-            schemes["risk"],
-            "Class_LandscapeRegionalization",
-            "Landscape Regionalization",
             is_variable_class=True,
         )
         class_socio = add_category_root(
@@ -428,136 +423,84 @@ def build_unified_knowledge_graph(
             is_variable_class=True,
         )
 
+        # Category contextual definitions for high-precision semantic matching
+        category_definitions = {
+            class_meteo_clim_topo: (
+                "Meteorological, Climatic, and Topographic Indicators: weather monitoring stations, "
+                "sensors, gauge, real-time discharge, telemetry, pluviometer, rainfall, elevation, "
+                "slope aspect, altitudinal profile, drought index, moisture deficit, precipitation, "
+                "temperature variations, climate indicators."
+            ),
+            class_hydro: (
+                "Hydrological Settings and Flood Risk: river inundation, "
+                "waterways, culvert, catchment, runoff, stormwater, hydraulic risk."
+            ),
+            class_geotech: (
+                "Geotechnical Dynamics and Landslide Hazards: slope movement, "
+                "mass wasting, seismic activity, earthquake, ground deformation, "
+                "subsidence, liquefaction, soil failure."
+            ),
+            class_pedo: (
+                "Pedological Soil Properties and Agricultural Capacity: soil depth, "
+                "rooting depth, ksat, hydraulic conductivity, salinity, erodibility, "
+                "soil texture, organic matter, pedology, agricultural land."
+            ),
+            class_built_env: (
+                "Built Environment, Land Use, and Human Interventions: building footprint, "
+                "architectural density, remediation cost, repair costs, roads, "
+                "infrastructure, urban land use."
+            ),
+            class_socio: (
+                "Socio-Economic Indicators, Vulnerability, and Municipal Metabolism: "
+                "population density, average income, wealth, daytime population, "
+                "pension, taxable income, municipal water metabolism, social vulnerability."
+            ),
+        }
+
+        # Vectorize category definitions
+        category_uris = list(category_definitions.keys())
+        category_texts = list(category_definitions.values())
+        category_embeddings = EMBEDDING_MODEL.encode(
+            category_texts, convert_to_tensor=True
+        )
+
         print(
             f"Ingesting {len(risk_terms)} environmental/social risk"
-            " variables into 4-tier hierarchy..."
+            " variables using Semantic Classification..."
         )
-        for item in risk_terms:
-            pref = item["pref"]
-            if not pref:
-                continue
 
-            plow = pref.lower()
-            parent = class_socio  # Fallback classification
+        valid_risk_terms = [item for item in risk_terms if item.get("pref")]
+        term_pref_labels = [item["pref"] for item in valid_risk_terms]
 
-            # Specific keyword matching rules for the 8 classification categories
-            if any(
-                k in plow
-                for k in [
-                    "gauge",
-                    "real-time discharge",
-                    "station",
-                    "sensor",
-                    "monitoring",
-                ]
-            ):
-                parent = class_meteo
-            elif any(
-                k in plow
-                for k in [
-                    "flood",
-                    "river",
-                    "waterway",
-                    "culvert",
-                    "stormwater",
-                    "hydraulic risk",
-                    "inundation",
-                    "hydrographic",
-                    "run-off",
-                    "runoff",
-                ]
-            ):
-                parent = class_hydro
-            elif any(
-                k in plow
-                for k in [
-                    "landslide",
-                    "mass movement",
-                    "mass wasting",
-                    "seismic",
-                    "earthquake",
-                    "ground deformation",
-                    "downward deformation",
-                    "vertical deformation",
-                    "slope movement",
-                ]
-            ):
-                parent = class_geotech
-            elif any(
-                k in plow
-                for k in [
-                    "hydrologic soil group",
-                    "ksat",
-                    "hydraulic conductivity",
-                    "salinity",
-                    "soil depth",
-                    "rooting depth",
-                    "internal drainage",
-                    "electrical conductivity",
-                    "pedological",
-                ]
-            ):
-                parent = class_pedo
-            elif any(
-                k in plow
-                for k in [
-                    "elevation",
-                    "drought",
-                    "climate interference",
-                    "altitudinal",
-                    "moisture deficit",
-                    "topographic",
-                ]
-            ):
-                parent = class_topo_clim
-            elif any(
-                k in plow
-                for k in [
-                    "building footprint",
-                    "building density",
-                    "architectural density",
-                    "remediation cost",
-                    "repair cost",
-                    "damage repair",
-                    "built environment",
-                ]
-            ):
-                parent = class_built_env
-            elif any(
-                k in plow
-                for k in [
-                    "landscape unit",
-                    "unita di paesaggio",
-                    "soil region",
-                    "landscape system",
-                    "subsystem",
-                    "regionalization",
-                ]
-            ):
-                parent = class_landscape
-            elif any(
-                k in plow
-                for k in [
-                    "population",
-                    "income",
-                    "wealth",
-                    "commuter",
-                    "water metabolism",
-                    "taxable",
-                    "pension",
-                    "economic magnetism",
-                    "daytime population",
-                    "demographic",
-                ]
-            ):
-                parent = class_socio
-
-            add_term_nodes(
-                schemes["risk"],
-                pref,
-                alt_labels=item["alts"],
-                broader_uri=parent,
+        if term_pref_labels:
+            # Batch encode all input terms
+            term_embeddings = EMBEDDING_MODEL.encode(
+                term_pref_labels, convert_to_tensor=True
             )
+
+            # Cosine similarity matrix between terms and category vectors
+            cosine_scores = util.cos_sim(term_embeddings, category_embeddings)
+
+            for idx, item in enumerate(valid_risk_terms):
+                best_category_idx = torch.argmax(cosine_scores[idx]).item()
+                best_parent_uri = category_uris[best_category_idx]
+                similarity_score = cosine_scores[idx][best_category_idx].item()
+
+                pref = item["pref"]
+
+                # Optional debug log for low confidence matches
+                if similarity_score < 0.35:
+                    print(
+                        f"  [Low Confidence: {similarity_score:.2f}] '{pref}' -> "
+                        f"{best_parent_uri.split('#')[-1]}"
+                    )
+
+                add_term_nodes(
+                    schemes["risk"],
+                    pref,
+                    alt_labels=item["alts"],
+                    broader_uri=best_parent_uri,
+                )
 
     # 6. Process Causal Terms
     causal_terms = parse_term_file(causal_file)

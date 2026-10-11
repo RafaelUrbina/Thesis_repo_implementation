@@ -7,7 +7,7 @@ max_peak_elevation_1ring, Maximum peak elevation within a 1-ring neighborhood
 seismic_event_count_1ring, Total number of seismic events within a 1-ring neighborhood
 max_seismic_magnitude_1ring, Maximum seismic magnitude within a 1-ring neighborhood
 avg_seismic_magnitude_1ring, Average seismic magnitude within a 1-ring neighborhood
-m_per_hex, Meters of road and street per hexagon (road density)
+m_per_hex, Metric of meters of built road and street infrastructure per hexagon in the map (road density index)
 dist_to_waterway_m, Distance to the nearest waterway in meters
 rooting_depth_class, Class of rooting depth
 surface_stoniness_class, Class of surface stoniness
@@ -18,7 +18,7 @@ epr_TAXABINC, The individual's total taxable income used as the base for computi
 epr_SUBEMPTR, Income received from state-subsidized employment schemes - work incentives - or public labor integration funds.
 epr_PENSINCR, Total annual pension and retirement income received.
 epr_PENSINCF, Number of people receiving pension and retirement income.
-epr_ENTROAIN, Number of people receiving income from secondary entrepreneurial activities or self-employed business ventures.
+epr_ENTROAIN, Economic indicator for the number of people earning / receiving economic income / money from secondary entrepreneurial activities or self-employed business ventures or investments.
 epr_ENTROAIN01, Net income generated from secondary entrepreneurial activities or self-employed business ventures.
 erd_E0_10000, Indicator flag representing households or individuals with a very low annual income under 10.000 euros.
 erd_E10000_1, Indicator flag representing households or individuals with an annual income between 10.000 and 15.000 euros.
@@ -35,9 +35,10 @@ idw_rain_mm_avg_monthly, Average monthly rainfall in millimeters. calculated usi
 idw_wind_speed_max_max, Maximum wind speed in meters per second. calculated using Inverse Distance Weighting (IDW) interpolation.
 dtmidcnt_max, elevation maximum value per hexagon calculated using Digital Terrain Model (DTM) data.
 census_pop, Population count based on census data.
-inflow_total, Inflow of commuters based on transportation data.
+inflow_total, Inflow of commuters workers to other communes based on transportation data.
 avg_descending_soil_speed, Average speed of soil movement in the descending direction.
 avg_ascending_soil_speed, Average speed of soil movement in the ascending direction.
 nearest_hydro_river_stage_max_m, Maximum stage of the nearest hydrological river in meters.
 descending_soil_presence, Presence of soil movement in the descending direction.
 ascending_soil_presence, Presence of soil movement in the ascending direction.
+idw_temp_thermal_range, temperature or thermal range of the area.

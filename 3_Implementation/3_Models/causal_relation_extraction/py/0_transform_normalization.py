@@ -4,13 +4,13 @@ from pathlib import Path
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import PowerTransformer, QuantileTransformer
+from sklearn.preprocessing import PowerTransformer
 
 # ==========================================
 # 1. Project Root & Imports Setup
 # ==========================================
 current_dir = Path(__file__).resolve().parent
-# Adjust parents step if script location changes relative to repo root (e.g., parents[2])
+# Adjust parents step if script location changes relative to repo root (e.g., parents[3])
 project_root = current_dir.parents[3]
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
@@ -22,7 +22,7 @@ from Utils.paths import GRID_PATH, REPO_ROOT, CAUSAL_RELATION_MODEL_PATH
 # ==========================================
 INPUT_GPKG_PATH = GRID_PATH / "h310_grid_final_datacube.gpkg"
 OUTPUT_GPKG_PATH = GRID_PATH / "h310_grid_transformed.gpkg"
-OUTPUT_VECTORS_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "feature_vectors.csv"
+OUTPUT_VECTORS_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "0_importances" / "feature_vectors.csv"
 
 LAYER_NAME = 'final_data_cube'
 OUTPUT_LAYER_NAME = 'transformed_data_cube'
@@ -32,9 +32,10 @@ OUTPUT_LAYER_NAME = 'transformed_data_cube'
 # ==========================================
 
 # Variables to be completely dropped/excluded from GPKG and downstream processing
-REMOVED_VARS = ['active_fountains_count_1ring', 'is_locality_1ring', 'road_density_m_per_m2',
-                'idw_rain_mm_sum_annual',  'dtmidcnt_mean', 'epr_CADINCR', 'epr_CADINCF',
-    # Add any variable names here that should be removed
+REMOVED_VARS = [
+    'active_fountains_count_1ring', 'is_locality_1ring', 'road_density_m_per_m2',
+    'idw_rain_mm_sum_annual', 'dtmidcnt_mean', 'epr_CADINCR', 'epr_CADINCF',
+    'tipo_movimento_<lambda_0>_1ring', 'max_seismic_magnitude_1ring', 'idw_rain_mm_avg_monthly',
 ]
 
 # Categorical variables retained in GPKG for GIS toggling, but excluded from numeric feature vectors
@@ -48,15 +49,15 @@ CATEGORICAL_VARS = [
 # Variables for log1p transformation (non-negative, positively skewed)
 LOG1P_VARS = [
     'total_intervention_cost_1ring', 'total_fountains_count_1ring',
-    'landslide_point_count_1ring', 'tipo_movimento_<lambda_0>_1ring', 'max_peak_elevation_1ring',
-    'seismic_event_count_1ring', 'max_seismic_magnitude_1ring',
+    'landslide_point_count_1ring', 'max_peak_elevation_1ring',
+    'seismic_event_count_1ring',
     'avg_seismic_magnitude_1ring', 'm_per_hex', 'dist_to_waterway_m',
     'rooting_depth_class', 'surface_stoniness_class', 'landslide_surface_class',
     'hydraulic_hazard_level', 'epr_NTAXP', 'epr_TAXABINC','epr_SUBEMPTR', 'epr_PENSINCR', 
     'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01','erd_E0_10000', 
     'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7',
     'erd_E75000_1', 'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_LAND_CON',
-    'idw_rain_mm_max_monthly', 'idw_rain_mm_avg_monthly',
+    'idw_rain_mm_max_monthly', 'idw_temp_thermal_range',
     'idw_wind_speed_max_max', 'dtmidcnt_max', 'census_pop', 'inflow_total'
 ]
 
@@ -143,7 +144,6 @@ def main():
         # 3. Log status for categorical and binary variables
         found_categorical = [c for c in CATEGORICAL_VARS if c in gdf.columns]
         print(f"\nCategorical variables retained in GeoPackage ({len(found_categorical)}/{len(CATEGORICAL_VARS)} found).")
-
         print("Binary variables are retained without transformation.")
 
         # 4. Remove Excluded Variables from GeoDataFrame
@@ -155,7 +155,6 @@ def main():
 
         # 5. Save Transformed GeoPackage
         OUTPUT_GPKG_PATH.parent.mkdir(parents=True, exist_ok=True)
-
         print(f"\nSaving transformed GeoPackage to: {OUTPUT_GPKG_PATH} (Layer: {OUTPUT_LAYER_NAME})")
         gdf.to_file(OUTPUT_GPKG_PATH, layer=OUTPUT_LAYER_NAME, driver="GPKG")
         print("Transformed GeoPackage saved successfully.")
@@ -185,50 +184,41 @@ def main():
             return
 
         # Prepare feature data
-        feature_data_for_qt = gdf[transformed_feature_columns].copy()
+        feature_data_for_rank = gdf[transformed_feature_columns].copy()
         
         # Filter out rows where ALL transformed features are NaN
-        valid_rows = feature_data_for_qt.dropna(how='all').index
+        valid_rows = feature_data_for_rank.dropna(how='all').index
         if len(valid_rows) < len(gdf):
             print(f"Dropped {len(gdf) - len(valid_rows)} rows with all NaNs in transformed feature columns.")
-            feature_data_for_qt = feature_data_for_qt.loc[valid_rows]
+            feature_data_for_rank = feature_data_for_rank.loc[valid_rows]
             gdf_filtered = gdf.loc[valid_rows]
         else:
             gdf_filtered = gdf
 
-        if feature_data_for_qt.empty:
+        if feature_data_for_rank.empty:
             print("Error: No valid data remaining for feature vector generation.")
             return
 
         # Filter out zero-variance columns
-        zero_variance_cols = feature_data_for_qt.columns[feature_data_for_qt.var(skipna=True) == 0]
+        zero_variance_cols = feature_data_for_rank.columns[feature_data_for_rank.var(skipna=True) == 0]
         if not zero_variance_cols.empty:
-            print(f"Warning: Excluding zero-variance columns from percentile calculations: {list(zero_variance_cols)}")
-            columns_for_qt = [col for col in transformed_feature_columns if col not in zero_variance_cols]
-            feature_data_for_qt = feature_data_for_qt[columns_for_qt]
+            print(f"Warning: Excluding zero-variance columns from ranking: {list(zero_variance_cols)}")
+            columns_for_ranking = [col for col in transformed_feature_columns if col not in zero_variance_cols]
+            feature_data_for_rank = feature_data_for_rank[columns_for_ranking]
         else:
-            columns_for_qt = transformed_feature_columns
+            columns_for_ranking = transformed_feature_columns
 
-        if feature_data_for_qt.empty:
+        if feature_data_for_rank.empty:
             print("Error: No non-zero-variance columns remaining to process.")
             return
 
-        # 7. Calculate Percentile Ranks via QuantileTransformer
-        n_quantiles_to_use = max(2, min(feature_data_for_qt.shape[0], 1000))
-        print(f"\nCalculating percentile ranks for {len(columns_for_qt)} columns (n_quantiles={n_quantiles_to_use})...")
+        # 7. Calculate Exact Empirical Percentile Ranks via Pandas rank(pct=True)
+        print(f"\nCalculating exact empirical percentile ranks for {len(columns_for_ranking)} columns using Pandas...")
         
-        qt = QuantileTransformer(
-            output_distribution='uniform', 
-            n_quantiles=n_quantiles_to_use, 
-            subsample=feature_data_for_qt.shape[0]
-        )
-        percentile_ranks = qt.fit_transform(feature_data_for_qt)
-        
-        percentile_df = pd.DataFrame(
-            percentile_ranks, 
-            index=gdf_filtered.index, 
-            columns=[f"{col}_pctl" for col in columns_for_qt]
-        )
+        percentile_df = pd.DataFrame(index=gdf_filtered.index)
+        for col in columns_for_ranking:
+            # pct=True scales ranks from 0.0 to 1.0; method='average' cleanly handles zero-inflation ties
+            percentile_df[f"{col}_pctl"] = feature_data_for_rank[col].rank(pct=True, method='average')
 
         # 8. Assemble and Export Final CSV
         if h3_index_column and h3_index_column in gdf_filtered.columns:

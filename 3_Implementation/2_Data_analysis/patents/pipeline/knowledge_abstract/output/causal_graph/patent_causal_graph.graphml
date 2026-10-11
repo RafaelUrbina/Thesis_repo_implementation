@@ -102,141 +102,141 @@
 </node>
 <edge source="reservoir" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="reservoir" target="earthquake">
   <data key="d1">5</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="reservoir" target="clay">
   <data key="d1">4</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="reservoir" target="permeability coefficient">
   <data key="d1">3</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="reservoir" target="rainwater">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="water level" target="contamination">
   <data key="d1">3</data>
   <data key="d2">drive</data>
-  <data key="d3">["KR-102715270-B1", "KR-200395622-Y1"]</data>
-  <data key="d4">["to prevent", "thereby", "drive"]</data>
+  <data key="d3">["KR-200395622-Y1", "KR-102715270-B1"]</data>
+  <data key="d4">["drive", "to prevent", "thereby"]</data>
 </edge>
 <edge source="metering pump" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="pump" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="pump" target="earthquake">
   <data key="d1">4</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["US-10982416-B2", "JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to", "monitoring"]</data>
 </edge>
 <edge source="pump" target="clay">
   <data key="d1">3</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="pump" target="permeability coefficient">
   <data key="d1">3</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="pump" target="temperature">
   <data key="d1">2</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">receive</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["receive", "may"]</data>
 </edge>
 <edge source="pump" target="city">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">monitoring</data>
   <data key="d3">["US-10982416-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 <edge source="discharge pipe" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="sensor" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="sensor" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["EP-3032245-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="valve" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="valve" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">produce</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["produce"]</data>
 </edge>
 <edge source="tank" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="tank" target="precipitation">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-100472278-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="tank" target="earthquake">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">monitoring</data>
   <data key="d3">["US-10982416-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 <edge source="tank" target="city">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">monitoring</data>
   <data key="d3">["US-10982416-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 <edge source="nozzle" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">drive</data>
   <data key="d3">["KR-102715270-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["drive"]</data>
 </edge>
 <edge source="precipitation" target="decay">
   <data key="d1">1</data>
@@ -246,9 +246,9 @@
 </edge>
 <edge source="diffuser" target="precipitation">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-100472278-B1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="earthquake" target="block">
   <data key="d1">5</data>
@@ -276,27 +276,27 @@
 </edge>
 <edge source="conduit" target="earthquake">
   <data key="d1">2</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="conduit" target="clay">
   <data key="d1">2</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="conduit" target="permeability coefficient">
   <data key="d1">2</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">due to</data>
   <data key="d3">["JP-5356115-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["due to"]</data>
 </edge>
 <edge source="conduit" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">receive</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["receive"]</data>
 </edge>
 <edge source="rainwater" target="block">
   <data key="d1">1</data>
@@ -306,15 +306,15 @@
 </edge>
 <edge source="levee" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="levee" target="hydraulic pressure">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="hydraulic pressure" target="contamination">
   <data key="d1">1</data>
@@ -324,27 +324,27 @@
 </edge>
 <edge source="sluice" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="sluice" target="hydraulic pressure">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">to prevent</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["to prevent"]</data>
 </edge>
 <edge source="water channel" target="water level">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">thereby</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["thereby"]</data>
 </edge>
 <edge source="water channel" target="waterway">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">thereby</data>
   <data key="d3">["KR-200395622-Y1"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["thereby"]</data>
 </edge>
 <edge source="waterway" target="contamination">
   <data key="d1">1</data>
@@ -362,37 +362,37 @@
   <data key="d1">4</data>
   <data key="d2">receive</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["may", "produce", "receive"]</data>
+  <data key="d4">["receive", "may", "produce"]</data>
 </edge>
 <edge source="heat exchanger" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">receive</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["receive"]</data>
 </edge>
 <edge source="vessel" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">may</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["may"]</data>
 </edge>
 <edge source="regulator" target="temperature">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">produce</data>
   <data key="d3">["US-5888389-A"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["produce"]</data>
 </edge>
 <edge source="water main" target="earthquake">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">monitoring</data>
   <data key="d3">["US-10982416-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 <edge source="water main" target="city">
   <data key="d1">1</data>
-  <data key="d2">context_pair</data>
+  <data key="d2">monitoring</data>
   <data key="d3">["US-10982416-B2"]</data>
-  <data key="d4">["context_pair"]</data>
+  <data key="d4">["monitoring"]</data>
 </edge>
 <edge source="city" target="contamination">
   <data key="d1">1</data>

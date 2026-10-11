@@ -136,7 +136,7 @@ def extract_causal_triplets(row):
                     "source_type": "Technical",
                     "target": a,
                     "target_type": "Attribute",
-                    "trigger": "context_pair",
+                    "trigger": trigger,  # Fixed: Use actual parsed trigger instead of hardcoded "context_pair"
                     "pat_id": pat_id,
                     "para_id": para_id,
                     "nouns": nouns,
@@ -286,11 +286,13 @@ def find_strict_cross_patent_chains_fast(G):
 
                 shared = e1["patents"].intersection(e2["patents"])
                 if not shared:
+                    # Optional: If you no longer use "context_pair" as a placeholder, 
+                    # update this check to look for your actual fallback/default values if needed.
                     has_causal_1 = any(
-                        tr != "context_pair" for tr in e1["triggers"]
+                        tr not in ("context_pair", "") for tr in e1["triggers"]
                     )
                     has_causal_2 = any(
-                        tr != "context_pair" for tr in e2["triggers"]
+                        tr not in ("context_pair", "") for tr in e2["triggers"]
                     )
                     if not (has_causal_1 and has_causal_2):
                         continue

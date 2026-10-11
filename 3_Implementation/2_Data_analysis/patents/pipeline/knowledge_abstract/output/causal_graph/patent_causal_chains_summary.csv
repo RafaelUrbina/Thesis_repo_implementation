@@ -1,40 +1,51 @@
 technical,attribute,failure,patent_ids,patent_count,triggers
-reservoir,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-metering pump,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-pump,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-discharge pipe,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-sensor,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-valve,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-tank,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-nozzle,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-levee,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-sluice,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-water channel,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"context_pair, drive, thereby, to prevent"
-tank,precipitation,decay,KR-100472278-B1,1,"context_pair, to prevent"
-diffuser,precipitation,decay,KR-100472278-B1,1,"context_pair, to prevent"
-reservoir,earthquake,block,JP-5356115-B2,1,"context_pair, due to"
-pump,earthquake,block,"JP-5356115-B2, US-10982416-B2",2,"context_pair, due to"
-pump,earthquake,contamination,"JP-5356115-B2, US-10982416-B2",2,"context_pair, monitoring"
-conduit,earthquake,block,JP-5356115-B2,1,"context_pair, due to"
-water main,earthquake,contamination,US-10982416-B2,1,"context_pair, monitoring"
-tank,earthquake,contamination,US-10982416-B2,1,"context_pair, monitoring"
-reservoir,clay,block,JP-5356115-B2,1,"context_pair, due to"
-pump,clay,block,JP-5356115-B2,1,"context_pair, due to"
-conduit,clay,block,JP-5356115-B2,1,"context_pair, due to"
-reservoir,permeability coefficient,block,JP-5356115-B2,1,"context_pair, due to"
-pump,permeability coefficient,block,JP-5356115-B2,1,"context_pair, due to"
-conduit,permeability coefficient,block,JP-5356115-B2,1,"context_pair, due to"
-reservoir,rainwater,block,JP-5356115-B2,1,"context_pair, due to"
-levee,hydraulic pressure,contamination,KR-200395622-Y1,1,"context_pair, to prevent"
-sluice,hydraulic pressure,contamination,KR-200395622-Y1,1,"context_pair, to prevent"
-water channel,waterway,contamination,KR-200395622-Y1,1,"context_pair, thereby"
-sensor,temperature,degradation,EP-3032245-B1,1,"context_pair, due to"
-pump,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-conduit,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-heat exchanger,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-vessel,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-regulator,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-valve,temperature,oxidation,US-5888389-A,1,"context_pair, may, produce, receive"
-water main,city,contamination,US-10982416-B2,1,"context_pair, monitoring"
-pump,city,contamination,US-10982416-B2,1,"context_pair, monitoring"
-tank,city,contamination,US-10982416-B2,1,"context_pair, monitoring"
+reservoir,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+metering pump,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+pump,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+discharge pipe,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+sensor,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+valve,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+tank,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+nozzle,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+levee,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+sluice,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+water channel,water level,contamination,"KR-102715270-B1, KR-200395622-Y1",2,"drive, thereby, to prevent"
+tank,precipitation,decay,KR-100472278-B1,1,to prevent
+diffuser,precipitation,decay,KR-100472278-B1,1,to prevent
+reservoir,earthquake,block,JP-5356115-B2,1,due to
+reservoir,earthquake,contamination,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+pump,earthquake,block,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+pump,earthquake,contamination,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+conduit,earthquake,block,JP-5356115-B2,1,due to
+conduit,earthquake,contamination,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+water main,earthquake,block,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+water main,earthquake,contamination,US-10982416-B2,1,monitoring
+tank,earthquake,block,"JP-5356115-B2, US-10982416-B2",2,"due to, monitoring"
+tank,earthquake,contamination,US-10982416-B2,1,monitoring
+reservoir,clay,block,JP-5356115-B2,1,due to
+pump,clay,block,JP-5356115-B2,1,due to
+conduit,clay,block,JP-5356115-B2,1,due to
+reservoir,permeability coefficient,block,JP-5356115-B2,1,due to
+pump,permeability coefficient,block,JP-5356115-B2,1,due to
+conduit,permeability coefficient,block,JP-5356115-B2,1,due to
+reservoir,rainwater,block,JP-5356115-B2,1,due to
+levee,hydraulic pressure,contamination,KR-200395622-Y1,1,to prevent
+sluice,hydraulic pressure,contamination,KR-200395622-Y1,1,to prevent
+water channel,waterway,contamination,KR-200395622-Y1,1,thereby
+sensor,temperature,degradation,EP-3032245-B1,1,due to
+sensor,temperature,oxidation,"EP-3032245-B1, US-5888389-A",2,"due to, may, produce, receive"
+pump,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, may, receive"
+pump,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+conduit,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, receive"
+conduit,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+heat exchanger,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, receive"
+heat exchanger,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+vessel,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, may"
+vessel,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+regulator,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, produce"
+regulator,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+valve,temperature,degradation,"EP-3032245-B1, US-5888389-A",2,"due to, produce"
+valve,temperature,oxidation,US-5888389-A,1,"may, produce, receive"
+water main,city,contamination,US-10982416-B2,1,monitoring
+pump,city,contamination,US-10982416-B2,1,monitoring
+tank,city,contamination,US-10982416-B2,1,monitoring
