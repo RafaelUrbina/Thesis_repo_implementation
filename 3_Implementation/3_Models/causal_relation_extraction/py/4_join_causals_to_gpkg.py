@@ -44,13 +44,15 @@ def build_self_contained_causal_geopackage():
     gdf = gpd.read_file(input_gpkg_path, layer='final_data_cube')
     print(f"Loaded GeoPackage with {len(gdf)} hexagons.")
 
-    # 5. Aggregate Traceable Rows to Hexagon-Level Summary Metrics (for Choropleths)
+    # 5. Aggregate Traceable Rows to Hexagon-Level Summary Metrics (with Order-Independent Unique Strings)
     print("\nAggregating failure chains by H3 index for macro-metrics...")
     summary_geo_df = traceable_df.groupby('index').agg(
         total_failure_chains=('failure_term', 'count'),
         unique_technical_triggers=('technical_term', 'nunique'),
         top_failure_mode=('failure_term', lambda x: x.mode()[0] if not x.empty else ''),
-        patent_count=('patent_ids', lambda x: len(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip())))
+        patent_count=('patent_ids', lambda x: len(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))),
+        all_unique_failures=('failure_term', lambda x: ", ".join(sorted(set(str(v).strip() for v in x.dropna() if str(v).strip() and str(v).lower() != 'nan')))),
+        all_unique_attributes=('attribute_term', lambda x: ", ".join(sorted(set(str(v).strip() for v in x.dropna() if str(v).strip() and str(v).lower() != 'nan'))))
     ).reset_index()
 
     # 6. Merge Summary Metrics via Left Join on 'index'
@@ -62,6 +64,8 @@ def build_self_contained_causal_geopackage():
     merged_gdf['unique_technical_triggers'] = merged_gdf['unique_technical_triggers'].fillna(0).astype(int)
     merged_gdf['patent_count'] = merged_gdf['patent_count'].fillna(0).astype(int)
     merged_gdf['top_failure_mode'] = merged_gdf['top_failure_mode'].fillna('None')
+    merged_gdf['all_unique_failures'] = merged_gdf['all_unique_failures'].fillna('None')
+    merged_gdf['all_unique_attributes'] = merged_gdf['all_unique_attributes'].fillna('None')
 
     # 7. Write Back Spatial Polygons Layer to the Copy
     print(f"Writing updated spatial layer to GeoPackage copy...")
@@ -75,12 +79,12 @@ def build_self_contained_causal_geopackage():
 
     print("\nPipeline complete! Successfully created unified self-contained GeoPackage:")
     print(f"Saved to: {output_gpkg_path}")
-    print(" - Layer 1 [Spatial]: 'final_data_cube' (Updated with choropleth metrics)")
+    print(" - Layer 1 [Spatial]: 'final_data_cube' (Updated with choropleth metrics & unique string columns)")
     print(" - Layer 2 [Tabular]: 'traceable_causal_chains' (Full multi-row causal links)")
     
     print(f"\n--- Preview of Updated Spatial Data (Non-Zero Hexagons) ---")
     print(merged_gdf[merged_gdf['total_failure_chains'] > 0][
-        ['index', 'total_failure_chains', 'patent_count', 'top_failure_mode']
+        ['index', 'total_failure_chains', 'top_failure_mode', 'all_unique_failures']
     ].head(5).to_markdown(index=False))
 
 if __name__ == "__main__":
