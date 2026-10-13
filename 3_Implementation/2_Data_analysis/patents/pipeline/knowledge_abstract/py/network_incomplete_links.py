@@ -35,6 +35,10 @@ OUTPUT_HTML = (
 # Set to 0.0 to keep all links.
 PERCENTILE_THRESHOLD = 0.90
 
+# Set the minimum threshold for a node's max graph degree (in-degree or out-degree).
+# Nodes where max(in_degree, out_degree) < 20 will be filtered out iteratively.
+MIN_NODE_DEGREE_THRESHOLD = 15
+
 # Ordered stages matching your exact CSV column names
 STAGES = [
     "occurrence_technical",
@@ -93,6 +97,7 @@ def build_pairwise_sankey(
     output_html_path: Path,
     only_incomplete: bool = True,
     percentile_threshold: float = 0.0,
+    min_node_degree_threshold: float = 20.0,
 ):
     # 1. Load Data
     df = pd.read_csv(input_path)
@@ -185,6 +190,52 @@ def build_pairwise_sankey(
                 "[WARNING] No links remained after applying the percentile filter. Try lowering PERCENTILE_THRESHOLD."
             )
             return
+
+    # -------------------------------------------------------------------------
+    # NODE DEGREE FILTERING LOGIC (max(in_degree, out_degree) < min_node_degree_threshold)
+    # -------------------------------------------------------------------------
+    if min_node_degree_threshold > 0.0:
+        print(
+            f"[INFO] Iteratively filtering out nodes where max(in_degree, out_degree) < {min_node_degree_threshold}"
+        )
+        iteration = 1
+        while True:
+            # Calculate graph in-degrees (incoming connection count) and out-degrees (outgoing connection count)
+            in_degrees = aggregated_links.groupby("target").size().to_dict()
+            out_degrees = aggregated_links.groupby("source").size().to_dict()
+
+            all_nodes = set(aggregated_links["source"]).union(
+                set(aggregated_links["target"])
+            )
+
+            nodes_to_remove = set()
+            print(f"\n[DEBUG - Iteration {iteration}] Evaluating {len(all_nodes)} nodes (using graph degrees):")
+            for node in sorted(all_nodes):
+                in_deg = in_degrees.get(node, 0)
+                out_deg = out_degrees.get(node, 0)
+                max_deg = max(in_deg, out_deg)
+                print(f"   Node '{node}' -> In-Degree: {in_deg}, Out-Degree: {out_deg}, Max Degree: {max_deg}")
+                if max_deg < min_node_degree_threshold:
+                    nodes_to_remove.add(node)
+
+            if not nodes_to_remove:
+                print(f"[INFO] No nodes below degree threshold {min_node_degree_threshold}. Convergence reached.")
+                break
+
+            print(f"[INFO] Removing {len(nodes_to_remove)} node(s) with max degree < {min_node_degree_threshold}: {list(nodes_to_remove)}")
+            
+            aggregated_links = aggregated_links[
+                ~aggregated_links["source"].isin(nodes_to_remove)
+                & ~aggregated_links["target"].isin(nodes_to_remove)
+            ].reset_index(drop=True)
+
+            if aggregated_links.empty:
+                print(
+                    "[WARNING] No links remained after applying the node degree filter. Try lowering MIN_NODE_DEGREE_THRESHOLD."
+                )
+                return
+            
+            iteration += 1
 
     # Save filtered output CSV
     output_csv_path.parent.mkdir(parents=True, exist_ok=True)
@@ -292,4 +343,5 @@ if __name__ == "__main__":
         output_html_path=OUTPUT_HTML,
         only_incomplete=True,
         percentile_threshold=PERCENTILE_THRESHOLD,
+        min_node_degree_threshold=MIN_NODE_DEGREE_THRESHOLD,
     )

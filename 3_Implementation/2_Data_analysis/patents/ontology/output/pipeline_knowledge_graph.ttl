@@ -134,14 +134,6 @@ ex:Term_ActsAsACatalystFor a ex:SurfaceForm ;
     rdfs:label "acts as a catalyst for"@en ;
     ex:hasLemma ex:Lemma_ActAsACatalystFor .
 
-ex:Term_ActsOn a ex:SurfaceForm ;
-    rdfs:label "acts on"@en ;
-    ex:hasLemma ex:Lemma_ActOn .
-
-ex:Term_AdaptTo a ex:SurfaceForm ;
-    rdfs:label "adapt to"@en ;
-    ex:hasLemma ex:Lemma_AdaptTo .
-
 ex:Term_AdhesionFailure a ex:SurfaceForm ;
     rdfs:label "adhesion failure"@en ;
     ex:hasLemma ex:Lemma_AdhesionFailure .
@@ -266,17 +258,9 @@ ex:Term_AllowingFor a ex:SurfaceForm ;
     rdfs:label "allowing for"@en ;
     ex:hasLemma ex:Lemma_AllowingFor .
 
-ex:Term_Altering a ex:SurfaceForm ;
-    rdfs:label "altering"@en ;
-    ex:hasLemma ex:Lemma_Altering .
-
 ex:Term_AlternateWettingAndDrying a ex:SurfaceForm ;
     rdfs:label "alternate wetting and drying"@en ;
     ex:hasLemma ex:Lemma_AlternateWettingAndDrying .
-
-ex:Term_Alters a ex:SurfaceForm ;
-    rdfs:label "alters"@en ;
-    ex:hasLemma ex:Lemma_Alter .
 
 ex:Term_Altitude a ex:SurfaceForm ;
     rdfs:label "altitude"@en ;
@@ -602,10 +586,6 @@ ex:Term_BeAssociatedWith a ex:SurfaceForm ;
     rdfs:label "be associated with"@en ;
     ex:hasLemma ex:Lemma_BeAssociateWith .
 
-ex:Term_BePartiallyResponsibleFor a ex:SurfaceForm ;
-    rdfs:label "be partially responsible for"@en ;
-    ex:hasLemma ex:Lemma_BePartiallyResponsibleFor .
-
 ex:Term_BeSubjected a ex:SurfaceForm ;
     rdfs:label "be subjected"@en ;
     ex:hasLemma ex:Lemma_BeSubject .
@@ -835,10 +815,6 @@ ex:Term_BrittleFracture a ex:SurfaceForm ;
     rdfs:label "brittle fracture"@en ;
     ex:hasLemma ex:Lemma_BrittleFracture .
 
-ex:Term_BroughtAboutBy a ex:SurfaceForm ;
-    rdfs:label "brought about by"@en ;
-    ex:hasLemma ex:Lemma_BringAboutBy .
-
 ex:Term_BroughtOnBy a ex:SurfaceForm ;
     rdfs:label "brought on by"@en ;
     ex:hasLemma ex:Lemma_BroughtOnBy .
@@ -1011,10 +987,6 @@ ex:Term_CanalizationDisplacement a ex:SurfaceForm ;
     rdfs:label "canalization displacement"@en ;
     ex:hasLemma ex:Lemma_CanalizationDisplacement .
 
-ex:Term_CannotBeUsed a ex:SurfaceForm ;
-    rdfs:label "cannot be used"@en ;
-    ex:hasLemma ex:Lemma_CanNotBeUse .
-
 ex:Term_CanopyCoverPercentage a ex:SurfaceForm ;
     rdfs:label "canopy cover percentage"@en ;
     ex:hasLemma ex:Lemma_CanopyCoverPercentage .
@@ -1106,6 +1078,10 @@ ex:Term_CausalMechanism a ex:SurfaceForm ;
 ex:Term_CausalSequence a ex:SurfaceForm ;
     rdfs:label "causal sequence"@en ;
     ex:hasLemma ex:Lemma_CausalSequence .
+
+ex:Term_Cause a ex:SurfaceForm ;
+    rdfs:label "cause"@en ;
+    ex:hasLemma ex:Lemma_Cause .
 
 ex:Term_CauseDamage a ex:SurfaceForm ;
     rdfs:label "cause damage"@en ;
@@ -1467,21 +1443,9 @@ ex:Term_CompressorStation a ex:SurfaceForm ;
     rdfs:label "compressor station"@en ;
     ex:hasLemma ex:Lemma_CompressorStation .
 
-ex:Term_Comprise a ex:SurfaceForm ;
-    rdfs:label "comprise"@en ;
-    ex:hasLemma ex:Lemma_Comprise .
-
 ex:Term_Conduit a ex:SurfaceForm ;
     rdfs:label "conduit"@en ;
     ex:hasLemma ex:Lemma_Conduit .
-
-ex:Term_ConfiguredTo a ex:SurfaceForm ;
-    rdfs:label "configured to"@en ;
-    ex:hasLemma ex:Lemma_ConfigureTo .
-
-ex:Term_Confounding a ex:SurfaceForm ;
-    rdfs:label "confounding"@en ;
-    ex:hasLemma ex:Lemma_Confounding .
 
 ex:Term_Consequently a ex:SurfaceForm ;
     rdfs:label "consequently"@en ;
@@ -1594,10 +1558,6 @@ ex:Term_CorrugatedPipe a ex:SurfaceForm ;
 ex:Term_CostProhibitive a ex:SurfaceForm ;
     rdfs:label "cost prohibitive"@en ;
     ex:hasLemma ex:Lemma_CostProhibitive .
-
-ex:Term_CouldCause a ex:SurfaceForm ;
-    rdfs:label "could cause"@en ;
-    ex:hasLemma ex:Lemma_CouldCause .
 
 ex:Term_CounterweightCheckValve a ex:SurfaceForm ;
     rdfs:label "counterweight check valve"@en ;
@@ -2055,14 +2015,6 @@ ex:Term_Discontinuity a ex:SurfaceForm ;
     rdfs:label "discontinuity"@en ;
     ex:hasLemma ex:Lemma_Discontinuity .
 
-ex:Term_DisposedBetween a ex:SurfaceForm ;
-    rdfs:label "disposed between"@en ;
-    ex:hasLemma ex:Lemma_DisposeBetween .
-
-ex:Term_DisposedWithin a ex:SurfaceForm ;
-    rdfs:label "disposed within"@en ;
-    ex:hasLemma ex:Lemma_DisposeWithin .
-
 ex:Term_DisruptedGroundFootprint a ex:SurfaceForm ;
     rdfs:label "disrupted ground footprint"@en ;
     ex:hasLemma ex:Lemma_DisruptGroundFootprint .
@@ -2198,6 +2150,10 @@ ex:Term_DrillingStrike a ex:SurfaceForm ;
 ex:Term_DripLeg a ex:SurfaceForm ;
     rdfs:label "drip leg"@en ;
     ex:hasLemma ex:Lemma_DripLeg .
+
+ex:Term_Drive a ex:SurfaceForm ;
+    rdfs:label "drive"@en ;
+    ex:hasLemma ex:Lemma_Drive .
 
 ex:Term_DrivePipe a ex:SurfaceForm ;
     rdfs:label "drive pipe"@en ;
@@ -2667,10 +2623,6 @@ ex:Term_FabricationDefect a ex:SurfaceForm ;
     rdfs:label "fabrication defect"@en ;
     ex:hasLemma ex:Lemma_FabricationDefect .
 
-ex:Term_Factor a ex:SurfaceForm ;
-    rdfs:label "factor"@en ;
-    ex:hasLemma ex:Lemma_Factor .
-
 ex:Term_FailUnderExtremeColdConditions a ex:SurfaceForm ;
     rdfs:label "fail under extreme cold conditions"@en ;
     ex:hasLemma ex:Lemma_FailUnderExtremeColdCondition .
@@ -3071,10 +3023,6 @@ ex:Term_ForestedArea a ex:SurfaceForm ;
     rdfs:label "forested area"@en ;
     ex:hasLemma ex:Lemma_ForestArea .
 
-ex:Term_Fosters a ex:SurfaceForm ;
-    rdfs:label "fosters"@en ;
-    ex:hasLemma ex:Lemma_Foster .
-
 ex:Term_Fouling a ex:SurfaceForm ;
     rdfs:label "fouling"@en ;
     ex:hasLemma ex:Lemma_Fouling .
@@ -3219,10 +3167,6 @@ ex:Term_GeneratedBy a ex:SurfaceForm ;
     rdfs:label "generated by"@en ;
     ex:hasLemma ex:Lemma_GenerateBy .
 
-ex:Term_GeneratedEstimateOf a ex:SurfaceForm ;
-    rdfs:label "generated estimate of"@en ;
-    ex:hasLemma ex:Lemma_GenerateEstimateOf .
-
 ex:Term_GeographicalBaseline a ex:SurfaceForm ;
     rdfs:label "geographical baseline"@en ;
     ex:hasLemma ex:Lemma_GeographicalBaseline .
@@ -3302,10 +3246,6 @@ ex:Term_Gouge a ex:SurfaceForm ;
 ex:Term_Gouges a ex:SurfaceForm ;
     rdfs:label "gouges"@en ;
     ex:hasLemma ex:Lemma_Gouge .
-
-ex:Term_GovernedBy a ex:SurfaceForm ;
-    rdfs:label "governed by"@en ;
-    ex:hasLemma ex:Lemma_GovernBy .
 
 ex:Term_Governor a ex:SurfaceForm ;
     rdfs:label "governor"@en ;
@@ -3832,10 +3772,6 @@ ex:Term_ImplicatedIn a ex:SurfaceForm ;
     rdfs:label "implicated in"@en ;
     ex:hasLemma ex:Lemma_ImplicateIn .
 
-ex:Term_ImposeALimitOn a ex:SurfaceForm ;
-    rdfs:label "impose a limit on"@en ;
-    ex:hasLemma ex:Lemma_ImposeALimitOn .
-
 ex:Term_ImposedBy a ex:SurfaceForm ;
     rdfs:label "imposed by"@en ;
     ex:hasLemma ex:Lemma_ImposeBy .
@@ -3919,10 +3855,6 @@ ex:Term_Increases a ex:SurfaceForm ;
 ex:Term_Incrustation a ex:SurfaceForm ;
     rdfs:label "incrustation"@en ;
     ex:hasLemma ex:Lemma_Incrustation .
-
-ex:Term_IndicationsOf a ex:SurfaceForm ;
-    rdfs:label "indications of"@en ;
-    ex:hasLemma ex:Lemma_IndicationOf .
 
 ex:Term_InducedBy a ex:SurfaceForm ;
     rdfs:label "induced by"@en ;
@@ -4080,10 +4012,6 @@ ex:Term_IntakeStructure a ex:SurfaceForm ;
     rdfs:label "intake structure"@en ;
     ex:hasLemma ex:Lemma_IntakeStructure .
 
-ex:Term_Integrating a ex:SurfaceForm ;
-    rdfs:label "integrating"@en ;
-    ex:hasLemma ex:Lemma_Integrating .
-
 ex:Term_IntegrityThreat a ex:SurfaceForm ;
     rdfs:label "integrity threat"@en ;
     ex:hasLemma ex:Lemma_IntegrityThreat .
@@ -4160,10 +4088,6 @@ ex:Term_InterstitialEmbrittlement a ex:SurfaceForm ;
     rdfs:label "interstitial embrittlement"@en ;
     ex:hasLemma ex:Lemma_InterstitialEmbrittlement .
 
-ex:Term_IntroducedInto a ex:SurfaceForm ;
-    rdfs:label "introduced into"@en ;
-    ex:hasLemma ex:Lemma_IntroduceInto .
-
 ex:Term_IntroducedThePotentialFor a ex:SurfaceForm ;
     rdfs:label "introduced the potential for"@en ;
     ex:hasLemma ex:Lemma_IntroduceThePotentialFor .
@@ -4191,10 +4115,6 @@ ex:Term_InundationFrequency a ex:SurfaceForm ;
 ex:Term_InvertedSiphon a ex:SurfaceForm ;
     rdfs:label "Inverted siphon"@en ;
     ex:hasLemma ex:Lemma_InvertSiphon .
-
-ex:Term_InvolvingTheAggregationOf a ex:SurfaceForm ;
-    rdfs:label "involving the aggregation of"@en ;
-    ex:hasLemma ex:Lemma_InvolveTheAggregationOf .
 
 ex:Term_IonExchangeDegradation a ex:SurfaceForm ;
     rdfs:label "ion exchange degradation"@en ;
@@ -4235,10 +4155,6 @@ ex:Term_IsDrivenBy a ex:SurfaceForm ;
 ex:Term_IsResponsibleFor a ex:SurfaceForm ;
     rdfs:label "is responsible for"@en ;
     ex:hasLemma ex:Lemma_BeResponsibleFor .
-
-ex:Term_IsolatedFrom a ex:SurfaceForm ;
-    rdfs:label "isolated from"@en ;
-    ex:hasLemma ex:Lemma_IsolatedFrom .
 
 ex:Term_IsolationValve a ex:SurfaceForm ;
     rdfs:label "isolation valve"@en ;
@@ -4561,10 +4477,6 @@ ex:Term_Lifting a ex:SurfaceForm ;
     rdfs:label "lifting"@en ;
     ex:hasLemma ex:Lemma_Lifting .
 
-ex:Term_LimitedIn a ex:SurfaceForm ;
-    rdfs:label "limited in"@en ;
-    ex:hasLemma ex:Lemma_LimitedIn .
-
 ex:Term_LinearAssetProximity a ex:SurfaceForm ;
     rdfs:label "linear asset proximity"@en ;
     ex:hasLemma ex:Lemma_LinearAssetProximity .
@@ -4576,10 +4488,6 @@ ex:Term_LinearIndication a ex:SurfaceForm ;
 ex:Term_LinerPipe a ex:SurfaceForm ;
     rdfs:label "liner pipe"@en ;
     ex:hasLemma ex:Lemma_LinerPipe .
-
-ex:Term_LinkedTo a ex:SurfaceForm ;
-    rdfs:label "linked to"@en ;
-    ex:hasLemma ex:Lemma_LinkTo .
 
 ex:Term_LiquidMetalCracking a ex:SurfaceForm ;
     rdfs:label "liquid metal cracking"@en ;
@@ -4624,10 +4532,6 @@ ex:Term_LockChamber a ex:SurfaceForm ;
 ex:Term_LockRing a ex:SurfaceForm ;
     rdfs:label "lock ring"@en ;
     ex:hasLemma ex:Lemma_LockRing .
-
-ex:Term_Loosen a ex:SurfaceForm ;
-    rdfs:label "loosen"@en ;
-    ex:hasLemma ex:Lemma_Loosen .
 
 ex:Term_LossOfBonding a ex:SurfaceForm ;
     rdfs:label "loss of bonding"@en ;
@@ -4757,14 +4661,6 @@ ex:Term_MatrixPermeability a ex:SurfaceForm ;
     rdfs:label "matrix permeability"@en ;
     ex:hasLemma ex:Lemma_MatrixPermeability .
 
-ex:Term_May a ex:SurfaceForm ;
-    rdfs:label "may"@en ;
-    ex:hasLemma ex:Lemma_May .
-
-ex:Term_MayBeBlocked a ex:SurfaceForm ;
-    rdfs:label "may be blocked"@en ;
-    ex:hasLemma ex:Lemma_MayBeBlock .
-
 ex:Term_MeanAnnualRainfall a ex:SurfaceForm ;
     rdfs:label "mean annual rainfall"@en ;
     ex:hasLemma ex:Lemma_MeanAnnualRainfall .
@@ -4872,10 +4768,6 @@ ex:Term_MicrobiologicallyInfluencedCorrosion a ex:SurfaceForm ;
 ex:Term_MicrostructuralDegradation a ex:SurfaceForm ;
     rdfs:label "microstructural degradation"@en ;
     ex:hasLemma ex:Lemma_MicrostructuralDegradation .
-
-ex:Term_MigrationOf a ex:SurfaceForm ;
-    rdfs:label "migration of"@en ;
-    ex:hasLemma ex:Lemma_MigrationOf .
 
 ex:Term_MigrationOfFineParticles a ex:SurfaceForm ;
     rdfs:label "migration of fine particles"@en ;
@@ -4997,10 +4889,6 @@ ex:Term_MunicipalWaterOutput a ex:SurfaceForm ;
     rdfs:label "municipal water output"@en ;
     ex:hasLemma ex:Lemma_MunicipalWaterOutput .
 
-ex:Term_MustDrain a ex:SurfaceForm ;
-    rdfs:label "must drain"@en ;
-    ex:hasLemma ex:Lemma_MustDrain .
-
 ex:Term_NamingLandmark a ex:SurfaceForm ;
     rdfs:label "naming landmark"@en ;
     ex:hasLemma ex:Lemma_NamingLandmark .
@@ -5036,10 +4924,6 @@ ex:Term_NaturalLandscapeZone a ex:SurfaceForm ;
 ex:Term_Nature a ex:SurfaceForm ;
     rdfs:label "nature"@en ;
     ex:hasLemma ex:Lemma_Nature .
-
-ex:Term_Necessitate a ex:SurfaceForm ;
-    rdfs:label "necessitate"@en ;
-    ex:hasLemma ex:Lemma_Necessitate .
 
 ex:Term_NeedleValve a ex:SurfaceForm ;
     rdfs:label "needle valve"@en ;
@@ -5153,10 +5037,6 @@ ex:Term_OpeningModeFracture a ex:SurfaceForm ;
     rdfs:label "opening mode fracture"@en ;
     ex:hasLemma ex:Lemma_OpenModeFracture .
 
-ex:Term_OperatingWithin a ex:SurfaceForm ;
-    rdfs:label "operating within"@en ;
-    ex:hasLemma ex:Lemma_OperatingWithin .
-
 ex:Term_OperationalError a ex:SurfaceForm ;
     rdfs:label "operational error"@en ;
     ex:hasLemma ex:Lemma_OperationalError .
@@ -5180,10 +5060,6 @@ ex:Term_OrganicMatterContent a ex:SurfaceForm ;
 ex:Term_OrificePlate a ex:SurfaceForm ;
     rdfs:label "orifice plate"@en ;
     ex:hasLemma ex:Lemma_OrificePlate .
-
-ex:Term_OriginatedAs a ex:SurfaceForm ;
-    rdfs:label "originated as"@en ;
-    ex:hasLemma ex:Lemma_OriginatedAs .
 
 ex:Term_OriginatedFrom a ex:SurfaceForm ;
     rdfs:label "originated from"@en ;
@@ -5324,10 +5200,6 @@ ex:Term_PavementCoverage a ex:SurfaceForm ;
 ex:Term_PavementSettlement a ex:SurfaceForm ;
     rdfs:label "pavement settlement"@en ;
     ex:hasLemma ex:Lemma_PavementSettlement .
-
-ex:Term_PavesTheWayFor a ex:SurfaceForm ;
-    rdfs:label "paves the way for"@en ;
-    ex:hasLemma ex:Lemma_PaveTheWayFor .
 
 ex:Term_PeakElevation a ex:SurfaceForm ;
     rdfs:label "peak elevation"@en ;
@@ -5625,10 +5497,6 @@ ex:Term_PlayARoleInDetermining a ex:SurfaceForm ;
     rdfs:label "play a role in determining"@en ;
     ex:hasLemma ex:Lemma_PlayARoleInDetermine .
 
-ex:Term_PlaysAPivotalRoleIn a ex:SurfaceForm ;
-    rdfs:label "plays a pivotal role in"@en ;
-    ex:hasLemma ex:Lemma_PlayAPivotalRoleIn .
-
 ex:Term_Plugging a ex:SurfaceForm ;
     rdfs:label "plugging"@en ;
     ex:hasLemma ex:Lemma_Plugging .
@@ -5701,14 +5569,6 @@ ex:Term_PrecipitableWater a ex:SurfaceForm ;
     rdfs:label "precipitable water"@en ;
     ex:hasLemma ex:Lemma_PrecipitableWater .
 
-ex:Term_PrecipitatedBy a ex:SurfaceForm ;
-    rdfs:label "precipitated by"@en ;
-    ex:hasLemma ex:Lemma_PrecipitateBy .
-
-ex:Term_Precipitates a ex:SurfaceForm ;
-    rdfs:label "precipitates"@en ;
-    ex:hasLemma ex:Lemma_Precipitate .
-
 ex:Term_Precipitation a ex:SurfaceForm ;
     rdfs:label "precipitation"@en ;
     ex:hasLemma ex:Lemma_Precipitation .
@@ -5732,10 +5592,6 @@ ex:Term_Predict a ex:SurfaceForm ;
 ex:Term_Predictive a ex:SurfaceForm ;
     rdfs:label "predictive"@en ;
     ex:hasLemma ex:Lemma_Predictive .
-
-ex:Term_PredisposesTo a ex:SurfaceForm ;
-    rdfs:label "predisposes to"@en ;
-    ex:hasLemma ex:Lemma_PredisposeTo .
 
 ex:Term_PressureFailure a ex:SurfaceForm ;
     rdfs:label "pressure failure"@en ;
@@ -5782,6 +5638,10 @@ ex:Term_PressureZone a ex:SurfaceForm ;
     rdfs:label "pressure zone"@en ;
     ex:hasLemma ex:Lemma_PressureZone .
 
+ex:Term_Prevent a ex:SurfaceForm ;
+    rdfs:label "prevent"@en ;
+    ex:hasLemma ex:Lemma_Prevent .
+
 ex:Term_PreventableLeak a ex:SurfaceForm ;
     rdfs:label "preventable leak"@en ;
     ex:hasLemma ex:Lemma_PreventableLeak .
@@ -5794,9 +5654,9 @@ ex:Term_PrimaryDriver a ex:SurfaceForm ;
     rdfs:label "primary driver"@en ;
     ex:hasLemma ex:Lemma_PrimaryDriver .
 
-ex:Term_PriorTo a ex:SurfaceForm ;
-    rdfs:label "prior to"@en ;
-    ex:hasLemma ex:Lemma_PriorTo .
+ex:Term_Produce a ex:SurfaceForm ;
+    rdfs:label "produce"@en ;
+    ex:hasLemma ex:Lemma_Produce .
 
 ex:Term_Produces a ex:SurfaceForm ;
     rdfs:label "produces"@en ;
@@ -5833,6 +5693,10 @@ ex:Term_ProtectiveLayerDegradation a ex:SurfaceForm ;
 ex:Term_ProvincialAdministrativeLimit a ex:SurfaceForm ;
     rdfs:label "provincial administrative limit"@en ;
     ex:hasLemma ex:Lemma_ProvincialAdministrativeLimit .
+
+ex:Term_Provoke a ex:SurfaceForm ;
+    rdfs:label "provoke"@en ;
+    ex:hasLemma ex:Lemma_Provoke .
 
 ex:Term_Provokes a ex:SurfaceForm ;
     rdfs:label "provokes"@en ;
@@ -5885,10 +5749,6 @@ ex:Term_PvcPipe a ex:SurfaceForm ;
 ex:Term_PvdfPipe a ex:SurfaceForm ;
     rdfs:label "pvdf pipe"@en ;
     ex:hasLemma ex:Lemma_PvdfPipe .
-
-ex:Term_Quantify a ex:SurfaceForm ;
-    rdfs:label "quantify"@en ;
-    ex:hasLemma ex:Lemma_Quantify .
 
 ex:Term_Quick-ConnectCoupling a ex:SurfaceForm ;
     rdfs:label "quick-connect coupling"@en ;
@@ -6650,10 +6510,6 @@ ex:Term_ShallowCoverDamage a ex:SurfaceForm ;
     rdfs:label "shallow cover damage"@en ;
     ex:hasLemma ex:Lemma_ShallowCoverDamage .
 
-ex:Term_Shape a ex:SurfaceForm ;
-    rdfs:label "shape"@en ;
-    ex:hasLemma ex:Lemma_Shape .
-
 ex:Term_ShearFailure a ex:SurfaceForm ;
     rdfs:label "shear failure"@en ;
     ex:hasLemma ex:Lemma_ShearFailure .
@@ -6994,10 +6850,6 @@ ex:Term_SootDeposition a ex:SurfaceForm ;
     rdfs:label "soot deposition"@en ;
     ex:hasLemma ex:Lemma_SootDeposition .
 
-ex:Term_SourcesSuchAs a ex:SurfaceForm ;
-    rdfs:label "sources such as"@en ;
-    ex:hasLemma ex:Lemma_SourceSuchAs .
-
 ex:Term_Spalling a ex:SurfaceForm ;
     rdfs:label "spalling"@en ;
     ex:hasLemma ex:Lemma_Spalling .
@@ -7073,10 +6925,6 @@ ex:Term_StemsFrom a ex:SurfaceForm ;
 ex:Term_Step-UpPumpingUnit a ex:SurfaceForm ;
     rdfs:label "step-up pumping unit"@en ;
     ex:hasLemma ex:Lemma_Step-UpPumpingUnit .
-
-ex:Term_StimulatedBy a ex:SurfaceForm ;
-    rdfs:label "stimulated by"@en ;
-    ex:hasLemma ex:Lemma_StimulateBy .
 
 ex:Term_Storm a ex:SurfaceForm ;
     rdfs:label "storm"@en ;
@@ -7661,10 +7509,6 @@ ex:Term_TotalInjectionVolume a ex:SurfaceForm ;
 ex:Term_Towns a ex:SurfaceForm ;
     rdfs:label "towns"@en ;
     ex:hasLemma ex:Lemma_Town .
-
-ex:Term_TracedTo a ex:SurfaceForm ;
-    rdfs:label "traced to"@en ;
-    ex:hasLemma ex:Lemma_TraceTo .
 
 ex:Term_TrainDisaster a ex:SurfaceForm ;
     rdfs:label "train disaster"@en ;
@@ -8371,10 +8215,6 @@ ex:Term_WireDrawErosion a ex:SurfaceForm ;
     rdfs:label "wire draw erosion"@en ;
     ex:hasLemma ex:Lemma_WireDrawErosion .
 
-ex:Term_WithoutAccessTo a ex:SurfaceForm ;
-    rdfs:label "without access to"@en ;
-    ex:hasLemma ex:Lemma_WithoutAccessTo .
-
 ex:Term_WoodlandCoverage a ex:SurfaceForm ;
     rdfs:label "woodland coverage"@en ;
     ex:hasLemma ex:Lemma_WoodlandCoverage .
@@ -8552,13 +8392,6 @@ ex:Lemma_ActAsACatalystFor a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "act as a catalyst for"@en .
 
-ex:Lemma_ActOn a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "act on"@en .
-
 ex:Lemma_ActionActuator a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
@@ -8642,13 +8475,6 @@ ex:Lemma_ActiveWaterFeature a owl:Class,
     skos:broader ex:Class_HydrologicalSettingsAndFloodRisk ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "active water feature"@en .
-
-ex:Lemma_AdaptTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "adapt to"@en .
 
 ex:Lemma_AdhesionFailure a owl:Class,
         skos:Concept ;
@@ -8859,20 +8685,6 @@ ex:Lemma_AllowingFor a owl:Class,
     skos:broader ex:ConditionalAndContributingRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "allowing for"@en .
-
-ex:Lemma_Alter a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "alter"@en .
-
-ex:Lemma_Altering a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "altering"@en .
 
 ex:Lemma_AlternateWettingAndDrying a owl:Class,
         skos:Concept ;
@@ -9427,13 +9239,6 @@ ex:Lemma_BeDriveBy a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be drive by"@en .
 
-ex:Lemma_BePartiallyResponsibleFor a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "be partially responsible for"@en .
-
 ex:Lemma_BeResponsibleFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
@@ -9827,13 +9632,6 @@ ex:Lemma_BringAbout a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "bring about"@en .
 
-ex:Lemma_BringAboutBy a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "bring about by"@en .
-
 ex:Lemma_Bringing a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
@@ -10093,13 +9891,6 @@ ex:Lemma_CanLeadTo a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can lead to"@en .
 
-ex:Lemma_CanNotBeUse a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "can not be use"@en .
-
 ex:Lemma_CanOccur a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
@@ -10302,13 +10093,6 @@ ex:Lemma_CausalSequence a owl:Class,
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "causal sequence"@en .
-
-ex:Lemma_Cause a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "cause"@en .
 
 ex:Lemma_CauseBy a owl:Class,
         skos:Concept ;
@@ -10933,33 +10717,12 @@ ex:Lemma_CompressorStation a owl:Class,
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "compressor station"@en .
 
-ex:Lemma_Comprise a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "comprise"@en .
-
 ex:Lemma_Conduit a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:TechnicalTerm ;
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "conduit"@en .
-
-ex:Lemma_ConfigureTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "configure to"@en .
-
-ex:Lemma_Confounding a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "confounding"@en .
 
 ex:Lemma_Consequently a owl:Class,
         skos:Concept ;
@@ -11156,13 +10919,6 @@ ex:Lemma_CostProhibitive a owl:Class,
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "cost prohibitive"@en .
-
-ex:Lemma_CouldCause a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "could cause"@en .
 
 ex:Lemma_CounterweightCheckValve a owl:Class,
         skos:Concept ;
@@ -11920,20 +11676,6 @@ ex:Lemma_Discontinuity a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "discontinuity"@en .
 
-ex:Lemma_DisposeBetween a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "dispose between"@en .
-
-ex:Lemma_DisposeWithin a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "dispose within"@en .
-
 ex:Lemma_DisruptGroundFootprint a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_GeotechnicalDynamics ;
@@ -12171,13 +11913,6 @@ ex:Lemma_DripLeg a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "drip leg"@en .
-
-ex:Lemma_Drive a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "drive"@en .
 
 ex:Lemma_DriveBy a owl:Class,
         skos:Concept ;
@@ -12984,13 +12719,6 @@ ex:Lemma_FabricationDefect a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "fabrication defect"@en .
 
-ex:Lemma_Factor a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "factor"@en .
-
 ex:Lemma_FailUnderExtremeColdCondition a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -13663,13 +13391,6 @@ ex:Lemma_ForestStandDensity a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "forest stand density"@en .
 
-ex:Lemma_Foster a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "foster"@en .
-
 ex:Lemma_Fouling a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -13908,13 +13629,6 @@ ex:Lemma_GenerateBy a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "generate by"@en .
 
-ex:Lemma_GenerateEstimateOf a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "generate estimate of"@en .
-
 ex:Lemma_GeographicalBaseline a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_MeteorologicalClimaticAndTopographicIndicators ;
@@ -14040,13 +13754,6 @@ ex:Lemma_GlobeValve a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "globe valve"@en .
-
-ex:Lemma_GovernBy a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "govern by"@en .
 
 ex:Lemma_Governor a owl:Class,
         skos:Concept ;
@@ -14910,13 +14617,6 @@ ex:Lemma_ImplicateIn a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "implicate in"@en .
 
-ex:Lemma_ImposeALimitOn a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "impose a limit on"@en .
-
 ex:Lemma_ImposeBy a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
@@ -15049,13 +14749,6 @@ ex:Lemma_Incrustation a owl:Class,
     skos:broader ex:CorrosionAndElectrochemicalFailure ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "incrustation"@en .
-
-ex:Lemma_IndicationOf a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "indication of"@en .
 
 ex:Lemma_Induce a owl:Class,
         skos:Concept ;
@@ -15316,13 +15009,6 @@ ex:Lemma_IntakeStructure a owl:Class,
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "intake structure"@en .
 
-ex:Lemma_Integrating a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "integrating"@en .
-
 ex:Lemma_IntegrityThreat a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -15456,13 +15142,6 @@ ex:Lemma_InterstitialEmbrittlement a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "interstitial embrittlement"@en .
 
-ex:Lemma_IntroduceInto a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "introduce into"@en .
-
 ex:Lemma_IntroduceThePotentialFor a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
@@ -15512,13 +15191,6 @@ ex:Lemma_InvertSiphon a owl:Class,
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "invert siphon"@en .
 
-ex:Lemma_InvolveTheAggregationOf a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "involve the aggregation of"@en .
-
 ex:Lemma_IonExchangeDegradation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -15539,13 +15211,6 @@ ex:Lemma_IrrigationChannel a owl:Class,
     skos:broader ex:Class_HydrologicalSettingsAndFloodRisk ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "irrigation channel"@en .
-
-ex:Lemma_IsolatedFrom a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "isolated from"@en .
 
 ex:Lemma_IsolationValve a owl:Class,
         skos:Concept ;
@@ -16052,13 +15717,6 @@ ex:Lemma_Lifting a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "lifting"@en .
 
-ex:Lemma_LimitedIn a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "limited in"@en .
-
 ex:Lemma_LinearAssetProximity a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_BuiltEnvironmentAndLandUse ;
@@ -16079,13 +15737,6 @@ ex:Lemma_LinerPipe a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "liner pipe"@en .
-
-ex:Lemma_LinkTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "link to"@en .
 
 ex:Lemma_LiquidMetalCracking a owl:Class,
         skos:Concept ;
@@ -16163,13 +15814,6 @@ ex:Lemma_LockRing a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "lock ring"@en .
-
-ex:Lemma_Loosen a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "loosen"@en .
 
 ex:Lemma_LossOfBonding a owl:Class,
         skos:Concept ;
@@ -16395,20 +16039,6 @@ ex:Lemma_MatrixPermeability a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "matrix permeability"@en .
 
-ex:Lemma_May a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "may"@en .
-
-ex:Lemma_MayBeBlock a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "may be block"@en .
-
 ex:Lemma_MeanAnnualRainfall a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_MeteorologicalClimaticAndTopographicIndicators ;
@@ -16597,13 +16227,6 @@ ex:Lemma_MicrostructuralDegradation a owl:Class,
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "microstructural degradation"@en .
-
-ex:Lemma_MigrationOf a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "migration of"@en .
 
 ex:Lemma_MigrationOfFineParticle a owl:Class,
         skos:Concept ;
@@ -16815,13 +16438,6 @@ ex:Lemma_MunicipalWaterOutput a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "municipal water output"@en .
 
-ex:Lemma_MustDrain a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "must drain"@en .
-
 ex:Lemma_NamingLandmark a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_BuiltEnvironmentAndLandUse ;
@@ -16870,13 +16486,6 @@ ex:Lemma_Nature a owl:Class,
     skos:broader ex:Class_BuiltEnvironmentAndLandUse ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "nature"@en .
-
-ex:Lemma_Necessitate a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "necessitate"@en .
 
 ex:Lemma_NeedleValve a owl:Class,
         skos:Concept ;
@@ -17074,13 +16683,6 @@ ex:Lemma_OpenSeamWeld a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "open seam weld"@en .
 
-ex:Lemma_OperatingWithin a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "operating within"@en .
-
 ex:Lemma_OperationalError a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -17122,13 +16724,6 @@ ex:Lemma_OrificePlate a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "orifice plate"@en .
-
-ex:Lemma_OriginatedAs a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "originated as"@en .
 
 ex:Lemma_OriginatedFrom a owl:Class,
         skos:Concept ;
@@ -17353,13 +16948,6 @@ ex:Lemma_PassiveFilmBreakdown a owl:Class,
     skos:broader ex:FailureTerm ;
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "passive film breakdown"@en .
-
-ex:Lemma_PaveTheWayFor a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "pave the way for"@en .
 
 ex:Lemma_PavedArea a owl:Class,
         skos:Concept ;
@@ -17893,13 +17481,6 @@ ex:Lemma_PlasticityIndex a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "plasticity index"@en .
 
-ex:Lemma_PlayAPivotalRoleIn a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "play a pivotal role in"@en .
-
 ex:Lemma_PlayARoleInDetermine a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:CausalTerm ;
@@ -18033,20 +17614,6 @@ ex:Lemma_PrecipitableWater a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "precipitable water"@en .
 
-ex:Lemma_Precipitate a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "precipitate"@en .
-
-ex:Lemma_PrecipitateBy a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "precipitate by"@en .
-
 ex:Lemma_Precipitation a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_MeteorologicalClimaticAndTopographicIndicators ;
@@ -18088,13 +17655,6 @@ ex:Lemma_Predictive a owl:Class,
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "predictive"@en .
-
-ex:Lemma_PredisposeTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "predispose to"@en .
 
 ex:Lemma_PressureFailure a owl:Class,
         skos:Concept ;
@@ -18174,6 +17734,13 @@ ex:Lemma_PressureZone a owl:Class,
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pressure zone"@en .
 
+ex:Lemma_Prevent a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
+    skos:broader ex:ConditionalAndContributingRelation ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "prevent"@en .
+
 ex:Lemma_PreventFrom a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:ConditionalAndContributingRelation ;
@@ -18194,20 +17761,6 @@ ex:Lemma_PrimaryDriver a owl:Class,
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "primary driver"@en .
-
-ex:Lemma_PriorTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "prior to"@en .
-
-ex:Lemma_Produce a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "produce"@en .
 
 ex:Lemma_Prompt a owl:Class,
         skos:Concept ;
@@ -18264,13 +17817,6 @@ ex:Lemma_ProvincialAdministrativeLimit a owl:Class,
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "provincial administrative limit"@en .
-
-ex:Lemma_Provoke a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "provoke"@en .
 
 ex:Lemma_ProvokeTheOccurrenceOf a owl:Class,
         skos:Concept ;
@@ -18355,13 +17901,6 @@ ex:Lemma_PvdfPipe a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "pvdf pipe"@en .
-
-ex:Lemma_Quantify a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "quantify"@en .
 
 ex:Lemma_Quick-ConnectCoupling a owl:Class,
         skos:Concept ;
@@ -19665,13 +19204,6 @@ ex:Lemma_ShallowCoverDamage a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "shallow cover damage"@en .
 
-ex:Lemma_Shape a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "shape"@en .
-
 ex:Lemma_ShearFailure a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -20260,13 +19792,6 @@ ex:Lemma_SootDeposition a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "soot deposition"@en .
 
-ex:Lemma_SourceSuchAs a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "source such as"@en .
-
 ex:Lemma_Spalling a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:FailureTerm ;
@@ -20399,13 +19924,6 @@ ex:Lemma_Step-UpPumpingUnit a owl:Class,
     skos:broader ex:TechnicalTerm ;
     skos:inScheme ex:TechnicalComponentScheme ;
     skos:prefLabel "step-up pumping unit"@en .
-
-ex:Lemma_StimulateBy a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "stimulate by"@en .
 
 ex:Lemma_Storm a owl:Class,
         skos:Concept ;
@@ -21400,13 +20918,6 @@ ex:Lemma_Town a owl:Class,
     skos:broader ex:Class_SocioEconomicIndicators ;
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "town"@en .
-
-ex:Lemma_TraceTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "trace to"@en .
 
 ex:Lemma_TrainDisaster a owl:Class,
         skos:Concept ;
@@ -22627,13 +22138,6 @@ ex:Lemma_WireDrawErosion a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "wire draw erosion"@en .
 
-ex:Lemma_WithoutAccessTo a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "without access to"@en .
-
 ex:Lemma_WoodlandCoverage a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_BuiltEnvironmentAndLandUse ;
@@ -22791,6 +22295,13 @@ ex:Lemma_CanalizationDisplacement a owl:Class,
         ex:FailureModeScheme ;
     skos:prefLabel "canalization displacement"@en .
 
+ex:Lemma_Cause a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:broader ex:DirectCausationRelation ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "cause"@en .
+
 ex:Lemma_DeclineSnowFall a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_GeotechnicalDynamics,
@@ -22824,6 +22335,13 @@ ex:Lemma_Determine a owl:Class,
     skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "determine"@en .
+
+ex:Lemma_Drive a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "drive"@en .
 
 ex:Lemma_Erosion a owl:Class,
         skos:Concept ;
@@ -22988,6 +22506,20 @@ ex:Lemma_NaturalHazard a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "natural hazard"@en .
 
+ex:Lemma_Produce a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:DirectCausationRelation ;
+    skos:broader ex:DirectCausationRelation ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "produce"@en .
+
+ex:Lemma_Provoke a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "provoke"@en .
+
 ex:Lemma_ResultIn a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:DirectCausationRelation ;
@@ -23121,8 +22653,7 @@ ex:CorrelationAndAssociationRelation a owl:Class,
         ex:Lemma_BeDependentUpon,
         ex:Lemma_CorrelateWith,
         ex:Lemma_CorrespondTo,
-        ex:Lemma_DependentOn,
-        ex:Lemma_LinkTo ;
+        ex:Lemma_DependentOn ;
     skos:prefLabel "correlation and association relation"@en .
 
 ex:AttributionAndDerivationRelation a owl:Class,
@@ -23136,7 +22667,6 @@ ex:AttributionAndDerivationRelation a owl:Class,
         ex:Lemma_Derived,
         ex:Lemma_DueTo,
         ex:Lemma_GenerateBaseOn,
-        ex:Lemma_OriginatedAs,
         ex:Lemma_OriginatedFrom,
         ex:Lemma_OweTo,
         ex:Lemma_StemFrom,
@@ -23153,11 +22683,11 @@ ex:ConditionalAndContributingRelation a owl:Class,
         ex:Lemma_ExacerbateBy,
         ex:Lemma_ExceedValue,
         ex:Lemma_Exceeding,
-        ex:Lemma_ImposeALimitOn,
         ex:Lemma_ImposeBy,
         ex:Lemma_Induce,
         ex:Lemma_InduceBy,
         ex:Lemma_InduceTheFormationOf,
+        ex:Lemma_Prevent,
         ex:Lemma_PreventFrom,
         ex:Lemma_Require,
         ex:Lemma_RequireTreatment,
@@ -23242,7 +22772,6 @@ ex:DirectCausationRelation a owl:Class,
         ex:Lemma_Cause,
         ex:Lemma_CauseBy,
         ex:Lemma_CauseDamage,
-        ex:Lemma_CouldCause,
         ex:Lemma_DirectResultOf,
         ex:Lemma_EffectiveCause,
         ex:Lemma_EventuallyLead,
@@ -23603,6 +23132,9 @@ ex:Class_BuiltEnvironmentAndLandUse a ex:VariableClassification,
         ex:Lemma_WoodlandCoverage ;
     skos:prefLabel "Built Environment, Land Use, & Human Interventions"@en .
 
+ex:CausalRelationalScheme a skos:ConceptScheme ;
+    skos:prefLabel "Pipeline Causal Concept Scheme"@en .
+
 ex:Class_PedologicalProperties a ex:VariableClassification,
         owl:Class,
         skos:Concept ;
@@ -23828,8 +23360,148 @@ ex:MechanicalAndStructuralFailure a owl:Class,
         ex:Lemma_YieldPointStrain ;
     skos:prefLabel "mechanical and structural failure"@en .
 
-ex:CausalRelationalScheme a skos:ConceptScheme ;
-    skos:prefLabel "Pipeline Causal Concept Scheme"@en .
+ex:CausalTerm a owl:Class,
+        skos:Concept ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:narrower ex:AttributionAndDerivationRelation,
+        ex:ConditionalAndContributingRelation,
+        ex:CorrelationAndAssociationRelation,
+        ex:DirectCausationRelation,
+        ex:Lemma_AccelerateBy,
+        ex:Lemma_AccountFor,
+        ex:Lemma_Accumulate,
+        ex:Lemma_ActAsACatalystFor,
+        ex:Lemma_ActivateBy,
+        ex:Lemma_ActivationOf,
+        ex:Lemma_AetiologicalAgent,
+        ex:Lemma_AetiologyOf,
+        ex:Lemma_Affect,
+        ex:Lemma_AffectTheRateOf,
+        ex:Lemma_Affected,
+        ex:Lemma_AggravateBy,
+        ex:Lemma_AmplifyBy,
+        ex:Lemma_AriseFrom,
+        ex:Lemma_AsAConsequenceOf,
+        ex:Lemma_AsCompareTo,
+        ex:Lemma_AscribedTo,
+        ex:Lemma_Assigning,
+        ex:Lemma_BeAFunctionOf,
+        ex:Lemma_BeAPrerequisiteFor,
+        ex:Lemma_BeContingentUpon,
+        ex:Lemma_BeDriveBy,
+        ex:Lemma_BeResponsibleFor,
+        ex:Lemma_BeSubject,
+        ex:Lemma_BearResponsibilityFor,
+        ex:Lemma_Become,
+        ex:Lemma_Becoming,
+        ex:Lemma_Breed,
+        ex:Lemma_BringAbout,
+        ex:Lemma_Bringing,
+        ex:Lemma_BroughtOnBy,
+        ex:Lemma_CanBePlace,
+        ex:Lemma_CanBeTransmit,
+        ex:Lemma_CanGo,
+        ex:Lemma_CanOccur,
+        ex:Lemma_CanPresent,
+        ex:Lemma_Carry,
+        ex:Lemma_CarryInto,
+        ex:Lemma_CatalyticEffect,
+        ex:Lemma_CausalFactor,
+        ex:Lemma_CausalMechanism,
+        ex:Lemma_CausalSequence,
+        ex:Lemma_ChainOfEvent,
+        ex:Lemma_ChainReaction,
+        ex:Lemma_Compel,
+        ex:Lemma_Complicating,
+        ex:Lemma_Consequently,
+        ex:Lemma_ConstrainBy,
+        ex:Lemma_Contributing,
+        ex:Lemma_ContributingTo,
+        ex:Lemma_CoupleWith,
+        ex:Lemma_Creating,
+        ex:Lemma_CulminateIn,
+        ex:Lemma_Dampens,
+        ex:Lemma_DecayInto,
+        ex:Lemma_Determine,
+        ex:Lemma_Dictate,
+        ex:Lemma_DictateBy,
+        ex:Lemma_DirectThrough,
+        ex:Lemma_DischargeTo,
+        ex:Lemma_Drive,
+        ex:Lemma_DriveBy,
+        ex:Lemma_EffectOf,
+        ex:Lemma_Elicit,
+        ex:Lemma_Engender,
+        ex:Lemma_EngenderTheCreationOf,
+        ex:Lemma_Entail,
+        ex:Lemma_EntailTheFormationOf,
+        ex:Lemma_EvokeBy,
+        ex:Lemma_ExertAnEffectOn,
+        ex:Lemma_FailureMechanism,
+        ex:Lemma_FeedInto,
+        ex:Lemma_GenerateBy,
+        ex:Lemma_GiveImpulseTo,
+        ex:Lemma_GiveOriginTo,
+        ex:Lemma_GiveRiseTo,
+        ex:Lemma_GiveRiseToTheOccurrenceOf,
+        ex:Lemma_HaveABearingOn,
+        ex:Lemma_HaveProve,
+        ex:Lemma_Heighten,
+        ex:Lemma_Identify,
+        ex:Lemma_Identifying,
+        ex:Lemma_ImpactOn,
+        ex:Lemma_Impel,
+        ex:Lemma_ImplicateIn,
+        ex:Lemma_InTheEventOf,
+        ex:Lemma_InclineToward,
+        ex:Lemma_Increase,
+        ex:Lemma_IncreaseTheRiskOf,
+        ex:Lemma_Influence,
+        ex:Lemma_InfluenceBy,
+        ex:Lemma_Inhibit,
+        ex:Lemma_InstigateBy,
+        ex:Lemma_IntroduceThePotentialFor,
+        ex:Lemma_LayTheGroundworkFor,
+        ex:Lemma_MediateBy,
+        ex:Lemma_Modifie,
+        ex:Lemma_Modulate,
+        ex:Lemma_Modulating,
+        ex:Lemma_Monitoring,
+        ex:Lemma_ObtainFrom,
+        ex:Lemma_Occurrence,
+        ex:Lemma_OnAccountOf,
+        ex:Lemma_PlayARoleInDetermine,
+        ex:Lemma_Preclude,
+        ex:Lemma_Predict,
+        ex:Lemma_Predictive,
+        ex:Lemma_PrimaryDriver,
+        ex:Lemma_Prompt,
+        ex:Lemma_PromptBy,
+        ex:Lemma_Propagate,
+        ex:Lemma_PropagateBy,
+        ex:Lemma_Provoke,
+        ex:Lemma_ProvokeTheOccurrenceOf,
+        ex:Lemma_PumpFrom,
+        ex:Lemma_Receive,
+        ex:Lemma_Reduce,
+        ex:Lemma_RegulateBy,
+        ex:Lemma_RemainBelow,
+        ex:Lemma_Remove,
+        ex:Lemma_Requiring,
+        ex:Lemma_SetInMotion,
+        ex:Lemma_SetOffBy,
+        ex:Lemma_Settle,
+        ex:Lemma_SparkBy,
+        ex:Lemma_Thereby,
+        ex:Lemma_Therefore,
+        ex:Lemma_Thus,
+        ex:Lemma_TypicallyOccur,
+        ex:Lemma_Underlie,
+        ex:Lemma_UseTo,
+        ex:Lemma_Via,
+        ex:Lemma_While,
+        ex:Lemma_Yield ;
+    skos:prefLabel "causal term"@en .
 
 ex:Class_GeotechnicalDynamics a ex:VariableClassification,
         owl:Class,
@@ -24196,190 +23868,6 @@ ex:Class_HydrologicalSettingsAndFloodRisk a ex:VariableClassification,
         ex:Lemma_WeatherHazard,
         ex:Lemma_WetlandPolygon ;
     skos:prefLabel "Hydrological Settings & Flood Risk"@en .
-
-ex:CausalTerm a owl:Class,
-        skos:Concept ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:AttributionAndDerivationRelation,
-        ex:ConditionalAndContributingRelation,
-        ex:CorrelationAndAssociationRelation,
-        ex:DirectCausationRelation,
-        ex:Lemma_AccelerateBy,
-        ex:Lemma_AccountFor,
-        ex:Lemma_Accumulate,
-        ex:Lemma_ActAsACatalystFor,
-        ex:Lemma_ActOn,
-        ex:Lemma_ActivateBy,
-        ex:Lemma_ActivationOf,
-        ex:Lemma_AdaptTo,
-        ex:Lemma_AetiologicalAgent,
-        ex:Lemma_AetiologyOf,
-        ex:Lemma_Affect,
-        ex:Lemma_AffectTheRateOf,
-        ex:Lemma_Affected,
-        ex:Lemma_AggravateBy,
-        ex:Lemma_Alter,
-        ex:Lemma_Altering,
-        ex:Lemma_AmplifyBy,
-        ex:Lemma_AriseFrom,
-        ex:Lemma_AsAConsequenceOf,
-        ex:Lemma_AsCompareTo,
-        ex:Lemma_AscribedTo,
-        ex:Lemma_Assigning,
-        ex:Lemma_BeAFunctionOf,
-        ex:Lemma_BeAPrerequisiteFor,
-        ex:Lemma_BeContingentUpon,
-        ex:Lemma_BeDriveBy,
-        ex:Lemma_BePartiallyResponsibleFor,
-        ex:Lemma_BeResponsibleFor,
-        ex:Lemma_BeSubject,
-        ex:Lemma_BearResponsibilityFor,
-        ex:Lemma_Become,
-        ex:Lemma_Becoming,
-        ex:Lemma_Breed,
-        ex:Lemma_BringAbout,
-        ex:Lemma_BringAboutBy,
-        ex:Lemma_Bringing,
-        ex:Lemma_BroughtOnBy,
-        ex:Lemma_CanBePlace,
-        ex:Lemma_CanBeTransmit,
-        ex:Lemma_CanGo,
-        ex:Lemma_CanNotBeUse,
-        ex:Lemma_CanOccur,
-        ex:Lemma_CanPresent,
-        ex:Lemma_Carry,
-        ex:Lemma_CarryInto,
-        ex:Lemma_CatalyticEffect,
-        ex:Lemma_CausalFactor,
-        ex:Lemma_CausalMechanism,
-        ex:Lemma_CausalSequence,
-        ex:Lemma_ChainOfEvent,
-        ex:Lemma_ChainReaction,
-        ex:Lemma_Compel,
-        ex:Lemma_Complicating,
-        ex:Lemma_Comprise,
-        ex:Lemma_ConfigureTo,
-        ex:Lemma_Confounding,
-        ex:Lemma_Consequently,
-        ex:Lemma_ConstrainBy,
-        ex:Lemma_Contributing,
-        ex:Lemma_ContributingTo,
-        ex:Lemma_CoupleWith,
-        ex:Lemma_Creating,
-        ex:Lemma_CulminateIn,
-        ex:Lemma_Dampens,
-        ex:Lemma_DecayInto,
-        ex:Lemma_Determine,
-        ex:Lemma_Dictate,
-        ex:Lemma_DictateBy,
-        ex:Lemma_DirectThrough,
-        ex:Lemma_DischargeTo,
-        ex:Lemma_DisposeBetween,
-        ex:Lemma_DisposeWithin,
-        ex:Lemma_Drive,
-        ex:Lemma_DriveBy,
-        ex:Lemma_EffectOf,
-        ex:Lemma_Elicit,
-        ex:Lemma_Engender,
-        ex:Lemma_EngenderTheCreationOf,
-        ex:Lemma_Entail,
-        ex:Lemma_EntailTheFormationOf,
-        ex:Lemma_EvokeBy,
-        ex:Lemma_ExertAnEffectOn,
-        ex:Lemma_Factor,
-        ex:Lemma_FailureMechanism,
-        ex:Lemma_FeedInto,
-        ex:Lemma_Foster,
-        ex:Lemma_GenerateBy,
-        ex:Lemma_GenerateEstimateOf,
-        ex:Lemma_GiveImpulseTo,
-        ex:Lemma_GiveOriginTo,
-        ex:Lemma_GiveRiseTo,
-        ex:Lemma_GiveRiseToTheOccurrenceOf,
-        ex:Lemma_GovernBy,
-        ex:Lemma_HaveABearingOn,
-        ex:Lemma_HaveProve,
-        ex:Lemma_Heighten,
-        ex:Lemma_Identify,
-        ex:Lemma_Identifying,
-        ex:Lemma_ImpactOn,
-        ex:Lemma_Impel,
-        ex:Lemma_ImplicateIn,
-        ex:Lemma_InTheEventOf,
-        ex:Lemma_InclineToward,
-        ex:Lemma_Increase,
-        ex:Lemma_IncreaseTheRiskOf,
-        ex:Lemma_IndicationOf,
-        ex:Lemma_Influence,
-        ex:Lemma_InfluenceBy,
-        ex:Lemma_Inhibit,
-        ex:Lemma_InstigateBy,
-        ex:Lemma_Integrating,
-        ex:Lemma_IntroduceInto,
-        ex:Lemma_IntroduceThePotentialFor,
-        ex:Lemma_InvolveTheAggregationOf,
-        ex:Lemma_IsolatedFrom,
-        ex:Lemma_LayTheGroundworkFor,
-        ex:Lemma_LimitedIn,
-        ex:Lemma_Loosen,
-        ex:Lemma_May,
-        ex:Lemma_MayBeBlock,
-        ex:Lemma_MediateBy,
-        ex:Lemma_MigrationOf,
-        ex:Lemma_Modifie,
-        ex:Lemma_Modulate,
-        ex:Lemma_Modulating,
-        ex:Lemma_Monitoring,
-        ex:Lemma_MustDrain,
-        ex:Lemma_Necessitate,
-        ex:Lemma_ObtainFrom,
-        ex:Lemma_Occurrence,
-        ex:Lemma_OnAccountOf,
-        ex:Lemma_OperatingWithin,
-        ex:Lemma_PaveTheWayFor,
-        ex:Lemma_PlayAPivotalRoleIn,
-        ex:Lemma_PlayARoleInDetermine,
-        ex:Lemma_Precipitate,
-        ex:Lemma_PrecipitateBy,
-        ex:Lemma_Preclude,
-        ex:Lemma_Predict,
-        ex:Lemma_Predictive,
-        ex:Lemma_PredisposeTo,
-        ex:Lemma_PrimaryDriver,
-        ex:Lemma_PriorTo,
-        ex:Lemma_Prompt,
-        ex:Lemma_PromptBy,
-        ex:Lemma_Propagate,
-        ex:Lemma_PropagateBy,
-        ex:Lemma_Provoke,
-        ex:Lemma_ProvokeTheOccurrenceOf,
-        ex:Lemma_PumpFrom,
-        ex:Lemma_Quantify,
-        ex:Lemma_Receive,
-        ex:Lemma_Reduce,
-        ex:Lemma_RegulateBy,
-        ex:Lemma_RemainBelow,
-        ex:Lemma_Remove,
-        ex:Lemma_Requiring,
-        ex:Lemma_SetInMotion,
-        ex:Lemma_SetOffBy,
-        ex:Lemma_Settle,
-        ex:Lemma_Shape,
-        ex:Lemma_SourceSuchAs,
-        ex:Lemma_SparkBy,
-        ex:Lemma_StimulateBy,
-        ex:Lemma_Thereby,
-        ex:Lemma_Therefore,
-        ex:Lemma_Thus,
-        ex:Lemma_TraceTo,
-        ex:Lemma_TypicallyOccur,
-        ex:Lemma_Underlie,
-        ex:Lemma_UseTo,
-        ex:Lemma_Via,
-        ex:Lemma_While,
-        ex:Lemma_WithoutAccessTo,
-        ex:Lemma_Yield ;
-    skos:prefLabel "causal term"@en .
 
 ex:TechnicalComponentScheme a skos:ConceptScheme ;
     skos:prefLabel "Pipeline Technical Concept Scheme"@en .
