@@ -1,10 +1,11 @@
 PATENT DATASET SUMMARY STATISTICS
 ============================================================
-Total Rows: 346954
+Total Sentence Rows: 346954
+Total Unique Paragraphs: 260545
 Total Unique Patents: 17529
 Mean Patent Appearances: 19.79
 
-OCCURRENCE PRESENCE & PROPORTIONS:
+--- OCCURRENCE PRESENCE & PROPORTIONS (PATENT LEVEL) ---
   all_three           : Count = 9490, Proportion = 0.5414 (54.14%)
   tech_and_attr_only  : Count = 2540, Proportion = 0.1449 (14.49%)
   attr_and_fail_only  : Count = 528, Proportion = 0.0301 (3.01%)
@@ -12,6 +13,24 @@ OCCURRENCE PRESENCE & PROPORTIONS:
   singular_tech_only  : Count = 1394, Proportion = 0.0795 (7.95%)
   singular_attr_only  : Count = 253, Proportion = 0.0144 (1.44%)
   singular_fail_only  : Count = 274, Proportion = 0.0156 (1.56%)
+
+--- OCCURRENCE PRESENCE & PROPORTIONS (PARAGRAPH LEVEL) ---
+  all_three           : Count = 9001, Proportion = 0.0345 (3.45%)
+  tech_and_attr_only  : Count = 38009, Proportion = 0.1459 (14.59%)
+  attr_and_fail_only  : Count = 6487, Proportion = 0.0249 (2.49%)
+  tech_and_fail_only  : Count = 26706, Proportion = 0.1025 (10.25%)
+  singular_tech_only  : Count = 127712, Proportion = 0.4902 (49.02%)
+  singular_attr_only  : Count = 26478, Proportion = 0.1016 (10.16%)
+  singular_fail_only  : Count = 26151, Proportion = 0.1004 (10.04%)
+
+--- OCCURRENCE PRESENCE & PROPORTIONS (SENTENCE LEVEL) ---
+  all_three           : Count = 7619, Proportion = 0.0220 (2.20%)
+  tech_and_attr_only  : Count = 41484, Proportion = 0.1196 (11.96%)
+  attr_and_fail_only  : Count = 6629, Proportion = 0.0191 (1.91%)
+  tech_and_fail_only  : Count = 27920, Proportion = 0.0805 (8.05%)
+  singular_tech_only  : Count = 186221, Proportion = 0.5367 (53.67%)
+  singular_attr_only  : Count = 39481, Proportion = 0.1138 (11.38%)
+  singular_fail_only  : Count = 37597, Proportion = 0.1084 (10.84%)
 
 SENTIMENT:
   Mean: -0.0063
