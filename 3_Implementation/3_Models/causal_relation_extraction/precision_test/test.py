@@ -1,3 +1,9 @@
+# =====================================================================
+# NOTEE FOR CONTEXT, the current script does the causal links generation but since 
+# it uses dictionaries it collapses all occurrences that repeat to a single
+# dict key: [Technical, Attribute, Failure] hence the lower number of rows
+# =====================================================================
+
 import ast
 from collections import defaultdict
 import itertools
@@ -33,7 +39,7 @@ SUMMARY_CSV_FILE = OUTPUT_DIR / "precision_test.csv"
 
 MAX_ROWS = None
 
-# Always include complete_link_text & partial_link_text in CSV output
+# Always include text column in CSV output
 TEXT_SENTENCES = True
 
 # Random Selector Parameters:
@@ -104,8 +110,7 @@ def generate_causal_chains_csv(input_path, output_filename=SUMMARY_CSV_FILE, max
         "triggers": set(),
         "nouns": set(),
         "verbs": set(),
-        "e1_occ": [],
-        "e2_occ": []
+        "occurrences": []
     })
 
     print("[Pipeline] Extracting causal chains and occurrences...")
@@ -133,14 +138,7 @@ def generate_causal_chains_csv(input_path, output_filename=SUMMARY_CSV_FILE, max
         trigger = str(causals[0]).lower()
         occ_entry = {"pat_id": pat_id, "para_id": para_id, "text": text_val}
 
-        # Step 1: Technical -> Attribute
-        for t, a in itertools.product(techs, attrs):
-            if t != a:
-                chain_key = (t, a, None) # Placeholder until failure is processed or we store per-triplet
-                # Instead, let's capture the full [T] -> [A] -> [F] combinations present in the row/paragraph
-                pass
-
-        # To properly maintain strict [Technical] -> [Attribute] -> [Failure] links per context:
+        # Extract strict [Technical] -> [Attribute] -> [Failure] combinations per row
         for t, a, f in itertools.product(techs, attrs, failures):
             if t != a and a != f and t != f:
                 key = (t, a, f)
@@ -149,10 +147,7 @@ def generate_causal_chains_csv(input_path, output_filename=SUMMARY_CSV_FILE, max
                 agg["triggers"].add(trigger)
                 agg["nouns"].update(nouns)
                 agg["verbs"].update(verbs)
-                
-                # Treat the occurrence as capturing both hops or track context
-                agg["e1_occ"].append(occ_entry)
-                agg["e2_occ"].append(occ_entry)
+                agg["occurrences"].append(occ_entry)
 
     records = []
     for (t_node, a_node, f_node), data in chain_aggregates.items():
@@ -160,28 +155,17 @@ def generate_causal_chains_csv(input_path, output_filename=SUMMARY_CSV_FILE, max
         all_triggers = sorted(list(data["triggers"]))
         chain_nouns = sorted(list(data["nouns"]))
         chain_verbs = sorted(list(data["verbs"]))
+        occurrences = data["occurrences"]
 
-        e1_occ = data["e1_occ"]
-        e2_occ = data["e2_occ"]
-        e2_lookup = {(occ["pat_id"], occ["para_id"]): occ["text"] for occ in e2_occ}
-
-        has_complete = False
-        complete_texts = set()
-        partial_text_pairs = set()
-
-        for occ1 in e1_occ:
-            key = (occ1["pat_id"], occ1["para_id"])
-            if key in e2_lookup:
-                has_complete = True
-                if occ1["text"]:
-                    complete_texts.add(occ1["text"])
-            else:
-                for occ2 in e2_occ:
-                    if occ1["text"] or occ2["text"]:
-                        pair_str = f"[T->A]: {occ1['text']} | [A->F]: {occ2['text']}"
-                        partial_text_pairs.add(pair_str)
-
+        has_complete = len(occurrences) > 0
         flag = "Complete" if has_complete else "Partial"
+
+        # Grab a single representative text sentence instead of keeping all of them combined
+        rep_text = ""
+        for occ in occurrences:
+            if occ["text"]:
+                rep_text = occ["text"]
+                break
 
         rec = {
             "technical": t_node,
@@ -191,8 +175,7 @@ def generate_causal_chains_csv(input_path, output_filename=SUMMARY_CSV_FILE, max
         }
 
         if TEXT_SENTENCES:
-            rec["complete_link_text"] = " | ".join(sorted(list(complete_texts))) if has_complete else ""
-            rec["partial_link_text"] = " || ".join(sorted(list(partial_text_pairs))) if not has_complete else ""
+            rec["link_text"] = rep_text
 
         rec.update({
             "patent_ids": ", ".join(all_patents),
