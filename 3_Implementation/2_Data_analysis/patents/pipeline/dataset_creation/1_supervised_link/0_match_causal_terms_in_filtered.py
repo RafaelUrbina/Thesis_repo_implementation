@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 current_dir = Path(__file__).resolve().parent
-project_root = current_dir.parents[4]
+project_root = current_dir.parents[5]
 sys.path.insert(0, str(project_root))
 
 from Utils.paths import PATENT_PIPELINE_PATH, ONTOLOGY_OUTPUT_PATH
@@ -225,7 +225,7 @@ def process_dataset(
     return final_df
 
 if __name__ == '__main__':
-    csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/output/patent_dataset_filtered_ontology.csv'
+    csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/0_output/patent_dataset_filtered_ontology.csv'
     rdf_file = ONTOLOGY_OUTPUT_PATH / 'pipeline_knowledge_graph.rdf'
     output_file = PATENT_PIPELINE_PATH / 'dataset_creation/1_supervised_link/output/causal_filtered_supervised.csv'
     

@@ -29,7 +29,7 @@ nltk.download("vader_lexicon", quiet=True)
 
 # Add project root to path using relative import formula
 current_dir = Path(__file__).resolve().parent
-project_root = current_dir.parents[4]
+project_root = current_dir.parents[5]
 sys.path.insert(0, str(project_root))
 
 from Utils.paths import PATENT_PIPELINE_PATH

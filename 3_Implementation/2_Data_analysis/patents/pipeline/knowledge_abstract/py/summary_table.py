@@ -17,7 +17,8 @@ from Utils.paths import PATENT_PIPELINE_PATH
 # =====================================================================
 INPUT_CSV_PATH = (
     PATENT_PIPELINE_PATH
-    / "unsupervised_link"
+    / "dataset_creation"
+    / "2_unsupervised_link"
     / "output"
     / "causal_filtered_unsupervised_sentiment_pos.csv"
 )

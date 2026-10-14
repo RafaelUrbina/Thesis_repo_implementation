@@ -420,6 +420,7 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
                     customdata=link_labels,
                     hovertemplate="%{customdata}<extra></extra>",
                     color="rgba(200, 200, 200, 0.4)",
+                    hovercolor="#e6e200",
                 ),
             )
         ]

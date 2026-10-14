@@ -306,6 +306,7 @@ def build_pairwise_sankey(
                     color=link_colors,
                     customdata=link_hover_labels,
                     hovertemplate="%{customdata}<extra></extra>",
+                    hovercolor="#c9c624",
                 ),
             )
         ]
