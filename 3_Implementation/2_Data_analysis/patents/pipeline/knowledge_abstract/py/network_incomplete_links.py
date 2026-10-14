@@ -20,7 +20,7 @@ from Utils.paths import PATENT_PIPELINE_PATH
 # -------------------------------------------------------------------------
 INPUT_CSV = (
     PATENT_PIPELINE_PATH
-    / "unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
+    / "dataset_creation/2_unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
 )
 OUTPUT_LINKS_CSV = (
     PATENT_PIPELINE_PATH
@@ -326,6 +326,8 @@ def build_pairwise_sankey(
         font=dict(size=12, family="Arial, sans-serif", color="#333333"),
         paper_bgcolor="#ffffff",
         plot_bgcolor="#ffffff",
+        height=900,
+        width=900,
         margin=dict(l=40, r=40, t=80, b=40),
         autosize=True,
     )
