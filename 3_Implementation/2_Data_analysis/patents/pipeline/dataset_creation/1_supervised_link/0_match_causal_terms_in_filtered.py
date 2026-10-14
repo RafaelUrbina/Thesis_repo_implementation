@@ -86,22 +86,27 @@ def extract_ontology_data(g):
     print(f'Extracted {len(concepts)} concepts and {len(term_to_uri)} unique term strings.')
     return term_to_uri, uri_to_hierarchy, term_to_category
 
-def extract_text_windows(text, compiled_regex, window_size=300):
+def extract_text_windows(text, compiled_regex, window_size="full"):
     """Extracts matching text.
 
+    If window_size is None or 'full', it returns the entire text.
     If window_size is 'sentence', it splits by '...' and keeps full sentences containing a match.
     If window_size is an integer, it extracts character windows around matches.
     """
-    if not compiled_regex or not text:
-        return "" if window_size == "sentence" else text
+    if not text:
+        return ""
+        
+    # --- Mode 0: Return Full Text ---
+    if window_size is None or str(window_size).lower() in ["none", "full"]:
+        return text
+
+    if not compiled_regex:
+        return ""
 
     # --- Mode 1: Sentence Filtering ---
     if window_size == "sentence" or str(window_size).lower() == "sentence":
         sentences = [s.strip() for s in text.split("...") if s.strip()]
-    
-        # Use dict.fromkeys() to deduplicate sentences while preserving original order
         unique_sentences = list(dict.fromkeys(sentences))
-    
         matched_sentences = [
             s for s in unique_sentences if compiled_regex.search(s)
         ]
@@ -136,7 +141,7 @@ def process_dataset(
     include_failures=True,
     include_causal=True,
     include_variable=True,
-    window_size="sentence"
+    window_size="full"
 ):
     g = load_ontology(rdf_path)
     term_to_uri, uri_to_hierarchy, term_to_category = extract_ontology_data(g)

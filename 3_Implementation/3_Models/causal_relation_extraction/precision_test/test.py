@@ -45,7 +45,7 @@ TEXT_SENTENCES = True
 # Random Selector Parameters:
 # - SAMPLE_SIZE: Set to an integer (e.g., 500) to randomly sample that many chains, or None to include all.
 # - RANDOM_SEED: Set to an integer for reproducible random sampling, or None for non-deterministic behavior.
-SAMPLE_SIZE = 376
+SAMPLE_SIZE = 367
 RANDOM_SEED = 42
 
 

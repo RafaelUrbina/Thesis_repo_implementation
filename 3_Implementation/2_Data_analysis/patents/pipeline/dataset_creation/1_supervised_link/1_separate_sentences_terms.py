@@ -99,6 +99,13 @@ def main():
 
             text_idx = header.index("text")
 
+            # Pre-find header indices for fast lookup
+            tech_idx = header.index("occurrence_technical") if "occurrence_technical" in header else None
+            fail_idx = header.index("occurrence_failures") if "occurrence_failures" in header else None
+            var_idx = header.index("occurrence_variable") if "occurrence_variable" in header else None
+            causal_idx = header.index("occurrence_causal") if "occurrence_causal" in header else None
+            causal_words_idx = header.index("causal_ocurrence_words") if "causal_ocurrence_words" in header else None
+
             # Get column indices for occurrence fields present in header
             occ_col_indices = {
                 header.index(col): col
@@ -107,6 +114,24 @@ def main():
             }
 
             writer.writerow(header)
+
+            def satisfies_rule(occ_dict):
+                """
+                Rule: At least one occurrence in technical/failures/variable
+                AND at least one occurrence in causal columns.
+                """
+                has_tech_fail_var = (
+                    (tech_idx is not None and len(occ_dict.get(tech_idx, [])) > 0) or
+                    (fail_idx is not None and len(occ_dict.get(fail_idx, [])) > 0) or
+                    (var_idx is not None and len(occ_dict.get(var_idx, [])) > 0)
+                )
+
+                has_causal = (
+                    (causal_idx is not None and len(occ_dict.get(causal_idx, [])) > 0) or
+                    (causal_words_idx is not None and len(occ_dict.get(causal_words_idx, [])) > 0)
+                )
+
+                return has_tech_fail_var and has_causal
 
             for row in reader:
                 total_rows += 1
@@ -134,17 +159,30 @@ def main():
                             new_row[text_idx] = cleaned_part
 
                             # Update occurrence columns for this sentence segment
+                            updated_occ = {}
                             for idx, terms in parsed_occurrences.items():
                                 matched_terms = filter_occurrences(
                                     cleaned_part, terms
                                 )
                                 new_row[idx] = str(matched_terms)
+                                updated_occ[idx] = matched_terms
 
-                            batch_rows.append(new_row)
-                            remaining_rows += 1
+                            # Apply filter rule to each exploded segment
+                            if satisfies_rule(updated_occ):
+                                batch_rows.append(new_row)
+                                remaining_rows += 1
                 else:
-                    batch_rows.append(row)
-                    remaining_rows += 1
+                    # For unexploded rows, parse and check if they meet the criteria
+                    parsed_occurrences = {
+                        idx: parse_occurrence_list(
+                            row[idx] if idx < len(row) else ""
+                        )
+                        for idx in occ_col_indices
+                    }
+
+                    if satisfies_rule(parsed_occurrences):
+                        batch_rows.append(row)
+                        remaining_rows += 1
 
                 if len(batch_rows) >= BATCH_SIZE:
                     writer.writerows(batch_rows)
