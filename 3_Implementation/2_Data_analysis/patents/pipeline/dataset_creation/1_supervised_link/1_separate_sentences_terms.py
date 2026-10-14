@@ -44,19 +44,22 @@ def filter_occurrences(text: str, terms: list[str]) -> list[str]:
 def main():
     input_path = (
         PATENT_PIPELINE_PATH
-        / "supervised_link"
+        / "dataset_creation"
+        / "1_supervised_link"
         / "output"
         / "causal_filtered_supervised.csv"
     )
     output_path = (
         PATENT_PIPELINE_PATH
-        / "supervised_link"
+        / "dataset_creation"
+        / "1_supervised_link"
         / "output"
         / "causal_filtered_supervised_exploded.csv"
     )
     stats_path = (
         PATENT_PIPELINE_PATH
-        / "supervised_link"
+        / "dataset_creation"
+        / "1_supervised_link"
         / "output"
         / "causal_filtered_supervised_exploded_stats.txt"
     )

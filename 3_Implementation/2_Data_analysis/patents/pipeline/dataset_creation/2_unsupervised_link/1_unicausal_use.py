@@ -164,6 +164,6 @@ def process_csv(input_path: str, text_column: str, output_path: str, save_every:
         writer.writerows(rows)
 
 if __name__ == "__main__":
-    input_file = PATENT_PIPELINE_PATH / "unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
-    output_file = PATENT_PIPELINE_PATH / "unsupervised_link/output/unicausal_sentiment_filtered_unsupervised.csv"
+    input_file = PATENT_PIPELINE_PATH / "dataset_creation/unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
+    output_file = PATENT_PIPELINE_PATH / "dataset_creation/unsupervised_link/output/unicausal_sentiment_filtered_unsupervised.csv"
     process_csv(input_path=str(input_file), text_column="text", output_path=str(output_file), threshold=0.5)

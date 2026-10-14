@@ -227,7 +227,7 @@ def process_dataset(
 if __name__ == '__main__':
     csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/output/patent_dataset_filtered_ontology.csv'
     rdf_file = ONTOLOGY_OUTPUT_PATH / 'pipeline_knowledge_graph.rdf'
-    output_file = PATENT_PIPELINE_PATH / 'supervised_link/output/causal_filtered_supervised.csv'
+    output_file = PATENT_PIPELINE_PATH / 'dataset_creation/1_supervised_link/output/causal_filtered_supervised.csv'
     
     df_filtered = process_dataset(
         csv_file, 

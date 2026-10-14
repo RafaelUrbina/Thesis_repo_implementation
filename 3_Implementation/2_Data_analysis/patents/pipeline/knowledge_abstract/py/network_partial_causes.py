@@ -27,7 +27,8 @@ from Utils.paths import PATENT_PIPELINE_PATH
 # =====================================================================
 INPUT_CSV_PATH = (
     PATENT_PIPELINE_PATH
-    / "unsupervised_link"
+    / "dataset_creation"
+    / "2_unsupervised_link"
     / "output"
     / "causal_filtered_unsupervised_sentiment_pos.csv"
 )
@@ -427,7 +428,8 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
     fig.update_layout(
         title_text="Patent Causal Chain (With POS Meta): [Technical] ➔ [Attribute] ➔ [Failure]",
         font_size=12,
-        height=750,
+        height=900,
+        width=900,
         margin=dict(l=50, r=200, t=60, b=50),
     )
 

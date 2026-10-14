@@ -74,13 +74,15 @@ def extract_nouns_and_verbs(doc):
 def main():
     input_path = (
         PATENT_PIPELINE_PATH
-        / "supervised_link"
+        / "dataset_creation"
+        / "1_supervised_link"
         / "output"
         / "causal_filtered_supervised_exploded.csv"
     )
     output_path = (
         PATENT_PIPELINE_PATH
-        / "unsupervised_link"
+        / "dataset_creation"
+        / "2_unsupervised_link"
         / "output"
         / "causal_filtered_unsupervised_sentiment_pos.csv"
     )
