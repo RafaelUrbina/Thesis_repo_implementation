@@ -4,6 +4,7 @@ import shutil
 import sqlite3
 import pandas as pd
 import geopandas as gpd
+from sklearn.preprocessing import MinMaxScaler
 
 # 1. Project Root & Paths Setup
 current_dir = Path(__file__).resolve().parent
@@ -67,11 +68,44 @@ def build_self_contained_causal_geopackage():
     merged_gdf['all_unique_failures'] = merged_gdf['all_unique_failures'].fillna('None')
     merged_gdf['all_unique_attributes'] = merged_gdf['all_unique_attributes'].fillna('None')
 
-    # 7. Write Back Spatial Polygons Layer to the Copy
+    # 7. Calculate Weighted Composite Index
+    print("Computing weighted socio-economic index...")
+    index_columns = [
+        'epr_NTAXP', 'epr_TAXABINC', 'epr_SUBEMPTR', 'epr_PENSINCR', 
+        'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01', 'erd_E0_10000', 
+        'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7',
+        'erd_E75000_1', 'erd_E_GE1200', 'census_pop', 'inflow_total'
+    ]
+    
+    # Ensure all index columns exist in the dataframe (fill missing ones with 0 if absent)
+    for col in index_columns:
+        if col not in merged_gdf.columns:
+            merged_gdf[col] = 0
+
+    # Fill missing values within index columns with median/0 to prevent NaN propagation
+    index_subset = merged_gdf[index_columns].fillna(0)
+
+    # Normalize columns to a 0-1 scale using MinMaxScaler
+    scaler = MinMaxScaler()
+    normalized_values = scaler.fit_transform(index_subset)
+    norm_df = pd.DataFrame(normalized_values, columns=index_columns, index=merged_gdf.index)
+
+    # Define weights: Give double weight (1.5) to prioritized columns, 1.0 to others
+    priority_cols = {'census_pop', 'inflow_total', 'epr_PENSINCR', 'epr_TAXABINC'}
+    weights = {col: (1.5 if col in priority_cols else 1.0) for col in index_columns}
+
+    # Calculate the weighted sum score
+    composite_score = sum(norm_df[col] * weights[col] for col in index_columns)
+    total_weight = sum(weights.values())
+    
+    # Assign normalized weighted average index (scaled 0 to 100)
+    merged_gdf['causal_socioeconomic_index'] = (composite_score / total_weight) * 100
+
+    # 8. Write Back Spatial Polygons Layer to the Copy
     print(f"Writing updated spatial layer to GeoPackage copy...")
     merged_gdf.to_file(output_gpkg_path, layer='final_data_cube', driver="GPKG")
 
-    # 8. Inject Full Traceable CSV as a Secondary Table Layer into SQLite (.gpkg)
+    # 9. Inject Full Traceable CSV as a Secondary Table Layer into SQLite (.gpkg)
     print("Embedding full traceable causal chain table into the GeoPackage database...")
     conn = sqlite3.connect(output_gpkg_path)
     traceable_df.to_sql('traceable_causal_chains', conn, if_exists='replace', index=False)
@@ -79,12 +113,12 @@ def build_self_contained_causal_geopackage():
 
     print("\nPipeline complete! Successfully created unified self-contained GeoPackage:")
     print(f"Saved to: {output_gpkg_path}")
-    print(" - Layer 1 [Spatial]: 'final_data_cube' (Updated with choropleth metrics & unique string columns)")
+    print(" - Layer 1 [Spatial]: 'final_data_cube' (Updated with choropleth metrics, unique strings, and 'causal_socioeconomic_index')")
     print(" - Layer 2 [Tabular]: 'traceable_causal_chains' (Full multi-row causal links)")
     
     print(f"\n--- Preview of Updated Spatial Data (Non-Zero Hexagons) ---")
     print(merged_gdf[merged_gdf['total_failure_chains'] > 0][
-        ['index', 'total_failure_chains', 'top_failure_mode', 'all_unique_failures']
+        ['index', 'total_failure_chains', 'causal_socioeconomic_index', 'top_failure_mode']
     ].head(5).to_markdown(index=False))
 
 if __name__ == "__main__":

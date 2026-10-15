@@ -4,7 +4,7 @@ import os
 # HARDWARE THROTTLING: Must be configured BEFORE importing torch / spacy
 # Limit PyTorch / OpenMP / BLAS thread pools (e.g., to 2 threads)
 # =====================================================================
-MAX_CPU_THREADS = "2"  # Adjust: "1" (coolest), "2" (balanced), "4" (faster)
+MAX_CPU_THREADS = "4"  # Adjust: "1" (coolest), "2" (balanced), "4" (faster)
 os.environ["OMP_NUM_THREADS"] = MAX_CPU_THREADS
 os.environ["MKL_NUM_THREADS"] = MAX_CPU_THREADS
 os.environ["OPENBLAS_NUM_THREADS"] = MAX_CPU_THREADS
