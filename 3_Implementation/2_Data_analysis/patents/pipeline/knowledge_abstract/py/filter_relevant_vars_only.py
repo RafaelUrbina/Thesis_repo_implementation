@@ -134,13 +134,10 @@ def get_allowed_filter_terms() -> set:
                 for cat_key, cat_val in data.items():
                     cat_vars = {v.lower().strip() for v in cat_val.get("mapped_spatial_variables", [])}
                     
-                    # Check if this category contains any of our explicit filter variables
                     if explicit_set & cat_vars:
                         print(f"  -> Matched Category: '{cat_key}'")
-                        # Collect all mapped spatial variables in this category
                         for var in cat_val.get("mapped_spatial_variables", []):
                             allowed.add(var.strip().lower())
-                        # Collect all available child terms in this category
                         for child in cat_val.get("available_child_terms", []):
                             if isinstance(child, dict) and "child_term" in child:
                                 allowed.add(child["child_term"].strip().lower())
@@ -149,7 +146,6 @@ def get_allowed_filter_terms() -> set:
         except Exception as e:
             print(f"[Filter] Warning: Could not parse category JSON ({e}). Falling back to explicit set.")
 
-    # Fallback or base inclusion
     if not allowed:
         allowed = explicit_set
 
@@ -166,6 +162,71 @@ def filter_low_degree_nodes(G, min_degree):
         if not nodes_to_remove:
             break
         G.remove_nodes_from(nodes_to_remove)
+
+
+def is_passive_voice(text, verbs_list):
+    """Heuristic check for passive voice based on auxiliary 'be' verbs + past participle or verb patterns."""
+    passive_auxiliaries = {"is", "was", "are", "were", "be", "been", "being", "gets", "got"}
+    text_lower = str(text).lower()
+    words = text_lower.split()
+    
+    # Check if text contains auxiliary 'be' near past participle verbs (-ed / irregular)
+    for i, word in enumerate(words):
+        if word in passive_auxiliaries and i + 1 < len(words):
+            next_word = words[i + 1]
+            if next_word.endswith("ed") or next_word.endswith("en") or next_word in {"caused", "affected", "damaged", "impaired", "restricted"}:
+                return True
+                
+    # Check verbs list for explicit passive markers
+    for v in verbs_list:
+        v_clean = str(v).lower().strip()
+        if any(v_clean.startswith(aux) for aux in ["is ", "was ", "are ", "were "]):
+            return True
+            
+    return False
+
+
+def select_informative_triplet_row(group_df):
+    """
+    Among rows sharing the exact same [technical, attribute, failure] triplet, 
+    selects the most informative row (preferring forward/active over backward/static/passive).
+    """
+    if len(group_df) == 1:
+        return group_df.iloc[0]
+
+    best_row = None
+    best_score = -float('inf')
+
+    for _, row in group_df.iterrows():
+        score = 0
+        cat = str(row.get("category", "")).strip().lower()
+        text = str(row.get("link_text", ""))
+        verbs = parse_field(row.get("verbs", []))
+
+        # Priority 1: Informative mode (forward category) gets highest preference
+        if cat == "forward":
+            score += 100
+        elif cat == "mixed":
+            score += 40
+        else:  # backward or static
+            score += 10
+
+        # Priority 2: Active voice vs Passive voice (prefer active / non-passive)
+        if not is_passive_voice(text, verbs):
+            score += 50
+        else:
+            score -= 30
+
+        # Priority 3: Richness / detail of sentence description (length & noun/verb counts)
+        score += min(len(text), 150) / 50
+        score += int(row.get("noun_count", 0)) * 2
+        score += int(row.get("verb_count", 0)) * 2
+
+        if score > best_score:
+            best_score = score
+            best_row = row
+
+    return best_row
 
 
 # =====================================================================
@@ -226,7 +287,27 @@ def filter_deaggregated_table_and_export(allowed_terms):
         print("[Warning] Filtered deaggregated dataset is empty after triplet frequency filter! Skipping graph generation.")
         return
 
-    # 3. Build Filtered Graph Cache (.graphml) and apply MIN_TOTAL_DEGREE pruning
+    # 3. Disambiguate Identical Triplets: Keep only the informative/forward/active mode row per triplet
+    print("\n[Pipeline] Disambiguating duplicate triplets (prioritizing informative/forward/active mode)...")
+    initial_row_count = len(df_deagg_filtered)
+    
+    df_deagg_filtered["t_clean"] = df_deagg_filtered["technical"].str.strip()
+    df_deagg_filtered["a_clean"] = df_deagg_filtered["attribute"].str.strip()
+    df_deagg_filtered["f_clean"] = df_deagg_filtered["failure"].str.strip()
+
+    optimized_rows = []
+    for _, group in df_deagg_filtered.groupby(["t_clean", "a_clean", "f_clean"]):
+        best_row = select_informative_triplet_row(group)
+        optimized_rows.append(best_row)
+
+    df_deagg_filtered = pd.DataFrame(optimized_rows).drop(columns=["t_clean", "a_clean", "f_clean"], errors="ignore")
+    print(f"  - Rows after informative mode disambiguation: {len(df_deagg_filtered)} (Pruned {initial_row_count - len(df_deagg_filtered)} conflicting/passive duplicates)")
+
+    if df_deagg_filtered.empty:
+        print("[Warning] Filtered deaggregated dataset is empty after disambiguation! Skipping graph generation.")
+        return
+
+    # 4. Build Filtered Graph Cache (.graphml) and apply MIN_TOTAL_DEGREE pruning
     print("\n[Pipeline] Building filtered NetworkX graph...")
     G_filtered = nx.DiGraph()
 
@@ -296,7 +377,7 @@ def filter_deaggregated_table_and_export(allowed_terms):
     nx.write_graphml(G_save, FILTERED_GRAPH_CACHE)
     print(f"  -> Saved filtered graph cache: {FILTERED_GRAPH_CACHE}")
 
-    # 4. Generate Filtered Sankey Diagram (.html) from filtered deaggregated rows
+    # 5. Generate Filtered Sankey Diagram (.html) from filtered deaggregated rows
     print("\n[Pipeline] Generating filtered Sankey diagram...")
     stage_nodes = {}
     edge_counts = defaultdict(int)
@@ -391,7 +472,7 @@ def filter_deaggregated_table_and_export(allowed_terms):
     )
 
     fig.update_layout(
-        title_text="Filtered Patent Causal Chain [Top 10% Triplets + Degree Filter]: [Technical] ➔ [Attribute] ➔ [Failure]",
+        title_text="Filtered Patent Causal Chain [Top 10% + Informative Mode Disambiguation + Degree Filter]: [Technical] ➔ [Attribute] ➔ [Failure]",
         font_size=12,
         height=900,
         width=900,

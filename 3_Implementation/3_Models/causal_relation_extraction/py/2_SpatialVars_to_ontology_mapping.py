@@ -15,6 +15,28 @@ import sys
 from pathlib import Path
 
 # -------------------------------------------------------------------------
+# Configuration Toggles & Global Filter Set
+# -------------------------------------------------------------------------
+# Set to "ON" to filter final outputs to only the specified dataset variables.
+# Set to "OFF" to keep all variables.
+CAUSAL_LINK_FILTER = "ON"
+
+# Explicit global filter set containing your chosen dataset variables.
+EXPLICIT_CAUSAL_FILTER_SET = {
+    'idw_rain_mm_max_monthly',
+    'idw_wind_speed_max_max',
+    'dtmidcnt_max',
+    'm_per_hex',
+    'avg_seismic_magnitude_1ring',
+    'idw_temp_thermal_range',
+    'dist_to_waterway_m',
+    'avg_descending_soil_speed',
+    'avg_ascending_soil_speed',
+    'landslide_point_count_1ring',
+    'hydraulic_hazard_level'
+}
+
+# -------------------------------------------------------------------------
 # Dynamic Path Resolution & Relative Imports
 # -------------------------------------------------------------------------
 current_dir = Path(__file__).resolve().parent
@@ -56,10 +78,13 @@ METADATA_CSV_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "descriptions.csv"
 CAUSAL_LINKS_CSV_PATH = KNOWLEDGE_ABSTRACT_PATH / "output" / "causal_graph" / "patent_causal_chains_pos_summary.csv"
 ONTOLOGY_RDF_PATH = ONTOLOGY_OUTPUT_PATH / "pipeline_knowledge_graph.ttl"
 
-OUTPUT_LINKED_RESULTS_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / "linked_feature_causal_chain.csv"
-OUTPUT_GRAPHML_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / "bipartite_mapping_graph.graphml"
-OUTPUT_GRAPH_JSON_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / "bipartite_mapping_graph.json"
-OUTPUT_CATEGORY_CHILDREN_JSON_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings"/ "category_mapped_children.json"
+# Dynamic output prefix based on filter status
+output_prefix = "filtered_" if CAUSAL_LINK_FILTER.upper() == "ON" else ""
+
+OUTPUT_LINKED_RESULTS_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / f"{output_prefix}linked_feature_causal_chain.csv"
+OUTPUT_GRAPHML_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / f"{output_prefix}bipartite_mapping_graph.graphml"
+OUTPUT_GRAPH_JSON_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings" / f"{output_prefix}bipartite_mapping_graph.json"
+OUTPUT_CATEGORY_CHILDREN_JSON_PATH = CAUSAL_RELATION_MODEL_PATH / "output" / "2_semantic_mappings"/ f"{output_prefix}category_mapped_children.json"
 
 # Explicit target analysis variables list
 TARGET_VARIABLES_LIST = [
@@ -399,12 +424,14 @@ def export_category_children_hierarchy_json(
 
 
 # -------------------------------------------------------------------------
-# 6. Link Variables & Patent Causal Chains (Strict Inner Join Enforcement)
+# 6. Link Variables & Patent Causal Chains (Standard Full Link + Final Filter)
 # -------------------------------------------------------------------------
 def link_variables_to_causal_chain(
     df_mappings: pd.DataFrame,
     category_children_dict: dict,
-    causal_links_path: Path
+    causal_links_path: Path,
+    filter_mode: str = CAUSAL_LINK_FILTER,
+    filter_set: set = EXPLICIT_CAUSAL_FILTER_SET
 ) -> pd.DataFrame:
     if not causal_links_path.exists():
         raise FileNotFoundError(f"Patent causal links file mandatory but not found at: {causal_links_path}")
@@ -425,6 +452,10 @@ def link_variables_to_causal_chain(
 
     df_exploded = pd.DataFrame(exploded_rows)
 
+    if df_exploded.empty:
+        print("Warning: Exploded DataFrame is empty!")
+        return pd.DataFrame()
+
     # STRICT INNER JOIN: Drops any variable/child term combination that has no matching patent causal link
     df_linked = pd.merge(
         df_exploded,
@@ -433,6 +464,12 @@ def link_variables_to_causal_chain(
         right_on="attribute",
         how="inner"
     )
+
+    # FINAL FILTER APPLIED HERE: If ON, keep only rows matching the specified dataset variables list
+    if filter_mode.upper() == "ON" and filter_set:
+        print(f"Applying final filter: keeping only {len(filter_set)} specified variables in causal link results...")
+        df_linked = df_linked[df_linked["variable_name"].isin(filter_set)].copy()
+        print(f"Retained {len(df_linked)} rows after filtering.")
 
     primary_cols = [
         "variable_name", "clean_label", "mapped_category", 
@@ -496,7 +533,9 @@ def export_bipartite_graph(df_linked_results: pd.DataFrame, graphml_path: Path, 
 # 8. Main Pipeline Execution
 # -------------------------------------------------------------------------
 def main():
-    print("=== Step 1: Load & Filter Variable Metadata ===")
+    print(f"=== Pipeline Configuration: CAUSAL_LINK_FILTER = {CAUSAL_LINK_FILTER} ===")
+    
+    print("\n=== Step 1: Load & Filter Variable Metadata ===")
     df_meta = load_variable_metadata(METADATA_CSV_PATH, TARGET_VARIABLES_LIST)
     print(f"Loaded {len(df_meta)} target variables with rich descriptions.")
 
@@ -518,7 +557,9 @@ def main():
     df_linked_results = link_variables_to_causal_chain(
         df_mappings,
         category_children_dict,
-        CAUSAL_LINKS_CSV_PATH
+        CAUSAL_LINKS_CSV_PATH,
+        filter_mode=CAUSAL_LINK_FILTER,
+        filter_set=EXPLICIT_CAUSAL_FILTER_SET
     )
 
     print(f"\nSaving strictly linked output CSV to: {OUTPUT_LINKED_RESULTS_PATH}")
