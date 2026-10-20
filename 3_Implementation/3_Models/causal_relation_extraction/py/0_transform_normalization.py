@@ -36,6 +36,20 @@ REMOVED_VARS = [
     'active_fountains_count_1ring', 'is_locality_1ring', 'road_density_m_per_m2',
     'idw_rain_mm_sum_annual', 'dtmidcnt_mean', 'epr_CADINCR', 'epr_CADINCF',
     'tipo_movimento_<lambda_0>_1ring', 'max_seismic_magnitude_1ring', 'idw_rain_mm_avg_monthly',
+    'nearest_hydro_river_stage_max_m','total_intervention_cost_1ring',
+    'total_fountains_count_1ring','max_peak_elevation_1ring',
+    'seismic_event_count_1ring','rooting_depth_class',
+    'surface_stoniness_class','landslide_surface_class',
+    'epr_NTAXP','epr_TAXABINC',
+    'epr_SUBEMPTR','epr_PENSINCR',
+    'epr_PENSINCF','epr_ENTROAIN',
+    'epr_ENTROAIN01','erd_E0_10000',
+    'erd_E10000_1','erd_E15000_2',
+    'erd_E26000_5','erd_E55000_7',
+    'erd_E75000_1','erd_E_GE1200',
+    'edst_acq_imm','edst_acq_erog',
+    'eidx_LAND_CON','census_pop',
+    'inflow_total'
 ]
 
 # Categorical variables retained in GPKG for GIS toggling, but excluded from numeric feature vectors
@@ -48,22 +62,19 @@ CATEGORICAL_VARS = [
 
 # Variables for log1p transformation (non-negative, positively skewed)
 LOG1P_VARS = [
-    'total_intervention_cost_1ring', 'total_fountains_count_1ring',
-    'landslide_point_count_1ring', 'max_peak_elevation_1ring',
-    'seismic_event_count_1ring',
-    'avg_seismic_magnitude_1ring', 'm_per_hex', 'dist_to_waterway_m',
-    'rooting_depth_class', 'surface_stoniness_class', 'landslide_surface_class',
-    'hydraulic_hazard_level', 'epr_NTAXP', 'epr_TAXABINC','epr_SUBEMPTR', 'epr_PENSINCR', 
-    'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01','erd_E0_10000', 
-    'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7',
-    'erd_E75000_1', 'erd_E_GE1200', 'edst_acq_imm', 'edst_acq_erog', 'eidx_LAND_CON',
-    'idw_rain_mm_max_monthly', 'idw_temp_thermal_range',
-    'idw_wind_speed_max_max', 'dtmidcnt_max', 'census_pop', 'inflow_total'
+        'idw_rain_mm_max_monthly',
+        'idw_wind_speed_max_max',
+        'dtmidcnt_max',
+        'avg_seismic_magnitude_1ring',
+        'idw_temp_thermal_range',
+        'dist_to_waterway_m',
+        'landslide_point_count_1ring',
+        'hydraulic_hazard_level', 'm_per_hex'
 ]
 
 # Variables for Yeo-Johnson transformation (can handle negative values, skewed)
 YEOJOHNSON_VARS = [
-    'avg_descending_soil_speed', 'avg_ascending_soil_speed', 'nearest_hydro_river_stage_max_m'
+    'avg_descending_soil_speed', 'avg_ascending_soil_speed'
 ]
 
 # Binary variables retained as untransformed

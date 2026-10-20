@@ -1,0 +1,7 @@
+====================================================
+           FILTERED PIPELINE METRICS SUMMARY        
+====================================================
+Total Raw Rows in Input Dataset: 5280
+Rows Remaining After Filtering & Conflict Resolution: 3357
+Total Conflicting/Pruned Rows: 1790
+====================================================

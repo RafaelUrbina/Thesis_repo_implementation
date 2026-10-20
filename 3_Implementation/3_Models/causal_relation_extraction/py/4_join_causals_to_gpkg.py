@@ -71,10 +71,7 @@ def build_self_contained_causal_geopackage():
     # 7. Calculate Weighted Composite Index
     print("Computing weighted socio-economic index...")
     index_columns = [
-        'epr_NTAXP', 'epr_TAXABINC', 'epr_SUBEMPTR', 'epr_PENSINCR', 
-        'epr_PENSINCF', 'epr_ENTROAIN', 'epr_ENTROAIN01', 'erd_E0_10000', 
-        'erd_E10000_1', 'erd_E15000_2', 'erd_E26000_5', 'erd_E55000_7',
-        'erd_E75000_1', 'erd_E_GE1200', 'census_pop', 'inflow_total'
+        'm_per_hex', 'census_pop', 'inflow_total'
     ]
     
     # Ensure all index columns exist in the dataframe (fill missing ones with 0 if absent)
@@ -91,8 +88,8 @@ def build_self_contained_causal_geopackage():
     norm_df = pd.DataFrame(normalized_values, columns=index_columns, index=merged_gdf.index)
 
     # Define weights: Give double weight (1.5) to prioritized columns, 1.0 to others
-    priority_cols = {'census_pop', 'inflow_total', 'epr_PENSINCR', 'epr_TAXABINC'}
-    weights = {col: (1.5 if col in priority_cols else 1.0) for col in index_columns}
+    priority_cols = {'census_pop', 'inflow_total'}
+    weights = {col: (1.1 if col in priority_cols else 1.0) for col in index_columns}
 
     # Calculate the weighted sum score
     composite_score = sum(norm_df[col] * weights[col] for col in index_columns)
