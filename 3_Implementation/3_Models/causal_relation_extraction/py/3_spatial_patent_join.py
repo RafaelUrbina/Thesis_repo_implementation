@@ -20,7 +20,7 @@ output_dir.mkdir(parents=True, exist_ok=True)
 
 extreme_csv_path = output_dir / "1_importance_filter" / "hexagon_to_ontology_triggers.csv" 
 causal_links_csv_path = KNOWLEDGE_ABSTRACT_PATH / "output" / "causal_graph" / "patent_causal_chains_pos_summary.csv" 
-variable_mapping_json_path = output_dir / "2_semantic_mappings" / "category_mapped_children.json" 
+variable_mapping_json_path = output_dir / "2_semantic_mappings" / "filtered_category_mapped_children.json" 
 
 # Path to your dataset variable descriptions file
 variable_descriptions_csv_path = output_dir / "descriptions.csv" 

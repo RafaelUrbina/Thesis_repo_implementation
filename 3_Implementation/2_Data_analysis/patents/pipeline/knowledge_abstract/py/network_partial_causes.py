@@ -20,7 +20,7 @@ current_dir = Path(__file__).resolve().parent
 project_root = current_dir.parents[5]  # Adjust parent index if needed
 sys.path.insert(0, str(project_root))
 
-from Utils.paths import PATENT_PIPELINE_PATH
+from Utils.paths import PATENT_PIPELINE_PATH, ONTOLOGY_LISTS_PATH
 
 # =====================================================================
 # CONFIGURATION & OUTPUT PATHS (POS-Enriched Only)
@@ -30,15 +30,25 @@ INPUT_CSV_PATH = (
     / "dataset_creation"
     / "2_unsupervised_link"
     / "output"
-    / "causal_filtered_unsupervised_sentiment_pos.csv"
+    / "causal_filtered_unsupervised_sentiment_pos_strict.csv"
 )
 
 OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "causal_graph"
 
+FORWARD_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Forward.txt"
+BACKWARD_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Backward.txt"
+STATIC_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Static.txt"
+
 # POS-Enriched Outputs
 GRAPH_CACHE_FILE = OUTPUT_DIR / "patent_causal_pos_graph.graphml"
 SANKEY_OUTPUT_FILE = OUTPUT_DIR / "patent_edge_cases_pos_sankey.html"
+FORWARD_SANKEY_FILE = OUTPUT_DIR / "forward_patent_edge_cases_pos_sankey.html"
+BACKWARD_SANKEY_FILE = OUTPUT_DIR / "backward_patent_edge_cases_pos_sankey.html"
+STATIC_SANKEY_FILE = OUTPUT_DIR / "static_patent_edge_cases_pos_sankey.html"
+MIXED_SANKEY_FILE = OUTPUT_DIR / "mixed_patent_edge_cases_pos_sankey.html"
+
 SUMMARY_CSV_FILE = OUTPUT_DIR / "patent_causal_chains_pos_summary.csv"
+DEAGGREGATED_CSV_FILE = OUTPUT_DIR / "complete_patent_causal_chains_pos_deaggregated.csv"
 
 MAX_ROWS = None
 
@@ -46,8 +56,8 @@ MAX_ROWS = None
 TEXT_SENTENCES = False
 
 # Parameter: Nodes with total degree (in_degree + out_degree) <= this value will be pruned.
-# Set to 1 so that terms must appear more than once (degree > 1) to remain in the graph.
-MIN_TOTAL_DEGREE = 20
+MIN_TOTAL_DEGREE = 10
+CATEGORIZED_MIN_TOTAL_DEGREE = 5
 
 NODE_COLOR_MAP = {
     "Technical": "rgba(31, 119, 180, 0.8)",  # Blue
@@ -281,7 +291,7 @@ def filter_low_degree_nodes(G, min_degree):
 
 
 # =====================================================================
-# 3. PATHFINDER
+# 3. PATHFINDER & CATEGORIZATION HELPERS
 # =====================================================================
 def find_strict_cross_patent_chains_fast(G):
     """Fast path finder enforcing zero node-type repetition along any path."""
@@ -323,13 +333,22 @@ def find_strict_cross_patent_chains_fast(G):
                     if not (has_causal_1 and has_causal_2):
                         continue
 
-                valid_paths.append([t, middle, f])
+                    valid_paths.append([t, middle, f])
 
     return valid_paths
 
 
+def load_category_words(file_path):
+    """Loads a set of lowercased category trigger phrases from a text file."""
+    path = Path(file_path)
+    if path.exists():
+        with open(path, "r", encoding="utf-8") as f:
+            return {line.strip().lower() for line in f if line.strip()}
+    return set()
+
+
 # =====================================================================
-# 4. SANKEY DIAGRAM GENERATOR
+# 4. SANKEY DIAGRAM GENERATORS
 # =====================================================================
 def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
     output_path = Path(output_filename)
@@ -438,12 +457,188 @@ def export_sankey_html(G, valid_paths, output_filename=SANKEY_OUTPUT_FILE):
     print(f"[Visualizer] Sankey diagram exported to: {output_path}")
 
 
+def export_sankey_from_deaggregated(df_deaggregated, output_filename, title_suffix=""):
+    """Generates and exports a Sankey diagram directly from a filtered deaggregated dataframe."""
+    output_path = Path(output_filename)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if df_deaggregated.empty:
+        print(f"\n[Visualizer] No rows to render for {output_filename}.")
+        return
+
+    stage_nodes = {}
+    edge_counts = defaultdict(int)
+    edge_meta = defaultdict(lambda: {"patents": set(), "triggers": set(), "nouns": set(), "verbs": set(), "link_texts": []})
+
+    for _, row in df_deaggregated.iterrows():
+        t_node = str(row["technical"]).strip()
+        a_node = str(row["attribute"]).strip()
+        f_node = str(row["failure"]).strip()
+        pat_id = str(row["pat_id"]).strip()
+        trigger = str(row.get("trigger", "")).strip().lower()
+        link_text = str(row.get("link_text", "")).strip()
+
+        stage_nodes[(t_node, 0)] = "Technical"
+        stage_nodes[(a_node, 1)] = "Attribute"
+        stage_nodes[(f_node, 2)] = "Failure"
+
+        e1_key = ((t_node, 0), (a_node, 1), t_node, a_node)
+        e2_key = ((a_node, 1), (f_node, 2), a_node, f_node)
+
+        edge_counts[e1_key] += 1
+        edge_counts[e2_key] += 1
+
+        edge_meta[e1_key]["patents"].add(pat_id)
+        if trigger:
+            edge_meta[e1_key]["triggers"].add(trigger)
+        if link_text:
+            edge_meta[e1_key]["link_texts"].append(link_text)
+
+        edge_meta[e2_key]["patents"].add(pat_id)
+        if trigger:
+            edge_meta[e2_key]["triggers"].add(trigger)
+        if link_text:
+            edge_meta[e2_key]["link_texts"].append(link_text)
+
+        for n in parse_field(row.get("nouns", "")):
+            edge_meta[e1_key]["nouns"].add(n)
+            edge_meta[e2_key]["nouns"].add(n)
+        for v in parse_field(row.get("verbs", "")):
+            edge_meta[e1_key]["verbs"].add(v)
+            edge_meta[e2_key]["verbs"].add(v)
+
+    indexed_nodes = list(stage_nodes.keys())
+    node_to_idx = {node_key: idx for idx, node_key in enumerate(indexed_nodes)}
+
+    node_labels = []
+    node_colors = []
+    for node_name, stage in indexed_nodes:
+        n_type = stage_nodes[(node_name, stage)]
+        short_type = TYPE_SHORT_MAP.get(n_type, n_type)
+        node_labels.append(f"{node_name} ({short_type})")
+        node_colors.append(NODE_COLOR_MAP.get(n_type, "rgba(100,100,100,0.8)"))
+
+    sources, targets, values, link_labels = [], [], [], []
+
+    for key, flow_value in edge_counts.items():
+        src_key, tgt_key, orig_u, orig_v = key
+        sources.append(node_to_idx[src_key])
+        targets.append(node_to_idx[tgt_key])
+        values.append(flow_value)
+
+        meta = edge_meta[key]
+        patents_list = sorted(list(meta["patents"]))
+        patents_str = ", ".join(patents_list[:8]) + ("..." if len(patents_list) > 8 else "")
+        triggers = ", ".join(sorted(list(meta["triggers"])))
+
+        hover_lines = [
+            f"<b>From:</b> {orig_u}",
+            f"<b>To:</b> {orig_v}",
+            f"<b>Patent IDs:</b> {patents_str or 'None'}",
+            f"<b>Triggers:</b> {triggers}",
+            f"<b>Path Flow Count:</b> {flow_value}",
+        ]
+
+        nouns_list = sorted(list(meta["nouns"]))
+        verbs_list = sorted(list(meta["verbs"]))
+        nouns_str = ", ".join(nouns_list[:8]) + ("..." if len(nouns_list) > 8 else "")
+        verbs_str = ", ".join(verbs_list[:8]) + ("..." if len(verbs_list) > 8 else "")
+
+        hover_lines.append(f"<b>Nouns:</b> {nouns_str or 'None'}")
+        hover_lines.append(f"<b>Verbs:</b> {verbs_str or 'None'}")
+
+        link_labels.append("<br>".join(hover_lines))
+
+    fig = go.Figure(
+        data=[
+            go.Sankey(
+                node=dict(
+                    pad=25,
+                    thickness=20,
+                    line=dict(color="black", width=0.5),
+                    label=node_labels,
+                    color=node_colors,
+                ),
+                link=dict(
+                    source=sources,
+                    target=targets,
+                    value=values,
+                    customdata=link_labels,
+                    hovertemplate="%{customdata}<extra></extra>",
+                    color="rgba(200, 200, 200, 0.4)",
+                    hovercolor="#e6e200",
+                ),
+            )
+        ]
+    )
+
+    title_text = f"Patent Causal Chain [{title_suffix}] : [Technical] ➔ [Attribute] ➔ [Failure]" if title_suffix else "Patent Causal Chain : [Technical] ➔ [Attribute] ➔ [Failure]"
+
+    fig.update_layout(
+        title_text=title_text,
+        font_size=12,
+        height=900,
+        width=900,
+        margin=dict(l=50, r=200, t=60, b=50),
+    )
+
+    fig.write_html(output_path)
+    print(f"[Visualizer] Sankey diagram exported to: {output_path}")
+
+
+def export_category_sankey_with_degree_filter(df_subset, output_filename, title_suffix, min_degree=MIN_TOTAL_DEGREE):
+    """Builds a temporary graph from the subset, applies the degree filter, and renders Sankey."""
+    if df_subset.empty:
+        print(f"\n[Visualizer] No rows to render for {output_filename}.")
+        return
+
+    # Build temporary graph for degree filtering
+    G_cat = nx.DiGraph()
+    for _, row in df_subset.iterrows():
+        t = str(row["technical"]).strip()
+        a = str(row["attribute"]).strip()
+        f = str(row["failure"]).strip()
+
+        if not G_cat.has_node(t):
+            G_cat.add_node(t, node_type="Technical")
+        if not G_cat.has_node(a):
+            G_cat.add_node(a, node_type="Attribute")
+        if not G_cat.has_node(f):
+            G_cat.add_node(f, node_type="Failure")
+
+        if G_cat.has_edge(t, a):
+            G_cat[t][a]["weight"] += 1
+        else:
+            G_cat.add_edge(t, a, weight=1)
+
+        if G_cat.has_edge(a, f):
+            G_cat[a][f]["weight"] += 1
+        else:
+            G_cat.add_edge(a, f, weight=1)
+
+    # Prune low-degree nodes
+    filter_low_degree_nodes(G_cat, min_degree)
+
+    surviving_nodes = set(G_cat.nodes())
+    df_filtered = df_subset[
+        df_subset["technical"].isin(surviving_nodes) &
+        df_subset["attribute"].isin(surviving_nodes) &
+        df_subset["failure"].isin(surviving_nodes)
+    ]
+
+    export_sankey_from_deaggregated(df_filtered, output_filename, title_suffix)
+
+
 # =====================================================================
-# 5. CSV EXPORTER (With Completeness Flag & Conditional Text Columns)
+# 5. CSV EXPORTERS (Consolidated Summary & Deaggregated Raw Observations)
 # =====================================================================
 def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FILE):
     output_path = Path(output_filename)
     output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    forward_words = load_category_words(FORWARD_TXT_PATH)
+    backward_words = load_category_words(BACKWARD_TXT_PATH)
+    static_words = load_category_words(STATIC_TXT_PATH)
 
     records = []
 
@@ -460,13 +655,10 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
                 )
             )
         )
-        all_triggers = sorted(
-            list(
-                set(e1_data.get("triggers", set())).union(
-                    e2_data.get("triggers", set())
-                )
-            )
-        )
+        
+        e1_triggers = sorted(list(e1_data.get("triggers", set())))
+        e2_triggers = sorted(list(e2_data.get("triggers", set())))
+        all_triggers = sorted(list(set(e1_triggers).union(set(e2_triggers))))
 
         chain_nouns = sorted(
             list(
@@ -483,7 +675,6 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
             )
         )
 
-        # Determine if the chain is Complete or Partial based on row/paragraph match
         e1_occ = e1_data.get("occurrences", [])
         e2_occ = e2_data.get("occurrences", [])
 
@@ -507,14 +698,31 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
 
         flag = "Complete" if has_complete else "Partial"
 
+        # Compute Forward, Backward, and Static flags for the summary chain based on all triggers
+        has_fwd = any(str(tr).strip().lower() in forward_words for tr in all_triggers)
+        has_bwd = any(str(tr).strip().lower() in backward_words for tr in all_triggers)
+        has_stc = any(str(tr).strip().lower() in static_words for tr in all_triggers)
+
+        if has_fwd and not has_bwd and not has_stc:
+            chain_cat = "forward"
+        elif has_bwd and not has_fwd and not has_stc:
+            chain_cat = "backward"
+        elif has_stc and not has_fwd and not has_bwd:
+            chain_cat = "static"
+        else:
+            chain_cat = "mixed"
+
         rec = {
             "technical": t_node,
             "attribute": a_node,
             "failure": f_node,
             "flag": flag,
+            "forward": has_fwd,
+            "backward": has_bwd,
+            "static": has_stc,
+            "category": chain_cat,
         }
 
-        # Conditionally add text columns based on TEXT_SENTENCES toggle
         if TEXT_SENTENCES:
             complete_link_text = " | ".join(sorted(list(complete_texts))) if has_complete else ""
             partial_link_text = " || ".join(sorted(list(partial_text_pairs))) if not has_complete else ""
@@ -522,6 +730,8 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
             rec["partial_link_text"] = partial_link_text
 
         rec.update({
+            "trigger": ", ".join(e1_triggers),
+            "trigger2": ", ".join(e2_triggers),
             "patent_ids": ", ".join(all_patents),
             "patent_count": len(all_patents),
             "triggers": ", ".join(all_triggers),
@@ -535,8 +745,87 @@ def export_causal_chains_summary(G, valid_paths, output_filename=SUMMARY_CSV_FIL
 
     df_summary = pd.DataFrame(records)
     df_summary.to_csv(output_path, index=False)
-    print(f"[CSV Exporter] Saved summary report to: {output_path}")
+    print(f"[CSV Exporter] Saved consolidated summary report to: {output_path}")
     return df_summary
+
+
+def export_deaggregated_causal_chains(input_csv_path, output_filename=DEAGGREGATED_CSV_FILE, max_rows=MAX_ROWS):
+    """Exports all raw, unaggregated sentence/paragraph observations that form valid [Technical] -> [Attribute] -> [Failure] links."""
+    output_path = Path(output_filename)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    print(f"[Pipeline] Reading dataset for deaggregated export from '{input_csv_path}'...")
+    df = pd.read_csv(input_csv_path, nrows=max_rows)
+
+    forward_words = load_category_words(FORWARD_TXT_PATH)
+    backward_words = load_category_words(BACKWARD_TXT_PATH)
+    static_words = load_category_words(STATIC_TXT_PATH)
+
+    records = []
+
+    for _, row in df.iterrows():
+        pat_id = str(row.get("pat_id", "UNKNOWN")).strip()
+        para_id = str(row.get("paragraph_id", "UNKNOWN")).strip()
+
+        text_val = ""
+        for col in ["text", "paragraph_text", "content", "sentence", "abstract"]:
+            if col in row and pd.notna(row[col]):
+                text_val = str(row[col]).strip()
+                break
+
+        techs = parse_field(row.get("occurrence_technical", []))
+        attrs = parse_field(row.get("occurrence_variable", []))
+        failures = parse_field(row.get("occurrence_failures", []))
+        causals = parse_field(row.get("causal_ocurrence_words", []))
+
+        nouns = parse_field(row.get("nouns", []))
+        verbs = parse_field(row.get("verbs", []))
+
+        if not (causals and techs and attrs and failures):
+            continue
+
+        trigger = str(causals[0]).lower()
+        t_clean = trigger.strip().lower()
+
+        is_fwd = t_clean in forward_words
+        is_bwd = t_clean in backward_words
+        is_stc = t_clean in static_words
+
+        if is_fwd and not is_bwd and not is_stc:
+            cat = "forward"
+        elif is_bwd and not is_fwd and not is_stc:
+            cat = "backward"
+        elif is_stc and not is_fwd and not is_bwd:
+            cat = "static"
+        else:
+            cat = "mixed"
+
+        # Generate all valid triplets within this specific sentence/row instance
+        for t, a, f in itertools.product(techs, attrs, failures):
+            if t != a and a != f and t != f:
+                rec = {
+                    "pat_id": pat_id,
+                    "paragraph_id": para_id,
+                    "technical": t,
+                    "attribute": a,
+                    "failure": f,
+                    "trigger": trigger,  # Only trigger1 (single trigger for deaggregated)
+                    "forward": is_fwd,
+                    "backward": is_bwd,
+                    "static": is_stc,
+                    "category": cat,
+                    "link_text": text_val,
+                    "nouns": ", ".join(sorted(nouns)),
+                    "verbs": ", ".join(sorted(verbs)),
+                    "noun_count": len(nouns),
+                    "verb_count": len(verbs),
+                }
+                records.append(rec)
+
+    df_deagg = pd.DataFrame(records)
+    df_deagg.to_csv(output_path, index=False)
+    print(f"[CSV Exporter] Saved deaggregated raw observations report to: {output_path}")
+    return df_deagg
 
 
 # =====================================================================
@@ -567,5 +856,41 @@ if __name__ == "__main__":
             paths_pos,
             output_filename=SUMMARY_CSV_FILE,
         )
+
+    # Export the new deaggregated table directly from the strict input dataset
+    df_deagg = export_deaggregated_causal_chains(
+        INPUT_CSV_PATH,
+        output_filename=DEAGGREGATED_CSV_FILE,
+        max_rows=MAX_ROWS,
+    )
+
+    # =====================================================================
+    # 7. GENERATE 4 ADDITIONAL CATEGORIZED SANKEY PLOTS FROM DEAGGREGATED CSV
+    # =====================================================================
+    if not df_deagg.empty:
+        print("\n[Pipeline] Generating categorized Sankey diagrams from deaggregated data...")
+        forward_words = load_category_words(FORWARD_TXT_PATH)
+        backward_words = load_category_words(BACKWARD_TXT_PATH)
+        static_words = load_category_words(STATIC_TXT_PATH)
+
+        print(f"  [Debug] Loaded Forward terms: {len(forward_words)}")
+        print(f"  [Debug] Loaded Backward terms: {len(backward_words)}")
+        print(f"  [Debug] Loaded Static terms: {len(static_words)}")
+
+        df_forward = df_deagg[df_deagg["category"] == "forward"]
+        df_backward = df_deagg[df_deagg["category"] == "backward"]
+        df_static = df_deagg[df_deagg["category"] == "static"]
+        df_mixed = df_deagg[df_deagg["category"] == "mixed"]
+
+        print(f"  - Forward Records: {len(df_forward)}")
+        print(f"  - Backward Records: {len(df_backward)}")
+        print(f"  - Static Records: {len(df_static)}")
+        print(f"  - Mixed/Other Records: {len(df_mixed)}")
+
+        # Export categorized Sankey plots with MIN_TOTAL_DEGREE filtering applied
+        export_category_sankey_with_degree_filter(df_forward, FORWARD_SANKEY_FILE, title_suffix="Forward", min_degree=CATEGORIZED_MIN_TOTAL_DEGREE)
+        export_category_sankey_with_degree_filter(df_backward, BACKWARD_SANKEY_FILE, title_suffix="Backward", min_degree=CATEGORIZED_MIN_TOTAL_DEGREE)
+        export_category_sankey_with_degree_filter(df_static, STATIC_SANKEY_FILE, title_suffix="Static", min_degree=CATEGORIZED_MIN_TOTAL_DEGREE)
+        export_category_sankey_with_degree_filter(df_mixed, MIXED_SANKEY_FILE, title_suffix="Mixed", min_degree=CATEGORIZED_MIN_TOTAL_DEGREE)
 
     print("\n[Done] POS pipeline outputs generated successfully.")

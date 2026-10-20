@@ -2,9 +2,10 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.semanticweb.org/thesis/pipeline-risk> a owl:Ontology ;
-    rdfs:comment "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations, and Environmental/Social Risk Variables."@en .
+    rdfs:comment "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations (with Directionality Characteristics), and Environmental/Social Risk Variables."@en .
 
 ex:Term_AbrasiveSurfaceStoniness a ex:SurfaceForm ;
     rdfs:label "abrasive surface stoniness"@en ;
@@ -7594,10 +7595,6 @@ ex:Term_TriggeredBy a ex:SurfaceForm ;
     rdfs:label "triggered by"@en ;
     ex:hasLemma ex:Lemma_TriggerBy .
 
-ex:Term_Triggers a ex:SurfaceForm ;
-    rdfs:label "triggers"@en ;
-    ex:hasLemma ex:Lemma_Trigger .
-
 ex:Term_Triple-EccentricButterflyValve a ex:SurfaceForm ;
     rdfs:label "triple-eccentric butterfly valve"@en ;
     ex:hasLemma ex:Lemma_Triple-EccentricButterflyValve .
@@ -8259,6 +8256,10 @@ ex:Term_ZeroIncomePopulation a ex:SurfaceForm ;
     rdfs:label "zero income population"@en ;
     ex:hasLemma ex:Lemma_ZeroIncomePopulation .
 
+ex:hasDirectionality a owl:DatatypeProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range xsd:string .
+
 ex:Lemma_AbrasiveSurfaceStoniness a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_PedologicalProperties ;
@@ -8296,15 +8297,17 @@ ex:Lemma_AbsorbedPrecipitation a owl:Class,
 
 ex:Lemma_AccelerateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "accelerate by"@en .
 
 ex:Lemma_AccountFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "account for"@en .
 
@@ -8324,8 +8327,9 @@ ex:Lemma_AccretionZone a owl:Class,
 
 ex:Lemma_Accumulate a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "accumulate"@en .
 
@@ -8387,8 +8391,9 @@ ex:Lemma_AcidityIndex a owl:Class,
 
 ex:Lemma_ActAsACatalystFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "act as a catalyst for"@en .
 
@@ -8401,15 +8406,17 @@ ex:Lemma_ActionActuator a owl:Class,
 
 ex:Lemma_ActivateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "activate by"@en .
 
 ex:Lemma_ActivationOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "activation of"@en .
 
@@ -8541,36 +8548,41 @@ ex:Lemma_AerobicCorrosion a owl:Class,
 
 ex:Lemma_AetiologicalAgent a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "aetiological agent"@en .
 
 ex:Lemma_AetiologyOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "aetiology of"@en .
 
 ex:Lemma_Affect a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "affect"@en .
 
 ex:Lemma_AffectTheRateOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "affect the rate of"@en .
 
 ex:Lemma_Affected a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "affected"@en .
 
@@ -8583,8 +8595,9 @@ ex:Lemma_AgglomeratedUrbanZone a owl:Class,
 
 ex:Lemma_AggravateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "aggravate by"@en .
 
@@ -8681,8 +8694,9 @@ ex:Lemma_Alligatoring a owl:Class,
 
 ex:Lemma_AllowingFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "allowing for"@en .
 
@@ -8730,8 +8744,9 @@ ex:Lemma_AmbientAirTemperature a owl:Class,
 
 ex:Lemma_AmplifyBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "amplify by"@en .
 
@@ -8905,29 +8920,33 @@ ex:Lemma_ArchitecturalDensity a owl:Class,
 
 ex:Lemma_AsAConsequenceOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a consequence of"@en .
 
 ex:Lemma_AsAResult a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a result"@en .
 
 ex:Lemma_AsAResultOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as a result of"@en .
 
 ex:Lemma_AsCompareTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "as compare to"@en .
 
@@ -8940,8 +8959,9 @@ ex:Lemma_AsbestosCementPipe a owl:Class,
 
 ex:Lemma_AscribedTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "ascribed to"@en .
 
@@ -8968,15 +8988,17 @@ ex:Lemma_AsphalticSurfaceCoverage a owl:Class,
 
 ex:Lemma_Assigning a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "assigning"@en .
 
 ex:Lemma_AssociateWith a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "associate with"@en .
 
@@ -9024,8 +9046,9 @@ ex:Lemma_Atomizer a owl:Class,
 
 ex:Lemma_AttributeTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "attribute to"@en .
 
@@ -9171,8 +9194,9 @@ ex:Lemma_BarrierLine a owl:Class,
 
 ex:Lemma_BaseOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "base on"@en .
 
@@ -9190,66 +9214,67 @@ ex:Lemma_BasinSlopeGradient a owl:Class,
     skos:inScheme ex:EnvironmentalSocialRiskScheme ;
     skos:prefLabel "basin slope gradient"@en .
 
-ex:Lemma_BeAFunctionOf a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "be a function of"@en .
-
 ex:Lemma_BeAPrerequisiteFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be a prerequisite for"@en .
 
 ex:Lemma_BeAssociateWith a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be associate with"@en .
 
 ex:Lemma_BeCauseBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be cause by"@en .
 
 ex:Lemma_BeContingentUpon a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be contingent upon"@en .
 
 ex:Lemma_BeDependentUpon a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be dependent upon"@en .
 
 ex:Lemma_BeDriveBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be drive by"@en .
 
 ex:Lemma_BeResponsibleFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be responsible for"@en .
 
 ex:Lemma_BeSubject a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "be subject"@en .
 
@@ -9262,36 +9287,41 @@ ex:Lemma_BeachMark a owl:Class,
 
 ex:Lemma_BearResponsibilityFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "bear responsibility for"@en .
 
 ex:Lemma_Because a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "because"@en .
 
 ex:Lemma_BecauseOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "because of"@en .
 
 ex:Lemma_Become a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "become"@en .
 
 ex:Lemma_Becoming a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "becoming"@en .
 
@@ -9585,8 +9615,9 @@ ex:Lemma_BranchLine a owl:Class,
 
 ex:Lemma_Break a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "break"@en .
 
@@ -9599,8 +9630,9 @@ ex:Lemma_BreakPressureTank a owl:Class,
 
 ex:Lemma_BreakUp a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "break up"@en .
 
@@ -9620,22 +9652,25 @@ ex:Lemma_BreakdownPotential a owl:Class,
 
 ex:Lemma_Breed a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "breed"@en .
 
 ex:Lemma_BringAbout a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "bring about"@en .
 
 ex:Lemma_Bringing a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "bringing"@en .
 
@@ -9648,8 +9683,9 @@ ex:Lemma_BrittleFracture a owl:Class,
 
 ex:Lemma_BroughtOnBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "brought on by"@en .
 
@@ -9844,78 +9880,89 @@ ex:Lemma_CalibratedOrifice a owl:Class,
 
 ex:Lemma_CanBeAttributeTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be attribute to"@en .
 
 ex:Lemma_CanBePlace a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be place"@en .
 
 ex:Lemma_CanBeTransmit a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can be transmit"@en .
 
 ex:Lemma_CanCause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can cause"@en .
 
 ex:Lemma_CanGiveRiseTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can give rise to"@en .
 
 ex:Lemma_CanGo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can go"@en .
 
 ex:Lemma_CanLeadTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can lead to"@en .
 
 ex:Lemma_CanOccur a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can occur"@en .
 
 ex:Lemma_CanPresent a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can present"@en .
 
 ex:Lemma_CanProduce a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can produce"@en .
 
 ex:Lemma_CanResultIn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "can result in"@en .
 
@@ -9963,15 +10010,17 @@ ex:Lemma_CapillaryWaterRetention a owl:Class,
 
 ex:Lemma_Carry a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "carry"@en .
 
 ex:Lemma_CarryInto a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "carry into"@en .
 
@@ -9991,8 +10040,9 @@ ex:Lemma_CasingPipe a owl:Class,
 
 ex:Lemma_CatalyticEffect a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "catalytic effect"@en .
 
@@ -10075,36 +10125,41 @@ ex:Lemma_CationExchangeCapacity a owl:Class,
 
 ex:Lemma_CausalFactor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "causal factor"@en .
 
 ex:Lemma_CausalMechanism a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "causal mechanism"@en .
 
 ex:Lemma_CausalSequence a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "causal sequence"@en .
 
 ex:Lemma_CauseBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "cause by"@en .
 
 ex:Lemma_CauseDamage a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "cause damage"@en .
 
@@ -10180,15 +10235,17 @@ ex:Lemma_CentrifugalPump a owl:Class,
 
 ex:Lemma_ChainOfEvent a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "chain of event"@en .
 
 ex:Lemma_ChainReaction a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "chain reaction"@en .
 
@@ -10670,15 +10727,17 @@ ex:Lemma_CompactedSoilHorizon a owl:Class,
 
 ex:Lemma_Compel a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "compel"@en .
 
 ex:Lemma_Complicating a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "complicating"@en .
 
@@ -10726,8 +10785,9 @@ ex:Lemma_Conduit a owl:Class,
 
 ex:Lemma_Consequently a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "consequently"@en .
 
@@ -10747,8 +10807,9 @@ ex:Lemma_ConsolidatedSediment a owl:Class,
 
 ex:Lemma_ConstrainBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "constrain by"@en .
 
@@ -10810,22 +10871,25 @@ ex:Lemma_ContinuousBuildingFootprint a owl:Class,
 
 ex:Lemma_ContributeTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "contribute to"@en .
 
 ex:Lemma_Contributing a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "contributing"@en .
 
 ex:Lemma_ContributingTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "contributing to"@en .
 
@@ -10852,15 +10916,17 @@ ex:Lemma_CopperServiceLine a owl:Class,
 
 ex:Lemma_CorrelateWith a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "correlate with"@en .
 
 ex:Lemma_CorrespondTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "correspond to"@en .
 
@@ -10929,8 +10995,9 @@ ex:Lemma_CounterweightCheckValve a owl:Class,
 
 ex:Lemma_CoupleWith a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "couple with"@en .
 
@@ -10971,8 +11038,9 @@ ex:Lemma_Crazing a owl:Class,
 
 ex:Lemma_Creating a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "creating"@en .
 
@@ -11062,8 +11130,9 @@ ex:Lemma_Crushing a owl:Class,
 
 ex:Lemma_CulminateIn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "culminate in"@en .
 
@@ -11167,8 +11236,9 @@ ex:Lemma_DamageToInGroundPipeline a owl:Class,
 
 ex:Lemma_Dampens a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "dampens"@en .
 
@@ -11265,8 +11335,9 @@ ex:Lemma_Decay a owl:Class,
 
 ex:Lemma_DecayInto a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "decay into"@en .
 
@@ -11412,8 +11483,9 @@ ex:Lemma_DentDeformation a owl:Class,
 
 ex:Lemma_DependentOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CorrelationAndAssociationRelation ;
-    skos:broader ex:CorrelationAndAssociationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "dependent on"@en .
 
@@ -11461,8 +11533,9 @@ ex:Lemma_DepthTransmitter a owl:Class,
 
 ex:Lemma_Derived a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "derived"@en .
 
@@ -11531,15 +11604,17 @@ ex:Lemma_DiaphragmValve a owl:Class,
 
 ex:Lemma_Dictate a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "dictate"@en .
 
 ex:Lemma_DictateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "dictate by"@en .
 
@@ -11601,15 +11676,17 @@ ex:Lemma_Direct-ActPressureRegulator a owl:Class,
 
 ex:Lemma_DirectResultOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "direct result of"@en .
 
 ex:Lemma_DirectThrough a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "direct through"@en .
 
@@ -11664,8 +11741,9 @@ ex:Lemma_DischargeRate a owl:Class,
 
 ex:Lemma_DischargeTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "discharge to"@en .
 
@@ -11916,8 +11994,9 @@ ex:Lemma_DripLeg a owl:Class,
 
 ex:Lemma_DriveBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "drive by"@en .
 
@@ -12014,8 +12093,9 @@ ex:Lemma_DuctileIronPipe a owl:Class,
 
 ex:Lemma_DueTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "due to"@en .
 
@@ -12147,15 +12227,17 @@ ex:Lemma_Eductor a owl:Class,
 
 ex:Lemma_EffectOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "effect of"@en .
 
 ex:Lemma_EffectiveCause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "effective cause"@en .
 
@@ -12301,8 +12383,9 @@ ex:Lemma_ElevationHead a owl:Class,
 
 ex:Lemma_Elicit a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "elicit"@en .
 
@@ -12343,15 +12426,17 @@ ex:Lemma_EmploymentRate a owl:Class,
 
 ex:Lemma_Engender a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "engender"@en .
 
 ex:Lemma_EngenderTheCreationOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "engender the creation of"@en .
 
@@ -12364,15 +12449,17 @@ ex:Lemma_EngineRoomOfLocalEconomy a owl:Class,
 
 ex:Lemma_Entail a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "entail"@en .
 
 ex:Lemma_EntailTheFormationOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "entail the formation of"@en .
 
@@ -12511,22 +12598,25 @@ ex:Lemma_ErosionSeverity a owl:Class,
 
 ex:Lemma_EventuallyLead a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "eventually lead"@en .
 
 ex:Lemma_EvokeBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "evoke by"@en .
 
 ex:Lemma_ExacerbateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exacerbate by"@en .
 
@@ -12553,15 +12643,17 @@ ex:Lemma_ExcavationStrike a owl:Class,
 
 ex:Lemma_ExceedValue a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exceed value"@en .
 
 ex:Lemma_Exceeding a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exceeding"@en .
 
@@ -12581,8 +12673,9 @@ ex:Lemma_ExcessiveDeflection a owl:Class,
 
 ex:Lemma_ExertAnEffectOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "exert an effect on"@en .
 
@@ -12784,8 +12877,9 @@ ex:Lemma_FaultTraceProximity a owl:Class,
 
 ex:Lemma_FeedInto a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "feed into"@en .
 
@@ -13617,15 +13711,17 @@ ex:Lemma_GeneralWallThinning a owl:Class,
 
 ex:Lemma_GenerateBaseOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "generate base on"@en .
 
 ex:Lemma_GenerateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "generate by"@en .
 
@@ -13701,29 +13797,33 @@ ex:Lemma_GirthWeldDefect a owl:Class,
 
 ex:Lemma_GiveImpulseTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "give impulse to"@en .
 
 ex:Lemma_GiveOriginTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "give origin to"@en .
 
 ex:Lemma_GiveRiseTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "give rise to"@en .
 
 ex:Lemma_GiveRiseToTheOccurrenceOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "give rise to the occurrence of"@en .
 
@@ -13939,15 +14039,17 @@ ex:Lemma_HardnessReduction a owl:Class,
 
 ex:Lemma_HaveABearingOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "have a bearing on"@en .
 
 ex:Lemma_HaveProve a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "have prove"@en .
 
@@ -14030,8 +14132,9 @@ ex:Lemma_HeightAboveNearDrainage a owl:Class,
 
 ex:Lemma_Heighten a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "heighten"@en .
 
@@ -14528,15 +14631,17 @@ ex:Lemma_IceScour a owl:Class,
 
 ex:Lemma_Identify a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "identify"@en .
 
 ex:Lemma_Identifying a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "identifying"@en .
 
@@ -14549,15 +14654,17 @@ ex:Lemma_ImmersionDegradation a owl:Class,
 
 ex:Lemma_ImpactOn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "impact on"@en .
 
 ex:Lemma_Impel a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "impel"@en .
 
@@ -14612,15 +14719,17 @@ ex:Lemma_ImpingementCorrosion a owl:Class,
 
 ex:Lemma_ImplicateIn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "implicate in"@en .
 
 ex:Lemma_ImposeBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "impose by"@en .
 
@@ -14661,8 +14770,9 @@ ex:Lemma_In-ServiceWeldingDefect a owl:Class,
 
 ex:Lemma_InTheEventOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "in the event of"@en .
 
@@ -14717,8 +14827,9 @@ ex:Lemma_InclineSlopeClass a owl:Class,
 
 ex:Lemma_InclineToward a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "incline toward"@en .
 
@@ -14738,8 +14849,9 @@ ex:Lemma_IncomeDistributionTier a owl:Class,
 
 ex:Lemma_IncreaseTheRiskOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "increase the risk of"@en .
 
@@ -14752,22 +14864,25 @@ ex:Lemma_Incrustation a owl:Class,
 
 ex:Lemma_Induce a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "induce"@en .
 
 ex:Lemma_InduceBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "induce by"@en .
 
 ex:Lemma_InduceTheFormationOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "induce the formation of"@en .
 
@@ -14864,15 +14979,17 @@ ex:Lemma_InflowSurge a owl:Class,
 
 ex:Lemma_Influence a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "influence"@en .
 
 ex:Lemma_InfluenceBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "influence by"@en .
 
@@ -14976,8 +15093,9 @@ ex:Lemma_InspectionPort a owl:Class,
 
 ex:Lemma_InstigateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "instigate by"@en .
 
@@ -15025,8 +15143,9 @@ ex:Lemma_IntentionalHit a owl:Class,
 
 ex:Lemma_InteractToProduce a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "interact to produce"@en .
 
@@ -15144,8 +15263,9 @@ ex:Lemma_InterstitialEmbrittlement a owl:Class,
 
 ex:Lemma_IntroduceThePotentialFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "introduce the potential for"@en .
 
@@ -15599,8 +15719,9 @@ ex:Lemma_LateralSpread a owl:Class,
 
 ex:Lemma_LayTheGroundworkFor a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lay the groundwork for"@en .
 
@@ -15620,8 +15741,9 @@ ex:Lemma_Leaching a owl:Class,
 
 ex:Lemma_LeadToTheOnsetOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lead to the onset of"@en .
 
@@ -16097,8 +16219,9 @@ ex:Lemma_MechanicalStressIndex a owl:Class,
 
 ex:Lemma_MediateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "mediate by"@en .
 
@@ -16279,22 +16402,25 @@ ex:Lemma_ModeratelyWellDrainSoil a owl:Class,
 
 ex:Lemma_Modifie a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "modifie"@en .
 
 ex:Lemma_Modulate a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "modulate"@en .
 
 ex:Lemma_Modulating a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "modulating"@en .
 
@@ -16328,8 +16454,9 @@ ex:Lemma_MomentMagnitude a owl:Class,
 
 ex:Lemma_Monitoring a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "monitoring"@en .
 
@@ -16608,8 +16735,9 @@ ex:Lemma_Obstacle a owl:Class,
 
 ex:Lemma_ObtainFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "obtain from"@en .
 
@@ -16622,8 +16750,9 @@ ex:Lemma_OccupiedHousingUnit a owl:Class,
 
 ex:Lemma_Occurrence a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "occurrence"@en .
 
@@ -16657,8 +16786,9 @@ ex:Lemma_Oil-Canning a owl:Class,
 
 ex:Lemma_OnAccountOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "on account of"@en .
 
@@ -16727,8 +16857,9 @@ ex:Lemma_OrificePlate a owl:Class,
 
 ex:Lemma_OriginatedFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "originated from"@en .
 
@@ -16853,8 +16984,9 @@ ex:Lemma_Overwhelmed a owl:Class,
 
 ex:Lemma_OweTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "owe to"@en .
 
@@ -17483,8 +17615,9 @@ ex:Lemma_PlasticityIndex a owl:Class,
 
 ex:Lemma_PlayARoleInDetermine a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "play a role in determine"@en .
 
@@ -17637,22 +17770,25 @@ ex:Lemma_PrecipitationVolume a owl:Class,
 
 ex:Lemma_Preclude a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "preclude"@en .
 
 ex:Lemma_Predict a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "predict"@en .
 
 ex:Lemma_Predictive a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "predictive"@en .
 
@@ -17736,15 +17872,17 @@ ex:Lemma_PressureZone a owl:Class,
 
 ex:Lemma_Prevent a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "prevent"@en .
 
 ex:Lemma_PreventFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "prevent from"@en .
 
@@ -17757,36 +17895,41 @@ ex:Lemma_PreventableLeak a owl:Class,
 
 ex:Lemma_PrimaryDriver a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "primary driver"@en .
 
 ex:Lemma_Prompt a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "prompt"@en .
 
 ex:Lemma_PromptBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "prompt by"@en .
 
 ex:Lemma_Propagate a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "propagate"@en .
 
 ex:Lemma_PropagateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "propagate by"@en .
 
@@ -17820,8 +17963,9 @@ ex:Lemma_ProvincialAdministrativeLimit a owl:Class,
 
 ex:Lemma_ProvokeTheOccurrenceOf a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "provoke the occurrence of"@en .
 
@@ -17862,8 +18006,9 @@ ex:Lemma_Pump a owl:Class,
 
 ex:Lemma_PumpFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "pump from"@en .
 
@@ -18100,8 +18245,9 @@ ex:Lemma_ReamDamage a owl:Class,
 
 ex:Lemma_Receive a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "receive"@en .
 
@@ -18142,8 +18288,9 @@ ex:Lemma_ReclamationLine a owl:Class,
 
 ex:Lemma_Reduce a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "reduce"@en .
 
@@ -18177,8 +18324,9 @@ ex:Lemma_RegisterResidentCount a owl:Class,
 
 ex:Lemma_RegulateBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "regulate by"@en .
 
@@ -18233,8 +18381,9 @@ ex:Lemma_ReliefValve a owl:Class,
 
 ex:Lemma_RemainBelow a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "remain below"@en .
 
@@ -18261,8 +18410,9 @@ ex:Lemma_RemoteTerminalUnit a owl:Class,
 
 ex:Lemma_Remove a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "remove"@en .
 
@@ -18275,22 +18425,25 @@ ex:Lemma_ReportLeak a owl:Class,
 
 ex:Lemma_Require a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "require"@en .
 
 ex:Lemma_RequireTreatment a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "require treatment"@en .
 
 ex:Lemma_Requiring a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "requiring"@en .
 
@@ -18352,8 +18505,9 @@ ex:Lemma_RestraintHarness a owl:Class,
 
 ex:Lemma_ResultFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "result from"@en .
 
@@ -18625,8 +18779,9 @@ ex:Lemma_Roof a owl:Class,
 
 ex:Lemma_RootCause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "root cause"@en .
 
@@ -19150,22 +19305,25 @@ ex:Lemma_ServiceLine a owl:Class,
 
 ex:Lemma_SetInMotion a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "set in motion"@en .
 
 ex:Lemma_SetOffBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "set off by"@en .
 
 ex:Lemma_Settle a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "settle"@en .
 
@@ -19801,8 +19959,9 @@ ex:Lemma_Spalling a owl:Class,
 
 ex:Lemma_SparkBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "spark by"@en .
 
@@ -19906,15 +20065,17 @@ ex:Lemma_Steam-TraceLine a owl:Class,
 
 ex:Lemma_StemFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "stem from"@en .
 
 ex:Lemma_StemmingFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:AttributionAndDerivationRelation ;
-    skos:broader ex:AttributionAndDerivationRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "stemming from"@en .
 
@@ -20620,15 +20781,17 @@ ex:Lemma_TerrainRoughness a owl:Class,
 
 ex:Lemma_Thereby a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "thereby"@en .
 
 ex:Lemma_Therefore a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "therefore"@en .
 
@@ -20718,8 +20881,9 @@ ex:Lemma_Third-PartyInterference a owl:Class,
 
 ex:Lemma_ThirdPartyCause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "third party cause"@en .
 
@@ -20781,8 +20945,9 @@ ex:Lemma_Thunder a owl:Class,
 
 ex:Lemma_Thus a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "thus"@en .
 
@@ -20837,8 +21002,9 @@ ex:Lemma_TimberLandCoverage a owl:Class,
 
 ex:Lemma_ToPrevent a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "to prevent"@en .
 
@@ -21059,17 +21225,11 @@ ex:Lemma_Tribo-Corrosion a owl:Class,
     skos:inScheme ex:FailureModeScheme ;
     skos:prefLabel "tribo-corrosion"@en .
 
-ex:Lemma_Trigger a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:prefLabel "trigger"@en .
-
 ex:Lemma_TriggerBy a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:ConditionalAndContributingRelation ;
-    skos:broader ex:ConditionalAndContributingRelation ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "trigger by"@en .
 
@@ -21145,8 +21305,9 @@ ex:Lemma_TwistedLineDeformation a owl:Class,
 
 ex:Lemma_TypicallyOccur a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "typically occur"@en .
 
@@ -21257,15 +21418,17 @@ ex:Lemma_UndergroundStorageTank a owl:Class,
 
 ex:Lemma_Underlie a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "underlie"@en .
 
 ex:Lemma_UnderlyingCause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "underlying cause"@en .
 
@@ -21412,8 +21575,9 @@ ex:Lemma_UsdHydrologicSoilGroup a owl:Class,
 
 ex:Lemma_UseTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "use to"@en .
 
@@ -21657,8 +21821,9 @@ ex:Lemma_Vessel a owl:Class,
 
 ex:Lemma_Via a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "via"@en .
 
@@ -22084,8 +22249,9 @@ ex:Lemma_Wetting-DryCycle a owl:Class,
 
 ex:Lemma_While a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "while"@en .
 
@@ -22175,8 +22341,9 @@ ex:Lemma_Y-Strainer a owl:Class,
 
 ex:Lemma_Yield a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "yield"@en .
 
@@ -22275,6 +22442,17 @@ ex:Lemma_BackfillDisplacement a owl:Class,
         ex:FailureModeScheme ;
     skos:prefLabel "backfill displacement"@en .
 
+ex:Lemma_BeAFunctionOf a owl:Class,
+        skos:Concept ;
+    ex:hasDirectionality "Backward"@en,
+        "Static/Preventive"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation,
+        ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:BackwardDirectedRelation,
+        ex:StaticPreventiveOrAssociativeRelation ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "be a function of"@en .
+
 ex:Lemma_BuoyancyDisplacement a owl:Class,
         skos:Concept ;
     rdfs:subClassOf ex:Class_GeotechnicalDynamics,
@@ -22297,8 +22475,9 @@ ex:Lemma_CanalizationDisplacement a owl:Class,
 
 ex:Lemma_Cause a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "cause"@en .
 
@@ -22331,15 +22510,17 @@ ex:Lemma_DesalinationScaling a owl:Class,
 
 ex:Lemma_Determine a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "determine"@en .
 
 ex:Lemma_Drive a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "drive"@en .
 
@@ -22355,10 +22536,11 @@ ex:Lemma_Erosion a owl:Class,
 
 ex:Lemma_FailureMechanism a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm,
-        ex:FailureTerm ;
-    skos:broader ex:CausalTerm,
-        ex:FailureTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:FailureTerm,
+        ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:FailureTerm,
+        ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme,
         ex:FailureModeScheme ;
     skos:prefLabel "failure mechanism"@en .
@@ -22463,15 +22645,17 @@ ex:Lemma_ImpedeFlow a owl:Class,
 
 ex:Lemma_Increase a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "increase"@en .
 
 ex:Lemma_Inhibit a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Static/Preventive"@en ;
+    rdfs:subClassOf ex:StaticPreventiveOrAssociativeRelation ;
+    skos:broader ex:StaticPreventiveOrAssociativeRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "inhibit"@en .
 
@@ -22508,22 +22692,25 @@ ex:Lemma_NaturalHazard a owl:Class,
 
 ex:Lemma_Produce a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "produce"@en .
 
 ex:Lemma_Provoke a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "provoke"@en .
 
 ex:Lemma_ResultIn a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "result in"@en .
 
@@ -22619,15 +22806,17 @@ ex:Lemma_Washout a owl:Class,
 
 ex:Lemma_AriseFrom a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
+    ex:hasDirectionality "Backward"@en ;
+    rdfs:subClassOf ex:BackwardDirectedRelation ;
+    skos:broader ex:BackwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "arise from"@en .
 
 ex:Lemma_LeadTo a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:DirectCausationRelation ;
-    skos:broader ex:DirectCausationRelation ;
+    ex:hasDirectionality "Forward"@en ;
+    rdfs:subClassOf ex:ForwardDirectedRelation ;
+    skos:broader ex:ForwardDirectedRelation ;
     skos:inScheme ex:CausalRelationalScheme ;
     skos:prefLabel "lead to"@en .
 
@@ -22643,58 +22832,13 @@ ex:Lemma_Aquifer a owl:Class,
         ex:TechnicalComponentScheme ;
     skos:prefLabel "aquifer"@en .
 
-ex:CorrelationAndAssociationRelation a owl:Class,
+ex:CausalTerm a owl:Class,
         skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
     skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:Lemma_AssociateWith,
-        ex:Lemma_BeAssociateWith,
-        ex:Lemma_BeDependentUpon,
-        ex:Lemma_CorrelateWith,
-        ex:Lemma_CorrespondTo,
-        ex:Lemma_DependentOn ;
-    skos:prefLabel "correlation and association relation"@en .
-
-ex:AttributionAndDerivationRelation a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:Lemma_AttributeTo,
-        ex:Lemma_BaseOn,
-        ex:Lemma_CanBeAttributeTo,
-        ex:Lemma_Derived,
-        ex:Lemma_DueTo,
-        ex:Lemma_GenerateBaseOn,
-        ex:Lemma_OriginatedFrom,
-        ex:Lemma_OweTo,
-        ex:Lemma_StemFrom,
-        ex:Lemma_StemmingFrom ;
-    skos:prefLabel "attribution and derivation relation"@en .
-
-ex:ConditionalAndContributingRelation a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:Lemma_AllowingFor,
-        ex:Lemma_ContributeTo,
-        ex:Lemma_ExacerbateBy,
-        ex:Lemma_ExceedValue,
-        ex:Lemma_Exceeding,
-        ex:Lemma_ImposeBy,
-        ex:Lemma_Induce,
-        ex:Lemma_InduceBy,
-        ex:Lemma_InduceTheFormationOf,
-        ex:Lemma_Prevent,
-        ex:Lemma_PreventFrom,
-        ex:Lemma_Require,
-        ex:Lemma_RequireTreatment,
-        ex:Lemma_ToPrevent,
-        ex:Lemma_Trigger,
-        ex:Lemma_TriggerBy ;
-    skos:prefLabel "conditional and contributing relation"@en .
+    skos:narrower ex:BackwardDirectedRelation,
+        ex:ForwardDirectedRelation,
+        ex:StaticPreventiveOrAssociativeRelation ;
+    skos:prefLabel "causal term"@en .
 
 ex:GeotechnicalAndGroundFailure a owl:Class,
         skos:Concept ;
@@ -22751,40 +22895,6 @@ ex:ThirdPartyAndExternalInterference a owl:Class,
         ex:Lemma_UnanchoredLineDisplacement,
         ex:Lemma_UnintentionalHit ;
     skos:prefLabel "third party and external interference"@en .
-
-ex:DirectCausationRelation a owl:Class,
-        skos:Concept ;
-    rdfs:subClassOf ex:CausalTerm ;
-    skos:broader ex:CausalTerm ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:Lemma_AsAResult,
-        ex:Lemma_AsAResultOf,
-        ex:Lemma_BeCauseBy,
-        ex:Lemma_Because,
-        ex:Lemma_BecauseOf,
-        ex:Lemma_Break,
-        ex:Lemma_BreakUp,
-        ex:Lemma_CanCause,
-        ex:Lemma_CanGiveRiseTo,
-        ex:Lemma_CanLeadTo,
-        ex:Lemma_CanProduce,
-        ex:Lemma_CanResultIn,
-        ex:Lemma_Cause,
-        ex:Lemma_CauseBy,
-        ex:Lemma_CauseDamage,
-        ex:Lemma_DirectResultOf,
-        ex:Lemma_EffectiveCause,
-        ex:Lemma_EventuallyLead,
-        ex:Lemma_InteractToProduce,
-        ex:Lemma_LeadTo,
-        ex:Lemma_LeadToTheOnsetOf,
-        ex:Lemma_Produce,
-        ex:Lemma_ResultFrom,
-        ex:Lemma_ResultIn,
-        ex:Lemma_RootCause,
-        ex:Lemma_ThirdPartyCause,
-        ex:Lemma_UnderlyingCause ;
-    skos:prefLabel "direct causation relation"@en .
 
 ex:HydraulicAndOperationalSurgeFailure a owl:Class,
         skos:Concept ;
@@ -22878,6 +22988,67 @@ ex:Class_MeteorologicalClimaticAndTopographicIndicators a ex:VariableClassificat
         ex:Lemma_WindSpeed ;
     skos:prefLabel "Meteorological, Climatic, & Topographic Indicators"@en .
 
+ex:BackwardDirectedRelation a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:narrower ex:Lemma_AccelerateBy,
+        ex:Lemma_AccountFor,
+        ex:Lemma_ActivateBy,
+        ex:Lemma_Affected,
+        ex:Lemma_AggravateBy,
+        ex:Lemma_AmplifyBy,
+        ex:Lemma_AriseFrom,
+        ex:Lemma_AsAConsequenceOf,
+        ex:Lemma_AsAResult,
+        ex:Lemma_AsAResultOf,
+        ex:Lemma_AscribedTo,
+        ex:Lemma_AttributeTo,
+        ex:Lemma_BeAFunctionOf,
+        ex:Lemma_BeCauseBy,
+        ex:Lemma_BeContingentUpon,
+        ex:Lemma_BeDependentUpon,
+        ex:Lemma_BeDriveBy,
+        ex:Lemma_BeSubject,
+        ex:Lemma_Because,
+        ex:Lemma_BecauseOf,
+        ex:Lemma_BroughtOnBy,
+        ex:Lemma_CanBeAttributeTo,
+        ex:Lemma_CauseBy,
+        ex:Lemma_Consequently,
+        ex:Lemma_ConstrainBy,
+        ex:Lemma_DependentOn,
+        ex:Lemma_Derived,
+        ex:Lemma_DictateBy,
+        ex:Lemma_DirectResultOf,
+        ex:Lemma_DriveBy,
+        ex:Lemma_DueTo,
+        ex:Lemma_EffectOf,
+        ex:Lemma_EvokeBy,
+        ex:Lemma_ExacerbateBy,
+        ex:Lemma_GenerateBaseOn,
+        ex:Lemma_GenerateBy,
+        ex:Lemma_ImposeBy,
+        ex:Lemma_InduceBy,
+        ex:Lemma_InfluenceBy,
+        ex:Lemma_InstigateBy,
+        ex:Lemma_ObtainFrom,
+        ex:Lemma_OnAccountOf,
+        ex:Lemma_OriginatedFrom,
+        ex:Lemma_OweTo,
+        ex:Lemma_PreventFrom,
+        ex:Lemma_PromptBy,
+        ex:Lemma_PropagateBy,
+        ex:Lemma_PumpFrom,
+        ex:Lemma_ResultFrom,
+        ex:Lemma_SetOffBy,
+        ex:Lemma_SparkBy,
+        ex:Lemma_StemFrom,
+        ex:Lemma_StemmingFrom,
+        ex:Lemma_TriggerBy ;
+    skos:prefLabel "backward directed relation"@en .
+
 ex:Class_SocioEconomicIndicators a ex:VariableClassification,
         owl:Class,
         skos:Concept ;
@@ -22938,6 +23109,159 @@ ex:Class_SocioEconomicIndicators a ex:VariableClassification,
         ex:Lemma_UtilityNetworkMetric,
         ex:Lemma_ZeroIncomePopulation ;
     skos:prefLabel "Socio-Economic Indicators, Vulnerability, & Municipal Metabolism"@en .
+
+ex:StaticPreventiveOrAssociativeRelation a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:narrower ex:Lemma_Accumulate,
+        ex:Lemma_AetiologicalAgent,
+        ex:Lemma_AetiologyOf,
+        ex:Lemma_AllowingFor,
+        ex:Lemma_AsCompareTo,
+        ex:Lemma_Assigning,
+        ex:Lemma_AssociateWith,
+        ex:Lemma_BaseOn,
+        ex:Lemma_BeAFunctionOf,
+        ex:Lemma_BeAPrerequisiteFor,
+        ex:Lemma_BeAssociateWith,
+        ex:Lemma_CanBePlace,
+        ex:Lemma_CanGo,
+        ex:Lemma_CanOccur,
+        ex:Lemma_CanPresent,
+        ex:Lemma_CarryInto,
+        ex:Lemma_CausalFactor,
+        ex:Lemma_CausalMechanism,
+        ex:Lemma_CausalSequence,
+        ex:Lemma_ChainOfEvent,
+        ex:Lemma_ChainReaction,
+        ex:Lemma_CorrelateWith,
+        ex:Lemma_CorrespondTo,
+        ex:Lemma_CoupleWith,
+        ex:Lemma_Dampens,
+        ex:Lemma_EffectiveCause,
+        ex:Lemma_ExceedValue,
+        ex:Lemma_Exceeding,
+        ex:Lemma_FailureMechanism,
+        ex:Lemma_HaveABearingOn,
+        ex:Lemma_HaveProve,
+        ex:Lemma_Identify,
+        ex:Lemma_Identifying,
+        ex:Lemma_ImplicateIn,
+        ex:Lemma_InTheEventOf,
+        ex:Lemma_Inhibit,
+        ex:Lemma_MediateBy,
+        ex:Lemma_Modifie,
+        ex:Lemma_Modulate,
+        ex:Lemma_Modulating,
+        ex:Lemma_Monitoring,
+        ex:Lemma_Occurrence,
+        ex:Lemma_Preclude,
+        ex:Lemma_Predictive,
+        ex:Lemma_Prevent,
+        ex:Lemma_PrimaryDriver,
+        ex:Lemma_Receive,
+        ex:Lemma_RegulateBy,
+        ex:Lemma_RemainBelow,
+        ex:Lemma_Require,
+        ex:Lemma_RequireTreatment,
+        ex:Lemma_Requiring,
+        ex:Lemma_RootCause,
+        ex:Lemma_Settle,
+        ex:Lemma_ToPrevent,
+        ex:Lemma_TypicallyOccur,
+        ex:Lemma_Underlie,
+        ex:Lemma_UnderlyingCause,
+        ex:Lemma_UseTo,
+        ex:Lemma_Via,
+        ex:Lemma_While ;
+    skos:prefLabel "static preventive or associative relation"@en .
+
+ex:ForwardDirectedRelation a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:narrower ex:Lemma_ActAsACatalystFor,
+        ex:Lemma_ActivationOf,
+        ex:Lemma_Affect,
+        ex:Lemma_AffectTheRateOf,
+        ex:Lemma_BeResponsibleFor,
+        ex:Lemma_BearResponsibilityFor,
+        ex:Lemma_Become,
+        ex:Lemma_Becoming,
+        ex:Lemma_Break,
+        ex:Lemma_BreakUp,
+        ex:Lemma_Breed,
+        ex:Lemma_BringAbout,
+        ex:Lemma_Bringing,
+        ex:Lemma_CanBeTransmit,
+        ex:Lemma_CanCause,
+        ex:Lemma_CanGiveRiseTo,
+        ex:Lemma_CanLeadTo,
+        ex:Lemma_CanProduce,
+        ex:Lemma_CanResultIn,
+        ex:Lemma_Carry,
+        ex:Lemma_CatalyticEffect,
+        ex:Lemma_Cause,
+        ex:Lemma_CauseDamage,
+        ex:Lemma_Compel,
+        ex:Lemma_Complicating,
+        ex:Lemma_ContributeTo,
+        ex:Lemma_Contributing,
+        ex:Lemma_ContributingTo,
+        ex:Lemma_Creating,
+        ex:Lemma_CulminateIn,
+        ex:Lemma_DecayInto,
+        ex:Lemma_Determine,
+        ex:Lemma_Dictate,
+        ex:Lemma_DirectThrough,
+        ex:Lemma_DischargeTo,
+        ex:Lemma_Drive,
+        ex:Lemma_Elicit,
+        ex:Lemma_Engender,
+        ex:Lemma_EngenderTheCreationOf,
+        ex:Lemma_Entail,
+        ex:Lemma_EntailTheFormationOf,
+        ex:Lemma_EventuallyLead,
+        ex:Lemma_ExertAnEffectOn,
+        ex:Lemma_FeedInto,
+        ex:Lemma_GiveImpulseTo,
+        ex:Lemma_GiveOriginTo,
+        ex:Lemma_GiveRiseTo,
+        ex:Lemma_GiveRiseToTheOccurrenceOf,
+        ex:Lemma_Heighten,
+        ex:Lemma_ImpactOn,
+        ex:Lemma_Impel,
+        ex:Lemma_InclineToward,
+        ex:Lemma_Increase,
+        ex:Lemma_IncreaseTheRiskOf,
+        ex:Lemma_Induce,
+        ex:Lemma_InduceTheFormationOf,
+        ex:Lemma_Influence,
+        ex:Lemma_InteractToProduce,
+        ex:Lemma_IntroduceThePotentialFor,
+        ex:Lemma_LayTheGroundworkFor,
+        ex:Lemma_LeadTo,
+        ex:Lemma_LeadToTheOnsetOf,
+        ex:Lemma_PlayARoleInDetermine,
+        ex:Lemma_Predict,
+        ex:Lemma_Produce,
+        ex:Lemma_Prompt,
+        ex:Lemma_Propagate,
+        ex:Lemma_Provoke,
+        ex:Lemma_ProvokeTheOccurrenceOf,
+        ex:Lemma_Reduce,
+        ex:Lemma_Remove,
+        ex:Lemma_ResultIn,
+        ex:Lemma_SetInMotion,
+        ex:Lemma_Thereby,
+        ex:Lemma_Therefore,
+        ex:Lemma_ThirdPartyCause,
+        ex:Lemma_Thus,
+        ex:Lemma_Yield ;
+    skos:prefLabel "forward directed relation"@en .
 
 ex:CorrosionAndElectrochemicalFailure a owl:Class,
         skos:Concept ;
@@ -23359,149 +23683,6 @@ ex:MechanicalAndStructuralFailure a owl:Class,
         ex:Lemma_Wind-InduceFatigue,
         ex:Lemma_YieldPointStrain ;
     skos:prefLabel "mechanical and structural failure"@en .
-
-ex:CausalTerm a owl:Class,
-        skos:Concept ;
-    skos:inScheme ex:CausalRelationalScheme ;
-    skos:narrower ex:AttributionAndDerivationRelation,
-        ex:ConditionalAndContributingRelation,
-        ex:CorrelationAndAssociationRelation,
-        ex:DirectCausationRelation,
-        ex:Lemma_AccelerateBy,
-        ex:Lemma_AccountFor,
-        ex:Lemma_Accumulate,
-        ex:Lemma_ActAsACatalystFor,
-        ex:Lemma_ActivateBy,
-        ex:Lemma_ActivationOf,
-        ex:Lemma_AetiologicalAgent,
-        ex:Lemma_AetiologyOf,
-        ex:Lemma_Affect,
-        ex:Lemma_AffectTheRateOf,
-        ex:Lemma_Affected,
-        ex:Lemma_AggravateBy,
-        ex:Lemma_AmplifyBy,
-        ex:Lemma_AriseFrom,
-        ex:Lemma_AsAConsequenceOf,
-        ex:Lemma_AsCompareTo,
-        ex:Lemma_AscribedTo,
-        ex:Lemma_Assigning,
-        ex:Lemma_BeAFunctionOf,
-        ex:Lemma_BeAPrerequisiteFor,
-        ex:Lemma_BeContingentUpon,
-        ex:Lemma_BeDriveBy,
-        ex:Lemma_BeResponsibleFor,
-        ex:Lemma_BeSubject,
-        ex:Lemma_BearResponsibilityFor,
-        ex:Lemma_Become,
-        ex:Lemma_Becoming,
-        ex:Lemma_Breed,
-        ex:Lemma_BringAbout,
-        ex:Lemma_Bringing,
-        ex:Lemma_BroughtOnBy,
-        ex:Lemma_CanBePlace,
-        ex:Lemma_CanBeTransmit,
-        ex:Lemma_CanGo,
-        ex:Lemma_CanOccur,
-        ex:Lemma_CanPresent,
-        ex:Lemma_Carry,
-        ex:Lemma_CarryInto,
-        ex:Lemma_CatalyticEffect,
-        ex:Lemma_CausalFactor,
-        ex:Lemma_CausalMechanism,
-        ex:Lemma_CausalSequence,
-        ex:Lemma_ChainOfEvent,
-        ex:Lemma_ChainReaction,
-        ex:Lemma_Compel,
-        ex:Lemma_Complicating,
-        ex:Lemma_Consequently,
-        ex:Lemma_ConstrainBy,
-        ex:Lemma_Contributing,
-        ex:Lemma_ContributingTo,
-        ex:Lemma_CoupleWith,
-        ex:Lemma_Creating,
-        ex:Lemma_CulminateIn,
-        ex:Lemma_Dampens,
-        ex:Lemma_DecayInto,
-        ex:Lemma_Determine,
-        ex:Lemma_Dictate,
-        ex:Lemma_DictateBy,
-        ex:Lemma_DirectThrough,
-        ex:Lemma_DischargeTo,
-        ex:Lemma_Drive,
-        ex:Lemma_DriveBy,
-        ex:Lemma_EffectOf,
-        ex:Lemma_Elicit,
-        ex:Lemma_Engender,
-        ex:Lemma_EngenderTheCreationOf,
-        ex:Lemma_Entail,
-        ex:Lemma_EntailTheFormationOf,
-        ex:Lemma_EvokeBy,
-        ex:Lemma_ExertAnEffectOn,
-        ex:Lemma_FailureMechanism,
-        ex:Lemma_FeedInto,
-        ex:Lemma_GenerateBy,
-        ex:Lemma_GiveImpulseTo,
-        ex:Lemma_GiveOriginTo,
-        ex:Lemma_GiveRiseTo,
-        ex:Lemma_GiveRiseToTheOccurrenceOf,
-        ex:Lemma_HaveABearingOn,
-        ex:Lemma_HaveProve,
-        ex:Lemma_Heighten,
-        ex:Lemma_Identify,
-        ex:Lemma_Identifying,
-        ex:Lemma_ImpactOn,
-        ex:Lemma_Impel,
-        ex:Lemma_ImplicateIn,
-        ex:Lemma_InTheEventOf,
-        ex:Lemma_InclineToward,
-        ex:Lemma_Increase,
-        ex:Lemma_IncreaseTheRiskOf,
-        ex:Lemma_Influence,
-        ex:Lemma_InfluenceBy,
-        ex:Lemma_Inhibit,
-        ex:Lemma_InstigateBy,
-        ex:Lemma_IntroduceThePotentialFor,
-        ex:Lemma_LayTheGroundworkFor,
-        ex:Lemma_MediateBy,
-        ex:Lemma_Modifie,
-        ex:Lemma_Modulate,
-        ex:Lemma_Modulating,
-        ex:Lemma_Monitoring,
-        ex:Lemma_ObtainFrom,
-        ex:Lemma_Occurrence,
-        ex:Lemma_OnAccountOf,
-        ex:Lemma_PlayARoleInDetermine,
-        ex:Lemma_Preclude,
-        ex:Lemma_Predict,
-        ex:Lemma_Predictive,
-        ex:Lemma_PrimaryDriver,
-        ex:Lemma_Prompt,
-        ex:Lemma_PromptBy,
-        ex:Lemma_Propagate,
-        ex:Lemma_PropagateBy,
-        ex:Lemma_Provoke,
-        ex:Lemma_ProvokeTheOccurrenceOf,
-        ex:Lemma_PumpFrom,
-        ex:Lemma_Receive,
-        ex:Lemma_Reduce,
-        ex:Lemma_RegulateBy,
-        ex:Lemma_RemainBelow,
-        ex:Lemma_Remove,
-        ex:Lemma_Requiring,
-        ex:Lemma_SetInMotion,
-        ex:Lemma_SetOffBy,
-        ex:Lemma_Settle,
-        ex:Lemma_SparkBy,
-        ex:Lemma_Thereby,
-        ex:Lemma_Therefore,
-        ex:Lemma_Thus,
-        ex:Lemma_TypicallyOccur,
-        ex:Lemma_Underlie,
-        ex:Lemma_UseTo,
-        ex:Lemma_Via,
-        ex:Lemma_While,
-        ex:Lemma_Yield ;
-    skos:prefLabel "causal term"@en .
 
 ex:Class_GeotechnicalDynamics a ex:VariableClassification,
         owl:Class,

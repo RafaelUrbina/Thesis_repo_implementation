@@ -13,29 +13,32 @@ from Utils.paths import MASTER_DATA_PATH, PATENT_PIPELINE_PATH
 
 
 def clean_text(text: str) -> str:
-    """Normalizes text to lowercase, keeps .!? and alphanumeric characters,
-
-    and removes all other symbols.
+    """Normalizes text to lowercase while preserving important patent punctuation 
+    (such as hyphens, commas, colons, semicolons, parentheses, and brackets) 
+    along with alphanumeric characters and basic sentence terminals.
     """
     if not text:
         return ""
+    
     # Convert to lowercase
     text = text.lower()
 
-    # Replace anything that is NOT alphanumeric (a-z, 0-9), whitespace, or [.!?] with a space
-    text = re.sub(r"[^\w\s.]", " ", text)
+    # Keep alphanumeric characters, whitespace, and valuable patent punctuation:
+    # periods, commas, semicolons, colons, hyphens, parentheses, brackets, slashes, plus/equals
+    text = re.sub(r"[^\w\s.,;:()\-\[%\]/+=]", " ", text)
 
     # Collapse multiple whitespaces into a single space and strip leading/trailing spaces
     return re.sub(r"\s+", " ", text).strip()
 
 
-def split_by_newlines(text: str) -> list[str]:
-    """Splits text strictly by newline characters (\n)."""
+def split_by_paragraphs(text: str) -> list[str]:
+    """Splits text by double newlines (blank lines) to capture actual paragraphs."""
     if not text:
         return []
 
-    lines = re.split(r"\r?\n+", text)
-    return [line.strip() for line in lines if line.strip()]
+    # Splits on one or more blank lines (with optional carriage returns)
+    paragraphs = re.split(r"\r?\n\s*\r?\n+", text)
+    return [p.strip() for p in paragraphs if p.strip()]
 
 
 def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
@@ -48,13 +51,13 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
 
     if total_files == 0:
         print("Warning: No .json files found in the specified directory.")
-        return pd.DataFrame()
+        return pd.DataFrame(), ""
 
     print(f"Found {total_files:,} JSON file(s) to process.\n")
 
     skipped_files = 0
     total_claims = 0
-    total_description_lines = 0
+    total_description_paragraphs = 0
 
     for filepath in tqdm(json_files, desc="Processing Patents", unit="file"):
         with open(filepath, "r", encoding="utf-8") as f:
@@ -67,42 +70,44 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
         pat_id = data.get("pat_id", "")
         title = data.get("title", "")
 
-        # 1. Process Claims
+        # 1. Process Claims (Treating each claim element as a complete claim entity)
         claims = data.get("claims") or []
         for claim_idx, claim in enumerate(claims, start=1):
             if not claim:
                 continue
-            claim_lines = split_by_newlines(claim)
-            for line in claim_lines:
-                cleaned_line = clean_text(line)
-                if cleaned_line:
-                    records.append(
-                        {
-                            "pat_id": pat_id,
-                            "title": title,
-                            "text_type": "claim",
-                            "paragraph_id": f"claim_{claim_idx}",  # <-- ADDED
-                            "text": cleaned_line,
-                        }
-                    )
-                    total_claims += 1
+            # Normalize internal whitespaces/newlines within the claim text
+            normalized_claim = re.sub(r"\s+", " ", claim).strip()
+            cleaned_claim = clean_text(normalized_claim)
+            
+            if cleaned_claim:
+                records.append(
+                    {
+                        "pat_id": pat_id,
+                        "title": title,
+                        "text_type": "claim",
+                        "paragraph_id": f"claim_{claim_idx}",
+                        "text": cleaned_claim,
+                    }
+                )
+                total_claims += 1
 
-        # 2. Process Description
+        # 2. Process Description (Split strictly by double newlines into true paragraphs)
         description = data.get("description") or ""
-        desc_lines = split_by_newlines(description)
-        for para_idx, line in enumerate(desc_lines, start=1):
-            cleaned_line = clean_text(line)
-            if cleaned_line:
+        desc_paragraphs = split_by_paragraphs(description)
+        
+        for para_idx, para in enumerate(desc_paragraphs, start=1):
+            cleaned_para = clean_text(para)
+            if cleaned_para:
                 records.append(
                     {
                         "pat_id": pat_id,
                         "title": title,
                         "text_type": "description",
-                        "paragraph_id": f"para_{para_idx}",  # <-- ADDED
-                        "text": cleaned_line,
+                        "paragraph_id": f"para_{para_idx}",
+                        "text": cleaned_para,
                     }
                 )
-                total_description_lines += 1
+                total_description_paragraphs += 1
         
     # Processing summary
     processed_count = total_files - skipped_files
@@ -116,7 +121,7 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
         summary_lines.append(f"Files Skipped (Invalid JSON) : {skipped_files:,}")
     summary_lines.extend([
         f"Total Claim Rows Extracted   : {total_claims:,}",
-        f"Total Description Rows       : {total_description_lines:,}",
+        f"Total Description Paragraphs : {total_description_paragraphs:,}",
         f"Total Dataset Rows Created   : {len(records):,}",
         "=" * 50
     ])
@@ -133,7 +138,7 @@ if __name__ == "__main__":
     df, summary_text = process_patent_files(folder_path)
 
     if not df.empty:
-        output_dir = PATENT_PIPELINE_PATH / "dataset_creation/output"
+        output_dir = PATENT_PIPELINE_PATH / "dataset_creation/0_output"
         output_dir.mkdir(parents=True, exist_ok=True)
 
         summary_file = output_dir / "processing_summary.txt"

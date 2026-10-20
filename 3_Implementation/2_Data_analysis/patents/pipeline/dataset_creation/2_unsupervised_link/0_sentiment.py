@@ -21,6 +21,8 @@ import spacy
 import torch
 from tqdm import tqdm
 
+csv.field_size_limit(2147483647)
+
 # Also limit PyTorch's internal thread pool explicitly
 torch.set_num_threads(int(MAX_CPU_THREADS))
 
@@ -33,7 +35,6 @@ project_root = current_dir.parents[5]
 sys.path.insert(0, str(project_root))
 
 from Utils.paths import PATENT_PIPELINE_PATH
-
 
 def extract_nouns_and_verbs(doc):
     """Extracts lemmas of Nouns (NOUN, PROPN) and Verbs/Auxiliaries (VERB, AUX) from a SpaCy Doc
@@ -94,12 +95,14 @@ def main():
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # 1. Determine how many rows have already been processed
+    # 1. Determine how many logical rows have already been processed
     already_processed = 0
     if output_path.exists() and output_path.stat().st_size > 0:
-        with open(output_path, mode="r", encoding="utf-8") as f:
-            # Subtract 1 for header row
-            already_processed = max(0, sum(1 for _ in f) - 1)
+        with open(output_path, mode="r", encoding="utf-8", newline="") as f:
+            reader_check = csv.reader(f)
+            header_check = next(reader_check, None)
+            if header_check:
+                already_processed = sum(1 for _ in reader_check)
         print(f"Found existing output file. Resuming from row {already_processed:,}...")
 
     # Load SpaCy model
@@ -119,7 +122,7 @@ def main():
     analyzer = SentimentIntensityAnalyzer()
 
     # BATCH & COOLING CONFIGURATION
-    BATCH_SIZE = 500
+    BATCH_SIZE = 1
     COOLING_SLEEP_SEC = 0.5
 
     batch_rows = []
@@ -162,81 +165,54 @@ def main():
             unprocessed_texts = []
 
             pbar = tqdm(desc="Processing rows", unit="row", initial=already_processed)
+            batch_rows = []
+            processed_count = 0
 
             for row in reader:
                 if not row or len(row) <= text_idx:
                     continue
 
                 text_val = row[text_idx].strip()
-                unprocessed_batch_rows.append(row)
-                unprocessed_texts.append(text_val)
+                
+                # 1. Compute Sentiment via VADER (fast and safe)
+                sentiment_score = (
+                    analyzer.polarity_scores(text_val)["compound"]
+                    if text_val
+                    else 0.0
+                )
 
-                # Process batch when buffer fills
-                if len(unprocessed_texts) >= BATCH_SIZE:
-                    with nlp.select_pipes(disable=disable_pipes):
-                        docs = list(nlp.pipe(unprocessed_texts))
+                # 2. Process via SpaCy safely with a fallback
+                nouns_list, verbs_list = [], []
+                if text_val:
+                    try:
+                        doc = nlp(text_val)
+                        nouns_list, verbs_list = extract_nouns_and_verbs(doc)
+                    except Exception as nlp_err:
+                        # If spaCy chokes on a weird text string, log it and keep moving
+                        print(f"\n[Warning] SpaCy error on row: {nlp_err}")
+                        nouns_list, verbs_list = [], []
 
-                    for orig_row, text, doc in zip(
-                        unprocessed_batch_rows, unprocessed_texts, docs
-                    ):
-                        sentiment_score = (
-                            analyzer.polarity_scores(text)["compound"]
-                            if text
-                            else 0.0
-                        )
+                new_row = row + [
+                    sentiment_score,
+                    str(nouns_list),
+                    str(verbs_list),
+                ]
+                batch_rows.append(new_row)
+                processed_count += 1
 
-                        nouns_list, verbs_list = (
-                            extract_nouns_and_verbs(doc) if text else ([], [])
-                        )
-
-                        new_row = orig_row + [
-                            sentiment_score,
-                            str(nouns_list),
-                            str(verbs_list),
-                        ]
-                        batch_rows.append(new_row)
-                        processed_count += 1
-
-                    # Write out processed batch to disk & flush
+                # Write in chunks of 100 to save memory and keep disk updated
+                if len(batch_rows) >= 100:
                     writer.writerows(batch_rows)
                     outfile.flush()
                     pbar.update(len(batch_rows))
-
-                    # Reset buffers
                     batch_rows.clear()
-                    unprocessed_batch_rows.clear()
-                    unprocessed_texts.clear()
 
-                    if COOLING_SLEEP_SEC > 0:
-                        time.sleep(COOLING_SLEEP_SEC)
-
-            # Process remaining rows in final buffer
-            if unprocessed_texts:
-                with nlp.select_pipes(disable=disable_pipes):
-                    docs = list(nlp.pipe(unprocessed_texts))
-
-                for orig_row, text, doc in zip(
-                    unprocessed_batch_rows, unprocessed_texts, docs
-                ):
-                    sentiment_score = (
-                        analyzer.polarity_scores(text)["compound"]
-                        if text
-                        else 0.0
-                    )
-                    nouns_list, verbs_list = (
-                        extract_nouns_and_verbs(doc) if text else ([], [])
-                    )
-                    new_row = orig_row + [
-                        sentiment_score,
-                        str(nouns_list),
-                        str(verbs_list),
-                    ]
-                    batch_rows.append(new_row)
-                    processed_count += 1
-
+            # Write any remaining rows
+            if batch_rows:
                 writer.writerows(batch_rows)
                 outfile.flush()
                 pbar.update(len(batch_rows))
+                batch_rows.clear()
 
             pbar.close()
 

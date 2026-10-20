@@ -1,0 +1,150 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Landslide Point Count 1Ring",
+      "description": "Total number of landslide points within a 1-ring neighborhood",
+      "id": "VAR:landslide_point_count_1ring"
+    },
+    {
+      "bipartite": 1,
+      "type": "risk_category",
+      "label": "geotechnical dynamics & landslide hazards",
+      "id": "CAT:geotechnical dynamics & landslide hazards"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Avg Seismic Magnitude 1Ring",
+      "description": "Average seismic magnitude within a 1-ring neighborhood",
+      "id": "VAR:avg_seismic_magnitude_1ring"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "M Per Hex",
+      "description": "Metric of meters of built road and street infrastructure per hexagon in the map (road density index)",
+      "id": "VAR:m_per_hex"
+    },
+    {
+      "bipartite": 1,
+      "type": "risk_category",
+      "label": "built environment, land use, & human interventions",
+      "id": "CAT:built environment, land use, & human interventions"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Dist To Waterway M",
+      "description": "Distance to the nearest waterway in meters",
+      "id": "VAR:dist_to_waterway_m"
+    },
+    {
+      "bipartite": 1,
+      "type": "risk_category",
+      "label": "hydrological settings & flood risk",
+      "id": "CAT:hydrological settings & flood risk"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Hydraulic Hazard Level",
+      "description": "Level of hydraulic hazard",
+      "id": "VAR:hydraulic_hazard_level"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Idw Rain Mm Max Monthly",
+      "description": "Maximum monthly rainfall in millimeters. calculated using Inverse Distance Weighting (IDW) interpolation.",
+      "id": "VAR:idw_rain_mm_max_monthly"
+    },
+    {
+      "bipartite": 1,
+      "type": "risk_category",
+      "label": "meteorological, climatic, & topographic indicators",
+      "id": "CAT:meteorological, climatic, & topographic indicators"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Idw Wind Speed Max Max",
+      "description": "Maximum wind speed in meters per second. calculated using Inverse Distance Weighting (IDW) interpolation.",
+      "id": "VAR:idw_wind_speed_max_max"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Dtmidcnt Max",
+      "description": "elevation maximum value per hexagon calculated using Digital Terrain Model (DTM) data.",
+      "id": "VAR:dtmidcnt_max"
+    },
+    {
+      "bipartite": 0,
+      "type": "spatial_variable",
+      "label": "Idw Temp Thermal Range",
+      "description": "temperature or thermal range of the area.",
+      "id": "VAR:idw_temp_thermal_range"
+    }
+  ],
+  "edges": [
+    {
+      "weight": 0.3487,
+      "confidence": 0.3487,
+      "source": "VAR:landslide_point_count_1ring",
+      "target": "CAT:geotechnical dynamics & landslide hazards"
+    },
+    {
+      "weight": 0.192,
+      "confidence": 0.192,
+      "source": "CAT:geotechnical dynamics & landslide hazards",
+      "target": "VAR:avg_seismic_magnitude_1ring"
+    },
+    {
+      "weight": 0.2071,
+      "confidence": 0.2071,
+      "source": "CAT:geotechnical dynamics & landslide hazards",
+      "target": "VAR:dtmidcnt_max"
+    },
+    {
+      "weight": 0.3052,
+      "confidence": 0.3052,
+      "source": "VAR:m_per_hex",
+      "target": "CAT:built environment, land use, & human interventions"
+    },
+    {
+      "weight": 0.2662,
+      "confidence": 0.2662,
+      "source": "VAR:dist_to_waterway_m",
+      "target": "CAT:hydrological settings & flood risk"
+    },
+    {
+      "weight": 0.5013,
+      "confidence": 0.5013,
+      "source": "CAT:hydrological settings & flood risk",
+      "target": "VAR:hydraulic_hazard_level"
+    },
+    {
+      "weight": 0.2854,
+      "confidence": 0.2854,
+      "source": "VAR:idw_rain_mm_max_monthly",
+      "target": "CAT:meteorological, climatic, & topographic indicators"
+    },
+    {
+      "weight": 0.1845,
+      "confidence": 0.1845,
+      "source": "CAT:meteorological, climatic, & topographic indicators",
+      "target": "VAR:idw_wind_speed_max_max"
+    },
+    {
+      "weight": 0.3223,
+      "confidence": 0.3223,
+      "source": "CAT:meteorological, climatic, & topographic indicators",
+      "target": "VAR:idw_temp_thermal_range"
+    }
+  ]
+}

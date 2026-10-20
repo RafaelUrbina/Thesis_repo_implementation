@@ -128,7 +128,7 @@ def process_dataset(
     csv_path, 
     rdf_path, 
     output_csv_path=None, 
-    chunksize=100000,
+    chunksize=1000,
     include_technical=True,
     include_failures=True,
     include_causal=True,
@@ -234,9 +234,9 @@ def process_dataset(
     return final_df
 
 if __name__ == '__main__':
-    csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/output/patent_dataset.csv'
+    csv_file = PATENT_PIPELINE_PATH / 'dataset_creation/0_output/patent_dataset.csv'
     rdf_file = ONTOLOGY_OUTPUT_PATH / 'pipeline_knowledge_graph.rdf'
-    output_file = PATENT_PIPELINE_PATH / 'dataset_creation/output/patent_dataset_filtered_ontology.csv'
+    output_file = PATENT_PIPELINE_PATH / 'dataset_creation/0_output/patent_dataset_filtered_ontology.csv'
     
     df_filtered = process_dataset(
         csv_file, 

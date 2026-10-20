@@ -21,9 +21,9 @@ from Utils.paths import PATENT_PIPELINE_PATH
 INPUT_CSV_PATH = (
     PATENT_PIPELINE_PATH
     / "dataset_creation"
-    / "1_supervised_link"
+    / "2_unsupervised_link"
     / "output"
-    / "causal_filtered_supervised_exploded.csv"
+    / "causal_filtered_unsupervised_sentiment_pos_strict.csv"
 )
 
 OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "term_frequencies"

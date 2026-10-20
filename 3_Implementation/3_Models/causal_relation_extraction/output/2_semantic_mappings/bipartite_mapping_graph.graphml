@@ -5,96 +5,16 @@
 <key id="d2" for="node" attr.name="label" attr.type="string"/>
 <key id="d1" for="node" attr.name="type" attr.type="string"/>
 <key id="d0" for="node" attr.name="bipartite" attr.type="long"/>
-<graph edgedefault="undirected"><node id="VAR:total_intervention_cost_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Total Intervention Cost 1Ring</data>
-  <data key="d3">Total cost of damage repairs and interventions within a 1-ring neighborhood</data>
-</node>
-<node id="CAT:built environment, land use, &amp; human interventions">
-  <data key="d0">1</data>
-  <data key="d1">risk_category</data>
-  <data key="d2">built environment, land use, &amp; human interventions</data>
-</node>
-<node id="VAR:total_fountains_count_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Total Fountains Count 1Ring</data>
-  <data key="d3">Total number of city fountains within a 1-ring neighborhood</data>
-</node>
-<node id="CAT:hydrological settings &amp; flood risk">
-  <data key="d0">1</data>
-  <data key="d1">risk_category</data>
-  <data key="d2">hydrological settings &amp; flood risk</data>
-</node>
-<node id="VAR:landslide_point_count_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Landslide Point Count 1Ring</data>
-  <data key="d3">Total number of landslide points within a 1-ring neighborhood</data>
-</node>
-<node id="CAT:geotechnical dynamics &amp; landslide hazards">
-  <data key="d0">1</data>
-  <data key="d1">risk_category</data>
-  <data key="d2">geotechnical dynamics &amp; landslide hazards</data>
-</node>
-<node id="VAR:max_peak_elevation_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Max Peak Elevation 1Ring</data>
-  <data key="d3">Maximum peak elevation within a 1-ring neighborhood</data>
-</node>
-<node id="CAT:meteorological, climatic, &amp; topographic indicators">
-  <data key="d0">1</data>
-  <data key="d1">risk_category</data>
-  <data key="d2">meteorological, climatic, &amp; topographic indicators</data>
-</node>
-<node id="VAR:seismic_event_count_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Seismic Event Count 1Ring</data>
-  <data key="d3">Total number of seismic events within a 1-ring neighborhood</data>
-</node>
-<node id="VAR:avg_seismic_magnitude_1ring">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Avg Seismic Magnitude 1Ring</data>
-  <data key="d3">Average seismic magnitude within a 1-ring neighborhood</data>
-</node>
-<node id="VAR:m_per_hex">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">M Per Hex</data>
-  <data key="d3">Metric of meters of built road and street infrastructure per hexagon in the map (road density index)</data>
-</node>
-<node id="VAR:dist_to_waterway_m">
+<graph edgedefault="undirected"><node id="VAR:dist_to_waterway_m">
   <data key="d0">0</data>
   <data key="d1">spatial_variable</data>
   <data key="d2">Dist To Waterway M</data>
   <data key="d3">Distance to the nearest waterway in meters</data>
 </node>
-<node id="VAR:rooting_depth_class">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Rooting Depth Class</data>
-  <data key="d3">Class of rooting depth</data>
-</node>
-<node id="CAT:pedological soil properties &amp; agricultural capacity">
+<node id="CAT:hydrological settings &amp; flood risk">
   <data key="d0">1</data>
   <data key="d1">risk_category</data>
-  <data key="d2">pedological soil properties &amp; agricultural capacity</data>
-</node>
-<node id="VAR:surface_stoniness_class">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Surface Stoniness Class</data>
-  <data key="d3">Class of surface stoniness</data>
-</node>
-<node id="VAR:landslide_surface_class">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Landslide Surface Class</data>
-  <data key="d3">Class of landslide surface</data>
+  <data key="d2">hydrological settings &amp; flood risk</data>
 </node>
 <node id="VAR:hydraulic_hazard_level">
   <data key="d0">0</data>
@@ -114,41 +34,16 @@
   <data key="d2">Edst Acq Erog</data>
   <data key="d3">Communal meters of water drawn from the public water supply system for consumption.</data>
 </node>
-<node id="VAR:eidx_LAND_CON">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Eidx Land Con</data>
-  <data key="d3">Land consumption index - which measures the extent of land use and development in a given area.</data>
-</node>
-<node id="VAR:idw_rain_mm_max_monthly">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Idw Rain Mm Max Monthly</data>
-  <data key="d3">Maximum monthly rainfall in millimeters. calculated using Inverse Distance Weighting (IDW) interpolation.</data>
-</node>
 <node id="VAR:idw_wind_speed_max_max">
   <data key="d0">0</data>
   <data key="d1">spatial_variable</data>
   <data key="d2">Idw Wind Speed Max Max</data>
   <data key="d3">Maximum wind speed in meters per second. calculated using Inverse Distance Weighting (IDW) interpolation.</data>
 </node>
-<node id="VAR:dtmidcnt_max">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Dtmidcnt Max</data>
-  <data key="d3">elevation maximum value per hexagon calculated using Digital Terrain Model (DTM) data.</data>
-</node>
-<node id="VAR:avg_descending_soil_speed">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Avg Descending Soil Speed</data>
-  <data key="d3">Average speed of soil movement in the descending direction.</data>
-</node>
-<node id="VAR:avg_ascending_soil_speed">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Avg Ascending Soil Speed</data>
-  <data key="d3">Average speed of soil movement in the ascending direction.</data>
+<node id="CAT:meteorological, climatic, &amp; topographic indicators">
+  <data key="d0">1</data>
+  <data key="d1">risk_category</data>
+  <data key="d2">meteorological, climatic, &amp; topographic indicators</data>
 </node>
 <node id="VAR:nearest_hydro_river_stage_max_m">
   <data key="d0">0</data>
@@ -156,41 +51,13 @@
   <data key="d2">Nearest Hydro River Stage Max M</data>
   <data key="d3">Maximum stage of the nearest hydrological river in meters.</data>
 </node>
-<node id="VAR:descending_soil_presence">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Descending Soil Presence</data>
-  <data key="d3">Presence of soil movement in the descending direction.</data>
-</node>
-<node id="VAR:ascending_soil_presence">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">Ascending Soil Presence</data>
-  <data key="d3">Presence of soil movement in the ascending direction.</data>
-</node>
 <node id="VAR:idw_temp_thermal_range">
   <data key="d0">0</data>
   <data key="d1">spatial_variable</data>
   <data key="d2">Idw Temp Thermal Range</data>
   <data key="d3">temperature or thermal range of the area.</data>
 </node>
-<edge source="VAR:total_intervention_cost_1ring" target="CAT:built environment, land use, &amp; human interventions">
-  <data key="d4">0.3278</data>
-  <data key="d5">0.3278</data>
-</edge>
-<edge source="CAT:built environment, land use, &amp; human interventions" target="VAR:m_per_hex">
-  <data key="d4">0.3052</data>
-  <data key="d5">0.3052</data>
-</edge>
-<edge source="CAT:built environment, land use, &amp; human interventions" target="VAR:eidx_LAND_CON">
-  <data key="d4">0.378</data>
-  <data key="d5">0.378</data>
-</edge>
-<edge source="VAR:total_fountains_count_1ring" target="CAT:hydrological settings &amp; flood risk">
-  <data key="d4">0.2796</data>
-  <data key="d5">0.2796</data>
-</edge>
-<edge source="CAT:hydrological settings &amp; flood risk" target="VAR:dist_to_waterway_m">
+<edge source="VAR:dist_to_waterway_m" target="CAT:hydrological settings &amp; flood risk">
   <data key="d4">0.2662</data>
   <data key="d5">0.2662</data>
 </edge>
@@ -210,64 +77,12 @@
   <data key="d4">0.3946</data>
   <data key="d5">0.3946</data>
 </edge>
-<edge source="VAR:landslide_point_count_1ring" target="CAT:geotechnical dynamics &amp; landslide hazards">
-  <data key="d4">0.3487</data>
-  <data key="d5">0.3487</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:seismic_event_count_1ring">
-  <data key="d4">0.2069</data>
-  <data key="d5">0.2069</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:avg_seismic_magnitude_1ring">
-  <data key="d4">0.192</data>
-  <data key="d5">0.192</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:landslide_surface_class">
-  <data key="d4">0.5262</data>
-  <data key="d5">0.5262</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:dtmidcnt_max">
-  <data key="d4">0.2071</data>
-  <data key="d5">0.2071</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:descending_soil_presence">
-  <data key="d4">0.4456</data>
-  <data key="d5">0.4456</data>
-</edge>
-<edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:ascending_soil_presence">
-  <data key="d4">0.3961</data>
-  <data key="d5">0.3961</data>
-</edge>
-<edge source="VAR:max_peak_elevation_1ring" target="CAT:meteorological, climatic, &amp; topographic indicators">
-  <data key="d4">0.0764</data>
-  <data key="d5">0.0764</data>
-</edge>
-<edge source="CAT:meteorological, climatic, &amp; topographic indicators" target="VAR:idw_rain_mm_max_monthly">
-  <data key="d4">0.2854</data>
-  <data key="d5">0.2854</data>
-</edge>
-<edge source="CAT:meteorological, climatic, &amp; topographic indicators" target="VAR:idw_wind_speed_max_max">
+<edge source="VAR:idw_wind_speed_max_max" target="CAT:meteorological, climatic, &amp; topographic indicators">
   <data key="d4">0.1845</data>
   <data key="d5">0.1845</data>
 </edge>
 <edge source="CAT:meteorological, climatic, &amp; topographic indicators" target="VAR:idw_temp_thermal_range">
   <data key="d4">0.3223</data>
   <data key="d5">0.3223</data>
-</edge>
-<edge source="VAR:rooting_depth_class" target="CAT:pedological soil properties &amp; agricultural capacity">
-  <data key="d4">0.3187</data>
-  <data key="d5">0.3187</data>
-</edge>
-<edge source="CAT:pedological soil properties &amp; agricultural capacity" target="VAR:surface_stoniness_class">
-  <data key="d4">0.1403</data>
-  <data key="d5">0.1403</data>
-</edge>
-<edge source="CAT:pedological soil properties &amp; agricultural capacity" target="VAR:avg_descending_soil_speed">
-  <data key="d4">0.3483</data>
-  <data key="d5">0.3483</data>
-</edge>
-<edge source="CAT:pedological soil properties &amp; agricultural capacity" target="VAR:avg_ascending_soil_speed">
-  <data key="d4">0.3373</data>
-  <data key="d5">0.3373</data>
 </edge>
 </graph></graphml>

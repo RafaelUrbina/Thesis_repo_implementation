@@ -2,7 +2,7 @@ import ast
 import csv
 import sys
 from pathlib import Path
-
+csv.field_size_limit(2147483647)
 # Add project root to path using relative import formula
 current_dir = Path(__file__).resolve().parent
 project_root = current_dir.parents[5]
@@ -47,7 +47,7 @@ def main():
         / "dataset_creation"
         / "1_supervised_link"
         / "output"
-        / "causal_filtered_supervised.csv"
+        / "midstep_causal_filtered_supervised_exploded.csv"
     )
     output_path = (
         PATENT_PIPELINE_PATH

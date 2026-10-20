@@ -27,7 +27,7 @@ INPUT_CSV_PATH = (
     / "dataset_creation"
     / "2_unsupervised_link"
     / "output"
-    / "causal_filtered_unsupervised_sentiment_pos.csv"
+    / "causal_filtered_unsupervised_sentiment_pos_strict.csv"
 )
 
 OUTPUT_DIR = PATENT_PIPELINE_PATH / "knowledge_abstract" / "output" / "summary_statistics"

@@ -6,109 +6,15 @@
     {
       "bipartite": 0,
       "type": "spatial_variable",
-      "label": "Total Intervention Cost 1Ring",
-      "description": "Total cost of damage repairs and interventions within a 1-ring neighborhood",
-      "id": "VAR:total_intervention_cost_1ring"
-    },
-    {
-      "bipartite": 1,
-      "type": "risk_category",
-      "label": "built environment, land use, & human interventions",
-      "id": "CAT:built environment, land use, & human interventions"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Total Fountains Count 1Ring",
-      "description": "Total number of city fountains within a 1-ring neighborhood",
-      "id": "VAR:total_fountains_count_1ring"
+      "label": "Dist To Waterway M",
+      "description": "Distance to the nearest waterway in meters",
+      "id": "VAR:dist_to_waterway_m"
     },
     {
       "bipartite": 1,
       "type": "risk_category",
       "label": "hydrological settings & flood risk",
       "id": "CAT:hydrological settings & flood risk"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Landslide Point Count 1Ring",
-      "description": "Total number of landslide points within a 1-ring neighborhood",
-      "id": "VAR:landslide_point_count_1ring"
-    },
-    {
-      "bipartite": 1,
-      "type": "risk_category",
-      "label": "geotechnical dynamics & landslide hazards",
-      "id": "CAT:geotechnical dynamics & landslide hazards"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Max Peak Elevation 1Ring",
-      "description": "Maximum peak elevation within a 1-ring neighborhood",
-      "id": "VAR:max_peak_elevation_1ring"
-    },
-    {
-      "bipartite": 1,
-      "type": "risk_category",
-      "label": "meteorological, climatic, & topographic indicators",
-      "id": "CAT:meteorological, climatic, & topographic indicators"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Seismic Event Count 1Ring",
-      "description": "Total number of seismic events within a 1-ring neighborhood",
-      "id": "VAR:seismic_event_count_1ring"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Avg Seismic Magnitude 1Ring",
-      "description": "Average seismic magnitude within a 1-ring neighborhood",
-      "id": "VAR:avg_seismic_magnitude_1ring"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "M Per Hex",
-      "description": "Metric of meters of built road and street infrastructure per hexagon in the map (road density index)",
-      "id": "VAR:m_per_hex"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Dist To Waterway M",
-      "description": "Distance to the nearest waterway in meters",
-      "id": "VAR:dist_to_waterway_m"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Rooting Depth Class",
-      "description": "Class of rooting depth",
-      "id": "VAR:rooting_depth_class"
-    },
-    {
-      "bipartite": 1,
-      "type": "risk_category",
-      "label": "pedological soil properties & agricultural capacity",
-      "id": "CAT:pedological soil properties & agricultural capacity"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Surface Stoniness Class",
-      "description": "Class of surface stoniness",
-      "id": "VAR:surface_stoniness_class"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Landslide Surface Class",
-      "description": "Class of landslide surface",
-      "id": "VAR:landslide_surface_class"
     },
     {
       "bipartite": 0,
@@ -134,44 +40,15 @@
     {
       "bipartite": 0,
       "type": "spatial_variable",
-      "label": "Eidx Land Con",
-      "description": "Land consumption index - which measures the extent of land use and development in a given area.",
-      "id": "VAR:eidx_LAND_CON"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Idw Rain Mm Max Monthly",
-      "description": "Maximum monthly rainfall in millimeters. calculated using Inverse Distance Weighting (IDW) interpolation.",
-      "id": "VAR:idw_rain_mm_max_monthly"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
       "label": "Idw Wind Speed Max Max",
       "description": "Maximum wind speed in meters per second. calculated using Inverse Distance Weighting (IDW) interpolation.",
       "id": "VAR:idw_wind_speed_max_max"
     },
     {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Dtmidcnt Max",
-      "description": "elevation maximum value per hexagon calculated using Digital Terrain Model (DTM) data.",
-      "id": "VAR:dtmidcnt_max"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Avg Descending Soil Speed",
-      "description": "Average speed of soil movement in the descending direction.",
-      "id": "VAR:avg_descending_soil_speed"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Avg Ascending Soil Speed",
-      "description": "Average speed of soil movement in the ascending direction.",
-      "id": "VAR:avg_ascending_soil_speed"
+      "bipartite": 1,
+      "type": "risk_category",
+      "label": "meteorological, climatic, & topographic indicators",
+      "id": "CAT:meteorological, climatic, & topographic indicators"
     },
     {
       "bipartite": 0,
@@ -183,20 +60,6 @@
     {
       "bipartite": 0,
       "type": "spatial_variable",
-      "label": "Descending Soil Presence",
-      "description": "Presence of soil movement in the descending direction.",
-      "id": "VAR:descending_soil_presence"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
-      "label": "Ascending Soil Presence",
-      "description": "Presence of soil movement in the ascending direction.",
-      "id": "VAR:ascending_soil_presence"
-    },
-    {
-      "bipartite": 0,
-      "type": "spatial_variable",
       "label": "Idw Temp Thermal Range",
       "description": "temperature or thermal range of the area.",
       "id": "VAR:idw_temp_thermal_range"
@@ -204,34 +67,10 @@
   ],
   "edges": [
     {
-      "weight": 0.3278,
-      "confidence": 0.3278,
-      "source": "VAR:total_intervention_cost_1ring",
-      "target": "CAT:built environment, land use, & human interventions"
-    },
-    {
-      "weight": 0.3052,
-      "confidence": 0.3052,
-      "source": "CAT:built environment, land use, & human interventions",
-      "target": "VAR:m_per_hex"
-    },
-    {
-      "weight": 0.378,
-      "confidence": 0.378,
-      "source": "CAT:built environment, land use, & human interventions",
-      "target": "VAR:eidx_LAND_CON"
-    },
-    {
-      "weight": 0.2796,
-      "confidence": 0.2796,
-      "source": "VAR:total_fountains_count_1ring",
-      "target": "CAT:hydrological settings & flood risk"
-    },
-    {
       "weight": 0.2662,
       "confidence": 0.2662,
-      "source": "CAT:hydrological settings & flood risk",
-      "target": "VAR:dist_to_waterway_m"
+      "source": "VAR:dist_to_waterway_m",
+      "target": "CAT:hydrological settings & flood risk"
     },
     {
       "weight": 0.5013,
@@ -258,94 +97,16 @@
       "target": "VAR:nearest_hydro_river_stage_max_m"
     },
     {
-      "weight": 0.3487,
-      "confidence": 0.3487,
-      "source": "VAR:landslide_point_count_1ring",
-      "target": "CAT:geotechnical dynamics & landslide hazards"
-    },
-    {
-      "weight": 0.2069,
-      "confidence": 0.2069,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:seismic_event_count_1ring"
-    },
-    {
-      "weight": 0.192,
-      "confidence": 0.192,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:avg_seismic_magnitude_1ring"
-    },
-    {
-      "weight": 0.5262,
-      "confidence": 0.5262,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:landslide_surface_class"
-    },
-    {
-      "weight": 0.2071,
-      "confidence": 0.2071,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:dtmidcnt_max"
-    },
-    {
-      "weight": 0.4456,
-      "confidence": 0.4456,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:descending_soil_presence"
-    },
-    {
-      "weight": 0.3961,
-      "confidence": 0.3961,
-      "source": "CAT:geotechnical dynamics & landslide hazards",
-      "target": "VAR:ascending_soil_presence"
-    },
-    {
-      "weight": 0.0764,
-      "confidence": 0.0764,
-      "source": "VAR:max_peak_elevation_1ring",
-      "target": "CAT:meteorological, climatic, & topographic indicators"
-    },
-    {
-      "weight": 0.2854,
-      "confidence": 0.2854,
-      "source": "CAT:meteorological, climatic, & topographic indicators",
-      "target": "VAR:idw_rain_mm_max_monthly"
-    },
-    {
       "weight": 0.1845,
       "confidence": 0.1845,
-      "source": "CAT:meteorological, climatic, & topographic indicators",
-      "target": "VAR:idw_wind_speed_max_max"
+      "source": "VAR:idw_wind_speed_max_max",
+      "target": "CAT:meteorological, climatic, & topographic indicators"
     },
     {
       "weight": 0.3223,
       "confidence": 0.3223,
       "source": "CAT:meteorological, climatic, & topographic indicators",
       "target": "VAR:idw_temp_thermal_range"
-    },
-    {
-      "weight": 0.3187,
-      "confidence": 0.3187,
-      "source": "VAR:rooting_depth_class",
-      "target": "CAT:pedological soil properties & agricultural capacity"
-    },
-    {
-      "weight": 0.1403,
-      "confidence": 0.1403,
-      "source": "CAT:pedological soil properties & agricultural capacity",
-      "target": "VAR:surface_stoniness_class"
-    },
-    {
-      "weight": 0.3483,
-      "confidence": 0.3483,
-      "source": "CAT:pedological soil properties & agricultural capacity",
-      "target": "VAR:avg_descending_soil_speed"
-    },
-    {
-      "weight": 0.3373,
-      "confidence": 0.3373,
-      "source": "CAT:pedological soil properties & agricultural capacity",
-      "target": "VAR:avg_ascending_soil_speed"
     }
   ]
 }

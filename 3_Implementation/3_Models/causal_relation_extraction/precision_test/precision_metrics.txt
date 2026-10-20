@@ -1,0 +1,9 @@
+=== PRECISION TEST METRICS REPORT ===
+Tested File Source: tested_precision_test.csv
+--------------------------------------------------
+ Total Rows in Tested Dataset : 380
+ Valid Evaluated Rows         : 380
+ Positive Predictions (1)     : 359
+ Negative Predictions (0)     : 21
+ Overall Precision            : 0.9447 (94.47%)
+--------------------------------------------------

@@ -1,61 +1,61 @@
 PATENT DATASET SUMMARY STATISTICS
 ============================================================
-Total Sentence Rows: 346954
-Total Unique Paragraphs: 260545
-Total Unique Patents: 17529
-Mean Patent Appearances: 19.79
+Total Sentence Rows: 215299
+Total Unique Paragraphs: 48674
+Total Unique Patents: 17054
+Mean Patent Appearances: 12.62
 
 --- OCCURRENCE PRESENCE & PROPORTIONS (PATENT LEVEL) ---
-  all_three           : Count = 9490, Proportion = 0.5414 (54.14%)
-  tech_and_attr_only  : Count = 2540, Proportion = 0.1449 (14.49%)
-  attr_and_fail_only  : Count = 528, Proportion = 0.0301 (3.01%)
-  tech_and_fail_only  : Count = 3050, Proportion = 0.1740 (17.40%)
-  singular_tech_only  : Count = 1394, Proportion = 0.0795 (7.95%)
-  singular_attr_only  : Count = 253, Proportion = 0.0144 (1.44%)
-  singular_fail_only  : Count = 274, Proportion = 0.0156 (1.56%)
+  all_three           : Count = 6551, Proportion = 0.3841 (38.41%)
+  tech_and_attr_only  : Count = 2957, Proportion = 0.1734 (17.34%)
+  attr_and_fail_only  : Count = 731, Proportion = 0.0429 (4.29%)
+  tech_and_fail_only  : Count = 3465, Proportion = 0.2032 (20.32%)
+  singular_tech_only  : Count = 2294, Proportion = 0.1345 (13.45%)
+  singular_attr_only  : Count = 463, Proportion = 0.0271 (2.71%)
+  singular_fail_only  : Count = 593, Proportion = 0.0348 (3.48%)
 
 --- OCCURRENCE PRESENCE & PROPORTIONS (PARAGRAPH LEVEL) ---
-  all_three           : Count = 9001, Proportion = 0.0345 (3.45%)
-  tech_and_attr_only  : Count = 38009, Proportion = 0.1459 (14.59%)
-  attr_and_fail_only  : Count = 6487, Proportion = 0.0249 (2.49%)
-  tech_and_fail_only  : Count = 26706, Proportion = 0.1025 (10.25%)
-  singular_tech_only  : Count = 127712, Proportion = 0.4902 (49.02%)
-  singular_attr_only  : Count = 26478, Proportion = 0.1016 (10.16%)
-  singular_fail_only  : Count = 26151, Proportion = 0.1004 (10.04%)
+  all_three           : Count = 6423, Proportion = 0.1320 (13.20%)
+  tech_and_attr_only  : Count = 6382, Proportion = 0.1311 (13.11%)
+  attr_and_fail_only  : Count = 1459, Proportion = 0.0300 (3.00%)
+  tech_and_fail_only  : Count = 5821, Proportion = 0.1196 (11.96%)
+  singular_tech_only  : Count = 18938, Proportion = 0.3891 (38.91%)
+  singular_attr_only  : Count = 4615, Proportion = 0.0948 (9.48%)
+  singular_fail_only  : Count = 5036, Proportion = 0.1035 (10.35%)
 
 --- OCCURRENCE PRESENCE & PROPORTIONS (SENTENCE LEVEL) ---
-  all_three           : Count = 7619, Proportion = 0.0220 (2.20%)
-  tech_and_attr_only  : Count = 41484, Proportion = 0.1196 (11.96%)
-  attr_and_fail_only  : Count = 6629, Proportion = 0.0191 (1.91%)
-  tech_and_fail_only  : Count = 27920, Proportion = 0.0805 (8.05%)
-  singular_tech_only  : Count = 186221, Proportion = 0.5367 (53.67%)
-  singular_attr_only  : Count = 39481, Proportion = 0.1138 (11.38%)
-  singular_fail_only  : Count = 37597, Proportion = 0.1084 (10.84%)
+  all_three           : Count = 2703, Proportion = 0.0126 (1.26%)
+  tech_and_attr_only  : Count = 21094, Proportion = 0.0980 (9.80%)
+  attr_and_fail_only  : Count = 4111, Proportion = 0.0191 (1.91%)
+  tech_and_fail_only  : Count = 14947, Proportion = 0.0694 (6.94%)
+  singular_tech_only  : Count = 112981, Proportion = 0.5248 (52.48%)
+  singular_attr_only  : Count = 29680, Proportion = 0.1379 (13.79%)
+  singular_fail_only  : Count = 29783, Proportion = 0.1383 (13.83%)
 
 SENTIMENT:
-  Mean: -0.0063
-  Std: 0.3999
+  Mean: -0.0094
+  Std: 0.3683
 
 TOP 10 NOUNS:
-  water: 148772
-  tank: 70474
-  pipe: 54365
-  valve: 39621
-  flow: 39243
-  invention: 39085
-  pressure: 38046
-  system: 36417
-  device: 33121
-  unit: 31972
+  water: 89418
+  tank: 41127
+  pipe: 27235
+  pressure: 22659
+  valve: 22176
+  flow: 21391
+  system: 19019
+  pump: 17400
+  invention: 17003
+  device: 15754
 
 TOP 10 VERBS:
-  be: 271838
-  may: 115953
-  have: 48543
-  can: 42365
-  provide: 39232
-  include: 33524
-  use: 33509
-  form: 33274
-  prevent: 32576
-  connect: 28500
+  be: 156392
+  prevent: 24490
+  remove: 15728
+  use: 15642
+  provide: 15521
+  have: 14014
+  increase: 13837
+  reduce: 12499
+  flow: 12286
+  connect: 11171

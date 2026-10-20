@@ -136,7 +136,9 @@ def build_unified_knowledge_graph(
     tech_file=ONTOLOGY_LISTS_PATH / "technical_list.txt",
     failure_file=ONTOLOGY_LISTS_PATH / "failure_list.txt",
     risk_file=ONTOLOGY_LISTS_PATH / "variable_list.txt",
-    causal_file=ONTOLOGY_LISTS_PATH / "causal_list.txt",
+    forward_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Forward.txt",
+    backward_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Backward.txt",
+    static_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Static.txt",
 ):
     g = Graph()
     EX = Namespace("http://www.semanticweb.org/thesis/pipeline-risk#")
@@ -154,11 +156,16 @@ def build_unified_knowledge_graph(
         ont_uri,
         RDFS.comment,
         Literal(
-            "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal"
-            " Relations, and Environmental/Social Risk Variables.",
+            "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal "
+            "Relations (with Directionality Characteristics), and Environmental/Social Risk Variables.",
             lang="en",
         ),
     ))
+
+    # Declare custom directionality property
+    g.add((EX.hasDirectionality, RDF.type, OWL.DatatypeProperty))
+    g.add((EX.hasDirectionality, RDFS.domain, SKOS.Concept))
+    g.add((EX.hasDirectionality, RDFS.range, XSD.string))
 
     # Concept Schemes (4 Pillars)
     schemes = {
@@ -200,7 +207,7 @@ def build_unified_knowledge_graph(
             g.add((uri, RDFS.subClassOf, broader_uri))
         return uri
 
-    def add_term_nodes(scheme, pref_label, alt_labels=None, broader_uri=None):
+    def add_term_nodes(scheme, pref_label, alt_labels=None, broader_uri=None, directionality=None):
         """Creates structure: Lemma Concept -> Surface Form Instance."""
         lemmatized_str = get_lemma(pref_label)
 
@@ -215,6 +222,9 @@ def build_unified_knowledge_graph(
         g.add((lemma_uri, RDF.type, OWL.Class))
         g.add((lemma_uri, SKOS.inScheme, scheme))
         g.add((lemma_uri, SKOS.prefLabel, Literal(lemmatized_str, lang="en")))
+
+        if directionality:
+            g.add((lemma_uri, EX.hasDirectionality, Literal(directionality, lang="en")))
 
         if broader_uri:
             g.add((lemma_uri, SKOS.broader, broader_uri))
@@ -385,7 +395,6 @@ def build_unified_knowledge_graph(
     # 5. Process Risk Variable Terms (Semantic Vector Classification)
     risk_terms = parse_term_file(risk_file)
     if risk_terms:
-        # Define the 6 Variable Classification Categories (Tier 2)
         class_meteo_clim_topo = add_category_root(
             schemes["risk"],
             "Class_MeteorologicalClimaticAndTopographicIndicators",
@@ -423,7 +432,6 @@ def build_unified_knowledge_graph(
             is_variable_class=True,
         )
 
-        # Category contextual definitions for high-precision semantic matching
         category_definitions = {
             class_meteo_clim_topo: (
                 "Meteorological, Climatic, and Topographic Indicators: weather monitoring stations, "
@@ -457,7 +465,6 @@ def build_unified_knowledge_graph(
             ),
         }
 
-        # Vectorize category definitions
         category_uris = list(category_definitions.keys())
         category_texts = list(category_definitions.values())
         category_embeddings = EMBEDDING_MODEL.encode(
@@ -473,12 +480,10 @@ def build_unified_knowledge_graph(
         term_pref_labels = [item["pref"] for item in valid_risk_terms]
 
         if term_pref_labels:
-            # Batch encode all input terms
             term_embeddings = EMBEDDING_MODEL.encode(
                 term_pref_labels, convert_to_tensor=True
             )
 
-            # Cosine similarity matrix between terms and category vectors
             cosine_scores = util.cos_sim(term_embeddings, category_embeddings)
 
             for idx, item in enumerate(valid_risk_terms):
@@ -488,7 +493,6 @@ def build_unified_knowledge_graph(
 
                 pref = item["pref"]
 
-                # Optional debug log for low confidence matches
                 if similarity_score < 0.35:
                     print(
                         f"  [Low Confidence: {similarity_score:.2f}] '{pref}' -> "
@@ -502,109 +506,52 @@ def build_unified_knowledge_graph(
                     broader_uri=best_parent_uri,
                 )
 
-    # 6. Process Causal Terms
-    causal_terms = parse_term_file(causal_file)
-    if causal_terms:
-        root_causal = add_category_root(
-            schemes["causal"],
-            "CausalTerm",
-            "causal term",
-        )
+    # 6. Process Causal Terms from Forward.txt, Backward.txt, and Static.txt
+    root_causal = add_category_root(
+        schemes["causal"],
+        "CausalTerm",
+        "causal term",
+    )
 
-        dir_causal = add_category_root(
-            schemes["causal"],
-            "DirectCausationRelation",
-            "direct causation relation",
-            broader_uri=root_causal,
-        )
-        cond_causal = add_category_root(
-            schemes["causal"],
-            "ConditionalAndContributingRelation",
-            "conditional and contributing relation",
-            broader_uri=root_causal,
-        )
-        corr_causal = add_category_root(
-            schemes["causal"],
-            "CorrelationAndAssociationRelation",
-            "correlation and association relation",
-            broader_uri=root_causal,
-        )
-        attr_causal = add_category_root(
-            schemes["causal"],
-            "AttributionAndDerivationRelation",
-            "attribution and derivation relation",
-            broader_uri=root_causal,
-        )
+    dir_causal = add_category_root(
+        schemes["causal"],
+        "ForwardDirectedRelation",
+        "forward directed relation",
+        broader_uri=root_causal,
+    )
+    back_causal = add_category_root(
+        schemes["causal"],
+        "BackwardDirectedRelation",
+        "backward directed relation",
+        broader_uri=root_causal,
+    )
+    stat_causal = add_category_root(
+        schemes["causal"],
+        "StaticPreventiveOrAssociativeRelation",
+        "static preventive or associative relation",
+        broader_uri=root_causal,
+    )
 
-        print(f"Ingesting {len(causal_terms)} causal terms...")
-        for item in causal_terms:
-            pref = item["pref"]
-            if not pref:
-                continue
+    causal_file_configs = [
+        (forward_file, dir_causal, "Forward"),
+        (backward_file, back_causal, "Backward"),
+        (static_file, stat_causal, "Static/Preventive"),
+    ]
 
-            plow = pref.lower()
-            parent = root_causal
-
-            if any(
-                k in plow
-                for k in [
-                    "cause",
-                    "lead",
-                    "result",
-                    "produce",
-                    "give rise",
-                    "break",
-                    "create",
-                ]
-            ):
-                parent = dir_causal
-            elif any(
-                k in plow
-                for k in [
-                    "contribute",
-                    "trigger",
-                    "induce",
-                    "exacerbated",
-                    "allow",
-                    "require",
-                    "prevent",
-                    "exceed",
-                    "impos",
-                ]
-            ):
-                parent = cond_causal
-            elif any(
-                k in plow
-                for k in [
-                    "associate",
-                    "correlate",
-                    "link",
-                    "correspond",
-                    "common",
-                    "depend",
-                ]
-            ):
-                parent = corr_causal
-            elif any(
-                k in plow
-                for k in [
-                    "due to",
-                    "attribute",
-                    "derive",
-                    "base",
-                    "originate",
-                    "owing",
-                    "stem",
-                ]
-            ):
-                parent = attr_causal
-
-            add_term_nodes(
-                schemes["causal"],
-                pref,
-                alt_labels=item["alts"],
-                broader_uri=parent,
-            )
+    for filepath, parent_uri, directionality_label in causal_file_configs:
+        terms_data = parse_term_file(filepath)
+        if terms_data:
+            print(f"Ingesting {len(terms_data)} causal terms from {filepath.name} ({directionality_label})...")
+            for item in terms_data:
+                pref = item["pref"]
+                if pref:
+                    add_term_nodes(
+                        schemes["causal"],
+                        pref,
+                        alt_labels=item["alts"],
+                        broader_uri=parent_uri,
+                        directionality=directionality_label
+                    )
 
     # 7. Export Graph
     g.serialize(

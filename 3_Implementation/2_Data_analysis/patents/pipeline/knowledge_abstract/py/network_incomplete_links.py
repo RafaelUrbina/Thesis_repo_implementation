@@ -20,7 +20,7 @@ from Utils.paths import PATENT_PIPELINE_PATH
 # -------------------------------------------------------------------------
 INPUT_CSV = (
     PATENT_PIPELINE_PATH
-    / "dataset_creation/2_unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos.csv"
+    / "dataset_creation/2_unsupervised_link/output/causal_filtered_unsupervised_sentiment_pos_strict.csv"
 )
 OUTPUT_LINKS_CSV = (
     PATENT_PIPELINE_PATH
@@ -36,8 +36,8 @@ OUTPUT_HTML = (
 PERCENTILE_THRESHOLD = 0.90
 
 # Set the minimum threshold for a node's max graph degree (in-degree or out-degree).
-# Nodes where max(in_degree, out_degree) < 20 will be filtered out iteratively.
-MIN_NODE_DEGREE_THRESHOLD = 15
+# Nodes where max(in_degree, out_degree) < 13 will be filtered out iteratively.
+MIN_NODE_DEGREE_THRESHOLD = 13
 
 # Ordered stages matching your exact CSV column names
 STAGES = [
