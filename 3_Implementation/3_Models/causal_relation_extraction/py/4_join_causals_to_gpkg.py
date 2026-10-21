@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 import shutil
 import sqlite3
+import json
 import pandas as pd
 import geopandas as gpd
 from sklearn.preprocessing import MinMaxScaler
@@ -16,6 +17,7 @@ from Utils.paths import CAUSAL_RELATION_MODEL_PATH, GRID_PATH
 
 # Define file paths
 traceable_csv_path = CAUSAL_RELATION_MODEL_PATH / "output" / "3_h3_causal_bridge" / "h3_geospatial_patent_failure_chains_traceable.csv"
+extreme_summary_json_path = CAUSAL_RELATION_MODEL_PATH / "output" / "1_importance_filter" / "hexagons_extreme_summary.json"
 input_gpkg_path = GRID_PATH / 'h310_grid_final_datacube.gpkg'
 
 # Define final self-contained output path (fixed duplicate folder name)
@@ -41,11 +43,34 @@ def build_self_contained_causal_geopackage():
     traceable_df = pd.read_csv(traceable_csv_path)
     print(f"Loaded {len(traceable_df)} traceable rows.")
     
+    # Load and parse Layer 4 pairs from hexagons_extreme_summary.json
+    pairs_rows = []
+    if extreme_summary_json_path.exists():
+        print(f"Loading extreme summary JSON from: {extreme_summary_json_path}")
+        with open(extreme_summary_json_path, 'r', encoding='utf-8') as f:
+            extreme_summary_data = json.load(f)
+            
+        for entry in extreme_summary_data:
+            h3_idx = entry.get('index')
+            pairs = entry.get('extreme_pairs', [])
+            for pair in pairs:
+                if len(pair) == 2:
+                    pairs_rows.append({
+                        'index': h3_idx,
+                        'variable_1': pair[0],
+                        'variable_2': pair[1]
+                    })
+    else:
+        print("[Notice] hexagons_extreme_summary.json not found. Layer 4 table will be empty.")
+
+    pairs_df = pd.DataFrame(pairs_rows)
+    print(f"Extracted {len(pairs_df)} extreme variable pair records for Layer 4.")
+
     print(f"Loading original H3 GeoPackage layer 'final_data_cube' from: {input_gpkg_path}")
     gdf = gpd.read_file(input_gpkg_path, layer='final_data_cube')
     print(f"Loaded GeoPackage with {len(gdf)} hexagons.")
 
-    # 5. Aggregate Traceable Rows to Hexagon-Level Summary Metrics (with Order-Independent Unique Strings)
+    # 5. Aggregate Traceable Rows to Hexagon-Level Summary Metrics (Layer 1 prep)
     print("\nAggregating failure chains by H3 index for macro-metrics...")
     summary_geo_df = traceable_df.groupby('index').agg(
         total_failure_chains=('failure_term', 'count'),
@@ -54,6 +79,14 @@ def build_self_contained_causal_geopackage():
         patent_count=('patent_ids', lambda x: len(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))),
         all_unique_failures=('failure_term', lambda x: ", ".join(sorted(set(str(v).strip() for v in x.dropna() if str(v).strip() and str(v).lower() != 'nan')))),
         all_unique_attributes=('attribute_term', lambda x: ", ".join(sorted(set(str(v).strip() for v in x.dropna() if str(v).strip() and str(v).lower() != 'nan'))))
+    ).reset_index()
+
+    # 5b. Aggregate Traceable Rows by H3 Index + Unique Triplet (Layer 3 prep)
+    print("Aggregating failure chains by H3 index and unique triplets...")
+    triplet_summary_df = traceable_df.groupby(['index', 'technical_term', 'attribute_term', 'failure_term']).agg(
+        triplet_chain_count=('failure_term', 'count'),
+        triplet_patent_count=('patent_ids', lambda x: len(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))),
+        triplet_patent_ids=('patent_ids', lambda x: ", ".join(sorted(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))))
     ).reset_index()
 
     # 6. Merge Summary Metrics via Left Join on 'index'
@@ -74,49 +107,49 @@ def build_self_contained_causal_geopackage():
         'm_per_hex', 'census_pop', 'inflow_total'
     ]
     
-    # Ensure all index columns exist in the dataframe (fill missing ones with 0 if absent)
     for col in index_columns:
         if col not in merged_gdf.columns:
             merged_gdf[col] = 0
 
-    # Fill missing values within index columns with median/0 to prevent NaN propagation
     index_subset = merged_gdf[index_columns].fillna(0)
 
-    # Normalize columns to a 0-1 scale using MinMaxScaler
     scaler = MinMaxScaler()
     normalized_values = scaler.fit_transform(index_subset)
     norm_df = pd.DataFrame(normalized_values, columns=index_columns, index=merged_gdf.index)
 
-    # Define weights: Give double weight (1.5) to prioritized columns, 1.0 to others
     priority_cols = {'census_pop', 'inflow_total'}
     weights = {col: (1.1 if col in priority_cols else 1.0) for col in index_columns}
 
-    # Calculate the weighted sum score
     composite_score = sum(norm_df[col] * weights[col] for col in index_columns)
     total_weight = sum(weights.values())
     
-    # Assign normalized weighted average index (scaled 0 to 100)
     merged_gdf['causal_socioeconomic_index'] = (composite_score / total_weight) * 100
 
     # 8. Write Back Spatial Polygons Layer to the Copy
     print(f"Writing updated spatial layer to GeoPackage copy...")
     merged_gdf.to_file(output_gpkg_path, layer='final_data_cube', driver="GPKG")
 
-    # 9. Inject Full Traceable CSV as a Secondary Table Layer into SQLite (.gpkg)
-    print("Embedding full traceable causal chain table into the GeoPackage database...")
+    # 9. Inject All Tables (Layers 2, 3, and 4) into SQLite (.gpkg)
+    print("Embedding tables into the GeoPackage database...")
     conn = sqlite3.connect(output_gpkg_path)
+    
+    # Layer 2: Raw multi-row table
     traceable_df.to_sql('traceable_causal_chains', conn, if_exists='replace', index=False)
+    
+    # Layer 3: Unique Triplet per Hexagon aggregated table
+    triplet_summary_df.to_sql('h3_triplet_summary', conn, if_exists='replace', index=False)
+    
+    # Layer 4: H3 Extreme Variable Pairs table from JSON
+    pairs_df.to_sql('h3_extreme_pairs', conn, if_exists='replace', index=False)
+    
     conn.close()
 
     print("\nPipeline complete! Successfully created unified self-contained GeoPackage:")
     print(f"Saved to: {output_gpkg_path}")
-    print(" - Layer 1 [Spatial]: 'final_data_cube' (Updated with choropleth metrics, unique strings, and 'causal_socioeconomic_index')")
-    print(" - Layer 2 [Tabular]: 'traceable_causal_chains' (Full multi-row causal links)")
-    
-    print(f"\n--- Preview of Updated Spatial Data (Non-Zero Hexagons) ---")
-    print(merged_gdf[merged_gdf['total_failure_chains'] > 0][
-        ['index', 'total_failure_chains', 'causal_socioeconomic_index', 'top_failure_mode']
-    ].head(5).to_markdown(index=False))
+    print(" - Layer 1 [Spatial]: 'final_data_cube' (Hexagon macro-metrics & socio-economic index)")
+    print(" - Layer 2 [Tabular]: 'traceable_causal_chains' (Full raw multi-row causal links)")
+    print(" - Layer 3 [Tabular]: 'h3_triplet_summary' (Unique index + triplet combinations)")
+    print(" - Layer 4 [Tabular]: 'h3_extreme_pairs' (Hex index with variable_1 and variable_2 extracted from JSON)")
 
 if __name__ == "__main__":
     build_self_contained_causal_geopackage()
