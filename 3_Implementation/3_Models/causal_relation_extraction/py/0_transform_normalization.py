@@ -69,7 +69,7 @@ LOG1P_VARS = [
         'idw_temp_thermal_range',
         'dist_to_waterway_m',
         'landslide_point_count_1ring',
-        'hydraulic_hazard_level', 'm_per_hex'
+        'hydraulic_hazard_level'
 ]
 
 # Variables for Yeo-Johnson transformation (can handle negative values, skewed)

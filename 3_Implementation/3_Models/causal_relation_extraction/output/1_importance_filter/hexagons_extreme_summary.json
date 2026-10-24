@@ -1,19 +1,5 @@
 [
   {
-    "index":"8a1ea2011797fff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2468937fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -37,20 +23,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20adab7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -98,34 +70,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a4cc7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b65ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2166b6ffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -135,62 +79,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "idw_wind_speed_max_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013127fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138c7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013997fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2142d17fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -224,20 +112,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20131b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c828ffff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -266,20 +140,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218b727fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdc35ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -289,76 +149,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a419ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ada87fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a0effff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201394ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a58cffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -423,91 +213,12 @@
     "index":"8a1ea2013d9ffff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "dist_to_waterway_m_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ],
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":3
-  },
-  {
-    "index":"8a1ea21421b7fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5ac7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a47affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b747fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2155a17fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -536,20 +247,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -586,24 +283,15 @@
     "index":"8a1ea2013db7fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "dist_to_waterway_m_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ],
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
-    "extreme_count":3
+    "extreme_count":2
   },
   {
     "index":"8a1ea2cdc057fff",
@@ -648,20 +336,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20138affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea21abd4ffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -685,48 +359,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a510ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4a4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -760,20 +392,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a58effff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea216085ffff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -783,76 +401,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_wind_speed_max_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a687fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2cdbb87fff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4447fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b6ffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20c162ffff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -886,48 +434,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20117b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d2ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5a9ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea20c6c07fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -956,20 +462,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218b0affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea219a7a7fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -984,48 +476,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea214255ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b2ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5887fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284ecb7fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -1035,20 +485,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a502ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -1110,48 +546,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a504ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b7affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2774517fff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea254844ffff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -1161,34 +555,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a518ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5027fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -1217,62 +583,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b647fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21a9417fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b6f7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012a67fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -1376,20 +686,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5bb7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cc6cf7fff",
     "extreme_variables":[
       "idw_temp_thermal_range_log1p_pctl",
@@ -1399,62 +695,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a53affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20144a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b9ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5327fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -1488,62 +728,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2189207fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201279ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d17fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21aba37fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843707fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -1561,24 +745,15 @@
     "index":"8a1ea2012787fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "dist_to_waterway_m_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ],
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
-    "extreme_count":3
+    "extreme_count":2
   },
   {
     "index":"8a1ea24458cffff",
@@ -1623,76 +798,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20131affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2142c07fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20adb6ffff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a6a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdc347fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -1702,90 +807,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5cdffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad327fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d77fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b777fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2011457fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012607fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -1889,20 +910,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea254aacffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea21649a7fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
@@ -1940,34 +947,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a53b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ea36ffff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2015,20 +994,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20ad147fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843a9ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -2071,48 +1036,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201260ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b68ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201178ffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdcb1ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -2122,20 +1045,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016837fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2211,20 +1120,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5127fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdc34ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -2239,62 +1134,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201262ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2105b1ffff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea247230ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea214251ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28cb067fff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -2304,34 +1143,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5cf7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2142c8ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2393,122 +1204,15 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5937fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2181817fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b707fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c5ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2013d87fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "dist_to_waterway_m_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ],
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":3
-  },
-  {
-    "index":"8a1ea2013807fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a3b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201149ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2542,118 +1246,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2016867fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013157fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201698ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201ecc7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c5ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad36ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138cffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2166ae7fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -2677,34 +1269,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d07fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4cf7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2738,62 +1302,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201068ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad347fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013ce7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea254aa8ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c4137fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -2808,48 +1316,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2011477fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013987fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a512ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdcb2ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -2859,20 +1325,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5177fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -2934,20 +1386,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea21abcdffff",
-    "extreme_variables":[
-      "avg_ascending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_ascending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2548227fff",
     "extreme_variables":[
       "idw_temp_thermal_range_log1p_pctl",
@@ -2957,20 +1395,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b75ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3007,24 +1431,15 @@
     "index":"8a1ea2473d37fff",
     "extreme_variables":[
       "idw_temp_thermal_range_log1p_pctl",
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "landslide_point_count_1ring_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ],
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
-    "extreme_count":3
+    "extreme_count":2
   },
   {
     "index":"8a1ea20e5017fff",
@@ -3050,20 +1465,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b37fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3153,34 +1554,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5527fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a511ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2b9259ffff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -3209,34 +1582,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a4caffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201141ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28e52dffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -3260,34 +1605,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4d8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5377fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3349,34 +1666,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218b72ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2181c77fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843777fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -3419,20 +1708,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012a77fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea246d667fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -3442,34 +1717,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20168e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c17fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3503,34 +1750,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201271ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013daffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843377fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -3545,48 +1764,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a514ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a1b4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20144b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28cbaaffff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -3596,34 +1773,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016877fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b71ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3657,20 +1806,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20ad14ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c8287fff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -3680,34 +1815,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013ca7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201311ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3741,76 +1848,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20116a7fff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201246ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014427fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012697fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad277fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea285c247fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -3820,48 +1857,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2472207fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5067fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201148ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -3895,20 +1890,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5b87fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28cb18ffff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -3937,20 +1918,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2155357fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea242d1affff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -3974,76 +1941,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201eceffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201069ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5017fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a530ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013187fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4091,20 +1988,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218b6d7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284349ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -4114,76 +1997,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c1ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20adb5ffff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5ad7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a505ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea254aae7fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4203,34 +2016,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5a8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad167fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea254b407fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -4240,62 +2025,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a501ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20144affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138dffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b07fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4329,20 +2058,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5aa7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cc2817fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -4352,48 +2067,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d47fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b627fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20169b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4413,48 +2086,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201692ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20126b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d0ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cc64dffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -4464,20 +2095,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d2ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4525,20 +2142,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201395ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c4127fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -4567,34 +2170,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013137fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ada9ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea21a9617fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -4604,34 +2179,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012367fff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad35ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4693,90 +2240,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2142577fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5147fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201694ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20169affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20e1897fff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2142c0ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea214289ffff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -4805,20 +2268,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a1a6ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2030527fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
@@ -4828,34 +2277,6 @@
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea254a327fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012a0ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4884,34 +2305,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21abb8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201e52ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -4973,34 +2366,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5d47fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad157fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea24458effff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -5010,20 +2375,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea244e86ffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5052,20 +2403,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201398ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5127,62 +2464,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20145affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20acd87fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5af7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013baffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c4887fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -5192,34 +2473,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5b97fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5157fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5239,20 +2492,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea21420affff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2036d77fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -5262,48 +2501,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a58dffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4617fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012aeffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5365,20 +2562,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20acbaffff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cd3ad7fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -5393,160 +2576,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a4547fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a50e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013847fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21abbb7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013cc7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d6ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad337fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013827fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20adadffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2142d1ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cc6cc7fff",
     "extreme_variables":[
       "idw_temp_thermal_range_log1p_pctl",
@@ -5556,20 +2585,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a132ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5598,20 +2613,6 @@
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201e567fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5673,76 +2674,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea201ecdffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016827fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5ab7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016967fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c2ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdcad7fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -5785,34 +2716,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5417fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c57fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284348ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -5822,20 +2725,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013897fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5883,20 +2772,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013cf7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2164987fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
@@ -5920,34 +2795,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201380ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201691ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -5990,20 +2837,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "avg_descending_soil_speed_yeojohnson_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad367fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6060,20 +2893,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012a47fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea21649b7fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
@@ -6083,48 +2902,6 @@
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "idw_wind_speed_max_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c07fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad377fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6144,20 +2921,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218a31ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea285c067fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -6167,20 +2930,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138d7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6209,76 +2958,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b677fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d57fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2199b6ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b0f7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b617fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6326,20 +3005,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20ad34ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2548b57fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
@@ -6349,20 +3014,6 @@
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2011447fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6382,90 +3033,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2105a37fff",
-    "extreme_variables":[
-      "avg_ascending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_ascending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a53a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b17fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016907fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201eccffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a907fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea285cb2ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -6475,62 +3042,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5837fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea210586ffff",
-    "extreme_variables":[
-      "avg_ascending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_ascending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20c160ffff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a387fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6550,34 +3061,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea242d937fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4737fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28cb197fff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -6587,34 +3070,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a1b6ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5997fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6634,34 +3089,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20127affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b737fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843a97fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -6671,20 +3098,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201ec5ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6802,34 +3215,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5137fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a581ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea21a961ffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -6858,34 +3243,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a519ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4627fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cddd97fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -6895,34 +3252,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016947fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201441ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -6951,20 +3280,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114effff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7026,34 +3341,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2016917fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2462837fff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea285c277fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -7077,48 +3364,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21892e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012a37fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201e547fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7152,34 +3397,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5087fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5057fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843b07fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -7189,34 +3406,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201236ffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014577fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7236,76 +3425,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013b87fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201695ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a50effff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21ab8e7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b0d7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2142137fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -7315,90 +3434,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5ce7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013887fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20169a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a589ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a58affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4197fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7432,48 +3467,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013107fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012a4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201310ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284ecdffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -7502,20 +3495,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012a57fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea256ac17fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -7530,62 +3509,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218b607fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013117fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013177fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5337fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284336ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -7595,20 +3518,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a05ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7642,20 +3551,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013d37fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843367fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -7665,34 +3560,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201388ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201442ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7740,20 +3607,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a4707fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c498ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -7763,48 +3616,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5037fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad067fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad30ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7824,62 +3635,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5cc7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21abb07fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b70ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114f7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28e52effff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -7889,62 +3644,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21ab80ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2155a5ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c07fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20116b7fff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -7964,20 +3663,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20ad06ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c5d37fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -7987,20 +3672,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "dtmidcnt_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad16ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8048,34 +3719,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a516ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5acffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea24744cffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -8104,62 +3747,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012a2ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4187fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013837fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b74ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea209571ffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -8169,34 +3756,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d77fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a580ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8225,20 +3784,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014437fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8281,20 +3826,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2011787fff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8412,20 +3943,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea21892dffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28cba8ffff",
     "extreme_variables":[
       "idw_wind_speed_max_max_log1p_pctl",
@@ -8435,20 +3952,6 @@
       [
         "idw_wind_speed_max_max_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8468,20 +3971,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012b5ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843347fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -8491,48 +3980,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20adb4ffff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114a7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b0dffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8580,62 +4027,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2472227fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20106d7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c77fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20114c7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cddcb7fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -8645,34 +4036,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a506ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014417fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8692,104 +4055,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea21ab817fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d27fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d67fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a58c7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b27fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c47fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5317fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea219b917fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -8804,34 +4069,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2013037fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013d5ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdca07fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -8841,34 +4078,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013027fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b61ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -8902,62 +4111,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a454ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea254aaeffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21420a7fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201244ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2548737fff",
     "extreme_variables":[
       "avg_descending_soil_speed_yeojohnson_pctl",
@@ -8967,62 +4120,6 @@
       [
         "avg_descending_soil_speed_yeojohnson_pctl",
         "idw_temp_thermal_range_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20124cffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5117fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201268ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad8cffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9042,48 +4139,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218964ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20139b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013c57fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdece7fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -9098,76 +4153,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a4ccffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014477fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013167fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013caffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201140ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2166b47fff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -9177,20 +4162,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "idw_wind_speed_max_max_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201381ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9224,34 +4195,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5cd7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4ce7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdc30ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -9280,62 +4223,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5c8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21ab807fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5917fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016977fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cd8997fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -9345,34 +4232,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21ad6f7fff",
-    "extreme_variables":[
-      "avg_descending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_descending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea240cc37fff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9392,48 +4251,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2012b1ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad15ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2016807fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cd5027fff",
     "extreme_variables":[
       "idw_temp_thermal_range_log1p_pctl",
@@ -9443,34 +4260,6 @@
       [
         "idw_temp_thermal_range_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c0ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5387fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9518,34 +4307,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a5a87fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea254aaaffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea284316ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -9563,24 +4324,15 @@
     "index":"8a1ea20127a7fff",
     "extreme_variables":[
       "avg_seismic_magnitude_1ring_log1p_pctl",
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
+      "dist_to_waterway_m_log1p_pctl"
     ],
     "extreme_pairs":[
       [
         "avg_seismic_magnitude_1ring_log1p_pctl",
         "dist_to_waterway_m_log1p_pctl"
-      ],
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ],
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
-    "extreme_count":3
+    "extreme_count":2
   },
   {
     "index":"8a1ea285c3a7fff",
@@ -9597,20 +4349,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea21abb27fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28434d7fff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -9620,118 +4358,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea255368ffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b78ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21a9507fff",
-    "extreme_variables":[
-      "avg_ascending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_ascending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201682ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2013b1ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5c47fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a51affff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5827fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9779,62 +4405,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea218a68ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a69ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2012687fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201179ffff",
-    "extreme_variables":[
-      "avg_seismic_magnitude_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_seismic_magnitude_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea217388ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -9849,34 +4419,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a58b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ada97fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdc867fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -9886,48 +4428,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a470ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20138b7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2011487fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -9975,34 +4475,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20106c7fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2014407fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdca8ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -10017,34 +4489,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea242d9a7fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20ad32ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdca9ffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -10054,20 +4498,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2155a57fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -10129,48 +4559,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20106cffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218b64ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201399ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2cdcaaffff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -10180,48 +4568,6 @@
       [
         "dist_to_waterway_m_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201386ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201318ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20106dffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -10311,20 +4657,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a1a4ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea28c5d27fff",
     "extreme_variables":[
       "dist_to_waterway_m_log1p_pctl",
@@ -10367,20 +4699,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea2142caffff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea2843b1ffff",
     "extreme_variables":[
       "idw_rain_mm_max_monthly_log1p_pctl",
@@ -10404,20 +4722,6 @@
       [
         "idw_rain_mm_max_monthly_log1p_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d17fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2
@@ -10451,160 +4755,6 @@
     "extreme_count":2
   },
   {
-    "index":"8a1ea20a500ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea218a92ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2472307fff",
-    "extreme_variables":[
-      "idw_temp_thermal_range_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "idw_temp_thermal_range_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20acb17fff",
-    "extreme_variables":[
-      "landslide_point_count_1ring_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "landslide_point_count_1ring_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a515ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea201451ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5d37fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a4c8ffff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21abd07fff",
-    "extreme_variables":[
-      "avg_ascending_soil_speed_yeojohnson_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "avg_ascending_soil_speed_yeojohnson_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea20a5107fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea21ab857fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
     "index":"8a1ea217585ffff",
     "extreme_variables":[
       "avg_ascending_soil_speed_yeojohnson_pctl",
@@ -10614,20 +4764,6 @@
       [
         "avg_ascending_soil_speed_yeojohnson_pctl",
         "landslide_point_count_1ring_log1p_pctl"
-      ]
-    ],
-    "extreme_count":2
-  },
-  {
-    "index":"8a1ea2011497fff",
-    "extreme_variables":[
-      "dist_to_waterway_m_log1p_pctl",
-      "m_per_hex_log1p_pctl"
-    ],
-    "extreme_pairs":[
-      [
-        "dist_to_waterway_m_log1p_pctl",
-        "m_per_hex_log1p_pctl"
       ]
     ],
     "extreme_count":2

@@ -22,17 +22,6 @@
   <data key="d2">Avg Seismic Magnitude 1Ring</data>
   <data key="d3">Average seismic magnitude within a 1-ring neighborhood</data>
 </node>
-<node id="VAR:m_per_hex">
-  <data key="d0">0</data>
-  <data key="d1">spatial_variable</data>
-  <data key="d2">M Per Hex</data>
-  <data key="d3">Metric of meters of built road and street infrastructure per hexagon in the map (road density index)</data>
-</node>
-<node id="CAT:built environment, land use, &amp; human interventions">
-  <data key="d0">1</data>
-  <data key="d1">risk_category</data>
-  <data key="d2">built environment, land use, &amp; human interventions</data>
-</node>
 <node id="VAR:dist_to_waterway_m">
   <data key="d0">0</data>
   <data key="d1">spatial_variable</data>
@@ -90,10 +79,6 @@
 <edge source="CAT:geotechnical dynamics &amp; landslide hazards" target="VAR:dtmidcnt_max">
   <data key="d4">0.2071</data>
   <data key="d5">0.2071</data>
-</edge>
-<edge source="VAR:m_per_hex" target="CAT:built environment, land use, &amp; human interventions">
-  <data key="d4">0.3052</data>
-  <data key="d5">0.3052</data>
 </edge>
 <edge source="VAR:dist_to_waterway_m" target="CAT:hydrological settings &amp; flood risk">
   <data key="d4">0.2662</data>

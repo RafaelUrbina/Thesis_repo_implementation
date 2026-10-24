@@ -45,21 +45,21 @@ decay,decay,74,98,420,0.7471
 pad,plastic deformation,2,6,15,0.7313
 impede,impede flow,5,91,5,0.7281
 formation,biofilm formation,4,4,79,0.7262
-fracture,fracture,14,39,71,0.7253
 immobilize,biofilm formation,17,49,79,0.7253
+fracture,fracture,14,39,71,0.7253
 intalle,backing up,2,2,50,0.7222
 passivate,white rust,4,9,42,0.7097
 block,block,2317,3274,6212,0.7061
-may,delayed failure,2,66,2,0.6982
 may,catastrophic rupture,2,66,2,0.6982
+may,delayed failure,2,66,2,0.6982
 localize,localized corrosion,5,111,6,0.6924
 destabilize,pipeline rupture,2,8,18,0.6907
 shield,shielding,61,115,417,0.6871
 orientate,difficult to access,2,7,23,0.6811
 deposit,deposit,289,904,826,0.6688
 roll,mill scale,2,52,4,0.659
-survive,thermal shock,2,21,10,0.6582
 peel,adhesion failure,2,105,2,0.6582
+survive,thermal shock,2,21,10,0.6582
 clathrate,inclusion,2,2,106,0.6573
 biofoule,biofouling,6,6,222,0.6557
 resuspension,scour,2,2,109,0.6549
@@ -104,8 +104,8 @@ decant,incrustation,3,51,27,0.5501
 differentiate,biological fouling,2,35,21,0.55
 corroborate,rupture,7,12,442,0.5467
 crack,embrittlement,3,248,6,0.5432
-galvanize,peeling,2,6,135,0.5416
 automate,localized corrosion,2,135,6,0.5416
+galvanize,peeling,2,6,135,0.5416
 unsoftene,scaling,3,3,518,0.5393
 member,collapse,2,2,430,0.5365
 creep,fatigue,3,12,134,0.5362
@@ -141,8 +141,8 @@ list,creep,2,30,40,0.5077
 fail,mill scale,2,301,4,0.5074
 ground,galvanic corrosion,2,58,21,0.5064
 crack,crack propagation,2,248,5,0.5049
-quadruple,crushing,2,3,418,0.5039
 sonicate,crushing,2,3,418,0.5039
+quadruple,crushing,2,3,418,0.5039
 recombine,biofilm formation,2,16,79,0.5032
 imply,inclusion,3,22,106,0.503
 sheet,void,2,6,213,0.5023
@@ -181,8 +181,8 @@ equate,degradation,2,2,958,0.4673
 electrolysis,electrolysis,10,10,2040,0.467
 antifoule,fouling,12,17,1577,0.4664
 solubilize,hydrolysis,8,54,278,0.4649
-exert,contact with the pipeline,4,211,26,0.4641
 suffer,creep,3,90,40,0.4641
+exert,contact with the pipeline,4,211,26,0.4641
 resist,buckling,3,76,48,0.463
 warm up,untreated water,3,14,266,0.4611
 ascend,lifting,30,99,1102,0.4596
@@ -193,10 +193,10 @@ lower,component fatigue,9,2108,9,0.4588
 trench,breakage,3,4,962,0.4582
 throw,scour,2,20,109,0.4562
 fork,lifting,2,2,1102,0.4553
+concave,deformation,2,2,1102,0.4553
+compression,deformation,2,2,1102,0.4553
 give back,deformation,2,2,1102,0.4553
 indent,deformation,2,2,1102,0.4553
-compression,deformation,2,2,1102,0.4553
-concave,deformation,2,2,1102,0.4553
 fret,wear,2,3,750,0.4535
 believe,white rust,4,148,42,0.4527
 overload,equipment failure,2,53,43,0.4524
@@ -211,8 +211,8 @@ thrive,swelling,2,14,175,0.4461
 biofilm,deposit,2,3,826,0.4451
 sinter,porosity,7,40,382,0.4443
 maneuver,crushing,2,6,418,0.4441
-warp,cracking,4,23,298,0.4437
 suck in,dirty water,4,54,127,0.4437
+warp,cracking,4,23,298,0.4437
 dilute,chipping,2,316,8,0.4434
 fuse,fracture,2,36,71,0.4425
 accommodate,moisture ingress,2,641,4,0.4422
@@ -226,14 +226,14 @@ assure,incrustation,2,98,27,0.4395
 dry out,cracking,3,16,298,0.439
 number,degradation,3,5,958,0.4386
 bend,fatigue,12,265,134,0.4377
-build up,pipeline damage,2,195,14,0.4368
 damage,soil settlement,2,910,3,0.4368
+build up,pipeline damage,2,195,14,0.4368
 account,pipe failure,2,154,18,0.4355
 utilise,hydrolysis,2,10,278,0.4352
 rock,scratch,2,90,31,0.4349
 entangle,fatigue,2,21,134,0.4342
-lead,catastrophic rupture,2,1437,2,0.4323
 lead,delayed failure,2,1437,2,0.4323
+lead,catastrophic rupture,2,1437,2,0.4323
 reflect,environmental stress,2,240,12,0.4322
 becomes,such damage,2,103,28,0.432
 sleeve,shielding,2,7,417,0.431
@@ -242,16 +242,16 @@ accumulate,accumulate sediment,8,2665,8,0.4306
 avoid,cavitation erosion,2,733,4,0.4306
 gel,swelling,3,30,175,0.4304
 destroy,oxygen depletion,3,264,20,0.4299
-spread out,porosity,4,21,382,0.4293
 crack,environmental stress,2,248,12,0.4293
+spread out,porosity,4,21,382,0.4293
 wobble,lifting,6,13,1102,0.4292
-functionalize,wear,2,4,750,0.4286
 wear away,wear,2,4,750,0.4286
+functionalize,wear,2,4,750,0.4286
 ensure,spalling,2,1004,3,0.4283
 rupture,pipeline failure,2,117,26,0.4274
 place,contact with the pipeline,10,1167,26,0.4272
-desulfurize,softening,2,5,623,0.4254
 bead,softening,2,5,623,0.4254
+desulfurize,softening,2,5,623,0.4254
 create,cavitation erosion,4,2108,4,0.4247
 extrude,buckling,2,66,48,0.4239
 mitigate,pipeline rupture,2,178,18,0.423
@@ -287,13 +287,13 @@ display,trench collapse,3,475,14,0.4093
 hop,degradation,2,4,958,0.4075
 zoom in,oxidation,9,9,3572,0.4065
 enforce,leak detection,2,6,653,0.4056
-blow out,dirty water,2,31,127,0.4052
 enlarge,buckling,2,82,48,0.4052
+blow out,dirty water,2,31,127,0.4052
 scour,flow restriction,2,124,32,0.4045
 catalyze,degradation,5,15,958,0.4045
 neglect,ineffective,2,23,173,0.4043
-experience,mechanical damage,2,154,26,0.4037
 undergo,plastic deformation,2,267,15,0.4037
+experience,mechanical damage,2,154,26,0.4037
 state,inclusion,3,67,106,0.4034
 landfille,decay,3,17,420,0.4029
 bend,stress concentration,3,265,27,0.4027
@@ -304,8 +304,8 @@ flood,cost prohibitive,2,372,11,0.4019
 dredge,environmental damage,3,139,52,0.4018
 pretreat,scaling,2,8,518,0.4008
 elevate,lifting,36,216,1102,0.4005
-fail,valve failure,2,301,14,0.3993
 spawn,deposit,3,9,826,0.3993
+fail,valve failure,2,301,14,0.3993
 irrigate,untreated water,4,42,266,0.3989
 regenerate,softening,35,373,623,0.3988
 assume,stress concentration,3,278,27,0.3984
@@ -316,8 +316,8 @@ remodel,collapse,2,10,430,0.3976
 lag,checking,2,11,392,0.3973
 divert,creep,4,284,40,0.3973
 compute,burst,5,48,324,0.3971
-polymerize,leaching,2,15,289,0.3969
 shed,leaching,2,15,289,0.3969
+polymerize,leaching,2,15,289,0.3969
 result,catastrophic rupture,2,2174,2,0.3966
 lift out,lifting,3,7,1102,0.396
 degrade,degradation,29,192,958,0.3955
@@ -362,26 +362,26 @@ withstand,stress concentration,2,197,27,0.3792
 damage,external impact,20,910,140,0.3792
 tend,cost prohibitive,2,491,11,0.3779
 biofoule,fouling,3,6,1577,0.3777
-procedure,freezing,2,2,2726,0.3771
-intercommunicate,freezing,2,2,2726,0.3771
 cool up,freezing,2,2,2726,0.3771
-load,buckling,4,295,48,0.3771
 subfreeze,freezing,2,2,2726,0.3771
+procedure,freezing,2,2,2726,0.3771
+load,buckling,4,295,48,0.3771
+intercommunicate,freezing,2,2,2726,0.3771
 preclude,plugging,5,122,159,0.3764
 decolor,oxidation,4,4,3572,0.3763
 crosslinke,breakage,3,10,962,0.3762
 bury,not readily accessible,2,1380,4,0.376
-cushion,breakage,4,15,962,0.3754
 exceed,overpressure event,8,2338,16,0.3754
+cushion,breakage,4,15,962,0.3754
 deform,creep,3,244,40,0.3749
 perceive,softening,2,9,623,0.3747
 suppress,flaking,2,935,6,0.3746
 avoid,incrustation,5,733,27,0.3745
 enhance,chemical degradation,2,627,9,0.3741
-acclimate,contaminant,2,2,2831,0.3738
-spray on,contaminant,2,2,2831,0.3738
 pfos,contaminant,2,2,2831,0.3738
+acclimate,contaminant,2,2,2831,0.3738
 augur,contaminant,2,2,2831,0.3738
+spray on,contaminant,2,2,2831,0.3738
 force,pipeline rupture,3,553,18,0.3732
 halogenate,degradation,2,6,958,0.3725
 thaw,freezing,24,64,2726,0.3723
@@ -416,8 +416,8 @@ corrosion,corrosion,7,7,5030,0.3635
 pit,pit,5,37,603,0.3633
 kill,burst,8,131,324,0.3631
 scrap off,blockage,3,14,803,0.3623
-trap,internal corrosion,3,275,41,0.362
 antifoule,porosity,2,17,382,0.362
+trap,internal corrosion,3,275,41,0.362
 block,lateral spread,2,3274,2,0.3613
 inhibit,corrosion,225,810,5030,0.3607
 absorb,heavy metal contamination,2,824,8,0.3607
@@ -426,25 +426,25 @@ propose,pipeline rupture,2,367,18,0.3605
 shoot,checking,2,17,392,0.3598
 influence,pitting,2,202,33,0.3597
 affix,plugging,2,42,159,0.3596
-park,degradation,2,7,958,0.3592
 judge,pressure transient,2,156,43,0.3592
+park,degradation,2,7,958,0.3592
 alternate,buckling,2,140,48,0.359
-flush,pipeline damage,2,481,14,0.3589
 swing,shielding,3,28,417,0.3589
+flush,pipeline damage,2,481,14,0.3589
 file,leak detection,5,36,653,0.3584
 incremente,burst,2,21,324,0.358
-pile up,obstacle,2,22,313,0.3569
 gear,obstacle,2,22,313,0.3569
+pile up,obstacle,2,22,313,0.3569
 corrugate,deformation,3,11,1102,0.3556
 exceed,cave in,2,2338,3,0.3553
 top,ineffective,2,41,173,0.3544
 distinguish,fracture,2,100,71,0.3543
 develop,earth movement,2,594,12,0.354
-table,oxidation,2,2,3572,0.3538
 funnel,decay,2,17,420,0.3538
 tp,oxidation,2,2,3572,0.3538
-disassociate,contamination,2,2,3593,0.3533
+table,oxidation,2,2,3572,0.3538
 eem,contamination,2,2,3593,0.3533
+disassociate,contamination,2,2,3593,0.3533
 scrap off,rust,2,14,521,0.352
 defrost,freezing,6,12,2726,0.3505
 emulsify,cavitation,2,11,677,0.3502
@@ -469,23 +469,23 @@ withhold,leakage,7,7,6243,0.3426
 extrude,void,3,66,213,0.3423
 close down,freezing,2,3,2726,0.3421
 condition,leaching,4,72,289,0.3418
-cleave,contaminant,3,5,2831,0.3417
 elute,hydrolysis,5,101,278,0.3417
+cleave,contaminant,3,5,2831,0.3417
 subject,mechanical damage,3,545,26,0.3416
 cement,wear,2,11,750,0.3413
 reinstall,lifting,4,19,1102,0.3412
 strain,degradation,4,22,958,0.3406
 degrease,oxidation,5,8,3572,0.3401
-identify,persistent problem,2,1679,5,0.3398
 forecast,rupture,2,19,442,0.3398
+identify,persistent problem,2,1679,5,0.3398
 counteract,fouling,9,40,1577,0.3397
-haul away,contaminant,2,3,2831,0.3388
-twist,collapse,4,50,430,0.3388
 rub,collapse,3,34,430,0.3388
+twist,collapse,4,50,430,0.3388
+haul away,contaminant,2,3,2831,0.3388
 reinforce,external impact,13,748,140,0.3382
 corrode,rust,12,181,521,0.338
-limit,fatigue,16,1036,134,0.3378
 lead,pipeline failure,6,1437,26,0.3378
+limit,fatigue,16,1036,134,0.3378
 administer,bypassing,2,57,151,0.3377
 protect,external impact,12,678,140,0.3373
 dissociate,biofouling,2,39,222,0.3372
@@ -494,20 +494,20 @@ prevent,freezing,1610,24490,2726,0.3364
 characterize,trench collapse,4,1579,14,0.3362
 strike,crushing,4,53,418,0.336
 leak out,leak,41,64,7775,0.3357
-machine,lifting,2,8,1102,0.3356
 steer,lifting,2,8,1102,0.3356
+machine,lifting,2,8,1102,0.3356
 weaken,collapse,6,89,430,0.3355
 incremente,block,15,21,6212,0.3353
-calculate,environmental stress,3,1272,12,0.335
 wet,biofouling,2,40,222,0.335
-freeze,burst,43,1649,324,0.3348
+calculate,environmental stress,3,1272,12,0.335
 become,ineffective,53,4083,173,0.3348
+freeze,burst,43,1649,324,0.3348
 sterilize,organic fouling,2,810,11,0.3347
 bear,wear,14,160,750,0.3344
 coat,flow restriction,2,280,32,0.3342
 intend,inclusion,6,366,106,0.3342
-structure,shielding,5,73,417,0.3342
 inhibit,biological degradation,3,810,19,0.3342
+structure,shielding,5,73,417,0.3342
 fire,porosity,5,80,382,0.3338
 antifoule,contaminant,7,17,2831,0.3333
 saturate,ineffective,4,132,173,0.3332
@@ -517,8 +517,8 @@ contact,plastic deformation,2,612,15,0.3321
 base,leakage risk index,3,3943,4,0.332
 outline,rupture,2,21,442,0.3312
 act,plastic deformation,3,1062,15,0.3311
-impair,scaling,5,61,518,0.3307
 prepare,biofilm formation,4,297,79,0.3307
+impair,scaling,5,61,518,0.3307
 disperse,stress concentration,2,346,27,0.3306
 identify,valve failure,4,1679,14,0.3306
 identify,dent,5,1679,19,0.3298
@@ -526,8 +526,8 @@ cure,cracking,9,234,298,0.3297
 prefiltere,fouling,2,6,1577,0.3295
 mineralize,oxidation,5,9,3572,0.3291
 erode,collapse,3,38,430,0.3289
-percolate,leaching,2,33,289,0.3288
 read out,corrosion,9,14,5030,0.3288
+percolate,leaching,2,33,289,0.3288
 feature,void,2,45,213,0.3284
 pore,blockage,4,30,803,0.3283
 evaluate,fouling,28,203,1577,0.3281
@@ -541,20 +541,20 @@ serve,chipping,2,1226,8,0.3264
 destroy,shearing force,3,264,64,0.3259
 adsorb,biological degradation,2,521,19,0.3256
 side,deformation,2,9,1102,0.3254
-rehabilitate,deformation,2,9,1102,0.3254
 wedge,deformation,2,9,1102,0.3254
+rehabilitate,deformation,2,9,1102,0.3254
 sulfate,oxidation,4,7,3572,0.3249
 decay,swelling,3,98,175,0.3245
 deoxidize,corrosion,4,5,5030,0.3244
-antiscale,corrosion,2,2,5030,0.3242
-regress,corrosion,2,2,5030,0.3242
-cowl,corrosion,2,2,5030,0.3242
 nonoxidize,corrosion,2,2,5030,0.3242
-exhibit,biofilm formation,3,218,79,0.3242
 areate,corrosion,2,2,5030,0.3242
+cowl,corrosion,2,2,5030,0.3242
+antiscale,corrosion,2,2,5030,0.3242
+tungstate,corrosion,2,2,5030,0.3242
+regress,corrosion,2,2,5030,0.3242
 anticorrosion,corrosion,2,2,5030,0.3242
 mpy,corrosion,2,2,5030,0.3242
-tungstate,corrosion,2,2,5030,0.3242
+exhibit,biofilm formation,3,218,79,0.3242
 deplete,ineffective,4,146,173,0.324
 figure,sag,6,408,106,0.3239
 catalyze,oxidation,7,15,3572,0.3229
@@ -575,39 +575,39 @@ fight,freezing,15,55,2726,0.3207
 burst,freezing,36,175,2726,0.3206
 suppress,swelling,16,935,175,0.3205
 breathe,oxidation,5,10,3572,0.3192
-strip off,oxidation,2,3,3572,0.3188
 block off,block,7,9,6212,0.3188
 optimize,equipment failure,2,249,43,0.3188
+strip off,oxidation,2,3,3572,0.3188
 prove,ineffective,2,62,173,0.3187
 overwhelm,deposit,2,13,826,0.3186
-mean,erosion corrosion,2,3584,3,0.3185
 learn,biofilm formation,2,136,79,0.3185
+mean,erosion corrosion,2,3584,3,0.3185
 induce,sweating,2,1547,7,0.3179
 slow,degradation,12,120,958,0.3178
 stretch,void,2,51,213,0.3176
 disclose,inaccessible,3,715,26,0.3173
-ice,freezing,2,4,2726,0.3173
 set up,untreated water,2,41,266,0.3173
+ice,freezing,2,4,2726,0.3173
 winterize,freezing,2,4,2726,0.3173
 limit,pipeline rupture,3,1036,18,0.317
-feel,obstacle,3,60,313,0.3164
 grind,crushing,5,88,418,0.3164
+feel,obstacle,3,60,313,0.3164
 affix,leak detection,4,42,653,0.3164
 harden,cracking,5,124,298,0.316
 die,decay,3,45,420,0.3158
 weld,deformation,18,182,1102,0.3154
 scale,fouling,27,217,1577,0.3153
 conclude,rupture,3,43,442,0.3153
-pore,fouling,6,30,1577,0.3153
 ionize,electrolysis,28,176,2040,0.3153
-walk,swelling,2,64,175,0.315
+pore,fouling,6,30,1577,0.3153
 see through,freezing,3,7,2726,0.315
+walk,swelling,2,64,175,0.315
 connector,leakage,5,6,6243,0.3147
 aggravate,contamination,12,33,3593,0.3146
 mesh,shielding,2,27,417,0.3145
 retain,biological degradation,2,594,19,0.3143
-uniformize,contaminant,2,4,2831,0.314
 boiler,contaminant,2,4,2831,0.314
+uniformize,contaminant,2,4,2831,0.314
 coat,peeling,5,280,135,0.3139
 bear,fracture,2,160,71,0.3137
 confirm,pinhole,2,517,22,0.3136
@@ -617,29 +617,29 @@ oppose,fracture,2,161,71,0.3132
 stretch,porosity,3,51,382,0.3131
 impregnate,peeling,2,85,135,0.3129
 afford,rupture,2,26,442,0.3127
-further,degradation,2,12,958,0.3127
 pertain,rupture,2,26,442,0.3127
+further,degradation,2,12,958,0.3127
 adhere,electrolytic corrosion,2,607,19,0.3124
 rinse,bypassing,4,190,151,0.3123
 seat,sag,4,271,106,0.3122
 identify,leak,424,1679,7775,0.3122
 transport,scratch,4,932,31,0.3116
 mention,trench collapse,2,835,14,0.3113
-destroy,cavitation,16,264,677,0.3112
 hardnes,leak,5,5,7775,0.3112
 repressurise,leak,5,5,7775,0.3112
+destroy,cavitation,16,264,677,0.3112
 intend,flow restriction,2,366,32,0.3111
 explain,pressure transient,2,273,43,0.3109
 localize,inclusion,2,111,106,0.3107
-inhibit,biofouling,16,810,222,0.3106
 walk,obstacle,3,64,313,0.3106
-dictate,blockage,6,62,803,0.3105
+inhibit,biofouling,16,810,222,0.3106
 load,creep,2,295,40,0.3105
+dictate,blockage,6,62,803,0.3105
 excavate,pit,10,162,603,0.31
 attempt,decay,5,94,420,0.3098
 pinpoint,leak,12,16,7775,0.3097
-rupture,collapse,6,117,430,0.3095
 encompass,rupture,2,27,442,0.3095
+rupture,collapse,6,117,430,0.3095
 explode,cavitation,3,30,677,0.3094
 detect,leak,907,4632,7775,0.3091
 signal,biofilm formation,2,152,79,0.3089
@@ -653,40 +653,40 @@ stray,corrosion,4,6,5030,0.3076
 protect,pipe failure,2,678,18,0.3075
 squeeze,rupture,3,47,442,0.3074
 halogenate,electrolysis,2,6,2040,0.3073
-maneuver,electrolysis,2,6,2040,0.3073
 surround,siltation,2,1224,10,0.3073
+maneuver,electrolysis,2,6,2040,0.3073
 irritate,electrolysis,2,6,2040,0.3073
 permit,contact with the pipeline,3,805,26,0.3067
 encode,wear,3,28,750,0.3064
 screen,crushing,5,98,418,0.3063
-evolve,degradation,3,22,958,0.3061
 notice,leak detection,2,19,653,0.3061
-cowl,block,2,2,6212,0.306
-cell,block,2,2,6212,0.306
-filter in,block,2,2,6212,0.306
+evolve,degradation,3,22,958,0.3061
 time out,block,2,2,6212,0.306
-hasn,block,2,2,6212,0.306
+cell,block,2,2,6212,0.306
+cowl,block,2,2,6212,0.306
+filter in,block,2,2,6212,0.306
 monitere,block,2,2,6212,0.306
+hasn,block,2,2,6212,0.306
 settle out,dirty water,2,98,127,0.3059
 stitch,leakage,2,2,6243,0.3056
 includeaccorde,leakage,2,2,6243,0.3056
+compliment,leakage,2,2,6243,0.3056
 backswept,leakage,2,2,6243,0.3056
 choke up,leakage,2,2,6243,0.3056
-compliment,leakage,2,2,6243,0.3056
-pour after,leakage,2,2,6243,0.3056
 practice,softening,3,34,623,0.3056
+pour after,leakage,2,2,6243,0.3056
 ionize,fracture,2,176,71,0.3055
 converge,checking,2,32,392,0.3052
-fill,siltation,3,2139,10,0.3048
 siphon,untreated water,4,117,266,0.3048
+fill,siltation,3,2139,10,0.3048
 repeat,such damage,2,451,28,0.3046
 become,overwhelmed,9,4083,22,0.3046
-corrode,corrosion,53,181,5030,0.3043
 peel,cracking,4,105,298,0.3043
+corrode,corrosion,53,181,5030,0.3043
 bend,buckling,2,265,48,0.304
 build up,deposit,14,195,826,0.3038
-bleed,scaling,4,61,518,0.3034
 clog,such damage,3,776,28,0.3034
+bleed,scaling,4,61,518,0.3034
 set up,obstacle,2,41,313,0.3032
 go,pipeline failure,2,494,26,0.3031
 inhibit,incrustation,3,810,27,0.3028
@@ -700,5 +700,5 @@ propel,obstacle,3,71,313,0.3014
 utilize,cost prohibitive,2,1194,11,0.3012
 obtain,saponification,2,2203,6,0.3007
 cite,deposit,2,16,826,0.3007
-extinguish,freezing,25,130,2726,0.3002
 bundle,freezing,4,12,2726,0.3002
+extinguish,freezing,25,130,2726,0.3002

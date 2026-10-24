@@ -138,7 +138,7 @@ def load_category_words(file_path):
 
 
 def get_allowed_filter_terms() -> set:
-    """Reads filtered_category_mapped_children.json and compiles allowed spatial/child terms."""
+    """Reads filtered_category_mapped_children.json and compiles ONLY natural language child terms."""
     allowed = set()
     explicit_set = {v.lower().strip() for v in EXPLICIT_FILTER_VARIABLES}
 
@@ -151,8 +151,7 @@ def get_allowed_filter_terms() -> set:
                     cat_vars = {v.lower().strip() for v in cat_val.get("mapped_spatial_variables", [])}
                     if explicit_set & cat_vars:
                         print(f"  -> Matched Category: '{cat_key}'")
-                        for var in cat_val.get("mapped_spatial_variables", []):
-                            allowed.add(var.strip().lower())
+                        # CORRECTION APPLIED HERE: Only pulling ontology child terms, excluding GIS column variable names
                         for child in cat_val.get("available_child_terms", []):
                             if isinstance(child, dict) and "child_term" in child:
                                 allowed.add(child["child_term"].strip().lower())
@@ -404,7 +403,8 @@ def filter_deaggregated_table_and_export(allowed_terms):
         if not allowed_terms:
             return True
         a_clean = str(attr_val).strip().lower()
-        return any(term in a_clean or a_clean in term for term in allowed_terms)
+        # CORRECTION APPLIED HERE: Safe unidirectional check preventing short substring over-matching
+        return any(term == a_clean or term in a_clean for term in allowed_terms)
 
     # 1. Attribute Category Filter
     df_deagg_filtered = df_deagg[df_deagg["attribute"].apply(matches_filter)].copy()
@@ -448,6 +448,7 @@ def filter_deaggregated_table_and_export(allowed_terms):
     
     if sample_metrics:
         print(f"\n  [Conflict-Resolution Examples (Showing up to 5)]")
+        print(f"  [Conflict-Resolution Examples (Showing up to 5)]")
         for idx, (kept, pruned) in enumerate(sample_metrics, 1):
             kept_trigger = str(kept.get('trigger1', kept.get('trigger', 'N/A')))
             pruned_trigger = str(pruned.get('trigger1', pruned.get('trigger', 'N/A')))

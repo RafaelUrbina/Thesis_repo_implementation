@@ -26,7 +26,6 @@ EXPLICIT_CAUSAL_FILTER_SET = {
     'idw_rain_mm_max_monthly',
     'idw_wind_speed_max_max',
     'dtmidcnt_max',
-    'm_per_hex',
     'avg_seismic_magnitude_1ring',
     'idw_temp_thermal_range',
     'dist_to_waterway_m',
