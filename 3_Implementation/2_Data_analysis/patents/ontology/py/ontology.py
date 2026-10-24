@@ -139,6 +139,8 @@ def build_unified_knowledge_graph(
     forward_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Forward.txt",
     backward_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Backward.txt",
     static_file=ONTOLOGY_LISTS_PATH / "categorized_causal" / "Static.txt",
+    verb_file=ONTOLOGY_LISTS_PATH / "categorized_verbal" / "verb.txt.txt",
+    nonverb_file=ONTOLOGY_LISTS_PATH / "categorized_verbal" / "nonverb.txt.txt",
 ):
     g = Graph()
     EX = Namespace("http://www.semanticweb.org/thesis/pipeline-risk#")
@@ -157,7 +159,7 @@ def build_unified_knowledge_graph(
         RDFS.comment,
         Literal(
             "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal "
-            "Relations (with Directionality Characteristics), and Environmental/Social Risk Variables.",
+            "Relations (with Directionality & Grammatical Form Characteristics), and Environmental/Social Risk Variables.",
             lang="en",
         ),
     ))
@@ -166,6 +168,11 @@ def build_unified_knowledge_graph(
     g.add((EX.hasDirectionality, RDF.type, OWL.DatatypeProperty))
     g.add((EX.hasDirectionality, RDFS.domain, SKOS.Concept))
     g.add((EX.hasDirectionality, RDFS.range, XSD.string))
+
+    # Declare custom grammatical form property
+    g.add((EX.hasGrammaticalForm, RDF.type, OWL.DatatypeProperty))
+    g.add((EX.hasGrammaticalForm, RDFS.domain, SKOS.Concept))
+    g.add((EX.hasGrammaticalForm, RDFS.range, XSD.string))
 
     # Concept Schemes (4 Pillars)
     schemes = {
@@ -207,7 +214,7 @@ def build_unified_knowledge_graph(
             g.add((uri, RDFS.subClassOf, broader_uri))
         return uri
 
-    def add_term_nodes(scheme, pref_label, alt_labels=None, broader_uri=None, directionality=None):
+    def add_term_nodes(scheme, pref_label, alt_labels=None, broader_uri=None, directionality=None, grammatical_form=None):
         """Creates structure: Lemma Concept -> Surface Form Instance."""
         lemmatized_str = get_lemma(pref_label)
 
@@ -225,6 +232,9 @@ def build_unified_knowledge_graph(
 
         if directionality:
             g.add((lemma_uri, EX.hasDirectionality, Literal(directionality, lang="en")))
+
+        if grammatical_form:
+            g.add((lemma_uri, EX.hasGrammaticalForm, Literal(grammatical_form, lang="en")))
 
         if broader_uri:
             g.add((lemma_uri, SKOS.broader, broader_uri))
@@ -506,7 +516,7 @@ def build_unified_knowledge_graph(
                     broader_uri=best_parent_uri,
                 )
 
-    # 6. Process Causal Terms from Forward.txt, Backward.txt, and Static.txt
+    # 6. Process Causal Terms (Directionality & Grammatical Form Classification)
     root_causal = add_category_root(
         schemes["causal"],
         "CausalTerm",
@@ -531,7 +541,20 @@ def build_unified_knowledge_graph(
         "static preventive or associative relation",
         broader_uri=root_causal,
     )
+    verb_causal = add_category_root(
+        schemes["causal"],
+        "VerbalCausalRelation",
+        "verbal causal relation",
+        broader_uri=root_causal,
+    )
+    nonverb_causal = add_category_root(
+        schemes["causal"],
+        "NonVerbalCausalRelation",
+        "non-verbal causal relation",
+        broader_uri=root_causal,
+    )
 
+    # 6A. Ingest Directionality Lists (Forward, Backward, Static)
     causal_file_configs = [
         (forward_file, dir_causal, "Forward"),
         (backward_file, back_causal, "Backward"),
@@ -551,6 +574,27 @@ def build_unified_knowledge_graph(
                         alt_labels=item["alts"],
                         broader_uri=parent_uri,
                         directionality=directionality_label
+                    )
+
+    # 6B. Ingest Grammatical Lists (Verb vs Non-Verb)
+    verbal_file_configs = [
+        (verb_file, verb_causal, "Verb"),
+        (nonverb_file, nonverb_causal, "Non-Verb"),
+    ]
+
+    for filepath, parent_uri, form_label in verbal_file_configs:
+        terms_data = parse_term_file(filepath)
+        if terms_data:
+            print(f"Ingesting {len(terms_data)} causal terms from {filepath.name} ({form_label})...")
+            for item in terms_data:
+                pref = item["pref"]
+                if pref:
+                    add_term_nodes(
+                        schemes["causal"],
+                        pref,
+                        alt_labels=item["alts"],
+                        broader_uri=parent_uri,
+                        grammatical_form=form_label
                     )
 
     # 7. Export Graph

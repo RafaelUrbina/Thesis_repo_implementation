@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.semanticweb.org/thesis/pipeline-risk> a owl:Ontology ;
-    rdfs:comment "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations (with Directionality Characteristics), and Environmental/Social Risk Variables."@en .
+    rdfs:comment "Unified Knowledge Graph of Pipeline Assets, Failure Modes, Causal Relations (with Directionality & Grammatical Form Characteristics), and Environmental/Social Risk Variables."@en .
 
 ex:Term_AbrasiveSurfaceStoniness a ex:SurfaceForm ;
     rdfs:label "abrasive surface stoniness"@en ;
@@ -8259,6 +8259,24 @@ ex:Term_ZeroIncomePopulation a ex:SurfaceForm ;
 ex:hasDirectionality a owl:DatatypeProperty ;
     rdfs:domain skos:Concept ;
     rdfs:range xsd:string .
+
+ex:hasGrammaticalForm a owl:DatatypeProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range xsd:string .
+
+ex:NonVerbalCausalRelation a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "non-verbal causal relation"@en .
+
+ex:VerbalCausalRelation a owl:Class,
+        skos:Concept ;
+    rdfs:subClassOf ex:CausalTerm ;
+    skos:broader ex:CausalTerm ;
+    skos:inScheme ex:CausalRelationalScheme ;
+    skos:prefLabel "verbal causal relation"@en .
 
 ex:Lemma_AbrasiveSurfaceStoniness a owl:Class,
         skos:Concept ;
@@ -22837,7 +22855,9 @@ ex:CausalTerm a owl:Class,
     skos:inScheme ex:CausalRelationalScheme ;
     skos:narrower ex:BackwardDirectedRelation,
         ex:ForwardDirectedRelation,
-        ex:StaticPreventiveOrAssociativeRelation ;
+        ex:NonVerbalCausalRelation,
+        ex:StaticPreventiveOrAssociativeRelation,
+        ex:VerbalCausalRelation ;
     skos:prefLabel "causal term"@en .
 
 ex:GeotechnicalAndGroundFailure a owl:Class,
