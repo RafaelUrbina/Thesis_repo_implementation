@@ -151,7 +151,6 @@ def get_allowed_filter_terms() -> set:
                     cat_vars = {v.lower().strip() for v in cat_val.get("mapped_spatial_variables", [])}
                     if explicit_set & cat_vars:
                         print(f"  -> Matched Category: '{cat_key}'")
-                        # CORRECTION APPLIED HERE: Only pulling ontology child terms, excluding GIS column variable names
                         for child in cat_val.get("available_child_terms", []):
                             if isinstance(child, dict) and "child_term" in child:
                                 allowed.add(child["child_term"].strip().lower())
@@ -197,7 +196,7 @@ def get_row_category(row, forward_words, backward_words, static_words):
 
 
 def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_words):
-    """Resolves tone conflicts for rows sharing the same [technical, attribute, failure] triplet."""
+    """Resolves tone conflicts by keeping all rows, aligning triggers, categories, and chaining link_text."""
     rows_with_cat = []
     for _, row in group_df.iterrows():
         cat = get_row_category(row, forward_words, backward_words, static_words)
@@ -209,10 +208,42 @@ def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_wo
     has_forward = "forward" in unique_cats
     has_opposing = any(c in {"backward", "static", "mixed"} for c in unique_cats)
 
+    examples = []
     if has_forward and has_opposing:
-        kept = [r for r in rows_with_cat if r["_computed_cat"] == "forward"]
-        pruned = [r for r in rows_with_cat if r["_computed_cat"] != "forward"]
-        return kept, pruned
+        kept_candidates = [r for r in rows_with_cat if r["_computed_cat"] == "forward"]
+        kept_row = kept_candidates[0] if kept_candidates else rows_with_cat[0]
+        
+        kept_trigger = str(kept_row.get("trigger1", kept_row.get("trigger", ""))).strip()
+        kept_cat = kept_row["_computed_cat"]
+
+        updated_rows = []
+        for r in rows_with_cat:
+            if r["_computed_cat"] == "forward":
+                updated_rows.append(r)
+            else:
+                orig_row_copy = r.copy()
+                orig_tr = str(r.get("trigger1", r.get("trigger", ""))).strip()
+                orig_link = str(r.get("link_text", ""))
+                
+                # Update trigger fields
+                if "trigger1" in r:
+                    r["trigger1"] = kept_trigger
+                if "trigger" in r:
+                    r["trigger"] = kept_trigger
+                
+                # Update category fields
+                r["_computed_cat"] = kept_cat
+                if "category" in r:
+                    r["category"] = kept_cat
+
+                # Update link_text to chain original trigger with kept trigger in parentheses
+                if orig_tr and orig_tr.lower() != kept_trigger.lower():
+                    pattern = re.compile(re.escape(orig_tr), re.IGNORECASE)
+                    r["link_text"] = pattern.sub(f"{orig_tr} ({kept_trigger})", orig_link, count=1)
+
+                updated_rows.append(r)
+                examples.append((kept_row, orig_row_copy, r))
+        return updated_rows, examples
     else:
         return rows_with_cat, []
 
@@ -403,7 +434,6 @@ def filter_deaggregated_table_and_export(allowed_terms):
         if not allowed_terms:
             return True
         a_clean = str(attr_val).strip().lower()
-        # CORRECTION APPLIED HERE: Safe unidirectional check preventing short substring over-matching
         return any(term == a_clean or term in a_clean for term in allowed_terms)
 
     # 1. Attribute Category Filter
@@ -419,8 +449,8 @@ def filter_deaggregated_table_and_export(allowed_terms):
     backward_words = load_category_words(BACKWARD_TXT_PATH)
     static_words = load_category_words(STATIC_TXT_PATH)
 
-    # 2. Tone Conflict Disambiguation (Deduplication per Triplet when categories conflict)
-    print("\n[Pipeline] Disambiguating conflicting triplet tones (prioritizing forward/informative over backward/static)...")
+    # 2. Tone Conflict Disambiguation & Trigger Alignment (Retaining all rows)
+    print("\n[Pipeline] Aligning conflicting triplet tones and updating triggers instead of pruning...")
     initial_row_count = len(df_deagg_filtered)
     
     df_deagg_filtered["t_clean"] = df_deagg_filtered["technical"].str.strip()
@@ -429,35 +459,39 @@ def filter_deaggregated_table_and_export(allowed_terms):
 
     optimized_rows = []
     sample_metrics = []
+    total_modified_rows = 0
 
     for _, group in df_deagg_filtered.groupby(["t_clean", "a_clean", "f_clean"]):
-        kept_rows, pruned_rows = resolve_triplet_conflicts(group, forward_words, backward_words, static_words)
+        kept_rows, conflict_examples = resolve_triplet_conflicts(group, forward_words, backward_words, static_words)
         optimized_rows.extend(kept_rows)
-        if pruned_rows and len(sample_metrics) < 5:
-            sample_metrics.append((kept_rows[0], pruned_rows[0]))
+        total_modified_rows += len(conflict_examples)
+        if conflict_examples and len(sample_metrics) < 5:
+            sample_metrics.extend(conflict_examples[:5 - len(sample_metrics)])
 
     df_deagg_filtered = pd.DataFrame(optimized_rows).drop(columns=["t_clean", "a_clean", "f_clean", "_computed_cat"], errors="ignore")
     
-    total_pruned_rows = initial_row_count - len(df_deagg_filtered)
     total_remaining_rows = len(df_deagg_filtered)
+    total_unmodified_rows = total_remaining_rows - total_modified_rows
 
-    print(f"  [Deduplication Metrics]")
+    print(f"  [Alignment Metrics]")
     print(f"    - Original Candidate Rows: {initial_row_count}")
-    print(f"    - Retained Clean Rows: {total_remaining_rows}")
-    print(f"    - Resolved Conflicting Rows Pruned: {total_pruned_rows}")
+    print(f"    - Total Retained Rows: {total_remaining_rows}")
+    print(f"    - Unmodified Chains: {total_unmodified_rows}")
+    print(f"    - Conflicting/Modified Chains: {total_modified_rows}")
     
     if sample_metrics:
-        print(f"\n  [Conflict-Resolution Examples (Showing up to 5)]")
-        print(f"  [Conflict-Resolution Examples (Showing up to 5)]")
-        for idx, (kept, pruned) in enumerate(sample_metrics, 1):
+        print(f"\n  [Trigger & Category Alignment Examples (Showing up to 5)]")
+        for idx, (kept, orig_modified, updated) in enumerate(sample_metrics[:5], 1):
             kept_trigger = str(kept.get('trigger1', kept.get('trigger', 'N/A')))
-            pruned_trigger = str(pruned.get('trigger1', pruned.get('trigger', 'N/A')))
+            orig_trigger = str(orig_modified.get('trigger1', orig_modified.get('trigger', 'N/A')))
+            updated_trigger = str(updated.get('trigger1', updated.get('trigger', 'N/A')))
             print(f"    Example {idx}:")
-            print(f"      Triplet: [{kept.get('technical')} ➔ {kept.get('attribute')} ➔ {kept.get('failure')}]")
-            print(f"      [KEPT - Informative/Forward]: Causal Word = '{kept_trigger}' | Category = {kept.get('_computed_cat','N/A')}")
-            print(f"        Sentence: \"{kept.get('link_text','')}\"")
-            print(f"      [PRUNED - Conflicting/Opposing]: Causal Word = '{pruned_trigger}' | Category = {pruned.get('_computed_cat','N/A')}")
-            print(f"        Sentence: \"{pruned.get('link_text','')}\"\n")
+            print(f"      Triplet: [{updated.get('technical')} ➔ {updated.get('attribute')} ➔ {updated.get('failure')}]")
+            print(f"      [KEPT/REFERENCE - Forward]: Trigger = '{kept_trigger}' | Category = {kept.get('_computed_cat','N/A')}")
+            print(f"      [ORIGINAL CONFLICTING/DUPLICATE]: Trigger = '{orig_trigger}' | Category = {orig_modified.get('_computed_cat','N/A')}")
+            print(f"        Original Sentence: \"{orig_modified.get('link_text','')}\"")
+            print(f"      [ALIGNED/UPDATED]: Trigger = '{updated_trigger}' | Category = {updated.get('_computed_cat','N/A')}")
+            print(f"        Updated Sentence:  \"{updated.get('link_text','')}\"\n")
 
     # Ensure filtered_final subfolder exists
     FILTERED_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -472,8 +506,9 @@ def filter_deaggregated_table_and_export(allowed_terms):
         "           FILTERED PIPELINE METRICS SUMMARY        \n"
         "====================================================\n"
         f"Total Raw Rows in Input Dataset: {total_raw_rows}\n"
-        f"Rows Remaining After Filtering & Conflict Resolution: {total_remaining_rows}\n"
-        f"Total Conflicting/Pruned Rows: {total_pruned_rows}\n"
+        f"Rows Remaining After Filtering: {total_remaining_rows}\n"
+        f"Unmodified Chains: {total_unmodified_rows}\n"
+        f"Conflicting/Modified Chains: {total_modified_rows}\n"
         "====================================================\n"
     )
     FILTERED_SUMMARY_TXT.write_text(summary_text, encoding="utf-8")
