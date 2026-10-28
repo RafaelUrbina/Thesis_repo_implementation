@@ -1,6 +1,9 @@
 #General temp ignores
 3_Implementation/2_Data_analysis/spatial_correlation/plots*
 
+# Streamlit agent skills (environment-specific symlinks)
+.agents
+
 #Personal documents
 0_Bureaucratic/1_Borsa/Personal
 0_Bureaucratic/1_Borsa/Compile_payment_salute

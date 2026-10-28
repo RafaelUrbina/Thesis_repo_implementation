@@ -81,13 +81,9 @@ def build_self_contained_causal_geopackage():
         all_unique_attributes=('attribute_term', lambda x: ", ".join(sorted(set(str(v).strip() for v in x.dropna() if str(v).strip() and str(v).lower() != 'nan'))))
     ).reset_index()
 
-    # 5b. Aggregate Traceable Rows by H3 Index + Unique Triplet (Layer 3 prep)
+    # 5b. Aggregate Traceable Rows by H3 Index + Unique Triplet (Layer 3 prep - now keeping unique combinations only)
     print("Aggregating failure chains by H3 index and unique triplets...")
-    triplet_summary_df = traceable_df.groupby(['index', 'technical_term', 'attribute_term', 'failure_term']).agg(
-        triplet_chain_count=('failure_term', 'count'),
-        triplet_patent_count=('patent_ids', lambda x: len(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))),
-        triplet_patent_ids=('patent_ids', lambda x: ", ".join(sorted(set(pid.strip() for val in x.dropna() for pid in str(val).split(',') if pid.strip()))))
-    ).reset_index()
+    triplet_summary_df = traceable_df[['index', 'technical_term', 'attribute_term', 'failure_term']].drop_duplicates().reset_index(drop=True)
 
     # 6. Merge Summary Metrics via Left Join on 'index'
     print("Merging aggregated causal metrics into the polygon GeoDataFrame...")
@@ -136,7 +132,7 @@ def build_self_contained_causal_geopackage():
     # Layer 2: Raw multi-row table
     traceable_df.to_sql('traceable_causal_chains', conn, if_exists='replace', index=False)
     
-    # Layer 3: Unique Triplet per Hexagon aggregated table
+    # Layer 3: Unique Triplet per Hexagon table (distinct combinations)
     triplet_summary_df.to_sql('h3_triplet_summary', conn, if_exists='replace', index=False)
     
     # Layer 4: H3 Extreme Variable Pairs table from JSON
@@ -148,7 +144,7 @@ def build_self_contained_causal_geopackage():
     print(f"Saved to: {output_gpkg_path}")
     print(" - Layer 1 [Spatial]: 'final_data_cube' (Hexagon macro-metrics & socio-economic index)")
     print(" - Layer 2 [Tabular]: 'traceable_causal_chains' (Full raw multi-row causal links)")
-    print(" - Layer 3 [Tabular]: 'h3_triplet_summary' (Unique index + triplet combinations)")
+    print(" - Layer 3 [Tabular]: 'h3_triplet_summary' (Unique index + distinct triplet combinations)")
     print(" - Layer 4 [Tabular]: 'h3_extreme_pairs' (Hex index with variable_1 and variable_2 extracted from JSON)")
 
 if __name__ == "__main__":

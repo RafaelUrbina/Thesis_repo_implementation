@@ -14,6 +14,22 @@ except ImportError:
 import pandas as pd
 import plotly.graph_objects as go
 
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+
+# Ensure necessary NLTK data is downloaded
+for pkg in ('punkt', 'averaged_perceptron_tagger', 'wordnet', 'punkt_tab', 'averaged_perceptron_tagger_eng'):
+    try:
+        nltk.data.find(f'tokenizers/{pkg}' if 'punkt' in pkg else f'taggers/{pkg}' if 'tagger' in pkg else f'corpora/{pkg}')
+    except LookupError:
+        try:
+            nltk.download(pkg, quiet=True)
+        except Exception:
+            pass
+
 # Setup project root imports
 current_dir = Path(__file__).resolve().parent
 project_root = current_dir.parents[5]  # Adjust parent index if needed
@@ -84,7 +100,7 @@ TYPE_SHORT_MAP = {
 
 
 # =====================================================================
-# 1. HELPER FUNCTIONS: PARSING & CATEGORY FILES
+# 1. HELPER FUNCTIONS: PARSING, CATEGORY FILES & LEMMATIZATION
 # =====================================================================
 def parse_field(field_val):
     """Safely parses stringified Python lists, JSON arrays, or raw list/string objects."""
@@ -195,57 +211,149 @@ def get_row_category(row, forward_words, backward_words, static_words):
         return cat if cat in {"forward", "backward", "static"} else "mixed"
 
 
+def get_trigger_lemma(trigger_str):
+    """Extracts the main verb/action root of a causal term using POS tagging and lemmatization."""
+    if not trigger_str or not isinstance(trigger_str, str):
+        return ""
+    text = trigger_str.strip().lower()
+    if not text:
+        return ""
+    
+    try:
+        tokens = word_tokenize(text)
+        tagged = pos_tag(tokens)
+        lemmatizer = WordNetLemmatizer()
+        
+        content_words = []
+        for word, pos in tagged:
+            if word in {'because', 'by', 'from', 'as', 'to'}:
+                continue
+            
+            wn_pos = 'n'
+            if pos.startswith('V'):
+                wn_pos = 'v'
+            elif pos.startswith('J'):
+                wn_pos = 'a'
+            elif pos.startswith('R'):
+                wn_pos = 'r'
+            elif pos.startswith('N'):
+                wn_pos = 'n'
+            else:
+                continue
+            
+            lemma = lemmatizer.lemmatize(word, pos=wn_pos)
+            content_words.append(lemma)
+            
+        if content_words:
+            return content_words[0]
+    except Exception:
+        pass
+    
+    stop_words = {'in', 'on', 'at', 'by', 'for', 'with', 'to', 'from', 'as', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'a', 'an', 'the', 'and', 'or', 'but', 'because'}
+    words = [w.strip() for w in text.split() if w.strip() and w.strip() not in stop_words]
+    return words[0] if words else text
+
+
+def are_causally_equivalent(lemma1, lemma2):
+    """Checks if two verb lemmas are semantically equivalent or derivationally related using WordNet."""
+    if not lemma1 or not lemma2:
+        return False
+    
+    if lemma1 == lemma2 or lemma1 in lemma2 or lemma2 in lemma1:
+        return True
+        
+    try:
+        synsets1 = wordnet.synsets(lemma1, pos=wordnet.VERB)
+        synsets2 = wordnet.synsets(lemma2, pos=wordnet.VERB)
+        
+        for s1 in synsets1:
+            for s2 in synsets2:
+                sim = s1.path_similarity(s2)
+                if sim and sim > 0.4:
+                    return True
+                for lemma_obj in s1.lemmas():
+                    for deriv in lemma_obj.derivationally_related_forms():
+                        if deriv.name().lower() == lemma2:
+                            return True
+    except Exception:
+        pass
+        
+    # Common patent causal equivalencies fallback map
+    causal_equivalents = {
+        ('cause', 'induce'), ('cause', 'trigger'), ('cause', 'produce'), ('cause', 'generate'),
+        ('lead', 'result'), ('derive', 'produce'), ('create', 'produce'), ('stimulate', 'induce'),
+        ('provoke', 'trigger'), ('promote', 'trigger')
+    }
+    if (lemma1, lemma2) in causal_equivalents or (lemma2, lemma1) in causal_equivalents:
+        return True
+        
+    return False
+
+
 def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_words):
-    """Resolves tone conflicts by keeping all rows, aligning triggers, categories, and chaining link_text."""
+    """Resolves tone conflicts between forward and backward triplets using WordNet semantic/derivational matching."""
     rows_with_cat = []
     for _, row in group_df.iterrows():
         cat = get_row_category(row, forward_words, backward_words, static_words)
-        row_copy = row.copy()
-        row_copy["_computed_cat"] = cat
-        rows_with_cat.append(row_copy)
+        row_dict = row.to_dict()
+        row_dict["_computed_cat"] = cat
+        rows_with_cat.append(row_dict)
 
-    unique_cats = {r["_computed_cat"] for r in rows_with_cat}
+    non_static_rows = [r for r in rows_with_cat if r["_computed_cat"] != "static"]
+    static_rows = [r for r in rows_with_cat if r["_computed_cat"] == "static"]
+
+    unique_cats = {r["_computed_cat"] for r in non_static_rows}
     has_forward = "forward" in unique_cats
-    has_opposing = any(c in {"backward", "static", "mixed"} for c in unique_cats)
+    has_backward = "backward" in unique_cats
 
     examples = []
-    if has_forward and has_opposing:
-        kept_candidates = [r for r in rows_with_cat if r["_computed_cat"] == "forward"]
-        kept_row = kept_candidates[0] if kept_candidates else rows_with_cat[0]
+    if has_forward and has_backward:
+        forward_candidates = [r for r in non_static_rows if r["_computed_cat"] == "forward"]
+        backward_candidates = [r for r in non_static_rows if r["_computed_cat"] in {"backward", "mixed"}]
         
-        kept_trigger = str(kept_row.get("trigger1", kept_row.get("trigger", ""))).strip()
-        kept_cat = kept_row["_computed_cat"]
-
-        updated_rows = []
-        for r in rows_with_cat:
-            if r["_computed_cat"] == "forward":
-                updated_rows.append(r)
-            else:
-                orig_row_copy = r.copy()
-                orig_tr = str(r.get("trigger1", r.get("trigger", ""))).strip()
-                orig_link = str(r.get("link_text", ""))
+        for b_row in backward_candidates:
+            b_tr = str(b_row.get("trigger1", b_row.get("trigger", ""))).strip()
+            b_lemma = get_trigger_lemma(b_tr)
+            
+            matched_f_row = None
+            for f_row in forward_candidates:
+                f_tr = str(f_row.get("trigger1", f_row.get("trigger", ""))).strip()
+                f_lemma = get_trigger_lemma(f_tr)
                 
-                # Update trigger fields
-                if "trigger1" in r:
-                    r["trigger1"] = kept_trigger
-                if "trigger" in r:
-                    r["trigger"] = kept_trigger
+                if b_lemma and f_lemma:
+                    is_semantic_match = are_causally_equivalent(b_lemma, f_lemma)
+                    
+                    if is_semantic_match and not (b_lemma == 'because' and f_lemma != 'cause'):
+                        matched_f_row = f_row
+                        break
+            
+            if matched_f_row is not None:
+                kept_row = matched_f_row
+                kept_trigger = str(kept_row.get("trigger1", kept_row.get("trigger", ""))).strip()
+                kept_cat = kept_row["_computed_cat"]
                 
-                # Update category fields
-                r["_computed_cat"] = kept_cat
-                if "category" in r:
-                    r["category"] = kept_cat
-
-                # Update link_text to chain original trigger with kept trigger in parentheses
+                orig_row_copy = b_row.copy()
+                orig_tr = b_tr
+                orig_link = str(b_row.get("link_text", ""))
+                
+                if "trigger1" in b_row:
+                    b_row["trigger1"] = kept_trigger
+                if "trigger" in b_row:
+                    b_row["trigger"] = kept_trigger
+                
+                b_row["_computed_cat"] = kept_cat
+                if "category" in b_row:
+                    b_row["category"] = kept_cat
+                
                 if orig_tr and orig_tr.lower() != kept_trigger.lower():
                     pattern = re.compile(re.escape(orig_tr), re.IGNORECASE)
-                    r["link_text"] = pattern.sub(f"{orig_tr} ({kept_trigger})", orig_link, count=1)
-
-                updated_rows.append(r)
-                examples.append((kept_row, orig_row_copy, r))
-        return updated_rows, examples
+                    b_row["link_text"] = pattern.sub(f"{orig_tr} ({kept_trigger})", orig_link, count=1)
+                
+                examples.append((kept_row, orig_row_copy, b_row))
+                
+        return non_static_rows + static_rows, examples
     else:
-        return rows_with_cat, []
+        return non_static_rows + static_rows, []
 
 
 # =====================================================================
@@ -419,7 +527,7 @@ def export_sankey_diagram(df_subset, output_filename, title_text, min_degree=MIN
 # =====================================================================
 # 3. MAIN FILTER PIPELINE
 # =====================================================================
-def filter_deaggregated_table_and_export(allowed_terms):
+def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True):
     print("\n[Pipeline] Loading existing unfiltered deaggregated CSV table...")
     
     if not INPUT_DEAGGREGATED_CSV.exists():
@@ -449,6 +557,12 @@ def filter_deaggregated_table_and_export(allowed_terms):
     backward_words = load_category_words(BACKWARD_TXT_PATH)
     static_words = load_category_words(STATIC_TXT_PATH)
 
+    # Apply remove_static_terms keyword handling
+    if remove_static_terms:
+        df_deagg_filtered = df_deagg_filtered[
+            df_deagg_filtered.apply(lambda r: get_row_category(r, forward_words, backward_words, static_words) != "static", axis=1)
+        ].copy()
+
     # 2. Tone Conflict Disambiguation & Trigger Alignment (Retaining all rows)
     print("\n[Pipeline] Aligning conflicting triplet tones and updating triggers instead of pruning...")
     initial_row_count = len(df_deagg_filtered)
@@ -465,8 +579,8 @@ def filter_deaggregated_table_and_export(allowed_terms):
         kept_rows, conflict_examples = resolve_triplet_conflicts(group, forward_words, backward_words, static_words)
         optimized_rows.extend(kept_rows)
         total_modified_rows += len(conflict_examples)
-        if conflict_examples and len(sample_metrics) < 5:
-            sample_metrics.extend(conflict_examples[:5 - len(sample_metrics)])
+        if conflict_examples and len(sample_metrics) < 20:
+            sample_metrics.extend(conflict_examples[:20 - len(sample_metrics)])
 
     df_deagg_filtered = pd.DataFrame(optimized_rows).drop(columns=["t_clean", "a_clean", "f_clean", "_computed_cat"], errors="ignore")
     
@@ -480,8 +594,8 @@ def filter_deaggregated_table_and_export(allowed_terms):
     print(f"    - Conflicting/Modified Chains: {total_modified_rows}")
     
     if sample_metrics:
-        print(f"\n  [Trigger & Category Alignment Examples (Showing up to 5)]")
-        for idx, (kept, orig_modified, updated) in enumerate(sample_metrics[:5], 1):
+        print(f"\n  [Trigger & Category Alignment Examples (Showing up to 20)]")
+        for idx, (kept, orig_modified, updated) in enumerate(sample_metrics[:20], 1):
             kept_trigger = str(kept.get('trigger1', kept.get('trigger', 'N/A')))
             orig_trigger = str(orig_modified.get('trigger1', orig_modified.get('trigger', 'N/A')))
             updated_trigger = str(updated.get('trigger1', updated.get('trigger', 'N/A')))
@@ -607,6 +721,8 @@ if __name__ == "__main__":
     print("\n=== Starting Post-Processing Filter Pipeline ===")
     
     allowed_terms = get_allowed_filter_terms()
-    filter_deaggregated_table_and_export(allowed_terms)
+    
+    # Keyword remove_static_terms can be set to True or False here
+    filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True)
 
     print("\nFiltered post-processing completed successfully!")
