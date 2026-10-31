@@ -62,24 +62,35 @@ def load_layer(package: Path, layer_name: str) -> Any:
             return None
 
 
-def _prioritize_features(frame: Any, variable: str | None) -> Any:
+def _prioritize_features(
+    frame: Any,
+    variable: str | None,
+    limit: int = MAX_RENDER_FEATURES,
+) -> Any:
     """Keep target-bearing features before empty/background features when sampling."""
-    if len(frame) <= MAX_RENDER_FEATURES or not variable or variable not in frame.columns:
+    limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
+    if len(frame) <= limit or not variable or variable not in frame.columns:
         return frame
 
-    values = pd.to_numeric(frame[variable], errors="coerce")
-    target_rows = values.notna() & values.ne(0)
+    values = frame[variable]
+    numeric_values = pd.to_numeric(values, errors="coerce")
+    target_rows = numeric_values.notna() & numeric_values.ne(0)
+    categorical_values = values.astype("string").str.strip()
+    target_rows |= (
+        numeric_values.isna()
+        & categorical_values.notna()
+        & categorical_values.ne("")
+        & categorical_values.ne("0")
+    )
     target_positions = frame.index[target_rows]
-    if len(target_positions) >= MAX_RENDER_FEATURES:
+    if len(target_positions) >= limit:
         positions = pd.Series(range(len(target_positions))).iloc[
-            [round(position) for position in pd.Series(range(MAX_RENDER_FEATURES))
-             .mul((len(target_positions) - 1) / max(1, MAX_RENDER_FEATURES - 1))]
+            [round(position) for position in pd.Series(range(limit))
+             .mul((len(target_positions) - 1) / max(1, limit - 1))]
         ].tolist()
         return frame.loc[target_positions[positions]].copy()
 
-    remaining = frame.index[~target_rows]
-    remaining_count = MAX_RENDER_FEATURES - len(target_positions)
-    return frame.loc[target_positions.union(remaining[:remaining_count])].copy()
+    return frame.loc[target_positions].copy()
 
 
 def load_join_table(path: Path) -> pd.DataFrame | None:
@@ -112,11 +123,39 @@ def select_variable(frame: Any) -> str | None:
     return next((field for field in numeric if field != JOIN_KEY), None)
 
 
+def discover_variables(*frames: Any) -> list[str]:
+    """Return selectable data fields from spatial layers and joined tables."""
+    available = {
+        str(field)
+        for frame in frames
+        if frame is not None
+        for field in getattr(frame, "columns", [])
+        if field not in {GEOMETRY_COLUMN, JOIN_KEY}
+    }
+    if len(frames) > 1 and frames[-1] is not None:
+        base_fields = {
+            str(field)
+            for frame in frames[:-1]
+            if frame is not None
+            for field in getattr(frame, "columns", [])
+        }
+        join_fields = {
+            str(field)
+            for field in getattr(frames[-1], "columns", [])
+            if field not in {GEOMETRY_COLUMN, JOIN_KEY}
+        }
+        available.update(f"{field}_causal" for field in join_fields.intersection(base_fields))
+    return [
+        *[field for field in VARIABLES if field in available],
+        *sorted(available.difference(VARIABLES), key=str.casefold),
+    ]
+
+
 def join_on_index(frame: Any, join_table: pd.DataFrame | None) -> Any:
     """Merge a tabular causal source into a GeoDataFrame using the explicit index field."""
     if frame is None or join_table is None or JOIN_KEY not in frame.columns or JOIN_KEY not in join_table.columns:
         return frame
-    right = join_table.drop_duplicates(JOIN_KEY)
+    right = join_table.drop(columns=[GEOMETRY_COLUMN], errors="ignore").drop_duplicates(JOIN_KEY)
     return frame.merge(right, on=JOIN_KEY, how="left", suffixes=("", "_causal"))
 
 
@@ -137,17 +176,10 @@ def _feature_properties(frame: Any) -> list[dict[str, Any]]:
 
 
 def _map_fields(frame: Any, variable: str | None) -> list[str]:
-    """Keep interactive maps compact while retaining spatial and causal context."""
+    """Expose the spatial and joined attributes in feature tooltips."""
     available = [field for field in frame.columns if field != GEOMETRY_COLUMN]
-    preferred = [JOIN_KEY, *VARIABLES]
-    preferred.extend(
-        field for field in available
-        if any(token in field.lower() for token in ("causal", "technical", "trigger", "failure", "patent"))
-    )
-    if variable:
-        preferred.insert(0, variable)
-    fields = list(dict.fromkeys(field for field in preferred if field in available))
-    return fields[:8] or available[:6]
+    preferred = [variable, JOIN_KEY, *VARIABLES] if variable else [JOIN_KEY, *VARIABLES]
+    return list(dict.fromkeys(field for field in [*preferred, *available] if field in available))
 
 
 def _classified_style(frame: Any, variable: str, classification: str, palette_name: str, opacity: float):
@@ -156,7 +188,19 @@ def _classified_style(frame: Any, variable: str, classification: str, palette_na
     values = pd.to_numeric(frame[variable], errors="coerce")
     finite = values.dropna()
     if finite.empty:
-        return lambda feature: {"fillColor": "#38bdf8", "color": "#dbeafe", "weight": 0.6, "fillOpacity": opacity}
+        categories = frame[variable].dropna().astype(str).unique().tolist()
+        category_palette = getattr(cm.linear, palette_name).scale(0, max(1, len(categories) - 1))
+        category_colors = {
+            category: category_palette(position)
+            for position, category in enumerate(categories)
+        }
+
+        def categorical_style(feature: dict[str, Any]) -> dict[str, Any]:
+            value = feature["properties"].get(variable)
+            color = category_colors.get(str(value), "#94a3b8")
+            return {"fillColor": color, "color": "#dbeafe", "weight": 0.6, "fillOpacity": opacity}
+
+        return categorical_style
 
     breaks: list[float]
     if classification == "Quantiles":
@@ -196,6 +240,9 @@ def build_map(
     palette_name: str,
     opacity_by_layer: dict[str, float],
     join_table: pd.DataFrame | None = None,
+    render_limit: int = MAX_RENDER_FEATURES,
+    show_basemap: bool = True,
+    basemap_opacity: float = 1.0,
 ) -> str:
     """Return a self-contained Folium map with joined feature tooltips."""
     import folium
@@ -227,11 +274,18 @@ def build_map(
     first = next(iter(spatial_layers.values())).to_crs(4326)
     bounds = first.total_bounds
     center = [(bounds[1] + bounds[3]) / 2, (bounds[0] + bounds[2]) / 2]
-    fmap = folium.Map(location=center, zoom_start=9, tiles="OpenStreetMap", control_scale=True)
+    fmap = folium.Map(location=center, zoom_start=9, tiles=None, control_scale=True)
+    if show_basemap:
+        folium.TileLayer(
+            tiles="OpenStreetMap",
+            name="OpenStreetMap",
+            opacity=max(0.0, min(1.0, float(basemap_opacity))),
+            control=True,
+        ).add_to(fmap)
 
     for name, frame in reversed(list(spatial_layers.items())):
         current = join_on_index(frame.to_crs(4326), join_table)
-        current = _prioritize_features(current, variable)
+        current = _prioritize_features(current, variable, render_limit)
         fields = _map_fields(current, variable)
         current = current[[*fields, GEOMETRY_COLUMN]]
         current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(0.00001, preserve_topology=False)

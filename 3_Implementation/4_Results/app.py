@@ -16,8 +16,8 @@ except ImportError:
 from modules.gis_loader import (
     MAX_RENDER_FEATURES,
     PALETTES,
-    VARIABLES,
     build_map,
+    discover_variables,
     discover_geo_packages,
     discover_tabular_files,
     list_layers,
@@ -249,6 +249,16 @@ def render_map_tab() -> None:
             name: st.slider(f"Opacity · {name}", 0.0, 1.0, 0.78, 0.05, key=f"opacity_{name}")
             for name in ordered
         }
+        sampled_features_limit = st.slider(
+            "Sampled features limit", min_value=1_000, max_value=MAX_RENDER_FEATURES,
+            value=10_000, step=1_000, key="sampled_features_limit",
+            help="Target-bearing features are retained first when a layer exceeds this limit.",
+        )
+        show_basemap = st.checkbox("Show OpenStreetMap basemap", value=True, key="show_basemap")
+        basemap_opacity = st.slider(
+            "Basemap opacity", min_value=0.0, max_value=1.0, value=1.0,
+            step=0.05, key="basemap_opacity",
+        )
 
     if not ordered:
         st.info("Select at least one layer to render the map.", icon=":material/layers:")
@@ -263,12 +273,6 @@ def render_map_tab() -> None:
     primary = loaded.get(preferred_layer(list(loaded)))
     if primary is None:
         primary = next(iter(loaded.values()))
-    variables = [field for field in VARIABLES if field in primary.columns]
-    variable = st.selectbox("Mapped variable", variables or [select_variable(primary) or "No numeric variable"], key="mapped_variable")
-    classification = st.segmented_control(
-        "Classification", ["Quantiles", "Natural breaks", "Unique values"], default="Quantiles", key="map_classification"
-    )
-    palette = st.selectbox("Colour palette", PALETTES, key="map_palette")
     table_by_name = {
         str(path.relative_to(MAP_CONTENTS)): path
         for path in tables
@@ -295,10 +299,18 @@ def render_map_tab() -> None:
     else:
         join_table = cached_layer(str(package), join_name)
 
-    if any(len(frame) > MAX_RENDER_FEATURES for frame in loaded.values()):
+    variables = discover_variables(*loaded.values(), join_table)
+    variable_options = variables or [select_variable(primary) or "No mapped variable"]
+    variable = st.selectbox("Mapped variable", variable_options, key="mapped_variable")
+    classification = st.segmented_control(
+        "Classification", ["Quantiles", "Natural breaks", "Unique values"], default="Quantiles", key="map_classification"
+    )
+    palette = st.selectbox("Colour palette", PALETTES, key="map_palette")
+
+    if any(len(frame) > sampled_features_limit for frame in loaded.values()):
         st.caption(
             f"Hover a polygon to inspect its spatial fields and the attributes joined through the `index` key. "
-            f"The largest H3 layer is sampled to {MAX_RENDER_FEATURES:,} features for responsive browser rendering."
+            f"The largest H3 layer is sampled to {sampled_features_limit:,} target-bearing features for responsive browser rendering."
         )
     else:
         st.caption("Hover a polygon to inspect its spatial fields and the attributes joined through the `index` key.")
@@ -306,6 +318,8 @@ def render_map_tab() -> None:
         html = build_map(
             loaded, variable=variable, classification=classification or "Quantiles",
             palette_name=palette, opacity_by_layer=opacity_by_layer, join_table=join_table,
+            render_limit=sampled_features_limit, show_basemap=show_basemap,
+            basemap_opacity=basemap_opacity,
         )
         components.html(html, height=650, scrolling=True)
     except (ImportError, OSError, ValueError, KeyError) as error:
