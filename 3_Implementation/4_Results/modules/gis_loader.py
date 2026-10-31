@@ -56,7 +56,30 @@ def load_layer(package: Path, layer_name: str) -> Any:
     try:
         return gpd.read_file(package, layer=layer_name)
     except (OSError, ValueError, ImportError):
-        return None
+        try:
+            return gpd.read_file(package, layer=layer_name, ignore_geometry=True)
+        except (OSError, TypeError, ValueError, ImportError):
+            return None
+
+
+def _prioritize_features(frame: Any, variable: str | None) -> Any:
+    """Keep target-bearing features before empty/background features when sampling."""
+    if len(frame) <= MAX_RENDER_FEATURES or not variable or variable not in frame.columns:
+        return frame
+
+    values = pd.to_numeric(frame[variable], errors="coerce")
+    target_rows = values.notna() & values.ne(0)
+    target_positions = frame.index[target_rows]
+    if len(target_positions) >= MAX_RENDER_FEATURES:
+        positions = pd.Series(range(len(target_positions))).iloc[
+            [round(position) for position in pd.Series(range(MAX_RENDER_FEATURES))
+             .mul((len(target_positions) - 1) / max(1, MAX_RENDER_FEATURES - 1))]
+        ].tolist()
+        return frame.loc[target_positions[positions]].copy()
+
+    remaining = frame.index[~target_rows]
+    remaining_count = MAX_RENDER_FEATURES - len(target_positions)
+    return frame.loc[target_positions.union(remaining[:remaining_count])].copy()
 
 
 def load_join_table(path: Path) -> pd.DataFrame | None:
@@ -204,13 +227,11 @@ def build_map(
     first = next(iter(spatial_layers.values())).to_crs(4326)
     bounds = first.total_bounds
     center = [(bounds[1] + bounds[3]) / 2, (bounds[0] + bounds[2]) / 2]
-    fmap = folium.Map(location=center, zoom_start=9, tiles="CartoDB positron", control_scale=True)
+    fmap = folium.Map(location=center, zoom_start=9, tiles="OpenStreetMap", control_scale=True)
 
     for name, frame in reversed(list(spatial_layers.items())):
         current = join_on_index(frame.to_crs(4326), join_table)
-        if len(current) > MAX_RENDER_FEATURES:
-            step = max(1, len(current) // MAX_RENDER_FEATURES)
-            current = current.iloc[::step].copy()
+        current = _prioritize_features(current, variable)
         fields = _map_fields(current, variable)
         current = current[[*fields, GEOMETRY_COLUMN]]
         current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(0.00001, preserve_topology=False)
