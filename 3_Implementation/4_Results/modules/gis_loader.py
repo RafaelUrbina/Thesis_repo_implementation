@@ -21,7 +21,7 @@ VARIABLES = (
     "causal_socio_economic_index",
 )
 PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn")
-MAX_RENDER_FEATURES = 60_000
+MAX_RENDER_FEATURES = 230_000
 
 
 def discover_geo_packages(folder: Path) -> list[Path]:
@@ -83,14 +83,29 @@ def _prioritize_features(
         & categorical_values.ne("0")
     )
     target_positions = frame.index[target_rows]
-    if len(target_positions) >= limit:
-        positions = pd.Series(range(len(target_positions))).iloc[
-            [round(position) for position in pd.Series(range(limit))
-             .mul((len(target_positions) - 1) / max(1, limit - 1))]
-        ].tolist()
-        return frame.loc[target_positions[positions]].copy()
+    background_positions = frame.index[~target_rows]
+    target_count = min(len(target_positions), limit)
+    if target_count:
+        target_indices = [
+            round(position)
+            for position in pd.Series(range(target_count)).mul(
+                (len(target_positions) - 1) / max(1, target_count - 1)
+            )
+        ]
+        selected_positions = list(target_positions[target_indices])
+    else:
+        selected_positions = []
 
-    return frame.loc[target_positions].copy()
+    remaining = limit - len(selected_positions)
+    if remaining > 0 and len(background_positions):
+        background_indices = [
+            round(position)
+            for position in pd.Series(range(min(remaining, len(background_positions)))).mul(
+                (len(background_positions) - 1) / max(1, min(remaining, len(background_positions)) - 1)
+            )
+        ]
+        selected_positions.extend(background_positions[background_indices])
+    return frame.loc[selected_positions].copy()
 
 
 def load_join_table(path: Path) -> pd.DataFrame | None:
@@ -176,10 +191,31 @@ def _feature_properties(frame: Any) -> list[dict[str, Any]]:
 
 
 def _map_fields(frame: Any, variable: str | None) -> list[str]:
-    """Expose the spatial and joined attributes in feature tooltips."""
-    available = [field for field in frame.columns if field != GEOMETRY_COLUMN]
-    preferred = [variable, JOIN_KEY, *VARIABLES] if variable else [JOIN_KEY, *VARIABLES]
-    return list(dict.fromkeys(field for field in [*preferred, *available] if field in available))
+    """Expose only the identifier, active variable, and key causal metrics."""
+    available = {field for field in frame.columns if field != GEOMETRY_COLUMN}
+    fields = [JOIN_KEY]
+    if variable:
+        fields.append(variable)
+
+    metric_priority = [
+        "patent_count",
+        "total_failure_chains",
+        "unique_technical_triggers",
+        "causal_socio_economic_index",
+    ]
+    causal_metrics = [
+        field for field in metric_priority
+        if field in available and field not in fields
+    ]
+    causal_metrics.extend(
+        field for field in frame.columns
+        if field in available
+        and field not in fields
+        and field not in causal_metrics
+        and any(token in str(field).casefold() for token in ("patent", "causal", "failure", "trigger"))
+    )
+    fields.extend(causal_metrics[:2])
+    return [field for field in fields if field in available]
 
 
 def _classified_style(frame: Any, variable: str, classification: str, palette_name: str, opacity: float):
@@ -288,7 +324,9 @@ def build_map(
         current = _prioritize_features(current, variable, render_limit)
         fields = _map_fields(current, variable)
         current = current[[*fields, GEOMETRY_COLUMN]]
-        current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(0.00001, preserve_topology=False)
+        current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(
+            0.00005, preserve_topology=True
+        )
         chosen = variable if variable in current.columns else select_variable(current)
         style = _classified_style(
             current, chosen, classification, palette_name, opacity_by_layer.get(name, 0.75)

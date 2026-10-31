@@ -14,6 +14,7 @@ except ImportError:
     sort_items = None
 
 from modules.gis_loader import (
+    GEOMETRY_COLUMN,
     MAX_RENDER_FEATURES,
     PALETTES,
     build_map,
@@ -245,9 +246,21 @@ def render_map_tab() -> None:
             state_key="map_layer_order",
             empty_message="Select active layers to configure their stacking order.",
         )
+        loaded_candidates = {
+            name: cached_layer(str(package), name)
+            for name in ordered
+        }
+        spatial_layer_names = [
+            name for name, frame in loaded_candidates.items()
+            if frame is not None
+            and not frame.empty
+            and hasattr(frame, "to_crs")
+            and GEOMETRY_COLUMN in frame.columns
+            and frame[GEOMETRY_COLUMN].notna().any()
+        ]
         opacity_by_layer = {
             name: st.slider(f"Opacity · {name}", 0.0, 1.0, 0.78, 0.05, key=f"opacity_{name}")
-            for name in ordered
+            for name in spatial_layer_names
         }
         sampled_features_limit = st.slider(
             "Sampled features limit", min_value=1_000, max_value=MAX_RENDER_FEATURES,
@@ -264,7 +277,7 @@ def render_map_tab() -> None:
         st.info("Select at least one layer to render the map.", icon=":material/layers:")
         return
 
-    loaded = {name: cached_layer(str(package), name) for name in ordered}
+    loaded = loaded_candidates
     loaded = {name: frame for name, frame in loaded.items() if frame is not None and not frame.empty}
     if not loaded:
         st.error("The selected GeoPackage layers could not be loaded.", icon=":material/error:")
@@ -387,7 +400,10 @@ def render_plot_dialog(path_string: str) -> None:
 
 def render_info_tab() -> None:
     st.subheader("Project information")
-    logos = asset_images(ASSETS / "images" / "info")
+    logos = [
+        path for path in asset_images(ASSETS / "images" / "info")
+        if "qgis" not in path.name.casefold()
+    ]
     if logos:
         columns = st.columns(3)
         for column, image in zip(columns, logos[:3]):
