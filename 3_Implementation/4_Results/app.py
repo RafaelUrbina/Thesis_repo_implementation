@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 from pathlib import Path
 
+import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -216,6 +217,78 @@ def render_sortable_order(
     return ordered
 
 
+def render_layer_manager(layer_names: list[str], default_layers: list[str]) -> list[str]:
+    """Single collapsible drag-and-drop container for layer activation and stacking order."""
+    if not layer_names:
+        st.warning("No layers found in the selected GeoPackage.", icon=":material/warning:")
+        st.session_state["map_layer_order"] = []
+        st.session_state["active_map_layers"] = []
+        return []
+
+    # Wrap inside a collapsible expander that starts collapsed (expanded=False)
+    with st.expander("Layer Manager & Stacking Order", expanded=False):
+        if sort_items is None:
+            selected = st.multiselect("Active map layers", options=layer_names, default=default_layers, key="active_map_layers_multiselect")
+            return selected
+
+        # Retrieve current active state or set default
+        stored_active = st.session_state.get("active_map_layers", default_layers)
+        stored_order = st.session_state.get("map_layer_order", [])
+
+        # Preserve ordering of active layers
+        active_layers = [name for name in stored_order if name in stored_active and name in layer_names]
+        for name in stored_active:
+            if name in layer_names and name not in active_layers:
+                active_layers.append(name)
+
+        inactive_layers = [name for name in layer_names if name not in active_layers]
+
+        st.caption("Drag layers between lists to activate/deactivate, and reorder active layers:")
+
+        # Two-column sortable container (Drop zones)
+        sorted_containers = sort_items(
+            [
+                {"header": "Active Layers (Top to Bottom)", "items": active_layers},
+                {"header": "Inactive Layers", "items": inactive_layers},
+            ],
+            multi_containers=True,
+            custom_style="""
+            .sortable-component {
+                background: rgba(15, 30, 53, .42);
+                border: 1px solid rgba(180, 218, 255, .18);
+                border-radius: 12px;
+                padding: .5rem;
+            }
+            .sortable-container {
+                background: rgba(5, 14, 29, .6);
+                border: 1px solid rgba(180, 218, 255, .15);
+                border-radius: 10px;
+                padding: 0.5rem;
+                margin: 0.25rem;
+            }
+            .sortable-item {
+                background: rgba(61, 110, 155, .55);
+                color: #edf6ff;
+                border: 1px solid rgba(180, 218, 255, .3);
+                border-radius: 8px;
+                padding: 0.4rem 0.6rem;
+                margin: .3rem 0;
+                cursor: grab;
+            }
+            """,
+        )
+
+        if sorted_containers and len(sorted_containers) >= 2:
+            active_ordered = [item for item in sorted_containers[0]["items"] if item in layer_names]
+        else:
+            active_ordered = active_layers
+
+        # Update session state
+        st.session_state["active_map_layers"] = active_ordered
+        st.session_state["map_layer_order"] = active_ordered
+
+        return active_ordered
+
 def render_map_tab() -> None:
     st.subheader("Geospatial intelligence")
     packages = cached_geo_packages(str(MAP_CONTENTS))
@@ -232,20 +305,7 @@ def render_map_tab() -> None:
             name for name in layer_names
             if any(token in name.lower() for token in ("final_data_cube", "triplet", "extreme_pairs"))
         ] or ([preferred_layer(layer_names)] if preferred_layer(layer_names) else [])
-        selected = st.multiselect("Active layers", layer_names, default=default_layers, key="active_map_layers")
-        ordered = selected_in_order(
-            selected,
-            state_key="map_layer_order",
-            default_items=[
-                name for name in selected if name in default_layers
-            ] + [name for name in selected if name not in default_layers],
-        )
-        st.caption("Layer order (top to bottom)")
-        ordered = render_sortable_order(
-            ordered,
-            state_key="map_layer_order",
-            empty_message="Select active layers to configure their stacking order.",
-        )
+        ordered = render_layer_manager(layer_names, default_layers)
         loaded_candidates = {
             name: cached_layer(str(package), name)
             for name in ordered
@@ -312,6 +372,7 @@ def render_map_tab() -> None:
     variable_by_layer: dict[str, str | None] = {}
     classification_by_layer: dict[str, str] = {}
     palette_by_layer: dict[str, str] = {}
+    bin_count_by_layer: dict[str, int] = {}
     classification_options = ["Quantiles", "Natural breaks", "Unique values"]
 
     st.subheader("Layer styling")
@@ -343,6 +404,11 @@ def render_map_tab() -> None:
                 default="Quantiles",
                 key=f"map_classification_{layer_name}",
             ) or "Quantiles"
+            bin_count_by_layer[layer_name] = st.slider(
+                "Number of groups/bins", min_value=3, max_value=10, value=5,
+                step=1, key=f"map_bin_count_{layer_name}",
+                help="Controls the number of classes for Quantiles and Natural breaks.",
+            )
             palette_by_layer[layer_name] = st.selectbox(
                 "Colour palette",
                 PALETTES,
@@ -359,7 +425,8 @@ def render_map_tab() -> None:
     try:
         html = build_map(
             loaded, variable=variable_by_layer, classification=classification_by_layer,
-            palette_name=palette_by_layer, opacity_by_layer=opacity_by_layer, join_table=join_table,
+            palette_name=palette_by_layer, bin_count=bin_count_by_layer,
+            opacity_by_layer=opacity_by_layer, join_table=join_table,
             render_limit=sampled_features_limit, show_basemap=show_basemap,
             basemap_opacity=basemap_opacity,
         )
@@ -453,7 +520,6 @@ def render_info_tab() -> None:
     pdf_path = THESIS / "report.pdf"
     if pdf_path.exists():
         try:
-            # Provide a direct download button
             pdf_bytes = cached_pdf(str(pdf_path))
             st.download_button(
                 label="Download full thesis PDF",
@@ -464,14 +530,13 @@ def render_info_tab() -> None:
                 key="download_thesis_pdf",
             )
             
-            # Render PDF pages natively as images to bypass browser iframe blocks
             import fitz  # PyMuPDF
             doc = fitz.open(str(pdf_path))
             
             st.caption(f"Displaying {len(doc)} pages:")
             for page_idx in range(len(doc)):
                 page = doc.load_page(page_idx)
-                pix = page.get_pixmap(dpi=150)  # Good balance of clarity and performance
+                pix = page.get_pixmap(dpi=150)
                 st.image(
                     pix.tobytes("png"),
                     caption=f"Page {page_idx + 1} of {len(doc)}",
@@ -489,7 +554,6 @@ def main() -> None:
     apply_theme()
     render_header()
     
-    # Main page navigation tabs placed right below the header
     active_tab = st.radio(
         "Navigation",
         ["Map", "Insights", "Info"],

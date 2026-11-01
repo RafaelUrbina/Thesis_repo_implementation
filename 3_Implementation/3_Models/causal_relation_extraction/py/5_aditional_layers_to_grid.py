@@ -32,7 +32,6 @@ GRID_CANDIDATES = (
     GRID_PATH / "h310_grid_final_datacube.gpkg",
 )
 STATIC_LAYERS = (
-    "provcm01012026_wgs84",
     "com01012026_wgs84",
     "fertilita_chimica_dellorizzonte_superficiale",
     "capacita_duso_e_fertilita_dei_suoli",
@@ -41,6 +40,16 @@ LISA_FILES = (
     "report_bivariate_lisa_census_pop_vs_inflow_total.gpkg",
     "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p.gpkg",
     "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean.gpkg",
+)
+LAYER_COLUMNS = {
+    "fertilita_chimica_dellorizzonte_superficiale": ("pk_uid", "lcc_classe", "geometry"),
+    "com01012026_wgs84": ("COMUNE", "causal_socioeconomic_index", "geometry"),
+    "capacita_duso_e_fertilita_dei_suoli": ("pk_uid", "fertilita", "geometry"),
+}
+
+# Layer to explicitly remove during processing
+LAYERS_TO_REMOVE = (
+    "provcm01012026_wgs84",
 )
 
 
@@ -71,20 +80,47 @@ def _find_grid_layer(path: Path) -> str:
     raise KeyError(f"No layer containing causal_socioeconomic_index found in {path}")
 
 
-def _remove_layer(path: Path, layer: str) -> None:
-    """Remove one existing GeoPackage layer while retaining other layers."""
+def _drop_layer_completely(path: Path, layer: str) -> None:
+    """Completely removes a layer, its metadata, and spatial index tables from a GeoPackage."""
     if not path.exists() or layer not in _layers(path):
         return
-    with sqlite3.connect(path) as connection:
-        for table in ("gpkg_geometry_columns", "gpkg_contents"):
-            connection.execute(f"DELETE FROM {table} WHERE table_name = ?", (layer,))
-        connection.execute(f'DROP TABLE IF EXISTS "{layer.replace(chr(34), chr(34) * 2)}"')
-        connection.commit()
+    with sqlite3.connect(path) as conn:
+        cursor = conn.cursor()
+        # Drop associated rtree spatial index tables
+        cursor.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name LIKE ?", 
+            (f"rtree_{layer}_%",)
+        )
+        for (rtree_table,) in cursor.fetchall():
+            conn.execute(f'DROP TABLE IF EXISTS "{rtree_table}"')
+        
+        # Clean up GeoPackage metadata tables
+        for meta_table in ("gpkg_geometry_columns", "gpkg_contents", "gpkg_extensions"):
+            try:
+                conn.execute(f"DELETE FROM {meta_table} WHERE table_name = ?", (layer,))
+            except sqlite3.OperationalError:
+                pass
+        
+        # Drop the main table
+        conn.execute(f'DROP TABLE IF EXISTS "{layer}"')
+        conn.commit()
+    print(f"Removed layer '{layer}' from GeoPackage.")
 
 
 def _write_layer(frame: gpd.GeoDataFrame, path: Path, layer: str) -> None:
-    _remove_layer(path, layer)
-    frame.to_file(path, layer=layer, driver="GPKG")
+    """Writes the layer safely using fiona, handling legacy trigger drop issues if present."""
+    try:
+        frame.to_file(path, layer=layer, driver="GPKG", engine="fiona")
+    except Exception:
+        _drop_layer_completely(path, layer)
+        frame.to_file(path, layer=layer, driver="GPKG", engine="fiona")
+
+
+def _project_columns(frame: gpd.GeoDataFrame, columns: tuple[str, ...], layer: str) -> gpd.GeoDataFrame:
+    missing = [column for column in columns if column not in frame.columns]
+    if missing:
+        raise KeyError(f"Layer {layer!r} is missing required columns: {missing}")
+    return frame.loc[:, list(columns)].copy()
 
 
 def _first_existing(paths: Iterable[Path]) -> Path:
@@ -150,6 +186,11 @@ def main() -> None:
     grid_path = _first_existing(GRID_CANDIDATES)
     if grid_path != OUTPUT_GPKG and not OUTPUT_GPKG.exists():
         shutil.copy2(grid_path, OUTPUT_GPKG)
+        
+    # Explicitly remove unwanted layers from the output GeoPackage
+    for unwanted_layer in LAYERS_TO_REMOVE:
+        _drop_layer_completely(OUTPUT_GPKG, unwanted_layer)
+
     grid_layer = _find_grid_layer(grid_path)
     grid = _read_layer(grid_path, grid_layer)
 
@@ -157,6 +198,9 @@ def main() -> None:
         static_layer = _read_layer(SOURCE_GPKG, layer_name)
         if layer_name == "com01012026_wgs84":
             static_layer = _aggregate_socioeconomic_index(static_layer, grid)
+        static_layer = _project_columns(
+            static_layer, LAYER_COLUMNS[layer_name], layer_name
+        )
         _write_layer(static_layer, OUTPUT_GPKG, layer_name)
 
     for report_name in LISA_FILES:
@@ -165,7 +209,13 @@ def main() -> None:
             raise FileNotFoundError(f"Bivariate LISA report not found: {report_path}")
         report_layer = _report_layer_name(report_path)
         report = _read_layer(report_path, report_layer)
-        _write_layer(report, OUTPUT_GPKG, Path(report_name).stem[:63])
+        
+        bv_columns = [col for col in report.columns if col.startswith("bv_")]
+        target_cols = tuple(bv_columns + ["geometry"])
+        
+        target_layer_name = Path(report_name).stem[:63]
+        report_projected = _project_columns(report, target_cols, target_layer_name)
+        _write_layer(report_projected, OUTPUT_GPKG, target_layer_name)
 
     print(f"Updated GeoPackage: {OUTPUT_GPKG}")
     print(f"Added layers: {', '.join((*STATIC_LAYERS, *(Path(name).stem[:63] for name in LISA_FILES)))}")

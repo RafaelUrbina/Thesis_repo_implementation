@@ -21,7 +21,7 @@ VARIABLES = (
     "causal_socioeconomic_index",
     "causal_socio_economic_index",
 )
-PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn")
+PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn", "Spectral")
 MAX_RENDER_FEATURES = 100_000
 
 
@@ -42,13 +42,18 @@ def list_layers(package: Path) -> list[str]:
     if gpd is None:
         return []
     try:
-        if hasattr(gpd, "list_layers"):
-            return list(gpd.list_layers(package)["name"])
         import fiona
-
         return list(fiona.listlayers(package))
-    except (OSError, ValueError, ImportError):
-        return []
+    except (OSError, ValueError, ImportError, LookupError):
+        try:
+            if hasattr(gpd, "list_layers"):
+                res = gpd.list_layers(package)
+                if "name" in res.columns:
+                    return list(res["name"])
+                return list(res.iloc[:, 0])
+        except Exception:
+            pass
+    return []
 
 
 def load_layer(package: Path, layer_name: str) -> Any:
@@ -69,24 +74,24 @@ def _prioritize_features(
     limit: int = MAX_RENDER_FEATURES,
 ) -> Any:
     """Keep target-bearing features before empty/background features when sampling."""
-    limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
-    if not variable or variable not in frame.columns:
+    if len(frame) <= MAX_RENDER_FEATURES:
         return frame
 
-    values = frame[variable]
-    numeric_values = pd.to_numeric(values, errors="coerce")
-    target_rows = numeric_values.notna() & numeric_values.ne(0)
-    categorical_values = values.astype("string").str.strip()
-    target_rows |= (
-        numeric_values.isna()
-        & categorical_values.notna()
-        & categorical_values.ne("")
-        & categorical_values.ne("0")
-    )
+    limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
+    if variable and variable in frame.columns:
+        values = frame[variable]
+        numeric_values = pd.to_numeric(values, errors="coerce")
+        target_rows = numeric_values.notna() & numeric_values.ne(0)
+        categorical_values = values.astype("string").str.strip()
+        target_rows |= (
+            numeric_values.isna()
+            & categorical_values.notna()
+            & categorical_values.ne("")
+            & categorical_values.ne("0")
+        )
+    else:
+        target_rows = pd.Series(False, index=frame.index)
     target_positions = frame.index[target_rows]
-    if len(target_positions) <= limit:
-        return frame.loc[target_positions].copy()
-
     background_positions = frame.index[~target_rows]
     target_count = min(len(target_positions), limit)
     target_indices = [
@@ -222,14 +227,37 @@ def _map_fields(
     return fields
 
 
-def _classified_style(frame: Any, variable: str, classification: str, palette_name: str, opacity: float):
+def _palette_scale(palette_name: str, minimum: float, maximum: float):
     import branca.colormap as cm
 
+    palette = getattr(cm.linear, palette_name, None)
+    if palette is None:
+        palette = getattr(cm.linear, f"{palette_name}_11", None)
+    if palette is None:
+        import matplotlib
+
+        matplotlib_palette = matplotlib.colormaps[palette_name]
+        palette = cm.LinearColormap(
+            [matplotlib_palette(position / 255) for position in range(256)],
+            vmin=minimum,
+            vmax=maximum,
+        )
+    return palette.scale(minimum, maximum)
+
+
+def _classified_style(
+    frame: Any,
+    variable: str,
+    classification: str,
+    palette_name: str,
+    opacity: float,
+    bin_count: int = 5,
+):
     values = pd.to_numeric(frame[variable], errors="coerce")
     finite = values.dropna()
     if finite.empty:
         categories = frame[variable].dropna().astype(str).unique().tolist()
-        category_palette = getattr(cm.linear, palette_name).scale(0, max(1, len(categories) - 1))
+        category_palette = _palette_scale(palette_name, 0, max(1, len(categories) - 1))
         category_colors = {
             category: category_palette(position)
             for position, category in enumerate(categories)
@@ -242,29 +270,54 @@ def _classified_style(frame: Any, variable: str, classification: str, palette_na
 
         return categorical_style
 
+    bin_count = max(3, min(int(bin_count), 10))
     breaks: list[float]
     if classification == "Quantiles":
-        breaks = sorted(set(float(value) for value in finite.quantile([0, .2, .4, .6, .8, 1]).tolist()))
+        probabilities = pd.Series(range(bin_count + 1), dtype="float64") / bin_count
+        breaks = sorted(set(float(value) for value in finite.quantile(probabilities).tolist()))
     elif classification == "Natural breaks":
         try:
             import mapclassify
 
-            breaks = sorted(set(float(value) for value in mapclassify.NaturalBreaks(finite, k=min(5, finite.nunique())).bins))
+            breaks = sorted(
+                set(
+                    float(value)
+                    for value in mapclassify.NaturalBreaks(
+                        finite, k=min(bin_count, finite.nunique())
+                    ).bins
+                )
+            )
             breaks.insert(0, float(finite.min()))
         except (ImportError, ValueError):
-            breaks = sorted(set(float(value) for value in finite.quantile([0, .25, .5, .75, 1]).tolist()))
+            probabilities = pd.Series(range(bin_count + 1), dtype="float64") / bin_count
+            breaks = sorted(set(float(value) for value in finite.quantile(probabilities).tolist()))
     else:
         breaks = sorted(set(float(value) for value in finite.tolist()))
 
     minimum, maximum = float(finite.min()), float(finite.max())
     if minimum == maximum:
         maximum = minimum + 1
-    palette = getattr(cm.linear, palette_name).scale(minimum, maximum)
+    palette = _palette_scale(palette_name, minimum, maximum)
+    if len(breaks) < 2:
+        breaks = [minimum, maximum]
+    colors = [
+        palette((lower + upper) / 2)
+        for lower, upper in zip(breaks[:-1], breaks[1:])
+    ]
 
     def style(feature: dict[str, Any]) -> dict[str, Any]:
         value = feature["properties"].get(variable)
         try:
-            color = palette(float(value)) if value is not None else "#94a3b8"
+            numeric_value = float(value)
+            bin_index = min(
+                len(colors) - 1,
+                max(0, next(
+                    (index for index, boundary in enumerate(breaks[1:])
+                     if numeric_value <= boundary),
+                    len(colors) - 1,
+                )),
+            )
+            color = colors[bin_index]
         except (TypeError, ValueError):
             color = "#94a3b8"
         return {"fillColor": color, "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity}
@@ -278,6 +331,7 @@ def build_map(
     variable: str | dict[str, Any] | None = None,
     classification: str | dict[str, Any] = "Quantiles",
     palette_name: str | dict[str, Any] = "viridis",
+    bin_count: int | dict[str, Any] = 5,
     opacity_by_layer: dict[str, float],
     join_table: pd.DataFrame | None = None,
     render_limit: int = MAX_RENDER_FEATURES,
@@ -343,6 +397,7 @@ def build_map(
         layer_variable = layer_setting(variable, name)
         layer_classification = layer_setting(classification, name, "Quantiles") or "Quantiles"
         layer_palette = layer_setting(palette_name, name, "viridis") or "viridis"
+        layer_bin_count = layer_setting(bin_count, name, 5) or 5
         current = _prioritize_features(current, layer_variable, render_limit)
         joined_fields = {
             candidate
@@ -366,7 +421,8 @@ def build_map(
         )
         chosen = layer_variable if layer_variable in current.columns else select_variable(current)
         style = _classified_style(
-            current, chosen, layer_classification, layer_palette, opacity_by_layer.get(name, 0.75)
+            current, chosen, layer_classification, layer_palette,
+            opacity_by_layer.get(name, 0.75), layer_bin_count,
         ) if chosen else lambda feature: {"fillColor": "#38bdf8", "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity_by_layer.get(name, 0.75)}
         folium.GeoJson(
             current,
