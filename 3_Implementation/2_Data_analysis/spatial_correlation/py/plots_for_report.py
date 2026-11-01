@@ -105,7 +105,7 @@ def run_bivariate_lisa(
     custom_title: str,
     output_dir: Path,
 ):
-    """Calculates Bivariate LISA and generates cluster maps with a custom title."""
+    """Calculates Bivariate LISA, generates cluster maps, and exports filtered GIS layers."""
     print(f"\nRunning Bivariate LISA for pair: {var1} vs {var2}")
 
     y1 = prepare_variable(gdf, var1)
@@ -114,15 +114,50 @@ def run_bivariate_lisa(
     if y1 is None or y2 is None:
         return
 
-    # Calculate Bivariate Local Moran's I
+    # 1. Calculate Bivariate Local Moran's I
     bivariate_lisa = Moran_Local_BV(y1, y2, weights, seed=42)
     apply_fdr_correction(bivariate_lisa)
 
-    # Plot and save cluster map
+    # 2. Extract GIS Attributes & Build Cluster Labels
+    quad_labels = {1: "High-High", 2: "Low-High", 3: "Low-Low", 4: "High-Low"}
+    sig_mask = bivariate_lisa.p_sim < 0.05
+
+    cluster_col = []
+    for q, is_sig in zip(bivariate_lisa.q, sig_mask):
+        if not is_sig:
+            cluster_col.append("Not Significant")
+        else:
+            cluster_col.append(quad_labels.get(q, "Unknown"))
+
+    prefix = f"bv_{var1}_{var2}"
+
+    # 3. Create a clean export GeoDataFrame containing ONLY geometry, index, and bv_ columns
+    gdf_export = gpd.GeoDataFrame(
+        {
+            f"{prefix}_moran_i": bivariate_lisa.Is,
+            f"{prefix}_p_value": bivariate_lisa.p_sim,
+            f"{prefix}_quadrant": bivariate_lisa.q,
+            f"{prefix}_cluster": cluster_col,
+        },
+        geometry=gdf.geometry,
+        crs=gdf.crs,
+        index=gdf.index,
+    )
+
+    # Define the 'report' subfolder path and ensure it exists
+    report_dir = output_dir / "report"
+    report_dir.mkdir(parents=True, exist_ok=True)
+
+    # 4. Export the filtered GeoPackage (.gpkg)
+    out_gpkg = report_dir / f"report_bivariate_lisa_{var1}_vs_{var2}.gpkg"
+    layer_name = f"bivariate_{var1}_{var2}".replace(".", "_")[:63]
+    gdf_export.to_file(out_gpkg, layer=layer_name, driver="GPKG")
+    print(f"Saved filtered bivariate GIS layer to: {out_gpkg} (Layer: {layer_name})")
+
+    # 5. Plot and save cluster map image to the report subfolder
     fig, ax = plt.subplots(figsize=(12, 10))
     lisa_cluster(bivariate_lisa, gdf, ax=ax, legend=True)
     
-    # Apply custom title
     ax.set_title(
         f"{custom_title}\n(FDR Corrected, p < 0.05)",
         fontsize=12,
@@ -131,10 +166,10 @@ def run_bivariate_lisa(
     ax.set_xticklabels([])
     plt.tight_layout()
 
-    out_file = output_dir / f"report_bivariate_lisa_{var1}_vs_{var2}.png"
-    plt.savefig(out_file)
+    out_img = report_dir / f"report_bivariate_lisa_{var1}_vs_{var2}.png"
+    plt.savefig(out_img)
     plt.close(fig)
-    print(f"Saved bivariate LISA cluster map to: {out_file.name}")
+    print(f"Saved bivariate LISA cluster map image to: {out_img}")
 
 
 def main():
@@ -152,7 +187,8 @@ def main():
     print("--- Processing Univariate LISA ---")
     for var_name, custom_title in UNIVARIATE_TITLES.items():
         if var_name in gdf.columns:
-            run_univariate_lisa(gdf, weights, var_name, custom_title, OUTPUT_DIR)
+            print("skipping univariate variable '{var_name}': manual skip.")
+            #run_univariate_lisa(gdf, weights, var_name, custom_title, OUTPUT_DIR)
         else:
             print(f"Skipping univariate variable '{var_name}': Column missing from dataset.")
 
