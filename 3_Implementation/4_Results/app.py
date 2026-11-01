@@ -283,9 +283,6 @@ def render_map_tab() -> None:
         st.error("The selected GeoPackage layers could not be loaded.", icon=":material/error:")
         return
 
-    primary = loaded.get(preferred_layer(list(loaded)))
-    if primary is None:
-        primary = next(iter(loaded.values()))
     table_by_name = {
         str(path.relative_to(MAP_CONTENTS)): path
         for path in tables
@@ -312,13 +309,45 @@ def render_map_tab() -> None:
     else:
         join_table = cached_layer(str(package), join_name)
 
-    variables = discover_variables(*loaded.values(), join_table)
-    variable_options = variables or [select_variable(primary) or "No mapped variable"]
-    variable = st.selectbox("Mapped variable", variable_options, key="mapped_variable")
-    classification = st.segmented_control(
-        "Classification", ["Quantiles", "Natural breaks", "Unique values"], default="Quantiles", key="map_classification"
-    )
-    palette = st.selectbox("Colour palette", PALETTES, key="map_palette")
+    variable_by_layer: dict[str, str | None] = {}
+    classification_by_layer: dict[str, str] = {}
+    palette_by_layer: dict[str, str] = {}
+    classification_options = ["Quantiles", "Natural breaks", "Unique values"]
+
+    st.subheader("Layer styling")
+    st.caption("Choose mapped data and styling independently for each active spatial layer.")
+    for layer_name, frame in loaded.items():
+        if (
+            not hasattr(frame, "to_crs")
+            or GEOMETRY_COLUMN not in frame.columns
+            or not frame[GEOMETRY_COLUMN].notna().any()
+        ):
+            continue
+        layer_variables = discover_variables(frame, join_table)
+        layer_variable_options = ["No mapped variable", *layer_variables]
+        default_variable = select_variable(frame)
+        default_variable_label = default_variable if default_variable in layer_variable_options else "No mapped variable"
+        with st.expander(f"Style: {layer_name}", expanded=True):
+            selected_variable = st.selectbox(
+                "Mapped variable",
+                layer_variable_options,
+                index=layer_variable_options.index(default_variable_label),
+                key=f"mapped_variable_{layer_name}",
+            )
+            variable_by_layer[layer_name] = (
+                None if selected_variable == "No mapped variable" else selected_variable
+            )
+            classification_by_layer[layer_name] = st.segmented_control(
+                "Classification method",
+                classification_options,
+                default="Quantiles",
+                key=f"map_classification_{layer_name}",
+            ) or "Quantiles"
+            palette_by_layer[layer_name] = st.selectbox(
+                "Colour palette",
+                PALETTES,
+                key=f"map_palette_{layer_name}",
+            )
 
     if any(len(frame) > sampled_features_limit for frame in loaded.values()):
         st.caption(
@@ -329,8 +358,8 @@ def render_map_tab() -> None:
         st.caption("Hover a polygon to inspect its spatial fields and the attributes joined through the `index` key.")
     try:
         html = build_map(
-            loaded, variable=variable, classification=classification or "Quantiles",
-            palette_name=palette, opacity_by_layer=opacity_by_layer, join_table=join_table,
+            loaded, variable=variable_by_layer, classification=classification_by_layer,
+            palette_name=palette_by_layer, opacity_by_layer=opacity_by_layer, join_table=join_table,
             render_limit=sampled_features_limit, show_basemap=show_basemap,
             basemap_opacity=basemap_opacity,
         )

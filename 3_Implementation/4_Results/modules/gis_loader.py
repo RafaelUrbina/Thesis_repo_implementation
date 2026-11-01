@@ -18,6 +18,7 @@ VARIABLES = (
     "total_failure_chains",
     "unique_technical_triggers",
     "patent_count",
+    "causal_socioeconomic_index",
     "causal_socio_economic_index",
 )
 PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn")
@@ -274,9 +275,9 @@ def _classified_style(frame: Any, variable: str, classification: str, palette_na
 def build_map(
     layers: dict[str, Any],
     *,
-    variable: str,
-    classification: str,
-    palette_name: str,
+    variable: str | dict[str, Any] | None = None,
+    classification: str | dict[str, Any] = "Quantiles",
+    palette_name: str | dict[str, Any] = "viridis",
     opacity_by_layer: dict[str, float],
     join_table: pd.DataFrame | None = None,
     render_limit: int = MAX_RENDER_FEATURES,
@@ -328,9 +329,21 @@ def build_map(
             control=True,
         ).add_to(fmap)
 
+    def layer_setting(
+        setting: str | dict[str, Any] | None,
+        layer_name: str,
+        default: Any = None,
+    ) -> Any:
+        if isinstance(setting, dict):
+            return setting.get(layer_name, default)
+        return setting
+
     for name, frame in reversed(list(spatial_layers.items())):
         current = join_on_index(frame.to_crs(4326), join_table)
-        current = _prioritize_features(current, variable, render_limit)
+        layer_variable = layer_setting(variable, name)
+        layer_classification = layer_setting(classification, name, "Quantiles") or "Quantiles"
+        layer_palette = layer_setting(palette_name, name, "viridis") or "viridis"
+        current = _prioritize_features(current, layer_variable, render_limit)
         joined_fields = {
             candidate
             for source_field in joined_source_fields.union(
@@ -346,14 +359,14 @@ def build_map(
             )
             if candidate in current.columns
         }
-        fields = _map_fields(current, variable, joined_fields)
+        fields = _map_fields(current, layer_variable, joined_fields)
         current = current[[*fields, GEOMETRY_COLUMN]]
         current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(
             0.00005, preserve_topology=True
         )
-        chosen = variable if variable in current.columns else select_variable(current)
+        chosen = layer_variable if layer_variable in current.columns else select_variable(current)
         style = _classified_style(
-            current, chosen, classification, palette_name, opacity_by_layer.get(name, 0.75)
+            current, chosen, layer_classification, layer_palette, opacity_by_layer.get(name, 0.75)
         ) if chosen else lambda feature: {"fillColor": "#38bdf8", "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity_by_layer.get(name, 0.75)}
         folium.GeoJson(
             current,
