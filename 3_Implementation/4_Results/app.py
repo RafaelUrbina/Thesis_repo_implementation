@@ -405,11 +405,11 @@ def render_info_tab() -> None:
         if "qgis" not in path.name.casefold()
     ]
     if logos:
-        columns = st.columns(3)
-        for column, image in zip(columns, logos[:3]):
+        columns = st.columns([1, 2, 2, 1])
+        for column, image in zip(columns[1:3], logos[:2]):
             with column:
                 with st.container(border=True):
-                    st.image(str(image), use_container_width=True)
+                    st.image(str(image), width="stretch")
                     st.caption(image.stem.replace("_", " ").title())
     else:
         st.warning("No images were found in assets/images/info.", icon=":material/image_not_supported:")

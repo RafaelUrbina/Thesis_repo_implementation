@@ -21,7 +21,7 @@ VARIABLES = (
     "causal_socio_economic_index",
 )
 PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn")
-MAX_RENDER_FEATURES = 230_000
+MAX_RENDER_FEATURES = 100_000
 
 
 def discover_geo_packages(folder: Path) -> list[Path]:
@@ -69,7 +69,7 @@ def _prioritize_features(
 ) -> Any:
     """Keep target-bearing features before empty/background features when sampling."""
     limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
-    if len(frame) <= limit or not variable or variable not in frame.columns:
+    if not variable or variable not in frame.columns:
         return frame
 
     values = frame[variable]
@@ -83,18 +83,18 @@ def _prioritize_features(
         & categorical_values.ne("0")
     )
     target_positions = frame.index[target_rows]
+    if len(target_positions) <= limit:
+        return frame.loc[target_positions].copy()
+
     background_positions = frame.index[~target_rows]
     target_count = min(len(target_positions), limit)
-    if target_count:
-        target_indices = [
-            round(position)
-            for position in pd.Series(range(target_count)).mul(
-                (len(target_positions) - 1) / max(1, target_count - 1)
-            )
-        ]
-        selected_positions = list(target_positions[target_indices])
-    else:
-        selected_positions = []
+    target_indices = [
+        round(position)
+        for position in pd.Series(range(target_count)).mul(
+            (len(target_positions) - 1) / max(1, target_count - 1)
+        )
+    ]
+    selected_positions = list(target_positions[target_indices])
 
     remaining = limit - len(selected_positions)
     if remaining > 0 and len(background_positions):
@@ -190,32 +190,35 @@ def _feature_properties(frame: Any) -> list[dict[str, Any]]:
     ]
 
 
-def _map_fields(frame: Any, variable: str | None) -> list[str]:
-    """Expose only the identifier, active variable, and key causal metrics."""
-    available = {field for field in frame.columns if field != GEOMETRY_COLUMN}
-    fields = [JOIN_KEY]
-    if variable:
-        fields.append(variable)
-
-    metric_priority = [
-        "patent_count",
+def _map_fields(
+    frame: Any,
+    variable: str | None,
+    joined_fields: set[str] | None = None,
+) -> list[str]:
+    """Expose the core attributes and fields originating from joined tables."""
+    available = [field for field in frame.columns if field != GEOMETRY_COLUMN]
+    core_fields = [
+        JOIN_KEY,
+        variable,
         "total_failure_chains",
         "unique_technical_triggers",
-        "causal_socio_economic_index",
+        "all_unique_attributes",
+        "all_unique_failures",
     ]
-    causal_metrics = [
-        field for field in metric_priority
-        if field in available and field not in fields
-    ]
-    causal_metrics.extend(
-        field for field in frame.columns
-        if field in available
-        and field not in fields
-        and field not in causal_metrics
-        and any(token in str(field).casefold() for token in ("patent", "causal", "failure", "trigger"))
+    fields: list[str] = []
+    for field in core_fields:
+        if field and field in available and field not in fields:
+            fields.append(field)
+    joined_fields = joined_fields or set()
+    fields.extend(
+        field for field in available
+        if field not in fields
+        and (
+            field in joined_fields
+            or str(field).casefold().endswith(("_causal", "_context"))
+        )
     )
-    fields.extend(causal_metrics[:2])
-    return [field for field in fields if field in available]
+    return fields
 
 
 def _classified_style(frame: Any, variable: str, classification: str, palette_name: str, opacity: float):
@@ -234,7 +237,7 @@ def _classified_style(frame: Any, variable: str, classification: str, palette_na
         def categorical_style(feature: dict[str, Any]) -> dict[str, Any]:
             value = feature["properties"].get(variable)
             color = category_colors.get(str(value), "#94a3b8")
-            return {"fillColor": color, "color": "#dbeafe", "weight": 0.6, "fillOpacity": opacity}
+            return {"fillColor": color, "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity}
 
         return categorical_style
 
@@ -263,7 +266,7 @@ def _classified_style(frame: Any, variable: str, classification: str, palette_na
             color = palette(float(value)) if value is not None else "#94a3b8"
         except (TypeError, ValueError):
             color = "#94a3b8"
-        return {"fillColor": color, "color": "#dbeafe", "weight": 0.6, "fillOpacity": opacity}
+        return {"fillColor": color, "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity}
 
     return style
 
@@ -295,6 +298,12 @@ def build_map(
         frame for frame in layers.values()
         if not hasattr(frame, "to_crs") and JOIN_KEY in frame.columns
     ]
+    joined_source_fields = {
+        field
+        for context in tabular_context
+        for field in context.columns
+        if field not in {JOIN_KEY, GEOMETRY_COLUMN}
+    }
     if tabular_context:
         enriched = spatial_layers.copy()
         base_name = preferred_layer(list(enriched)) or next(iter(enriched))
@@ -322,7 +331,22 @@ def build_map(
     for name, frame in reversed(list(spatial_layers.items())):
         current = join_on_index(frame.to_crs(4326), join_table)
         current = _prioritize_features(current, variable, render_limit)
-        fields = _map_fields(current, variable)
+        joined_fields = {
+            candidate
+            for source_field in joined_source_fields.union(
+                join_table.columns
+                if join_table is not None
+                else []
+            )
+            if source_field not in {JOIN_KEY, GEOMETRY_COLUMN}
+            for candidate in (
+                source_field,
+                f"{source_field}_causal",
+                f"{source_field}_context",
+            )
+            if candidate in current.columns
+        }
+        fields = _map_fields(current, variable, joined_fields)
         current = current[[*fields, GEOMETRY_COLUMN]]
         current[GEOMETRY_COLUMN] = current[GEOMETRY_COLUMN].simplify(
             0.00005, preserve_topology=True
@@ -330,7 +354,7 @@ def build_map(
         chosen = variable if variable in current.columns else select_variable(current)
         style = _classified_style(
             current, chosen, classification, palette_name, opacity_by_layer.get(name, 0.75)
-        ) if chosen else lambda feature: {"fillColor": "#38bdf8", "color": "#dbeafe", "weight": 0.6, "fillOpacity": opacity_by_layer.get(name, 0.75)}
+        ) if chosen else lambda feature: {"fillColor": "#38bdf8", "color": "#1e293b", "weight": 0.6, "fillOpacity": opacity_by_layer.get(name, 0.75)}
         folium.GeoJson(
             current,
             name=name,
