@@ -299,7 +299,7 @@ def render_map_tab() -> None:
 
     with st.sidebar:
         st.header("Map settings")
-        package = st.selectbox("GeoPackage", packages, format_func=lambda path: path.name, key="map_package")
+        package = packages[0]
         layer_names = cached_layer_names(str(package))
         default_layers = [
             name for name in layer_names
@@ -329,7 +329,7 @@ def render_map_tab() -> None:
         )
         show_basemap = st.checkbox("Show OpenStreetMap basemap", value=True, key="show_basemap")
         basemap_opacity = st.slider(
-            "Basemap opacity", min_value=0.0, max_value=1.0, value=1.0,
+            "Basemap opacity", min_value=0.0, max_value=1.0, value=0.50,
             step=0.05, key="basemap_opacity",
         )
 
@@ -386,27 +386,70 @@ def render_map_tab() -> None:
             continue
         layer_variables = discover_variables(frame, join_table)
         layer_variable_options = ["No mapped variable", *layer_variables]
-        default_variable = select_variable(frame)
+        layer_name_lower = layer_name.casefold()
+        report_bivariate_variables = tuple(
+            field
+            for field in layer_variables
+            if field.casefold().startswith("bv_")
+            and field.casefold().endswith("_cluster")
+        )
+        forced_variables = (
+            ("capacita_duso_e_fertilita", ("fertilita",)),
+            ("com_wgs84", ("causal_socioeconomic_index", "causal_socio_economic_index")),
+            ("fertilita_chimica", ("lcc_classe",)),
+        )
+        if "report_bivariate_lisa" in layer_name_lower:
+            forced_variable_options = report_bivariate_variables
+        else:
+            forced_variable_options = next(
+                (
+                    variables
+                    for token, variables in forced_variables
+                    if token in layer_name_lower
+                    or (
+                        token == "com_wgs84"
+                        and "com" in layer_name_lower
+                        and "wgs84" in layer_name_lower
+                    )
+                ),
+                None,
+            )
+        forced_variable = next(
+            (
+                variable for variable in (forced_variable_options or ())
+                if variable in layer_variables or variable in frame.columns
+            ),
+            forced_variable_options[0] if forced_variable_options else None,
+        )
+        default_variable = forced_variable or select_variable(frame)
+        if forced_variable and forced_variable not in layer_variable_options:
+            layer_variable_options.append(forced_variable)
         default_variable_label = default_variable if default_variable in layer_variable_options else "No mapped variable"
         with st.expander(f"Style: {layer_name}", expanded=True):
-            selected_variable = st.selectbox(
-                "Mapped variable",
-                layer_variable_options,
-                index=layer_variable_options.index(default_variable_label),
-                key=f"mapped_variable_{layer_name}",
-            )
+            if forced_variable:
+                selected_variable = forced_variable
+                st.caption(f"Mapped variable: `{forced_variable}`")
+            else:
+                selected_variable = st.selectbox(
+                    "Mapped variable",
+                    layer_variable_options,
+                    index=layer_variable_options.index(default_variable_label),
+                    key=f"mapped_variable_{layer_name}",
+                )
             variable_by_layer[layer_name] = (
                 None if selected_variable == "No mapped variable" else selected_variable
             )
-            classification_by_layer[layer_name] = st.segmented_control(
+            classification = st.segmented_control(
                 "Classification method",
                 classification_options,
                 default="Quantiles",
                 key=f"map_classification_{layer_name}",
             ) or "Quantiles"
+            classification_by_layer[layer_name] = classification
             bin_count_by_layer[layer_name] = st.slider(
                 "Number of groups/bins", min_value=3, max_value=10, value=5,
                 step=1, key=f"map_bin_count_{layer_name}",
+                disabled=classification == "Unique values",
                 help="Controls the number of classes for Quantiles and Natural breaks.",
             )
             palette_by_layer[layer_name] = st.selectbox(

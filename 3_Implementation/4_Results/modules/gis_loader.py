@@ -21,6 +21,17 @@ VARIABLES = (
     "causal_socioeconomic_index",
     "causal_socio_economic_index",
 )
+DATACUBE_CORE_FIELDS = {
+    JOIN_KEY,
+    "total_failure_chains",
+    "unique_technical_triggers",
+    "patent_count",
+    "all_unique_attributes",
+    "all_unique_failures",
+}
+DATACUBE_KNOWN_VARIABLES = set(VARIABLES).union(
+    {"fertilita", "lcc_classe"}
+)
 PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn", "Spectral")
 MAX_RENDER_FEATURES = 100_000
 
@@ -56,14 +67,79 @@ def list_layers(package: Path) -> list[str]:
     return []
 
 
+def _is_datacube_layer(layer_name: str) -> bool:
+    normalized = layer_name.casefold()
+    admin_or_thematic = ("com", "prov", "fertilita", "capacita", "bivariate", "lisa")
+    if any(token in normalized for token in admin_or_thematic):
+        return False
+    return any(token in normalized for token in ("cube", "datacube", "grid", "h3", "final"))
+
+
+def _is_causal_layer(layer_name: str) -> bool:
+    normalized = layer_name.casefold()
+    return any(
+        token in normalized
+        for token in ("h3_triplet_summary", "h3_extreme_pairs", "traceable_causal_chains")
+    )
+
+
+def _is_bivariate_layer(layer_name: str) -> bool:
+    return "report_bivariate_lisa" in layer_name.casefold()
+
+
+def _datacube_columns(package: Path, layer_name: str) -> list[str] | None:
+    """Return only fields needed by the map for final datacube layers."""
+    try:
+        import fiona
+
+        with fiona.open(package, layer=layer_name) as source:
+            available = set(source.schema.get("properties", {}))
+    except (OSError, ValueError, ImportError, LookupError):
+        return None
+
+    return [
+        field for field in available
+        if field in DATACUBE_CORE_FIELDS
+        or field in DATACUBE_KNOWN_VARIABLES
+        or field.casefold().endswith(("_causal", "_context"))
+    ]
+
+
+def _prune_datacube_frame(frame: Any) -> Any:
+    if frame is None:
+        return frame
+    fields = [
+        field for field in frame.columns
+        if field == GEOMETRY_COLUMN
+        or field in DATACUBE_CORE_FIELDS
+        or field in DATACUBE_KNOWN_VARIABLES
+        or str(field).casefold().endswith(("_causal", "_context"))
+    ]
+    return frame.loc[:, fields]
+
+
 def load_layer(package: Path, layer_name: str) -> Any:
     if gpd is None:
         return None
     try:
+        columns = (
+            _datacube_columns(package, layer_name)
+            if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name)
+            else None
+        )
+        if columns is not None:
+            return _prune_datacube_frame(
+                gpd.read_file(package, layer=layer_name, columns=columns)
+            )
         return gpd.read_file(package, layer=layer_name)
-    except (OSError, ValueError, ImportError):
+    except (OSError, TypeError, ValueError, ImportError):
         try:
-            return gpd.read_file(package, layer=layer_name, ignore_geometry=True)
+            frame = gpd.read_file(package, layer=layer_name)
+            return (
+                _prune_datacube_frame(frame)
+                if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name)
+                else frame
+            )
         except (OSError, TypeError, ValueError, ImportError):
             return None
 
@@ -72,26 +148,72 @@ def _prioritize_features(
     frame: Any,
     variable: str | None,
     limit: int = MAX_RENDER_FEATURES,
+    is_datacube: bool = False,
+    is_bivariate: bool = False,
 ) -> Any:
-    """Keep target-bearing features before empty/background features when sampling."""
+    """Enforce strict filtering to drop zeros/nulls for datacubes and 'Not Significant' for bivariate layers."""
+    if variable and variable in frame.columns:
+        s = frame[variable]
+        numeric_values = pd.to_numeric(s, errors="coerce")
+        str_values = s.astype("string").str.strip().str.lower()
+
+        if is_datacube:
+            valid_mask = numeric_values.notna() & (numeric_values != 0) & (~numeric_values.between(-1e-9, 1e-9))
+            invalid_str_tokens = {"", "0", "0.0", "0.00", "nan", "none", "null", "undefined", "na"}
+            valid_mask |= numeric_values.isna() & ~str_values.isin(invalid_str_tokens)
+            
+            filtered = frame.loc[valid_mask].copy()
+            if len(filtered) <= limit:
+                return filtered
+            limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
+            indices = [
+                round(position)
+                for position in pd.Series(range(limit)).mul(
+                    (len(filtered) - 1) / max(1, limit - 1)
+                )
+            ]
+            return filtered.iloc[indices].copy()
+
+        if is_bivariate:
+            invalid_bivariate_tokens = {"", "not significant", "nan", "none", "null", "undefined", "na"}
+            valid_mask = ~str_values.isin(invalid_bivariate_tokens) & str_values.notna()
+            
+            filtered = frame.loc[valid_mask].copy()
+            if len(filtered) <= limit:
+                return filtered
+            limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
+            indices = [
+                round(position)
+                for position in pd.Series(range(limit)).mul(
+                    (len(filtered) - 1) / max(1, limit - 1)
+                )
+            ]
+            return filtered.iloc[indices].copy()
+
+    # Standard fallback logic for non-datacube/non-bivariate layers
+    if variable and variable in frame.columns:
+        values = frame[variable]
+        numeric_values = pd.to_numeric(values, errors="coerce")
+        is_numeric_valid = numeric_values.notna() & (numeric_values != 0) & (~numeric_values.between(-1e-9, 1e-9))
+        str_values = values.astype("string").str.strip().str.lower()
+        is_str_valid = (
+            str_values.notna()
+            & str_values.ne("")
+            & str_values.ne("0")
+            & str_values.ne("0.0")
+            & str_values.ne("nan")
+            & str_values.ne("none")
+            & str_values.ne("null")
+        )
+        target_rows = (numeric_values.notna() & is_numeric_valid) | (numeric_values.isna() & is_str_valid)
+    else:
+        target_rows = pd.Series(False, index=frame.index)
+
+    target_positions = frame.index[target_rows]
     if len(frame) <= MAX_RENDER_FEATURES:
         return frame
 
     limit = max(1, min(int(limit), MAX_RENDER_FEATURES))
-    if variable and variable in frame.columns:
-        values = frame[variable]
-        numeric_values = pd.to_numeric(values, errors="coerce")
-        target_rows = numeric_values.notna() & numeric_values.ne(0)
-        categorical_values = values.astype("string").str.strip()
-        target_rows |= (
-            numeric_values.isna()
-            & categorical_values.notna()
-            & categorical_values.ne("")
-            & categorical_values.ne("0")
-        )
-    else:
-        target_rows = pd.Series(False, index=frame.index)
-    target_positions = frame.index[target_rows]
     background_positions = frame.index[~target_rows]
     target_count = min(len(target_positions), limit)
     target_indices = [
@@ -208,6 +330,7 @@ def _map_fields(
         variable,
         "total_failure_chains",
         "unique_technical_triggers",
+        "patent_count",
         "all_unique_attributes",
         "all_unique_failures",
     ]
@@ -255,7 +378,7 @@ def _classified_style(
 ):
     values = pd.to_numeric(frame[variable], errors="coerce")
     finite = values.dropna()
-    if finite.empty:
+    if finite.empty or classification == "Unique values":
         categories = frame[variable].dropna().astype(str).unique().tolist()
         category_palette = _palette_scale(palette_name, 0, max(1, len(categories) - 1))
         category_colors = {
@@ -398,7 +521,11 @@ def build_map(
         layer_classification = layer_setting(classification, name, "Quantiles") or "Quantiles"
         layer_palette = layer_setting(palette_name, name, "viridis") or "viridis"
         layer_bin_count = layer_setting(bin_count, name, 5) or 5
-        current = _prioritize_features(current, layer_variable, render_limit)
+
+        is_dc = _is_datacube_layer(name)
+        is_bv = _is_bivariate_layer(name)
+        current = _prioritize_features(current, layer_variable, render_limit, is_datacube=is_dc, is_bivariate=is_bv)
+
         joined_fields = {
             candidate
             for source_field in joined_source_fields.union(
