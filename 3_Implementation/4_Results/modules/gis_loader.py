@@ -28,8 +28,6 @@ DATACUBE_CORE_FIELDS = {
     "total_failure_chains",
     "unique_technical_triggers",
     "patent_count",
-    "all_unique_attributes",
-    "all_unique_failures",
     "variable1",
     "variable2",
     "technical_term",
@@ -109,23 +107,33 @@ def _datacube_columns(package: Path, layer_name: str) -> list[str] | None:
     except (OSError, ValueError, ImportError, LookupError):
         return None
 
+    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     return [
         field for field in available
-        if field in DATACUBE_CORE_FIELDS
-        or field in DATACUBE_KNOWN_VARIABLES
-        or field.casefold().endswith(("_causal", "_context"))
+        if field.casefold() not in excluded_fields
+        and (
+            field in DATACUBE_CORE_FIELDS
+            or field in DATACUBE_KNOWN_VARIABLES
+            or field.casefold().endswith(("_causal", "_context"))
+        )
     ]
 
 
 def _prune_datacube_frame(frame: Any) -> Any:
     if frame is None:
         return frame
+    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     fields = [
         field for field in frame.columns
         if field == GEOMETRY_COLUMN
-        or field in DATACUBE_CORE_FIELDS
-        or field in DATACUBE_KNOWN_VARIABLES
-        or str(field).casefold().endswith(("_causal", "_context"))
+        or (
+            field.casefold() not in excluded_fields
+            and (
+                field in DATACUBE_CORE_FIELDS
+                or field in DATACUBE_KNOWN_VARIABLES
+                or str(field).casefold().endswith(("_causal", "_context"))
+            )
+        )
     ]
     return frame.loc[:, fields]
 
@@ -345,12 +353,13 @@ def select_variable(frame: Any) -> str | None:
 
 def discover_variables(*frames: Any) -> list[str]:
     """Return selectable data fields from spatial layers and joined tables."""
+    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     available = {
         str(field)
         for frame in frames
         if frame is not None
         for field in getattr(frame, "columns", [])
-        if field not in {GEOMETRY_COLUMN, JOIN_KEY}
+        if field not in {GEOMETRY_COLUMN, JOIN_KEY} and str(field).casefold() not in excluded_fields
     }
     if len(frames) > 1 and frames[-1] is not None:
         base_fields = {
@@ -362,7 +371,7 @@ def discover_variables(*frames: Any) -> list[str]:
         join_fields = {
             str(field)
             for field in getattr(frames[-1], "columns", [])
-            if field not in {GEOMETRY_COLUMN, JOIN_KEY}
+            if field not in {GEOMETRY_COLUMN, JOIN_KEY} and str(field).casefold() not in excluded_fields
         }
         available.update(f"{field}_causal" for field in join_fields.intersection(base_fields))
     return [
@@ -408,22 +417,22 @@ def _map_fields(
         "total_failure_chains",
         "unique_technical_triggers",
         "patent_count",
-        "all_unique_attributes",
-        "all_unique_failures",
         "variable1",
         "variable2",
         "technical_term",
         "attribute_term",
         "failure_term",
     ]
+    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     fields: list[str] = []
     for field in core_fields:
-        if field and field in available and field not in fields:
+        if field and field in available and field not in fields and field.casefold() not in excluded_fields:
             fields.append(field)
     joined_fields = joined_fields or set()
     fields.extend(
         field for field in available
         if field not in fields
+        and field.casefold() not in excluded_fields
         and (
             field in joined_fields
             or str(field).casefold().endswith(("_causal", "_context"))

@@ -94,6 +94,18 @@ def cached_pdf(path: str) -> bytes:
     return Path(path).read_bytes()
 
 
+@st.cache_data(ttl="15m", max_entries=4)
+def cached_pdf_pages(path: str) -> list[bytes]:
+    import fitz  # PyMuPDF
+    doc = fitz.open(path)
+    pages = []
+    for page_idx in range(len(doc)):
+        page = doc.load_page(page_idx)
+        pix = page.get_pixmap(dpi=150)
+        pages.append(pix.tobytes("png"))
+    return pages
+
+
 @st.cache_data(ttl="15m", max_entries=16)
 def image_data_uri(path_string: str) -> str:
     path = Path(path_string)
@@ -628,16 +640,12 @@ def render_info_tab() -> None:
                 key="download_thesis_pdf",
             )
             
-            import fitz  # PyMuPDF
-            doc = fitz.open(str(pdf_path))
-            
-            st.caption(f"Displaying {len(doc)} pages:")
-            for page_idx in range(len(doc)):
-                page = doc.load_page(page_idx)
-                pix = page.get_pixmap(dpi=150)
+            pages = cached_pdf_pages(str(pdf_path))
+            st.caption(f"Displaying {len(pages)} pages:")
+            for page_idx, page_bytes in enumerate(pages):
                 st.image(
-                    pix.tobytes("png"),
-                    caption=f"Page {page_idx + 1} of {len(doc)}",
+                    page_bytes,
+                    caption=f"Page {page_idx + 1} of {len(pages)}",
                     use_container_width=True,
                 )
                 st.markdown("---")
@@ -725,7 +733,11 @@ def main() -> None:
     initialize_state()
     apply_theme()
     preload_plot_assets(str(PLOTS))
-    
+    pdf_path = THESIS / "report.pdf"
+    if pdf_path.exists():
+        cached_pdf(str(pdf_path))
+        cached_pdf_pages(str(pdf_path))
+
     active_tab = st.radio(
         "Navigation",
         ["landpage", "Map", "Insights", "Info"],
