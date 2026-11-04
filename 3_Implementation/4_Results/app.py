@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -52,6 +53,7 @@ def initialize_state() -> None:
     st.session_state.setdefault("plot_order", [])
     st.session_state.setdefault("selected_plot", None)
     st.session_state.setdefault("active_page", "landpage")
+    st.session_state.setdefault("thesis_page_select", 1)
 
 
 @st.cache_data(ttl="15m", max_entries=8)
@@ -89,12 +91,12 @@ def preload_plot_assets(folder: str) -> None:
         load_plot_asset(str(path))
 
 
-@st.cache_data(ttl="15m", max_entries=4)
+@st.cache_data(ttl="15m", max_entries=4, show_spinner=False)
 def cached_pdf(path: str) -> bytes:
     return Path(path).read_bytes()
 
 
-@st.cache_data(ttl="15m", max_entries=4)
+@st.cache_data(ttl="15m", max_entries=4, show_spinner=False)
 def cached_pdf_pages(path: str) -> list[bytes]:
     import fitz  # PyMuPDF
     doc = fitz.open(path)
@@ -140,6 +142,10 @@ def apply_theme() -> None:
             background_css = "background: linear-gradient(135deg, #081225 0%, #142b48 100%);"
     else:
         background_css = "background: linear-gradient(135deg, #081225 0%, #142b48 100%);"
+    
+    background_uris = [image_data_uri(str(path)) for path in backgrounds]
+    uris_js = json.dumps(background_uris)
+
     st.markdown(
         f"""
         <style>
@@ -152,6 +158,8 @@ def apply_theme() -> None:
             background: var(--glass); border: 1px solid var(--line); border-radius: 18px;
             padding: 1.25rem 1.5rem; box-shadow: 0 12px 40px rgba(0,0,0,.2);
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); margin-bottom: 1rem;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }}
         .plot-media-frame, .plot-media-frame img {{
             width: 100% !important; max-width: 100% !important; height: auto !important;
@@ -159,7 +167,121 @@ def apply_theme() -> None:
         }}
         .eyebrow {{ color: #7dd3fc; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }}
         h1, h2, h3 {{ letter-spacing: -.02em; }}
+
+        /* Structural full 100% width navbar reset */
+        div[data-testid="stElementContainer"]:has(div[data-testid="stRadio"]) {{
+            width: 100% !important;
+            max-width: 100% !important;
+        }}
+        [data-testid="stRadio"] {{
+            width: 100% !important;
+            max-width: 100% !important;
+        }}
+        [data-testid="stRadio"] > div[role="radiogroup"] {{
+            display: flex !important;
+            flex-direction: row !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 0.4rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0,0,0,.3);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box !important;
+        }}
+        [data-testid="stRadio"] > div[role="radiogroup"] > label {{
+            flex: 1 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background: transparent !important;
+            border-radius: 14px !important;
+            padding: 0.7rem 1rem !important;
+            margin: 0 !important;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }}
+        [data-testid="stRadio"] > div[role="radiogroup"] > label:not(:last-child)::after {{
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(180, 218, 255, 0.4), transparent);
+        }}
+        [data-testid="stRadio"] > div[role="radiogroup"] > label:hover {{
+            background: rgba(125, 211, 252, 0.15) !important;
+        }}
+        [data-testid="stRadio"] input[type="radio"] {{
+            display: none !important;
+        }}
+        [data-testid="stRadio"] div[data-testid="stMarkdownContainer"] p {{
+            font-weight: 600 !important;
+            font-size: 0.98rem !important;
+            letter-spacing: 0.04em !important;
+            color: #edf6ff !important;
+            margin: 0 !important;
+            text-transform: capitalize;
+        }}
+
+        /* Navbar background cycling animation layers */
+        @keyframes nav-bg-cycle {{
+            0%, 3% {{ opacity: 0; }}
+            15%, 25% {{ opacity: 1; }}
+            35%, 100% {{ opacity: 0; }}
+        }}
+        .nav-bg-layer {{
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+        }}
         </style>
+        <script>
+        (function() {{
+            const uris = {uris_js};
+            if (uris && uris.length > 0) {{
+                const interval = setInterval(() => {{
+                    const group = document.querySelector('[data-testid="stRadio"] > div[role="radiogroup"]');
+                    if (group) {{
+                        clearInterval(interval);
+                        group.style.width = '100%';
+                        group.style.maxWidth = '100%';
+                        group.style.boxSizing = 'border-box';
+                        if (!group.querySelector('.nav-bg-layer')) {{
+                            group.style.position = 'relative';
+                            group.style.overflow = 'hidden';
+                            group.style.zIndex = '1';
+                            uris.forEach((uri, index) => {{
+                                const div = document.createElement('div');
+                                div.className = 'nav-bg-layer';
+                                div.style.position = 'absolute';
+                                div.style.inset = '0';
+                                div.style.zIndex = '-2';
+                                div.style.backgroundSize = 'cover';
+                                div.style.backgroundPosition = 'center';
+                                div.style.backgroundImage = 'linear-gradient(rgba(7, 14, 30, .75), rgba(7, 14, 30, .90)), url(' + uri + ')';
+                                div.style.opacity = '0';
+                                div.style.animation = 'nav-bg-cycle ' + (uris.length * 10) + 's infinite';
+                                div.style.animationDelay = (index * 10) + 's';
+                                group.insertBefore(div, group.firstChild);
+                            }});
+                        }}
+                    }}
+                }}, 50);
+            }}
+        }})();
+        </script>
         """,
         unsafe_allow_html=True,
     )
@@ -404,7 +526,6 @@ def render_map_tab() -> None:
     st.subheader("Layer styling")
     st.caption("Choose mapped data and styling independently for each active spatial layer.")
     
-    # State tracking for dynamic expander bulk toggling
     if "all_styles_expanded" not in st.session_state:
         st.session_state["all_styles_expanded"] = True
     if "style_expand_version" not in st.session_state:
@@ -414,7 +535,6 @@ def render_map_tab() -> None:
     toggle_label = "Collapse all styles" if is_currently_expanded else "Open all styles"
     toggle_icon = ":material/unfold_less:" if is_currently_expanded else ":material/unfold_more:"
 
-    # Native toggle button (triggers versioned key update)
     if st.button(toggle_label, icon=toggle_icon, use_container_width=True, key="btn_toggle_all_styles"):
         st.session_state["all_styles_expanded"] = not is_currently_expanded
         st.session_state["style_expand_version"] += 1
@@ -520,6 +640,7 @@ def render_map_tab() -> None:
             render_limit=sampled_features_limit, show_basemap=show_basemap,
             basemap_opacity=basemap_opacity,
         )
+        html = f"<!-- tab-instance: Map -->\n" + html
         st.caption("Interactive map built for showing the risk prone areas. Use the layer manager to toggle layers and adjust their order. Other settings are available in the sidebar.")
         components.html(html, height=650, scrolling=True)
     except (ImportError, OSError, ValueError, KeyError) as error:
@@ -641,14 +762,41 @@ def render_info_tab() -> None:
             )
             
             pages = cached_pdf_pages(str(pdf_path))
-            st.caption(f"Displaying {len(pages)} pages:")
-            for page_idx, page_bytes in enumerate(pages):
+            st.caption(f"Document reader · {len(pages)} pages total:")
+            
+            total_p = len(pages)
+            st.session_state.setdefault("thesis_page_select", 1)
+
+            # Define callbacks to update state cleanly before widget instantiation
+            def go_prev():
+                if st.session_state["thesis_page_select"] > 1:
+                    st.session_state["thesis_page_select"] -= 1
+
+            def go_next():
+                if st.session_state["thesis_page_select"] < total_p:
+                    st.session_state["thesis_page_select"] += 1
+            
+            col_prev, col_sel, col_next = st.columns([1, 4, 1])
+            with col_prev:
+                st.button("◀ Previous", use_container_width=True, disabled=(st.session_state["thesis_page_select"] <= 1), on_click=go_prev, key="btn_pdf_prev")
+            with col_sel:
+                st.selectbox(
+                    "Select page",
+                    options=list(range(1, total_p + 1)),
+                    format_func=lambda p: f"Page {p} of {total_p}",
+                    key="thesis_page_select",
+                    label_visibility="collapsed",
+                )
+            with col_next:
+                st.button("Next ▶", use_container_width=True, disabled=(st.session_state["thesis_page_select"] >= total_p), on_click=go_next, key="btn_pdf_next")
+            
+            if pages:
+                current_page_idx = st.session_state["thesis_page_select"] - 1
                 st.image(
-                    page_bytes,
-                    caption=f"Page {page_idx + 1} of {len(pages)}",
+                    pages[current_page_idx],
+                    caption=f"Page {st.session_state['thesis_page_select']} of {total_p}",
                     use_container_width=True,
                 )
-                st.markdown("---")
                 
         except Exception as error:
             st.error(f"Could not render the compiled thesis PDF: {error}", icon=":material/error:")
@@ -733,6 +881,8 @@ def main() -> None:
     initialize_state()
     apply_theme()
     preload_plot_assets(str(PLOTS))
+    
+    # Silent background preload & cache of PDF
     pdf_path = THESIS / "report.pdf"
     if pdf_path.exists():
         cached_pdf(str(pdf_path))

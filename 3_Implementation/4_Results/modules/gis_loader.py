@@ -11,7 +11,7 @@ import streamlit as st
 
 try:
     import geopandas as gpd
-except ImportError:  # The Info and Insights tabs remain usable without GIS extras.
+except ImportError:
     gpd = None  # type: ignore[assignment]
 
 GEOMETRY_COLUMN = "geometry"
@@ -98,7 +98,6 @@ def _is_bivariate_layer(layer_name: str) -> bool:
 
 
 def _datacube_columns(package: Path, layer_name: str) -> list[str] | None:
-    """Return only fields needed by the map for final datacube layers."""
     try:
         import fiona
 
@@ -139,7 +138,6 @@ def _prune_datacube_frame(frame: Any) -> Any:
 
 
 def _read_causal_table(package: Path, table_name: str) -> pd.DataFrame | None:
-    """Read a causal GeoPackage table without exposing it as a map layer."""
     try:
         with sqlite3.connect(package) as connection:
             return pd.read_sql_query(f'SELECT * FROM "{table_name}"', connection)
@@ -236,7 +234,6 @@ def _prioritize_features(
     is_datacube: bool = False,
     is_bivariate: bool = False,
 ) -> Any:
-    """Enforce strict filtering to drop zeros/nulls for datacubes and 'Not Significant' for bivariate layers."""
     if variable and variable in frame.columns:
         s = frame[variable]
         numeric_values = pd.to_numeric(s, errors="coerce")
@@ -275,7 +272,6 @@ def _prioritize_features(
             ]
             return filtered.iloc[indices].copy()
 
-    # Standard fallback logic for non-datacube/non-bivariate layers
     if variable and variable in frame.columns:
         values = frame[variable]
         numeric_values = pd.to_numeric(values, errors="coerce")
@@ -352,7 +348,6 @@ def select_variable(frame: Any) -> str | None:
 
 
 def discover_variables(*frames: Any) -> list[str]:
-    """Return selectable data fields from spatial layers and joined tables."""
     excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     available = {
         str(field)
@@ -381,7 +376,6 @@ def discover_variables(*frames: Any) -> list[str]:
 
 
 def join_on_index(frame: Any, join_table: pd.DataFrame | None) -> Any:
-    """Merge a tabular causal source into a GeoDataFrame using the explicit index field."""
     if frame is None or join_table is None or JOIN_KEY not in frame.columns or JOIN_KEY not in join_table.columns:
         return frame
     right = join_table.drop(columns=[GEOMETRY_COLUMN], errors="ignore").drop_duplicates(JOIN_KEY)
@@ -409,7 +403,6 @@ def _map_fields(
     variable: str | None,
     joined_fields: set[str] | None = None,
 ) -> list[str]:
-    """Expose the core attributes and fields originating from joined tables."""
     available = [field for field in frame.columns if field != GEOMETRY_COLUMN]
     core_fields = [
         JOIN_KEY,
@@ -553,7 +546,6 @@ def build_map(
     show_basemap: bool = True,
     basemap_opacity: float = 1.0,
 ) -> str:
-    """Return a self-contained Folium map with joined feature tooltips."""
     import folium
 
     if not _layers:
