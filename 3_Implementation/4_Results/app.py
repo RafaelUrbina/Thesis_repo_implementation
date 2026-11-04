@@ -28,12 +28,13 @@ from modules.gis_loader import (
     preferred_layer,
     select_variable,
 )
-from modules.plot_manager import discover_plots, render_plot
+from modules.plot_manager import discover_plots, load_plot_asset, render_plot
 
 ROOT = Path(__file__).resolve().parent
 ASSETS = ROOT / "assets"
 MAP_CONTENTS = ROOT / "map_contents"
 PLOTS = ROOT / "insights_plots"
+CAROUSEL = ROOT / "carousel"
 THESIS = ROOT / "thesis"
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".svg"}
 
@@ -41,7 +42,7 @@ st.set_page_config(
     page_title="From Patents to Places",
     page_icon=":material/water_drop:",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 
@@ -50,7 +51,7 @@ def initialize_state() -> None:
     st.session_state.setdefault("map_layer_order", [])
     st.session_state.setdefault("plot_order", [])
     st.session_state.setdefault("selected_plot", None)
-    st.session_state.setdefault("active_page", "Map")
+    st.session_state.setdefault("active_page", "landpage")
 
 
 @st.cache_data(ttl="15m", max_entries=8)
@@ -81,6 +82,11 @@ def cached_tabular_files(folder: str) -> list[Path]:
 @st.cache_data(ttl="15m", max_entries=8)
 def cached_plot_paths(folder: str) -> list[Path]:
     return discover_plots(Path(folder))
+
+
+def preload_plot_assets(folder: str) -> None:
+    for path in cached_plot_paths(folder):
+        load_plot_asset(str(path))
 
 
 @st.cache_data(ttl="15m", max_entries=4)
@@ -226,9 +232,18 @@ def render_layer_manager(layer_names: list[str], default_layers: list[str]) -> l
         return []
 
     cube_layers = [name for name in layer_names if "final_data_cube" in name.lower()]
-    other_layer_names = [name for name in layer_names if name not in cube_layers]
+    excluded_layers = {
+        "h3_triplet_summary",
+        "h3_summary_table",
+        "h3_extreme_pairs",
+        "traceable_causal_chains",
+    }
+    other_layer_names = [
+        name for name in layer_names
+        if name not in cube_layers and name.casefold() not in excluded_layers
+    ]
 
-    with st.expander("Layer Manager & Stacking Order", expanded=False):
+    with st.expander("Layer Manager & Stacking Order", expanded=True):
         if cube_layers:
             st.markdown("**Fixed Top Layer:**")
             for cl in cube_layers:
@@ -300,7 +315,6 @@ def render_layer_manager(layer_names: list[str], default_layers: list[str]) -> l
 def render_map_tab() -> None:
     st.subheader("Geospatial intelligence")
     packages = cached_geo_packages(str(MAP_CONTENTS))
-    tables = cached_tabular_files(str(MAP_CONTENTS))
     if not packages:
         st.error("No GeoPackage was found in map_contents.", icon=":material/error:")
         return
@@ -311,8 +325,17 @@ def render_map_tab() -> None:
         layer_names = cached_layer_names(str(package))
         default_layers = [
             name for name in layer_names
-            if any(token in name.lower() for token in ("final_data_cube", "triplet", "extreme_pairs"))
-        ] or ([preferred_layer(layer_names)] if preferred_layer(layer_names) else [])
+            if "final_data_cube" in name.lower()
+        ] or [
+            preferred
+            for preferred in [preferred_layer(layer_names)]
+            if preferred and preferred.casefold() not in {
+                "h3_triplet_summary",
+                "h3_summary_table",
+                "h3_extreme_pairs",
+                "traceable_causal_chains",
+            }
+        ]
         ordered = render_layer_manager(layer_names, default_layers)
         loaded_candidates = {
             name: cached_layer(str(package), name)
@@ -344,7 +367,7 @@ def render_map_tab() -> None:
         )
         show_basemap = st.checkbox("Show OpenStreetMap basemap", value=True, key="show_basemap")
         basemap_opacity = st.slider(
-            "Basemap opacity", min_value=0.0, max_value=1.0, value=0.50,
+            "Basemap opacity", min_value=0.0, max_value=1.0, value=0.40,
             step=0.05, key="basemap_opacity",
         )
 
@@ -358,31 +381,7 @@ def render_map_tab() -> None:
         st.error("The selected GeoPackage layers could not be loaded.", icon=":material/error:")
         return
 
-    table_by_name = {
-        str(path.relative_to(MAP_CONTENTS)): path
-        for path in tables
-    }
-    causal_layer_names = [
-        name for name in cached_layer_names(str(package))
-        if any(token in name.lower() for token in (
-            "h3_triplet_summary",
-            "h3_extreme_pairs",
-            "traceable_causal_chains",
-        ))
-    ]
-    table_options = list(dict.fromkeys([*table_by_name, *causal_layer_names]))
-    join_name = st.selectbox(
-        "Additional causal table",
-        ["None", *table_options],
-        key="causal_table",
-        help="The selected table is merged with the spatial layer on the `index` column.",
-    )
-    if join_name == "None":
-        join_table = None
-    elif join_name in table_by_name:
-        join_table = cached_join_table(str(table_by_name[join_name]))
-    else:
-        join_table = cached_layer(str(package), join_name)
+    join_table = None
 
     variable_by_layer: dict[str, str | None] = {}
     classification_by_layer: dict[str, str] = {}
@@ -551,16 +550,19 @@ def render_insights_tab() -> None:
     if not selected:
         st.info("Select one or more plots from the sidebar.", icon=":material/insert_chart:")
         return
-    def get_plot_description(stem: str) -> str:
-        normalized = stem.lower()
-        if "patent" in normalized:
-            return "Diagram showing causal chains derived from patent data, highlighting the relationships between technological innovations and water-risk indicators(top chains shown, Only informative tone and combined informative and pasive combined chains shwon.)"
-        elif "cluster" in normalized or "lisa" in normalized:
-            return "Displays spatial autocorrelation clusters or bivariate relationship hotspots."
-        elif "water" in normalized or "risk" in normalized:
-            return "Highlights vulnerability metrics and water-risk index distributions across evaluated regions."
-        else:
-            return "Analytical chart illustrating key statistical correlations and findings from the study."
+    plot_descriptions = {
+        "filtered_forward_patent_edge_cases_pos_sankey": "Sankey diagram of forward patent edge cases, showing how technical terms connect to attributes and failure concepts.",
+        "filtered_patent_edge_cases_pos_sankey": "Sankey diagram of filtered patent edge cases, highlighting the strongest observed causal term transitions.",
+        "incomplete_sankey_diagram": "Sankey diagram of incomplete causal links that remain unresolved in the patent-derived network.",
+        "heatmap_top20_attr_vs_fail": "Clustered NPMI heatmap showing co-occurrence strength between the top attribute and failure terms.",
+        "heatmap_top20_tech_vs_attr": "Clustered NPMI heatmap showing co-occurrence strength between technical terms and attribute terms.",
+        "report_bivariate_lisa_census_pop_vs_inflow_total": "Bivariate LISA map comparing census population with total inflow and identifying significant spatial associations.",
+        "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p": "Bivariate LISA map comparing average monthly rainfall with the 95th-percentile wind speed.",
+        "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean": "Bivariate LISA map comparing temperature thermal range with mean elevation.",
+        "top_attribute_terms": "Horizontal bar chart ranking the twenty most frequent attribute or variable terms.",
+        "top_failure_terms": "Horizontal bar chart ranking the twenty most frequent failure terms.",
+        "top_technical_terms": "Horizontal bar chart ranking the twenty most frequent technical terms.",
+    }
 
     columns = 1 if len(selected) == 1 else 2 if len(selected) >= 4 else len(selected)
     for start in range(0, len(selected), columns):
@@ -570,7 +572,11 @@ def render_insights_tab() -> None:
                 with st.container(border=True):
                     st.markdown(f"**{plot.stem.replace('_', ' ').title()}**")
                     render_plot(plot)
-                    st.markdown(f"<p style='font-size:0.85rem; color:#94a3b8; margin-top:0.5rem;'>{get_plot_description(plot.stem)}</p>", unsafe_allow_html=True)
+                    description = plot_descriptions.get(
+                        plot.stem,
+                        "Analytical visualization summarizing a distinct result from the thesis study.",
+                    )
+                    st.markdown(f"<p style='font-size:0.85rem; color:#94a3b8; margin-top:0.5rem;'>{description}</p>", unsafe_allow_html=True)
                     st.button(
                         "Open full size",
                         key=f"open_plot_{plot.name}",
@@ -588,10 +594,10 @@ def render_plot_dialog(path_string: str) -> None:
 
 def render_info_tab() -> None:
     st.subheader("Project information")
-    logos = [
+    logos = list(reversed([
         path for path in asset_images(ASSETS / "images" / "info")
         if "qgis" not in path.name.casefold()
-    ]
+    ]))
     if logos:
         columns = st.columns([1, 2, 2, 1])
         for column, image in zip(columns[1:3], logos[:2]):
@@ -642,22 +648,99 @@ def render_info_tab() -> None:
         st.info("The compiled thesis PDF is not available yet.", icon=":material/info:")
 
 
+def render_landpage() -> None:
+    backgrounds = asset_images(ASSETS / "backgrounds")
+    carousel_images = asset_images(CAROUSEL)
+    background_uris = [image_data_uri(str(path)) for path in backgrounds]
+    carousel_uris = [image_data_uri(str(path)) for path in carousel_images]
+    background_layers = "".join(
+        f'<div class="landpage-bg" style="background-image:url({uri})"></div>'
+        for uri in background_uris
+    )
+    carousel_layers = "".join(
+        f'<img class="landpage-slide" src="{uri}" alt="Dashboard overview image">'
+        for uri in carousel_uris
+    )
+    st.markdown(
+        f"""
+        <style>
+        .landpage {{
+            position: relative; overflow: hidden; border-radius: 24px; padding: 5rem 8%;
+            min-height: 760px; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; text-align: center; isolation: isolate;
+        }}
+        .landpage-bg {{
+            position: absolute; inset: 0; z-index: -2; background-size: cover;
+            background-position: center; opacity: 0; animation: landpage-bg-cycle 60s infinite;
+        }}
+        .landpage-bg:nth-child(1) {{ animation-delay: 0s; }}
+        .landpage-bg:nth-child(2) {{ animation-delay: 10s; }}
+        .landpage-bg:nth-child(3) {{ animation-delay: 20s; }}
+        .landpage-bg:nth-child(4) {{ animation-delay: 30s; }}
+        .landpage-bg:nth-child(5) {{ animation-delay: 40s; }}
+        .landpage-bg:nth-child(6) {{ animation-delay: 50s; }}
+        .landpage::after {{
+            content: ""; position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(135deg, rgba(5,14,29,.82), rgba(7,14,30,.55));
+        }}
+        .landpage h1 {{ font-size: clamp(2.5rem, 6vw, 5rem); margin: 0 0 1.25rem; }}
+        .landpage p {{ max-width: 900px; font-size: 1.15rem; line-height: 1.7; }}
+        .landpage-carousel {{
+            width: min(100%, 980px); height: 330px; margin-top: 2rem; position: relative;
+            overflow: hidden; border-radius: 18px; border: 1px solid rgba(180,218,255,.25);
+            box-shadow: 0 18px 50px rgba(0,0,0,.35);
+        }}
+        .landpage-slide {{
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            opacity: 0; animation: landpage-slide-cycle 30s infinite;
+        }}
+        .landpage-slide:nth-child(1) {{ animation-delay: 0s; }}
+        .landpage-slide:nth-child(2) {{ animation-delay: 10s; }}
+        .landpage-slide:nth-child(3) {{ animation-delay: 20s; }}
+        @keyframes landpage-bg-cycle {{
+            0%, 3% {{ opacity: 0; }} 15%, 25% {{ opacity: 1; }} 35%, 100% {{ opacity: 0; }}
+        }}
+        @keyframes landpage-slide-cycle {{
+            0%, 3% {{ opacity: 0; }} 15%, 25% {{ opacity: 1; }} 35%, 100% {{ opacity: 0; }}
+        }}
+        </style>
+        <section class="landpage">
+          {background_layers}
+          <h1>From Patents to Places</h1>
+          <p>
+            This interactive dashboard connects patent-derived causal knowledge with
+            H3-indexed spatial indicators to explore how technical systems, environmental
+            conditions, and water-risk factors relate across the study area. Use the map
+            to inspect spatial patterns, the insights tab to examine analytical plots, and
+            the project information tab to access the study context and compiled thesis.
+          </p>
+          <div class="landpage-carousel">{carousel_layers}</div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def main() -> None:
     initialize_state()
     apply_theme()
-    render_header()
+    preload_plot_assets(str(PLOTS))
     
     active_tab = st.radio(
         "Navigation",
-        ["Map", "Insights", "Info"],
+        ["landpage", "Map", "Insights", "Info"],
         horizontal=True,
         label_visibility="collapsed",
         key="active_page",
     )
+    if active_tab != "landpage":
+        render_header()
     
     st.markdown("---")
 
-    if active_tab == "Map":
+    if active_tab == "landpage":
+        render_landpage()
+    elif active_tab == "Map":
         render_map_tab()
     elif active_tab == "Insights":
         render_insights_tab()

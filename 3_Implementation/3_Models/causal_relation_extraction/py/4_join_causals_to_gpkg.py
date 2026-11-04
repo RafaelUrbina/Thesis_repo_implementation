@@ -134,7 +134,7 @@ def build_self_contained_causal_geopackage():
     
     # Layer 3: Unique Triplet per Hexagon table (distinct combinations)
     triplet_summary_df.to_sql('h3_triplet_summary', conn, if_exists='replace', index=False)
-    
+
     # Layer 4: H3 Extreme Variable Pairs table from JSON
     pairs_df.to_sql('h3_extreme_pairs', conn, if_exists='replace', index=False)
     

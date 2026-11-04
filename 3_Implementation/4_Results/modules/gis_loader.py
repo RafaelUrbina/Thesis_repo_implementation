@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import sqlite3
 from pathlib import Path
 from typing import Any
 
@@ -29,6 +30,11 @@ DATACUBE_CORE_FIELDS = {
     "patent_count",
     "all_unique_attributes",
     "all_unique_failures",
+    "variable1",
+    "variable2",
+    "technical_term",
+    "attribute_term",
+    "failure_term",
 }
 DATACUBE_KNOWN_VARIABLES = set(VARIABLES).union(
     {"fertilita", "lcc_classe"}
@@ -80,7 +86,12 @@ def _is_causal_layer(layer_name: str) -> bool:
     normalized = layer_name.casefold()
     return any(
         token in normalized
-        for token in ("h3_triplet_summary", "h3_extreme_pairs", "traceable_causal_chains")
+        for token in (
+            "h3_summary_table",
+            "h3_triplet_summary",
+            "h3_extreme_pairs",
+            "traceable_causal_chains",
+        )
     )
 
 
@@ -119,6 +130,64 @@ def _prune_datacube_frame(frame: Any) -> Any:
     return frame.loc[:, fields]
 
 
+def _read_causal_table(package: Path, table_name: str) -> pd.DataFrame | None:
+    """Read a causal GeoPackage table without exposing it as a map layer."""
+    try:
+        with sqlite3.connect(package) as connection:
+            return pd.read_sql_query(f'SELECT * FROM "{table_name}"', connection)
+    except (OSError, sqlite3.Error, ValueError):
+        return None
+
+
+def _aggregate_causal_values(values: pd.Series) -> str:
+    unique_values = sorted(
+        {
+            str(value).strip()
+            for value in values.dropna()
+            if str(value).strip() and str(value).strip().lower() != "nan"
+        },
+        key=str.casefold,
+    )
+    return ", ".join(unique_values)
+
+
+def _causal_table_for_join(
+    package: Path,
+    table_name: str,
+    *,
+    rename: dict[str, str] | None = None,
+) -> pd.DataFrame | None:
+    table = _read_causal_table(package, table_name)
+    if table is None or JOIN_KEY not in table.columns:
+        return None
+    table = table.rename(columns=rename or {})
+    fields = [
+        field for field in table.columns
+        if field in {JOIN_KEY, "variable1", "variable2", "technical_term", "attribute_term", "failure_term"}
+    ]
+    table = table.loc[:, fields]
+    value_fields = [field for field in fields if field != JOIN_KEY]
+    if not value_fields:
+        return None
+    return table.groupby(JOIN_KEY, as_index=False)[value_fields].agg(_aggregate_causal_values)
+
+
+def _join_causal_tables(package: Path, frame: Any) -> Any:
+    if frame is None or JOIN_KEY not in frame.columns:
+        return frame
+
+    triplets = _causal_table_for_join(package, "h3_triplet_summary")
+    pairs = _causal_table_for_join(
+        package,
+        "h3_extreme_pairs",
+        rename={"variable_1": "variable1", "variable_2": "variable2"},
+    )
+    for causal_table in (triplets, pairs):
+        if causal_table is not None:
+            frame = frame.merge(causal_table, on=JOIN_KEY, how="left")
+    return frame
+
+
 def load_layer(package: Path, layer_name: str) -> Any:
     if gpd is None:
         return None
@@ -129,18 +198,25 @@ def load_layer(package: Path, layer_name: str) -> Any:
             else None
         )
         if columns is not None:
-            return _prune_datacube_frame(
+            frame = _prune_datacube_frame(
                 gpd.read_file(package, layer=layer_name, columns=columns)
             )
-        return gpd.read_file(package, layer=layer_name)
+        else:
+            frame = gpd.read_file(package, layer=layer_name)
+        if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name):
+            frame = _join_causal_tables(package, frame)
+        return frame
     except (OSError, TypeError, ValueError, ImportError):
         try:
             frame = gpd.read_file(package, layer=layer_name)
-            return (
+            frame = (
                 _prune_datacube_frame(frame)
                 if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name)
                 else frame
             )
+            if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name):
+                frame = _join_causal_tables(package, frame)
+            return frame
         except (OSError, TypeError, ValueError, ImportError):
             return None
 
@@ -334,6 +410,11 @@ def _map_fields(
         "patent_count",
         "all_unique_attributes",
         "all_unique_failures",
+        "variable1",
+        "variable2",
+        "technical_term",
+        "attribute_term",
+        "failure_term",
     ]
     fields: list[str] = []
     for field in core_fields:

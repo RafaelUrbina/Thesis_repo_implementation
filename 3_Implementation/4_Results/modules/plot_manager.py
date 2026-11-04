@@ -18,12 +18,20 @@ def discover_plots(folder: Path) -> list[Path]:
     ) if folder.exists() else []
 
 
+@st.cache_data(ttl="15m", max_entries=32)
+def load_plot_asset(path_string: str) -> bytes | str:
+    path = Path(path_string)
+    if path.suffix.lower() in {".html", ".htm"}:
+        return path.read_text(encoding="utf-8")
+    return path.read_bytes()
+
+
 def render_plot(path: Path, *, height: int = 420) -> None:
     suffix = path.suffix.lower()
     
     if suffix in {".html", ".htm"}:
         try:
-            html_content = path.read_text(encoding="utf-8")
+            html_content = load_plot_asset(str(path))
             
             # CSS Transform approach: Scale the entire HTML view down to fit the iframe height perfectly
             wrapped_html = f"""
@@ -108,7 +116,7 @@ def render_plot(path: Path, *, height: int = 420) -> None:
                 ".svg": "svg+xml",
             }
             mime = mime_map.get(suffix, "png")
-            encoded = base64.b64encode(path.read_bytes()).decode("ascii")
+            encoded = base64.b64encode(load_plot_asset(str(path))).decode("ascii")
             
             image_html = f"""
                 <!DOCTYPE html>
