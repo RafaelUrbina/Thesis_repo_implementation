@@ -19,9 +19,9 @@ from modules.gis_loader import (
     MAX_RENDER_FEATURES,
     PALETTES,
     build_map,
-    discover_variables,
     discover_geo_packages,
     discover_tabular_files,
+    discover_variables,
     list_layers,
     load_join_table,
     load_layer,
@@ -225,30 +225,36 @@ def render_layer_manager(layer_names: list[str], default_layers: list[str]) -> l
         st.session_state["active_map_layers"] = []
         return []
 
-    # Wrap inside a collapsible expander that starts collapsed (expanded=False)
+    cube_layers = [name for name in layer_names if "final_data_cube" in name.lower()]
+    other_layer_names = [name for name in layer_names if name not in cube_layers]
+
     with st.expander("Layer Manager & Stacking Order", expanded=False):
+        if cube_layers:
+            st.markdown("**Fixed Top Layer:**")
+            for cl in cube_layers:
+                st.markdown(f"🔒 `{cl}` (Static Top)")
+            st.markdown("---")
+
         if sort_items is None:
-            selected = st.multiselect("Active map layers", options=layer_names, default=default_layers, key="active_map_layers_multiselect")
-            return selected
+            selected_others = st.multiselect("Active additional layers", options=other_layer_names, default=[l for l in default_layers if l in other_layer_names], key="active_map_layers_multiselect")
+            active_ordered = cube_layers + selected_others
+            st.session_state["active_map_layers"] = active_ordered
+            st.session_state["map_layer_order"] = active_ordered
+            return active_ordered
 
-        # Retrieve current active state or set default
         stored_active = st.session_state.get("active_map_layers", default_layers)
-        stored_order = st.session_state.get("map_layer_order", [])
+        active_others = [name for name in stored_active if name in other_layer_names]
+        for name in default_layers:
+            if name in other_layer_names and name not in active_others:
+                active_others.append(name)
 
-        # Preserve ordering of active layers
-        active_layers = [name for name in stored_order if name in stored_active and name in layer_names]
-        for name in stored_active:
-            if name in layer_names and name not in active_layers:
-                active_layers.append(name)
+        inactive_layers = [name for name in other_layer_names if name not in active_others]
 
-        inactive_layers = [name for name in layer_names if name not in active_layers]
+        st.caption("Drag additional layers between lists to activate/deactivate, and reorder active layers:")
 
-        st.caption("Drag layers between lists to activate/deactivate, and reorder active layers:")
-
-        # Two-column sortable container (Drop zones)
         sorted_containers = sort_items(
             [
-                {"header": "Active Layers (Top to Bottom)", "items": active_layers},
+                {"header": "Active Additional Layers", "items": active_others},
                 {"header": "Inactive Layers", "items": inactive_layers},
             ],
             multi_containers=True,
@@ -279,15 +285,17 @@ def render_layer_manager(layer_names: list[str], default_layers: list[str]) -> l
         )
 
         if sorted_containers and len(sorted_containers) >= 2:
-            active_ordered = [item for item in sorted_containers[0]["items"] if item in layer_names]
+            active_others_ordered = [item for item in sorted_containers[0]["items"] if item in other_layer_names]
         else:
-            active_ordered = active_layers
+            active_others_ordered = active_others
 
-        # Update session state
-        st.session_state["active_map_layers"] = active_ordered
-        st.session_state["map_layer_order"] = active_ordered
+        final_active = cube_layers + active_others_ordered
 
-        return active_ordered
+        st.session_state["active_map_layers"] = final_active
+        st.session_state["map_layer_order"] = final_active
+
+        return final_active
+
 
 def render_map_tab() -> None:
     st.subheader("Geospatial intelligence")
@@ -319,7 +327,14 @@ def render_map_tab() -> None:
             and frame[GEOMETRY_COLUMN].notna().any()
         ]
         opacity_by_layer = {
-            name: st.slider(f"Opacity · {name}", 0.0, 1.0, 0.78, 0.05, key=f"opacity_{name}")
+            name: st.slider(
+                f"Opacity · {name}",
+                0.0,
+                1.0,
+                1.0 if "final_data_cube" in name.lower() else 0.25,
+                0.05,
+                key=f"opacity_{name}",
+            )
             for name in spatial_layer_names
         }
         sampled_features_limit = st.slider(
@@ -377,6 +392,26 @@ def render_map_tab() -> None:
 
     st.subheader("Layer styling")
     st.caption("Choose mapped data and styling independently for each active spatial layer.")
+    
+    # State tracking for dynamic expander bulk toggling
+    if "all_styles_expanded" not in st.session_state:
+        st.session_state["all_styles_expanded"] = True
+    if "style_expand_version" not in st.session_state:
+        st.session_state["style_expand_version"] = 0
+
+    is_currently_expanded = st.session_state["all_styles_expanded"]
+    toggle_label = "Collapse all styles" if is_currently_expanded else "Open all styles"
+    toggle_icon = ":material/unfold_less:" if is_currently_expanded else ":material/unfold_more:"
+
+    # Native toggle button (triggers versioned key update)
+    if st.button(toggle_label, icon=toggle_icon, use_container_width=True, key="btn_toggle_all_styles"):
+        st.session_state["all_styles_expanded"] = not is_currently_expanded
+        st.session_state["style_expand_version"] += 1
+        st.rerun()
+
+    expand_version = st.session_state["style_expand_version"]
+    default_expanded = st.session_state["all_styles_expanded"]
+
     for layer_name, frame in loaded.items():
         if (
             not hasattr(frame, "to_crs")
@@ -425,7 +460,8 @@ def render_map_tab() -> None:
         if forced_variable and forced_variable not in layer_variable_options:
             layer_variable_options.append(forced_variable)
         default_variable_label = default_variable if default_variable in layer_variable_options else "No mapped variable"
-        with st.expander(f"Style: {layer_name}", expanded=True):
+
+        with st.expander(f"Style: {layer_name}", expanded=default_expanded, key=f"style_expander_{layer_name}_{expand_version}"):
             if forced_variable:
                 selected_variable = forced_variable
                 st.caption(f"Mapped variable: `{forced_variable}`")
@@ -469,10 +505,11 @@ def render_map_tab() -> None:
         html = build_map(
             loaded, variable=variable_by_layer, classification=classification_by_layer,
             palette_name=palette_by_layer, bin_count=bin_count_by_layer,
-            opacity_by_layer=opacity_by_layer, join_table=join_table,
+            opacity_by_layer=opacity_by_layer, _join_table=join_table,
             render_limit=sampled_features_limit, show_basemap=show_basemap,
             basemap_opacity=basemap_opacity,
         )
+        st.caption("Interactive map built for showing the risk prone areas. Use the layer manager to toggle layers and adjust their order. Other settings are available in the sidebar.")
         components.html(html, height=650, scrolling=True)
     except (ImportError, OSError, ValueError, KeyError) as error:
         st.error(f"Could not render the map: {error}", icon=":material/error:")
@@ -514,6 +551,17 @@ def render_insights_tab() -> None:
     if not selected:
         st.info("Select one or more plots from the sidebar.", icon=":material/insert_chart:")
         return
+    def get_plot_description(stem: str) -> str:
+        normalized = stem.lower()
+        if "patent" in normalized:
+            return "Diagram showing causal chains derived from patent data, highlighting the relationships between technological innovations and water-risk indicators(top chains shown, Only informative tone and combined informative and pasive combined chains shwon.)"
+        elif "cluster" in normalized or "lisa" in normalized:
+            return "Displays spatial autocorrelation clusters or bivariate relationship hotspots."
+        elif "water" in normalized or "risk" in normalized:
+            return "Highlights vulnerability metrics and water-risk index distributions across evaluated regions."
+        else:
+            return "Analytical chart illustrating key statistical correlations and findings from the study."
+
     columns = 1 if len(selected) == 1 else 2 if len(selected) >= 4 else len(selected)
     for start in range(0, len(selected), columns):
         row = st.columns(columns)
@@ -522,6 +570,7 @@ def render_insights_tab() -> None:
                 with st.container(border=True):
                     st.markdown(f"**{plot.stem.replace('_', ' ').title()}**")
                     render_plot(plot)
+                    st.markdown(f"<p style='font-size:0.85rem; color:#94a3b8; margin-top:0.5rem;'>{get_plot_description(plot.stem)}</p>", unsafe_allow_html=True)
                     st.button(
                         "Open full size",
                         key=f"open_plot_{plot.name}",
@@ -591,6 +640,7 @@ def render_info_tab() -> None:
             st.error(f"Could not render the compiled thesis PDF: {error}", icon=":material/error:")
     else:
         st.info("The compiled thesis PDF is not available yet.", icon=":material/info:")
+
 
 def main() -> None:
     initialize_state()

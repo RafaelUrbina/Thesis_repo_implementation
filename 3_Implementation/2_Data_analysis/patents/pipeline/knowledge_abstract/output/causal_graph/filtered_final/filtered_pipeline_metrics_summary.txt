@@ -1,8 +1,10 @@
 ====================================================
            FILTERED PIPELINE METRICS SUMMARY        
 ====================================================
+Mode: FORWARD ONLY
 Total Raw Rows in Input Dataset: 5280
-Rows Remaining After Filtering: 3023
-Unmodified Chains: 2953
-Conflicting/Modified Chains: 70
+Rows Remaining After Filtering: 1603
+Unmodified Chains: 1603
+Conflicting/Modified Chains: 0
+Backward Conflicting Phrases Exported: 0
 ====================================================

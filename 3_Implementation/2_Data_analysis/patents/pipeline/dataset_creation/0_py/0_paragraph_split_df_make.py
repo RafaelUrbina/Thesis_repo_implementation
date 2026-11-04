@@ -41,11 +41,12 @@ def split_by_paragraphs(text: str) -> list[str]:
     return [p.strip() for p in paragraphs if p.strip()]
 
 
-def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
+def process_patent_files(directory_path: Path | str, include_claims: bool = True) -> tuple[pd.DataFrame, str]:
     directory = Path(directory_path)
     records = []
 
     print(f"Scanning directory: {directory.resolve()}")
+    print(f"Include Claims: {include_claims}")
     json_files = list(directory.glob("*.json"))
     total_files = len(json_files)
 
@@ -70,26 +71,27 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
         pat_id = data.get("pat_id", "")
         title = data.get("title", "")
 
-        # 1. Process Claims (Treating each claim element as a complete claim entity)
-        claims = data.get("claims") or []
-        for claim_idx, claim in enumerate(claims, start=1):
-            if not claim:
-                continue
-            # Normalize internal whitespaces/newlines within the claim text
-            normalized_claim = re.sub(r"\s+", " ", claim).strip()
-            cleaned_claim = clean_text(normalized_claim)
-            
-            if cleaned_claim:
-                records.append(
-                    {
-                        "pat_id": pat_id,
-                        "title": title,
-                        "text_type": "claim",
-                        "paragraph_id": f"claim_{claim_idx}",
-                        "text": cleaned_claim,
-                    }
-                )
-                total_claims += 1
+        # 1. Process Claims (Conditional based on include_claims parameter)
+        if include_claims:
+            claims = data.get("claims") or []
+            for claim_idx, claim in enumerate(claims, start=1):
+                if not claim:
+                    continue
+                # Normalize internal whitespaces/newlines within the claim text
+                normalized_claim = re.sub(r"\s+", " ", claim).strip()
+                cleaned_claim = clean_text(normalized_claim)
+                
+                if cleaned_claim:
+                    records.append(
+                        {
+                            "pat_id": pat_id,
+                            "title": title,
+                            "text_type": "claim",
+                            "paragraph_id": f"claim_{claim_idx}",
+                            "text": cleaned_claim,
+                        }
+                    )
+                    total_claims += 1
 
         # 2. Process Description (Split strictly by double newlines into true paragraphs)
         description = data.get("description") or ""
@@ -119,8 +121,13 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
     ]
     if skipped_files > 0:
         summary_lines.append(f"Files Skipped (Invalid JSON) : {skipped_files:,}")
+        
+    if include_claims:
+        summary_lines.append(f"Total Claim Rows Extracted   : {total_claims:,}")
+    else:
+        summary_lines.append("Total Claim Rows Extracted   : Excluded (include_claims=False)")
+        
     summary_lines.extend([
-        f"Total Claim Rows Extracted   : {total_claims:,}",
         f"Total Description Paragraphs : {total_description_paragraphs:,}",
         f"Total Dataset Rows Created   : {len(records):,}",
         "=" * 50
@@ -135,7 +142,8 @@ def process_patent_files(directory_path: Path | str) -> pd.DataFrame:
 if __name__ == "__main__":
     folder_path = MASTER_DATA_PATH / "patents/full_text"
 
-    df, summary_text = process_patent_files(folder_path)
+    # You can toggle include_claims here: True (default) or False
+    df, summary_text = process_patent_files(folder_path, include_claims=False)
 
     if not df.empty:
         output_dir = PATENT_PIPELINE_PATH / "dataset_creation/0_output"

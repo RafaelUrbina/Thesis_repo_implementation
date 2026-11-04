@@ -54,6 +54,13 @@ FORWARD_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Forward.txt"
 BACKWARD_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Backward.txt"
 STATIC_TXT_PATH = ONTOLOGY_LISTS_PATH / "categorized_causal" / "Static.txt"
 
+# =====================================================================
+# MODE CONFIGURATION (Global Variable)
+# =====================================================================
+# When True: Activates Forward-Only mode. Drops non-forward chains before filtering,
+# disables conflict resolution, skips backward/static outputs, and limits final tables/plots to forward only.
+ONLY_FORWARD_MODE = True
+
 # Explicit subset of variables used to find matching categories in the JSON
 EXPLICIT_FILTER_VARIABLES = {
     'idw_rain_mm_max_monthly',
@@ -65,7 +72,8 @@ EXPLICIT_FILTER_VARIABLES = {
     'avg_descending_soil_speed',
     'avg_ascending_soil_speed',
     'landslide_point_count_1ring',
-    'hydraulic_hazard_level'
+    'hydraulic_hazard_level',
+    'm_per_hex'
 }
 
 # Input Unfiltered Deaggregated CSV
@@ -75,6 +83,9 @@ INPUT_DEAGGREGATED_CSV = OUTPUT_DIR / "complete_patent_causal_chains_pos_deaggre
 FILTERED_DEAGGREGATED_CSV = FILTERED_OUTPUT_DIR / "filtered_complete_patent_causal_chains_pos_deaggregated.csv"
 FILTERED_GRAPH_CACHE = FILTERED_OUTPUT_DIR / "filtered_patent_causal_pos_graph.graphml"
 FILTERED_SUMMARY_TXT = FILTERED_OUTPUT_DIR / "filtered_pipeline_metrics_summary.txt"
+
+# New Backward Conflicting Phrases CSV Output
+BACKWARD_CONFLICTING_CSV = FILTERED_OUTPUT_DIR / "backward_conflicting_phrases.csv"
 
 # Sankey Outputs (Combined + Separated Categorized, placed inside filtered_final)
 FILTERED_SANKEY_OUTPUT = FILTERED_OUTPUT_DIR / "filtered_patent_edge_cases_pos_sankey.html"
@@ -290,7 +301,7 @@ def are_causally_equivalent(lemma1, lemma2):
     return False
 
 
-def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_words):
+def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_words, conflicting_backward_records):
     """Resolves tone conflicts between forward and backward triplets using WordNet semantic/derivational matching."""
     rows_with_cat = []
     for _, row in group_df.iterrows():
@@ -328,6 +339,13 @@ def resolve_triplet_conflicts(group_df, forward_words, backward_words, static_wo
                         break
             
             if matched_f_row is not None:
+                triplet_str = f"[{b_row.get('technical')} ➔ {b_row.get('attribute')} ➔ {b_row.get('failure')}]"
+                link_text_val = str(b_row.get("link_text", "")).strip()
+                conflicting_backward_records.append({
+                    "triplet": triplet_str,
+                    "phrase": link_text_val
+                })
+
                 kept_row = matched_f_row
                 kept_trigger = str(kept_row.get("trigger1", kept_row.get("trigger", ""))).strip()
                 kept_cat = kept_row["_computed_cat"]
@@ -538,6 +556,21 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
     total_raw_rows = len(df_deagg)
     print(f"  - Loaded deaggregated rows: {total_raw_rows}")
 
+    # Load Category Word Sets from txt files
+    forward_words = load_category_words(FORWARD_TXT_PATH)
+    backward_words = load_category_words(BACKWARD_TXT_PATH)
+    static_words = load_category_words(STATIC_TXT_PATH)
+
+    # 0. Apply ONLY_FORWARD_MODE condition early (before attribute filter)
+    if ONLY_FORWARD_MODE:
+        print("\n[Pipeline] ONLY_FORWARD_MODE is ACTIVE: Filtering out all non-forward chains before attribute filter...")
+        df_deagg["_mode_cat"] = df_deagg.apply(lambda r: get_row_category(r, forward_words, backward_words, static_words), axis=1)
+        df_deagg = df_deagg[df_deagg["_mode_cat"] == "forward"].drop(columns=["_mode_cat"]).copy()
+        print(f"  - Rows remaining after ONLY_FORWARD_MODE isolation: {len(df_deagg)}")
+        if df_deagg.empty:
+            print("[Warning] Dataset is empty after keeping only forward chains!")
+            return
+
     def matches_filter(attr_val):
         if not allowed_terms:
             return True
@@ -552,40 +585,42 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
         print("[Warning] Filtered dataset is empty after attribute match!")
         return
 
-    # Load Category Word Sets from txt files
-    forward_words = load_category_words(FORWARD_TXT_PATH)
-    backward_words = load_category_words(BACKWARD_TXT_PATH)
-    static_words = load_category_words(STATIC_TXT_PATH)
-
-    # Apply remove_static_terms keyword handling
-    if remove_static_terms:
+    # Apply remove_static_terms keyword handling (if not already strictly in forward mode)
+    if remove_static_terms and not ONLY_FORWARD_MODE:
         df_deagg_filtered = df_deagg_filtered[
             df_deagg_filtered.apply(lambda r: get_row_category(r, forward_words, backward_words, static_words) != "static", axis=1)
         ].copy()
 
-    # 2. Tone Conflict Disambiguation & Trigger Alignment (Retaining all rows)
-    print("\n[Pipeline] Aligning conflicting triplet tones and updating triggers instead of pruning...")
+    # 2. Tone Conflict Disambiguation & Trigger Alignment
     initial_row_count = len(df_deagg_filtered)
-    
-    df_deagg_filtered["t_clean"] = df_deagg_filtered["technical"].str.strip()
-    df_deagg_filtered["a_clean"] = df_deagg_filtered["attribute"].str.strip()
-    df_deagg_filtered["f_clean"] = df_deagg_filtered["failure"].str.strip()
-
-    optimized_rows = []
-    sample_metrics = []
     total_modified_rows = 0
+    total_unmodified_rows = initial_row_count
+    conflicting_backward_records = []
+    sample_metrics = []
 
-    for _, group in df_deagg_filtered.groupby(["t_clean", "a_clean", "f_clean"]):
-        kept_rows, conflict_examples = resolve_triplet_conflicts(group, forward_words, backward_words, static_words)
-        optimized_rows.extend(kept_rows)
-        total_modified_rows += len(conflict_examples)
-        if conflict_examples and len(sample_metrics) < 20:
-            sample_metrics.extend(conflict_examples[:20 - len(sample_metrics)])
+    if not ONLY_FORWARD_MODE:
+        print("\n[Pipeline] Aligning conflicting triplet tones and updating triggers instead of pruning...")
+        df_deagg_filtered["t_clean"] = df_deagg_filtered["technical"].str.strip()
+        df_deagg_filtered["a_clean"] = df_deagg_filtered["attribute"].str.strip()
+        df_deagg_filtered["f_clean"] = df_deagg_filtered["failure"].str.strip()
 
-    df_deagg_filtered = pd.DataFrame(optimized_rows).drop(columns=["t_clean", "a_clean", "f_clean", "_computed_cat"], errors="ignore")
-    
-    total_remaining_rows = len(df_deagg_filtered)
-    total_unmodified_rows = total_remaining_rows - total_modified_rows
+        optimized_rows = []
+        for _, group in df_deagg_filtered.groupby(["t_clean", "a_clean", "f_clean"]):
+            kept_rows, conflict_examples = resolve_triplet_conflicts(
+                group, forward_words, backward_words, static_words, conflicting_backward_records
+            )
+            optimized_rows.extend(kept_rows)
+            total_modified_rows += len(conflict_examples)
+            if conflict_examples and len(sample_metrics) < 20:
+                sample_metrics.extend(conflict_examples[:20 - len(sample_metrics)])
+
+        df_deagg_filtered = pd.DataFrame(optimized_rows).drop(columns=["t_clean", "a_clean", "f_clean", "_computed_cat"], errors="ignore")
+        total_remaining_rows = len(df_deagg_filtered)
+        total_unmodified_rows = total_remaining_rows - total_modified_rows
+    else:
+        print("\n[Pipeline] ONLY_FORWARD_MODE is ACTIVE: Skipping tone conflict disambiguation / backward alignment.")
+        total_remaining_rows = initial_row_count
+        total_unmodified_rows = initial_row_count
 
     print(f"  [Alignment Metrics]")
     print(f"    - Original Candidate Rows: {initial_row_count}")
@@ -593,7 +628,7 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
     print(f"    - Unmodified Chains: {total_unmodified_rows}")
     print(f"    - Conflicting/Modified Chains: {total_modified_rows}")
     
-    if sample_metrics:
+    if sample_metrics and not ONLY_FORWARD_MODE:
         print(f"\n  [Trigger & Category Alignment Examples (Showing up to 20)]")
         for idx, (kept, orig_modified, updated) in enumerate(sample_metrics[:20], 1):
             kept_trigger = str(kept.get('trigger1', kept.get('trigger', 'N/A')))
@@ -610,6 +645,14 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
     # Ensure filtered_final subfolder exists
     FILTERED_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Export conflicting backward link_text sentences (Only if not in forward-only mode)
+    if conflicting_backward_records and not ONLY_FORWARD_MODE:
+        df_backward_conflicts = pd.DataFrame(conflicting_backward_records)[["triplet", "phrase"]]
+        df_backward_conflicts.to_csv(BACKWARD_CONFLICTING_CSV, index=False, encoding="utf-8")
+        print(f"  -> Saved backward conflicting phrases CSV: {BACKWARD_CONFLICTING_CSV} ({len(df_backward_conflicts)} rows)")
+    else:
+        print("  -> Backward conflicting phrases export skipped (ONLY_FORWARD_MODE is active or no conflicts).")
+
     # Save Clean Unpruned Filtered Table to CSV inside filtered_final
     df_deagg_filtered.to_csv(FILTERED_DEAGGREGATED_CSV, index=False)
     print(f"  -> Saved filtered deaggregated CSV: {FILTERED_DEAGGREGATED_CSV} ({total_remaining_rows} rows)")
@@ -619,10 +662,12 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
         "====================================================\n"
         "           FILTERED PIPELINE METRICS SUMMARY        \n"
         "====================================================\n"
+        f"Mode: {'FORWARD ONLY' if ONLY_FORWARD_MODE else 'STANDARD'}\n"
         f"Total Raw Rows in Input Dataset: {total_raw_rows}\n"
         f"Rows Remaining After Filtering: {total_remaining_rows}\n"
         f"Unmodified Chains: {total_unmodified_rows}\n"
         f"Conflicting/Modified Chains: {total_modified_rows}\n"
+        f"Backward Conflicting Phrases Exported: {len(conflicting_backward_records) if not ONLY_FORWARD_MODE else 0}\n"
         "====================================================\n"
     )
     FILTERED_SUMMARY_TXT.write_text(summary_text, encoding="utf-8")
@@ -685,40 +730,49 @@ def filter_deaggregated_table_and_export(allowed_terms, remove_static_terms=True
     # 4. Generate Sankey Diagrams inside filtered_final
     print("\n[Pipeline] Generating Sankey diagrams...")
     
-    export_sankey_diagram(
-        df_deagg_filtered,
-        FILTERED_SANKEY_OUTPUT,
-        title_text="Filtered Patent Causal Chain [Combined]: [Technical] ➔ [Attribute] ➔ [Failure]"
-    )
+    if ONLY_FORWARD_MODE:
+        # In forward-only mode, generate ONLY the forward Sankey diagram
+        export_sankey_diagram(
+            df_deagg_filtered,
+            FORWARD_SANKEY_OUTPUT,
+            title_text="Filtered Patent Causal Chain [Forward Only]: [Technical] ➔ [Attribute] ➔ [Failure]"
+        )
+        print("  -> Backward and Static Sankey generation skipped (ONLY_FORWARD_MODE is active).")
+    else:
+        export_sankey_diagram(
+            df_deagg_filtered,
+            FILTERED_SANKEY_OUTPUT,
+            title_text="Filtered Patent Causal Chain [Combined]: [Technical] ➔ [Attribute] ➔ [Failure]"
+        )
 
-    df_deagg_filtered["_cat"] = df_deagg_filtered.apply(lambda r: get_row_category(r, forward_words, backward_words, static_words), axis=1)
+        df_deagg_filtered["_cat"] = df_deagg_filtered.apply(lambda r: get_row_category(r, forward_words, backward_words, static_words), axis=1)
 
-    df_forward = df_deagg_filtered[df_deagg_filtered["_cat"] == "forward"]
-    df_backward = df_deagg_filtered[df_deagg_filtered["_cat"] == "backward"]
-    df_static = df_deagg_filtered[df_deagg_filtered["_cat"] == "static"]
+        df_forward = df_deagg_filtered[df_deagg_filtered["_cat"] == "forward"]
+        df_backward = df_deagg_filtered[df_deagg_filtered["_cat"] == "backward"]
+        df_static = df_deagg_filtered[df_deagg_filtered["_cat"] == "static"]
 
-    export_sankey_diagram(
-        df_forward,
-        FORWARD_SANKEY_OUTPUT,
-        title_text="Filtered Patent Causal Chain [Forward / Informative]: [Technical] ➔ [Attribute] ➔ [Failure]"
-    )
-    export_sankey_diagram(
-        df_backward,
-        BACKWARD_SANKEY_OUTPUT,
-        title_text="Filtered Patent Causal Chain [Backward]: [Technical] ➔ [Attribute] ➔ [Failure]"
-    )
-    export_sankey_diagram(
-        df_static,
-        STATIC_SANKEY_OUTPUT,
-        title_text="Filtered Patent Causal Chain [Static]: [Technical] ➔ [Attribute] ➔ [Failure]"
-    )
+        export_sankey_diagram(
+            df_forward,
+            FORWARD_SANKEY_OUTPUT,
+            title_text="Filtered Patent Causal Chain [Forward / Informative]: [Technical] ➔ [Attribute] ➔ [Failure]"
+        )
+        export_sankey_diagram(
+            df_backward,
+            BACKWARD_SANKEY_OUTPUT,
+            title_text="Filtered Patent Causal Chain [Backward]: [Technical] ➔ [Attribute] ➔ [Failure]"
+        )
+        export_sankey_diagram(
+            df_static,
+            STATIC_SANKEY_OUTPUT,
+            title_text="Filtered Patent Causal Chain [Static]: [Technical] ➔ [Attribute] ➔ [Failure]"
+        )
 
 
 # =====================================================================
 # 4. MAIN EXECUTION
 # =====================================================================
 if __name__ == "__main__":
-    print("\n=== Starting Post-Processing Filter Pipeline ===")
+    print(f"\n=== Starting Post-Processing Filter Pipeline (ONLY_FORWARD_MODE={ONLY_FORWARD_MODE}) ===")
     
     allowed_terms = get_allowed_filter_terms()
     

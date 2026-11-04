@@ -1,1 +1,1 @@
-Total rows: 161658, Remaining after filtering: 62009
+Total rows: 80092, Remaining after filtering: 41539

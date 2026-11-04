@@ -1,1 +1,1 @@
-Total input rows: 62009, Remaining exploded rows after filtering: 277689
+Total input rows: 41539, Remaining exploded rows after filtering: 253366

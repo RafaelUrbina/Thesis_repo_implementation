@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import streamlit as st
 
 try:
     import geopandas as gpd
@@ -448,15 +449,16 @@ def _classified_style(
     return style
 
 
+@st.cache_data(ttl="15m", max_entries=4)
 def build_map(
-    layers: dict[str, Any],
+    _layers: dict[str, Any],
     *,
     variable: str | dict[str, Any] | None = None,
     classification: str | dict[str, Any] = "Quantiles",
     palette_name: str | dict[str, Any] = "viridis",
     bin_count: int | dict[str, Any] = 5,
     opacity_by_layer: dict[str, float],
-    join_table: pd.DataFrame | None = None,
+    _join_table: pd.DataFrame | None = None,
     render_limit: int = MAX_RENDER_FEATURES,
     show_basemap: bool = True,
     basemap_opacity: float = 1.0,
@@ -464,16 +466,16 @@ def build_map(
     """Return a self-contained Folium map with joined feature tooltips."""
     import folium
 
-    if not layers:
+    if not _layers:
         raise ValueError("At least one map layer is required.")
     spatial_layers = {
-        name: frame for name, frame in layers.items()
+        name: frame for name, frame in _layers.items()
         if hasattr(frame, "to_crs") and GEOMETRY_COLUMN in frame.columns
     }
     if not spatial_layers:
         raise ValueError("The selected layers contain no geometry.")
     tabular_context = [
-        frame for frame in layers.values()
+        frame for frame in _layers.values()
         if not hasattr(frame, "to_crs") and JOIN_KEY in frame.columns
     ]
     joined_source_fields = {
@@ -516,7 +518,7 @@ def build_map(
         return setting
 
     for name, frame in reversed(list(spatial_layers.items())):
-        current = join_on_index(frame.to_crs(4326), join_table)
+        current = join_on_index(frame.to_crs(4326), _join_table)
         layer_variable = layer_setting(variable, name)
         layer_classification = layer_setting(classification, name, "Quantiles") or "Quantiles"
         layer_palette = layer_setting(palette_name, name, "viridis") or "viridis"
@@ -529,8 +531,8 @@ def build_map(
         joined_fields = {
             candidate
             for source_field in joined_source_fields.union(
-                join_table.columns
-                if join_table is not None
+                _join_table.columns
+                if _join_table is not None
                 else []
             )
             if source_field not in {JOIN_KEY, GEOMETRY_COLUMN}

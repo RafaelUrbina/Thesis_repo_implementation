@@ -39,7 +39,8 @@ max_extreme_vars = [
         'avg_descending_soil_speed',
         'avg_ascending_soil_speed',
         'landslide_point_count_1ring',
-        'hydraulic_hazard_level'
+        'hydraulic_hazard_level',
+        'm_per_hex'
 ]
 # =====================================================================
 
