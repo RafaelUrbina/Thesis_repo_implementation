@@ -659,10 +659,10 @@ def render_insights_tab() -> None:
         current_order = selected_in_order(
             plot_names,
             state_key="plot_order",
-            default_items=plot_names[:3],
+            default_items=plot_names[:2],
         )
         selected_names = st.multiselect(
-            "Plots in display order", [path.name for path in plots],
+            "Plots in display", [path.name for path in plots],
             default=current_order,
             key="selected_plots",
             help="Select plots, then drag the cards below to change their display order.",
@@ -684,17 +684,17 @@ def render_insights_tab() -> None:
         st.info("Select one or more plots from the sidebar.", icon=":material/insert_chart:")
         return
     plot_descriptions = {
-        "filtered_forward_patent_edge_cases_pos_sankey": "Sankey diagram of forward patent edge cases, showing how technical terms connect to attributes and failure concepts.",
-        "filtered_patent_edge_cases_pos_sankey": "Sankey diagram of filtered patent edge cases, highlighting the strongest observed causal term transitions.",
+        "filtered_forward_patent_edge_cases_pos_sankey": "Sankey diagram of forward patent cases, causal chains filtered to highlight the strongest observed causal term transitions.",
+        "filtered_patent_edge_cases_pos_sankey": "Sankey diagram of all patent edge cases, highlighting the strongest observed causal term transitions (informative and pasive tones included).",
         "incomplete_sankey_diagram": "Sankey diagram of incomplete causal links that remain unresolved in the patent-derived network.",
-        "heatmap_top20_attr_vs_fail": "Clustered NPMI heatmap showing co-occurrence strength between the top attribute and failure terms.",
-        "heatmap_top20_tech_vs_attr": "Clustered NPMI heatmap showing co-occurrence strength between technical terms and attribute terms.",
-        "report_bivariate_lisa_census_pop_vs_inflow_total": "Bivariate LISA map comparing census population with total inflow and identifying significant spatial associations.",
-        "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p": "Bivariate LISA map comparing average monthly rainfall with the 95th-percentile wind speed.",
-        "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean": "Bivariate LISA map comparing temperature thermal range with mean elevation.",
-        "top_attribute_terms": "Horizontal bar chart ranking the twenty most frequent attribute or variable terms.",
-        "top_failure_terms": "Horizontal bar chart ranking the twenty most frequent failure terms.",
-        "top_technical_terms": "Horizontal bar chart ranking the twenty most frequent technical terms.",
+        "heatmap_top20_attr_vs_fail": "Clustered NPMI heatmap showing co-occurrence strength between the top attribute and failure terms inside the patent pool.",
+        "heatmap_top20_tech_vs_attr": "Clustered NPMI heatmap showing co-occurrence strength between technical terms and attribute terms inside the patent pool.",
+        "report_bivariate_lisa_census_pop_vs_inflow_total": "Bivariate LISA map comparing census population with total inflow and identifying significant top spatial associations.",
+        "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p": "Bivariate LISA map comparing average monthly rainfall with wind speed identifying significant top spatial associations.",
+        "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean": "Bivariate LISA map comparing temperature thermal range with mean elevation identifying significant top spatial associations.",
+        "top_attribute_terms": "Bar chart ranking the top most frequent attribute or variable terms.",
+        "top_failure_terms": "Bar chart ranking the top most frequent failure terms.",
+        "top_technical_terms": "Bar chart ranking the top most frequent technical terms.",
     }
 
     columns = 1 if len(selected) == 1 else 2 if len(selected) >= 4 else len(selected)

@@ -8,6 +8,7 @@ from typing import Any
 
 import pandas as pd
 import streamlit as st
+import re
 
 try:
     import geopandas as gpd
@@ -33,12 +34,35 @@ DATACUBE_CORE_FIELDS = {
     "technical_term",
     "attribute_term",
     "failure_term",
+    "description",
 }
 DATACUBE_KNOWN_VARIABLES = set(VARIABLES).union(
     {"fertilita", "lcc_classe"}
 )
 PALETTES = ("viridis", "plasma", "inferno", "magma", "cividis", "YlGnBu", "RdYlGn", "Spectral")
 MAX_RENDER_FEATURES = 100_000
+TRIGGER_TRANSLATIONS = {
+    "distance_to_waterway": "proximity to a waterway",
+    "wind_speed": "high wind speed",
+    "landslide_count": "landslide activity",
+    "rain_avg": "high average rainfall",
+    "soil_movement_avg": "soil movement",
+}
+
+
+def _normalized_field_name(field: Any) -> str:
+    return str(field).casefold().replace("_", "").replace(" ", "")
+
+
+def _is_datacube_field(field: Any) -> bool:
+    normalized = _normalized_field_name(field)
+    allowed = {
+        *(_normalized_field_name(value) for value in DATACUBE_CORE_FIELDS),
+        "alluniqueattributes",
+        "technicalterms",
+        "topfailuremode",
+    }
+    return normalized in allowed or str(field).casefold().endswith(("_causal", "_context"))
 
 
 def discover_geo_packages(folder: Path) -> list[Path]:
@@ -106,32 +130,22 @@ def _datacube_columns(package: Path, layer_name: str) -> list[str] | None:
     except (OSError, ValueError, ImportError, LookupError):
         return None
 
-    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     return [
         field for field in available
-        if field.casefold() not in excluded_fields
-        and (
-            field in DATACUBE_CORE_FIELDS
-            or field in DATACUBE_KNOWN_VARIABLES
-            or field.casefold().endswith(("_causal", "_context"))
-        )
+        if _is_datacube_field(field)
+        or field in DATACUBE_KNOWN_VARIABLES
     ]
 
 
 def _prune_datacube_frame(frame: Any) -> Any:
     if frame is None:
         return frame
-    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
     fields = [
         field for field in frame.columns
         if field == GEOMETRY_COLUMN
         or (
-            field.casefold() not in excluded_fields
-            and (
-                field in DATACUBE_CORE_FIELDS
-                or field in DATACUBE_KNOWN_VARIABLES
-                or str(field).casefold().endswith(("_causal", "_context"))
-            )
+            _is_datacube_field(field)
+            or field in DATACUBE_KNOWN_VARIABLES
         )
     ]
     return frame.loc[:, fields]
@@ -155,6 +169,151 @@ def _aggregate_causal_values(values: pd.Series) -> str:
         key=str.casefold,
     )
     return ", ".join(unique_values)
+
+
+def _column_for_aliases(frame: Any, aliases: set[str]) -> str | None:
+    normalized = {
+        _normalized_field_name(column): column
+        for column in frame.columns
+    }
+    return next(
+        (normalized[_normalized_field_name(alias)] for alias in aliases
+         if _normalized_field_name(alias) in normalized),
+        None,
+    )
+
+
+def _split_description_values(value: Any) -> list[str]:
+    if value is None:
+        return []
+    missing = pd.isna(value)
+    if isinstance(missing, bool) and missing:
+        return []
+    text = str(value).strip()
+    if not text or text.casefold() in {"nan", "none", "null", "undefined", "na"}:
+        return []
+    text = text.strip("[](){}")
+    values = text.replace(";", ",").split(",")
+    return [
+        item.strip().strip("'\"")
+        for item in values
+        if item.strip().strip("'\"")
+        and item.strip().strip("'\"").casefold() not in {"nan", "none", "null"}
+    ]
+
+
+def _join_naturally(values: list[str]) -> str:
+    if len(values) <= 1:
+        return values[0] if values else ""
+    if len(values) == 2:
+        return " and ".join(values)
+    return ", ".join(values[:-1]) + " and " + values[-1]
+
+
+def _normalize_variable_name(value: Any) -> str:
+    if not value:
+        return ""
+    text = str(value).strip().lower()
+    exclude_tokens = {
+        "idw", "avg", "average", "max", "maximum", "min", "minimum",
+        "pctl", "percentile", "mm", "cm", "m", "monthly", "daily",
+        "yearly", "annual", "count", "sum", "std", "mean", "logp",
+        "ring"
+    }
+    text = text.replace("_", " ")
+    text = re.sub(r'\b\d+p?\b|\d+', '', text)
+    words = [w for w in text.split() if w not in exclude_tokens and not w.isdigit()]
+    cleaned = " ".join(words).strip()
+    return cleaned or text.strip()
+
+def _description_for_row(
+    row: Any,
+    *,
+    patent_column: str | None,
+    asset_column: str | None,
+    variable_columns: list[str],
+    attribute_column: str | None,
+    failure_column: str | None,
+) -> str:
+    patent_value = row.get(patent_column) if patent_column else None
+    try:
+        patent_count = float(patent_value)
+    except (TypeError, ValueError):
+        patent_count = 0
+    if patent_value is None or patent_count == 0 or patent_count != patent_count:
+        return "No patents recorded in this area."
+
+    assets = _split_description_values(row.get(asset_column)) if asset_column else []
+    asset_text = _join_naturally(assets) or "assets"
+
+    triggers: list[str] = []
+    for column in variable_columns:
+        for value in _split_description_values(row.get(column)):
+            val_str = str(value).strip()
+            translated = TRIGGER_TRANSLATIONS.get(val_str.casefold())
+            norm = translated if translated else _normalize_variable_name(val_str)
+            if norm and norm not in triggers:
+                triggers.append(norm)
+
+    failure_values = _split_description_values(row.get(failure_column)) if failure_column else []
+    failure_text = _join_naturally(failure_values)
+    
+    if failure_text:
+        parts = [f"In this area, {asset_text} are exposed to {failure_text} failures."]
+    else:
+        parts = [f"In this area, {asset_text} are present."]
+        
+    if triggers:
+        parts.append(f"This zone is flagged as a risk zone from the trigger of outlier values in {_join_naturally(triggers)}.")
+
+    attributes = _split_description_values(row.get(attribute_column)) if attribute_column else []
+    patent_display = str(int(patent_count)) if patent_count.is_integer() else str(patent_value)
+    
+    if attributes:
+        label = "attribute" if len(attributes) == 1 else "attributes"
+        verb = "is" if len(attributes) == 1 else "are"
+        parts.append(
+            f"This pattern is supported by {patent_display} patents; The dominant environmental {label} that could affect the zone {verb} "
+            f"{_join_naturally(attributes)}."
+        )
+    else:
+        parts.append(f"This pattern is supported by {patent_display} patents.")
+        
+    return " ".join(parts)
+
+
+def _add_datacube_descriptions(frame: Any) -> Any:
+    if frame is None or getattr(frame, "empty", False):
+        return frame
+    patent_column = _column_for_aliases(frame, {"patent_count", "Patent Count"})
+    asset_column = _column_for_aliases(frame, {"technical_terms", "technical_term", "Technical Term"})
+    attribute_column = _column_for_aliases(
+        frame, {"all_unique_attributes", "attribute_term", "Attribute Term"}
+    )
+    failure_column = _column_for_aliases(
+        frame, {"top_failure_mode", "failure_term", "Failure Term"}
+    )
+    variable_columns = [
+        column
+        for column in (
+            _column_for_aliases(frame, {"variable1", "Variable 1"}),
+            _column_for_aliases(frame, {"variable2", "Variable 2"}),
+        )
+        if column is not None
+    ]
+    frame = frame.copy()
+    frame["description"] = [
+        _description_for_row(
+            row,
+            patent_column=patent_column,
+            asset_column=asset_column,
+            variable_columns=variable_columns,
+            attribute_column=attribute_column,
+            failure_column=failure_column,
+        )
+        for _, row in frame.iterrows()
+    ]
+    return frame
 
 
 def _causal_table_for_join(
@@ -211,6 +370,7 @@ def load_layer(package: Path, layer_name: str) -> Any:
             frame = gpd.read_file(package, layer=layer_name)
         if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name):
             frame = _join_causal_tables(package, frame)
+            frame = _add_datacube_descriptions(frame)
         return frame
     except (OSError, TypeError, ValueError, ImportError):
         try:
@@ -222,6 +382,7 @@ def load_layer(package: Path, layer_name: str) -> Any:
             )
             if _is_datacube_layer(layer_name) and not _is_causal_layer(layer_name):
                 frame = _join_causal_tables(package, frame)
+                frame = _add_datacube_descriptions(frame)
             return frame
         except (OSError, TypeError, ValueError, ImportError):
             return None
@@ -348,7 +509,7 @@ def select_variable(frame: Any) -> str | None:
 
 
 def discover_variables(*frames: Any) -> list[str]:
-    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
+    excluded_fields = {"all_unique_failures"}
     available = {
         str(field)
         for frame in frames
@@ -415,8 +576,9 @@ def _map_fields(
         "technical_term",
         "attribute_term",
         "failure_term",
+        "description",
     ]
-    excluded_fields = {"all_unique_attributes", "all_unique_failures"}
+    excluded_fields = {"all_unique_failures"}
     fields: list[str] = []
     for field in core_fields:
         if field and field in available and field not in fields and field.casefold() not in excluded_fields:
@@ -643,4 +805,54 @@ def build_map(
             tooltip=folium.GeoJsonTooltip(fields=fields, aliases=[field.replace("_", " ").title() for field in fields], sticky=False),
         ).add_to(fmap)
     folium.LayerControl(collapsed=False).add_to(fmap)
-    return fmap.get_root().render()
+    # Inject CSS to constrain width, format table columns, and enable word wrapping
+    css_injection = """
+    <style>
+    .leaflet-tooltip {
+        width: 320px !important;
+        max-width: 320px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
+        border-radius: 10px !important;
+        padding: 12px 14px !important;
+        background-color: rgba(15, 30, 53, 0.92) !important;
+        color: #edf6ff !important;
+        border: 1px solid rgba(180, 218, 255, 0.25) !important;
+    }
+    .leaflet-tooltip table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+    .leaflet-tooltip tr {
+        border-bottom: 1px solid rgba(180, 218, 255, 0.1) !important;
+    }
+    .leaflet-tooltip tr:last-child {
+        border-bottom: none !important;
+    }
+    .leaflet-tooltip td {
+        padding: 6px 4px !important;
+        vertical-align: top !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .leaflet-tooltip td:first-child {
+        font-weight: 600 !important;
+        color: #7dd3fc !important;
+        width: 38% !important;
+        padding-right: 8px !important;
+    }
+    .leaflet-tooltip td:last-child {
+        width: 62% !important;
+    }
+    </style>
+    """
+    map_html = fmap.get_root().render()
+    if "</head>" in map_html:
+        map_html = map_html.replace("</head>", f"{css_injection}</head>")
+    else:
+        map_html = css_injection + map_html
+    return map_html
+    #return fmap.get_root().render()

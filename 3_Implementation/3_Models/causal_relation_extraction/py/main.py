@@ -14,7 +14,8 @@ scripts = [
     f"{Py_PIPELINE_DIR}/1_threshold_filtering.py",
     f"{Py_PIPELINE_DIR}/2_SpatialVars_to_ontology_mapping.py",
     f"{Py_PIPELINE_DIR}/3_spatial_patent_join.py",
-    f"{Py_PIPELINE_DIR}/4_join_causals_to_gpkg.py"
+    f"{Py_PIPELINE_DIR}/4_join_causals_to_gpkg.py",
+    f"{Py_PIPELINE_DIR}/5_aditional_layers_to_grid.py"
 ]
 
 # Execute each script and capture output
