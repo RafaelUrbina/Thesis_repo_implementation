@@ -619,9 +619,11 @@ def render_map_tab() -> None:
                 disabled=classification == "Unique values",
                 help="Controls the number of classes for Quantiles and Natural breaks.",
             )
+            default_palette_idx = PALETTES.index("RdYlGn") if "final_data_cube" in layer_name.casefold() and "RdYlGn" in PALETTES else 0
             palette_by_layer[layer_name] = st.selectbox(
                 "Colour palette",
                 PALETTES,
+                index=default_palette_idx,
                 key=f"map_palette_{layer_name}",
             )
 
@@ -642,6 +644,14 @@ def render_map_tab() -> None:
         )
         html = f"<!-- tab-instance: Map -->\n" + html
         st.caption("Interactive map built for showing the risk prone areas. Use the layer manager to toggle layers and adjust their order. Other settings are available in the sidebar.")
+        # --- Grouped Instructions Container ---
+        with st.container(border=True):
+            st.markdown("**Instructions on the hexagonal risk zones:**")
+            st.markdown(
+                "- The **hexagonal risk zones** are delimited by showing areas where the correlated **variable1** and **variable2** become stressors of the selected zone.\n"
+                "- Each of these zones displays the number of related terms associated with the causal chain, also showing the number of patents involved in the chains.\n"
+                "- The description gives an overview of the underlying conditions after spatial data and linguistic data are fused together."
+            )
         components.html(html, height=650, scrolling=True)
     except (ImportError, OSError, ValueError, KeyError) as error:
         st.error(f"Could not render the map: {error}", icon=":material/error:")
@@ -684,17 +694,17 @@ def render_insights_tab() -> None:
         st.info("Select one or more plots from the sidebar.", icon=":material/insert_chart:")
         return
     plot_descriptions = {
-        "filtered_forward_patent_edge_cases_pos_sankey": "Sankey diagram of forward patent cases, causal chains filtered to highlight the strongest observed causal term transitions.",
-        "filtered_patent_edge_cases_pos_sankey": "Sankey diagram of all patent edge cases, highlighting the strongest observed causal term transitions (informative and pasive tones included).",
-        "incomplete_sankey_diagram": "Sankey diagram of incomplete causal links that remain unresolved in the patent-derived network.",
-        "heatmap_top20_attr_vs_fail": "Clustered NPMI heatmap showing co-occurrence strength between the top attribute and failure terms inside the patent pool.",
-        "heatmap_top20_tech_vs_attr": "Clustered NPMI heatmap showing co-occurrence strength between technical terms and attribute terms inside the patent pool.",
-        "report_bivariate_lisa_census_pop_vs_inflow_total": "Bivariate LISA map comparing census population with total inflow and identifying significant top spatial associations.",
-        "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p": "Bivariate LISA map comparing average monthly rainfall with wind speed identifying significant top spatial associations.",
-        "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean": "Bivariate LISA map comparing temperature thermal range with mean elevation identifying significant top spatial associations.",
-        "top_attribute_terms": "Bar chart ranking the top most frequent attribute or variable terms.",
-        "top_failure_terms": "Bar chart ranking the top most frequent failure terms.",
-        "top_technical_terms": "Bar chart ranking the top most frequent technical terms.",
+        "filtered_forward_patent_edge_cases_pos_sankey": "Description: Sankey diagram of forward patent cases, causal chains filtered to highlight the strongest observed causal term transitions. Insight: There is a very well defined set of nodes that compose the causal chains addressed in the study the technical elements portray a very specific set of components that are included in water transportation systems, the green attributes are all specific variables defined as environmental elements that can be measured from zone to zone, finally the set of failures is well defined and contains concise information about the possible failures that can be observed in the current setting.",
+        "filtered_patent_edge_cases_pos_sankey": "Description: Sankey diagram of all patent edge cases, highlighting the strongest observed causal term transitions (informative and pasive tones included). Insight: The causal chains are well defined and the technical elements portray a very specific set of components that are included in water transportation systems, the green attributes are all specific variables defined as environmental elements that can be measured from zone to zone, finally the set of failures is well defined and contains concise information about the possible failures that can be observed in the current setting.",
+        "incomplete_sankey_diagram": "Description: Sankey diagram of incomplete causal links that remain unresolved in the patent-derived network. Insight: The incomplete causal links show considerable variety of technical terms and attributes, the failure terms are narrowed down and show a clear and defined set for the incomplete linkages.",
+        "heatmap_top20_attr_vs_fail": "Description: Clustered NPMI heatmap showing co-occurrence strength between the top attribute and failure terms inside the patent pool. Insight: The heatmap contain the most co occurring attributes and failures, in this specific case, being: vegetation intrusion and leakage indices, other critical co occurrences are thermal expansion and pipeline contacts.",
+        "heatmap_top20_tech_vs_attr": "Description: Clustered NPMI heatmap showing co-occurrence strength between technical terms and attribute terms inside the patent pool. Insight: The heatmap contain the most co occurring technical and attribute terms, in this specific case, being: dam and floods, other critical co occurrences are drains and rain.",
+        "report_bivariate_lisa_census_pop_vs_inflow_total": "Description: Bivariate LISA map comparing census population with total inflow and identifying significant top spatial associations. Insight: the local analysis shows cold spots on the extreme north and south parts of the province while having a hot spot in the center, city of florence, some mixed spots are present in the north east sectors of the province, this shows how demographics and commuting shape the province. ",
+        "report_bivariate_lisa_idw_rain_mm_avg_monthly_vs_idw_wind_speed_max_95p": "Description: Bivariate LISA map comparing average monthly rainfall with wind speed identifying significant top spatial associations. Insight: the local analysis shows hot spots in the north part, in the south section of the province there are some cold spots, the present behavior shows how in the northern section of the province rain and wind can act as two stressors that act upon together, while in the southern part the behavior is toned down",
+        "report_bivariate_lisa_idw_temp_thermal_range_vs_dtmidcnt_mean": "Description: Bivariate LISA map comparing temperature thermal range with mean elevation identifying significant top spatial associations. Insight: the local analysis shows mixed spots across the region, with small sections flagged as hot or cold spots, these spots show areas where termal range and elevation can act as co ocurring stressors that can affect the water risk in the province. ",
+        "top_attribute_terms": "Description: Bar chart ranking the top most frequent attribute or variable terms. Insight: the most frequent terms related to attributes revolve around environmental variables present in the study.",
+        "top_failure_terms": " Description: Bar chart ranking the top most frequent failure terms.",
+        "top_technical_terms": " Description: Bar chart ranking the top most frequent technical terms.",
     }
 
     columns = 1 if len(selected) == 1 else 2 if len(selected) >= 4 else len(selected)
@@ -842,21 +852,20 @@ def render_landpage() -> None:
         .landpage h1 {{ font-size: clamp(2.5rem, 6vw, 5rem); margin: 0 0 1.25rem; }}
         .landpage p {{ max-width: 900px; font-size: 1.15rem; line-height: 1.7; }}
         .landpage-carousel {{
-            width: min(100%, 980px); height: 330px; margin-top: 2rem; position: relative;
+            width: min(100%, 680px); height: 330px; margin-top: 2rem; position: relative;
             overflow: hidden; border-radius: 18px; border: 1px solid rgba(180,218,255,.25);
             box-shadow: 0 18px 50px rgba(0,0,0,.35);
         }}
         .landpage-slide {{
             position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            opacity: 0; animation: landpage-slide-cycle 30s infinite;
+            opacity: 0;
         }}
-        .landpage-slide:nth-child(1) {{ animation-delay: 0s; }}
-        .landpage-slide:nth-child(2) {{ animation-delay: 10s; }}
-        .landpage-slide:nth-child(3) {{ animation-delay: 20s; }}
+        /* Static display: locks the first slide visible and stops animation */
+        .landpage-slide:first-child {{
+            opacity: 1 !important;
+            animation: none !important;
+        }}
         @keyframes landpage-bg-cycle {{
-            0%, 3% {{ opacity: 0; }} 15%, 25% {{ opacity: 1; }} 35%, 100% {{ opacity: 0; }}
-        }}
-        @keyframes landpage-slide-cycle {{
             0%, 3% {{ opacity: 0; }} 15%, 25% {{ opacity: 1; }} 35%, 100% {{ opacity: 0; }}
         }}
         </style>
@@ -865,10 +874,10 @@ def render_landpage() -> None:
           <h1>From Patents to Places</h1>
           <p>
             This interactive dashboard connects patent-derived causal knowledge with
-            H3-indexed spatial indicators to explore how technical systems, environmental
-            conditions, and water-risk factors relate across the study area. Use the map
-            to inspect spatial patterns, the insights tab to examine analytical plots, and
-            the project information tab to access the study context and compiled thesis.
+            H3-indexed spatial indicators to explore how technical factors and environmental
+            conditions relate across the water distribution networks. Use the map
+            to inspect spatial patterns, the insights tab to examine failure risk chains, and
+            the project information tab to access the study context.
           </p>
           <div class="landpage-carousel">{carousel_layers}</div>
         </section>

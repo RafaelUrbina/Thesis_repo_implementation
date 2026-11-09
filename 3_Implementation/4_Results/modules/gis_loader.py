@@ -566,17 +566,17 @@ def _map_fields(
 ) -> list[str]:
     available = [field for field in frame.columns if field != GEOMETRY_COLUMN]
     core_fields = [
-        JOIN_KEY,
+        "description",
         variable,
         "total_failure_chains",
-        "unique_technical_triggers",
+        #"unique_technical_triggers",
         "patent_count",
         "variable1",
         "variable2",
         "technical_term",
         "attribute_term",
         "failure_term",
-        "description",
+        JOIN_KEY,
     ]
     excluded_fields = {"all_unique_failures"}
     fields: list[str] = []
@@ -766,6 +766,8 @@ def build_map(
         layer_variable = layer_setting(variable, name)
         layer_classification = layer_setting(classification, name, "Quantiles") or "Quantiles"
         layer_palette = layer_setting(palette_name, name, "viridis") or "viridis"
+        if "final_data_cube" in name.casefold() or "final" in name.casefold() or "cube" in name.casefold():
+            layer_palette = "RdYlGn"
         layer_bin_count = layer_setting(bin_count, name, 5) or 5
 
         is_dc = _is_datacube_layer(name)
